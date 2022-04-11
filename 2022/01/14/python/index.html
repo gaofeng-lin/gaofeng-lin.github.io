@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="John Doe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="John Doe">
+    
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="所遇问题输出格式有问题背景：python2.7，IDE：VSCode源码：two.txt: 输出：预期应该为商品，单价，数量。 修改最后一行的print 打包pip install 包 背景：内网需要安装python和一些包，无法连互联网，只能外网下载再u盘拷过去。   在外网机器Python的安装目录中新建一个文件夹，如packages：   进入到packages文件夹下，shift按住，鼠标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python">
+<meta property="og:url" content="https://gaofeng-lin.github.io/2022/01/14/python/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="所遇问题输出格式有问题背景：python2.7，IDE：VSCode源码：two.txt: 输出：预期应该为商品，单价，数量。 修改最后一行的print 打包pip install 包 背景：内网需要安装python和一些包，无法连互联网，只能外网下载再u盘拷过去。   在外网机器Python的安装目录中新建一个文件夹，如packages：   进入到packages文件夹下，shift按住，鼠标">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/aad38ed43cf14169a81178f15d5cab6b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/30f55f74a6f04008af34c386d4ac4631.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/006fd38c10064562b5261b067cd0d0e8.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/be1c33ec8b6e4593806ab989758d5641.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/f86df46c2cc4468fa89c15c1708df6fe.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/730bff4d9f30437790528bf4db3797cb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1db7754fe1984892849f3d5adca5bc5b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/8a4c18aa77c040dd925733f93ade928e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/bcd0965e3e1c4c929422fa9b879729cb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/93c843b909ec45ec85865dbf3c2ae945.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/4c36a39430c747eb86e933b2ae67b809.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/84c82a81f052455385019bbc37bc93b2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/b22a0f9e154642e0843ce47974245361.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/a78e8887588e4e0591da5a2f391335aa.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/59d97e84f5384682828af42b5d5f03a1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0bdfe664d55944f3b118f82861f2a31a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/6eef8ba7ef9e47a9bbef68a0918f3b94.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190531113214107.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW5nZmVuZzg4ODE2OA==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019053111303868.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW5nZmVuZzg4ODE2OA==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/488f4321054b442b97e9b42813e0e565.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/a384434e602d4276b5b6da7546bc67db.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/33d9dc9d343b4111afabc96caceac82d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9fec5d3536be40d1ad0676f202dd95bc.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/bed4ceca7318472d959ef280c707247c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/bdec075c9903308b5eb69f34f3b4cad1.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/26822bd2c18f3bb60a2028511ca0060d.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/79bbdbbe59e7d8d84f527e62a5bb581d.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/27eafe4c3413473b8de9f92567056d70.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="article:published_time" content="2022-01-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-08T15:38:22.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/aad38ed43cf14169a81178f15d5cab6b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon1.jpg">
+    
+    <title>python · Gaofeng&#39;s Home</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu">
+        
+            
+                <div style="padding-left: 1px;">&#xe775;</div>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>Gaofeng's Home.</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">Gaofeng&#39;s Home.</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">python</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden">
+        
+        
+            <div>&#xe639;</div>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                python
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
+    
+</div>
+
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">9.9k</span>Reading time: <span class="post-count reading-time">45 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/01/14</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="所遇问题"><a href="#所遇问题" class="headerlink" title="所遇问题"></a>所遇问题</h1><h2 id="输出格式有问题"><a href="#输出格式有问题" class="headerlink" title="输出格式有问题"></a>输出格式有问题</h2><p>背景：python2.7，IDE：VSCode<br>源码：<br><img src="https://img-blog.csdnimg.cn/aad38ed43cf14169a81178f15d5cab6b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>two.txt:<br><img src="https://img-blog.csdnimg.cn/30f55f74a6f04008af34c386d4ac4631.png" alt="在这里插入图片描述"></p>
+<p>输出：<br><img src="https://img-blog.csdnimg.cn/006fd38c10064562b5261b067cd0d0e8.png" alt="在这里插入图片描述"><br>预期应该为商品，单价，数量。</p>
+<p>修改最后一行的print<br><img src="https://img-blog.csdnimg.cn/be1c33ec8b6e4593806ab989758d5641.png" alt="在这里插入图片描述"></p>
+<h2 id="打包pip-install-包"><a href="#打包pip-install-包" class="headerlink" title="打包pip install 包"></a>打包pip install 包</h2><blockquote>
+<p>背景：内网需要安装python和一些包，无法连互联网，只能外网下载再u盘拷过去。</p>
+</blockquote>
+<ol>
+<li><p>在外网机器Python的安装目录中新建一个文件夹，如packages：<br> <img src="https://img-blog.csdnimg.cn/f86df46c2cc4468fa89c15c1708df6fe.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+</li>
+<li><p>进入到packages文件夹下，shift按住，鼠标右键“在此处打开命令行”，输入pip<br>list查看系统中安装了哪些python包，如下：<br><img src="https://img-blog.csdnimg.cn/730bff4d9f30437790528bf4db3797cb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+</li>
+<li><p>把所有包名及版本号，重定向到requirements.txt中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt;requirements.txt</span><br></pre></td></tr></table></figure></li>
+<li><p>然后下载系统中已经安装的所有包到一个目录下，比如在packages的packages中，使用如下命令,此时packages下有两个文件：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip download -r requirements.txt -d packages</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/1db7754fe1984892849f3d5adca5bc5b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<ol start="5">
+<li>内网安装。先复制刚才外网机器上的文件夹pacjages到内网机器对应的目录<br><img src="https://img-blog.csdnimg.cn/8a4c18aa77c040dd925733f93ade928e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></li>
+<li>进入到D:\Python37\packages下，打开命令行，执行安装</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --no-index --find-links=packages -r requirements.txt </span><br></pre></td></tr></table></figure>
+
+<p>如果失败，可以一个一个安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install XXXX包名</span><br></pre></td></tr></table></figure>
+<h2 id="python2-7-卸载失败问题"><a href="#python2-7-卸载失败问题" class="headerlink" title="python2.7 卸载失败问题"></a>python2.7 卸载失败问题</h2><blockquote>
+<p>背景：使用.msi文件进行卸载，出现以下情况：</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/bcd0965e3e1c4c929422fa9b879729cb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>解决方法：<br>找到出问题的版本，个人当时出问题的版本是2.7.10。官网下载msi文件。<br><img src="https://img-blog.csdnimg.cn/93c843b909ec45ec85865dbf3c2ae945.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>依次运行。</p>
+<h2 id="open函数传参数出错"><a href="#open函数传参数出错" class="headerlink" title="open函数传参数出错"></a>open函数传参数出错</h2><blockquote>
+<p>背景：python2.7，open函数传递参数。<br>自定义函数，函数里面调用open函数</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/4c36a39430c747eb86e933b2ae67b809.png" alt="在这里插入图片描述"><br>如果不在路径前面加r，就会报错。按理说应该是<br>open(file_path,mode)</p>
+<p>后面写出函数，拼接的时候老出错。<br><strong>解决办法：</strong></p>
+<blockquote>
+<p>路径使用&#x2F;<br>‘C:&#x2F;Users&#x2F;76585&#x2F;Desktop&#x2F;compare&#x2F;one.txt’</p>
+</blockquote>
+<p>open函数可以正常使用open(path,mode)</p>
+<h2 id="Python编码错误的解决办法SyntaxError-Non-ASCII-character-‘-xe5’-in-file"><a href="#Python编码错误的解决办法SyntaxError-Non-ASCII-character-‘-xe5’-in-file" class="headerlink" title="Python编码错误的解决办法SyntaxError: Non-ASCII character ‘\xe5’ in file"></a>Python编码错误的解决办法SyntaxError: Non-ASCII character ‘\xe5’ in file</h2><blockquote>
+<p>原因：python的默认编码文件是用的ASCII码，而你的python文件中使用了中文等非英语字符</p>
+</blockquote>
+<p>解决办法：</p>
+<p>在Python源文件的最开始一行，加入一句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#coding=UTF-8（等号换为”:“也可以）</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#-*- coding:UTF-8 -*-</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="RuntimeError-dictionary-changed-size-during-iteration"><a href="#RuntimeError-dictionary-changed-size-during-iteration" class="headerlink" title="RuntimeError: dictionary changed size during iteration"></a>RuntimeError: dictionary changed size during iteration</h2><p>在字典遍历过程中修改字典元素，报错 RuntimeError: dictionary changed size during iteration</p>
+<p>得知遍历时不能修改字典元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for k in func_dict.keys():</span><br><span class="line">    if func_dict[k] is np.nan:</span><br><span class="line">        del func_dict[k]</span><br><span class="line">        continue</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决办法：将遍历条件改为列表</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for k in list(func_dict.keys()):</span><br><span class="line">    if func_dict[k] is np.nan:</span><br><span class="line">        del func_dict[k]</span><br><span class="line">        continue</span><br></pre></td></tr></table></figure>
+
+<h2 id="VScode-code-runner无法运行出正确的结果"><a href="#VScode-code-runner无法运行出正确的结果" class="headerlink" title="VScode code runner无法运行出正确的结果"></a>VScode code runner无法运行出正确的结果</h2><p>背景：<br>内网电脑上，通过python程序对文件进行读写操作，但是没有出现相应的结果。单步调试可以出正确的结果。</p>
+<p>分析：<br>通过print 输出可以发现问题。命令行运行py文件可以得到正确的结果，说明原因出在code runner上面。</p>
+<p>解决办法：<br>1.首选项找到设置<br><img src="https://img-blog.csdnimg.cn/84c82a81f052455385019bbc37bc93b2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>2.输入code-runner，找到 Executor Map<br><img src="https://img-blog.csdnimg.cn/b22a0f9e154642e0843ce47974245361.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>3.选择这个，（将设置复制为id）<br><img src="https://img-blog.csdnimg.cn/a78e8887588e4e0591da5a2f391335aa.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/59d97e84f5384682828af42b5d5f03a1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>将复制的内容粘贴到里面</p>
+<p><img src="https://img-blog.csdnimg.cn/0bdfe664d55944f3b118f82861f2a31a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>修改其中python字段的python值替换为vscode左下角的python解释器：<br>结果如下;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;python&quot;: &quot;C:\\Python27\\python.exe -u&quot; //注意转义符</span><br><span class="line">//下面这个也可以</span><br><span class="line"></span><br><span class="line">&quot;python&quot;: &quot;\&quot;C:/Python27/python.exe\&quot; -u&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/6eef8ba7ef9e47a9bbef68a0918f3b94.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="vscode进行调试，系统把conda-activate-base写入了用户输入区域该怎么办？"><a href="#vscode进行调试，系统把conda-activate-base写入了用户输入区域该怎么办？" class="headerlink" title="vscode进行调试，系统把conda activate base写入了用户输入区域该怎么办？"></a>vscode进行调试，系统把conda activate base写入了用户输入区域该怎么办？</h2><p><strong>问题：在运行调试的时候编译器在运行语句前没有进入虚拟base环境，于是在遇到激活用户输入语句时，自动输入了conda activate base ，导致程序出错</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20190531113214107.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW5nZmVuZzg4ODE2OA==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>解决办法：避免在使用这些终端命令时激活虚拟环境和conda环境，<strong>请将python.terminal.activateEnvironment设置更改为false</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/2019053111303868.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW5nZmVuZzg4ODE2OA==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>这个setting.json在在<code>C:\Users\Administrator\AppData\Roaming\Code\User\setting.json</code> 是个纯文本文件，直接打开就好。如果没有python.terminal.activateEnvironment这一行可以自己加上。</p>
+<h1 id="技术知识点"><a href="#技术知识点" class="headerlink" title="技术知识点"></a>技术知识点</h1><h2 id="遍历文件夹下的文件名"><a href="#遍历文件夹下的文件名" class="headerlink" title="遍历文件夹下的文件名"></a>遍历文件夹下的文件名</h2><blockquote>
+<p>#方法1：使用os.listdir</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">for filename in os.listdir(r&#x27;c:\windows&#x27;):</span><br><span class="line">    print(&quot;文件夹名字&quot;,filename)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>#方法2：使用glob模块，可以设置文件过滤</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import glob</span><br><span class="line">for filename in glob.glob(r&#x27;c:\windows\*.exe&#x27;):</span><br><span class="line">    print(&quot;是.exe的文件名&quot;,filename)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>#方法3：非递归</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">for dirpath, dirnames, filenames in os.walk(&#x27;D:&#x27;):</span><br><span class="line">    print(&#x27;文件路径&#x27;, dirpath)</span><br><span class="line">    print(&#x27;文件夹名字&#x27;,dirnames)</span><br><span class="line">    for filename in filenames:</span><br><span class="line">        print(&#x27;文件名&#x27;, filename)</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h2><h3 id="字符串切割"><a href="#字符串切割" class="headerlink" title="字符串切割"></a>字符串切割</h3><p>注：使用前需要引入包（import re）<br>功能：split能够按照所能匹配的字串将字符串进行切分，返回切分后的字符串列表<br>形式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.split(pattern, string[, maxsplit=0, flags=0])</span><br></pre></td></tr></table></figure>
+<p>pattern:匹配的字符串<br>string:需要切分的字符串<br>maxsplit:分隔次数，默认为0(即不限次数)<br>flags:标志位，用于控制正则表达式的匹配方式，比如：是否区分大小写，，，如下图所示</p>
+<p>具体分析：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//传入某个文件的绝对路径（file_path），根据 &#x27;\&#x27;进行分割，将结果存入列表，再取出最后一个，就是文件名。</span><br><span class="line">new_line= re.split(r&#x27;[/]&#x27;,str(file_path))</span><br><span class="line">file_name=new_line[-1]</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="替换字符串中的匹配项"><a href="#替换字符串中的匹配项" class="headerlink" title="替换字符串中的匹配项"></a>替换字符串中的匹配项</h3><p><strong>re.sub()</strong> </p>
+<pre><code>def sub(pattern, repl, string, count=0, flags=0):
+    &quot;&quot;&quot;Return the string obtained by replacing the leftmost
+    non-overlapping occurrences of the pattern in string by the
+    replacement repl.  repl can be either a string or a callable;
+    if a string, backslash escapes in it are processed.  If it is
+    a callable, it&#39;s passed the match object and must return
+    a replacement string to be used.&quot;&quot;&quot;
+    return _compile(pattern, flags).sub(repl, string, count)
+</code></pre>
+<p>从上面的代码中可以看到re.sub()方法中含有5个参数，下面进行一一说明（加粗的为必须参数）：<br>（1）<strong>pattern</strong>：该参数表示正则中的模式字符串；<br>（2）<strong>repl</strong>：该参数表示要替换的字符串（即匹配到pattern后替换为repl），也可以是个函数；<br>（3）<strong>string</strong>：该参数表示要被处理（查找替换）的原始字符串；<br>（4）count：可选参数，表示是要替换的最大次数，而且必须是非负整数，该参数默认为0，即所有的匹配都会被替换；<br>（5）flags：可选参数，表示编译时用的匹配模式（如忽略大小写、多行模式等），数字形式，默认为0。</p>
+<p>使用案例：<br><strong>1.匹配单一数字</strong><br>（1）只匹配单一数字</p>
+<pre><code>&gt;&gt;&gt; import re
+&gt;&gt;&gt; s
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[0-9]&#39;, &#39;*&#39;, s)
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m ** years old.   Today is ****/**/**. It is a wonderful DAY! @HHHHello,,,#***ComeHere***...**？AA？zz？——http://welcome.cn&quot;
+</code></pre>
+<p>上面 re.sub(r’[0-9]’, ‘*’, s) 这句话则表示只匹配单一数字，并将每一个数字替换为一个星号 。</p>
+<p>（2）只匹配单一字母</p>
+<pre><code>&gt;&gt;&gt; s
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[a-z]&#39;, &#39;*&#39;, s)
+&quot;大家好，我是一个程序员小白。I &#39;* ** **** ** ********* ******, *** I’* 18 ***** ***.   T**** ** 2020/01/01. I* ** * ********* DAY! @HHHH****,,,#111C***H***222...66？AA？**？——****://*******.**&quot;
+&gt;&gt;&gt; re.sub(r&#39;[A-Z]&#39;, &#39;*&#39;, s)
+&quot;大家好，我是一个程序员小白。* &#39;m so glad to introduce myself, and *’m 18 years old.   *oday is 2020/01/01. *t is a wonderful ***! @****ello,,,#111*ome*ere222...66？**？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[A-Za-z]&#39;, &#39;*&#39;, s)
+&quot;大家好，我是一个程序员小白。* &#39;* ** **** ** ********* ******, *** *’* 18 ***** ***.   ***** ** 2020/01/01. ** ** * ********* ***! @********,,,#111********222...66？**？**？——****://*******.**&quot;
+</code></pre>
+<p>上面 re.sub(r’[a-z]’, ‘<em>‘, s) 这句话则表示只匹配单一小写字母，并将每一个小写字母替换为一个星号 。<br>上面 re.sub(r’[A-Z]’, ‘</em>‘, s) 这句话则表示只匹配单一大写字母，并将每一个大写字母替换为一个星号 。<br>上面 re.sub(r’[A-Za-z]’, ‘*’, s) 这句话则表示只匹配单一字母，并将每一个字母替换为一个星号 。</p>
+<p>（3）匹配单一数字和字母</p>
+<pre><code>&gt;&gt;&gt; s
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[0-9A-Z]&#39;, &#39;*&#39;, s)
+&quot;大家好，我是一个程序员小白。* &#39;m so glad to introduce myself, and *’m ** years old.   *oday is ****/**/**. *t is a wonderful ***! @****ello,,,#****ome*ere***...**？**？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[0-9a-z]&#39;, &#39;*&#39;, s)
+&quot;大家好，我是一个程序员小白。I &#39;* ** **** ** ********* ******, *** I’* ** ***** ***.   T**** ** ****/**/**. I* ** * ********* DAY! @HHHH****,,,#***C***H******...**？AA？**？——****://*******.**&quot;
+&gt;&gt;&gt; re.sub(r&#39;[0-9A-Za-z]&#39;, &#39;*&#39;, s)
+&quot;大家好，我是一个程序员小白。* &#39;* ** **** ** ********* ******, *** *’* ** ***** ***.   ***** ** ****/**/**. ** ** * ********* ***! @********,,,#**************...**？**？**？——****://*******.**&quot;
+</code></pre>
+<p>上面 re.sub(r’[0-9A-Z]’, ‘<em>‘, s) 这句话则表示只匹配单一数字和大写字母，并将每一个数字和大写字母替换为一个星号 。<br>上面 re.sub(r’[0-9a-z]’, ‘</em>‘, s) 这句话则表示只匹配单一数字和小写字母，并将每一个数字和小写字母替换为一个星号 。<br>上面 re.sub(r’[0-9A-Za-z]’, ‘*’, s) 这句话则表示只匹配单一数字和字母，并将每一个数字和字母替换为一个星号 。</p>
+<p><strong>2.匹配多个数字或字母</strong><br>注意：这里的所说的多个指的是大于等于一个。</p>
+<p>（1）匹配多个数字</p>
+<pre><code>&gt;&gt;&gt; s
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[0-9]+&#39;, &#39;*&#39;, s)
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m * years old.   Today is */*/*. It is a wonderful DAY! @HHHHello,,,#*ComeHere*...*？AA？zz？——http://welcome.cn&quot;
+</code></pre>
+<p>上面 re.sub(r’[0-9]+’, ‘*’, s) 这句话则表示匹配多个连续的数字，并将多个连续的数字替换为一个星号 。</p>
+<p>（2）匹配多个字母</p>
+<pre><code>&gt;&gt;&gt; s
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[a-z]+&#39;, &#39;*&#39;, s)
+&quot;大家好，我是一个程序员小白。I &#39;* * * * * *, * I’* 18 * *.   T* * 2020/01/01. I* * * * DAY! @HHHH*,,,#111C*H*222...66？AA？*？——*://*.*&quot;
+&gt;&gt;&gt; re.sub(r&#39;[A-Z]+&#39;, &#39;*&#39;, s)
+&quot;大家好，我是一个程序员小白。* &#39;m so glad to introduce myself, and *’m 18 years old.   *oday is 2020/01/01. *t is a wonderful *! @*ello,,,#111*ome*ere222...66？*？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[a-zA-Z]+&#39;, &#39;*&#39;, s)
+&quot;大家好，我是一个程序员小白。* &#39;* * * * * *, * *’* 18 * *.   * * 2020/01/01. * * * * *! @*,,,#111*222...66？*？*？——*://*.*&quot;
+</code></pre>
+<p>上面 re.sub(r’[a-z]+’, ‘<em>‘, s) 这句话则表示匹配多个连续的小写字母，并将多个连续的小写字母替换为一个星号 。<br>上面 re.sub(r’[A-Z]+’, ‘</em>‘, s) 这句话则表示匹配多个连续的大写字母，并将多个连续的大写字母替换为一个星号 。<br>上面 re.sub(r’[A-Za-z]+’, ‘*’, s) 这句话则表示匹配多个连续的字母，并将多个连续的字母替换为一个星号 。</p>
+<p>（3）匹配多个数字和字母</p>
+<pre><code>&gt;&gt;&gt; s
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[0-9a-zA-Z]+&#39;, &#39;*&#39;, s)
+&quot;大家好，我是一个程序员小白。* &#39;* * * * * *, * *’* * * *.   * * */*/*. * * * * *! @*,,,#*...*？*？*？——*://*.*&quot;
+</code></pre>
+<p>上面 re.sub(r’[0-9A-Za-z]+’, ‘*’, s) 这句话则表示匹配多个连续的数字和字母，并将多个连续的数字、连续的字母、连续的数字和字母替换为一个星号 。</p>
+<p><strong>3.匹配其他</strong></p>
+<p>（1）匹配非数字</p>
+<pre><code>&gt;&gt;&gt; s
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[^0-9]&#39;, &#39;*&#39;, s)
+&#39;********************************************************18***********************2020*01*01**************************************111********222***66**************************&#39;
+&gt;&gt;&gt; re.sub(r&#39;[^0-9]+&#39;, &#39;*&#39;, s)
+&#39;*18*2020*01*01*111*222*66*&#39;
+</code></pre>
+<p>上面 re.sub(r’[^0-9]’, ‘<em>‘, s) 这句话则表示匹配单个非数字，并将单个非数字替换为一个星号 。<br>上面 re.sub(r’[^0-9]+’, ‘</em>‘, s) 这句话则表示匹配多个连续的非数字，并将多个连续的非数字替换为一个星号 。</p>
+<p>（2）匹配非字母</p>
+<pre><code>&gt;&gt;&gt; s
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[^a-z]&#39;, &#39;*&#39;, s)
+&#39;*****************m*so*glad*to*introduce*myself**and***m****years*old*****oday*is**************t*is*a*wonderful***********ello********ome*ere************zz***http***welcome*cn&#39;
+&gt;&gt;&gt; re.sub(r&#39;[^A-Z]&#39;, &#39;*&#39;, s)
+&#39;**************I*************************************I*******************T********************I*****************DAY***HHHH***********C***H************AA***********************&#39;
+&gt;&gt;&gt; re.sub(r&#39;[^A-Za-z]&#39;, &#39;*&#39;, s)
+&#39;**************I**m*so*glad*to*introduce*myself**and*I*m****years*old****Today*is*************It*is*a*wonderful*DAY***HHHHello*******ComeHere*********AA*zz***http***welcome*cn&#39;
+&gt;&gt;&gt; re.sub(r&#39;[^a-z]+&#39;, &#39;*&#39;, s)
+&#39;*m*so*glad*to*introduce*myself*and*m*years*old*oday*is*t*is*a*wonderful*ello*ome*ere*zz*http*welcome*cn&#39;
+&gt;&gt;&gt; re.sub(r&#39;[^A-Z]+&#39;, &#39;*&#39;, s)
+&#39;*I*I*T*I*DAY*HHHH*C*H*AA*&#39;
+&gt;&gt;&gt; re.sub(r&#39;[^A-Za-z]+&#39;, &#39;*&#39;, s)
+&#39;*I*m*so*glad*to*introduce*myself*and*I*m*years*old*Today*is*It*is*a*wonderful*DAY*HHHHello*ComeHere*AA*zz*http*welcome*cn&#39;
+</code></pre>
+<p>上面 re.sub(r’[^a-z]’, ‘<em>‘, s) 这句话则表示匹配单个非小写字母，并将单个非小写字母替换为一个星号 。<br>上面 re.sub(r’[^A-Z]’, ‘</em>‘, s) 这句话则表示匹配单个非大写字母，并将单个非大写字母替换为一个星号 。<br>上面 re.sub(r’[^A-Za-z]’, ‘<em>‘, s) 这句话则表示匹配单个非字母，并将单个非字母替换为一个星号 。<br>上面 re.sub(r’[^a-z]+’, ‘</em>‘, s) 这句话则表示匹配多个连续的非小写字母，并将多个连续的非小写字母替换为一个星号 。<br>上面 re.sub(r’[^A-Z]+’, ‘<em>‘, s) 这句话则表示匹配多个连续的非大写字母，并将多个连续的非大写字母替换为一个星号 。<br>上面 re.sub(r’[^A-Za-z]+’, ‘</em>‘, s) 这句话则表示匹配多个连续的非字母，并将多个连续的非字母替换为一个星号 。</p>
+<p>（3）匹配非数字和非字母</p>
+<pre><code>&gt;&gt;&gt; s
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[^0-9A-Za-z]&#39;, &#39;*&#39;, s)
+&#39;**************I**m*so*glad*to*introduce*myself**and*I*m*18*years*old****Today*is*2020*01*01**It*is*a*wonderful*DAY***HHHHello****111ComeHere222***66*AA*zz***http***welcome*cn&#39;
+&gt;&gt;&gt; re.sub(r&#39;[^0-9A-Za-z]+&#39;, &#39;*&#39;, s)
+&#39;*I*m*so*glad*to*introduce*myself*and*I*m*18*years*old*Today*is*2020*01*01*It*is*a*wonderful*DAY*HHHHello*111ComeHere222*66*AA*zz*http*welcome*cn&#39;
+</code></pre>
+<p>上面 re.sub(r’[^0-9A-Za-z]’, ‘<em>‘, s) 这句话则表示匹配单个非数字和非字母，并将单个非数字和非字母替换为一个星号 。<br>上面 re.sub(r’[^0-9A-Za-z]+’, ‘</em>‘, s) 这句话则表示匹配多个连续的非数字和非字母，并将多个连续的非数字和非字母替换为一个星号 。</p>
+<p>（4）匹配固定形式<br>a.只保留字母和空格，将 repl 设置为空字符即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s</span><br><span class="line">&quot;大家好，我是一个程序员小白。I &#x27;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;</span><br><span class="line">&gt;&gt;&gt; re.sub(r&#x27;[^a-z ]&#x27;, &#x27;&#x27;, s)</span><br><span class="line">&#x27; m so glad to introduce myself and m  years old   oday is  t is a wonderful  elloomeerezzhttpwelcomecn&#x27;</span><br><span class="line">&gt;&gt;&gt; re.sub(r&#x27;[^a-z ]+&#x27;, &#x27;&#x27;, s)</span><br><span class="line">&#x27; m so glad to introduce myself and m  years old   oday is  t is a wonderful  elloomeerezzhttpwelcomecn&#x27;</span><br><span class="line">&gt;&gt;&gt; re.sub(r&#x27;[^A-Za-z ]&#x27;, &#x27;&#x27;, s)</span><br><span class="line">&#x27;I m so glad to introduce myself and Im  years old   Today is  It is a wonderful DAY HHHHelloComeHereAAzzhttpwelcomecn&#x27;</span><br><span class="line">&gt;&gt;&gt; re.sub(r&#x27;[^A-Za-z ]+&#x27;, &#x27;&#x27;, s)</span><br><span class="line">&#x27;I m so glad to introduce myself and Im  years old   Today is  It is a wonderful DAY HHHHelloComeHereAAzzhttpwelcomecn&#x27;</span><br></pre></td></tr></table></figure>
+<p>如果要使句子语义和结构更完整，则要先将其余字符替换为空格（即repl设置为空格），然后去除多余的空格，如下：</p>
+<pre><code>&gt;&gt;&gt; s1 = re.sub(r&#39;[^A-Za-z ]+&#39;, &#39; &#39;, s)
+&gt;&gt;&gt; s1
+&#39; I  m so glad to introduce myself  and I m   years old    Today is   It is a wonderful DAY   HHHHello ComeHere AA zz http welcome cn&#39;
+&gt;&gt;&gt; re.sub(r&#39;[ ]+&#39;, &#39; &#39;, s1)
+&#39; I m so glad to introduce myself and I m years old Today is It is a wonderful DAY HHHHello ComeHere AA zz http welcome cn&#39;
+</code></pre>
+<p>b.去除以 @ 开头的英文单词</p>
+<pre><code>&gt;&gt;&gt; s
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;@[A-Za-z]+&#39;, &#39;&#39;, s)
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! ,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;
+</code></pre>
+<p>c.去除以 ？结尾的英文单词和数字（注意这是中文问号）</p>
+<pre><code>&gt;&gt;&gt; s
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[A-Za-z]+？&#39;, &#39;&#39;, s)
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;[0-9A-Za-z]+？&#39;, &#39;&#39;, s)
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...——http://welcome.cn&quot;
+</code></pre>
+<p>d.去除原始字符串中的URL</p>
+<pre><code>&gt;&gt;&gt; s
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn&quot;
+&gt;&gt;&gt; re.sub(r&#39;http[:.]+\S+&#39;, &#39;&#39;, s)
+&quot;大家好，我是一个程序员小白。I &#39;m so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——&quot;
+</code></pre>
+<h3 id="字符串提取–提取数字"><a href="#字符串提取–提取数字" class="headerlink" title="字符串提取–提取数字"></a>字符串提取–提取数字</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">re.findall(r&#x27;\d+&#x27;, str(string))</span><br><span class="line">// &#x27;\d&#x27;是正则表达式，+表示匹配多个，如果不加，就是单个的数字</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串相似度比较"><a href="#字符串相似度比较" class="headerlink" title="字符串相似度比较"></a>字符串相似度比较</h3><p>python自带比较相似度的模块，difflib。比较两个字符串的模块是difflib.SequenceMatcher，使用起来很简单：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import difflib</span><br><span class="line"> </span><br><span class="line">def string_similar(s1, s2):</span><br><span class="line">    return difflib.SequenceMatcher(None, s1, s2).quick_ratio()</span><br><span class="line"> </span><br><span class="line">print string_similar(&#x27;爱尔眼科沪滨医院&#x27;, &#x27;沪滨爱尔眼科医院&#x27;)</span><br><span class="line">print string_similar(&#x27;安定区妇幼保健站&#x27;, &#x27;定西市安定区妇幼保健站&#x27;)</span><br><span class="line">print string_similar(&#x27;广州市医院&#x27;, &#x27;广东省中医院&#x27;)</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.0</span><br><span class="line">0.842105263158</span><br><span class="line">0.606060606061</span><br></pre></td></tr></table></figure>
+
+<p>其中None的位置是一个函数，用来去掉自己不想算在内的元素。比如我想把空格排除在外：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">seq = difflib.SequenceMatcher(lambda x:x=&quot; &quot;, a, b)</span><br><span class="line">ratio = seq.ratio()</span><br></pre></td></tr></table></figure>
+<h3 id="去掉字符串两端的引号"><a href="#去掉字符串两端的引号" class="headerlink" title="去掉字符串两端的引号"></a>去掉字符串两端的引号</h3><p>背景：有时候会出现这种情况的字符串<code>&#39;&quot;srting&quot;&#39;</code>，用type查看，是string。如果里面是整数，需要和某个整数比大小，没法直接用int强制转，需要先去掉外面那层引号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">方法：eval()</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a=&#x27;&quot;srting&quot;&#x27;</span><br><span class="line">print(a)</span><br><span class="line">b=eval(a)</span><br><span class="line">print(b)</span><br><span class="line">//输出</span><br><span class="line">//&quot;srting&quot;</span><br><span class="line">//srting</span><br></pre></td></tr></table></figure>
+
+<p>eval()用途：<br><img src="https://img-blog.csdnimg.cn/488f4321054b442b97e9b42813e0e565.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/a384434e602d4276b5b6da7546bc67db.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/33d9dc9d343b4111afabc96caceac82d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/9fec5d3536be40d1ad0676f202dd95bc.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/bed4ceca7318472d959ef280c707247c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="循环删除元素"><a href="#循环删除元素" class="headerlink" title="循环删除元素"></a>循环删除元素</h2><p><strong>循环删除列表中元素时千万别用正序遍历，一定要用反序遍历！</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def test(data):</span><br><span class="line">    for i in data:</span><br><span class="line">        data.remove(i)</span><br><span class="line">    return data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = [1, 2, 3]</span><br><span class="line">print(test(data))</span><br></pre></td></tr></table></figure>
+
+<p>面对以上代码，乍一看以为会打印出空列表，因为test函数内通过for的方法将data中的元素都删除了，其实不然，实际输出如下：<br>原列表在内存中为：<br><img src="https://img-blog.csdnimg.cn/img_convert/bdec075c9903308b5eb69f34f3b4cad1.png#pic_center" alt="在这里插入图片描述"><br>第一次执行到data.remove(i)时将第一个元素‘1’删除，列表变为：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/26822bd2c18f3bb60a2028511ca0060d.png#pic_center" alt="在这里插入图片描述"><br>第二次执行到data.remove(i)时i为第二个元素，即‘3’，此时将‘3’删除，列表变为：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/79bbdbbe59e7d8d84f527e62a5bb581d.png#pic_center" alt="在这里插入图片描述"><br>此时列表已经没有第三个元素了，即退出循环，将[2]返回。<br>如何解决这个问题呢？ 我们可以用倒序删除的方法！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def test(data):</span><br><span class="line">    for i in data[::-1]:</span><br><span class="line">        data.remove(i)</span><br><span class="line">    return data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = [1, 2, 3]</span><br><span class="line">print(test(data))</span><br></pre></td></tr></table></figure>
+
+<h2 id="列表相关操作"><a href="#列表相关操作" class="headerlink" title="列表相关操作"></a>列表相关操作</h2><h3 id="列表头部插入元素"><a href="#列表头部插入元素" class="headerlink" title="列表头部插入元素"></a>列表头部插入元素</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">names.insert(0,&#x27;Bill&#x27;) //第一个参数表示索引</span><br></pre></td></tr></table></figure>
+
+<h3 id="两个列表取交集"><a href="#两个列表取交集" class="headerlink" title="两个列表取交集"></a>两个列表取交集</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=[i for i in list2 if i  in list1]</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(set(a).intersection(b))</span><br></pre></td></tr></table></figure>
+
+<h3 id="列表取并集"><a href="#列表取并集" class="headerlink" title="列表取并集"></a>列表取并集</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(set(a).union(b))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(set(a) | set(b))</span><br></pre></td></tr></table></figure>
+<p><strong>多个列表取并集：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(set(a).intersection(b,c)) </span><br></pre></td></tr></table></figure>
+
+<h3 id="列表取差集"><a href="#列表取差集" class="headerlink" title="列表取差集"></a>列表取差集</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(set(a).difference(b))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(set(a).difference(b,c)) # 求特定1个list(a)中有，其他list(b、c)都没有的元素&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="列表排序（更详细操作见文档）"><a href="#列表排序（更详细操作见文档）" class="headerlink" title="列表排序（更详细操作见文档）"></a>列表排序（更详细操作见文档）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file_list.sort(key=lambda x:int(x[9:-4]))</span><br><span class="line">//根据关键字来排序，lambda是一个函数的简写。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//下面两个写法是一样的</span><br><span class="line">g = lambda x:x+1</span><br><span class="line"></span><br><span class="line"> def g(x):</span><br><span class="line">     return x+1</span><br></pre></td></tr></table></figure>
+<h3 id="列表替换元素（更详细操作见文档）"><a href="#列表替换元素（更详细操作见文档）" class="headerlink" title="列表替换元素（更详细操作见文档）"></a>列表替换元素（更详细操作见文档）</h3><p>1.直接替换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//假设要把列表中的a元素替换为b</span><br><span class="line">//首先得到a的索引，将这个索引的值赋为b</span><br><span class="line">list[list.index(a)]=b</span><br></pre></td></tr></table></figure>
+
+
+<p>2.条件替换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> lst = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;]</span><br><span class="line"></span><br><span class="line"> rep = [&#x27;4&#x27; if x == &#x27;2&#x27; else x for x in lst]</span><br><span class="line"></span><br><span class="line"> rep</span><br><span class="line"></span><br><span class="line">[&#x27;1&#x27;, &#x27;4&#x27;, &#x27;3&#x27;]</span><br></pre></td></tr></table></figure>
+<p>3.批量替换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> lst = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;]</span><br><span class="line"></span><br><span class="line">pattern = [&#x27;3&#x27;, &#x27;4&#x27;]</span><br><span class="line"></span><br><span class="line">rep = [&#x27;d&#x27; if x in pattern else x for x in lst]</span><br><span class="line"></span><br><span class="line">rep</span><br><span class="line"></span><br><span class="line">[&#x27;1&#x27;, &#x27;2&#x27;, &#x27;d&#x27;, &#x27;d&#x27;, &#x27;5&#x27;]</span><br></pre></td></tr></table></figure>
+<p>4.映射替换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> lst = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;]</span><br><span class="line"></span><br><span class="line"> pattern = &#123;&#x27;3&#x27;:&#x27;three&#x27;, &#x27;4&#x27;:&#x27;four&#x27;&#125;</span><br><span class="line"></span><br><span class="line"> rep = [pattern[x] if x in pattern else x for x in lst]</span><br><span class="line"></span><br><span class="line">rep</span><br><span class="line"></span><br><span class="line">[&#x27;1&#x27;, &#x27;2&#x27;, &#x27;three&#x27;, &#x27;four&#x27;, &#x27;5&#x27;]</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="列表截取元素"><a href="#列表截取元素" class="headerlink" title="列表截取元素"></a>列表截取元素</h3><p>l&#x3D;list[0:4]</p>
+<p>注意：列表的正向索引下标是从零开始，不是1，反向索引是到-1结束，不是0</p>
+<p>正向索引（01234…）</p>
+<p>1.只有头下标i和冒号（代表的是从该头下标i的元素开始截取，一直到最后）</p>
+<p>2.只有冒号尾下标i（代表的是从开始一直截取到i-1的元素）</p>
+<p>3.头下标i，冒号和尾下标j都有（代表的是从i一直截取到j-1的元素）</p>
+<p>例程如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">list=[&#x27;123&#x27;,&#x27;abc&#x27;,0,True]</span><br><span class="line">x=list[1:]</span><br><span class="line">y=list[:3]</span><br><span class="line">z=list[2:3]</span><br><span class="line">print(x)</span><br><span class="line">print(y)</span><br><span class="line">print</span><br><span class="line"></span><br><span class="line">[&#x27;abc&#x27;, 0, True]</span><br><span class="line">[&#x27;123&#x27;, &#x27;abc&#x27;, 0]</span><br><span class="line">[0]</span><br></pre></td></tr></table></figure>
+<p>反向索引（……-2-1）</p>
+<p>1.只有头下标i和冒号（代表的是从该头下标i的元素开始截取，一直到最后）</p>
+<p>2.只有冒号尾下标i（代表的是从开始一直截取到i-1的元素）</p>
+<p>3.头下标i，冒号和尾下标j都有（代表的是从i一直截取到j-1的元素</p>
+<p>例程如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">list=[&#x27;123&#x27;,&#x27;abc&#x27;,0,True]</span><br><span class="line">x=list[-3:]</span><br><span class="line">y=list[:-2]</span><br><span class="line">z=list[-3:-1]</span><br><span class="line">print(x)</span><br><span class="line">print(y)</span><br><span class="line">print(z)</span><br><span class="line"></span><br><span class="line">[&#x27;abc&#x27;, 0, True]</span><br><span class="line">[&#x27;123&#x27;, &#x27;abc&#x27;]</span><br><span class="line">[&#x27;abc&#x27;, 0]</span><br></pre></td></tr></table></figure>
+
+<p><strong>加入步长的截取：</strong></p>
+<p>前面讲到的截取是没有带步长的。如果想隔一定元素个数去截取列表，可以选择使用带有步长的截取方式</p>
+<p>格式：</p>
+<p>变量[头下标:尾下标:步长]<br>例如截取第三个到第五个元素，如果隔两个步长截取的话，就会截取到元素3和元素5，元素4就被跳过了</p>
+<h3 id="列表查找重复元素"><a href="#列表查找重复元素" class="headerlink" title="列表查找重复元素"></a>列表查找重复元素</h3><p>推荐方法二</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">方法一：</span><br><span class="line"></span><br><span class="line">mylist = [1,2,2,2,2,3,3,3,4,4,4,4]</span><br><span class="line"></span><br><span class="line">myset = set(mylist)</span><br><span class="line"></span><br><span class="line">for item in myset:</span><br><span class="line">    print(&quot;the %d has found %d&quot; %(item,mylist.count(item)))</span><br><span class="line"></span><br><span class="line">the 1 has found 1</span><br><span class="line"></span><br><span class="line">the 2 has found 4</span><br><span class="line"></span><br><span class="line">the 3 has found 3</span><br><span class="line"></span><br><span class="line">the 4 has found 4</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">方法二：</span><br><span class="line"></span><br><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line">a = [1, 2, 3, 4, 3, 2, &quot;奔奔&quot;, &quot;benben&quot;, &quot;奔奔&quot;]</span><br><span class="line">b = dict(Counter(a))</span><br><span class="line"># 只展示重复元素</span><br><span class="line">print ([key for key,value in b.items() if value &gt; 1])</span><br><span class="line"># 展现重复元素和重复次数</span><br><span class="line">print (&#123;key:value for key,value in b.items()if value &gt; 1&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//结果</span><br><span class="line">[2, 3, &#x27;奔奔&#x27;]</span><br><span class="line">&#123;2: 2, 3: 2, &#x27;奔奔&#x27;: 2&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">方法三：</span><br><span class="line"></span><br><span class="line">List=[1,2,2,2,2,3,3,3,4,4,4,4]</span><br><span class="line"></span><br><span class="line"> a = &#123;&#125;</span><br><span class="line"></span><br><span class="line">for i in List:</span><br><span class="line">     if List.count(i)&gt;1:</span><br><span class="line">         a[i] = List.count(i)</span><br><span class="line"></span><br><span class="line">   print (a)</span><br></pre></td></tr></table></figure>
+
+<h2 id="XML相关操作"><a href="#XML相关操作" class="headerlink" title="XML相关操作"></a>XML相关操作</h2><h3 id="创建一个XML文档"><a href="#创建一个XML文档" class="headerlink" title="创建一个XML文档"></a>创建一个XML文档</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">import xml.dom.minidom</span><br><span class="line">import re,os</span><br><span class="line"></span><br><span class="line">list=[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;str_scheme_name&#x27;, &#x27;str_limiter&#x27;]</span><br><span class="line">doc = xml.dom.minidom.Document() </span><br><span class="line">root = doc.createElement(&#x27;version-check&#x27;)</span><br><span class="line">doc.appendChild(root)</span><br><span class="line"></span><br><span class="line">for i in list:</span><br><span class="line">    var_name = doc.createElement(i)</span><br><span class="line"></span><br><span class="line">    version=doc.createElement(&#x27;version&#x27;)</span><br><span class="line">    version.setAttribute(&#x27;v&#x27;,&#x27;100&#x27;)</span><br><span class="line">    version.appendChild(doc.createTextNode(i))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    var_name.appendChild(version)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    root.appendChild(var_name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fp = open(&#x27;C:/Users/76585/Desktop/shell/cfdname2/tow.xml&#x27;, &#x27;w&#x27;)</span><br><span class="line">doc.writexml(fp, indent=&#x27;\t&#x27;, addindent=&#x27;\t&#x27;, newl=&#x27;\n&#x27;, encoding=&quot;utf-8&quot;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="对现有XML文档进行修改"><a href="#对现有XML文档进行修改" class="headerlink" title="对现有XML文档进行修改"></a>对现有XML文档进行修改</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">tree=ET.parse(&#x27;C:/Users/76585/Desktop/shell/cfdname2/tow.xml&#x27;)</span><br><span class="line">         root=tree.getroot()</span><br><span class="line"></span><br><span class="line">// b是一个列表</span><br><span class="line">         for i in b:</span><br><span class="line">             newnode=ET.Element(i)</span><br><span class="line"></span><br><span class="line">             version=ET.Element(&#x27;version&#x27;)</span><br><span class="line">             version.attrib=&#123;&quot;v&quot;:end&#125;</span><br><span class="line">             version.text=i</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             newnode.append(version)</span><br><span class="line">             # newnode.text=end  </span><br><span class="line">             root.append(newnode)    </span><br><span class="line"></span><br><span class="line">         tree.write(&#x27;C:/Users/76585/Desktop/shell/cfdname2/tow.xml&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="特殊的去首尾空格方法"><a href="#特殊的去首尾空格方法" class="headerlink" title="特殊的去首尾空格方法"></a>特殊的去首尾空格方法</h3><p>strip是trim掉字符串两边的空格。<br>lstrip, trim掉左边的空格<br>rstrip, trim掉右边的空格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">theString = &#x27; https://mp.csdn.net/postlist &#x27; </span><br><span class="line">print theString.strip()</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="判断情况总结"><a href="#判断情况总结" class="headerlink" title="判断情况总结"></a>判断情况总结</h2><h3 id="判断目录下的空文件夹并删除"><a href="#判断目录下的空文件夹并删除" class="headerlink" title="判断目录下的空文件夹并删除"></a>判断目录下的空文件夹并删除</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 导入os</span><br><span class="line">import os</span><br><span class="line"># 让用户自行输入路径</span><br><span class="line">path=input(&#x27;请输入文件目录路径&#x27;)</span><br><span class="line"># 获取当前目录下的所有文件夹名称  得到的是一个列表</span><br><span class="line">folders=os.listdir(path)</span><br><span class="line"></span><br><span class="line"># # 遍历列表</span><br><span class="line">for folder in folders:</span><br><span class="line">    # 将上级路径path与文件夹名称folder拼接出文件夹的路径</span><br><span class="line">    folder2=os.listdir(path+&#x27;\\&#x27;+folder)</span><br><span class="line">    print(folder2)</span><br><span class="line">    # 若文件夹为空</span><br><span class="line">    if folder2==[]:</span><br><span class="line">        # 则打印此空文件的名称</span><br><span class="line">        print(folder)</span><br><span class="line">        # 并将此空文件夹删除</span><br><span class="line">        os.rmdir(path+&#x27;\\&#x27;+folder)</span><br></pre></td></tr></table></figure>
+<h3 id="判断文件内容为空"><a href="#判断文件内容为空" class="headerlink" title="判断文件内容为空"></a>判断文件内容为空</h3><p><strong>方法： size &#x3D; os.path.getsize(file_path)</strong></p>
+<ol>
+<li>结果：如果 size &#x3D;&#x3D; 0，则文件内容为空；</li>
+<li>上述的 file_path 为需要判断大小的文件的存放路径。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if os.path.getsize(file_path) == 0:</span><br><span class="line">	print(&#x27;文件内容为空&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="变量类型判断"><a href="#变量类型判断" class="headerlink" title="变量类型判断"></a>变量类型判断</h3><blockquote>
+<p>1、isinstance(参数1,参数2)<br><br><br>描述：该函数用来判断一个变量（参数1）是否是已知的变量类型(参数2) 类似于type()</p>
+<p>参数1：变量</p>
+<p>参数2：可以是直接或间接类名、基本类型或者由它们组成的元组。</p>
+<p>返回值: 如果对象的类型与参数二的类型（classinfo）相同则返回 True，否则返回 False</p>
+</blockquote>
+<h2 id="深拷贝–deep-copy"><a href="#深拷贝–deep-copy" class="headerlink" title="深拷贝–deep copy"></a>深拷贝–deep copy</h2><p>背景：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dict_min[&#x27;name&#x27;]=new_line[1]</span><br><span class="line">dict_mid[new_line[1]]=dict_min</span><br></pre></td></tr></table></figure>
+<p>上面这段代码中，newline[1]发生变化时，dict_min发生变化，从而导致dict_mid受到影响。具体的效果<br><img src="https://img-blog.csdnimg.cn/27eafe4c3413473b8de9f92567056d70.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>name的值会依次被后面的值覆盖，但我们不希望之前的收到影响。</p>
+<p>解决办法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dict_min[&#x27;name&#x27;]=new_line[1]</span><br><span class="line">dict_tmp=copy.deepcopy(dict_min)      </span><br><span class="line">dict_mid[new_line[1]]=dict_tmp</span><br></pre></td></tr></table></figure>
+
+<p>看下深拷贝的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import copy</span><br><span class="line">&gt;&gt;&gt; origin = [1, 2, [3, 4]]</span><br><span class="line">#origin 里边有三个元素：1， 2，[3, 4]</span><br><span class="line">&gt;&gt;&gt; cop1 = copy.copy(origin)</span><br><span class="line">&gt;&gt;&gt; cop2 = copy.deepcopy(origin)</span><br><span class="line">&gt;&gt;&gt; cop1 == cop2</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; cop1 is cop2</span><br><span class="line">False </span><br><span class="line">#cop1 和 cop2 看上去相同，但已不再是同一个object</span><br><span class="line">&gt;&gt;&gt; origin[2][0] = &quot;hey!&quot; </span><br><span class="line">&gt;&gt;&gt; origin</span><br><span class="line">[1, 2, [&#x27;hey!&#x27;, 4]]</span><br><span class="line">&gt;&gt;&gt; cop1</span><br><span class="line">[1, 2, [&#x27;hey!&#x27;, 4]]</span><br><span class="line">&gt;&gt;&gt; cop2</span><br><span class="line">[1, 2, [3, 4]]</span><br><span class="line">#把origin内的子list [3, 4] 改掉了一个元素，观察 cop1 和 cop2</span><br></pre></td></tr></table></figure>
+<p>可以看到 cop1，也就是 shallow copy 跟着 origin 改变了。而 cop2 ，也就是 deep copy 并没有变。</p>
+<p>似乎 deep copy 更加符合我们对「复制」的直觉定义: 一旦复制出来了，就应该是独立的了。如果我们想要的是一个字面意义的「copy」，那就直接用 deep_copy 即可。</p>
+<p>那么为什么会有 shallow copy 这样的「假」 copy 存在呢？ 这就是有意思的地方了。</p>
+<p><strong>python的数据存储方式</strong><br>Python 存储变量的方法跟其他 OOP 语言不同。它与其说是把值赋给变量，不如说是给变量建立了一个到具体值的 reference。</p>
+<p>当在 Python 中 a &#x3D; something 应该理解为给 something 贴上了一个标签 a。当再赋值给 a 的时候，就好象把 a 这个标签从原来的 something 上拿下来，贴到其他对象上，建立新的 reference。 这就解释了一些 Python 中可能遇到的诡异情况：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; a = [1, 2, 3]</span><br><span class="line">&gt;&gt;&gt; b = a</span><br><span class="line">&gt;&gt;&gt; a = [4, 5, 6] //赋新的值给 a</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[4, 5, 6]</span><br><span class="line">&gt;&gt;&gt; b</span><br><span class="line">[1, 2, 3]</span><br><span class="line"># a 的值改变后，b 并没有随着 a 变</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; a = [1, 2, 3]</span><br><span class="line">&gt;&gt;&gt; b = a</span><br><span class="line">&gt;&gt;&gt; a[0], a[1], a[2] = 4, 5, 6 //改变原来 list 中的元素</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[4, 5, 6]</span><br><span class="line">&gt;&gt;&gt; b</span><br><span class="line">[4, 5, 6]</span><br><span class="line"># a 的值改变后，b 随着 a 变了</span><br></pre></td></tr></table></figure>
+<p>上面两段代码中，a 的值都发生了变化。区别在于，第一段代码中是直接赋给了 a 新的值（从 [1, 2, 3] 变为 [4, 5, 6]）；而第二段则是把 list 中每个元素分别改变。</p>
+<p>而对 b 的影响则是不同的，一个没有让 b 的值发生改变，另一个变了。怎么用上边的道理来解释这个诡异的不同呢？</p>
+<p>首次把 [1, 2, 3] 看成一个物品。a &#x3D; [1, 2, 3] 就相当于给这个物品上贴上 a 这个标签。而 b &#x3D; a 就是给这个物品又贴上了一个 b 的标签。</p>
+<p>第一种情况：</p>
+<p>a &#x3D; [4, 5, 6] 就相当于把 a 标签从 [1 ,2, 3] 上撕下来，贴到了 [4, 5, 6] 上。</p>
+<p>在这个过程中，[1, 2, 3] 这个物品并没有消失。 b 自始至终都好好的贴在 [1, 2, 3] 上，既然这个 reference 也没有改变过。 b 的值自然不变。</p>
+<p>第二种情况：</p>
+<p>a[0], a[1], a[2] &#x3D; 4, 5, 6 则是直接改变了 [1, 2, 3] 这个物品本身。把它内部的每一部分都重新改装了一下。内部改装完毕后，[1, 2, 3] 本身变成了 [4, 5, 6]。</p>
+<p>而在此过程当中，a 和 b 都没有动，他们还贴在那个物品上。因此自然 a b 的值都变成了 [4, 5, 6]。</p>
+<p>搞明白这个之后就要问了，<strong>对于一个复杂对象的浅copy，在copy的时候到底发生了什么？</strong><br>再看一段代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import copy</span><br><span class="line">&gt;&gt;&gt; origin = [1, 2, [3, 4]]</span><br><span class="line">#origin 里边有三个元素：1， 2，[3, 4]</span><br><span class="line">&gt;&gt;&gt; cop1 = copy.copy(origin)</span><br><span class="line">&gt;&gt;&gt; cop2 = copy.deepcopy(origin)</span><br><span class="line">&gt;&gt;&gt; cop1 == cop2</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; cop1 is cop2</span><br><span class="line">False </span><br><span class="line">#cop1 和 cop2 看上去相同，但已不再是同一个object</span><br><span class="line">&gt;&gt;&gt; origin[2][0] = &quot;hey!&quot; </span><br><span class="line">&gt;&gt;&gt; origin</span><br><span class="line">[1, 2, [&#x27;hey!&#x27;, 4]]</span><br><span class="line">&gt;&gt;&gt; cop1</span><br><span class="line">[1, 2, [&#x27;hey!&#x27;, 4]]</span><br><span class="line">&gt;&gt;&gt; cop2</span><br><span class="line">[1, 2, [3, 4]]</span><br><span class="line">#把origin内的子list [3, 4] 改掉了一个元素，观察 cop1 和 cop2</span><br></pre></td></tr></table></figure>
+<p>学过docker的人应该对镜像这个概念不陌生，我们可以把镜像的概念套用在copy上面。</p>
+<p>copy对于一个复杂对象的子对象并不会完全复制，什么是复杂对象的子对象呢？就比如序列里的嵌套序列，字典里的嵌套序列等都是复杂对象的子对象。对于子对象，python会把它当作一个公共镜像存储起来，所有对他的复制都被当成一个引用，所以说当其中一个引用将镜像改变了之后另一个引用使用镜像的时候镜像已经被改变了。</p>
+<p>所以说看这里的origin[2]，也就是 [3, 4] 这个 list。根据 shallow copy 的定义，在 cop1[2] 指向的是同一个 list [3, 4]。那么，如果这里我们改变了这个 list，就会导致 origin 和 cop1 同时改变。这就是为什么上边 origin[2][0] &#x3D; “hey!” 之后，cop1 也随之变成了 [1, 2, [‘hey!’, 4]]。</p>
+<p>deepcopy的时候会将复杂对象的每一层复制一个单独的个体出来。<br>这时候的 origin[2] 和 cop2[2] 虽然值都等于 [3, 4]，但已经不是同一个 list了。即我们寻常意义上的复制。</p>
+<h2 id="json相关操作"><a href="#json相关操作" class="headerlink" title="json相关操作"></a>json相关操作</h2><p><strong>dumps和dump 序列化方法</strong><br>dumps只完成了序列化为str，<br>dump必须传文件描述符，将序列化的str保存到文件中<br>下面使用实际的例子依次介绍：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line"></span><br><span class="line">key=&#123; &quot;people&quot;: [</span><br><span class="line">&#123; &quot;Name&quot;: &quot;Brett&quot;, &quot;名字&quot;:&quot;McLaughlin&quot;, &#x27;1&#x27;: 1 &#125;,</span><br><span class="line">&#123; &quot;Name&quot;: &quot;Jason&quot;, &quot;名字&quot;:&quot;Hunter&quot;, &#x27;2&#x27;: 1&#125;,</span><br><span class="line">&#123; &quot;Name&quot;: &quot;Elliotte&quot;, &quot;名字&quot;:&quot;Harold&quot;, &#x27;3&#x27;: 1 &#125;</span><br><span class="line">]&#125;</span><br><span class="line">print(json.dumps(key,sort_keys=True,indent =4,ensure_ascii=False))</span><br></pre></td></tr></table></figure>
+
+<p>输出效果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;people&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;1&quot;: 1,</span><br><span class="line">            &quot;Name&quot;: &quot;Brett&quot;,</span><br><span class="line">            &quot;名字&quot;: &quot;McLaughlin&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;2&quot;: 1,</span><br><span class="line">            &quot;Name&quot;: &quot;Jason&quot;,</span><br><span class="line">            &quot;名字&quot;: &quot;Hunter&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;3&quot;: 1,</span><br><span class="line">            &quot;Name&quot;: &quot;Elliotte&quot;,</span><br><span class="line">            &quot;名字&quot;: &quot;Harold&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>非常简便的将所需要的数据流畅的保存下来了，下面我们介绍相关的参数：<br>（1）indent&#x3D;4：缩进，python中默认缩进是4个，前端和css默认是2个<br>（2）sort_keys&#x3D;True&#x2F;False：以key为标准，按key的a-z字母排序<br>（3）separators&#x3D;(‘，’，‘：’)：减少空格，增加传输速度，参数是要保留的标点符号，json只保留 逗号和冒号就行。<br>下面我们将其保存在json的文件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;E:\\测试.json&quot;, &quot;w+&quot;,encoding=&#x27;utf-8_sig&#x27;)as f:</span><br><span class="line">    json.dump(key,f,sort_keys=True,indent =4,ensure_ascii=False)</span><br><span class="line"> </span><br><span class="line">//另外一种写法</span><br><span class="line">f= open(&quot;E:\\测试.json&quot;, &quot;w&quot;,encoding=&#x27;utf-8_sig&#x27;)  //可能会报encoding的相关错，去掉就好</span><br></pre></td></tr></table></figure>
+
+<p><strong>loads和load 反序列化方法</strong><br>loads 只完成了反序列化，<br>load 只接收文件描述符，完成了读取文件和反序列化<br>同样用上述例子介绍：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">key_1=json.dumps(key,sort_keys=True,indent =4,ensure_ascii=False)</span><br><span class="line">print(json.loads(key_1))</span><br></pre></td></tr></table></figure>
+<p>输出为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;people&#x27;: [&#123;&#x27;1&#x27;: 1, &#x27;Name&#x27;: &#x27;Brett&#x27;, &#x27;名字&#x27;: &#x27;McLaughlin&#x27;&#125;, &#123;&#x27;2&#x27;: 1, &#x27;Name&#x27;: &#x27;Jason&#x27;, &#x27;名字&#x27;: &#x27;Hunter&#x27;&#125;, &#123;&#x27;3&#x27;: 1, &#x27;Name&#x27;: &#x27;Elliotte&#x27;, &#x27;名字&#x27;: &#x27;Harold&#x27;&#125;]&#125;</span><br></pre></td></tr></table></figure>
+<p>即将其反输出<br>下面读取json文件也是一样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;E:\\测试.json&quot;, &quot;r+&quot;,encoding=&#x27;utf-8_sig&#x27;)as f:</span><br><span class="line">    data=json.load(f)</span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
+<p><strong>特别注意：</strong><br><em><strong>如果打开的文件为空，那么json.load(f)会报错，里面必须有内容才能用这个打开</strong></em></p>
+<h2 id="字典相关操作"><a href="#字典相关操作" class="headerlink" title="字典相关操作"></a>字典相关操作</h2><h3 id="如何检查字典-Python-中是否存在某个值"><a href="#如何检查字典-Python-中是否存在某个值" class="headerlink" title="如何检查字典(Python)中是否存在某个值"></a>如何检查字典(Python)中是否存在某个值</h3><p>d &#x3D; {‘1’: ‘one’, ‘3’: ‘three’, ‘2’: ‘two’, ‘5’: ‘five’, ‘4’: ‘four’}</p>
+<p>我需要一种方法来找出这个字典中是否存在诸如“one”或“two”这样的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d = &#123;&#x27;1&#x27;: &#x27;one&#x27;, &#x27;3&#x27;: &#x27;three&#x27;, &#x27;2&#x27;: &#x27;two&#x27;, &#x27;5&#x27;: &#x27;five&#x27;, &#x27;4&#x27;: &#x27;four&#x27;&#125;</span><br><span class="line">&gt;&gt;&gt; &#x27;one&#x27; in d.values()</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<h2 id="强制结束程序或暂停程序"><a href="#强制结束程序或暂停程序" class="headerlink" title="强制结束程序或暂停程序"></a>强制结束程序或暂停程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">sys.exit()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#暂停程序</span><br><span class="line">input()</span><br><span class="line">用法：直接在欲等待处输入input()即可。</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line"></span><br><span class="line">优点：不需要借助模块，执行到此处阻塞等待人工输入。</span><br><span class="line">缺点：程序结束时候需要强制结束或者在控制台输入值。</span><br><span class="line">time.sleep()</span><br><span class="line">用法：导入time模块；在欲等待处输入time.sleep(time)（time为数字，表示秒）即可。</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line"></span><br><span class="line">优点：动态等待程序执行完毕，不需要强行终止，等待时间可调。</span><br><span class="line">缺点：需要导入模块，等待规定时间结束后便继续往下执行。</span><br><span class="line">os.system(&quot;pause&quot;)</span><br><span class="line">用法：导入os模块；在欲等待处输入os.system(&quot;pause&quot;)即可。</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line"></span><br><span class="line">优点：不必强行终止；不必等待时间，可自由按下enter继续。</span><br><span class="line">缺点：导入模块，执行系统命令。</span><br></pre></td></tr></table></figure>
+
+<h2 id="python执行shell脚本"><a href="#python执行shell脚本" class="headerlink" title="python执行shell脚本"></a>python执行shell脚本</h2><h3 id="os-system-“command”"><a href="#os-system-“command”" class="headerlink" title="os.system(“command”)"></a>os.system(“command”)</h3><p>这是python自带的执行shell命令的方法，其中最后一个0是这个命令的返回值，为0表示命令执行成功。但是使用system()无法将执行的结果保存起来。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">print(os.system(&quot;touch a.txt&quot;)) //需要用引号将命令括起来</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="os-popen-“command”-方法"><a href="#os-popen-“command”-方法" class="headerlink" title="os.popen(“command”)方法"></a>os.popen(“command”)方法</h3><p>上面的os.system()方法没办法查看shell命令返回的结果，通过 os.popen() 返回的是 file read 的对象，对其进行读取 read() 的操作可以看到执行的输出。</p>
+<p>注意：os.popen() 返回的是一个文件对象f哦！！！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">f=os.popen(&quot;ls -l&quot;)  # 返回的是一个文件对象</span><br><span class="line">print(f.read())            # 通过文件的read()读取所返回的内容</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">total 4</span><br><span class="line">-rw-rw-r-- 1 tengjian tengjian  0 11月  5 09:32 a.txt</span><br><span class="line">-rw-rw-r-- 1 tengjian tengjian 81 11月  5 09:32 python_shell.py</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>对于有返回值的shell命令，建议使用 os.popen()<br>对于没有返回值的shell命令，建议使用 os.system()</strong></p>
+<h2 id="在for循环体内修改i值"><a href="#在for循环体内修改i值" class="headerlink" title="在for循环体内修改i值"></a>在for循环体内修改i值</h2><p><strong>场景：在循环体内判断条件发生时，重新执行执行当前循环体（保留当前i值）<br>常规：类似的需求一般会在循环体里写一个 if 加上continue &#x2F; break<br>实际：但是在for循环内修改i值，只会对当前一次的循环体内有效</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1,5):</span><br><span class="line">    print(&quot;i in use:&quot;, i)</span><br><span class="line">    i = 20</span><br><span class="line">    print(&quot;i modified:&quot;, i)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//结果</span><br><span class="line">i in use: 1</span><br><span class="line">i modified: 20</span><br><span class="line">i in use: 2</span><br><span class="line">i modified: 20</span><br><span class="line">i in use: 3</span><br><span class="line">i modified: 20</span><br><span class="line">i in use: 4</span><br><span class="line">i modified: 20</span><br></pre></td></tr></table></figure>
+
+<p><strong>原理：想想 in 操作符的概念，应该就能明白了<br>解读：每次for循环，相当于是从range(1,5)这个类似list里做取数的动作，修改的只是取出的值，并不是取数来源的值<br>解决：使用 while 替换 for</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i = 1</span><br><span class="line">while i &lt; 6:</span><br><span class="line">    print(i)</span><br><span class="line">    if(i % 2 == 0):</span><br><span class="line">        i += 2</span><br><span class="line">    i += 1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//结果</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+<h2 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件"></a>修改文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># @Date    : 2019-04-25 14:35:58</span><br><span class="line"># @Author  : 迷风小白</span><br><span class="line"></span><br><span class="line">def changetext(a,b):</span><br><span class="line"> with open(&#x27;test&#x27;,&#x27;r&#x27;,encoding=&#x27;utf-8&#x27;) as f:</span><br><span class="line">  lines=[] # 创建了一个空列表，里面没有元素</span><br><span class="line">  for line in f.readlines():</span><br><span class="line">   if line!=&#x27;\n&#x27;:</span><br><span class="line">    lines.append(line)</span><br><span class="line">  f.close()</span><br><span class="line"> with open(&#x27;test&#x27;,&#x27;w&#x27;,encoding=&#x27;utf-8&#x27;) as f:</span><br><span class="line">  for line in lines:</span><br><span class="line">   if a in line:</span><br><span class="line">    line = b </span><br><span class="line">    f.write(&#x27;%s\n&#x27; %line) //关键代码</span><br><span class="line">   else:</span><br><span class="line">    f.write(&#x27;%s&#x27; %line)   //关键代码</span><br><span class="line"></span><br><span class="line">changetext(&#x27;pig&#x27;,&#x27;cow&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><h2 id="from-import和import的区别"><a href="#from-import和import的区别" class="headerlink" title="from import和import的区别"></a>from import和import的区别</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import Module # 引入模块</span><br><span class="line">from Module import Other # 引入模块中的类、函数或者变量</span><br><span class="line">from Module import * # 引入模块中的所有‘公开’成员</span><br></pre></td></tr></table></figure>
+<br/>
+
+<p><strong>举例</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line">#引入 datetime 模块中的 datetime 类,然后就可以通过datetime这个类调用now() 方法了</span><br><span class="line"></span><br><span class="line">#即,内部可以通过datetime.now()来调用</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import datetime</span><br><span class="line"></span><br><span class="line">#引入datetime 模块,然后通过这个模块来调用模块中的类datetime和类datetime中的方法now()</span><br><span class="line"></span><br><span class="line">#即：内部可以通过datetime.datetime.now()来调用</span><br><span class="line"></span><br><span class="line">也就是说，有一个模块datetime,这个模块中有一个类datetime,在这个类中有一个方法now()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+    </article>
+    <!-- license -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://gaofeng-lin.github.io">John Doe</a>
+            <p>Link：<a href="https://gaofeng-lin.github.io/2022/01/14/python/">https://gaofeng-lin.github.io/2022/01/14/python/</a>
+            <p>Publish date：<a href="https://gaofeng-lin.github.io/2022/01/14/python/">January 14th 2022, 12:00:00 am</a>
+            <p>Update date：<a href="https://gaofeng-lin.github.io/2022/01/14/python/">April 8th 2022, 11:38:22 pm</a>
+            <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2022/01/14/git%E6%93%8D%E4%BD%9C/" title="git操作">
+                    <div class="nextTitle">git操作</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/01/14/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/" title="前端知识">
+                    <div class="prevTitle">前端知识</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:jason_gaofeng_lin@163.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/gaofeng-lin" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                    
+                    <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%80%E9%81%87%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">所遇问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E6%9C%89%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">输出格式有问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8C%85pip-install-%E5%8C%85"><span class="toc-number">1.2.</span> <span class="toc-text">打包pip install 包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python2-7-%E5%8D%B8%E8%BD%BD%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">python2.7 卸载失败问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#open%E5%87%BD%E6%95%B0%E4%BC%A0%E5%8F%82%E6%95%B0%E5%87%BA%E9%94%99"><span class="toc-number">1.4.</span> <span class="toc-text">open函数传参数出错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E7%BC%96%E7%A0%81%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95SyntaxError-Non-ASCII-character-%E2%80%98-xe5%E2%80%99-in-file"><span class="toc-number">1.5.</span> <span class="toc-text">Python编码错误的解决办法SyntaxError: Non-ASCII character ‘\xe5’ in file</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RuntimeError-dictionary-changed-size-during-iteration"><span class="toc-number">1.6.</span> <span class="toc-text">RuntimeError: dictionary changed size during iteration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VScode-code-runner%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E5%87%BA%E6%AD%A3%E7%A1%AE%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="toc-number">1.7.</span> <span class="toc-text">VScode code runner无法运行出正确的结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vscode%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95%EF%BC%8C%E7%B3%BB%E7%BB%9F%E6%8A%8Aconda-activate-base%E5%86%99%E5%85%A5%E4%BA%86%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5%E5%8C%BA%E5%9F%9F%E8%AF%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-number">1.8.</span> <span class="toc-text">vscode进行调试，系统把conda activate base写入了用户输入区域该怎么办？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">技术知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-number">2.1.</span> <span class="toc-text">遍历文件夹下的文件名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="toc-number">2.2.</span> <span class="toc-text">字符串操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E5%89%B2"><span class="toc-number">2.2.1.</span> <span class="toc-text">字符串切割</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8C%B9%E9%85%8D%E9%A1%B9"><span class="toc-number">2.2.2.</span> <span class="toc-text">替换字符串中的匹配项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8F%90%E5%8F%96%E2%80%93%E6%8F%90%E5%8F%96%E6%95%B0%E5%AD%97"><span class="toc-number">2.2.3.</span> <span class="toc-text">字符串提取–提取数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%BC%BC%E5%BA%A6%E6%AF%94%E8%BE%83"><span class="toc-number">2.2.4.</span> <span class="toc-text">字符串相似度比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%BB%E6%8E%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%A4%E7%AB%AF%E7%9A%84%E5%BC%95%E5%8F%B7"><span class="toc-number">2.2.5.</span> <span class="toc-text">去掉字符串两端的引号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0"><span class="toc-number">2.3.</span> <span class="toc-text">循环删除元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-number">2.4.</span> <span class="toc-text">列表相关操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%A4%B4%E9%83%A8%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0"><span class="toc-number">2.4.1.</span> <span class="toc-text">列表头部插入元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E5%8F%96%E4%BA%A4%E9%9B%86"><span class="toc-number">2.4.2.</span> <span class="toc-text">两个列表取交集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%8F%96%E5%B9%B6%E9%9B%86"><span class="toc-number">2.4.3.</span> <span class="toc-text">列表取并集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%8F%96%E5%B7%AE%E9%9B%86"><span class="toc-number">2.4.4.</span> <span class="toc-text">列表取差集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%8E%92%E5%BA%8F%EF%BC%88%E6%9B%B4%E8%AF%A6%E7%BB%86%E6%93%8D%E4%BD%9C%E8%A7%81%E6%96%87%E6%A1%A3%EF%BC%89"><span class="toc-number">2.4.5.</span> <span class="toc-text">列表排序（更详细操作见文档）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%9B%BF%E6%8D%A2%E5%85%83%E7%B4%A0%EF%BC%88%E6%9B%B4%E8%AF%A6%E7%BB%86%E6%93%8D%E4%BD%9C%E8%A7%81%E6%96%87%E6%A1%A3%EF%BC%89"><span class="toc-number">2.4.6.</span> <span class="toc-text">列表替换元素（更详细操作见文档）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%88%AA%E5%8F%96%E5%85%83%E7%B4%A0"><span class="toc-number">2.4.7.</span> <span class="toc-text">列表截取元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%9F%A5%E6%89%BE%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0"><span class="toc-number">2.4.8.</span> <span class="toc-text">列表查找重复元素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XML%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-number">2.5.</span> <span class="toc-text">XML相关操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAXML%E6%96%87%E6%A1%A3"><span class="toc-number">2.5.1.</span> <span class="toc-text">创建一个XML文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E7%8E%B0%E6%9C%89XML%E6%96%87%E6%A1%A3%E8%BF%9B%E8%A1%8C%E4%BF%AE%E6%94%B9"><span class="toc-number">2.5.2.</span> <span class="toc-text">对现有XML文档进行修改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">2.6.</span> <span class="toc-text">正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%9A%84%E5%8E%BB%E9%A6%96%E5%B0%BE%E7%A9%BA%E6%A0%BC%E6%96%B9%E6%B3%95"><span class="toc-number">2.6.1.</span> <span class="toc-text">特殊的去首尾空格方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%83%85%E5%86%B5%E6%80%BB%E7%BB%93"><span class="toc-number">2.7.</span> <span class="toc-text">判断情况总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E7%A9%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E5%B9%B6%E5%88%A0%E9%99%A4"><span class="toc-number">2.7.1.</span> <span class="toc-text">判断目录下的空文件夹并删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E4%B8%BA%E7%A9%BA"><span class="toc-number">2.7.2.</span> <span class="toc-text">判断文件内容为空</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD"><span class="toc-number">2.7.3.</span> <span class="toc-text">变量类型判断</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E2%80%93deep-copy"><span class="toc-number">2.8.</span> <span class="toc-text">深拷贝–deep copy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#json%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-number">2.9.</span> <span class="toc-text">json相关操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-number">2.10.</span> <span class="toc-text">字典相关操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5%E5%AD%97%E5%85%B8-Python-%E4%B8%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%9F%90%E4%B8%AA%E5%80%BC"><span class="toc-number">2.10.1.</span> <span class="toc-text">如何检查字典(Python)中是否存在某个值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E7%BB%93%E6%9D%9F%E7%A8%8B%E5%BA%8F%E6%88%96%E6%9A%82%E5%81%9C%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.11.</span> <span class="toc-text">强制结束程序或暂停程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC"><span class="toc-number">2.12.</span> <span class="toc-text">python执行shell脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#os-system-%E2%80%9Ccommand%E2%80%9D"><span class="toc-number">2.12.1.</span> <span class="toc-text">os.system(“command”)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#os-popen-%E2%80%9Ccommand%E2%80%9D-%E6%96%B9%E6%B3%95"><span class="toc-number">2.12.2.</span> <span class="toc-text">os.popen(“command”)方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8for%E5%BE%AA%E7%8E%AF%E4%BD%93%E5%86%85%E4%BF%AE%E6%94%B9i%E5%80%BC"><span class="toc-number">2.13.</span> <span class="toc-text">在for循环体内修改i值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6"><span class="toc-number">2.14.</span> <span class="toc-text">修改文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#from-import%E5%92%8Cimport%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.1.</span> <span class="toc-text">from import和import的区别</span></a></li></ol></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 16
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/Docker/">Docker</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/Linux%E7%9F%A5%E8%AF%86%E7%82%B9/">Linux知识点</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/Shell%E5%91%BD%E4%BB%A4/">Linux Shell 命令</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/go/">Go</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux常用命令</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E4%B8%8B%E8%BD%BD%E8%BF%87%E6%85%A2/">下载过慢</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E5%B7%A5%E5%85%B7%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9B%86%E5%90%88/">工具快捷键集合</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">计算机基础知识</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span>
+            <a class="archive-post-title" href="/2022/02/28/java%E7%9F%A5%E8%AF%86/">Java知识</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span>
+            <a class="archive-post-title" href="/2022/01/26/%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">算法总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/Jenkins%E7%9F%A5%E8%AF%86%E7%82%B9/">Jenkins知识点</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/git%E6%93%8D%E4%BD%9C/">git操作</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/python/">python</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/">前端知识</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/%E9%9B%B6%E6%95%A3%E7%9F%A5%E8%AF%86/">零散知识</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="Docker">
+                <span class="iconfont-archer">&#xe606;</span>
+                Docker
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="运维">
+                <span class="iconfont-archer">&#xe606;</span>
+                运维
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="持续集成">
+                <span class="iconfont-archer">&#xe606;</span>
+                持续集成
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="gcc">
+                <span class="iconfont-archer">&#xe606;</span>
+                gcc
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux权限用法">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux权限用法
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Jenkins">
+                <span class="iconfont-archer">&#xe606;</span>
+                Jenkins
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="代码管理">
+                <span class="iconfont-archer">&#xe606;</span>
+                代码管理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据结构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Java">
+                <span class="iconfont-archer">&#xe606;</span>
+                Java
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringBoot">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringBoot
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Go">
+                <span class="iconfont-archer">&#xe606;</span>
+                Go
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ssh">
+                <span class="iconfont-archer">&#xe606;</span>
+                ssh
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Vim">
+                <span class="iconfont-archer">&#xe606;</span>
+                Vim
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Vue">
+                <span class="iconfont-archer">&#xe606;</span>
+                Vue
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="React">
+                <span class="iconfont-archer">&#xe606;</span>
+                React
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JavaScript">
+                <span class="iconfont-archer">&#xe606;</span>
+                JavaScript
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Json">
+                <span class="iconfont-archer">&#xe606;</span>
+                Json
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="npm">
+                <span class="iconfont-archer">&#xe606;</span>
+                npm
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="yarn">
+                <span class="iconfont-archer">&#xe606;</span>
+                yarn
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="梯子">
+                <span class="iconfont-archer">&#xe606;</span>
+                梯子
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="office">
+                <span class="iconfont-archer">&#xe606;</span>
+                office
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="IDE">
+                <span class="iconfont-archer">&#xe606;</span>
+                IDE
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编辑器">
+                <span class="iconfont-archer">&#xe606;</span>
+                编辑器
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快捷键">
+                <span class="iconfont-archer">&#xe606;</span>
+                快捷键
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="递归">
+                <span class="iconfont-archer">&#xe606;</span>
+                递归
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="nginx">
+                <span class="iconfont-archer">&#xe606;</span>
+                nginx
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编译">
+                <span class="iconfont-archer">&#xe606;</span>
+                编译
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="环境变量">
+                <span class="iconfont-archer">&#xe606;</span>
+                环境变量
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Cookie">
+                <span class="iconfont-archer">&#xe606;</span>
+                Cookie
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Session">
+                <span class="iconfont-archer">&#xe606;</span>
+                Session
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="密码学">
+                <span class="iconfont-archer">&#xe606;</span>
+                密码学
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="硬件知识">
+                <span class="iconfont-archer">&#xe606;</span>
+                硬件知识
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="线程、进程">
+                <span class="iconfont-archer">&#xe606;</span>
+                线程、进程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="照片模糊处理">
+                <span class="iconfont-archer">&#xe606;</span>
+                照片模糊处理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="win10">
+                <span class="iconfont-archer">&#xe606;</span>
+                win10
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="专利">
+                <span class="iconfont-archer">&#xe606;</span>
+                专利
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Docker">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Docker
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Linux">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Linux
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Jenkins">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Jenkins
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="git">
+            <span class="iconfont-archer">&#xe60a;</span>
+            git
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Java">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Java
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Go">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Go
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="python">
+            <span class="iconfont-archer">&#xe60a;</span>
+            python
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="前端开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            前端开发
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="小知识">
+            <span class="iconfont-archer">&#xe60a;</span>
+            小知识
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="工具">
+            <span class="iconfont-archer">&#xe60a;</span>
+            工具
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="数据库">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据库
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="计算机基础知识">
+            <span class="iconfont-archer">&#xe60a;</span>
+            计算机基础知识
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="web">
+            <span class="iconfont-archer">&#xe60a;</span>
+            web
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="操作系统">
+            <span class="iconfont-archer">&#xe60a;</span>
+            操作系统
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="概念">
+            <span class="iconfont-archer">&#xe60a;</span>
+            概念
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://gaofeng-lin.github.io",
+        root: siteMetaRoot,
+        author: "John Doe"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+    </body>
+</html>

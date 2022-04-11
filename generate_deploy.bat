@@ -10,3 +10,4 @@ if "%1"=="pull" (
  hexo clean
  hexo g&&hexo d
 )
+@REM test
