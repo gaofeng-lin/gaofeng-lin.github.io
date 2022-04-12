@@ -468,6 +468,48 @@ func main() {
 ```
 
 # 常用操作
+## 变量类型转换
+
+```c
+string转成int：
+
+int, err := strconv.Atoi(string)
+
+string转成int64：
+
+int64, err := strconv.ParseInt(string, 10, 64)
+
+int转成string：
+
+string := strconv.Itoa(int)
+
+int64转成string：
+
+string := strconv.FormatInt(int64,10)
+```
+具体例子：
+
+```c
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+func main() {
+	cfdversion :="100"
+	newcfd,_ :=strconv.Atoi(cfdversion)
+	fmt.Println(newcfd)
+
+}
+```
+
+**注意事项：
+1.要导入包
+2.转换变量类型后要重新用一个名字，不能用之前的变量名
+3.下划线那个地方是err，被省略了**
+
 ## 判断变量类型
 方法一：
 
