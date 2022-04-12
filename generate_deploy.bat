@@ -8,5 +8,6 @@ if "%1"=="pull" (
  git commit -m "%1"
  git push origin hexo:hexo
  hexo clean
- hexo g&&hexo d
+ hexo g
+ hexo d
 )
