@@ -13,6 +13,492 @@ tags:
 ---
 
 
+# Java基础知识
+## 反射
+[原文链接](https://blog.csdn.net/weixin_43271086/article/details/106023108?spm=1001.2101.3001.6650.1&depth_1-utm_relevant_index=2)
+
+**JAVA反射机制是在运行状态中，对于任意一个实体类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为java语言的反射机制。**
+
+**反射的好处：
+      1.可以在程序运行过程中，操作这些对象。
+      2.可以进行解耦，提高程序的扩展性。**
+      
+Java代码在计算机中的三个阶段
+
+ - 1.Sources源代码阶段：*.java被编译成*.class字节码文件。
+ - 2.Class类对象阶段：*.class字节码文件被类加载器加载进内存，并将其封装成Class对象（用于描述在内存中描述字节码文件），Class对象将原字节码文件中的成员变量，构造函数，方法等的做了封装。
+ - 3.Runtime运行阶段：创建对象的过程new
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509170218257.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI3MTA4Ng==,size_16,color_FFFFFF,t_70#pic_center)
+
+
+### 获取Class对象
+获取Class对象的三种方式对应着java代码在计算机中的三个阶段：
+
+1.源代码阶段
+Class.forName("全类名")：将字节码文件加载进内存，返回Class对象。
+
+2.Class类对象阶段
+类名.class:通过类名的属性class获取
+
+3.Runtime运行时阶段
+对象.getClass():getClass()方法是定义在Object类中的方法。
+
+**结论：同一个字节码文件(*.class)在一次程序运行过程中，只会被加载一次，无论通过哪一种方式获取的Class对象都是同一个。**
+
+测试代码：
+
+```java
+package com.company.reflect;
+ 
+import com.company.reflect.domain.Person;
+ 
+/**
+ * ⊙﹏⊙&&&&&&⊙▽⊙
+ *
+ * @Auther: pangchenbo
+ * @Date: 2020/5/9 10:37
+ * @Description:
+ */
+public class ReflectDemo {
+    public static void main(String[] args) throws ClassNotFoundException {
+        //方式一：Class.forName("全类名")
+        Class<?> aClass = Class.forName("com.company.reflect.domain.Person");
+        System.out.println(aClass);
+        //方式二：类名.class
+        Class<Person> personClass = Person.class;
+        System.out.println(personClass);
+        //方式三：对象.getClass()
+        Person person = new Person();
+        Class<? extends Person> aClass1 = person.getClass();
+        System.out.println(aClass1);
+        //比较 == 三个对象
+        System.out.println(aClass == aClass1);
+        System.out.println(personClass==aClass1);
+    }
+}
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509171516530.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI3MTA4Ng==,size_16,color_FFFFFF,t_70#pic_center)
+两个true表示Class对象是同一个。
+
+
+
+### 获取Class对象功能
+
+```java
+（1）获取成员变量们
+		Field[] getFields() ：获取所有public修饰的成员变量
+		Field getField(String name)   获取指定名称的 public修饰的成员变量
+ 
+		Field[] getDeclaredFields()  获取所有的成员变量，不考虑修饰符
+		Field getDeclaredField(String name)
+（2）获取构造方法们
+		Constructor<?>[] getConstructors()  
+		Constructor<T> getConstructor(类<?>... parameterTypes)  
+ 
+		Constructor<?>[] getDeclaredConstructors()  
+		Constructor<T> getDeclaredConstructor(类<?>... parameterTypes)  
+（3）获取成员方法们
+		Method[] getMethods()  
+		Method getMethod(String name, 类<?>... parameterTypes)  
+ 
+		Method[] getDeclaredMethods()  
+		Method getDeclaredMethod(String name, 类<?>... parameterTypes)
+```
+ **Field：成员变量**
+先写一个测试类
+
+```java
+public class Person {
+    private String name;
+    private int age;
+    public String a;
+    protected String b;
+    String c;
+    private String d;
+ 
+    public Person() {
+ 
+    }
+ 
+    public Person(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+ 
+    public String getName() {
+        return name;
+    }
+ 
+    public void setName(String name) {
+        this.name = name;
+    }
+ 
+    public int getAge() {
+        return age;
+    }
+ 
+    public void setAge(int age) {
+        this.age = age;
+    }
+ 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", a='" + a + '\'' +
+                ", b='" + b + '\'' +
+                ", c='" + c + '\'' +
+                ", d='" + d + '\'' +
+                '}';
+    }
+    //无参方法
+    public void eat(){
+        System.out.println("eat...");
+    }
+ 
+    //重载有参方法
+    public void eat(String food){
+        System.out.println("eat..."+food);
+    }
+}
+```
+
+**获取所有的public修饰的成员变量**
+
+```java
+//0.获取Person对象
+        Class<Person> personClass = Person.class;
+        //1.获取所有public修饰的成员变量
+        Field[] fields = personClass.getFields();
+        for (Field field : fields) {
+            System.out.println(field);
+        }
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020050917325871.png#pic_center)
+**获取特定的成员变量（public）**
+
+```java
+//2.Field getField(String name)
+        Field a = personClass.getField("a");
+        //获取成员变量a 的值 [也只能获取公有的，获取私有的或者不存在的字符会抛出异常]
+        Person person = new Person();
+        Object o = a.get(person);
+        System.out.println("o  value: "+o);
+        //设置属性a的值
+        a.set(person,"haha");
+        System.out.println(person);
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509173350461.png#pic_center)
+
+**获取全部的成员变量**
+
+```java
+//Field[] getDeclaredFields()：获取所有的成员变量，不考虑修饰符
+        Field[] declaredFields = personClass.getDeclaredFields();
+        for (Field declaredField : declaredFields) {
+            System.out.println(declaredField+" ");
+        }
+        System.out.println("==============================");
+```
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509173421562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI3MTA4Ng==,size_16,color_FFFFFF,t_70#pic_center)
+**获取特定的成员变量，在这里如果需要对private进行修改，就必须进行暴力反射，将d.setAccessible(true);设置为true**
+
+```java
+System.out.println("==============================");
+        Field d = personClass.getDeclaredField("d");
+        d.setAccessible(true);//暴力反射
+        d.get(person);
+        d.set(person,"222");
+        System.out.println(person);
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509173436455.png#pic_center)
+ **普通方法获取**
+获取指定名称的方法（不带参数的获取）
+
+```java
+Class<Person> personClass = Person.class;
+        //获取指定名称的方法
+        Method eat = personClass.getMethod("eat");
+        Person person = new Person();
+        eat.invoke(person);//执行方法
+```
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/202005091739379.png#pic_center)
+获取指定名称的方法（带参数获取）
+
+```java
+//获取具有参数的构造方法
+        Method eat1 = personClass.getMethod("eat", String.class);
+        eat1.invoke(person,"fans");
+        System.out.println("===============================");
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509173946494.png#pic_center)
+获取方法列表
+
+```java
+Method[] methods = personClass.getMethods();
+        for (Method method : methods) {
+            System.out.println(method);//继承的方法也会被访问（前提是方法是public）
+        }
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509174104725.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI3MTA4Ng==,size_16,color_FFFFFF,t_70#pic_center)
+如果设置的方法中含有私有的方法，也可以设置d.setAccessible(true);设置为true，然后就可以访问私有方法。
+
+**构造方法**
+获取无参数的构造器
+
+```java
+Class<Person> personClass = Person.class;
+        //Constructor<?>[] getConstructors()
+        Constructor<?>[] constructors = personClass.getConstructors();
+        for (Constructor<?> constructor : constructors) {
+            System.out.println(constructor);
+        }
+        //Constructor<T> getConstructor(类<?>... parameterTypes)
+        //获取无参
+        Constructor<Person> constructor1 = personClass.getConstructor();
+        System.out.println(constructor1);
+            //利用获取的构造器创建对象
+        Person person = constructor1.newInstance();
+        System.out.println(person);
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509174551558.png#pic_center)
+获取有参数的构造器
+```java
+//获取有参
+        Constructor<Person> constructor = personClass.getConstructor(String.class,Integer.class);
+        System.out.println(constructor);
+        Person person1 = constructor.newInstance("PCB",100);
+        System.out.println(person1);
+        //理应Class类对象进行对象的构建获取
+        Person person2 = personClass.newInstance();
+        System.out.println(person2);
+        //对于getDeclaredConstructor方法和getDeclaredConstructors方法,此外在构造器的对象内也有setAccessible(true);方法，并设置成true就可以操作了。
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509174655701.png#pic_center)
+
+### 简单框架设计、理解反射好处
+准备测试类
+
+```java
+package com.company.reflect.domain;
+ 
+/**
+ * ⊙﹏⊙&&&&&&⊙▽⊙
+ *
+ * @Auther: pangchenbo
+ * @Date: 2020/5/9 13:27
+ * @Description:
+ */
+public class Student {
+    public void sleep(){
+        System.out.println("sleep...");
+    }
+}
+```
+ 准备文件properties文件
+ 
+
+```java
+className = com.company.reflect.domain.Student
+methodName = sleep
+```
+
+ **需求**
+写一个"框架"，不能改变该类的任何代码的前提下，可以帮我们创建任意类的对象，并且执行其中任意方法。
+
+**实现**
+（1）配置文件 （2）反射
+
+**步骤**
+
+（1）将需要创建的对象的全类名和需要执行的方法定义在配置文件中 （2）在程序中加载读取配置文件 （3）使用反射技术来加载类文件进内存 （4）创建对象 （5）执行方法
+
+```java
+package com.company.reflect.反射案例;
+ 
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Method;
+import java.util.Properties;
+ 
+/**
+ * ⊙﹏⊙&&&&&&⊙▽⊙
+ *
+ * @Auther: pangchenbo
+ * @Date: 2020/5/9 13:30
+ * @Description:
+ */
+public class ReflectTest {
+    public static void main(String[] args) throws Exception {
+        /**
+         * 前提：不能改变该类的任何代码。可以创建任意类的对象，可以执行任意方法
+         */
+        //1.加载配置文件
+        //1.1创建Properties对象
+        Properties properties = new Properties();
+        //1.2加载配置文件，转换为一个集合
+        //1.2.1获取class目录下的配置文件  使用类加载器
+        ClassLoader classLoader = ReflectTest.class.getClassLoader();
+        InputStream resourceAsStream = classLoader.getResourceAsStream("pro.properties");
+        properties.load(resourceAsStream);
+        //2.获取配置文件中定义的数据
+        String className = properties.getProperty("className");
+        String methodName = properties.getProperty("methodName");
+ 
+        //加载类到内存中
+        Class<?> aClass = Class.forName(className);
+        //创建对象
+        Object o = aClass.newInstance();
+        //获取对象方法
+        Method method = aClass.getMethod(methodName);
+        //执行方法
+        method.invoke(o);
+ 
+    }
+}
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020050917521036.png#pic_center)
+改变配置文件
+
+```java
+className = com.company.reflect.domain.Person
+methodName = eat
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509175301411.png#pic_center)
+
+好处
+我们这样做有什么好处呢，对于框架来说，是人家封装好的，我们拿来直接用就可以了，而不能去修改框架内的代码。但如果我们使用传统的new形式来实例化，那么当类名更改时我们就要修改Java代码，这是很繁琐的。修改Java代码以后我们还要进行测试，重新编译、发布等等一系列的操作。而如果我们仅仅只是修改配置文件，就来的简单的多，配置文件就是一个实实在在的物理文件。
+
+
+# 辅助知识
+## JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明
+首先明白一个基础概念：
+
+### current directory(当前目录)：当前在用的目录就是当前目录
+
+
+比如说当你打开NOTEPAD，并处于运行状态时候，当前目录就是c:/windows；
+如果你用cmd命令打开命令行窗口，    当前目录就是c:/windows/system32;
+
+如果你在用java这条指令，当前目录就是JAVA下的BIN目录所在的路径，因为java.exe在bin里面。在java开发配置环境变量时，系统默认(我们对classpath不做任何设定时)的路径也是当前目录。
+
+
+### JAVA_HOME：它是指jdk的安装目录
+
+   
+像D:/j2sdk1.4.2_16，在这路径下你应该能够找到bin、lib等目录。
+ 为什么要设置它呢，不设定可不可以呢？不设定也是可以滴，但是最好还是设置一下。
+ 我们现在就当它是一个变量代换 JAVA_HOME = D:/j2sdk1.4.2_16，就是为了避免多写字，它还有一个好处就是当我们需要改变某个jdk时，只需要改JAVA_HOME的值就可以了。等在后面看了Tomcat的启动分析时你就明白了。当在环境变量中引用它的时候要用%JAVA_HOME%来表示      D:/j2sdk1.4.2_16。
+
+
+### Path：系统变量Path告诉操作系统可执行文件(*.exe、*.bat等)所在的路径
+
+  
+ 
+ 当OS(操作系统)发现某个*.exe时，windows默认从当前目录开始查找这      个命令，若查不到，OS就会到Path所设定的路径中去寻找该命令，然后执行。
+
+   系统默认的系统变量为：Path = %SystemRoot%;%SystemRoot%/system32;%SystemRoot%/System32/Wbem
+   就是说处于上面3个目录(多个变量用分号隔开)中的*.exe文件，可以在任意地方被执行(在 运行 窗口能直接执行的命令，像cmd、notepad等，基本都    在上面的3个目录里面)，所以他们可以直接运行。
+   上面的%SystemRoot%是什么意思呢？%SystemRoot%就是安装操作系统的时候，系统默认的安装路径
+    若你的windows xp装在C:/WINDOWS 
+    则你的%systemRoot%路径就是c:/windows 
+     %systemRoot%只是一个符号,代表你的系统安装目录 
+     下面是常见系统默认安装路径: 
+    98----c:/windows 
+    2000--c:/winnt 
+    2003--c:/windows 
+    xp----c:/windows 
+     当我们要进行java开发时，OS经常需要用到java.exe、javac.exe等，（若jdk安装在D:/j2sdk1.4.2_16）因此应该将      D:/j2sdk1.4.2_16/bin（%JAVA_HOME%/bin）加入到系统的path中去。
+    注意：如果你加入的位置不是在最后，那还需要在bin后面加上英文状态下的分号：%JAVA_HOME%/bin；多个变量之间要用分号隔开，如果它前面    没有，你就加一个。
+   明确一下：%JAVA_HOME%/jre/bin 这个路径是不需要加入Path的。参考：http://java.sun.com/javase/6/docs/technotes/tools/windows/jdkfiles.html
+   
+ 
+
+### CLASSPATH：告诉java虚拟机(jvm)要使用或执行的*.class文件放在什么地方
+
+
+CLASSPATH是专门针对java的，它相当于windows的path；path是针对整个windows的。
+所谓的JVM就好像是在微软OS上面再激活另外一个OS，对JVM来说CLASSPATH就好像是对微软OS来说的PATH，所以要用jvm开运行程序就需要设定classpath，然而jvm像windows一样它也有个默认的查找class文件的路径，对刚开始学习java的我们来说，默认的已经够我们用了，那就是当前路径，因此不设置classpath也可以。
+
+在windows中 classpath 大小写没有关系，其他的环境变量名称也一样。
+ 当我们不设定classpath时，系统默认的classpath是当前目录，如果你个人想设置classpath的话，那么务必在classpath中加入"."，这个英文状态下的点就表示当前目录。至于classpath中要不要加入其他的路径(包括文件目录、包的根目录等)，这要看开发的需要，一般我们初学者是用不到的。
+
+JAVA_HOME = D:/j2sdk1.4.2_16
+Path 环境变量中在最前面加入(若系统原来没有就新建) %JAVA_HOME%/bin; （加在最前面可以提高查找速度）
+CLASSPATH = . 这一步可以不用设。
+
+## JDK 和 JRE 的区别
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/7b9ff76b66e949fc9a04515e960b9de4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_18,color_FFFFFF,t_70,g_se,x_16)
+从图中可以看出JDK包含JRE包含JVM...
+
+ 
+
+JDK：java development kit （java开发工具）
+
+JRE：java runtime environment （java运行时环境）
+
+引申出JVM
+
+JVM：java virtual machine （java虚拟机）
+
+ 
+
+一、JDK——开发环境（核心）
+
+java development kit 的缩写，意思是JAVA开发工具，我们写文档做PPT需要office 办公软件，开发当然需要开发工具了，说到开发工具大家肯定会想到Eclipse，但是如果直接安装Eclipse你会发现它是运行不起来 是会报错的，只有安装了JDK，配置好了环境变量和path才可以运行成功。这点相信很多人都深有体会。
+
+ 
+
+JDK主要包含三部分，
+
+第一部分就是Java运行时环境，JVM。
+
+第二部分就是Java的基础类库，这个类库的数量还是非常可观的。
+
+第三部分就是Java的开发工具，它们都是辅助你更好的使用Java的利器。
+
+详寻《玩好JDK，面试不用愁》
+
+二、JRE——运行环境
+
+ 
+
+java runtime environment （java运行时环境）的缩写
+
+ 
+
+1,1_JDK中的JRE
+
+如下图：jdk中包含的jre，在jre的bin目录里有个jvm.dll，既然JRE是运行时环境，那么运行在哪？肯定是JVM虚拟机上了。另，jre的lib目录中放的是一些JAVA类库的class文件，已经打包成jar文件。
+
+
+
+1.2_第二个JRE（独立出来的运行时环境）
+
+如下图，不管是JDK中的JRE还是JRE既然是运行时环境必须有JVM。所以JVM也是有两个的。
+
+
+
+ 
+
+三、JVM——转换环境
+
+ 
+
+java virtual machine （java虚拟机）的缩写。
+
+大家一提到JAVA的优点就会想到：一次编译，随处运行，说白了就是跨平台性好，这点JVM功不可没。
+
+JAVA的程序也就是我们编译的代码都会编译为Class文件，Class文件就是在JVM上运行的文件，
+
+只有JVM还不能成class的执行，因为在解释class的时候JVM需要调用解释所需要的类库lib，而jre包含lib类库。
+
+JVM屏蔽了与具体操作系统平台相关的信息，使得Java程序只需生成在Java虚拟机上运行的目标代码（字节码），就可以在多种平台上不加修改地运行。
 
 
 
@@ -1205,131 +1691,7 @@ public class ArraysSort {
         }
 ```
 
-# 辅助知识
-## JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明
-首先明白一个基础概念：
 
-### current directory(当前目录)：当前在用的目录就是当前目录
-
-
-比如说当你打开NOTEPAD，并处于运行状态时候，当前目录就是c:/windows；
-如果你用cmd命令打开命令行窗口，    当前目录就是c:/windows/system32;
-
-如果你在用java这条指令，当前目录就是JAVA下的BIN目录所在的路径，因为java.exe在bin里面。在java开发配置环境变量时，系统默认(我们对classpath不做任何设定时)的路径也是当前目录。
-
-
-### JAVA_HOME：它是指jdk的安装目录
-
-   
-像D:/j2sdk1.4.2_16，在这路径下你应该能够找到bin、lib等目录。
- 为什么要设置它呢，不设定可不可以呢？不设定也是可以滴，但是最好还是设置一下。
- 我们现在就当它是一个变量代换 JAVA_HOME = D:/j2sdk1.4.2_16，就是为了避免多写字，它还有一个好处就是当我们需要改变某个jdk时，只需要改JAVA_HOME的值就可以了。等在后面看了Tomcat的启动分析时你就明白了。当在环境变量中引用它的时候要用%JAVA_HOME%来表示      D:/j2sdk1.4.2_16。
-
-
-### Path：系统变量Path告诉操作系统可执行文件(*.exe、*.bat等)所在的路径
-
-  
- 
- 当OS(操作系统)发现某个*.exe时，windows默认从当前目录开始查找这      个命令，若查不到，OS就会到Path所设定的路径中去寻找该命令，然后执行。
-
-   系统默认的系统变量为：Path = %SystemRoot%;%SystemRoot%/system32;%SystemRoot%/System32/Wbem
-   就是说处于上面3个目录(多个变量用分号隔开)中的*.exe文件，可以在任意地方被执行(在 运行 窗口能直接执行的命令，像cmd、notepad等，基本都    在上面的3个目录里面)，所以他们可以直接运行。
-   上面的%SystemRoot%是什么意思呢？%SystemRoot%就是安装操作系统的时候，系统默认的安装路径
-    若你的windows xp装在C:/WINDOWS 
-    则你的%systemRoot%路径就是c:/windows 
-     %systemRoot%只是一个符号,代表你的系统安装目录 
-     下面是常见系统默认安装路径: 
-    98----c:/windows 
-    2000--c:/winnt 
-    2003--c:/windows 
-    xp----c:/windows 
-     当我们要进行java开发时，OS经常需要用到java.exe、javac.exe等，（若jdk安装在D:/j2sdk1.4.2_16）因此应该将      D:/j2sdk1.4.2_16/bin（%JAVA_HOME%/bin）加入到系统的path中去。
-    注意：如果你加入的位置不是在最后，那还需要在bin后面加上英文状态下的分号：%JAVA_HOME%/bin；多个变量之间要用分号隔开，如果它前面    没有，你就加一个。
-   明确一下：%JAVA_HOME%/jre/bin 这个路径是不需要加入Path的。参考：http://java.sun.com/javase/6/docs/technotes/tools/windows/jdkfiles.html
-   
- 
-
-### CLASSPATH：告诉java虚拟机(jvm)要使用或执行的*.class文件放在什么地方
-
-
-CLASSPATH是专门针对java的，它相当于windows的path；path是针对整个windows的。
-所谓的JVM就好像是在微软OS上面再激活另外一个OS，对JVM来说CLASSPATH就好像是对微软OS来说的PATH，所以要用jvm开运行程序就需要设定classpath，然而jvm像windows一样它也有个默认的查找class文件的路径，对刚开始学习java的我们来说，默认的已经够我们用了，那就是当前路径，因此不设置classpath也可以。
-
-在windows中 classpath 大小写没有关系，其他的环境变量名称也一样。
- 当我们不设定classpath时，系统默认的classpath是当前目录，如果你个人想设置classpath的话，那么务必在classpath中加入"."，这个英文状态下的点就表示当前目录。至于classpath中要不要加入其他的路径(包括文件目录、包的根目录等)，这要看开发的需要，一般我们初学者是用不到的。
-
-JAVA_HOME = D:/j2sdk1.4.2_16
-Path 环境变量中在最前面加入(若系统原来没有就新建) %JAVA_HOME%/bin; （加在最前面可以提高查找速度）
-CLASSPATH = . 这一步可以不用设。
-
-## JDK 和 JRE 的区别
-
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7b9ff76b66e949fc9a04515e960b9de4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_18,color_FFFFFF,t_70,g_se,x_16)
-从图中可以看出JDK包含JRE包含JVM...
-
- 
-
-JDK：java development kit （java开发工具）
-
-JRE：java runtime environment （java运行时环境）
-
-引申出JVM
-
-JVM：java virtual machine （java虚拟机）
-
- 
-
-一、JDK——开发环境（核心）
-
-java development kit 的缩写，意思是JAVA开发工具，我们写文档做PPT需要office 办公软件，开发当然需要开发工具了，说到开发工具大家肯定会想到Eclipse，但是如果直接安装Eclipse你会发现它是运行不起来 是会报错的，只有安装了JDK，配置好了环境变量和path才可以运行成功。这点相信很多人都深有体会。
-
- 
-
-JDK主要包含三部分，
-
-第一部分就是Java运行时环境，JVM。
-
-第二部分就是Java的基础类库，这个类库的数量还是非常可观的。
-
-第三部分就是Java的开发工具，它们都是辅助你更好的使用Java的利器。
-
-详寻《玩好JDK，面试不用愁》
-
-二、JRE——运行环境
-
- 
-
-java runtime environment （java运行时环境）的缩写
-
- 
-
-1,1_JDK中的JRE
-
-如下图：jdk中包含的jre，在jre的bin目录里有个jvm.dll，既然JRE是运行时环境，那么运行在哪？肯定是JVM虚拟机上了。另，jre的lib目录中放的是一些JAVA类库的class文件，已经打包成jar文件。
-
-
-
-1.2_第二个JRE（独立出来的运行时环境）
-
-如下图，不管是JDK中的JRE还是JRE既然是运行时环境必须有JVM。所以JVM也是有两个的。
-
-
-
- 
-
-三、JVM——转换环境
-
- 
-
-java virtual machine （java虚拟机）的缩写。
-
-大家一提到JAVA的优点就会想到：一次编译，随处运行，说白了就是跨平台性好，这点JVM功不可没。
-
-JAVA的程序也就是我们编译的代码都会编译为Class文件，Class文件就是在JVM上运行的文件，
-
-只有JVM还不能成class的执行，因为在解释class的时候JVM需要调用解释所需要的类库lib，而jre包含lib类库。
-
-JVM屏蔽了与具体操作系统平台相关的信息，使得Java程序只需生成在Java虚拟机上运行的目标代码（字节码），就可以在多种平台上不加修改地运行。
 
 # SpringBoot
 **springboot 只是组装了spring和springmvc。SSM中的SS指的是Spring SpringMVC，M是指MyBatis。**
