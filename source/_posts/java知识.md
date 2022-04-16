@@ -1715,6 +1715,27 @@ public class ArraysSort {
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/38c27e77129f4a15950e0f196b7eed74.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 ### ArrayList
+Arrays.asList的作用是将数组转化为list,一般是用于在初始化的时候,设置几个值进去,简化代码,省去add的部分。
+**避免如下第一种方法太啰嗦！！！**
+
+```java
+HashSet<Character> hash = new HashSet<Character>();
+        hash.add('a');
+        hash.add('e');
+        hash.add('i');
+        hash.add('o');
+        hash.add('u');
+        hash.add('A');
+        hash.add('E');
+        hash.add('I');
+        hash.add('O');
+        hash.add('U');
+        HashSet<Character> hash1 =new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U')) ;
+
+
+
+```
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/9a89124f7d2d43bea2e59b46aab180d1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/81f792bc32934b468c0587c5cfa63259.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 ### LinkedList
