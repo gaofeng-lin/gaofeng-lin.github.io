@@ -1723,7 +1723,38 @@ public class ArraysSort {
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/79a7c9db6562419fa941f6de0093c4b0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 ### HashMap
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bdf17194a1cf498081fbef30a0bc184e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+## 暴力遍历
+暴力有时候是一种搞笑简单的方法，比如三数之和，四数之和。再没有掌握到好的办法之前，暴力是一个选择。几个的遍历略有区别，需要注意。
+1.二维数组
 
+```java
+for(int i=0;i<num.length;i++){
+          for (int j=0;j<num[0].length;j++){
+              
+          }
+      }
+```
+2.数组任意两个不同的数相加
+**注意，i只能到倒数第二位，因为j=i+1**
+
+```java
+for(int i=0;i<num.length-1;i++){
+          for (int j=i+1;j<num.length;j++){
+			int sum = num[i]+num[j];
+          }
+      }
+```
+3.数组任意三个不同的数相加
+
+```java
+for(int i=0;i<num.length-2;i++){
+          for (int j=i+1;j<num.length-1;j++){
+              for (int k=j+1;j<num.length;k++){
+                  int sum = num[i]+num[j]+num[k];
+              }
+          }
+      }
+```
 
 # SpringBoot
 **springboot 只是组装了spring和springmvc。SSM中的SS指的是Spring SpringMVC，M是指MyBatis。**
