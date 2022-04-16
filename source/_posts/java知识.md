@@ -1776,6 +1776,167 @@ for(int i=0;i<num.length-2;i++){
           }
       }
 ```
+## Collections.sort() 多重条件排序
+
+```java
+package sort;
+ 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+ 
+/**
+ * 排序规则，按照年龄排序，若年龄相同，按照工资排序，若工资相同，按照身高排序
+ * @author Administrator
+ *
+ */
+public class TestObjectSort {
+	public static void main(String[] args) {
+		List<Student> students=new ArrayList<Student>();
+		students.add(new Student("zhangsan",21,3000,180));
+		students.add(new Student("zhangsan",27,4000,180));
+		students.add(new Student("zhangsan",15,1000,180));
+		students.add(new Student("zhangsan",21,5000,180));
+		students.add(new Student("zhangsan",45,4000,180));
+		students.add(new Student("zhangsan",21,5000,174));
+		students.add(new Student("zhangsan",20,4000,180));
+		students.add(new Student("zhangsan",33,4000,180));
+		students.add(new Student("zhangsan",45,4000,180));
+		students.add(new Student("zhangsan",76,4000,180));
+		students.add(new Student("zhangsan",99,4000,180));
+		students.add(new Student("zhangsan",21,5000,160));
+		
+		Collections.sort(students, new Comparator<Student>(){
+				      public int compare(Student a1, Student a2) {
+				 	            int x = a1.getAge() - a2.getAge();
+				                int y = a1.getSalary() - a2.getSalary();
+				 	            int z = a1.getHeight() - a2.getHeight();
+				          if(x==0){
+				                 if(y==0){
+				                        return z;
+				                  }
+				                return y;
+				            }
+				            return x;
+				        }
+				         
+					    });
+		
+		for(Student s:students){
+			System.out.println(s.getName()+"\t"+s.getAge()+"\t"+s.getSalary()+"\t"+s.getHeight());
+		}
+	}
+}
+ 
+ 
+ 
+class Student{
+	
+	Student(String name,int age,int salary,int height){
+		
+		this.name=name;
+		this.age=age;
+		this.salary=salary;
+		this.height=height;
+		
+	}
+	private String name;
+	
+	private int  age;
+	
+	private int salary;
+	
+	private int height;
+ 
+	public String getName() {
+		return name;
+	}
+ 
+	public void setName(String name) {
+		this.name = name;
+	}
+ 
+	public int getAge() {
+		return age;
+	}
+ 
+	public void setAge(int age) {
+		this.age = age;
+	}
+ 
+	public int getSalary() {
+		return salary;
+	}
+ 
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+ 
+	public int getHeight() {
+		return height;
+	}
+ 
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	
+	
+	
+	
+}
+```
+### HashMap排序
+先看一下遍历Map的方法
+
+```java
+public static void main(String[] args) {
+ 
+    Map<String, String> map = new HashMap<String, String>();
+    map.put("1", "value1");
+    map.put("2", "value2");
+    map.put("3", "value3");
+  
+    //第一种：普遍使用，二次取值
+    System.out.println("通过Map.keySet遍历key和value：");
+    for (String key : map.keySet()) {
+        System.out.println("key= "+ key + " and value= " + map.get(key));
+    }
+  
+    //第二种
+    System.out.println("通过Map.entrySet使用iterator遍历key和value：");
+    Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
+    while (it.hasNext()) {
+        Map.Entry<String, String> entry = it.next();
+        System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
+    }
+  
+    //第三种：推荐，尤其是容量大时
+    System.out.println("通过Map.entrySet遍历key和value");
+    for (Map.Entry<String, String> entry : map.entrySet()) {
+        System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
+    }
+ 
+    //第四种
+    System.out.println("通过Map.values()遍历所有的value，但不能遍历key");
+    for (String v : map.values()) {
+        System.out.println("value= " + v);
+    }
+ }
+```
+因为Collections.sort针对的是list，所以要对HashMap排序需要先转为List
+**如果return 后面的值大于0，交换位置。所以下面的代码放回的是降序**
+
+```java
+List<Map.Entry<Integer, Integer>> font_end_list = new ArrayList<>(map.entrySet());
+        Collections.sort(font_end_list, new Comparator<Map.Entry<Integer, Integer>>() {
+            @Override
+            public int compare(Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2) {
+                return o2.getValue()-o1.getValue();
+            }
+        });
+```
+
 
 # SpringBoot
 **springboot 只是组装了spring和springmvc。SSM中的SS指的是Spring SpringMVC，M是指MyBatis。**
