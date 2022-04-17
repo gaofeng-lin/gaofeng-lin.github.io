@@ -1691,8 +1691,137 @@ public class ArraysSort {
             System.out.println(s.charAt(i));
         }
 ```
+## 输出
+**Arrays.toString（）**
+这个方法是是用来将数组转换成String类型输出的，入参可以是long，float，double，int，boolean，byte，object型的数组。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200209172114721.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5ODQxOA==,size_16,color_FFFFFF,t_70#pic_center)
+如果直接i.toString()则是输出地址值
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200209172525196.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5ODQxOA==,size_16,color_FFFFFF,t_70#pic_center)
+
+
 
 ## 常用数据结构及方法
+### 数组
+**1.Arrays.fill**
+public static void fill(int[] a, int fromIndex, int toIndex, int val)
+用来输入给定数组中元素值的。
+1、两个参数
+public static void fill(int[] a， int val)：给定一个数组，一个val值
+含义为为数组a进行赋值，使得其所有元素值都为val。
+
+2、四个参数
+public static void fill(int[] a, int fromIndex, int toIndex, int val)：给定一个数组，起始位置fromIndex(包含)，末尾位置toIndex(不包含)，对范围内的元素进行赋值，示例如下：
+
+```java
+int[] arr = new int[6];
+Arrays.fill(arr, 60); 
+//此时，arr的值为[60, 60, 60, 60, 60, 60]
+Arrays.fill(arr, 3, 5, 100);
+//此时，arr的值为[60, 60, 60,100, 100, 60]
+```
+3.二维数组赋值
+
+```java
+int[][] cache = new int[n + 2][n + 2];
+        for(int i = 0; i<= n + 1; ++i) {
+            Arrays.fill(cache[i], -1);
+        }
+```
+**2.Arrays.asList**
+该方法是将数组转化成List集合的方法。
+
+ List<String> list = Arrays.asList("a","b","c");
+**注意：
+（1）该方法适用于对象型数据的数组（String、Integer...）
+（2）该方法不建议使用于基本数据类型的数组（byte,short,int,long,float,double,boolean）
+（3）该方法将数组与List列表链接起来：当更新其一个时，另一个自动更新
+（4）不支持add()、remove()、clear()等方法
+  （5）长度不可变**
+
+如果你的List只是用来遍历，就用Arrays.asList()。
+
+ 如果你的List还要添加或删除元素，还是乖乖地new一个java.util.ArrayList，然后一个一个的添加元素。
+
+**3.Arrays.sort(int[] a)**
+ 这种形式是对一个数组的所有元素进行排序，并且是按从小到大的顺序。
+ 
+
+```java
+import java.util.Arrays;
+  
+ public class Main {
+     public static void main(String[] args) {
+          
+         int[] a = {9, 8, 7, 2, 3, 4, 1, 0, 6, 5};
+         Arrays.sort(a);
+         for(int i = 0; i < a.length; i ++) {
+              System.out.print(a[i] + " ");
+         }
+     }
+ 
+ }
+```
+2、Arrays.sort(int[] a, int fromIndex, int toIndex)
+这种形式是对数组部分排序，也就是对数组a的下标从fromIndex到toIndex-1的元素排序，注意：下标为toIndex的元素不参与排序哦！
+
+```java
+  import java.util.Arrays;
+  
+  public class Main {
+      public static void main(String[] args) {
+          
+          int[] a = {9, 8, 7, 2, 3, 4, 1, 0, 6, 5};
+          Arrays.sort(a, 0, 3);
+          for(int i = 0; i < a.length; i ++) {
+              System.out.print(a[i] + " ");
+          }
+      }
+  
+  }
+
+```
+3、public static void sort(T[] a,int fromIndex,int toIndex, Comparator c)
+
+```java
+ 1 package test;
+ 2 
+ 3 import java.util.Arrays;
+ 4 import java.util.Comparator;
+ 5 
+ 6 public class Main {
+ 7     public static void main(String[] args) {
+ 8         //注意，要想改变默认的排列顺序，不能使用基本类型（int,double, char）
+ 9         //而要使用它们对应的类
+10         Integer[] a = {9, 8, 7, 2, 3, 4, 1, 0, 6, 5};
+11         //定义一个自定义类MyComparator的对象
+12         Comparator cmp = new MyComparator();
+13         Arrays.sort(a, cmp);
+14         for(int i = 0; i < a.length; i ++) {
+15             System.out.print(a[i] + " ");
+16         }
+17     }
+18 }
+19 //Comparator是一个接口，所以这里我们自己定义的类MyComparator要implents该接口
+20 //而不是extends Comparator
+21 class MyComparator implements Comparator<Integer>{
+22     @Override
+23     public int compare(Integer o1, Integer o2) {
+24         //如果n1小于n2，我们就返回正值，如果n1大于n2我们就返回负值，
+25         //这样颠倒一下，就可以实现反向排序了
+26         if(o1 < o2) { 
+27             return 1;
+28         }else if(o1 > o2) {
+29             return -1;
+30         }else {
+31             return 0;
+32         }
+33     }
+34     
+35 }
+
+```
+
+
 ### String
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e185688f123c49f390804ff6b8921471.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/17e005b0675248098d277947732b85f4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
