@@ -1655,7 +1655,38 @@ public class ArraysSort {
 
 # 牛客网
 ## 输入
-**牛客网输入为了方便一律采用nextLine()作为接受**
+**1.在`Scanner sc=new Scanner(System.in);`之后，一定要加上！！**
+
+```java
+while(sc.hasNext()){
+ //核心代码
+}
+```
+**因为牛客网的输入并不是一次性全部输入到控制台，自己测试它的示例直接复制就是连在一起，所以不用hasNext是没问题的。如果是一组一组的测，前面的运行完程序就停止了，后面的测试用例根本不会运行！！**
+
+如果要说了以某个字符终止输入，那么就把这个输入放到（）里面，用双引号包括。
+
+```java
+public class StandardInput {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<Integer> list = new ArrayList<>();
+        while(!sc.hasNext("#")){
+            int a = sc.nextInt();
+            list.add(a);
+        }
+        System.out.println(list);
+    }
+}
+```
+输出：
+
+```java
+1 2 3 4 5 6 #
+[1, 2, 3, 4, 5, 6]
+```
+
+**2.牛客网输入为了方便一律采用nextLine()作为接受**
 
 1.读取单个整数，字符串数字转int数字，int转String
 ```java
