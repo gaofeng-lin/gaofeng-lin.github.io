@@ -11,6 +11,55 @@ tags:
 
 
 
+# 基本知识
+## 变量赋值语句不能有空格
+**1、shell脚本变量名和等号及等号和值之间不能有空格，这可能和我们熟悉的所有编程语言都不一样，变量命名须遵循如下规则：**
+•首个字符必须为字母（a-z，A-Z）。
+•中间不能有空格，可以使用下划线（_）。
+•不能使用标点符号。
+•不能使用bash里的关键字（可用help命令查看保留关键字）。
+
+赋值语句等号两边不能有空格，中间有空格时，shell是把变量当一个命令执行的，如：
+
+PROV = anhui
+
+执行时会提示：./tt.sh: line 14: PROV: command not found
+
+正确的写法是：
+
+PROV=anhui
+
+如果所赋的值包含空格，可以用引号括起来（没有空格时也可以用引号，效果和不用一样），例如：
+
+PROV="anhui province"
+
+**2、变量的引用是用$符号加上变量名，例如：**
+
+echo  ../${PROV}/${DATDIR}
+
+变量名外面的花括号是可选的，加不加都行，加花括号是为了帮助解释器识别变量的边界，建议给所有变量加上花括号，这是个好习惯，既便于阅读，又不易出错。 
+
+**最后想说明一下，shell脚本对空格有严格的规定，赋值语句等号两边不能有空格，而字符串比较，等号两边必须有空格，如：**
+
+if [ "${sdpt}" = "sdpt_js" ]; then
+
+## 将命令的输出结果赋值给变量
+Shell 中有两种方式可以完成命令替换，一种是反引号` `，一种是$()，使用方法如下：
+
+```typescript
+variable=`commands`
+variable=$(commands)
+```
+**但有种情况比较特殊**
+
+```typescript
+file_path="/home/yskj/phopt/work/2/100/209/Ma0.8395H0α3.06"
+
+version_num=`echo ${file_path} | cut -d / -f 8`
+```
+version_num 那一行是一个字符串的分割，最终得到209，我想把这个值作为变量。
+如果不加echo是会报错，因为单独运行，会去执行`${file_path}这条命令，因为后面是管道`，而加上echo，就是输出，是一个正常的命令。
+最后相当于把输出的结果赋值给了version_num这个变量
 
 
 #  实际命令分析
@@ -151,7 +200,7 @@ let a+=1
 4.打印数组的方法：${my_array[*]} 或者 ${my_array[@]}
 ```
 
-#  变量
+#  字符串处理
 
 ##  获取变量字符串长度
 想要知道 "www.baidu.com" 的变量net的长度十分简单。
@@ -178,7 +227,7 @@ let a+=1
 
 ##  变量截取
 
-**指定位置截取字符串**
+**1.指定位置截取字符串**
 
 ```
 [Neptuneyt]$ net="www.baidu.com"
@@ -197,7 +246,7 @@ com
 www.baidu.com
 ```
 
-**匹配字符串截取**
+**2.匹配字符串截取**
 
 ```
 [Neptuneyt]$ echo $net
@@ -224,6 +273,60 @@ www.baidu
 `%chr*`表示删除从右向左第一个遇到的字符chr及其右侧的字符
 `%%chr*`表示删除从右到左最后一个遇到的字符chr及其右侧的字符（贪婪模式）
 在键盘上，#在$符的左边，%号在$符的右边，为了便于记忆，大家因此可以记住#删除左边字符，%删除右边字符
+
+**3.窃取字符串**
+
+```typescript
+1.cut
+
+-b ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。
+-c ：以字符为单位进行分割。
+
+-d：自定义分隔符，默认为制表符。
+
+-f：与-d一起使用，指定显示哪个区域。
+
+-n：取消分割多字节字符。仅和-b标志一起使用。如果字符的最后一个字节落在由-b标志的List参数指示的范围之内，该字符将被写出；否则，该字符将被排除。
+```
+
+
+
+**-d**
+
+ cut命令用于列提取，默认分隔符是tab键。
+
+选项：-d指定分隔符，-f指定提取第几列
+
+eg1： 以%作为分隔符 输出第一个%前的区域1的东西，输出区域2的东西     
+
+```typescript
+root@ROUTER:~# echo "CPU:  busy 14%  (system=10% user=3% nice=0% idle=85%)" | cut -d \% -f 1
+CPU:  busy 14
+root@ROUTER:~# echo "CPU:  busy 14%  (system=10% user=3% nice=0% idle=85%)" | cut -d \% -f 2
+  (system=10
+root@ROUTER:~# echo "CPU:  busy 14%  (system=10% user=3% nice=0% idle=85%)" | cut -b 11-14 | cut -d \% -f 1
+ 14
+root@ROUTER:~# echo "CPU:  busy 14%  (system=10% user=3% nice=0% idle=85%)" | cut -b 11-14 
+ 14%
+
+```
+
+**-b**
+.eg1：然后调用cut，即剪切字符串中的第2和第5个字节。
+
+```typescript
+echo"123abc"|cut -b 2,5
+```
+
+先输出123abc
+
+输出为2b
+
+**-c**
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/524756e2e6810b93cd8fac228f2b4b9d.png#pic_center)
+
+
 
 ##  变量的字符串替换
 想要将net的 baidu替换成google怎么写呢？只需`${net/baidu/google}`即可，需要注意的是原变量并未修改
