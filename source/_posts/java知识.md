@@ -374,6 +374,92 @@ methodName = eat
 我们这样做有什么好处呢，对于框架来说，是人家封装好的，我们拿来直接用就可以了，而不能去修改框架内的代码。但如果我们使用传统的new形式来实例化，那么当类名更改时我们就要修改Java代码，这是很繁琐的。修改Java代码以后我们还要进行测试，重新编译、发布等等一系列的操作。而如果我们仅仅只是修改配置文件，就来的简单的多，配置文件就是一个实实在在的物理文件。
 
 
+## String类与StringBuilder类的区别
+[原文链接](https://www.cnblogs.com/huameitang/p/10528646.html)
+
+### StringBuilder类介绍
+
+**StringBuilder类是一个可变的字符序列。**
+
+StringBuilder() 
+          构造一个不带任何字符的字符串生成器，其初始容量为 16 个字符。
+StringBuilder(CharSequence seq) 
+          构造一个字符串生成器，它包含与指定的 CharSequence 相同的字符。
+StringBuilder(int capacity) 
+          构造一个不带任何字符的字符串生成器，其初始容量由 capacity 参数指定。
+StringBuilder(String str) 
+          构造一个字符串生成器，并初始化为指定的字符串内容。
+
+### StringBuilder类的几个常用方法
+
+```
+append(任意类型)  追加到字符串后面
+
+reverse 反转字符串
+
+insert(int offset, 任意类型)  在某个index后插入字符串
+
+toString()  返回String类的对象
+```
+
+先看一段String类的字符串拼接的代码。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/388de719a9f6ee002b965e622dc87c46.png#pic_center)
+
+String s = "hello" 会在常量池开辟一个内存空间来存储”hello"。
+
+s += "world"会先在常量池开辟一个内存空间来存储“world"。然后再开辟一个内存空间来存储”helloworld“。
+
+这么以来，001与002就成为了垃圾内存空间了。这么简单的一个操作就产生了两个垃圾内存空间，如果有大量的字符串拼接，将会造成极大的浪费。
+
+### StringBuilder的作用
+
+上面的例子可以知道String类的字符串拼接会产生大量的垃圾内存空间。但是StringBuilder的字符串拼接是直接在原来的内存空间操作的，即直接在hello这个内存空间把hello拼接为helloworld。
+
+来证明下：
+
+```
+public class StringBuilderTest {
+    public static void main(String[] args){
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sb2 = sb.append("hello");
+        System.out.println(sb);
+        System.out.println(sb2);
+        // 引用类型，判断的是他们的内存地址是否一样
+        System.out.println(sb == sb2);
+    }
+}
+```
+输出结果是：
+
+hello
+hello
+true
+
+### String类与StringBuilder类的相互转换
+**1.String类转换为StringBuilder类**
+
+```
+public class String12 {
+    public static void main(String[] args){
+        String s = "hello";
+        StringBuilder sb = new StringBuilder(s);
+        System.out.println(sb);
+    }
+}
+```
+**2.StringBuilder类转换为String类**
+
+```
+public class String12 {
+    public static void main(String[] args){
+        StringBuilder sb = new StringBuilder();
+        sb.append("abc").append("efg");
+        String s = sb.toString();
+        System.out.println(s);
+    }
+}
+```
+
 # 辅助知识
 ## JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明
 首先明白一个基础概念：
@@ -503,12 +589,98 @@ JVM屏蔽了与具体操作系统平台相关的信息，使得Java程序只需�
 
 
 # 常用方法
-## 返回两个参数的最大值，最小值
-```
-Math.max(12.123, 18.456) //括号内两个数为相同数据类型
-Math.min(a,b)
+## Math方法
+1： java取整
+
+     a：floor向下取整
+
+       用法：Math.floor(num)
+
+       Math.floor(1.9)//1                      Math.floor(-1.9)//-2
+
+    b:  round四舍五入
+
+      用法：Math.round(num)实际上是等价于Math.floor(num+0.5)
+
+      Math.round(1.5)//2                     Math.round(1.4)//1
+
+      Math.round(-1.4)//-1                  Math.round(-1.5)//-1               Math.round(-1.6)//-2
+
+    c:  ceil取不小于num的最小整数
+
+       用法: Math.ceil(num)
+
+       Math.ceil(1.4)//2      Math.ceil(1.5)//2             Math.ceil(1.6)//2
+
+       Math.ceil(-1.4)//-1   Math.ceil(-1.5)//-1           Math.ceil(-1.6)//-1
+
+    d:  神级方法直接加(int)强制转换，直接去掉小数点位，没有任何向上向下，需要时最好用的方法
+
+ 
+
+2： java求绝对值
+
+     Math.abs(num)
+
+     Math.abs(-30.5)//30.5
+
+3:   java随机数
+
+     Math.random()随机去0~1的数
+
+     (int)(100*Math.random())这样就可以取0~100随机整数
+
+4： java幂函数
+
+     Math.pow(a,b)a的b次方
+
+     Math.pow(x,2)就是平方
+
+     Math.pow(x,3)就是立方
+
+5： java开根号
+
+     Math.sqrt(num)num的平方根
+
+
+## 随机数
+使用步骤：
+
+1.导入包
+
+import java.util.Random;
+
+2.创建对象
+
+Random r = new Random();
+
+3.产生随机数
+
+int num = r.nextInt(10);
+代码解析：10代表的是一个范围，如果括号写10，产生的随机数就是0-9，括号写20，参数的随机数则是0-19
+
+```java
+import java.util.Random; //1. 导入包
+
+public class Demo1Random {
+
+	public static void main(String[] args){
+		// 2. 创建对象
+		Random r = new Random();
+		
+		for(int i = 1; i <= 10; i++){
+			// 3. 获取随机数
+			int num = r.nextInt(10) + 1;		// 1-10
+			System.out.println(num);
+		}
+		
+		
+		
+	}
+}
 ```
 
+ 
 ## 哈希表
 **HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。**
 
@@ -849,91 +1021,8 @@ class PersonDemo{
 }
 ```
 
-## String类与StringBuilder类的区别
-[原文链接](https://www.cnblogs.com/huameitang/p/10528646.html)
 
-### StringBuilder类介绍
 
-**StringBuilder类是一个可变的字符序列。**
-
-StringBuilder() 
-          构造一个不带任何字符的字符串生成器，其初始容量为 16 个字符。
-StringBuilder(CharSequence seq) 
-          构造一个字符串生成器，它包含与指定的 CharSequence 相同的字符。
-StringBuilder(int capacity) 
-          构造一个不带任何字符的字符串生成器，其初始容量由 capacity 参数指定。
-StringBuilder(String str) 
-          构造一个字符串生成器，并初始化为指定的字符串内容。
-
-### StringBuilder类的几个常用方法
-
-```
-append(任意类型)  追加到字符串后面
-
-reverse 反转字符串
-
-insert(int offset, 任意类型)  在某个index后插入字符串
-
-toString()  返回String类的对象
-```
-
-先看一段String类的字符串拼接的代码。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/388de719a9f6ee002b965e622dc87c46.png#pic_center)
-
-String s = "hello" 会在常量池开辟一个内存空间来存储”hello"。
-
-s += "world"会先在常量池开辟一个内存空间来存储“world"。然后再开辟一个内存空间来存储”helloworld“。
-
-这么以来，001与002就成为了垃圾内存空间了。这么简单的一个操作就产生了两个垃圾内存空间，如果有大量的字符串拼接，将会造成极大的浪费。
-
-### StringBuilder的作用
-
-上面的例子可以知道String类的字符串拼接会产生大量的垃圾内存空间。但是StringBuilder的字符串拼接是直接在原来的内存空间操作的，即直接在hello这个内存空间把hello拼接为helloworld。
-
-来证明下：
-
-```
-public class StringBuilderTest {
-    public static void main(String[] args){
-        StringBuilder sb = new StringBuilder();
-        StringBuilder sb2 = sb.append("hello");
-        System.out.println(sb);
-        System.out.println(sb2);
-        // 引用类型，判断的是他们的内存地址是否一样
-        System.out.println(sb == sb2);
-    }
-}
-```
-输出结果是：
-
-hello
-hello
-true
-
-### String类与StringBuilder类的相互转换
-**1.String类转换为StringBuilder类**
-
-```
-public class String12 {
-    public static void main(String[] args){
-        String s = "hello";
-        StringBuilder sb = new StringBuilder(s);
-        System.out.println(sb);
-    }
-}
-```
-**2.StringBuilder类转换为String类**
-
-```
-public class String12 {
-    public static void main(String[] args){
-        StringBuilder sb = new StringBuilder();
-        sb.append("abc").append("efg");
-        String s = sb.toString();
-        System.out.println(s);
-    }
-}
-```
 ## 字母大小写判断与转换
 
 ```
