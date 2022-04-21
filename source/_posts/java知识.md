@@ -1723,13 +1723,21 @@ public class StandardInput {
         }
 ```
 ## 输出
+### 数组输出
 **Arrays.toString（）**
 这个方法是是用来将数组转换成String类型输出的，入参可以是long，float，double，int，boolean，byte，object型的数组。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200209172114721.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5ODQxOA==,size_16,color_FFFFFF,t_70#pic_center)
 如果直接i.toString()则是输出地址值
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200209172525196.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5ODQxOA==,size_16,color_FFFFFF,t_70#pic_center)
 
+### 四舍五入输出
 
+```java
+//保留4位小数的输出
+double f = 3.1415926;
+System.out.println(String.format("%.4f",f));
+```
+[String.format详细用法](https://www.jianshu.com/p/359d9001ebbc)
 
 ## 常用数据结构及方法
 ### 数组
