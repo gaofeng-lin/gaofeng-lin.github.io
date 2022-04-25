@@ -254,6 +254,7 @@ cat file.txt file2.txt > file3.txt
 #  防火墙
 ## 开启端口（以80为例）
 > firewall-cmd --zone=public --add-port=80/tcp --permanent
+> //zone add permanent前面是两个横杠
 
 ##  重启防火墙
 > systemctl restart firewalld.service
