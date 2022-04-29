@@ -11,7 +11,7 @@ tags:
 
 
 
-# 基本知识
+# 基本知识/命令
 ## 变量赋值语句不能有空格
 **1、shell脚本变量名和等号及等号和值之间不能有空格，这可能和我们熟悉的所有编程语言都不一样，变量命名须遵循如下规则：**
 •首个字符必须为字母（a-z，A-Z）。
@@ -62,7 +62,89 @@ version_num 那一行是一个字符串的分割，最终得到209，我想把�
 最后相当于把输出的结果赋值给了version_num这个变量
 
 
+## shell脚本中登录mysql,执行sql
+**方式一：mysql -u root -pmysql <<EOF sql语句 EOF**
+注：密码与-p之间不能有空格，否则不能识别密码，EOF中间的sql语句，与mysql正常语句无异
+
+```bash
+  1 #!/bin/bash
+  2 echo "链接mysql"
+  3 mysql -u root -pmysql <<EOF
+  4 use shelltest;
+  5 select * from student;
+  6 EOF
+  7 echo "连接成功"
+
+```
+执行结果：
+
+```bash
+python@ubuntu:~/shellscrip$ ./mys_connec.sh 
+链接mysql
+mysql: [Warning] Using a password on the command line interface can be insecure.
+id	name
+1	tom
+连接成功
+```
+方式二：mysql -u root -pmysql -e “${sql}”
+
+```bash
+  1 #!/bin/bash
+  2 echo "链接mysql"
+  3 sql="use shelltest;
+  4 select * from student;"
+  5 mysql -u root -pmysql -e "${sql}"
+  6 echo "连接成功"
+```
+执行结果：
+
+```bash
+python@ubuntu:~/shellscrip$ ./mys_connec.sh 
+链接mysql
+mysql: [Warning] Using a password on the command line interface can be insecure.
++------+------+
+| id   | name |
++------+------+
+|    1 | tom  |
++------+------+
+连接成功
+```
+
 #  实际命令分析
+
+## shell脚本登录mysql并执行语句
+
+```bash
+#!/bin/bash
+
+# get 7 days ago according to input date. e.g. if input date is 20180410,it will delete those records on or before 20180403
+wanted_date=`date -d "$1 7 days ago" +%Y%m%d`
+
+echo "0==}=========> CAUTION! Those records on or before $wanted_date will be removed!"
+echo "0==}=========> Are you sure to continue? yes/no"
+read option
+if [ "$option" == "yes" ]; then
+  echo You made a good choice.
+  echo ----------
+elif [ "$option" == "no" ];then
+  echo Goodbye~
+  exit 0
+else
+  echo PLASE INPUT yes OR no THEN TRY AGAIN!
+  exit 0
+fi
+
+# to call SQL statement at MySQL prompt
+mysql -h 172.33.101.123 -P 3306 -u tony -pYourPassword -D YourDbName <<EOF
+select current_date();
+use tony_db;
+desc confirmed_order_data;
+select count(*) from confirmed_order_data where paid_date<="$wanted_date";
+delete from confirmed_order_data WHERE paid_date<="$wanted_date";
+select count(*) from confirmed_order_data where paid_date<="$wanted_date";
+
+EOF
+```
 
 ## git log --follow --pretty=format:%H 文件名 | xargs -I{} sh -c 'git show {}:文件名 > 文件名.{}'
 提取git中某个文件的所有版本并按顺序命名:
