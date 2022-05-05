@@ -67,7 +67,8 @@ unzip -d /tmp -o test.zip //这条命令和上一条相比，可以不用询问�
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604231835998.png#pic_center)
 ## tar
-只是打包并不会压缩文件，.tar格式的打包和解打包都是使用tar命令，区别只是选项不同
+**只是打包并不会压缩文件，.gz，.xz。这些才是压缩**
+.tar格式的打包和解打包都是使用tar命令，区别只是选项不同
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604232717559.png#pic_center)
 打包示例：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604232744240.png#pic_center)
@@ -77,6 +78,8 @@ unzip -d /tmp -o test.zip //这条命令和上一条相比，可以不用询问�
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604232957741.png#pic_center)
 
 ## .tar.gz和.tar.bz2
+**tar 压缩、解压缩都可以使用多线程**
+
 .tar.gz格式和.tar.bz2格式：使用tar命令后跟选项的方式实现tar命令和gzip或者bzip2命令的组合，实现同时进行打包和压缩，这也是最经常使用的压缩和解压缩方式
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604233644257.png#pic_center)
 
@@ -85,7 +88,38 @@ unzip -d /tmp -o test.zip //这条命令和上一条相比，可以不用询问�
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604234051220.png#pic_center)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604234541328.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3J1YnVsYWk=,size_16,color_FFFFFF,t_70#pic_center)
 
+## .tar.xz
+默认压缩后的文件后缀为 xz，速度慢一些，但是压缩的会更小。
 
+```bash
+//常用参数
+-z	强制执行压缩, 默认不保留源文件。压缩后的文件名为源文件.xz
+-d	强制执行解压缩
+-l	列出压缩文件的信息
+-k	保留源文件不要删除
+-f	强制覆盖输出文件和压缩链接
+-c	写入到标准输出，输入文件不要删除
+-0..-9	压缩比例，默认为6
+-e  使用更多的 CPU time 来进行压缩，提高压缩率。不会影响解压时所需要的内存。
+-T  指定线程数，默认是 1 ，当设置为 0 时使用和机器核心一样多的线程。
+--format=  指定压缩输出格式，可以是 raw、xz、lzma
+-v	显示更详细的信息
+```
+注意点： 压缩后的文件时在和源文件同一个目录。当我们压缩的文件为 /home/nginx/logs/error.log-20191126 ，当我们在任意目录执行完 xz /home/nginx/logs/error.log-20191126 后，压缩后的文件路径是 /home/nginx/logs/error.log-20191126.xz.
+
+```bash
+//不保留源文件
+xz   /home/nginx/logs/error.log-20191126
+
+//保留源文件
+xz -k /home/nginx/logs/error.log-20191126
+
+//解压缩文件
+xz -d  /home/nginx/logs/error.log-20191126.xz
+
+//指定多线程数来进行压缩
+xz -T 4  /home/nginx/logs/error.log-20191126
+```
 
 # 查询命令
 ## 查找文件及文件夹
