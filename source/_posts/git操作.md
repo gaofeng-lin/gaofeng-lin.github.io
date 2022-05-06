@@ -150,7 +150,7 @@ git branch -r | xargs -d/ -n1 | grep -v 'origin' | xargs -I{} sh -c 'mkdir "C:\U
 
 命令分线见 **博客--Linux Shell命令总结**
 
-#  git 基本使用流程
+#  git 常用操作
 
 ##  git pull 与 git push 详解
 1.git remote
@@ -260,7 +260,17 @@ git push origin master  //push到origin的master主分支里面，成功后会�
 
 ```
 
+## 查看远程仓库的情况
+查看当前配置有哪些远程仓库
 
+```bash
+git remote
+```
+
+本地与远程仓库的取消
+**git remote remove "仓库名"**
+
+**可以同时关联多个仓库，名字起的不一样就好，不一定非要用origin。但是要注意的是，git pull 和 git push指定的仓库名字也要改变。不然容易出问题。**
 
 ##  分支的使用
 
@@ -377,7 +387,7 @@ git push origin master
 成功后你可看到，master下已经有b.js文件了
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/1f2c3d8b692b42619534a683d2c3f21a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_11,color_FFFFFF,t_70,g_se,x_16)
 
-# git常用操作
+
 
 ## 本地从远程仓库拉取代码，只在某分支开发
 远程仓库有master，dev1两个分支。本地用git clone拉取代码，`git branch -a`查看，本地只有一个分支。此时用`git checkout dev1` 切换到dev1分支。代码和远程仓库一致。可以用`git log`来确认是否是该分支（因为git log 只能看到当前分支的提交记录）
@@ -389,4 +399,14 @@ git push origin master
 git reset --hard 139dcfaa558e3276b30b6b2e5cbbb9c00bbdca96 
 
 //后面的是git提交的历史版本号，上git上面找到复制下来就行
+```
+
+# git bash安装zip
+git bash有些话可能没法执行zip命令
+
+1.打开https://sourceforge.net/projects/gnuwin32/files/
+2.2.找到zip和bzip2，由于zip依赖bzip2.dll，**下载zip-3.0-bin.zip和bzip2-1.0.5-bin.zip**，解压后，复制zip-3.0-bin的bin目录下的**zip.exe** 和bzip2-1.0.5-bin的bin目录下的**bzip2.dll**到 **git/usr/bin/**
+
+```bash
+放置的目录不能放错，一开始放到了git/bin/目录下，结果不行。
 ```
