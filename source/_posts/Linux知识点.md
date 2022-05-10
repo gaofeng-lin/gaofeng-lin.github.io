@@ -19,8 +19,9 @@ tags:
 
  1. 拥有者–所属组–other
 
-  首先很多人不明白这三个使用者的权限是什么意思。一般情况下，拥有者是这个文件的创建者，即哪个用户创建的这个文件。并且在创建新用户的时候会创建出一个同名的组，这个拥有者默认包含在这个所属组中。我们先来理一理这三者的联系去区别，对于初学者来说，我们可以把这三者想象成数学中的集合，拥有者是元素，整个Linux大环境是全集，而所属组是一个一个的小集合，看张图把。
-  ![在这里插入图片描述](https://img-blog.csdn.net/20170319114808643?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2luYXRfMzYxMTgyNzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast#pic_center)
+  首先很多人不明白这三个使用者的权限是什么意思。一般情况下，拥有者是这个文件的创建者，即哪个用户创建的这个文件。并且在创建新用户的时候会创建出一个同名的组，这个拥有者默认包含在这个所属组中。我们先来理一理这三者的联系去区别，对于初学者来说，我们可以把这三者想象成数学中的集合，拥有者是元素，整个Linux大环境是全集，而所属组是一个一个的小集合，看张图吧。
+  ![在这里插入图片描述](https://img-blog.csdnimg.cn/df5e37bc8da24291985501de3a71f207.png)
+
 拥有者就是一个一个的小红点，每个都在自己的所属组里，而且一个拥有者可以在多个所属组里。例如：1可以在所属组1，也可以在所属组2，也可以在所属组3…可以自定义设置。other就是对于所属组1来说，除所属组1中的所有拥有者外，其他的拥有者、所属组都是other。
 　　值得注意的是，在Linux下，有一个超级用户–root，有全部的权限，凌驾一切之上。
 　　下面是刚才所讲操作的具体命令：
@@ -55,7 +56,10 @@ sudo的作用是仅当前操作暂时为超级权限。当然，回车过后要�
 修改所属组：普通用户--sudo chgrp 所属组名 文件名/目录名
 ```
 Linux中，输入”ll”（小写L）或者”ls -l”可以显示文件的详细信息。
-![在这里插入图片描述](https://img-blog.csdn.net/20170319122531256?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2luYXRfMzYxMTgyNzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/1169c2fb3ee24cf7bc749ce312dfc6a4.png)
+6e.png)
+
+
 
 若sudo失败，则进入超级用户权限，再执行chown root test.c
 sudo失败的原因，需要将用户添加进sudoers文件:
@@ -69,7 +73,8 @@ http://blog.csdn.net/sinat_36118270/article/details/62899093
 　　分别用“-”“r”“w”“x”表示
 　　在文件列表中，使用”ll”或者”ls -l”命令查看文件详细信息，如图：
 
-![在这里插入图片描述](https://img-blog.csdn.net/20170319123033753?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2luYXRfMzYxMTgyNzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/d56f4f128b6949d3b4707ec5dab42696.png)
+
 一个文件或者目录前面共有10位前置字符，第一位表示文件类型，说到这，插一句，在Linux中可以认为“一切皆文件”，且Linux下文件不以文件后缀名区分，而是以第一个字符区分。在细分一下，文件分为:
 
 
@@ -125,13 +130,16 @@ http://blog.csdn.net/sinat_36118270/article/details/62899093
 　　目录的读权限决定进入这个目录后，使用“ls”、“ll”以及这个家族的命令是否可以显示该目录的内容；
 　　目录的写权限决定进入这个目录后，是否可以使用“mkdir”创建目录，是否可以使用“touch”创建文件…;
 　　目录的执行权限决定是否可以进入这个目录。
-![在这里插入图片描述](https://img-blog.csdn.net/20170319131957168?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2luYXRfMzYxMTgyNzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast#pic_center)
 
-![在这里插入图片描述](https://img-blog.csdn.net/20170319132408998?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2luYXRfMzYxMTgyNzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast#pic_center)
-![在这里插入图片描述](https://img-blog.csdn.net/20170319133017845?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2luYXRfMzYxMTgyNzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/0f4aa69a622d433392e9bbad7f6e347b.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/a0b3663e0d2b4875a0b233142dcf8ea4.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/7484fbcf90034a62801d298698bc0629.png)
+
+
+
 那么，剩下的对于一个目录权限的多种操作就不用多少了吧。
 
-umask
+**umask**
 　　最后，还有个umask很重要，需要我们去理解记忆
 　　umask是我们linux系统里面的默认权限的补集，一般在我们的系统中，umask=002。表示我们创建的文件的默认权限是664。
 　　注意，我们创建的所有文件的默认权限为664，即“rw-rw-r–”。
@@ -139,7 +147,8 @@ umask
 　　所以我们要在更改umask后，计算文件权限时，基础上也不能加上拥有者和所属组的执行权限以及other的写和执行权限，除非更改的权限值给他们中的一个或多个赋上了相应的权限。
 　　umask可以自己更改，直接敲出来umask “0xxx”就ok。此后，我们的权限就为“664-xxx”
 　　
-![在这里插入图片描述](https://img-blog.csdn.net/20170319135637154?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2luYXRfMzYxMTgyNzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/3de223ac270642e6a5781b23c68da8d1.png)
+
 初始值为：“rw-rw-r–”即为“664”
 　　我们设置的umask=032，即为“— -wx -w- ”,
 　　因为二者是互补的关系，所以umask中出现的权限不能出现在新创建的文件中，又因为默认情况下新创建的文件没有拥有者和所属组的执行权限以及other的写和执行权限。
@@ -151,23 +160,34 @@ Centos 7默认gcc版本为4.8，有时需要更高版本的，这里以升级至
 
 1、安装centos-release-scl
 
+```bash
 sudo yum install centos-release-scl
 ```
+
+
 2、安装devtoolset，注意，如果想安装7.*版本的，就改成devtoolset-7-gcc*，以此类推
 
-```
+
+```bash
 sudo yum install devtoolset-8-gcc*
 ```
+
+
 3、激活对应的devtoolset，所以你可以一次安装多个版本的devtoolset，需要的时候用下面这条命令切换到对应的版本
 
-```
+
+```bash
 scl enable devtoolset-8 bash
 ```
+
+
 大功告成，查看一下gcc版本
 
-```
+
+```bash
 gcc -v
 ```
+
 
 显示为 gcc version 8.3.1 20190311 (Red Hat 8.3.1-3) (GCC)
 
