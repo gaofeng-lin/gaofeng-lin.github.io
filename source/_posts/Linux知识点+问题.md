@@ -1,5 +1,5 @@
 ---
-title: Linux知识点
+title: Linux知识点+问题
 date: 2022/3/6
 categories:
   - Linux
@@ -10,7 +10,79 @@ tags:
   - 持续集成
   - gcc
   - Linux权限用法
+  - make&cmake
 ---
+
+# 问题汇总
+## error while loading shared libraries错误解决办法
+**背景：求解器执行的适合报找不到libmpiexec.so.12这个东西，但是在/opt/mpich/lib下面有这个东西。路径什么的也都加入到了 环境变量里面 （~/.bash_profile或~/.bashrc）。还是无法解决问题**
+[原文链接](https://blog.csdn.net/dumeifang/article/details/2963223?spm=1001.2101.3001.6650.1&depth_1-utm_relevant_index=2)
+出现这类错误表示，系统不知道xxx.so放在哪个目录下，这时候就要在/etc/ld.so.conf中加入xxx.so所在的目录。
+
+运行命令 `sudo gedit /etc/ld.so.conf` 在第一行后面空一格 添加/usr/local/lib 保存。运行`sudo /sbin/ldconfig`更新
+
+# make 和 cmake
+[原文链接](https://blog.csdn.net/KP1995/article/details/109569787)
+
+## 什么是make
+make工具可以看成是一个智能的批处理工具，它本身并没有编译和链接的功能，而是用类似于批处理的方式—通过调用makefile文件中用户指定的命令来进行编译和链接。
+
+## 什么是Makefile
+简单的说就像一首歌的乐谱，make工具就像指挥家，指挥家根据乐谱指挥整个乐团怎么样演奏，make工具就根据makefile中的命令进行编译和链接。makefile命令中就包含了调用gcc（也可以是别的编译器）去编译某个源文件的命令。makefile在一些简单的工程完全可以用人工手写，但是当工程非常大的时候，手写makefile也是非常麻烦的，如果换了个平台makefile又要重新修改。这时候就出现了Cmake工具。
+
+## 什么是Cmake
+cmake可以更加简单的生成makefile文件给上面那个make用。当然cmake还有其他功能，就是可以跨平台生成对应平台能用的makefile，你就不用再自己去修改了。cmake根据什么生成makefile呢？它又要根据一个叫CMakeLists.txt文件（学名：组态档）去生成makefile。到最后CMakeLists.txt文件谁写啊？亲，是你自己手写的。
+
+当然如果你用IDE，类似VS这些一般它都能帮你弄好了，你只需要按一下那个三角形。
+
+```bash
+简单总结
+cmake用来转译CMakeLists.txt，在linux下它会生成Makefile，来给make执行。
+
+Makefile+make可理解为类unix环境下的项目管理工具， 而cmake是抽象层次更高的项目管理工具。
+```
+
+下面给出其关系图：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20201109214319194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tQMTk5NQ==,size_16,color_FFFFFF,t_70#pic_center)
+
+# ./configure && make && make install
+## ./configure
+源码的安装一般由3个步骤组成：**配置(configure)、编译(make)、安装(make install)**。
+
+configure文件是一个可执行的脚本文件,是用来检测你的安装平台的目标特征的。比如它会检测你是不是有CC或GCC，并不是需要CC或GCC.
+它有很多选项，在待安装的源码目录下使用命令`./configure –help`可以输出详细的选项列表。
+
+其中--prefix选项是配置安装目录，如果不配置该选项，安装后可执行文件默认放在/usr /local/bin，库文件默认放在/usr/local/lib，配置文件默认放在/usr/local/etc，其它的资源文件放在/usr /local/share，比较凌乱。
+
+如果配置了--prefix，如：
+
+$ ./configure --prefix=/usr/local/test
+
+安装后的所有资源文件都会被放在/usr/local/test目录中，不会分散到其他目录。
+
+使用--prefix选项的另一个好处是方便卸载软件或移植软件；当某个安装的软件不再需要时，只须简单的删除该安装目录，就可以把软件卸载得干干净净；而移植软件只需拷贝整个目录到另外一个机器即可（相同的操作系统下）。
+
+当然要卸载程序，也可以在原来的make目录下用一次make uninstall，但前提是Makefile文件有uninstall命令（nodejs的源码包里有uninstall命令，测试版本v0.10.35）。
+
+**关于卸载：**
+如果没有配置--prefix选项，源码包也没有提供make uninstall，则可以通过以下方式可以完整卸载：
+
+找一个临时目录重新安装一遍，如：
+$ ./configure --prefix=/tmp/to_remove && make install
+
+然后遍历/tmp/to_remove的文件，删除对应安装位置的文件即可（因为/tmp/to_remove里的目录结构就是没有配置--prefix选项时的目录结构）。
+
+## make 
+make 是用来编译的，它从Makefile中读取指令，然后编译。可以使用多核来make。`make -j2`
+如果是8核，那就用make -j8。
+这一步就是编译，大多数的源代码包都经过这一步进行编译（当然有些perl或python编写的软件需要调用perl或python来进行编译）。如果 在 make 过程中出现 error ，你就要记下错误代码（注意不仅仅是最后一行），然后你可以向开发者提交 bugreport（一般在 INSTALL 里有提交地址），或者你的系统少了一些依赖库等，这些需要自己仔细研究错误代码。
+
+可能遇到的错误：make *** 没有指明目标并且找不到 makefile。 停止。问题很明了，没有Makefile，怎么办，原来是要先./configure 一下，再make。
+
+## make install
+可以使用多核安装 make -j2 install
+
+这条命令来进行安装（当然有些软件需要先运行 make check 或 make test 来进行一些测试），这一步一般需要你有 root 权限（因为要向系统写入文件）。
 
 # Linux 权限的简单用法（使用者、目录、文件）
 [原文链接](https://blog.csdn.net/sinat_36118270/article/details/63683393)
