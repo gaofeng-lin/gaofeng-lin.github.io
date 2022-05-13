@@ -401,6 +401,13 @@ git reset --hard 139dcfaa558e3276b30b6b2e5cbbb9c00bbdca96
 //后面的是git提交的历史版本号，上git上面找到复制下来就行
 ```
 
+
+## 回退到某版本，且放弃之前的记录
+
+```bash
+git reset --hard回退之后，如果直接push会出错，因为我们本地库HEAD指向的版本比远程库的要旧，所以我们要用“git push -f”强制推上去
+```
+
 # git bash安装zip
 git bash有些话可能没法执行zip命令
 
