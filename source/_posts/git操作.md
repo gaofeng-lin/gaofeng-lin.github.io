@@ -295,7 +295,7 @@ git branch -a
 ```
 git checkout -b dev
 ```
-
+**执行该命令，会在本地创建一个新分支。该分支是从当前分支上生成的，所有内容和当前分支一样。**
 
 -b代表同时切换到dev分支下面去，这时你可以再去查看分支
 
@@ -328,6 +328,36 @@ git branch -a
 
 此时已经有了两个分支，且当前位于dev分之下
 切换分支可以用 **git checkout [branch-name]**
+
+## 将远程git仓库里的指定分支拉取到本地（本地不存在的分支）
+
+```bash
+git checkout -b
+```
+上述命令虽然能生成新分支，但是会复制当前分支。但有时从远程仓库拉取分支，我只想要远程那个分支，不想先复制别的，这样拉下来会有冲突。
+方法如下：
+
+```bash
+git checkout -b 本地分支名 origin/远程分支名
+```
+这个将会自动创建一个新的本地分支，并与指定的远程分支关联起来。
+
+如果出现提示：
+
+```bash
+fatal: Cannot update paths and switch to branch 'dev2' at the same time.
+Did you intend to checkout 'origin/dev2' which can not be resolved as commit?
+```
+表示拉取不成功。我们需要先执行
+
+```bash
+git fetch
+```
+然后再执行
+
+```bash
+git checkout -b 本地分支名 origin/远程分支名
+```
 
 ## 删除分支
 **查看分支**
