@@ -110,6 +110,58 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 连接成功
 ```
 
+
+## 读取文件每一行并输出
+方案一：
+
+```bash
+#!/bin/bash
+
+while read line
+do
+    echo $line
+done < test.txt
+```
+方案二：
+
+```bash
+#!/bin/bash
+
+cat test.txt | while read line
+do
+    echo $line
+done
+```
+
+方案三：
+
+```bash
+for line in `cat  test.txt`
+do
+    echo $line
+done
+```
+
+for 逐行读和 while 逐行读是有区别的，如:
+
+```bash
+$ cat test.txt
+Google
+Runoob
+Taobao
+
+$ cat test.txt | while read line; do echo $line; done
+Google
+Runoob
+Taobao
+
+
+$ for line in $(<test.txt); do echo $line; done
+Google
+Runoob
+Taobao
+```
+
 #  实际命令分析
 
 ## shell脚本登录mysql并执行语句
@@ -146,8 +198,8 @@ select count(*) from confirmed_order_data where paid_date<="$wanted_date";
 EOF
 ```
 
-## git log --follow --pretty=format:%H 文件名 | xargs -I{} sh -c 'git show {}:文件名 > 文件名.{}'
-提取git中某个文件的所有版本并按顺序命名:
+## 提取git中某个文件的所有版本并按顺序命名
+
 ```
 git log --follow --pretty=format:%H 文件名 | xargs -I{} sh -c 'git show {}:文件名 > 文件名.{}'
 ```
@@ -206,9 +258,12 @@ $ sudo sh -c ‘echo “第二条内容” >> test.sh’
 
 ```
 
-##  git branch -r | xargs -d/ -n1 | grep -v 'origin' | xargs -I{} sh -c 'mkdir "C:\Users\76585\Desktop\try\{}" '
+## 给每一个远程分支在本地建立单独的文件夹，文件名就是分支名  
 
-> 用途：给每一个远程分支建立单独的文件夹，文件名就是分支名
+```bash
+git branch -r | xargs -d/ -n1 | grep -v 'origin' | xargs -I{} sh -c 'mkdir "C:\Users\76585\Desktop\try\{}" '
+```
+
 
 分析：
 
@@ -239,6 +294,35 @@ $ sudo sh -c ‘echo “第二条内容” >> test.sh’
 git log --grep="JRA-224:" 
 //也可以传入-i参数来忽略大小写匹配
 ```
+
+## 获取for循环中按条件筛选出的变量值
+**将这个功能写成一个函数，函数内部用echo输出这个值，外部用一个变量接受这个值。**
+
+```bash
+#!/bin/bash
+
+function func(){
+cat cfd.log | while read line
+do
+
+    OLD_IFS="$IFS"
+    IFS=" "
+    array=($line)
+    IFS="$OLD_IFS"
+    if [ "${array[0]}" = "cfdversion" ] ; then
+       echo ${array[2]}
+       break
+    fi
+
+done
+}
+
+res=$(func)
+
+echo $res
+```
+
+
 
 #  代码分析
 ##  读取文件夹中的文件名，并存入列表
@@ -642,3 +726,76 @@ sort |uniq -c|sort -nr|column -t|head
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bf86067e7f744920971af70e7249ade9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_12,color_FFFFFF,t_70,g_se,x_16)
 
 
+# 字符串切割
+将用到字符串切割，即将字符串切割为一个数组
+[原文链接](https://blog.csdn.net/u010003835/article/details/80750003?spm=1001.2101.3001.6650.5&depth_1-utm_relevant_index=10)
+## 利用shell 中 变量 的字符串替换
+原理：
+
+```bash
+${parameter//pattern/string} 
+```
+
+用string来替换parameter变量中所有匹配的pattern
+
+```bash
+#!/bin/bash
+ 
+string="hello,shell,split,test"  
+array=(${string//,/ })  
+ 
+for var in ${array[@]}
+do
+   echo $var
+done 
+```
+![在这里插入图片描述](https://img-blog.csdn.net/20180620184523515?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwMDM4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center)
+## 设置分隔符，通过 IFS 变量
+原理
+
+自定义IFS变量, 改变分隔符, 对字符串进行切分
+
+IFS介绍
+ Shell 脚本中有个变量叫 IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value stored in IFS, which is the space, tab, and newline characters by default, to delimit words for the read and set commands, when parsing output from command substitution, and when performing variable substitution.
+
+     Shell 的环境变量分为 set, env 两种，其中 set 变量可以通过 export 工具导入到 env 变量中。其中，set 是显示设置shell变量，仅在本 shell 中有效；env 是显示设置用户环境变量 ，仅在当前会话中有效。换句话说，set 变量里包含了 env 变量，但 set 变量不一定都是 env 变量。这两种变量不同之处在于变量的作用域不同。显然，env 变量的作用域要大些，它可以在 subshell 中使用。
+
+     而 IFS 是一种 set 变量，当 shell 处理"命令替换"和"参数替换"时，shell 根据 IFS 的值，默认是 space, tab, newline 来拆解读入的变量，然后对特殊字符进行处理，最后重新组合赋值给该变量。
+
+IFS 简单实例
+
+1、查看变量 IFS 的值。
+
+```bash
+$ echo $IFS  
+  
+$ echo "$IFS" | od -b  
+0000000 040 011 012 012  
+0000004  
+```
+
+直接输出IFS是看不到的，把它转化为二进制就可以看到了，"040"是空格，"011"是Tab，"012"是换行符"\n" 。最后一个 012 是因为 echo 默认是会换行的。
+
+
+**示例：**
+
+```bash
+#!/bin/bash
+ 
+string="hello,shell,split,test"  
+ 
+#对IFS变量 进行替换处理
+OLD_IFS="$IFS"
+IFS=","
+array=($string)
+IFS="$OLD_IFS"
+ 
+for var in ${array[@]}
+do
+   echo $var
+done
+```
+![在这里插入图片描述](https://img-blog.csdn.net/20180620203358805?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwMDM4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center)
+
+## 利用tr 指令实现字符替换
+详细内容可自行查看
