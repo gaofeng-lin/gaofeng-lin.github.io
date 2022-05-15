@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="John Doe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="John Doe">
+    
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="基本知识&#x2F;命令变量赋值语句不能有空格1、shell脚本变量名和等号及等号和值之间不能有空格，这可能和我们熟悉的所有编程语言都不一样，变量命名须遵循如下规则：•首个字符必须为字母（a-z，A-Z）。•中间不能有空格，可以使用下划线（_）。•不能使用标点符号。•不能使用bash里的关键字（可用help命令查看保留关键字）。 赋值语句等号两边不能有空格，中间有空格时，shell是把变量当一个命">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux Shell 命令">
+<meta property="og:url" content="https://gaofeng-lin.github.io/2022/03/06/Linux%20Shell%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="基本知识&#x2F;命令变量赋值语句不能有空格1、shell脚本变量名和等号及等号和值之间不能有空格，这可能和我们熟悉的所有编程语言都不一样，变量命名须遵循如下规则：•首个字符必须为字母（a-z，A-Z）。•中间不能有空格，可以使用下划线（_）。•不能使用标点符号。•不能使用bash里的关键字（可用help命令查看保留关键字）。 赋值语句等号两边不能有空格，中间有空格时，shell是把变量当一个命">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/524756e2e6810b93cd8fac228f2b4b9d.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/4f3976bb28594f89ab73d74c1d5b4448.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/bf86067e7f744920971af70e7249ade9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_12,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdn.net/20180620184523515?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwMDM4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center">
+<meta property="og:image" content="https://img-blog.csdn.net/20180620203358805?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwMDM4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center">
+<meta property="article:published_time" content="2022-03-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-14T02:49:58.615Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/524756e2e6810b93cd8fac228f2b4b9d.png#pic_center">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon1.jpg">
+    
+    <title>Linux Shell 命令 · Gaofeng&#39;s Home</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu">
+        
+            
+                <div style="padding-left: 1px;">&#xe775;</div>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>Gaofeng's Home.</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">Gaofeng&#39;s Home.</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">Linux Shell 命令</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden">
+        
+        
+            <div>&#xe639;</div>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                Linux Shell 命令
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="运维">运维</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+    
+</div>
+
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">5.4k</span>Reading time: <span class="post-count reading-time">23 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/03/06</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="基本知识-x2F-命令"><a href="#基本知识-x2F-命令" class="headerlink" title="基本知识&#x2F;命令"></a>基本知识&#x2F;命令</h1><h2 id="变量赋值语句不能有空格"><a href="#变量赋值语句不能有空格" class="headerlink" title="变量赋值语句不能有空格"></a>变量赋值语句不能有空格</h2><p><strong>1、shell脚本变量名和等号及等号和值之间不能有空格，这可能和我们熟悉的所有编程语言都不一样，变量命名须遵循如下规则：</strong><br>•首个字符必须为字母（a-z，A-Z）。<br>•中间不能有空格，可以使用下划线（_）。<br>•不能使用标点符号。<br>•不能使用bash里的关键字（可用help命令查看保留关键字）。</p>
+<p>赋值语句等号两边不能有空格，中间有空格时，shell是把变量当一个命令执行的，如：</p>
+<p>PROV &#x3D; anhui</p>
+<p>执行时会提示：.&#x2F;tt.sh: line 14: PROV: command not found</p>
+<p>正确的写法是：</p>
+<p>PROV&#x3D;anhui</p>
+<p>如果所赋的值包含空格，可以用引号括起来（没有空格时也可以用引号，效果和不用一样），例如：</p>
+<p>PROV&#x3D;”anhui province”</p>
+<p><strong>2、变量的引用是用$符号加上变量名，例如：</strong></p>
+<p>echo  ..&#x2F;${PROV}&#x2F;${DATDIR}</p>
+<p>变量名外面的花括号是可选的，加不加都行，加花括号是为了帮助解释器识别变量的边界，建议给所有变量加上花括号，这是个好习惯，既便于阅读，又不易出错。 </p>
+<p><strong>最后想说明一下，shell脚本对空格有严格的规定，赋值语句等号两边不能有空格，而字符串比较，等号两边必须有空格，如：</strong></p>
+<p>if [ “${sdpt}” &#x3D; “sdpt_js” ]; then</p>
+<h2 id="将命令的输出结果赋值给变量"><a href="#将命令的输出结果赋值给变量" class="headerlink" title="将命令的输出结果赋值给变量"></a>将命令的输出结果赋值给变量</h2><p>Shell 中有两种方式可以完成命令替换，一种是反引号<code> </code>，一种是$()，使用方法如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">variable=<span class="string">`commands`</span></span><br><span class="line">variable=$(commands)</span><br></pre></td></tr></table></figure>
+<p><strong>但有种情况比较特殊</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file_path=<span class="string">&quot;/home/yskj/phopt/work/2/100/209/Ma0.8395H0α3.06&quot;</span></span><br><span class="line"></span><br><span class="line">version_num=<span class="string">`echo <span class="subst">$&#123;file_path&#125;</span> | cut -d / -f 8`</span></span><br></pre></td></tr></table></figure>
+<p>version_num 那一行是一个字符串的分割，最终得到209，我想把这个值作为变量。<br>如果不加echo是会报错，因为单独运行，会去执行<code>$&#123;file_path&#125;这条命令，因为后面是管道</code>，而加上echo，就是输出，是一个正常的命令。<br>最后相当于把输出的结果赋值给了version_num这个变量</p>
+<h2 id="shell脚本中登录mysql-执行sql"><a href="#shell脚本中登录mysql-执行sql" class="headerlink" title="shell脚本中登录mysql,执行sql"></a>shell脚本中登录mysql,执行sql</h2><p><strong>方式一：mysql -u root -pmysql &lt;&lt;EOF sql语句 EOF</strong><br>注：密码与-p之间不能有空格，否则不能识别密码，EOF中间的sql语句，与mysql正常语句无异</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1 <span class="comment">#!/bin/bash</span></span><br><span class="line">2 <span class="built_in">echo</span> <span class="string">&quot;链接mysql&quot;</span></span><br><span class="line">3 mysql -u root -pmysql &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">4 use shelltest;</span></span><br><span class="line"><span class="string">5 select * from student;</span></span><br><span class="line"><span class="string">6 EOF</span></span><br><span class="line">7 <span class="built_in">echo</span> <span class="string">&quot;连接成功&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">python@ubuntu:~/shellscrip$ ./mys_connec.sh </span><br><span class="line">链接mysql</span><br><span class="line">mysql: [Warning] Using a password on the <span class="built_in">command</span> line interface can be insecure.</span><br><span class="line"><span class="built_in">id</span>	name</span><br><span class="line">1	tom</span><br><span class="line">连接成功</span><br></pre></td></tr></table></figure>
+<p>方式二：mysql -u root -pmysql -e “${sql}”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1 <span class="comment">#!/bin/bash</span></span><br><span class="line">2 <span class="built_in">echo</span> <span class="string">&quot;链接mysql&quot;</span></span><br><span class="line">3 sql=<span class="string">&quot;use shelltest;</span></span><br><span class="line"><span class="string">4 select * from student;&quot;</span></span><br><span class="line">5 mysql -u root -pmysql -e <span class="string">&quot;<span class="variable">$&#123;sql&#125;</span>&quot;</span></span><br><span class="line">6 <span class="built_in">echo</span> <span class="string">&quot;连接成功&quot;</span></span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">python@ubuntu:~/shellscrip$ ./mys_connec.sh </span><br><span class="line">链接mysql</span><br><span class="line">mysql: [Warning] Using a password on the <span class="built_in">command</span> line interface can be insecure.</span><br><span class="line">+------+------+</span><br><span class="line">| <span class="built_in">id</span>   | name |</span><br><span class="line">+------+------+</span><br><span class="line">|    1 | tom  |</span><br><span class="line">+------+------+</span><br><span class="line">连接成功</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="读取文件每一行并输出"><a href="#读取文件每一行并输出" class="headerlink" title="读取文件每一行并输出"></a>读取文件每一行并输出</h2><p>方案一：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> line</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$line</span></span><br><span class="line"><span class="keyword">done</span> &lt; test.txt</span><br></pre></td></tr></table></figure>
+<p>方案二：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> test.txt | <span class="keyword">while</span> <span class="built_in">read</span> line</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$line</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<p>方案三：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> `<span class="built_in">cat</span>  test.txt`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$line</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<p>for 逐行读和 while 逐行读是有区别的，如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> test.txt</span><br><span class="line">Google</span><br><span class="line">Runoob</span><br><span class="line">Taobao</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cat</span> test.txt | <span class="keyword">while</span> <span class="built_in">read</span> line; <span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$line</span>; <span class="keyword">done</span></span><br><span class="line">Google</span><br><span class="line">Runoob</span><br><span class="line">Taobao</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ <span class="keyword">for</span> line <span class="keyword">in</span> $(&lt;test.txt); <span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$line</span>; <span class="keyword">done</span></span><br><span class="line">Google</span><br><span class="line">Runoob</span><br><span class="line">Taobao</span><br></pre></td></tr></table></figure>
+
+<h1 id="实际命令分析"><a href="#实际命令分析" class="headerlink" title="实际命令分析"></a>实际命令分析</h1><h2 id="shell脚本登录mysql并执行语句"><a href="#shell脚本登录mysql并执行语句" class="headerlink" title="shell脚本登录mysql并执行语句"></a>shell脚本登录mysql并执行语句</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># get 7 days ago according to input date. e.g. if input date is 20180410,it will delete those records on or before 20180403</span></span><br><span class="line">wanted_date=`<span class="built_in">date</span> -d <span class="string">&quot;<span class="variable">$1</span> 7 days ago&quot;</span> +%Y%m%d`</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;0==&#125;=========&gt; CAUTION! Those records on or before <span class="variable">$wanted_date</span> will be removed!&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;0==&#125;=========&gt; Are you sure to continue? yes/no&quot;</span></span><br><span class="line"><span class="built_in">read</span> option</span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$option</span>&quot;</span> == <span class="string">&quot;yes&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> You made a good choice.</span><br><span class="line">  <span class="built_in">echo</span> ----------</span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">&quot;<span class="variable">$option</span>&quot;</span> == <span class="string">&quot;no&quot;</span> ];<span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> Goodbye~</span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> PLASE INPUT <span class="built_in">yes</span> OR no THEN TRY AGAIN!</span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># to call SQL statement at MySQL prompt</span></span><br><span class="line">mysql -h 172.33.101.123 -P 3306 -u tony -pYourPassword -D YourDbName &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">select current_date();</span></span><br><span class="line"><span class="string">use tony_db;</span></span><br><span class="line"><span class="string">desc confirmed_order_data;</span></span><br><span class="line"><span class="string">select count(*) from confirmed_order_data where paid_date&lt;=&quot;$wanted_date&quot;;</span></span><br><span class="line"><span class="string">delete from confirmed_order_data WHERE paid_date&lt;=&quot;$wanted_date&quot;;</span></span><br><span class="line"><span class="string">select count(*) from confirmed_order_data where paid_date&lt;=&quot;$wanted_date&quot;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="提取git中某个文件的所有版本并按顺序命名"><a href="#提取git中某个文件的所有版本并按顺序命名" class="headerlink" title="提取git中某个文件的所有版本并按顺序命名"></a>提取git中某个文件的所有版本并按顺序命名</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --follow --pretty=format:%H 文件名 | xargs -I&#123;&#125; sh -c &#x27;git show &#123;&#125;:文件名 &gt; 文件名.&#123;&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>简略解释版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">git log --follow --pretty=format:%H </span><br><span class="line">//按照一定的格式输出 ，--pretty=format:%H 输出某个文件的历史提交哈希值。</span><br><span class="line">//如果不加--pretty=format:%H，会输出哈希值，作者，时间等信息。</span><br><span class="line">//--pretty=format后面还可以跟其它值，</span><br><span class="line">//&#x27;%H&#x27;: commit hash</span><br><span class="line">//&#x27;%h&#x27;:abbreviated commit hash</span><br><span class="line">//&#x27;%T&#x27;: tree hash</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| xargs -I&#123;&#125; </span><br><span class="line"></span><br><span class="line">//xargs 一般是和管道(I)一起使用</span><br><span class="line"> //-I&#123;&#125; //xargs 的一个选项 -I，使用 -I 指定一个替换字符串 &#123;&#125;，这个字符串在 xargs 扩展时会被替换掉；对应这里，前面输出的是哈希值，这里面&quot;&#123;&#125;&quot;代表的就是哈希值，后面的&quot;&#123;&#125;&quot;也是前面的哈希值。</span><br><span class="line"></span><br><span class="line">sh -c </span><br><span class="line">//暂时不清，下面有解释</span><br><span class="line"></span><br><span class="line">git show &#123;&#125;:文件名 &gt; 文件名.&#123;&#125; </span><br><span class="line"> //git show &#x27;哈希值&#x27;:文件名：输出这次提交，这个文件夹的内容， &quot;&gt;&quot; 将内容输出到 后面的文件中，并覆盖后面文件内容。</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<ol start="2">
+<li>| xargs -I{} sh c</li>
+</ol>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|  //表示管道，上一条命令的输出，作为下一条命令参数，如 echo ‘yes’ | wc -l</span><br><span class="line"></span><br><span class="line">xargs -I //</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sh -c</span><br><span class="line"></span><br><span class="line">Linux使用 echo 并配合命令重定向是实现向文件中写入信息的快捷方式。</span><br><span class="line">【新建空文件】</span><br><span class="line">方式一 : $ touch test.sh</span><br><span class="line">方式二 : $ echo “” &gt; test.sh</span><br><span class="line">【写内容到文件】</span><br><span class="line">如 test.sh 文件中内容：</span><br><span class="line">$ echo “信息” &gt; test.sh</span><br><span class="line"></span><br><span class="line">但有时会出现权限不够的问题，这时就可以使用 sh -c</span><br><span class="line"></span><br><span class="line">利用 “sh -c” 命令，它可以让 bash 将一个字串作为完整的命令来执行，这样就可以将 sudo 的影响范围扩展到整条命令。具体用法如下：</span><br><span class="line">$ sudo sh -c ‘echo “第二条内容” &gt;&gt; test.sh’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="给每一个远程分支在本地建立单独的文件夹，文件名就是分支名"><a href="#给每一个远程分支在本地建立单独的文件夹，文件名就是分支名" class="headerlink" title="给每一个远程分支在本地建立单独的文件夹，文件名就是分支名"></a>给每一个远程分支在本地建立单独的文件夹，文件名就是分支名</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r | xargs -d/ -n1 | grep -v <span class="string">&#x27;origin&#x27;</span> | xargs -I&#123;&#125; sh -c <span class="string">&#x27;mkdir &quot;C:\Users\76585\Desktop\try\&#123;&#125;&quot; &#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>分析：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.  git branch -r //显示远程分支。注意，本地分支可能只有一个，master这种。但远程分支可能有很多个。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. | xargs -d/ -n1 // -d -n都是xargs的参数，详细可以去查文档。-d/  以&quot;/&quot;为分隔符；-n1，每行输出一个。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3. grep -v &#x27;origin&#x27; // 遇到origin就不显示（删除这个字符串）。</span><br></pre></td></tr></table></figure>
+
+<p>冷知识：在Windows下运行sh文件，在当前路径下，<code>./</code>;<br>如果是非当前路径，<code>c/xx/xxx/1.sh  //绝对路径到sh文件就好，前面不用加./</code> </p>
+<h2 id="按提交信息来过滤提交-–grep"><a href="#按提交信息来过滤提交-–grep" class="headerlink" title="按提交信息来过滤提交 –grep"></a>按提交信息来过滤提交 –grep</h2><p>按提交信息来过滤提交，你可以使用–grep标记。它和上面的–author标记差不多，只不过它搜索的是提交信息而不是作者。</p>
+<p>背景：提取主干某文件的提交，因为主干都是其它author合并上去的，所有没有主干这个author，无法使用–author这个参数来过滤。但是每次合并到主干的commit 都有一句 “into avtivebranch”，根据这一句筛选即可。</p>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log --grep=&quot;JRA-224:&quot; </span><br><span class="line">//也可以传入-i参数来忽略大小写匹配</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取for循环中按条件筛选出的变量值"><a href="#获取for循环中按条件筛选出的变量值" class="headerlink" title="获取for循环中按条件筛选出的变量值"></a>获取for循环中按条件筛选出的变量值</h2><p><strong>将这个功能写成一个函数，函数内部用echo输出这个值，外部用一个变量接受这个值。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">func</span></span>()&#123;</span><br><span class="line"><span class="built_in">cat</span> cfd.log | <span class="keyword">while</span> <span class="built_in">read</span> line</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">    OLD_IFS=<span class="string">&quot;<span class="variable">$IFS</span>&quot;</span></span><br><span class="line">    IFS=<span class="string">&quot; &quot;</span></span><br><span class="line">    array=(<span class="variable">$line</span>)</span><br><span class="line">    IFS=<span class="string">&quot;<span class="variable">$OLD_IFS</span>&quot;</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;array[0]&#125;</span>&quot;</span> = <span class="string">&quot;cfdversion&quot;</span> ] ; <span class="keyword">then</span></span><br><span class="line">       <span class="built_in">echo</span> <span class="variable">$&#123;array[2]&#125;</span></span><br><span class="line">       <span class="built_in">break</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">res=$(func)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$res</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h1><h2 id="读取文件夹中的文件名，并存入列表"><a href="#读取文件夹中的文件名，并存入列表" class="headerlink" title="读取文件夹中的文件名，并存入列表"></a>读取文件夹中的文件名，并存入列表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#读取文件夹中的文件名，并存入列表</span><br><span class="line"></span><br><span class="line">i=0</span><br><span class="line">for dir in $(ls &#x27;C:\Users\76585\Desktop\cfdname1&#x27;)</span><br><span class="line">do</span><br><span class="line">    </span><br><span class="line">    # echo $dir &gt;&gt; arr[$i]</span><br><span class="line">    arr[$i]=$dir</span><br><span class="line">    i=$(($i+1))</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">echo &quot;$&#123;arr[@]&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意的点：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1.for 循环循环体只能卸载do done之间，之前把 i 写在了for 和 do之间报错</span><br><span class="line"></span><br><span class="line">2.变量初始化不要放在函数体，不然每次循环都清 0 了。</span><br><span class="line"></span><br><span class="line">3.变量自增加方法：</span><br><span class="line">a=\$(($a+1))</span><br><span class="line"></span><br><span class="line">a=$[$a+1]</span><br><span class="line"></span><br><span class="line">a=\`expr $a + 1`</span><br><span class="line"></span><br><span class="line">let a++</span><br><span class="line"></span><br><span class="line">let a+=1</span><br><span class="line"></span><br><span class="line">((a++))</span><br><span class="line"></span><br><span class="line">4.打印数组的方法：$&#123;my_array[*]&#125; 或者 $&#123;my_array[@]&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h1><h2 id="获取变量字符串长度"><a href="#获取变量字符串长度" class="headerlink" title="获取变量字符串长度"></a>获取变量字符串长度</h2><p>想要知道 “<a target="_blank" rel="noopener" href="http://www.baidu.com&quot;/">www.baidu.com&quot;</a> 的变量net的长度十分简单。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Neptuneyt]$ net=&quot;www.baidu.com&quot;</span><br><span class="line">[Neptuneyt]$ echo $&#123;#net&#125;</span><br><span class="line">13</span><br></pre></td></tr></table></figure>
+<p>当然，在Shell中获取字符串变量的长度的方法有许多种，但是下图法一作为一种系统内建的方法是最快的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Neptuneyt]$ echo $&#123;#net&#125;</span><br><span class="line">13</span><br><span class="line">[Neptuneyt]$ echo $&#123;net&#125;|wc -L</span><br><span class="line">13</span><br><span class="line">[Neptuneyt]$ expr length $&#123;net&#125;</span><br><span class="line">13</span><br><span class="line">[Neptuneyt]$ echo $&#123;net&#125;|awk &#x27;&#123;print length($0)&#125;&#x27;</span><br><span class="line">13</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="变量截取"><a href="#变量截取" class="headerlink" title="变量截取"></a>变量截取</h2><p><strong>1.指定位置截取字符串</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Neptuneyt]$ net=&quot;www.baidu.com&quot;</span><br><span class="line">[Neptuneyt]$ # 从第4个字符截取到baidu</span><br><span class="line">[Neptuneyt]$ echo $&#123;net:4:5&#125; #从第4个字符.开始截取5个字符</span><br><span class="line">baidu</span><br><span class="line">[Neptuneyt]$ # 截取baidu.com</span><br><span class="line">[Neptuneyt]$ echo $&#123;net:4&#125;   #起始位置后不接截取字符长度则默认截取之后所有的</span><br><span class="line">baidu.com</span><br><span class="line">[Neptuneyt]$ # 用倒数截取com</span><br><span class="line">[Neptuneyt]$ echo $&#123;net:0-3&#125; #从倒数第三个字符截取到末尾</span><br><span class="line">com</span><br><span class="line">[Neptuneyt]$ echo $&#123;net: -3&#125; #另外的写法，一定要注意冒号和-3之间有空格</span><br><span class="line">com</span><br><span class="line">[Neptuneyt]$ echo $&#123;net:-3&#125;  #不加空格，截取失败</span><br><span class="line">www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.匹配字符串截取</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[Neptuneyt]$ echo $net</span><br><span class="line">www.baidu.com</span><br><span class="line"></span><br><span class="line"># 删除匹配字符串的左边，留下剩余部分</span><br><span class="line">[Neptuneyt]$ echo $&#123;net#*.&#125; #这里用*.表示匹配到www.，用一个#表示删除匹配到的字符串，留下剩余的部分</span><br><span class="line">baidu.com</span><br><span class="line"></span><br><span class="line"># 用2个#号表示尽可能多的删除匹配到的字符串</span><br><span class="line">[Neptuneyt]$ echo $&#123;net##*.&#125;</span><br><span class="line">com</span><br><span class="line"></span><br><span class="line"># 同理也可以匹配字符串的右边，留下剩余部分</span><br><span class="line">[Neptuneyt]$ echo $&#123;net%.*&#125; #用.*匹配到.com,用%删除</span><br><span class="line">www.baidu</span><br><span class="line"></span><br><span class="line"># 用2个%号表示尽可能多的删除匹配到的字符串</span><br><span class="line">[Neptuneyt]$ echo $&#123;net%%.*&#125;    #因为2个%，这里.*表示匹配到最长的.baidu.com</span><br></pre></td></tr></table></figure>
+<p>总的来说:<br><code>#*chr</code>表示删除从左到右第一个遇到的字符chr及其左侧的字符<br><code>##*chr</code>表示删除从左到右最后一个遇到的字符chr及其左侧的字符（贪婪模式）<br><code>%chr*</code>表示删除从右向左第一个遇到的字符chr及其右侧的字符<br><code>%%chr*</code>表示删除从右到左最后一个遇到的字符chr及其右侧的字符（贪婪模式）<br>在键盘上，#在$符的左边，%号在$符的右边，为了便于记忆，大家因此可以记住#删除左边字符，%删除右边字符</p>
+<p><strong>3.窃取字符串</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>cut</span><br><span class="line"></span><br><span class="line">-b ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</span><br><span class="line">-c ：以字符为单位进行分割。</span><br><span class="line"></span><br><span class="line">-d：自定义分隔符，默认为制表符。</span><br><span class="line"></span><br><span class="line">-f：与-d一起使用，指定显示哪个区域。</span><br><span class="line"></span><br><span class="line">-n：取消分割多字节字符。仅和-b标志一起使用。如果字符的最后一个字节落在由-b标志的<span class="title class_">List</span>参数指示的范围之内，该字符将被写出；否则，该字符将被排除。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>-d</strong></p>
+<p> cut命令用于列提取，默认分隔符是tab键。</p>
+<p>选项：-d指定分隔符，-f指定提取第几列</p>
+<p>eg1： 以%作为分隔符 输出第一个%前的区域1的东西，输出区域2的东西     </p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root<span class="meta">@ROUTER</span>:~# echo <span class="string">&quot;CPU:  busy 14%  (system=10% user=3% nice=0% idle=85%)&quot;</span> | cut -d \% -f <span class="number">1</span></span><br><span class="line"><span class="attr">CPU</span>:  busy <span class="number">14</span></span><br><span class="line">root<span class="meta">@ROUTER</span>:~# echo <span class="string">&quot;CPU:  busy 14%  (system=10% user=3% nice=0% idle=85%)&quot;</span> | cut -d \% -f <span class="number">2</span></span><br><span class="line">  (system=<span class="number">10</span></span><br><span class="line">root<span class="meta">@ROUTER</span>:~# echo <span class="string">&quot;CPU:  busy 14%  (system=10% user=3% nice=0% idle=85%)&quot;</span> | cut -b <span class="number">11</span>-<span class="number">14</span> | cut -d \% -f <span class="number">1</span></span><br><span class="line"> <span class="number">14</span></span><br><span class="line">root<span class="meta">@ROUTER</span>:~# echo <span class="string">&quot;CPU:  busy 14%  (system=10% user=3% nice=0% idle=85%)&quot;</span> | cut -b <span class="number">11</span>-<span class="number">14</span> </span><br><span class="line"> <span class="number">14</span>%</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>-b</strong><br>.eg1：然后调用cut，即剪切字符串中的第2和第5个字节。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo<span class="string">&quot;123abc&quot;</span>|cut -b <span class="number">2</span>,<span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>先输出123abc</p>
+<p>输出为2b</p>
+<p><strong>-c</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/524756e2e6810b93cd8fac228f2b4b9d.png#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="变量的字符串替换"><a href="#变量的字符串替换" class="headerlink" title="变量的字符串替换"></a>变量的字符串替换</h2><p>想要将net的 baidu替换成google怎么写呢？只需<code>$&#123;net/baidu/google&#125;</code>即可，需要注意的是原变量并未修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[Neptuneyt]$ echo $&#123;net/baidu/google&#125; #/匹配字符/替换字符</span><br><span class="line">www.google.com</span><br><span class="line">[Neptuneyt]$ echo $net  #原变量并未修改</span><br><span class="line">www.baidu.com</span><br></pre></td></tr></table></figure>
+<p>如果是替换所有匹配到的字符，应该通过<code>$&#123;variable//pattern/sub&#125;</code><br>例如将net的.替换为-或&#x2F;：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[Neptuneyt]$ echo $&#123;net//./-&#125;</span><br><span class="line">www-baidu-com</span><br><span class="line">[Neptuneyt]$ echo $&#123;net//.//&#125;</span><br><span class="line">www/baidu/com</span><br></pre></td></tr></table></figure>
+
+<p>除此之外，还有两种专门针对字符串开头和结尾的替换方式<br>只替换开头匹配的字符串<code>$&#123;variable/#pattern/sub&#125;</code><br>只替换结尾匹配的字符串<code>$&#123;variable/%pattern/sub&#125;</code><br>例如对于<code>add=www.xiaomi.com.www</code>的开头或者结尾的<code>www</code>替换为<code>-</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[Neptuneyt]$ add=www.xiaomi.com.www</span><br><span class="line">[Neptuneyt]$ echo $&#123;add/#www/-&#125;</span><br><span class="line">-.xiaomi.com.www</span><br><span class="line">[Neptuneyt]$ echo $&#123;add/%www/-&#125;</span><br><span class="line">www.xiaomi.com.-</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除字符串"><a href="#删除字符串" class="headerlink" title="删除字符串"></a>删除字符串</h2><p>其实学会了替换字符串删除字符串就更简单了，只需将替换部分写成空即可，即<code>$&#123;variable/pattern/null&#125;</code>，例如将net的第一个.删除，只需</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[Neptuneyt]$ echo $&#123;net/./&#125;</span><br><span class="line">wwwbaidu.com</span><br><span class="line">[Neptuneyt]$ echo $&#123;net/.&#125;  #最后一个/可以不用写</span><br><span class="line">wwwbaidu.com</span><br></pre></td></tr></table></figure>
+
+<p>若要删除所有匹配到的只需即<code>$&#123;variable//pattern&#125;</code>，例如将<code>net</code>的.都删除，只需</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Neptuneyt]$ echo $&#123;net//.&#125;</span><br><span class="line">wwwbaiducom</span><br></pre></td></tr></table></figure>
+<h2 id="变量为空时赋默认值"><a href="#变量为空时赋默认值" class="headerlink" title="变量为空时赋默认值"></a>变量为空时赋默认值</h2><p>当我们在写脚本时往往需要给脚本传递一些参数，在Shell中传递参数十分简单，只需利用特殊的位置参数变量诸如<code>$1,$2,$3...$&#123;10&#125;...</code>即可，例如，以下脚本传递2个参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># PassArgument.sh</span><br><span class="line">#!/bin/env bash</span><br><span class="line"># pass 2 arguments</span><br><span class="line">arg1=$1</span><br><span class="line">arg2=$2</span><br><span class="line">echo $arg1 $arg2</span><br><span class="line"></span><br><span class="line">[Neptuneyt]$ bash PassArgument.sh Hello word #参数以空格隔开</span><br><span class="line">Hello word</span><br></pre></td></tr></table></figure>
+<p>有时候，我们想省掉最后一个参数，让它使用默认值，这个时候只需通过<code>$&#123;variable:=&#39;default value&#39;&#125;</code>即可，即当变量有值的时候则使用原值，若没有值则使用括号中默认定义好的值。例如，如下脚本表示当第二个参数为空时默认使用定义好的值“word”,否则是用户自己传递的参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># PassArgument.sh</span><br><span class="line">#!/bin/env bash</span><br><span class="line">arg1=$1</span><br><span class="line">arg2=$2</span><br><span class="line">echo $arg1 $&#123;arg2:=&#x27;word&#x27;&#125;  #第二个参数设置默认值</span><br><span class="line"></span><br><span class="line">[Neptuneyt]$ bash PassArgument.sh Hello #第二个参数为空时使用默认值</span><br><span class="line">Hello word</span><br><span class="line">[Neptuneyt]$ bash PassArgument.sh Hello Shell   #第二个参数不为空时使用参数传递的值</span><br><span class="line">Hello Shell</span><br></pre></td></tr></table></figure>
+<p>除了<code>$&#123;variable:=&#39;default value&#39;&#125;</code>外，还有<code>$&#123;variable:-&#39;default value&#39;&#125;</code>,<code>$&#123;variable:+&#39;default value&#39;&#125;</code>和<code>$&#123;variable:？&#39;default value&#39;&#125;</code>，它们有什么区别呢？<br>对于<code>$&#123;variable:=&#39;default value&#39;&#125;</code>，表示变量为空时把默认值赋值给该变量，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[Neptuneyt]$ net=</span><br><span class="line">[Neptuneyt]$ echo $&#123;net:=&#x27;www.baidu.com&#x27;&#125;</span><br><span class="line">www.baidu.com</span><br><span class="line">[Neptuneyt]$ echo $net</span><br><span class="line">www.baidu.com</span><br></pre></td></tr></table></figure>
+<p>对于<code>$&#123;variable:-&#39;default value&#39;&#125;</code>,表示变量为空时返回默认值<strong>但是并不把默认值赋值给该变量</strong>， 例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[Neptuneyt]$ net=</span><br><span class="line">[Neptuneyt]$ echo $&#123;net:-&#x27;www.baidu.com&#x27;&#125;</span><br><span class="line">www.baidu.com</span><br><span class="line">[Neptuneyt]$ echo $net  #此时，变量依旧为空</span><br></pre></td></tr></table></figure>
+
+<p>对于<code>$&#123;variable:+&#39;default value&#39;&#125;</code>,则表示变量不为空时，返回默认值，并且也不重新赋值，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[Neptuneyt]$ net=www.baidu.com</span><br><span class="line">[Neptuneyt]$ echo $&#123;net:+&#x27;www.google.com&#x27;&#125;</span><br><span class="line">www.google.com</span><br><span class="line">[Neptuneyt]$ echo $net  #不改变变量原值</span><br><span class="line">www.baidu.com</span><br></pre></td></tr></table></figure>
+<p>最后，对于<code>$&#123;variable:？&#39;default value&#39;&#125;</code>,则表示当变量为空时，使用bash风格的报错，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Neptuneyt]$ net=</span><br><span class="line">[Neptuneyt]$ echo $&#123;net:?&#x27;error:null value&#x27;&#125;</span><br><span class="line">-bash: net: error:null value</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h2><p>在 PHP 中，使用.即可连接两个字符串；<br>在 JavaScript 中，使用+即可将两个字符串合并为一个。<br>在 Shell 中你不需要使用任何运算符，将两个字符串并排放在一起就能实现拼接，非常简单粗暴。请看下面的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">name=&quot;Shell&quot;</span><br><span class="line">url=&quot;http://c.biancheng.net/shell/&quot;</span><br><span class="line">str1=$name$url  #中间不能有空格</span><br><span class="line">str2=&quot;$name $url&quot;  #如果被双引号包围，那么中间可以有空格</span><br><span class="line">str3=$name&quot;: &quot;$url  #中间可以出现别的字符串</span><br><span class="line">str4=&quot;$name: $url&quot;  #这样写也可以</span><br><span class="line">str5=&quot;$&#123;name&#125;Script: $&#123;url&#125;index.html&quot;  #这个时候需要给变量名加上大括号</span><br><span class="line">echo $str1</span><br><span class="line">echo $str2</span><br><span class="line">echo $str3</span><br><span class="line">echo $str4</span><br><span class="line">echo $str5</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">运行结果：</span><br><span class="line">Shellhttp://c.biancheng.net/shell/</span><br><span class="line">Shell http://c.biancheng.net/shell/</span><br><span class="line">Shell: http://c.biancheng.net/shell/</span><br><span class="line">Shell: http://c.biancheng.net/shell/</span><br><span class="line">ShellScript: http://c.biancheng.net/shell/index.html</span><br></pre></td></tr></table></figure>
+<p>对于第 7 行代码，$name 和 $url 之间之所以不能出现空格，是因为当字符串不被任何一种引号包围时，遇到空格就认为字符串结束了，空格后边的内容会作为其他变量或者命令解析，这一点在《Shell字符串》中已经提到。</p>
+<p>对于第 10 行代码，加{ }是为了帮助解释器识别变量的边界，这一点在《Shell变量》中已经提到。</p>
+<h2 id="单引号内引入变量"><a href="#单引号内引入变量" class="headerlink" title="单引号内引入变量"></a>单引号内引入变量</h2><p><strong>方法：单引号内嵌套单引号即可使用变量</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">i=10</span><br><span class="line">echo $i</span><br><span class="line">echo &#x27;$i&#x27;</span><br><span class="line">echo &#x27;$i is : &#x27;$i&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">执行结果</span><br><span class="line"></span><br><span class="line"># ./test.sh </span><br><span class="line">10</span><br><span class="line">$i</span><br><span class="line">$i is : 10</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="shell中判断两个字符串相等"><a href="#shell中判断两个字符串相等" class="headerlink" title="shell中判断两个字符串相等"></a>shell中判断两个字符串相等</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/bash</span><br><span class="line"></span><br><span class="line">read -p &quot;If you want to clean the trash?(y/n):&quot; select</span><br><span class="line">str=y</span><br><span class="line"></span><br><span class="line">if [ &quot;$select&quot; = &quot;y&quot; ]</span><br><span class="line">then</span><br><span class="line">    rm -fr $HOME/.local/share/Trash/files/*</span><br><span class="line">    echo &quot;Deleted successfully!&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;Undelete!&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>注意的几点：</strong><br><strong>1、if和[ ]之间要空格。</strong></p>
+<p><strong>2、[ ]和“ ”之间要空格</strong></p>
+<p><strong>3、“ ”和&#x3D;之间要空格，</strong></p>
+<h2 id="实战：统计文章单词情况"><a href="#实战：统计文章单词情况" class="headerlink" title="实战：统计文章单词情况"></a>实战：统计文章单词情况</h2><p>这里想要统计Martin Luther King在1963年著名的<strong>I have a dream</strong>演讲中都使用了哪些词，哪些是高频词，单词字长如何。<br><img src="https://img-blog.csdnimg.cn/4f3976bb28594f89ab73d74c1d5b4448.png" alt="在这里插入图片描述"><br>思路：<br>高频词统计：将所有单词单行输出，删除空行，删除<code>,./?</code>等非字母符号，用sort排序后使用uniq统计即可。<br>字长频数统计：将所有单词单行输出，删除空行，删除<code>,./?</code>等非字母符号，使用while循环遍历每个单词，使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;#variable&#125; //统计单词长读频数。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 高频词统计</span><br><span class="line">echo &quot;高频词统计：&quot;</span><br><span class="line">echo &quot;频数&quot; &quot;单词&quot;</span><br><span class="line">tr &quot; &quot; &quot;\n&quot; &lt;IHaveADream.txt | \</span><br><span class="line">#使用tr将空格转换成换行符，使得每行一个单词，\续行符表示一行命令未写完可换行书写，切记其后什么字符也不能接，包括空格和注释</span><br><span class="line">sed -e &quot;/[^a-Z]/d;/^$/d&quot; | \</span><br><span class="line">#使用sed匹配非字母字符和空行并删除：-e 表示执行多个操作； /[^a-Z]/，双斜线//表示匹配部分，^表示匹配除开后面a-Z的所有字符，d表示对前面匹配部分删除；/^$/表示匹配空行，^、$分别表示行首和行尾</span><br><span class="line">sort |uniq -c |    \</span><br><span class="line">#排序之后使用uniq统计，-c表示统计单词出现的次数</span><br><span class="line">sort -nr | column -t|head #将次数最多的单词排在前面，-n表示按数值排序，-r从大到小倒序排，column -t表格式输出</span><br><span class="line"></span><br><span class="line"># 字长频数统计</span><br><span class="line">echo</span><br><span class="line">echo &quot;字长频数统计：&quot;</span><br><span class="line">echo &quot;频数&quot; &quot;单词长度&quot;</span><br><span class="line">tr &quot; &quot; &quot;\n&quot; &lt;IHaveADream.txt | \</span><br><span class="line">sed -e &quot;/[^a-Z]/d;/^$/d&quot; | \</span><br><span class="line">while read word</span><br><span class="line">do</span><br><span class="line">  echo $&#123;#word&#125;</span><br><span class="line">done |\</span><br><span class="line"># 用while和read每次读入一个单词，使用$&#123;#word&#125;统计单词长度</span><br><span class="line">sort |uniq -c|sort -nr|column -t|head</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/bf86067e7f744920971af70e7249ade9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_12,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h1 id="字符串切割"><a href="#字符串切割" class="headerlink" title="字符串切割"></a>字符串切割</h1><p>将用到字符串切割，即将字符串切割为一个数组<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010003835/article/details/80750003?spm=1001.2101.3001.6650.5&depth_1-utm_relevant_index=10">原文链接</a></p>
+<h2 id="利用shell-中-变量-的字符串替换"><a href="#利用shell-中-变量-的字符串替换" class="headerlink" title="利用shell 中 变量 的字符串替换"></a>利用shell 中 变量 的字符串替换</h2><p>原理：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$&#123;parameter//pattern/string&#125;</span> </span><br></pre></td></tr></table></figure>
+
+<p>用string来替换parameter变量中所有匹配的pattern</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"> </span><br><span class="line">string=<span class="string">&quot;hello,shell,split,test&quot;</span>  </span><br><span class="line">array=(<span class="variable">$&#123;string//,/ &#125;</span>)  </span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> <span class="variable">$&#123;array[@]&#125;</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="variable">$var</span></span><br><span class="line"><span class="keyword">done</span> </span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdn.net/20180620184523515?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwMDM4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="设置分隔符，通过-IFS-变量"><a href="#设置分隔符，通过-IFS-变量" class="headerlink" title="设置分隔符，通过 IFS 变量"></a>设置分隔符，通过 IFS 变量</h2><p>原理</p>
+<p>自定义IFS变量, 改变分隔符, 对字符串进行切分</p>
+<p>IFS介绍<br> Shell 脚本中有个变量叫 IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value stored in IFS, which is the space, tab, and newline characters by default, to delimit words for the read and set commands, when parsing output from command substitution, and when performing variable substitution.</p>
+<pre><code> Shell 的环境变量分为 set, env 两种，其中 set 变量可以通过 export 工具导入到 env 变量中。其中，set 是显示设置shell变量，仅在本 shell 中有效；env 是显示设置用户环境变量 ，仅在当前会话中有效。换句话说，set 变量里包含了 env 变量，但 set 变量不一定都是 env 变量。这两种变量不同之处在于变量的作用域不同。显然，env 变量的作用域要大些，它可以在 subshell 中使用。
+
+ 而 IFS 是一种 set 变量，当 shell 处理&quot;命令替换&quot;和&quot;参数替换&quot;时，shell 根据 IFS 的值，默认是 space, tab, newline 来拆解读入的变量，然后对特殊字符进行处理，最后重新组合赋值给该变量。
+</code></pre>
+<p>IFS 简单实例</p>
+<p>1、查看变量 IFS 的值。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="variable">$IFS</span>  </span><br><span class="line">  </span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$IFS</span>&quot;</span> | <span class="built_in">od</span> -b  </span><br><span class="line">0000000 040 011 012 012  </span><br><span class="line">0000004  </span><br></pre></td></tr></table></figure>
+
+<p>直接输出IFS是看不到的，把它转化为二进制就可以看到了，”040”是空格，”011”是Tab，”012”是换行符”\n” 。最后一个 012 是因为 echo 默认是会换行的。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"> </span><br><span class="line">string=<span class="string">&quot;hello,shell,split,test&quot;</span>  </span><br><span class="line"> </span><br><span class="line"><span class="comment">#对IFS变量 进行替换处理</span></span><br><span class="line">OLD_IFS=<span class="string">&quot;<span class="variable">$IFS</span>&quot;</span></span><br><span class="line">IFS=<span class="string">&quot;,&quot;</span></span><br><span class="line">array=(<span class="variable">$string</span>)</span><br><span class="line">IFS=<span class="string">&quot;<span class="variable">$OLD_IFS</span>&quot;</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> <span class="variable">$&#123;array[@]&#125;</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="variable">$var</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdn.net/20180620203358805?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwMDM4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="利用tr-指令实现字符替换"><a href="#利用tr-指令实现字符替换" class="headerlink" title="利用tr 指令实现字符替换"></a>利用tr 指令实现字符替换</h2><p>详细内容可自行查看</p>
+
+    </article>
+    <!-- license -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://gaofeng-lin.github.io">John Doe</a>
+            <p>Link：<a href="https://gaofeng-lin.github.io/2022/03/06/Linux%20Shell%E5%91%BD%E4%BB%A4/">https://gaofeng-lin.github.io/2022/03/06/Linux%20Shell%E5%91%BD%E4%BB%A4/</a>
+            <p>Publish date：<a href="https://gaofeng-lin.github.io/2022/03/06/Linux%20Shell%E5%91%BD%E4%BB%A4/">March 6th 2022, 12:00:00 am</a>
+            <p>Update date：<a href="https://gaofeng-lin.github.io/2022/03/06/Linux%20Shell%E5%91%BD%E4%BB%A4/">May 14th 2022, 10:49:58 am</a>
+            <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2022/03/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="计算机基础知识">
+                    <div class="nextTitle">计算机基础知识</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/03/06/Linux%E7%9F%A5%E8%AF%86%E7%82%B9+%E9%97%AE%E9%A2%98/" title="Linux知识点+问题">
+                    <div class="prevTitle">Linux知识点+问题</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:jason_gaofeng_lin@163.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/gaofeng-lin" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                    
+                    <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86-x2F-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">基本知识&#x2F;命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC%E8%AF%AD%E5%8F%A5%E4%B8%8D%E8%83%BD%E6%9C%89%E7%A9%BA%E6%A0%BC"><span class="toc-number">1.1.</span> <span class="toc-text">变量赋值语句不能有空格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E5%91%BD%E4%BB%A4%E7%9A%84%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C%E8%B5%8B%E5%80%BC%E7%BB%99%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text">将命令的输出结果赋值给变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E7%99%BB%E5%BD%95mysql-%E6%89%A7%E8%A1%8Csql"><span class="toc-number">1.3.</span> <span class="toc-text">shell脚本中登录mysql,执行sql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E6%AF%8F%E4%B8%80%E8%A1%8C%E5%B9%B6%E8%BE%93%E5%87%BA"><span class="toc-number">1.4.</span> <span class="toc-text">读取文件每一行并输出</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%91%BD%E4%BB%A4%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">实际命令分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E8%84%9A%E6%9C%AC%E7%99%BB%E5%BD%95mysql%E5%B9%B6%E6%89%A7%E8%A1%8C%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.1.</span> <span class="toc-text">shell脚本登录mysql并执行语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8F%96git%E4%B8%AD%E6%9F%90%E4%B8%AA%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%80%E6%9C%89%E7%89%88%E6%9C%AC%E5%B9%B6%E6%8C%89%E9%A1%BA%E5%BA%8F%E5%91%BD%E5%90%8D"><span class="toc-number">2.2.</span> <span class="toc-text">提取git中某个文件的所有版本并按顺序命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%99%E6%AF%8F%E4%B8%80%E4%B8%AA%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E5%9C%A8%E6%9C%AC%E5%9C%B0%E5%BB%BA%E7%AB%8B%E5%8D%95%E7%8B%AC%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E6%96%87%E4%BB%B6%E5%90%8D%E5%B0%B1%E6%98%AF%E5%88%86%E6%94%AF%E5%90%8D"><span class="toc-number">2.3.</span> <span class="toc-text">给每一个远程分支在本地建立单独的文件夹，文件名就是分支名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E6%8F%90%E4%BA%A4%E4%BF%A1%E6%81%AF%E6%9D%A5%E8%BF%87%E6%BB%A4%E6%8F%90%E4%BA%A4-%E2%80%93grep"><span class="toc-number">2.4.</span> <span class="toc-text">按提交信息来过滤提交 –grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96for%E5%BE%AA%E7%8E%AF%E4%B8%AD%E6%8C%89%E6%9D%A1%E4%BB%B6%E7%AD%9B%E9%80%89%E5%87%BA%E7%9A%84%E5%8F%98%E9%87%8F%E5%80%BC"><span class="toc-number">2.5.</span> <span class="toc-text">获取for循环中按条件筛选出的变量值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">代码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%8C%E5%B9%B6%E5%AD%98%E5%85%A5%E5%88%97%E8%A1%A8"><span class="toc-number">3.1.</span> <span class="toc-text">读取文件夹中的文件名，并存入列表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">字符串处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6"><span class="toc-number">4.1.</span> <span class="toc-text">获取变量字符串长度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E6%88%AA%E5%8F%96"><span class="toc-number">4.2.</span> <span class="toc-text">变量截取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2"><span class="toc-number">4.3.</span> <span class="toc-text">变量的字符串替换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">4.4.</span> <span class="toc-text">删除字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E4%B8%BA%E7%A9%BA%E6%97%B6%E8%B5%8B%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">4.5.</span> <span class="toc-text">变量为空时赋默认值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5"><span class="toc-number">4.6.</span> <span class="toc-text">字符串拼接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7%E5%86%85%E5%BC%95%E5%85%A5%E5%8F%98%E9%87%8F"><span class="toc-number">4.7.</span> <span class="toc-text">单引号内引入变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E4%B8%AD%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E7%AD%89"><span class="toc-number">4.8.</span> <span class="toc-text">shell中判断两个字符串相等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%EF%BC%9A%E7%BB%9F%E8%AE%A1%E6%96%87%E7%AB%A0%E5%8D%95%E8%AF%8D%E6%83%85%E5%86%B5"><span class="toc-number">4.9.</span> <span class="toc-text">实战：统计文章单词情况</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E5%89%B2"><span class="toc-number">5.</span> <span class="toc-text">字符串切割</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8shell-%E4%B8%AD-%E5%8F%98%E9%87%8F-%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2"><span class="toc-number">5.1.</span> <span class="toc-text">利用shell 中 变量 的字符串替换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%88%86%E9%9A%94%E7%AC%A6%EF%BC%8C%E9%80%9A%E8%BF%87-IFS-%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.</span> <span class="toc-text">设置分隔符，通过 IFS 变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8tr-%E6%8C%87%E4%BB%A4%E5%AE%9E%E7%8E%B0%E5%AD%97%E7%AC%A6%E6%9B%BF%E6%8D%A2"><span class="toc-number">5.3.</span> <span class="toc-text">利用tr 指令实现字符替换</span></a></li></ol></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 18
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/28</span>
+            <a class="archive-post-title" href="/2022/04/28/java%E6%A1%86%E6%9E%B6+%E5%B7%A5%E5%85%B7/">Java框架+工具</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/22</span>
+            <a class="archive-post-title" href="/2022/04/22/%E7%89%9B%E5%AE%A2%E7%BD%91/">牛客网</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/Docker/">Docker</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/go/">Go</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux常用命令</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E4%B8%8B%E8%BD%BD%E8%BF%87%E6%85%A2/">下载过慢</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E5%B7%A5%E5%85%B7%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9B%86%E5%90%88/">工具快捷键集合</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">计算机基础知识</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/Linux%20Shell%E5%91%BD%E4%BB%A4/">Linux Shell 命令</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/Linux%E7%9F%A5%E8%AF%86%E7%82%B9+%E9%97%AE%E9%A2%98/">Linux知识点+问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span>
+            <a class="archive-post-title" href="/2022/02/28/java%E7%9F%A5%E8%AF%86/">Java知识</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span>
+            <a class="archive-post-title" href="/2022/01/26/%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">算法总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/Jenkins%E7%9F%A5%E8%AF%86%E7%82%B9/">Jenkins知识点</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/git%E6%93%8D%E4%BD%9C/">git操作</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/python/">python</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/">前端知识</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/%E9%9B%B6%E6%95%A3%E7%9F%A5%E8%AF%86/">零散知识</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="Docker">
+                <span class="iconfont-archer">&#xe606;</span>
+                Docker
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="运维">
+                <span class="iconfont-archer">&#xe606;</span>
+                运维
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Jenkins">
+                <span class="iconfont-archer">&#xe606;</span>
+                Jenkins
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="持续集成">
+                <span class="iconfont-archer">&#xe606;</span>
+                持续集成
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="代码管理">
+                <span class="iconfont-archer">&#xe606;</span>
+                代码管理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Go">
+                <span class="iconfont-archer">&#xe606;</span>
+                Go
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据结构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Java">
+                <span class="iconfont-archer">&#xe606;</span>
+                Java
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringBoot">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringBoot
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ssh">
+                <span class="iconfont-archer">&#xe606;</span>
+                ssh
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Vim">
+                <span class="iconfont-archer">&#xe606;</span>
+                Vim
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="gcc">
+                <span class="iconfont-archer">&#xe606;</span>
+                gcc
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux权限用法">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux权限用法
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="npm">
+                <span class="iconfont-archer">&#xe606;</span>
+                npm
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="yarn">
+                <span class="iconfont-archer">&#xe606;</span>
+                yarn
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="梯子">
+                <span class="iconfont-archer">&#xe606;</span>
+                梯子
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="office">
+                <span class="iconfont-archer">&#xe606;</span>
+                office
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="IDE">
+                <span class="iconfont-archer">&#xe606;</span>
+                IDE
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编辑器">
+                <span class="iconfont-archer">&#xe606;</span>
+                编辑器
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快捷键">
+                <span class="iconfont-archer">&#xe606;</span>
+                快捷键
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Vue">
+                <span class="iconfont-archer">&#xe606;</span>
+                Vue
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="React">
+                <span class="iconfont-archer">&#xe606;</span>
+                React
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JavaScript">
+                <span class="iconfont-archer">&#xe606;</span>
+                JavaScript
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Json">
+                <span class="iconfont-archer">&#xe606;</span>
+                Json
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="递归">
+                <span class="iconfont-archer">&#xe606;</span>
+                递归
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="nginx">
+                <span class="iconfont-archer">&#xe606;</span>
+                nginx
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编译">
+                <span class="iconfont-archer">&#xe606;</span>
+                编译
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="环境变量">
+                <span class="iconfont-archer">&#xe606;</span>
+                环境变量
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Cookie">
+                <span class="iconfont-archer">&#xe606;</span>
+                Cookie
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Session">
+                <span class="iconfont-archer">&#xe606;</span>
+                Session
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="密码学">
+                <span class="iconfont-archer">&#xe606;</span>
+                密码学
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="硬件知识">
+                <span class="iconfont-archer">&#xe606;</span>
+                硬件知识
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="线程、进程">
+                <span class="iconfont-archer">&#xe606;</span>
+                线程、进程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="照片模糊处理">
+                <span class="iconfont-archer">&#xe606;</span>
+                照片模糊处理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="win10">
+                <span class="iconfont-archer">&#xe606;</span>
+                win10
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="专利">
+                <span class="iconfont-archer">&#xe606;</span>
+                专利
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="bat">
+                <span class="iconfont-archer">&#xe606;</span>
+                bat
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="visio">
+                <span class="iconfont-archer">&#xe606;</span>
+                visio
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="牛客网">
+                <span class="iconfont-archer">&#xe606;</span>
+                牛客网
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                Spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="make&cmake">
+                <span class="iconfont-archer">&#xe606;</span>
+                make&cmake
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Docker">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Docker
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Jenkins">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Jenkins
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Linux">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Linux
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="git">
+            <span class="iconfont-archer">&#xe60a;</span>
+            git
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Go">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Go
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Java">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Java
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="小知识">
+            <span class="iconfont-archer">&#xe60a;</span>
+            小知识
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="工具">
+            <span class="iconfont-archer">&#xe60a;</span>
+            工具
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="python">
+            <span class="iconfont-archer">&#xe60a;</span>
+            python
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="前端开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            前端开发
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="数据库">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据库
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="计算机基础知识">
+            <span class="iconfont-archer">&#xe60a;</span>
+            计算机基础知识
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="web">
+            <span class="iconfont-archer">&#xe60a;</span>
+            web
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="操作系统">
+            <span class="iconfont-archer">&#xe60a;</span>
+            操作系统
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="概念">
+            <span class="iconfont-archer">&#xe60a;</span>
+            概念
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://gaofeng-lin.github.io",
+        root: siteMetaRoot,
+        author: "John Doe"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+    </body>
+</html>

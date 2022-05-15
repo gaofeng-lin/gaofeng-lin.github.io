@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="John Doe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="John Doe">
+    
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="SSMspringboot 只是组装了spring和springmvc。SSM中的SS指的是Spring SpringMVC，M是指MyBatis。 SSM（Spring+SpringMVC+MyBatis）架构工作原理1.SSM系统架构 2.执行流程 MSCM(model ,service, controller ,mapper)mapper的中文意思是映射器；mapper和dao是一个东西，叫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java框架+工具">
+<meta property="og:url" content="https://gaofeng-lin.github.io/2022/04/28/java%E6%A1%86%E6%9E%B6+%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SSMspringboot 只是组装了spring和springmvc。SSM中的SS指的是Spring SpringMVC，M是指MyBatis。 SSM（Spring+SpringMVC+MyBatis）架构工作原理1.SSM系统架构 2.执行流程 MSCM(model ,service, controller ,mapper)mapper的中文意思是映射器；mapper和dao是一个东西，叫">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/fd51aa6838fd4315ac1df679eb3500e5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0a57266814cb4fe395124ce40ea590a4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zczMuYmRzdGF0aWMuY29tLzcwY0Z2OFNoX1ExWW54R2twb1dLMUhGNmhoeS9pdC91PTY1ODc1NzYzNCwzMTUzMjQ0OTA1JmZtPTI2JmdwPTAuanBn?x-oss-process=image/format,png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190806101012614.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNjQ3OTk5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1f793bb259964619876d3efb18303f2e.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/a9a95bf4b1204f3cb542a1f22bb5094a.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9ef53b31f1034ac1bb14e47506482bed.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/7ae167596761457c991e6dd569b2cc2b.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9d1e342190fd41a7882915823fc74508.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/92f11628821e46c48e9dbedc1901b23d.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/4a0f6bab3f814b2eb88ce5bf7a0752dd.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/6a34e9ded1434451bd7a166d18c3aa5e.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0f7647b2c8414917924b5be5a50f2f69.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/5b3feb96c994426fbc8f89aab82a3e38.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2332d45a5bb1451aa65977fca95a6f03.png">
+<meta property="article:published_time" content="2022-04-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-28T14:26:52.196Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/fd51aa6838fd4315ac1df679eb3500e5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon1.jpg">
+    
+    <title>Java框架+工具 · Gaofeng&#39;s Home</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu">
+        
+            
+                <div style="padding-left: 1px;">&#xe775;</div>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>Gaofeng's Home.</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">Gaofeng&#39;s Home.</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">Java框架+工具</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden">
+        
+        
+            <div>&#xe639;</div>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                Java框架+工具
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="SpringBoot">SpringBoot</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Spring">Spring</a>
+    
+</div>
+
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">3.1k</span>Reading time: <span class="post-count reading-time">11 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/04/28</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="SSM"><a href="#SSM" class="headerlink" title="SSM"></a>SSM</h1><p><strong>springboot 只是组装了spring和springmvc。SSM中的SS指的是Spring SpringMVC，M是指MyBatis。</strong></p>
+<h2 id="SSM（Spring-SpringMVC-MyBatis）架构"><a href="#SSM（Spring-SpringMVC-MyBatis）架构" class="headerlink" title="SSM（Spring+SpringMVC+MyBatis）架构"></a>SSM（Spring+SpringMVC+MyBatis）架构</h2><h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>1.SSM系统架构<br><img src="https://img-blog.csdnimg.cn/fd51aa6838fd4315ac1df679eb3500e5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>2.执行流程<br><img src="https://img-blog.csdnimg.cn/0a57266814cb4fe395124ce40ea590a4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="MSCM-model-service-controller-mapper"><a href="#MSCM-model-service-controller-mapper" class="headerlink" title="MSCM(model ,service, controller ,mapper)"></a>MSCM(model ,service, controller ,mapper)</h2><p><em><strong>mapper的中文意思是映射器；mapper和dao是一个东西，叫法不同。</strong></em></p>
+<p><strong>业务逻辑：</strong><br> Controller–&gt;service接口–&gt;serviceImpl–&gt;dao接口–&gt;daoImpl–&gt;mapper–&gt;db</p>
+<p><strong>一：Dao(Data Access Object):数据存储对象</strong><br>       DAO &#x3D; Data Access Object &#x3D; 数据存取对象. 不管是什么框架，我们很多时候都会与数据库进行交互。如果遇到一个场景我们都要去写SQL语句，那么我们的代码就会很冗余。所以，我们就想到了把数据库封装一下，让我们的数据库的交道看起来像和一个对象打交道，这个对象通常就是DAO。当我们操作这个对象的时候，这个对象会自动产生SQL语句来和数据库进行交互，我们就只需要使用DAO就行了。</p>
+<p>   通常我们在DAO层里面写接口，里面有与数据打交道的方法。SQL语句通常写在mapper文件里面的。</p>
+<p>   优点：结构清晰，Dao层的数据源配置以及相关的有关数据库连接的参数都在Spring配置文件中进行配置。</p>
+<p><strong>二：Service：服务</strong><br>       服务是一个相对独立的功能模块，主要负责业务逻辑应用设计。首先也要设计接口，然后再设计其实现该接口的类。这样我们就可以在应用中调用service接口进行业务处理。service层业务实现，具体调用到已经定义的DAO的接口，封装service层的业务逻辑有利于通用的业务逻辑的独立性和重复利用性 。<br>     如果把Dao层当作积木，则Service层则是对积木的搭建。</p>
+<p><strong>三：Controller：控制器</strong><br>       主要负责具体业务模块流程的控制，此层要调用到Service层的接口去控制业务流程，控制的配置同样在Spring配置文件中配置。针对不同的业务流程有不同的控制器。在设计的过程可以设计出重复利用的子单元流程模块。</p>
+<p> <strong>四：model：模型</strong><br> 模型就是指视图的数据Model，模型，通常来讲，我们会把模型和另一个东西放在一起来说：View，视图。</p>
+<p>模型通常认为是视图的内核，何谓之视图？我们正在与之交互的网站的界面就是视图，而模型是指他的内核：数据。</p>
+<p>   将Model和View的概念拆分开来，有助于我们关注不同的方面，也可以更有效的分工。有些工程师更关注于内核也就是模型，通常来说，他们被称之为后端工程师。有些工程师更关注于用户界面的交互和展示，通常来说，他们被称之为前端工程师。</p>
+<p><strong>五: View层：</strong><br>       与Controller层关系紧密，View层主要负责前台jsp页面的表示。</p>
+<p><strong>六: 它们之间的关系：</strong><br>      建立了DAO层后才可以建立Service层，而Service层又是在Controller层之下的，因而Service层应该既调用DAO层的接口，又要提供接口给Controller层的类来进行调用，它刚好处于一个中间层的位置。每个模型都有一个Service接口，每个接口分别封装各自的业务处理方法。</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zczMuYmRzdGF0aWMuY29tLzcwY0Z2OFNoX1ExWW54R2twb1dLMUhGNmhoeS9pdC91PTY1ODc1NzYzNCwzMTUzMjQ0OTA1JmZtPTI2JmdwPTAuanBn?x-oss-process=image/format,png#pic_center" alt="在这里插入图片描述"><br>另一个图的解释：<br>实体类这一层，有的开发写成pojo，有的写成model，也有domain，也有dto（这里做参数验证，比如password不能为空等），实体类如果你不懂什么东西的话，那你就想成是范围。</p>
+<p>mapper 是Mybatis 操作数据库的那一层，就是dao层。</p>
+<p>service包含了serviceImpl（service接口的实现类） 是提供给controller 使用的，针对于某些业务将 dao 的对于某些表的crud进行组合，也就是说间接的和数据库打交道。</p>
+<p>controller 通过调用service来完成业务逻辑。<br><img src="https://img-blog.csdnimg.cn/20190806101012614.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNjQ3OTk5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="JavaWeb三层架构"><a href="#JavaWeb三层架构" class="headerlink" title="JavaWeb三层架构"></a>JavaWeb三层架构</h2><p><strong>（Servlet(Controller),service,dao）</strong><br><img src="https://img-blog.csdnimg.cn/1f793bb259964619876d3efb18303f2e.png" alt="在这里插入图片描述"></p>
+<p>第一层Servlet,也叫controller层，处理JSP页面传输的数据，一般通过request.getParameter获取表单中属性为name参数中的value值，在Servlet层中一般会通过new的方式创建一个Service。如</p>
+<p>UserService userService &#x3D; new UserServiceimpl();因为一般Service层会创建一个接口写一些方法（userService）,并创建一个实现类实现这个接口(UserServiceImpl)。</p>
+<p><img src="https://img-blog.csdnimg.cn/a9a95bf4b1204f3cb542a1f22bb5094a.png" alt="在这里插入图片描述"><br>service层用来处理一些前端传输过来一些数据进行数据库的增删改查，或者处理DAO层从数据库获取的数据，例如对数据进行分页。因为需要调用DAO层，所以也需要new一个DAO层。</p>
+<p><img src="https://img-blog.csdnimg.cn/9ef53b31f1034ac1bb14e47506482bed.png" alt="在这里插入图片描述"></p>
+<p>对数据进行分页</p>
+<p><img src="https://img-blog.csdnimg.cn/7ae167596761457c991e6dd569b2cc2b.png" alt="在这里插入图片描述"></p>
+<p>UserDao userDao &#x3D; new UserDaoImpl;</p>
+<p><img src="https://img-blog.csdnimg.cn/9d1e342190fd41a7882915823fc74508.png" alt="在这里插入图片描述"><br>Dao层是用来与数据库进行交互，也就是增删改查。可以通过前端传输过来的数据对用户的信息进行增删改查。</p>
+<p><img src="https://img-blog.csdnimg.cn/92f11628821e46c48e9dbedc1901b23d.png" alt="在这里插入图片描述"></p>
+<h2 id="Spring-IOC"><a href="#Spring-IOC" class="headerlink" title="Spring IOC"></a>Spring IOC</h2><p>1.xml配置文件利用反射获取class对象<br><img src="https://img-blog.csdnimg.cn/4a0f6bab3f814b2eb88ce5bf7a0752dd.png" alt="在这里插入图片描述"><br>2. 获取容器、获得bean对象、使用方法。<br><img src="https://img-blog.csdnimg.cn/6a34e9ded1434451bd7a166d18c3aa5e.png" alt="在这里插入图片描述"></p>
+<h2 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h2><p><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_14625481/3485049">原文</a></p>
+<p><strong>IOC让模块之间解耦，AOP让JAVA动起来。</strong><br>AOP相对应的一个词叫OOP，AOP（Aspect Oriented Programming），即面向切面编程。OOP主要是为了实现编程的重用性、灵活性和扩展性。它的几个特征分别是继承、封装、多态和抽象。OOP重点体现在编程架构，强调的是类之间的层次关系。<br><img src="https://img-blog.csdnimg.cn/0f7647b2c8414917924b5be5a50f2f69.png" alt="在这里插入图片描述"><br>看到上面的图，我们暂时还不能发现有什么问题。为了大家便于理解，接下来我来给大家讲解一下上面类图的实现过程。描述如下：马戏团有一条表演的小狗，这条小狗可以跑和跳，但是它完成跑和跳两个动作之前必须是在接到驯兽师发出的命令后，同时完成跑和跳的动作之后，驯兽师会给与响应的奖励，比如一块肉。</p>
+<p>了解了实现过程之后，我们在来看一下具体的代码。 </p>
+<p><img src="https://img-blog.csdnimg.cn/5b3feb96c994426fbc8f89aab82a3e38.png" alt="在这里插入图片描述"><br>仔细看上面的代码，我们可以看出在run方法和jump方法中，存在一些相同的内容（驯兽师发出命令和给与奖励），这些内容并不能完全进行抽象，即不能按照OOP编程思想进行处理。类似这样的情况同样会出现在我们编程中的很多地方，例如：日志记录、性能统计、安全控制、事务处理、异常处理等等。但是这样的情况该如何解决呢？这就引入了AOP编程思想。</p>
+<p>AOP为Aspect Oriented Programming的缩写，即面向切面编程（也叫面向方面），是一种可以通过预编译方式和运行期动态代理实现在不修改源代码的情况下给程序动态统一添加功能的一种技术。</p>
+<p><strong>AOP实现实例</strong><br>为了大家更好的理解AOP如何实现，接下来我们优化一下上述代码。<br>首先是Dog类<br><img src="https://img-blog.csdnimg.cn/2332d45a5bb1451aa65977fca95a6f03.png" alt="在这里插入图片描述"></p>
+<p>对比之前的代码我们可以明显看出，我们将关于驯兽师的相关内容从run和jump中进行了抽取，接下来，我们如何在程序运行中将关于驯兽师的动作加入到程序中呢？这就是我们这次用到的AOP实现的核心技术动态代理（Dynamic Proxy）。具体代码如下：</p>
+<h1 id="常见缩写"><a href="#常见缩写" class="headerlink" title="常见缩写"></a>常见缩写</h1><h2 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/jsp/jsp-tutorial.html">详情</a><br>JSP 与 PHP、ASP、ASP.NET 等语言类似，运行在服务端的语言。</p>
+<p>JSP（全称Java Server Pages）是由 Sun Microsystems 公司倡导和许多公司参与共同创建的一种使软件开发者可以响应客户端请求，而动态生成 HTML、XML 或其他格式文档的Web网页的技术标准。</p>
+<p>JSP 技术是以 Java 语言作为脚本语言的，JSP 网页为整个服务器端的 Java 库单元提供了一个接口来服务于HTTP的应用程序。</p>
+<p>JSP文件后缀名为 *.jsp 。</p>
+<p>JSP开发的WEB应用可以跨平台使用，既可以运行在 Linux 上也能运行在 Windows 上。</p>
+<h2 id="POJO、JAVABean、Entity"><a href="#POJO、JAVABean、Entity" class="headerlink" title="POJO、JAVABean、Entity"></a>POJO、JAVABean、Entity</h2><p><strong>1.POJO</strong><br>  （Plain Ordinary Java Object）简单的Java对象，实际就是普通JavaBeans，是为了避免和EJB混淆所创造的简称。<br>  其中有一些属性及其getter、setter方法的类，没有业务逻辑，有时可以作为VO（value-object）或DTO（Data Transfer Object）来使用。不允许有业务方法，也不能携带connection之类的方法，实际就是普通JavaBeans。POJO类中有属性和get、set方法，但是没有业务逻辑。
+  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * POJO类代码示例</span><br><span class="line"> */  </span><br><span class="line">public class UserInfoPojoDemo &#123;</span><br><span class="line"></span><br><span class="line">    private int userId;// 用户帐号</span><br><span class="line">    private String pwd;// 用户密码</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Constructor</span><br><span class="line">     */</span><br><span class="line">    public UserInfoPojoDemo() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public UserInfoPojoDemo(String pwd) &#123;</span><br><span class="line">        this.pwd = pwd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public UserInfoPojoDemo(int userId) &#123;</span><br><span class="line">        this.userId = userId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public UserInfoPojoDemo(int userId, String pwd) &#123;</span><br><span class="line">        this.userId = userId;</span><br><span class="line">        this.pwd = pwd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     *Access </span><br><span class="line">     */</span><br><span class="line">    public int getUserId() &#123;</span><br><span class="line">        return userId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setUserId(int userId) &#123;</span><br><span class="line">        this.userId = userId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getPwd() &#123;</span><br><span class="line">        return pwd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPwd(String pwd) &#123;</span><br><span class="line">        this.pwd = pwd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.JAVABean</strong><br>一种JAVA语言写成的可重用组件。JavaBean符合一定规范编写的Java类，不是一种技术，而是一种规范。大家针对这种规范，总结了很多开发技巧、工具函数。符合这种规范的类，可以被其它的程序员或者框架使用。它的方法命名，构造及行为必须符合特定的约定：</p>
+<p>1、所有属性为private。</p>
+<p>2、这个类必须有一个公共的缺省构造函数。即是提供无参数的构造器。</p>
+<p>3、这个类的属性使用getter和setter来访问，其他方法遵从标准命名规范。</p>
+<p>4、这个类应是可序列化的。实现serializable接口。</p>
+<p>因为这些要求主要是靠约定而不是靠实现接口，所以许多开发者把JavaBean看作遵从特定命名约定的POJO。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class UserInfo implements java.io.Serializable&#123;  </span><br><span class="line"></span><br><span class="line">//实现serializable接口。  </span><br><span class="line">private static final long serialVersionUID = 1L;  </span><br><span class="line"></span><br><span class="line">private String name;  </span><br><span class="line">private int age;  </span><br><span class="line"></span><br><span class="line">//无参构造器  </span><br><span class="line">public UserInfo() &#123;  </span><br><span class="line"></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">public String getName() &#123;  </span><br><span class="line">    return name;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">public void setName(String name) &#123;  </span><br><span class="line">    this.name = name;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">public int getAge() &#123;  </span><br><span class="line">    return age;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">public void setAge(int age) &#123;  </span><br><span class="line">    this.age = age;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">//javabean当中可以有其它的方法  </span><br><span class="line">public void userInfoPrint()&#123;  </span><br><span class="line">    System.out.println(&quot;&quot;);  </span><br><span class="line"> &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>区别<br>POJO其实是比javabean更纯净的简单类或接口。POJO严格地遵守简单对象的概念，而一些JavaBean中往往会封装一些简单逻辑。<br>POJO主要用于数据的临时传递，它只能装载数据， 作为数据存储的载体，而不具有业务逻辑处理的能力。<br>Javabean虽然数据的获取与POJO一样，但是javabean当中可以有其它的方法。</strong></p>
+<p><strong>3.entity（实体类）</strong><br>对java实体类的众多理解：</p>
+<p>A .就是属性类，通常定义在model层里面</p>
+<p>B. 一般的实体类对应一个数据表，其中的属性对应数据表中的字段。<br>好处：<br>1.对对象实体的封装，体现OO思想。<br>2.属性可以对字段定义和状态进行判断和过滤<br>3.把相关信息用一个实体类封装后，我们在程序中可以把实体类作为参数传递，更加方便。</p>
+<p>C. 说白了就是为了让程序员在对数据库操作的时候不用写SQL语句</p>
+<p>D. 就是一个数据库表生成一个类<br>这样做对数据库操作起来方便<br>编写代码较少 提高效率 可以使程序员专注逻辑关系</p>
+<p>E. 实体类就是把对某一个表的操作全写在一个类中.</p>
+<p>F. 在Java开发中经常要定义一些实体类，这些类的定义的好坏会直接影响，编写代码的质量和难易程度，以下是别人总结的一些经验。</p>
+<p>一、实体类的名字尽量和数据库的表的名字对应相同。</p>
+<p>二、实体类应该实现java.io.Serializable接口。</p>
+<p>三、实体类应该有个无参的构造方法。</p>
+<p>四、实体类应该有个有参（所有的参数）的构造方法。</p>
+<p>五、实体类有属性和方法，属性对应数据库中表的字段，主要有getter和setter方法。</p>
+<p>六、实体类还应该有个属性serialVersionUID。例如：private static final long serialVersionUID &#x3D; -6125297654796395674L;</p>
+<p>七、属性一般是private类型，方法位public类型，对于数据库自动生成的ID字段对应的属性的set方法应为private。</p>
+
+    </article>
+    <!-- license -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://gaofeng-lin.github.io">John Doe</a>
+            <p>Link：<a href="https://gaofeng-lin.github.io/2022/04/28/java%E6%A1%86%E6%9E%B6+%E5%B7%A5%E5%85%B7/">https://gaofeng-lin.github.io/2022/04/28/java%E6%A1%86%E6%9E%B6+%E5%B7%A5%E5%85%B7/</a>
+            <p>Publish date：<a href="https://gaofeng-lin.github.io/2022/04/28/java%E6%A1%86%E6%9E%B6+%E5%B7%A5%E5%85%B7/">April 28th 2022, 12:00:00 am</a>
+            <p>Update date：<a href="https://gaofeng-lin.github.io/2022/04/28/java%E6%A1%86%E6%9E%B6+%E5%B7%A5%E5%85%B7/">April 28th 2022, 10:26:52 pm</a>
+            <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/04/22/%E7%89%9B%E5%AE%A2%E7%BD%91/" title="牛客网">
+                    <div class="prevTitle">牛客网</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:jason_gaofeng_lin@163.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/gaofeng-lin" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                    
+                    <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSM"><span class="toc-number">1.</span> <span class="toc-text">SSM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSM%EF%BC%88Spring-SpringMVC-MyBatis%EF%BC%89%E6%9E%B6%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">SSM（Spring+SpringMVC+MyBatis）架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.1.</span> <span class="toc-text">工作原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MSCM-model-service-controller-mapper"><span class="toc-number">1.2.</span> <span class="toc-text">MSCM(model ,service, controller ,mapper)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaWeb%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">JavaWeb三层架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-IOC"><span class="toc-number">1.4.</span> <span class="toc-text">Spring IOC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-AOP"><span class="toc-number">1.5.</span> <span class="toc-text">Spring AOP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%BC%A9%E5%86%99"><span class="toc-number">2.</span> <span class="toc-text">常见缩写</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JSP"><span class="toc-number">2.1.</span> <span class="toc-text">JSP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POJO%E3%80%81JAVABean%E3%80%81Entity"><span class="toc-number">2.2.</span> <span class="toc-text">POJO、JAVABean、Entity</span></a></li></ol></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 18
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/28</span>
+            <a class="archive-post-title" href="/2022/04/28/java%E6%A1%86%E6%9E%B6+%E5%B7%A5%E5%85%B7/">Java框架+工具</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/22</span>
+            <a class="archive-post-title" href="/2022/04/22/%E7%89%9B%E5%AE%A2%E7%BD%91/">牛客网</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/Docker/">Docker</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/go/">Go</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux常用命令</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E4%B8%8B%E8%BD%BD%E8%BF%87%E6%85%A2/">下载过慢</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E5%B7%A5%E5%85%B7%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9B%86%E5%90%88/">工具快捷键集合</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">计算机基础知识</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/Linux%20Shell%E5%91%BD%E4%BB%A4/">Linux Shell 命令</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/Linux%E7%9F%A5%E8%AF%86%E7%82%B9+%E9%97%AE%E9%A2%98/">Linux知识点+问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span>
+            <a class="archive-post-title" href="/2022/02/28/java%E7%9F%A5%E8%AF%86/">Java知识</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span>
+            <a class="archive-post-title" href="/2022/01/26/%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">算法总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/Jenkins%E7%9F%A5%E8%AF%86%E7%82%B9/">Jenkins知识点</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/git%E6%93%8D%E4%BD%9C/">git操作</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/python/">python</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/">前端知识</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/%E9%9B%B6%E6%95%A3%E7%9F%A5%E8%AF%86/">零散知识</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="Docker">
+                <span class="iconfont-archer">&#xe606;</span>
+                Docker
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="运维">
+                <span class="iconfont-archer">&#xe606;</span>
+                运维
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Jenkins">
+                <span class="iconfont-archer">&#xe606;</span>
+                Jenkins
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="持续集成">
+                <span class="iconfont-archer">&#xe606;</span>
+                持续集成
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="代码管理">
+                <span class="iconfont-archer">&#xe606;</span>
+                代码管理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Go">
+                <span class="iconfont-archer">&#xe606;</span>
+                Go
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据结构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Java">
+                <span class="iconfont-archer">&#xe606;</span>
+                Java
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringBoot">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringBoot
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ssh">
+                <span class="iconfont-archer">&#xe606;</span>
+                ssh
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Vim">
+                <span class="iconfont-archer">&#xe606;</span>
+                Vim
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="gcc">
+                <span class="iconfont-archer">&#xe606;</span>
+                gcc
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux权限用法">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux权限用法
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="npm">
+                <span class="iconfont-archer">&#xe606;</span>
+                npm
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="yarn">
+                <span class="iconfont-archer">&#xe606;</span>
+                yarn
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="梯子">
+                <span class="iconfont-archer">&#xe606;</span>
+                梯子
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="office">
+                <span class="iconfont-archer">&#xe606;</span>
+                office
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="IDE">
+                <span class="iconfont-archer">&#xe606;</span>
+                IDE
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编辑器">
+                <span class="iconfont-archer">&#xe606;</span>
+                编辑器
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快捷键">
+                <span class="iconfont-archer">&#xe606;</span>
+                快捷键
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Vue">
+                <span class="iconfont-archer">&#xe606;</span>
+                Vue
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="React">
+                <span class="iconfont-archer">&#xe606;</span>
+                React
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JavaScript">
+                <span class="iconfont-archer">&#xe606;</span>
+                JavaScript
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Json">
+                <span class="iconfont-archer">&#xe606;</span>
+                Json
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="递归">
+                <span class="iconfont-archer">&#xe606;</span>
+                递归
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="nginx">
+                <span class="iconfont-archer">&#xe606;</span>
+                nginx
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编译">
+                <span class="iconfont-archer">&#xe606;</span>
+                编译
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="环境变量">
+                <span class="iconfont-archer">&#xe606;</span>
+                环境变量
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Cookie">
+                <span class="iconfont-archer">&#xe606;</span>
+                Cookie
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Session">
+                <span class="iconfont-archer">&#xe606;</span>
+                Session
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="密码学">
+                <span class="iconfont-archer">&#xe606;</span>
+                密码学
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="硬件知识">
+                <span class="iconfont-archer">&#xe606;</span>
+                硬件知识
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="线程、进程">
+                <span class="iconfont-archer">&#xe606;</span>
+                线程、进程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="照片模糊处理">
+                <span class="iconfont-archer">&#xe606;</span>
+                照片模糊处理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="win10">
+                <span class="iconfont-archer">&#xe606;</span>
+                win10
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="专利">
+                <span class="iconfont-archer">&#xe606;</span>
+                专利
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="bat">
+                <span class="iconfont-archer">&#xe606;</span>
+                bat
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="visio">
+                <span class="iconfont-archer">&#xe606;</span>
+                visio
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="牛客网">
+                <span class="iconfont-archer">&#xe606;</span>
+                牛客网
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                Spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="make&cmake">
+                <span class="iconfont-archer">&#xe606;</span>
+                make&cmake
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Docker">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Docker
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Jenkins">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Jenkins
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Linux">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Linux
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="git">
+            <span class="iconfont-archer">&#xe60a;</span>
+            git
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Go">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Go
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Java">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Java
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="小知识">
+            <span class="iconfont-archer">&#xe60a;</span>
+            小知识
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="工具">
+            <span class="iconfont-archer">&#xe60a;</span>
+            工具
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="python">
+            <span class="iconfont-archer">&#xe60a;</span>
+            python
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="前端开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            前端开发
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="数据库">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据库
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="计算机基础知识">
+            <span class="iconfont-archer">&#xe60a;</span>
+            计算机基础知识
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="web">
+            <span class="iconfont-archer">&#xe60a;</span>
+            web
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="操作系统">
+            <span class="iconfont-archer">&#xe60a;</span>
+            操作系统
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="概念">
+            <span class="iconfont-archer">&#xe60a;</span>
+            概念
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://gaofeng-lin.github.io",
+        root: siteMetaRoot,
+        author: "John Doe"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+    </body>
+</html>

@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="John Doe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="John Doe">
+    
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="牛客网输入1.sc.haxNext()不是必须要加的 123while(sc.hasNext())&amp;#123; &#x2F;&#x2F;核心代码&amp;#125;  这句话可以让你一直输入，输入都行，不会因为回车就结束，一般情况下可以不加它，因为题目一般会告诉你有几组数据，外面套个while循环就好。 机考测试的数据是一次性全部放入控制台，如果没说几组数据，可以加sc.hasNext() 如果样例过了，但测试用例没过或之过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="牛客网">
+<meta property="og:url" content="https://gaofeng-lin.github.io/2022/04/22/%E7%89%9B%E5%AE%A2%E7%BD%91/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="牛客网输入1.sc.haxNext()不是必须要加的 123while(sc.hasNext())&amp;#123; &#x2F;&#x2F;核心代码&amp;#125;  这句话可以让你一直输入，输入都行，不会因为回车就结束，一般情况下可以不加它，因为题目一般会告诉你有几组数据，外面套个while循环就好。 机考测试的数据是一次性全部放入控制台，如果没说几组数据，可以加sc.hasNext() 如果样例过了，但测试用例没过或之过">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200209172114721.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5ODQxOA==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200209172525196.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5ODQxOA==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/e185688f123c49f390804ff6b8921471.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/17e005b0675248098d277947732b85f4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/5d5424d4baca48f2a0ecca13ff31b8d6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/c65e11fc50a04b17ab1b1b15bf327c6a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/e69e28ee04e443028e27fbb2081fc4a9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0e84e93647f64a51a27e6322cff3dd29.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/d2f6ba58798e49d9b06f88ba839d09dd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/cb41105911d8477b9dc50b5f43f63ce2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/d91abcac48074ef4baff67963b3f8232.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ddb210ff3cac4cae8d4dcc0a8c4123b7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/13afe1be1d1446f1adc490b968a1f1f0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/28992447d5e04357a1179eec6fd5e057.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9eaf85f1bf0d47cda6147538824c447d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ab5f360c9538404aa73508c6076c7be7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ab3b657bf36c4215a642258daa60794b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0a61eb472ec949ec8cd2e325b4ffa1b2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/d5e8a1bb47224fdab246fe803908782e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/38c27e77129f4a15950e0f196b7eed74.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9a89124f7d2d43bea2e59b46aab180d1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/81f792bc32934b468c0587c5cfa63259.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2c716313d50d4d478a39b3104de00d89.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/79a7c9db6562419fa941f6de0093c4b0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/bdf17194a1cf498081fbef30a0bc184e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="article:published_time" content="2022-04-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-26T11:03:56.018Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="牛客网">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200209172114721.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5ODQxOA==,size_16,color_FFFFFF,t_70#pic_center">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon1.jpg">
+    
+    <title>牛客网 · Gaofeng&#39;s Home</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu">
+        
+            
+                <div style="padding-left: 1px;">&#xe775;</div>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>Gaofeng's Home.</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">Gaofeng&#39;s Home.</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">牛客网</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden">
+        
+        
+            <div>&#xe639;</div>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                牛客网
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="牛客网">牛客网</a>
+    
+</div>
+
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.9k</span>Reading time: <span class="post-count reading-time">14 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/04/22</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="牛客网"><a href="#牛客网" class="headerlink" title="牛客网"></a>牛客网</h1><h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p><strong>1.sc.haxNext()不是必须要加的</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(sc.hasNext())&#123;</span><br><span class="line"> <span class="comment">//核心代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这句话可以让你一直输入，输入都行，不会因为回车就结束，一般情况下可以不加它，因为题目一般会告诉你有几组数据，外面套个while循环就好。</p>
+<p><strong>机考测试的数据是一次性全部放入控制台，如果没说几组数据，可以加<code>sc.hasNext()</code></strong></p>
+<p><strong>如果样例过了，但测试用例没过或之过了一部分，先去检查代码，基本就是代码问题，逻辑问题或者有bug</strong></p>
+<p><strong>如果要说了以某个字符终止输入，那么就把这个输入放到（）里面，用双引号包括。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StandardInput</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(!sc.hasNext(<span class="string">&quot;#&quot;</span>))&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            list.add(a);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> #</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.牛客网接受控制台输入</strong></p>
+<p><strong>next()和nextInt()方法读取到任意间隔符（如空格和回车）就结束，nextLine()读取到回车结束也就是“\r”，next()返回值为String类型，nextLine()返回值为String类型，nextInt()返回值为Int类型。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nextInt()返回的是<span class="type">int</span>型,next()返回String。二者特点很相似</span><br><span class="line"><span class="number">1</span>、一定要读取到有效字符后才可以结束输入。</span><br><span class="line"><span class="number">2</span>、对输入有效字符之前遇到的空白，next() 方法会自动将其去掉。</span><br><span class="line"><span class="number">3</span>、只有输入有效字符后才将其后面输入的空白作为分隔符或者结束符。</span><br><span class="line">next() 不能得到带有空格的字符串。</span><br><span class="line"><span class="comment">//-----------------------------------------</span></span><br><span class="line">nextLong()、nextDouble()是一样的道理</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nextLine()：</span><br><span class="line"><span class="number">1</span>、以Enter为结束符,也就是说 nextLine()方法返回的是输入回车之前的所有字符。</span><br><span class="line"><span class="number">2</span>、可以获得空白。</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>也可以全部用naxtLine()，不过数字型需要转一下</strong><br>1.读取单个整数，字符串数字转int数字，int转String</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//        读取单个整数，字符串数字转int数字</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> Integer.parseInt(sc.nextLine());</span><br><span class="line"><span class="comment">//        int转String</span></span><br><span class="line">		<span class="type">int</span> i=<span class="number">3</span>；</span><br><span class="line">		String s=Integer.toString(i);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2.读取一行整数，以空格分开</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//        读取一行整数，以空格分开</span></span><br><span class="line">        String[] s = sc.nextLine().split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        <span class="type">int</span>[] num = <span class="keyword">new</span> <span class="title class_">int</span>[s.length];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.length;i++)&#123;</span><br><span class="line">            num[i] = Integer.parseInt(s[i]);</span><br><span class="line">            System.out.println(num[i]);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>3.单个char数字转int数字,减去’0’</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//                单个char数字转int数字,减去&#x27;0&#x27;</span></span><br><span class="line">                res[i][j] = c-<span class="string">&#x27;0&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>4.遍历字符串的每个字符，charAt(i)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//        遍历字符串的每个字符，charAt(i)</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">            System.out.println(s.charAt(i));</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><h3 id="数组输出"><a href="#数组输出" class="headerlink" title="数组输出"></a>数组输出</h3><p><strong>Arrays.toString（）</strong><br>这个方法是是用来将数组转换成String类型输出的，入参可以是long，float，double，int，boolean，byte，object型的数组。<br><img src="https://img-blog.csdnimg.cn/20200209172114721.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5ODQxOA==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>如果直接i.toString()则是输出地址值<br><img src="https://img-blog.csdnimg.cn/20200209172525196.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5ODQxOA==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="四舍五入输出"><a href="#四舍五入输出" class="headerlink" title="四舍五入输出"></a>四舍五入输出</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//保留4位小数的输出</span></span><br><span class="line"><span class="type">double</span> <span class="variable">f</span> <span class="operator">=</span> <span class="number">3.1415926</span>;</span><br><span class="line">System.out.println(String.format(<span class="string">&quot;%.4f&quot;</span>,f));</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/359d9001ebbc">String.format详细用法</a></p>
+<h2 id="暴力遍历"><a href="#暴力遍历" class="headerlink" title="暴力遍历"></a>暴力遍历</h2><p>暴力有时候是一种搞笑简单的方法，比如三数之和，四数之和。再没有掌握到好的办法之前，暴力是一个选择。几个的遍历略有区别，需要注意。<br>1.二维数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;num.length;i++)&#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;j&lt;num[<span class="number">0</span>].length;j++)&#123;</span><br><span class="line">              </span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<p>2.数组任意两个不同的数相加<br><strong>注意，i只能到倒数第二位，因为j&#x3D;i+1</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;num.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;num.length;j++)&#123;</span><br><span class="line">			<span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> num[i]+num[j];</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<p>3.数组任意三个不同的数相加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;num.length-<span class="number">2</span>;i++)&#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;num.length-<span class="number">1</span>;j++)&#123;</span><br><span class="line">              <span class="keyword">for</span> (<span class="type">int</span> k=j+<span class="number">1</span>;j&lt;num.length;k++)&#123;</span><br><span class="line">                  <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> num[i]+num[j]+num[k];</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Collections-sort-多重条件排序"><a href="#Collections-sort-多重条件排序" class="headerlink" title="Collections.sort() 多重条件排序"></a>Collections.sort() 多重条件排序</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> sort;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 排序规则，按照年龄排序，若年龄相同，按照工资排序，若工资相同，按照身高排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Administrator</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestObjectSort</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		List&lt;Student&gt; students=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Student&gt;();</span><br><span class="line">		students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>,<span class="number">21</span>,<span class="number">3000</span>,<span class="number">180</span>));</span><br><span class="line">		students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>,<span class="number">27</span>,<span class="number">4000</span>,<span class="number">180</span>));</span><br><span class="line">		students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>,<span class="number">15</span>,<span class="number">1000</span>,<span class="number">180</span>));</span><br><span class="line">		students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>,<span class="number">21</span>,<span class="number">5000</span>,<span class="number">180</span>));</span><br><span class="line">		students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>,<span class="number">45</span>,<span class="number">4000</span>,<span class="number">180</span>));</span><br><span class="line">		students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>,<span class="number">21</span>,<span class="number">5000</span>,<span class="number">174</span>));</span><br><span class="line">		students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>,<span class="number">20</span>,<span class="number">4000</span>,<span class="number">180</span>));</span><br><span class="line">		students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>,<span class="number">33</span>,<span class="number">4000</span>,<span class="number">180</span>));</span><br><span class="line">		students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>,<span class="number">45</span>,<span class="number">4000</span>,<span class="number">180</span>));</span><br><span class="line">		students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>,<span class="number">76</span>,<span class="number">4000</span>,<span class="number">180</span>));</span><br><span class="line">		students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>,<span class="number">99</span>,<span class="number">4000</span>,<span class="number">180</span>));</span><br><span class="line">		students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>,<span class="number">21</span>,<span class="number">5000</span>,<span class="number">160</span>));</span><br><span class="line">		</span><br><span class="line">		Collections.sort(students, <span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;Student&gt;()&#123;</span><br><span class="line">				      <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Student a1, Student a2)</span> &#123;</span><br><span class="line">				 	            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> a1.getAge() - a2.getAge();</span><br><span class="line">				                <span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> a1.getSalary() - a2.getSalary();</span><br><span class="line">				 	            <span class="type">int</span> <span class="variable">z</span> <span class="operator">=</span> a1.getHeight() - a2.getHeight();</span><br><span class="line">				          <span class="keyword">if</span>(x==<span class="number">0</span>)&#123;</span><br><span class="line">				                 <span class="keyword">if</span>(y==<span class="number">0</span>)&#123;</span><br><span class="line">				                        <span class="keyword">return</span> z;</span><br><span class="line">				                  &#125;</span><br><span class="line">				                <span class="keyword">return</span> y;</span><br><span class="line">				            &#125;</span><br><span class="line">				            <span class="keyword">return</span> x;</span><br><span class="line">				        &#125;</span><br><span class="line">				         </span><br><span class="line">					    &#125;);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(Student s:students)&#123;</span><br><span class="line">			System.out.println(s.getName()+<span class="string">&quot;\t&quot;</span>+s.getAge()+<span class="string">&quot;\t&quot;</span>+s.getSalary()+<span class="string">&quot;\t&quot;</span>+s.getHeight());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>&#123;</span><br><span class="line">	</span><br><span class="line">	Student(String name,<span class="type">int</span> age,<span class="type">int</span> salary,<span class="type">int</span> height)&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">this</span>.name=name;</span><br><span class="line">		<span class="built_in">this</span>.age=age;</span><br><span class="line">		<span class="built_in">this</span>.salary=salary;</span><br><span class="line">		<span class="built_in">this</span>.height=height;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span>  age;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> salary;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> height;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> age;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getSalary</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> salary;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSalary</span><span class="params">(<span class="type">int</span> salary)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.salary = salary;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getHeight</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> height;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setHeight</span><span class="params">(<span class="type">int</span> height)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.height = height;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="HashMap排序"><a href="#HashMap排序" class="headerlink" title="HashMap排序"></a>HashMap排序</h3><p>先看一下遍历Map的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"> </span><br><span class="line">    Map&lt;String, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, String&gt;();</span><br><span class="line">    map.put(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;value1&quot;</span>);</span><br><span class="line">    map.put(<span class="string">&quot;2&quot;</span>, <span class="string">&quot;value2&quot;</span>);</span><br><span class="line">    map.put(<span class="string">&quot;3&quot;</span>, <span class="string">&quot;value3&quot;</span>);</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//第一种：普遍使用，二次取值</span></span><br><span class="line">    System.out.println(<span class="string">&quot;通过Map.keySet遍历key和value：&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (String key : map.keySet()) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;key= &quot;</span>+ key + <span class="string">&quot; and value= &quot;</span> + map.get(key));</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//第二种</span></span><br><span class="line">    System.out.println(<span class="string">&quot;通过Map.entrySet使用iterator遍历key和value：&quot;</span>);</span><br><span class="line">    Iterator&lt;Map.Entry&lt;String, String&gt;&gt; it = map.entrySet().iterator();</span><br><span class="line">    <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">        Map.Entry&lt;String, String&gt; entry = it.next();</span><br><span class="line">        System.out.println(<span class="string">&quot;key= &quot;</span> + entry.getKey() + <span class="string">&quot; and value= &quot;</span> + entry.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//第三种：推荐，尤其是容量大时</span></span><br><span class="line">    System.out.println(<span class="string">&quot;通过Map.entrySet遍历key和value&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (Map.Entry&lt;String, String&gt; entry : map.entrySet()) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;key= &quot;</span> + entry.getKey() + <span class="string">&quot; and value= &quot;</span> + entry.getValue());</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//第四种</span></span><br><span class="line">    System.out.println(<span class="string">&quot;通过Map.values()遍历所有的value，但不能遍历key&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (String v : map.values()) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;value= &quot;</span> + v);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>因为Collections.sort针对的是list，所以要对HashMap排序需要先转为List<br><strong>如果return 后面的值大于0，交换位置。所以下面的代码放回的是降序</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Map.Entry&lt;Integer, Integer&gt;&gt; font_end_list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(map.entrySet());</span><br><span class="line">        Collections.sort(font_end_list, <span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;Map.Entry&lt;Integer, Integer&gt;&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Map.Entry&lt;Integer, Integer&gt; o1, Map.Entry&lt;Integer, Integer&gt; o2)</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> o2.getValue()-o1.getValue();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="常用数据结构及方法"><a href="#常用数据结构及方法" class="headerlink" title="常用数据结构及方法"></a>常用数据结构及方法</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组复制-x2F-扩容"><a href="#数组复制-x2F-扩容" class="headerlink" title="数组复制&#x2F;扩容"></a>数组复制&#x2F;扩容</h3><p>Arrays.copyOf方法是复制数组中指定范围的元素，复制的长度大于被复制数组的长度，则填充类型默认值，String得默认值是null,int的默认值是0。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] a1 =Arrays.copyOf(a,<span class="number">2</span>);<span class="comment">//复制指定的数组长度</span></span><br><span class="line"><span class="type">int</span>[] a2 = Arrays.copeOf(a,a.length);  <span class="comment">//容量翻倍</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="数组截取"><a href="#数组截取" class="headerlink" title="数组截取"></a>数组截取</h3><p><strong>2.  Arrays.copyOfRange数组截取</strong></p>
+<p>Arrays.copyOfRange(T[ ] original,int from,int to)<br>original：第一个参数为要拷贝的数组对象<br>from：第二个参数为拷贝的开始位置（包含）<br>to：第三个参数为拷贝的结束位置（不包含）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] array = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line">        <span class="type">int</span>[] array2 = Arrays.copyOfRange(array, <span class="number">2</span>, <span class="number">4</span>);</span><br><span class="line">        System.out.println(Arrays.toString(array2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h3><p> 这种形式是对一个数组的所有元素进行排序，并且是按从小到大的顺序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line">  </span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">          </span><br><span class="line">         <span class="type">int</span>[] a = &#123;<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">6</span>, <span class="number">5</span>&#125;;</span><br><span class="line">         Arrays.sort(a);</span><br><span class="line">         <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; a.length; i ++) &#123;</span><br><span class="line">              System.out.print(a[i] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>2、Arrays.sort(int[] a, int fromIndex, int toIndex)<br>这种形式是对数组部分排序，也就是对数组a的下标从fromIndex到toIndex-1的元素排序，注意：下标为toIndex的元素不参与排序哦！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span>[] a = &#123;<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">6</span>, <span class="number">5</span>&#125;;</span><br><span class="line">        Arrays.sort(a, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; a.length; i ++) &#123;</span><br><span class="line">            System.out.print(a[i] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>3、public static void sort(T[] a,int fromIndex,int toIndex, Comparator c)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="keyword">package</span> test;</span><br><span class="line"> <span class="number">2</span> </span><br><span class="line"> <span class="number">3</span> <span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"> <span class="number">4</span> <span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"> <span class="number">5</span> </span><br><span class="line"> <span class="number">6</span> <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line"> <span class="number">7</span>     <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"> <span class="number">8</span>         <span class="comment">//注意，要想改变默认的排列顺序，不能使用基本类型（int,double, char）</span></span><br><span class="line"> <span class="number">9</span>         <span class="comment">//而要使用它们对应的类</span></span><br><span class="line"><span class="number">10</span>         Integer[] a = &#123;<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">6</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="number">11</span>         <span class="comment">//定义一个自定义类MyComparator的对象</span></span><br><span class="line"><span class="number">12</span>         <span class="type">Comparator</span> <span class="variable">cmp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyComparator</span>();</span><br><span class="line"><span class="number">13</span>         Arrays.sort(a, cmp);</span><br><span class="line"><span class="number">14</span>         <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; a.length; i ++) &#123;</span><br><span class="line"><span class="number">15</span>             System.out.print(a[i] + <span class="string">&quot; &quot;</span>);</span><br><span class="line"><span class="number">16</span>         &#125;</span><br><span class="line"><span class="number">17</span>     &#125;</span><br><span class="line"><span class="number">18</span> &#125;</span><br><span class="line"><span class="number">19</span> <span class="comment">//Comparator是一个接口，所以这里我们自己定义的类MyComparator要implents该接口</span></span><br><span class="line"><span class="number">20</span> <span class="comment">//而不是extends Comparator</span></span><br><span class="line"><span class="number">21</span> <span class="keyword">class</span> <span class="title class_">MyComparator</span> <span class="keyword">implements</span> <span class="title class_">Comparator</span>&lt;Integer&gt;&#123;</span><br><span class="line"><span class="number">22</span>     <span class="meta">@Override</span></span><br><span class="line"><span class="number">23</span>     <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Integer o1, Integer o2)</span> &#123;</span><br><span class="line"><span class="number">24</span>         <span class="comment">//如果n1小于n2，我们就返回正值，如果n1大于n2我们就返回负值，</span></span><br><span class="line"><span class="number">25</span>         <span class="comment">//这样颠倒一下，就可以实现反向排序了</span></span><br><span class="line"><span class="number">26</span>         <span class="keyword">if</span>(o1 &lt; o2) &#123; </span><br><span class="line"><span class="number">27</span>             <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="number">28</span>         &#125;<span class="keyword">else</span> <span class="keyword">if</span>(o1 &gt; o2) &#123;</span><br><span class="line"><span class="number">29</span>             <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line"><span class="number">30</span>         &#125;<span class="keyword">else</span> &#123;</span><br><span class="line"><span class="number">31</span>             <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">32</span>         &#125;</span><br><span class="line"><span class="number">33</span>     &#125;</span><br><span class="line"><span class="number">34</span>     </span><br><span class="line"><span class="number">35</span> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+<h3 id="数组填充"><a href="#数组填充" class="headerlink" title="数组填充"></a>数组填充</h3><p><strong>3.Arrays.fill  数组</strong><br>public static void fill(int[] a, int fromIndex, int toIndex, int val)<br>用来输入给定数组中元素值的。<br>1、两个参数<br>public static void fill(int[] a， int val)：给定一个数组，一个val值<br>含义为为数组a进行赋值，使得其所有元素值都为val。</p>
+<p>2、四个参数<br>public static void fill(int[] a, int fromIndex, int toIndex, int val)：给定一个数组，起始位置fromIndex(包含)，末尾位置toIndex(不包含)，对范围内的元素进行赋值，示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">6</span>];</span><br><span class="line">Arrays.fill(arr, <span class="number">60</span>); </span><br><span class="line"><span class="comment">//此时，arr的值为[60, 60, 60, 60, 60, 60]</span></span><br><span class="line">Arrays.fill(arr, <span class="number">3</span>, <span class="number">5</span>, <span class="number">100</span>);</span><br><span class="line"><span class="comment">//此时，arr的值为[60, 60, 60,100, 100, 60]</span></span><br></pre></td></tr></table></figure>
+<p>3.二维数组赋值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[][] cache = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">2</span>][n + <span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i&lt;= n + <span class="number">1</span>; ++i) &#123;</span><br><span class="line">            Arrays.fill(cache[i], -<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组传list"><a href="#数组传list" class="headerlink" title="数组传list"></a>数组传list</h3><p><strong>4.Arrays.asList</strong><br>该方法是将数组转化成List集合的方法。</p>
+<p> List<String> list &#x3D; Arrays.asList(“a”,”b”,”c”);<br><strong>注意：<br>（1）该方法适用于对象型数据的数组（String、Integer…）<br>（2）该方法不建议使用于基本数据类型的数组（byte,short,int,long,float,double,boolean）<br>（3）该方法将数组与List列表链接起来：当更新其一个时，另一个自动更新<br>（4）不支持add()、remove()、clear()等方法<br>  （5）长度不可变</strong></p>
+<p>如果你的List只是用来遍历，就用Arrays.asList()。</p>
+<p> 如果你的List还要添加或删除元素，还是乖乖地new一个java.util.ArrayList，然后一个一个的添加元素。</p>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p><img src="https://img-blog.csdnimg.cn/e185688f123c49f390804ff6b8921471.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/17e005b0675248098d277947732b85f4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/5d5424d4baca48f2a0ecca13ff31b8d6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/c65e11fc50a04b17ab1b1b15bf327c6a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/e69e28ee04e443028e27fbb2081fc4a9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/0e84e93647f64a51a27e6322cff3dd29.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/d2f6ba58798e49d9b06f88ba839d09dd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/cb41105911d8477b9dc50b5f43f63ce2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/d91abcac48074ef4baff67963b3f8232.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/ddb210ff3cac4cae8d4dcc0a8c4123b7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/13afe1be1d1446f1adc490b968a1f1f0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><p><img src="https://img-blog.csdnimg.cn/28992447d5e04357a1179eec6fd5e057.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/9eaf85f1bf0d47cda6147538824c447d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/ab5f360c9538404aa73508c6076c7be7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/ab3b657bf36c4215a642258daa60794b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/0a61eb472ec949ec8cd2e325b4ffa1b2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/d5e8a1bb47224fdab246fe803908782e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/38c27e77129f4a15950e0f196b7eed74.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><p>Arrays.asList的作用是将数组转化为list,一般是用于在初始化的时候,设置几个值进去,简化代码,省去add的部分。<br><strong>避免如下第一种方法太啰嗦！！！</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">HashSet&lt;Character&gt; hash = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;Character&gt;();</span><br><span class="line">        hash.add(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">        hash.add(<span class="string">&#x27;e&#x27;</span>);</span><br><span class="line">        hash.add(<span class="string">&#x27;i&#x27;</span>);</span><br><span class="line">        hash.add(<span class="string">&#x27;o&#x27;</span>);</span><br><span class="line">        hash.add(<span class="string">&#x27;u&#x27;</span>);</span><br><span class="line">        hash.add(<span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">        hash.add(<span class="string">&#x27;E&#x27;</span>);</span><br><span class="line">        hash.add(<span class="string">&#x27;I&#x27;</span>);</span><br><span class="line">        hash.add(<span class="string">&#x27;O&#x27;</span>);</span><br><span class="line">        hash.add(<span class="string">&#x27;U&#x27;</span>);</span><br><span class="line">        HashSet&lt;Character&gt; hash1 =<span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;(Arrays.asList(<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;O&#x27;</span>, <span class="string">&#x27;U&#x27;</span>)) ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/9a89124f7d2d43bea2e59b46aab180d1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/81f792bc32934b468c0587c5cfa63259.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><p><img src="https://img-blog.csdnimg.cn/2c716313d50d4d478a39b3104de00d89.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h2><p><img src="https://img-blog.csdnimg.cn/79a7c9db6562419fa941f6de0093c4b0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p><img src="https://img-blog.csdnimg.cn/bdf17194a1cf498081fbef30a0bc184e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+
+    </article>
+    <!-- license -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://gaofeng-lin.github.io">John Doe</a>
+            <p>Link：<a href="https://gaofeng-lin.github.io/2022/04/22/%E7%89%9B%E5%AE%A2%E7%BD%91/">https://gaofeng-lin.github.io/2022/04/22/%E7%89%9B%E5%AE%A2%E7%BD%91/</a>
+            <p>Publish date：<a href="https://gaofeng-lin.github.io/2022/04/22/%E7%89%9B%E5%AE%A2%E7%BD%91/">April 22nd 2022, 12:00:00 am</a>
+            <p>Update date：<a href="https://gaofeng-lin.github.io/2022/04/22/%E7%89%9B%E5%AE%A2%E7%BD%91/">April 26th 2022, 7:03:56 pm</a>
+            <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2022/04/28/java%E6%A1%86%E6%9E%B6+%E5%B7%A5%E5%85%B7/" title="Java框架+工具">
+                    <div class="nextTitle">Java框架+工具</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/03/06/Docker/" title="Docker">
+                    <div class="prevTitle">Docker</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:jason_gaofeng_lin@163.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/gaofeng-lin" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                    
+                    <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%9B%E5%AE%A2%E7%BD%91"><span class="toc-number">1.</span> <span class="toc-text">牛客网</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA"><span class="toc-number">1.2.</span> <span class="toc-text">输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%BE%93%E5%87%BA"><span class="toc-number">1.2.1.</span> <span class="toc-text">数组输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">1.2.2.</span> <span class="toc-text">四舍五入输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E9%81%8D%E5%8E%86"><span class="toc-number">1.3.</span> <span class="toc-text">暴力遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collections-sort-%E5%A4%9A%E9%87%8D%E6%9D%A1%E4%BB%B6%E6%8E%92%E5%BA%8F"><span class="toc-number">1.4.</span> <span class="toc-text">Collections.sort() 多重条件排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap%E6%8E%92%E5%BA%8F"><span class="toc-number">1.4.1.</span> <span class="toc-text">HashMap排序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">常用数据结构及方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">2.1.</span> <span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%A4%8D%E5%88%B6-x2F-%E6%89%A9%E5%AE%B9"><span class="toc-number">2.1.1.</span> <span class="toc-text">数组复制&#x2F;扩容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%88%AA%E5%8F%96"><span class="toc-number">2.1.2.</span> <span class="toc-text">数组截取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F"><span class="toc-number">2.1.3.</span> <span class="toc-text">数组排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%A1%AB%E5%85%85"><span class="toc-number">2.1.4.</span> <span class="toc-text">数组填充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E4%BC%A0list"><span class="toc-number">2.1.5.</span> <span class="toc-text">数组传list</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String"><span class="toc-number">2.2.</span> <span class="toc-text">String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StringBuilder"><span class="toc-number">2.3.</span> <span class="toc-text">StringBuilder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList"><span class="toc-number">2.4.</span> <span class="toc-text">ArrayList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedList"><span class="toc-number">2.5.</span> <span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashSet"><span class="toc-number">2.6.</span> <span class="toc-text">HashSet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap"><span class="toc-number">2.7.</span> <span class="toc-text">HashMap</span></a></li></ol></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 18
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/28</span>
+            <a class="archive-post-title" href="/2022/04/28/java%E6%A1%86%E6%9E%B6+%E5%B7%A5%E5%85%B7/">Java框架+工具</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/22</span>
+            <a class="archive-post-title" href="/2022/04/22/%E7%89%9B%E5%AE%A2%E7%BD%91/">牛客网</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/Docker/">Docker</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/go/">Go</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux常用命令</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E4%B8%8B%E8%BD%BD%E8%BF%87%E6%85%A2/">下载过慢</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E5%B7%A5%E5%85%B7%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9B%86%E5%90%88/">工具快捷键集合</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">计算机基础知识</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/Linux%20Shell%E5%91%BD%E4%BB%A4/">Linux Shell 命令</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2022/03/06/Linux%E7%9F%A5%E8%AF%86%E7%82%B9+%E9%97%AE%E9%A2%98/">Linux知识点+问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span>
+            <a class="archive-post-title" href="/2022/02/28/java%E7%9F%A5%E8%AF%86/">Java知识</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span>
+            <a class="archive-post-title" href="/2022/01/26/%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">算法总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/Jenkins%E7%9F%A5%E8%AF%86%E7%82%B9/">Jenkins知识点</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/git%E6%93%8D%E4%BD%9C/">git操作</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/python/">python</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/">前端知识</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span>
+            <a class="archive-post-title" href="/2022/01/14/%E9%9B%B6%E6%95%A3%E7%9F%A5%E8%AF%86/">零散知识</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="Docker">
+                <span class="iconfont-archer">&#xe606;</span>
+                Docker
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="运维">
+                <span class="iconfont-archer">&#xe606;</span>
+                运维
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Jenkins">
+                <span class="iconfont-archer">&#xe606;</span>
+                Jenkins
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="持续集成">
+                <span class="iconfont-archer">&#xe606;</span>
+                持续集成
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="代码管理">
+                <span class="iconfont-archer">&#xe606;</span>
+                代码管理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Go">
+                <span class="iconfont-archer">&#xe606;</span>
+                Go
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据结构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Java">
+                <span class="iconfont-archer">&#xe606;</span>
+                Java
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringBoot">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringBoot
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ssh">
+                <span class="iconfont-archer">&#xe606;</span>
+                ssh
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Vim">
+                <span class="iconfont-archer">&#xe606;</span>
+                Vim
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="gcc">
+                <span class="iconfont-archer">&#xe606;</span>
+                gcc
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux权限用法">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux权限用法
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="npm">
+                <span class="iconfont-archer">&#xe606;</span>
+                npm
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="yarn">
+                <span class="iconfont-archer">&#xe606;</span>
+                yarn
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="梯子">
+                <span class="iconfont-archer">&#xe606;</span>
+                梯子
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="office">
+                <span class="iconfont-archer">&#xe606;</span>
+                office
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="IDE">
+                <span class="iconfont-archer">&#xe606;</span>
+                IDE
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编辑器">
+                <span class="iconfont-archer">&#xe606;</span>
+                编辑器
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快捷键">
+                <span class="iconfont-archer">&#xe606;</span>
+                快捷键
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Vue">
+                <span class="iconfont-archer">&#xe606;</span>
+                Vue
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="React">
+                <span class="iconfont-archer">&#xe606;</span>
+                React
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JavaScript">
+                <span class="iconfont-archer">&#xe606;</span>
+                JavaScript
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Json">
+                <span class="iconfont-archer">&#xe606;</span>
+                Json
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="递归">
+                <span class="iconfont-archer">&#xe606;</span>
+                递归
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="nginx">
+                <span class="iconfont-archer">&#xe606;</span>
+                nginx
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编译">
+                <span class="iconfont-archer">&#xe606;</span>
+                编译
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="环境变量">
+                <span class="iconfont-archer">&#xe606;</span>
+                环境变量
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Cookie">
+                <span class="iconfont-archer">&#xe606;</span>
+                Cookie
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Session">
+                <span class="iconfont-archer">&#xe606;</span>
+                Session
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="密码学">
+                <span class="iconfont-archer">&#xe606;</span>
+                密码学
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="硬件知识">
+                <span class="iconfont-archer">&#xe606;</span>
+                硬件知识
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="线程、进程">
+                <span class="iconfont-archer">&#xe606;</span>
+                线程、进程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="照片模糊处理">
+                <span class="iconfont-archer">&#xe606;</span>
+                照片模糊处理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="win10">
+                <span class="iconfont-archer">&#xe606;</span>
+                win10
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="专利">
+                <span class="iconfont-archer">&#xe606;</span>
+                专利
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="bat">
+                <span class="iconfont-archer">&#xe606;</span>
+                bat
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="visio">
+                <span class="iconfont-archer">&#xe606;</span>
+                visio
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="牛客网">
+                <span class="iconfont-archer">&#xe606;</span>
+                牛客网
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                Spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="make&cmake">
+                <span class="iconfont-archer">&#xe606;</span>
+                make&cmake
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Docker">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Docker
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Jenkins">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Jenkins
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Linux">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Linux
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="git">
+            <span class="iconfont-archer">&#xe60a;</span>
+            git
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Go">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Go
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Java">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Java
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="小知识">
+            <span class="iconfont-archer">&#xe60a;</span>
+            小知识
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="工具">
+            <span class="iconfont-archer">&#xe60a;</span>
+            工具
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="python">
+            <span class="iconfont-archer">&#xe60a;</span>
+            python
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="前端开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            前端开发
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="数据库">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据库
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="计算机基础知识">
+            <span class="iconfont-archer">&#xe60a;</span>
+            计算机基础知识
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="web">
+            <span class="iconfont-archer">&#xe60a;</span>
+            web
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="操作系统">
+            <span class="iconfont-archer">&#xe60a;</span>
+            操作系统
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="概念">
+            <span class="iconfont-archer">&#xe60a;</span>
+            概念
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://gaofeng-lin.github.io",
+        root: siteMetaRoot,
+        author: "John Doe"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+    </body>
+</html>
