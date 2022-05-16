@@ -7,6 +7,7 @@ categories:
 tags:
   - Linux
   - 运维
+  - sed
 ---
 
 
@@ -799,3 +800,33 @@ done
 
 ## 利用tr 指令实现字符替换
 详细内容可自行查看
+
+
+# sed
+
+
+# sed脚本命令
+[原文链接](http://c.biancheng.net/view/4028.html)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/1724ef524d524053baa16d8b017e1dab.png)
+##  sed s 替换脚本命令
+![在这里插入图片描述](https://img-blog.csdnimg.cn/5735a03bf5184e1f8dc331995681fe82.png)
+## sed d 替换脚本命令
+![在这里插入图片描述](https://img-blog.csdnimg.cn/f4fff30466b04a079135ed30bba88b31.png)
+## sed a 和 i 脚本命令 （插入）
+![在这里插入图片描述](https://img-blog.csdnimg.cn/93d8f2644c724f7096a0e63ebee6f321.png)
+## sed c 替换
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/46aa3e463a4c4862a26f072b92ca7de6.png)
+
+## sed y 转换
+![在这里插入图片描述](https://img-blog.csdnimg.cn/3b2687b3243d4cfb9ae3eb4c573d7572.png)
+## sed w 文本指定内容写入文件
+![在这里插入图片描述](https://img-blog.csdnimg.cn/e45887cef70843378c1df10dc9b62d47.png)
+## sed p 搜索符号条件的行，并输出该行的内容
+![在这里插入图片描述](https://img-blog.csdnimg.cn/454d384ba076457bbd5f69cd0c15d87b.png)
+## sed r 将一个独立文件的数据插入到当前数据流的指定位置
+![在这里插入图片描述](https://img-blog.csdnimg.cn/42d7c0ef765a4836b0f6c7c0428ff74d.png)
+## sed q 使 sed 命令在第一次匹配任务结束后，退出 sed 程序，不再进行对后续数据的处理
+![在这里插入图片描述](https://img-blog.csdnimg.cn/f168c4bc5a7848d48c3d716256d8141f.png)
+# sed address 寻址方式
+![在这里插入图片描述](https://img-blog.csdnimg.cn/b380fad553d041a08afc6106e4b23ccd.png)
