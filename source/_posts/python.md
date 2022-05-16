@@ -206,6 +206,112 @@ for dirpath, dirnames, filenames in os.walk('D:'):
         print('文件名', filename)
 ```
 
+
+## sorted排序
+
+### 案例：
+文件夹里面的文件按照文件名里面的数字进行排序
+文件如下：0.txt, 1.txt, 2.txt, 3.txt, 34.txt, 54.txt  ................
+
+```
+file_list=os.listdir(file_path)
+file_list.sort(key=lambda x:int((re.findall(r'\d+', str(x)))[0]))
+```
+
+1.re.findall(r'\d+', str(x))[0] 正则表达式提取数字，但结果是列表，所以把元素取出来，再用一个int转成整数类型
+
+按照key来排序，后面是一个lambda表达式。
+
+### 对列表排序,返回的对象不会改变原列表
+```
+list = [1,5,7,2,4]
+
+sorted(list)
+Out[87]: [1, 2, 4, 5, 7]
+#可以设定时候排序方式，默认从小到大，设定reverse = False 可以从大到小
+sorted(list,reverse=False)
+Out[88]: [1, 2, 4, 5, 7]
+
+sorted(list,reverse=True)
+Out[89]: [7, 5, 4, 2, 1]
+```
+
+### 根据自定义规则来排序，使用参数：key
+```
+# 使用key,默认搭配lambda函数使用
+sorted(chars,key=lambda x:len(x))
+Out[92]: ['a', 'is', 'boy', 'bruce', 'handsome']
+
+sorted(chars,key=lambda x:len(x),reverse= True)
+Out[93]: ['handsome', 'bruce', 'boy', 'is', 'a']
+```
+
+### 根据自定义规则来排序，对元组构成的列表进行排序
+```
+tuple_list = [('A', 1,5), ('B', 3,2), ('C', 2,6)]
+#key=lambda x: x[1]中可以任意选定x中可选的位置进行排序
+sorted(tuple_list, key=lambda x: x[1]) 
+
+Out[94]: [('A', 1, 5), ('C', 2, 6), ('B', 3, 2)]
+
+sorted(tuple_list, key=lambda x: x[0])
+Out[95]: [('A', 1, 5), ('B', 3, 2), ('C', 2, 6)]
+
+sorted(tuple_list, key=lambda x: x[2])
+Out[96]: [('B', 3, 2), ('A', 1, 5), ('C', 2, 6)]
+```
+
+### 排序的元素是自定义类
+```
+class tuple_list:
+ def __init__(self, one, two, three):
+  self.one = one
+  self.two = two
+  self.three = three
+ def __repr__(self):
+  return repr((self.one, self.two, self.three))
+
+
+tuple_list_ = [tuple_list('A', 1,5), tuple_list('B', 3,2), tuple_list('C', 2,6)]
+
+sorted(tuple_list_, key=lambda x: x.one)
+Out[104]: [('A', 1, 5), ('B', 3, 2), ('C', 2, 6)]
+
+sorted(tuple_list_, key=lambda x: x.two)
+Out[105]: [('A', 1, 5), ('C', 2, 6), ('B', 3, 2)]
+
+sorted(tuple_list_, key=lambda x: x.three)
+Out[106]: [('B', 3, 2), ('A', 1, 5), ('C', 2, 6)]
+```
+### 根据多个字段来排序
+```
+class tuple_list:
+ def __init__(self, one, two, three):
+  self.one = one
+  self.two = two
+  self.three = three
+ def __repr__(self):
+  return repr((self.one, self.two, self.three))
+
+tuple_list_ = [tuple_list('C', 1,5), tuple_list('A', 3,2), tuple_list('C', 2,6)]
+# 首先根据one的位置来排序，然后根据two的位置来排序
+sorted(tuple_list_, key=lambda x:(x.one, x.two))
+Out[112]: [('A', 3, 2), ('C', 1, 5), ('C', 2, 6)]
+```
+
+### 二维排序
+```
+>>>l=[('a', 1), ('b', 2), ('c', 6), ('d', 4), ('e', 3)]
+>>>sorted(l, key=lambda x:x[0])
+Out[39]: [('a', 1), ('b', 2), ('c', 6), ('d', 4), ('e', 3)]
+>>>sorted(l, key=lambda x:x[0], reverse=True)
+Out[40]: [('e', 3), ('d', 4), ('c', 6), ('b', 2), ('a', 1)]
+>>>sorted(l, key=lambda x:x[1])
+Out[41]: [('a', 1), ('b', 2), ('e', 3), ('d', 4), ('c', 6)]
+>>>sorted(l, key=lambda x:x[1], reverse=True)
+Out[42]: [('c', 6), ('d', 4), ('e', 3), ('b', 2), ('a', 1)]
+```
+
 ##  字符串操作
 ###  字符串切割
 注：使用前需要引入包（import re）
