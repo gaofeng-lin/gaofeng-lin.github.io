@@ -11,6 +11,32 @@ tags:
   - Vim
 ---
 
+
+# 修改权限
+## 修改文件用户组
+chgrp： change group的简写，修改文件所属的用户组。
+```
+chgrp users test.log
+```
+
+如果要修改该目录下所有文件和目录，使用-R参数。
+```
+chgrp -R users test
+```
+
+## 修改文件所有者
+chown ：change owner的简写， 修改文件的所有者。
+```
+chown [-R] 账号名称  文件或目录
+```
+
+将所有者和组名称都修改为root。
+```
+chown root:root test.log
+```
+## 修改文件权限
+![在这里插入图片描述](https://img-blog.csdnimg.cn/f08c5be5513c4aea88cb3c13b3a2b3d7.png)
+
 # 运行sh文件命令
 **第一种（这种办法需要用chmod使得文件具备执行条件(x): chmod u+x datelog.sh）：**
 

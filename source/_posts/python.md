@@ -492,6 +492,52 @@ eval()用途：
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bed4ceca7318472d959ef280c707247c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
+
+### 字符串转数字，数字转字符串
+
+字符串str转数字:
+float(str)
+int(str)
+
+
+数字num转字符串
+str(num)
+
+## 变量转换
+
+**字符串、数字互转看字符串里面的操作**
+
+### 数字、bytes
+
+数字num转bytes:
+需将num转为str，再利用codec的encode函数，将str转为bytes：encode(str(num))
+
+bytes转数字:
+int(bytes)
+float(bytes)
+
+
+### 字符串、bytes
+字符串转bytes:
+```
+from codec import encode,decode
+encode(str)
+
+//法二
+bytes(str,'UTF-8')
+```
+
+bytes转字符串：
+```
+//法一
+from codec import encode,decode
+decode(bytes)
+
+//法二
+str(bytes,'UTF-8')
+```
+
+
 ## 循环删除元素
 **循环删除列表中元素时千万别用正序遍历，一定要用反序遍历！**
 
@@ -870,6 +916,11 @@ if os.path.getsize(file_path) == 0:
 > 
 > 返回值: 如果对象的类型与参数二的类型（classinfo）相同则返回 True，否则返回 False
 
+
+**方法2**
+```
+type(num)
+```
 
 ##  深拷贝--deep copy
 背景：
