@@ -234,6 +234,57 @@ getdir $root_dir
 ```
 以下命令均不包含"."，".."目录，以及"."开头的隐藏文件，如需包含，ll 需要加上 -a参数#当前目录下文件个数，不包含子目录ll |grep "^-"|wc -l#当前目录下目录个数，不包含子目录ll |grep "^d"|wc -l#当前目录下文件个数，包含子目录ll -R|grep "^-"|wc -l#当前目录下目录个数，包含子目录ll -R|grep "^d"|wc -l
 
+## 字符串与整数比较
+```
+#!/bin/sh
+#字符串比较(比较大小以及是否相等)
+a=hello
+b=hello
+c=how
+if [[ "$a" == "$b" ]];then  #注意对于字符串的相等比较，使用=或==都可以，二者是等价的
+	echo 'same'
+else
+	echo not same
+fi
+
+if [[ "$a"!="$c" ]];then
+	echo "a!=c"
+fi
+
+
+if [[ "$a" < "$c" ]];then
+	echo "a<c"
+fi
+
+#整数比较
+a=1
+b=2
+if(($a<=$b));then
+	echo "a<=b"
+fi
+
+if((a<=b));then
+	echo "a<=b"
+fi
+
+# 整数运算
+d=$(($a+$b))
+echo $d
+
+c=$((a+b))
+echo $c
+
+# 整数运算
+c=$((a+b))
+echo $c
+
+#浮点数运算
+a=1.223
+b=2.3
+c=$(echo $a+$b|bc)
+echo $c
+```
+
 #  实际命令分析
 
 ## shell脚本登录mysql并执行语句
