@@ -163,6 +163,77 @@ Runoob
 Taobao
 ```
 
+## if 与 for 循环
+```
+getfilesordir(){
+    for file in `ls $1`
+    do
+        if test -f $file
+        then
+            echo "file:  $file"
+        elif test -d $file
+        then
+            echo "path: $file"
+        fi
+    done
+}
+ 
+path="./"
+getfilesordir $path
+```
+
+## 遍历文件夹
+**遍历文件夹下所有文件，不包含子目录：**
+```
+getfilesordir(){
+    for file in `ls $1`
+    do
+        if test -f $file
+        then
+            echo "file:  $file"
+        elif test -d $file
+        then
+            echo "path: $file"
+        fi
+    done
+}
+ 
+path="./"
+getfilesordir $path
+```
+
+**遍历文件夹下所有文件不包含子目录**
+```
+dir="/home/fut/Desktop/"
+ls $dir | while read line
+do
+ 
+    file=${dir}${line}
+    echo file
+  fi
+done
+```
+
+**遍历目录包含子目录**
+```
+#!/bin/bash
+function getdir(){
+    for element in `ls $1`
+    do  
+        dir_or_file=$1"/"$element
+        if [ -d $dir_or_file ]
+        then 
+            getdir $dir_or_file
+        else
+            echo $dir_or_file
+        fi  
+    done
+}
+root_dir="/home/test"
+getdir $root_dir
+```
+以下命令均不包含"."，".."目录，以及"."开头的隐藏文件，如需包含，ll 需要加上 -a参数#当前目录下文件个数，不包含子目录ll |grep "^-"|wc -l#当前目录下目录个数，不包含子目录ll |grep "^d"|wc -l#当前目录下文件个数，包含子目录ll -R|grep "^-"|wc -l#当前目录下目录个数，包含子目录ll -R|grep "^d"|wc -l
+
 #  实际命令分析
 
 ## shell脚本登录mysql并执行语句
