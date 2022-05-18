@@ -348,7 +348,16 @@ git checkout -b 本地分支名 origin/远程分支名
 fatal: Cannot update paths and switch to branch 'dev2' at the same time.
 Did you intend to checkout 'origin/dev2' which can not be resolved as commit?
 ```
-表示拉取不成功。我们需要先执行
+
+或者：
+```
+fatal: 'origin/xlh' is not a commit and a branch 'xlh' cannot be created from it
+
+```
+**git remote发现远程仓库的新分支没有显示出来，git fetch就好**
+
+
+表示拉取不成功或远程仓库信息没有更新。我们需要先执行
 
 ```bash
 git fetch
