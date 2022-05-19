@@ -306,6 +306,18 @@ g++ --version
  
  ![在这里插入图片描述](https://img-blog.csdnimg.cn/a8ef1355fa2f4595a7b69da0b0bb50ec.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
+
+**问题：如何确定文件或目录在那个磁盘分区？**
+
+```
+df -h /home
+df -h /home/test.txt
+```
+
+通过上面的命令就可以看出文件或目录是在那个磁盘分区里面
+
+![Snipaste_2022-05-19_15-34-43.png](https://s2.loli.net/2022/05/19/8UEfapmwxb6zjSu.png)
+
 ## 挂载
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/0189f5afb0f24dde85c540fc5b8c887f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
