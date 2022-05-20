@@ -668,8 +668,18 @@ public static synchronized void increase() throws InterruptedException {
 
 **对于 synchronized 作用于同步代码，锁为任何我们创建的对象，只要是个对象即可，如 new Object () 可以作为锁，new String () 也可作为锁，当然如果传入 this，那么此时代表当前对象。**
 
+## volatile
 
+1. 只能修饰变量，被修饰的变量，线程读写都会直接和主内存打交道，绕过缓存。
+2. 该关键字可以确保当一个线程更新共享变量时，更新操作对其他线程马上可见
 
+### volatile & synchronized
+
+- volatile 本质是在告诉 jvm 当前变量在寄存器（工作内存）中的值是不确定的，需要从主存中读取；
+- synchronized 则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住；
+- volatile 仅能使用在变量级别；synchronized 则可以使用在变量、方法、和类级别的；
+- volatile 仅能实现变量的修改可见性，不能保证原子性；而 synchronized 则可以保证变量的修改可见性和原子性；
+- volatile 不会造成线程的阻塞；synchronized 可能会造成线程的阻塞；
 
 
 
