@@ -605,6 +605,75 @@ d1=d2   false
 
 2.String类型也实现了常量池技术，但是稍微有点不同。String型是先检测常量池中有没有对应字符串，如果有，则取出来；如果没有，则把当前的添加进去。
 
+
+# 并发编程
+
+## synchronized
+
+### 三种使用方式
+
+Java 中每一个对象都可以作为锁，这是 synchronized 实现同步的基础。synchronized 的三种使用方式如下：
+
+- 普通同步方法（实例方法）：锁是当前实例对象 ，进入同步代码前要获得当前实例的锁；
+- 静态同步方法：锁是当前类的 class 对象 ，进入同步代码前要获得当前类对象的锁；
+- 同步方法块：锁是括号里面的对象，对给定对象加锁，进入同步代码库前要获得给定对象的锁。
+
+
+
+1. 类锁所有对象一把锁
+2. 对象锁一个对象一把锁，多个对象多把锁
+3. 同步是对同一把锁而言的，同步这个概念是在多个线程争夺同一把锁的时候才能实现的，如果多个线程争夺不同的锁，那多个线程是不能同步的
+4. 两个线程一个取对象锁，一个取类锁，则不能同步
+5. 两个线程一个取a对象锁，一个取b对象锁，则不能同步
+
+### 修饰普通方法：
+1. 修饰普通方法锁的是当前对象实例，但是如果两个线程调用的是同一个对象的普通synchronized方法，持有的是不同的锁，是不会block的。
+```
+public static void main(String[] args) throws InterruptedException {
+        DemoTest test = new DemoTest();
+        DemoTest testNew = new DemoTest();
+        Thread t1 = new Thread(test);
+        Thread t2 = new Thread(testNew);
+        t1.setName("threadOne");
+        t2.setName("threadTwo");
+        t1. start();
+        t2. start();
+    }
+```
+
+结果：
+```
+threadTwo 获取到锁，其他线程在我执行完毕之前，不可进入。
+threadOne 获取到锁，其他线程在我执行完毕之前，不可进入。
+threadTwo: 1
+threadOne: 2
+```
+
+如果把 ``` DemoTest testNew = new DemoTest();```删掉，调用同一个对象，那么就能阻塞
+
+
+### 修饰静态方法
+**静态方法不属于任何一个实例对 象，是属于类成员。所以当线程A访问调用一个实例对象的synchronized方法，线程B调用这个实例对象的静态synchronized方法是允许的，即synchronized修饰静态方法，会对该类的所有实例加同步锁**
+```
+public static synchronized void increase() throws InterruptedException {
+        System.out.println(Thread.currentThread().getName() + "获取到锁，其他线程在我执行完毕之前，不可进入。" );
+        sleep(1000);
+        count++;
+        System.out.println(Thread.currentThread().getName() + ": " + count);
+    }
+
+```
+
+### 修饰代码块
+
+**对于 synchronized 作用于同步代码，锁为任何我们创建的对象，只要是个对象即可，如 new Object () 可以作为锁，new String () 也可作为锁，当然如果传入 this，那么此时代表当前对象。**
+
+
+
+
+
+
+
 # 辅助知识
 ## JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明
 首先明白一个基础概念：
