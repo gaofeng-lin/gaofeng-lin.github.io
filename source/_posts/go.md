@@ -18,6 +18,57 @@ go env   //查看环境变量
 ```
 
 
+# package
+
+## 包的定义
+
+```
+package 包名
+```
+注意事项：
+
+- 一个文件夹下直接包含的文件只能归属于一个package，同样一个package的文件不能在多个文件夹下。
+- 包名可以不和文件夹的名字一样。
+- 包名为```main```的包为应用程序的入口包，这种包编译后会得到一个可执行文件，而编译不含main包的源代码则不会得到可执行文件
+  
+## 包的使用
+
+1. 有时候我们单独写一个go文件，测试或验证某个功能，包名都写main就好
+2. 如果要引入自定义的包。如果import失败，看一下保存的信息。一般会提示GOROOT GOPATH找不到这个包，这个时候把这个文件夹放到上面的目录里面就可以导入了。
+
+举例：
+我目前的GOROOT是在这个目录下面，把文件夹放进去，里面是go文件，就可以引入了。
+![03.png](https://s2.loli.net/2022/05/25/sy6aYNIOjX5dfuM.png)
+
+## go mod配置
+
+go mod 主要用于管理第三方包，可以自动进行下载。要使用go mod，需要一些配置。
+**需要配置GO111MODULE 、GOPROXY**
+
+![01.png](https://s2.loli.net/2022/05/25/N4dmhtb628iVPyK.png)
+
+![02.png](https://s2.loli.net/2022/05/25/QDjPKNHc2pI8Mn3.png)
+
+
+## go mod使用
+首先：
+```
+go mod init "modname"
+
+//modname一般是文件所处文件夹的名字
+//go mod init dynamic
+```
+
+如果要某文件要引入一些包，在import处写入，然后执行下面命令：
+```
+go mod tidy
+//或者
+go get -u
+```
+
+
+
+
 # 语法
 
 
@@ -467,7 +518,23 @@ func main() {
 }
 ```
 
+
+
 # 常用操作
+
+## 单引号、双引号、反引号
+
+**Golang限定字符或者字符串一共三种引号，单引号（’’)，双引号("") 以及反引号(``)。反引号就是标准键盘“Esc”按钮下面的那个键。**
+
+- 单引号，表示byte类型或rune类型，对应 uint8和int32类型，默认是 rune 类型。byte用来强调数据是raw data，而不是数字；而rune用来表示Unicode的code point。
+
+- 双引号，才是字符串，实际上是字符数组。可以用索引号访问某字节，也可以用len()函数来获取字符串所占的字节长度。
+
+- 反引号，表示字符串字面量，但不支持任何转义序列。字面量 raw literal string 的意思是，你定义时写的啥样，它就啥样，你有换行，它就换行。你写转义字符，它也就展示转义字符。
+
+
+**反引号有时候能起到很好的作用，比如一个字符串里面有双引号，分号这种，并且分布的还不规律，用反引号括起来就好**
+
 ## 变量类型转换
 
 ```c
@@ -640,6 +707,49 @@ func main() {
     arr := []string{"small", "ming"}
     fmt.Println(strings.Join(arr, ""))
 }
+```
+
+## 字符串处理函数
+Golang中的strings包：
+```
+Count(s string, str string) int：计算字符串str在s中的非重叠个数。如果str为空串则返回s中的字符（非字节）个数+1。
+Index(s string, str string) int ：返回子串str在字符串s中第一次出现的位置。如果找不到则返回-1；如果str为空，则返回0。
+LastIndex(s string, str string) int： 返回子串str在字符串s中最后一次出现的位置。如果找不到则返回-1；如果str为空则返回字符串s的长度。
+IndexRune(s string, r rune) int ：返回字符r在字符串s中第一次出现的位置。如果找不到则返回-1。
+IndexAny(s string, str string) int ：返回字符串str中的任何一个字符在字符串s中第一次出现的位置。如果找不到或str为空则返回-1。
+LastIndexAny(s string, str string) int： 返回字符串str中的任何一个字符在字符串s中最后一次出现的位置。如果找不到或str为空则返回-1。
+Contains(s string, str string) bool：判断字符串s中是否包含个子串str。包含或者str为空则返回true。
+ContainsAny(s string, str string) bool：判断字符串s中是否包含个子串str中的任何一个字符。包含则返回true，如果str为空则返回false。
+ContainsRune(s string, r rune) bool：判断字符串s中是否包含字符r。
+SplitN(s, str string, n int) []string：以str为分隔符，将s切分成多个子串，结果中**不包含**str本身。如果str为空则将s切分成Unicode字符列表。如果s中没有str子串，则将整个s作为[]string的第一个元素返回。参数n表示最多切分出几个子串，超出的部分将不再切分，最后一个n包含了所有剩下的不切分。如果n为0，则返回nil；如果n小于0，则不限制切分个数，全部切分。
+SplitAfterN(s, str string, n int) []string：以str为分隔符，将s切分成多个子串，结果中**包含**str本身。如果str为空，则将s切分成Unicode字符列表。如果s 中没有str子串，则将整个s作为 []string 的第一个元素返回。参数n表示最多切分出几个子串，超出的部分将不再切分。如果n为0，则返回 nil；如果 n 小于 0，则不限制切分个数，全部切分。
+Split(s, str string) []string：以str为分隔符，将s切分成多个子切片，结果中**不包含**str本身。如果str为空，则将s切分成Unicode字符列表。如果s中没有str子串，则将整个s作为[]string的第一个元素返回。
+SplitAfter(s, str string) []string：以str为分隔符，将s切分成多个子切片，结果中**包含**str本身。如果 str 为空，则将 s 切分成Unicode字符列表。如果s中没有str子串，则将整个s作为[]string的第一个元素返回。
+Fields(s string) []string：以连续的空白字符为分隔符，将s切分成多个子串，结果中不包含空白字符本身。空白字符有：\t, \n, \v, \f, \r, ’ ‘, U+0085 (NEL), U+00A0 (NBSP) 。如果 s 中只包含空白字符，则返回一个空列表。
+FieldsFunc(s string, f func(rune) bool) []string：以一个或多个满足f(rune)的字符为分隔符，将s切分成多个子串，结果中不包含分隔符本身。如果s中没有满足f(rune)的字符，则返回一个空列表。
+Join(s []string, str string) string：将s中的子串连接成一个单独的字符串，子串之间用str分隔。
+HasPrefix(s string, prefix string) bool：判断字符串s是否以prefix开头。
+HasSuffix(s, suffix string) bool ：判断字符串s是否以prefix结尾。
+Map(f func(rune) rune, s string) string：将s中满足f(rune)的字符替换为f(rune)的返回值。如果f(rune)返回负数，则相应的字符将被删除。
+Repeat(s string, n int) string：将n个字符串s连接成一个新的字符串。
+ToUpper(s string) string：将s中的所有字符修改为其大写格式。对于非ASCII字符，它的大写格式需要查表转换。
+ToLower(s string) string：将s中的所有字符修改为其小写格式。对于非ASCII字符，它的小写格式需要查表转换。
+ToTitle(s string) string：将s中的所有字符修改为其Title格式，大部分字符的Title格式就是Upper格式，只有少数字符的Title格式是特殊字符。这里的ToTitle主要给Title函数调用。
+TrimLeftFunc(s string, f func(rune) bool) string：删除s头部连续的满足f(rune)的字符。
+TrimRightFunc(s string, f func(rune) bool) string：删除s尾部连续的满足f(rune)的字符。
+TrimFunc(s string, f func(rune) bool) string：删除s首尾连续的满足f(rune)的字符。
+IndexFunc(s string, f func(rune) bool) int：返回s中第一个满足f(rune) 的字符的字节位置。如果没有满足 f(rune) 的字符，则返回 -1。
+LastIndexFunc(s string, f func(rune) bool) int：返回s中最后一个满足f(rune)的字符的字节位置。如果没有满足 f(rune) 的字符，则返回 -1。
+Trim(s string, str string) string：删除s首尾连续的包含在str中的字符。
+TrimLeft(s string, str string) string：删除s头部连续的包含在str中的字符串。
+TrimRight(s string, str string) string：删除s尾部连续的包含在str中的字符串。
+TrimSpace(s string) string：删除s首尾连续的的空白字符。
+TrimPrefix(s, prefix string) string：删除s头部的prefix字符串。如果s不是以prefix开头，则返回原始s。
+TrimSuffix(s, suffix string) string：删除s尾部的suffix字符串。如果s不是以suffix结尾，则返回原始s。（只去掉一次，注意和TrimRight区别）
+Replace(s, old, new string, n int) string：返回s的副本，并将副本中的old字符串替换为new字符串，替换次数为n次，如果n为-1，则全部替换；如果 old 为空，则在副本的每个字符之间都插入一个new。
+EqualFold(s1, s2 string) bool：比较UTF-8编码在小写的条件下是否相等，不区分大小写，同时它还会对特殊字符进行转换。比如将“ϕ”转换为“Φ”、将“Ǆ”转换为“ǅ”等，然后再进行比较。
+“==”比较字符串是否相等，区分大小写，返回bool。
+Compare(s1 string, s2 string) int1：比较字符串，区分大小写，比”==”速度快。相等为0，不相等为-1。
 ```
 
 ## 正则表达式

@@ -285,6 +285,12 @@ c=$(echo $a+$b|bc)
 echo $c
 ```
 
+## 将shell命令的执行结果放入数组
+```
+arr=( `git branch | xargs` )
+echo ${arr[@]}
+```
+
 #  实际命令分析
 
 ## shell脚本登录mysql并执行语句
