@@ -1,5 +1,5 @@
 ---
-title: Linux Shell 命令
+title: Shell 命令
 date: 2022/3/6
 categories:
   - Linux
