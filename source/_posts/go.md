@@ -618,7 +618,53 @@ func main() {
 }
 ```
 
-## 解析json文件
+## map相关操作
+
+### 判断key是否存在
+
+```
+package main
+ 
+import "fmt"
+ 
+func main() {
+    demo := map[string]bool{
+        "a": false,
+    }
+ 
+    //错误，a存在，但是返回false
+    fmt.Println(demo["a"])
+ 
+    //正确判断方法
+    _, ok := demo["a"]
+    fmt.Println(ok)
+}
+```
+```
+if _, ok := map[key]; ok {
+    // 存在
+}
+
+if _, ok := map[key]; !ok {
+    // 不存在
+}
+```
+
+### 快速删除所有元素
+**直接重新生成map，名字相同**
+
+## 切片
+切片是动态数组，可以搭配结构体或map形成多重嵌套
+```
+var projects = make([]models.Project, 0)
+```
+上面的```models.Project```是一个结构体，前面加一个[]就变成了接片，用make生成，指定初始长度为0（必须要指定一个值，反正自动增加）。
+这样这个projects变量是切片，里面的数据类型是models.Project结构体
+
+
+## json相关操作
+
+### 解析json文件
 
 ```
 package main
@@ -662,11 +708,90 @@ func con_var_name (key string) string {
 	return res
 }
 ```
-## 解析json文件，interface转int
+### 解析json文件，interface转int
 **因为json解析得到的数据是map[string]interface，里面的字段可能是数字，有时候需要取出来比较，
 就需要将interface转为int。**
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/1b607816b68645c5b5ceaebe1859abdc.png)
 需要先转为string，在用 `strconv.Atoi`，将string转为int。
+
+
+### 结构体解析为json
+
+先上代码
+
+**最为关键的是结构体里面的成员变量名，首字母必须是大写，否则无法解析，解析出来的是空。**
+
+```
+package main
+
+import (
+
+	"encoding/json"
+	"fmt"
+)
+
+
+type Product struct {
+	Name string
+	ProductId int64
+	Number int
+	Price float64
+	IsOnSale bool
+}
+
+
+func main()  {
+	var p Product
+	// p := Product{}
+	p.Name="apple"
+	p.ProductId=1
+	p.Number=100
+	p.Price=3.45
+	p.IsOnSale=false
+	data, _ := json.Marshal(&p)
+	fmt.Println(string(data))
+
+}
+
+```
+### 将json字符串解码到相应的数据结构
+
+```
+type StuRead struct {
+    Name  interface{} `json:"name"`
+    Age   interface{}
+    HIgh  interface{}
+    sex   interface{}
+    Class interface{} `json:"class"`
+    Test  interface{}
+}
+
+type Class struct {
+    Name  string
+    Grade int
+}
+
+func main() {
+    //json字符中的"引号，需用\进行转义，否则编译出错
+    //json字符串沿用上面的结果，但对key进行了大小的修改，并添加了sex数据
+    data:="{\"name\":\"张三\",\"Age\":18,\"high\":true,\"sex\":\"男\",\"CLASS\":{\"naME\":\"1班\",\"GradE\":3}}"
+    str:=[]byte(data)
+
+    //1.Unmarshal的第一个参数是json字符串，第二个参数是接受json解析的数据结构。
+    //第二个参数必须是指针，否则无法接收解析的数据，如stu仍为空对象StuRead{}
+    //2.可以直接stu:=new(StuRead),此时的stu自身就是指针
+    stu:=StuRead{}
+    err:=json.Unmarshal(str,&stu)
+
+    //解析失败会报错，如json字符串格式不对，缺"号，缺}等。
+    if err!=nil{
+        fmt.Println(err)
+    }
+
+    fmt.Println(stu)
+}
+```
+
 
 ## 字符串操作
 
@@ -923,82 +1048,6 @@ func main() {
 	reg = regexp.MustCompile(`[\f\t\n\r\v\123\x7F\x{10FFFF}\\\^\$\.\*\+\?\{\}\(\)\[\]\|]`)
 	fmt.Printf("%q\n", reg.ReplaceAllString("\f\t\n\r\v\123\x7F\U0010FFFF\\^$.*+?{}()[]|", "-"))
 	// "----------------------"
-}
-```
-## 结构体解析为json
-
-先上代码
-
-**最为关键的是结构体里面的成员变量名，首字母必须是大写，否则无法解析，解析出来的是空。**
-
-```
-package main
-
-import (
-
-	"encoding/json"
-	"fmt"
-)
-
-
-type Product struct {
-	Name string
-	ProductId int64
-	Number int
-	Price float64
-	IsOnSale bool
-}
-
-
-func main()  {
-	var p Product
-	// p := Product{}
-	p.Name="apple"
-	p.ProductId=1
-	p.Number=100
-	p.Price=3.45
-	p.IsOnSale=false
-	data, _ := json.Marshal(&p)
-	fmt.Println(string(data))
-
-}
-
-```
-## 将json字符串解码到相应的数据结构
-
-```
-type StuRead struct {
-    Name  interface{} `json:"name"`
-    Age   interface{}
-    HIgh  interface{}
-    sex   interface{}
-    Class interface{} `json:"class"`
-    Test  interface{}
-}
-
-type Class struct {
-    Name  string
-    Grade int
-}
-
-func main() {
-    //json字符中的"引号，需用\进行转义，否则编译出错
-    //json字符串沿用上面的结果，但对key进行了大小的修改，并添加了sex数据
-    data:="{\"name\":\"张三\",\"Age\":18,\"high\":true,\"sex\":\"男\",\"CLASS\":{\"naME\":\"1班\",\"GradE\":3}}"
-    str:=[]byte(data)
-
-    //1.Unmarshal的第一个参数是json字符串，第二个参数是接受json解析的数据结构。
-    //第二个参数必须是指针，否则无法接收解析的数据，如stu仍为空对象StuRead{}
-    //2.可以直接stu:=new(StuRead),此时的stu自身就是指针
-    stu:=StuRead{}
-    err:=json.Unmarshal(str,&stu)
-
-    //解析失败会报错，如json字符串格式不对，缺"号，缺}等。
-    if err!=nil{
-        fmt.Println(err)
-    }
-
-    fmt.Println(stu)
 }
 ```
 
