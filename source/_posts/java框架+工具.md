@@ -11,6 +11,21 @@ tags:
   - SpringBoot
 ---
 
+
+# Servlet
+## 不使用ide创建Servlet
+[链接](http://c.biancheng.net/servlet2/deploy.html)
+有几个事情需要注意下：
+1. 各个文件夹一定要写对，之前把classes写成了class
+2. 按照上面链接的教程，用javac编译出来的是一个文件夹，里面才是class文件，要把整个文件夹复制到指定目录，不能只复制class文件。
+3. web.xml里面的< servlet-class >。Testone.MyServlet 。最后那个是类名，前面是包名。如果源文件没有package，那么web.xml里面可以只写类名；如果无妨正常访问，那么就在src目录下面加一个package包，在里面再创建java文件，再编译，web.xml里面d < servlet-class >加上包名。
+
+## ide创建Servlet
+[原链接](https://blog.csdn.net/weixin_44107140/article/details/119618734)
+
+**注意把servlet-jar放到lib文件夹下面，不要放到classes里面了。**
+
+
 # SSM
 **springboot 只是组装了spring和springmvc。SSM中的SS指的是Spring SpringMVC，M是指MyBatis。**
 ## SSM（Spring+SpringMVC+MyBatis）架构
