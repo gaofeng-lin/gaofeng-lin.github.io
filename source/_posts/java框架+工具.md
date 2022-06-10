@@ -23,7 +23,7 @@ tags:
 ## ide创建Servlet
 [原链接](https://blog.csdn.net/weixin_44107140/article/details/119618734)
 
-**注意把servlet-jar放到lib文件夹下面，不要放到classes里面了。**
+**注意把servlet-jar(在tomcat安装路径的lib文件夹中)放到lib文件夹下面，不要放到classes里面了。**
 
 
 # SSM
