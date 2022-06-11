@@ -15,6 +15,15 @@ tags:
 ## IDEA创建spring
 [链接](https://blog.csdn.net/m0_67393686/article/details/124104008)
 
+## 所遇错误/注意事项
+### 基础包名不要设置为 org
+这与 Spring 框架的包一致，所以会导致问题。
+ 
+错误信息：
+```
+@EnableAsync annotation metadata was not injected 
+```
+
 
 
 # Servlet
