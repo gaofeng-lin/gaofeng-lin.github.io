@@ -24,6 +24,19 @@ tags:
 @EnableAsync annotation metadata was not injected 
 ```
 
+## AOP
+AOP是通过代理的方式实现的，由代理对象持有原对象，在执行原对象目标方法的前后可以执行额外的增强代码。
+代理对象需要是原对象接口的实现或原对象的子类，这样就可以在对象引用处直接替换原对象。
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210514185607752.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIwOTgwMjE=,size_16,color_FFFFFF,t_70)
+
+**代理方式分静态代理和动态代理，区别在于代理对象生成方式不同**
+
+不论是静态代理还是动态代理
+AOP均有三个关注点：**切面增强内容、何地切入、何时切入**
+- 切面增强内容：切面增强逻辑的代码段
+- 何地切入：需要给哪个类哪个方法增强
+- 何时切入：切入发生在何时，方法执行前、执行后、还是执行前后
 
 
 # Servlet
