@@ -11,6 +11,10 @@ tags:
   - SpringBoot
 ---
 
+# Spring
+## IDEA创建spring
+[链接](https://blog.csdn.net/m0_67393686/article/details/124104008)
+
 
 # Servlet
 ## 不使用ide创建Servlet
