@@ -11,6 +11,10 @@ tags:
   - Typescript
 ---
 
+##  TS语法以及类型
+[原链接](https://github.com/iamswr/ts_react_demo_20181207)
+
+
 ## js和ts的区别
 
 ### 1 . 动态编程语言和静态编程语言的区别
