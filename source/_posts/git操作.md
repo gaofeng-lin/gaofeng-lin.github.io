@@ -498,3 +498,8 @@ git bash有些话可能没法执行zip命令
 ```bash
 放置的目录不能放错，一开始放到了git/bin/目录下，结果不行。
 ```
+
+# git 所遇问题
+
+## ssh: connect to host github.com port 22: Connection refused
+[原链接](https://segmentfault.com/a/1190000041909858)
