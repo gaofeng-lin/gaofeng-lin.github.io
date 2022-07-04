@@ -519,6 +519,78 @@ func main() {
 ```
 
 
+# 基本数据类型和API
+## 数组
+```
+
+```
+## map相关操作
+
+### 创建map
+```
+//初始化空map
+prevNums := map[int]int{}
+
+//初始化
+countryCapitalMap := map[string]string{"France": "Paris", "Italy": "Rome", "Japan": "Tokyo", "India": "New delhi"}
+
+//value接收任意数据类型，用interface
+resMap := make(map[string]interface{})
+```
+### 查看元素在集合中是否存在
+```
+capital, ok := countryCapitalMap [ "American" ] /*如果确定是真实的,则存在,否则不存在 */
+    /*fmt.Println(capital) */
+    /*fmt.Println(ok) */
+    if (ok) {
+        fmt.Println("American 的首都是", capital)
+    } else {
+        fmt.Println("American 的首都不存在")
+    }
+```
+
+
+### 判断key是否存在
+
+```
+package main
+ 
+import "fmt"
+ 
+func main() {
+    demo := map[string]bool{
+        "a": false,
+    }
+ 
+    //错误，a存在，但是返回false
+    fmt.Println(demo["a"])
+ 
+    //正确判断方法
+    _, ok := demo["a"]
+    fmt.Println(ok)
+}
+```
+```
+if _, ok := map[key]; ok {
+    // 存在
+}
+
+if _, ok := map[key]; !ok {
+    // 不存在
+}
+```
+
+### 快速删除所有元素
+**直接重新生成map，名字相同**
+
+## 切片
+切片是动态数组，可以搭配结构体或map形成多重嵌套
+```
+var projects = make([]models.Project, 0)
+```
+上面的```models.Project```是一个结构体，前面加一个[]就变成了接片，用make生成，指定初始长度为0（必须要指定一个值，反正自动增加）。
+这样这个projects变量是切片，里面的数据类型是models.Project结构体
+
 
 # 常用操作
 
@@ -618,48 +690,6 @@ func main() {
 }
 ```
 
-## map相关操作
-
-### 判断key是否存在
-
-```
-package main
- 
-import "fmt"
- 
-func main() {
-    demo := map[string]bool{
-        "a": false,
-    }
- 
-    //错误，a存在，但是返回false
-    fmt.Println(demo["a"])
- 
-    //正确判断方法
-    _, ok := demo["a"]
-    fmt.Println(ok)
-}
-```
-```
-if _, ok := map[key]; ok {
-    // 存在
-}
-
-if _, ok := map[key]; !ok {
-    // 不存在
-}
-```
-
-### 快速删除所有元素
-**直接重新生成map，名字相同**
-
-## 切片
-切片是动态数组，可以搭配结构体或map形成多重嵌套
-```
-var projects = make([]models.Project, 0)
-```
-上面的```models.Project```是一个结构体，前面加一个[]就变成了接片，用make生成，指定初始长度为0（必须要指定一个值，反正自动增加）。
-这样这个projects变量是切片，里面的数据类型是models.Project结构体
 
 
 ## json相关操作
