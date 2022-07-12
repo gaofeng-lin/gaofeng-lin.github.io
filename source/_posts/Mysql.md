@@ -1,5 +1,5 @@
 ---
-title: 数据库
+title: Mysql
 date: 2022/3/6
 categories:
   - 数据库
@@ -12,8 +12,35 @@ tags:
 ---
 
 
+# Mysql变量定义与赋值
+[原链接](https://blog.csdn.net/H900302/article/details/123735007?spm=1001.2101.3001.6650.5&depth_1-utm_relevant_index=10)
 
-# MySQL基础知识
+## 局部变量
+### 变量声明
+```
+declare a int default value 0;
+```
+### 变量赋值
+```
+//法一
+set a=10;
+
+//法二
+select user_name into uname from t_user where id = 2;
+```
+## 用户变量
+使用set或select直接赋值，变量名以 @ 开头.
+### 变量赋值
+```
+SET @a=1,@b=2;
+
+//法二
+select @变量名:=变量值
+select @变量名:=字段名 from table where ... limit 1;
+```
+## 系统变量
+
+# MySQL理论知识
 ##  事务并发异常
 
 SQL 标准共定义了 3 种并发异常，这三种异常分别是脏读（Dirty Read）、不可重复读（Nnrepeatable Read）和幻读（Phantom Read）。
