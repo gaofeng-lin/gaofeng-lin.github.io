@@ -228,8 +228,21 @@ ALTER TABLE testalter_tbl ADD i INT FIRST;
 ALTER TABLE testalter_tbl DROP i;
 ALTER TABLE testalter_tbl ADD i INT AFTER c;
 ```
+
+**指定位置插入字段**
+```
+//添加到第一个
+alter table 表名 add column 字段名 varchar(255) FIRST;
+
+//添加到指定字段后，记得加上符号，那个符号是esc按键下面的
+alter table person_param add column `module_name` VARCHAR(20) after `product_id`
+```
+
 ### 修改字段类型及名称
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3b1fe134a6ee4169be9014e24667eced.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+
+
 ## 创建用户
 默认用户为root，但是在Linux和mysql中，可以认为root用户就是各自系统的皇帝，对其它用户的数据有生杀大权，所以最好创建其它的用户来执行。
 1.先登录
