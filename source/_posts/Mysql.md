@@ -566,6 +566,72 @@ Host设置了“%”后便可以允许远程访问。
 flush privileges;
 ```
 
+## 批量插入数据很慢
+[原文链接](https://www.jianshu.com/p/127e79e20d1b)
+
+### 批量提交事务
+```
+# 3、批量提交事务
+drop procedure if exists insertIntoUser;
+
+delimiter $$
+ 
+create procedure insertIntoUser(in num int, in batchNum int)
+    begin
+        declare i int default 0;
+        
+        while i < num do
+            set i = i + 1;
+            set @username = concat('beigua', LPAD(i, 9, 0));
+            set @nickname = concat('北瓜', LPAD(i, 9, 0));
+            set @password = replace(uuid(), "-", "");
+            set @password_salt = replace(uuid(), "-", "");
+            set @user_no = i;
+
+            set autocommit = 0;
+
+            INSERT INTO user(username, password, password_salt, nickname, user_no, ip, mobile, mail, gender, type, status, is_deleted, created_time, updated_time) 
+            VALUES (@username, @password, @password_salt, @nickname, @user_no, '192.168.1.1', '18888888888', '18888888888@163.com', '0', '0', '0', '0', now(), now());
+        
+            if i mod batchNum = 0 then
+                commit;
+            end if;
+        end while;
+    end $$
+```
+### 一次性提交所有事务
+```
+# 4、一次性提交事务
+drop procedure if exists insertIntoUser;
+
+delimiter $$
+ 
+create procedure insertIntoUser(in num int)
+    begin
+        declare i int default 0;
+
+        set autocommit = 0;
+        
+        while i < num do
+            set i = i + 1;
+            set @username = concat('beigua', LPAD(i, 9, 0));
+            set @nickname = concat('北瓜', LPAD(i, 9, 0));
+            set @password = replace(uuid(), "-", "");
+            set @password_salt = replace(uuid(), "-", "");
+            set @user_no = i;
+
+            INSERT INTO user(username, password, password_salt, nickname, user_no, ip, mobile, mail, gender, type, status, is_deleted, created_time, updated_time) 
+            VALUES (@username, @password, @password_salt, @nickname, @user_no, '192.168.1.1', '18888888888', '18888888888@163.com', '0', '0', '0', '0', now(), now());
+        end while;
+        
+        commit;
+    end $$
+```
+### 数据插入前加索引与数据插入后加索引对比
+在插入数据的时候不要加过多索引，插完再加
+
+### 修改参数
+set global innodb_flush_log_at_trx_commit = 0;
 
 <br>
 
