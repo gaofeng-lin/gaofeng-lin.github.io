@@ -691,6 +691,15 @@ func main() {
 ```
 
 
+## 判断类型是否为map
+
+```
+if reflect.ValueOf(map1).Kind() == reflect.Map {
+    
+} else {
+    
+}
+```
 
 ## json相关操作
 
@@ -863,6 +872,14 @@ func main() {
     fmt.Println(strings.Join(arr, ""))
 }
 ```
+## 字符串替换
+```
+str = strings.Replace(str, " ", "", -1)
+```
+
+func Replace(s, old, new string, n int) string
+
+**返回将s中前n个不重叠old子串都替换为new的新字符串，如果n<0会替换所有old子串**
 
 ## 字符串处理函数
 Golang中的strings包：
@@ -1529,3 +1546,26 @@ func main() {
         count.AlphaCount, count.NumCount, count.SpaceCount, count.OtherCount)
 }
 ```
+
+# 问题
+
+## map类型interface{}转换
+
+有时候我们在map里面嵌套map
+想取内存map的值就会出现以下问题
+
+```
+cannot range over v (type interface {})
+```
+interface{} 与其他数据类型不能直接赋值
+
+**解决方法**
+1. 转为map
+```
+v.(map[string] interface {})
+```
+
+2. 转为int
+```value.(int)```
+在目标变量后面用. 括号int
+2. 转为map
