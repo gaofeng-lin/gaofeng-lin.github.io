@@ -519,7 +519,7 @@ func main() {
 ```
 
 
-# 基本数据类型和API
+# 基本数据类型操作
 ## 数组
 ```
 
@@ -591,6 +591,248 @@ var projects = make([]models.Project, 0)
 上面的```models.Project```是一个结构体，前面加一个[]就变成了接片，用make生成，指定初始长度为0（必须要指定一个值，反正自动增加）。
 这样这个projects变量是切片，里面的数据类型是models.Project结构体
 
+
+[去重、插入、删除、清空原链接](https://blog.csdn.net/youngwhz1/article/details/83026263?spm=1001.2101.3001.6661.1&depth_1-utm_relevant_index=1)
+### 切片去重
+```
+/* 在slice中去除重复的元素，其中a必须是已经排序的序列。
+ * params:
+ *   a: slice对象，如[]string, []int, []float64, ...
+ * return:
+ *   []interface{}: 已经去除重复元素的新的slice对象
+ */
+func SliceRemoveDuplicate(a interface{}) (ret []interface{}) {
+	if reflect.TypeOf(a).Kind() != reflect.Slice {
+		fmt.Printf("<SliceRemoveDuplicate> <a> is not slice but %T\n", a)
+		return ret
+	}
+ 
+	va := reflect.ValueOf(a)
+	for i := 0; i < va.Len(); i++ {
+		if i > 0 && reflect.DeepEqual(va.Index(i-1).Interface(), va.Index(i).Interface()) {
+			continue
+		}
+		ret = append(ret, va.Index(i).Interface())
+	}
+ 
+	return ret
+}
+```
+测试代码：
+```
+func test_SliceRemoveDuplicate() {
+	slice_string := []string{"a", "b", "c", "d", "a", "b", "c", "d"}
+	slice_int := []int{1, 2, 3, 4, 5, 1, 2, 3, 4, 5}
+	slice_float := []float64{1.11, 2.22, 3.33, 4.44, 1.11, 2.22, 3.33, 4.44}
+ 
+	sort.Strings(slice_string)
+	sort.Ints(slice_int)
+	sort.Float64s(slice_float)
+ 
+	fmt.Printf("slice_string = %v, %p\n", slice_string, slice_string)
+	fmt.Printf("slice_int = %v, %p\n", slice_int, slice_int)
+	fmt.Printf("slice_float = %v, %p\n", slice_float, slice_float)
+ 
+	ret_slice_string := SliceRemoveDuplicate(slice_string)
+	ret_slice_int := SliceRemoveDuplicate(slice_int)
+	ret_slice_float := SliceRemoveDuplicate(slice_float)
+ 
+	fmt.Printf("ret_slice_string = %v, %p\n", ret_slice_string, ret_slice_string)
+	fmt.Printf("ret_slice_int = %v, %p\n", ret_slice_int, ret_slice_int)
+	fmt.Printf("ret_slice_float = %v, %p\n", ret_slice_float, ret_slice_float)
+ 
+	fmt.Printf("<after> slice_string = %v, %p\n", slice_string, slice_string)
+	fmt.Printf("<after> slice_int = %v, %p\n", slice_int, slice_int)
+	fmt.Printf("<after> slice_float = %v, %p\n", slice_float, slice_float)
+}
+```
+
+结果：
+```
+slice_string = [a a b b c c d d], 0xc042088000
+slice_int = [1 1 2 2 3 3 4 4 5 5], 0xc04200e1e0
+slice_float = [1.11 1.11 2.22 2.22 3.33 3.33 4.44 4.44], 0xc042014200
+ 
+ret_slice_string = [a b c d], 0xc042034100
+ret_slice_int = [1 2 3 4 5], 0xc042088080
+ret_slice_float = [1.11 2.22 3.33 4.44], 0xc042034180
+ 
+<after> slice_string = [a a b b c c d d], 0xc042088000
+<after> slice_int = [1 1 2 2 3 3 4 4 5 5], 0xc04200e1e0
+<after> slice_float = [1.11 1.11 2.22 2.22 3.33 3.33 4.44 4.44], 0xc042014200
+```
+### 插入
+```
+/*
+ * 在Slice指定位置插入元素。
+ * params:
+ *   s: slice对象，类型为[]interface{}
+ *   index: 要插入元素的位置索引
+ *   value: 要插入的元素
+ * return:
+ *   已经插入元素的slice，类型为[]interface{}
+ */
+func SliceInsert(s []interface{}, index int, value interface{}) []interface{} {
+	rear := append([]interface{}{}, s[index:]...)
+	return append(append(s[:index], value), rear...)
+}
+ 
+/*
+ * 在Slice指定位置插入元素。
+ * params:
+ *   s: slice对象指针，类型为*[]interface{}
+ *   index: 要插入元素的位置索引
+ *   value: 要插入的元素
+ * return:
+ *   无
+ */
+func SliceInsert2(s *[]interface{}, index int, value interface{}) {
+	rear := append([]interface{}{}, (*s)[index:]...)
+	*s = append(append((*s)[:index], value), rear...)
+}
+ 
+/*
+ * 在Slice指定位置插入元素。
+ * params:
+ *   s: slice对象的指针，如*[]string, *[]int, ...
+ *   index: 要插入元素的位置索引
+ *   value: 要插入的元素
+ * return:
+ *   true: 插入成功
+ *   false: 插入失败（不支持的数据类型）
+ */
+func SliceInsert3(s interface{}, index int, value interface{}) bool {
+	if ps, ok := s.(*[]string); ok {
+		if val, ok := value.(string); ok {
+			rear := append([]string{}, (*ps)[index:]...)
+			*ps = append(append((*ps)[:index], val), rear...)
+			return true
+		}
+	} else if ps, ok := s.(*[]int); ok {
+		if val, ok := value.(int); ok {
+			rear := append([]int{}, (*ps)[index:]...)
+			*ps = append(append((*ps)[:index], val), rear...)
+		}
+	} else if ps, ok := s.(*[]float64); ok {
+		if val, ok := value.(float64); ok {
+			rear := append([]float64{}, (*ps)[index:]...)
+			*ps = append(append((*ps)[:index], val), rear...)
+		}
+	} else {
+		fmt.Printf("<SliceInsert3> Unsupported type: %T\n", s)
+	}
+ 
+	return false
+}
+```
+说明：
+1. SliceInsert()方法是传入一个[]interface{}类型的slice对象，返回的也是一个[]interface{}类型的slice对象。
+2. SliceInsert2()方法是传入一个[]interface{}类型的slice对象指针，直接修改这个slice对象。
+3. SliceInsert3()方法是传入一个具体类型的slice对象指针（如*[]string, *[]int等），方法中直接修改这个slice对象，返回操作是否成功的状态(bool)。
+
+### 删除
+```
+/*
+ * 删除Slice中的元素。
+ * params:
+ *   s: slice对象，类型为[]interface{}
+ *   index: 要删除元素的索引
+ * return:
+ *   已经删除指定元素的slice，类型为[]interface{}
+ * 说明：返回的序列与传入的序列地址不发生变化(但是传入的序列内容已经被修改，不能再使用)
+ */
+func SliceRemove(s []interface{}, index int) []interface{} {
+	return append(s[:index], s[index+1:]...)
+}
+ 
+/*
+ * 删除Slice中的元素。
+ * params:
+ *   s: slice对象指针，类型为*[]interface{}
+ *   index: 要删除元素的索引
+ * return:
+ *   无
+ * 说明：直接操作传入的Slice对象，传入的序列地址不变，但内容已经被修改
+ */
+func SliceRemove2(s *[]interface{}, index int) {
+	*s = append((*s)[:index], (*s)[index+1:]...)
+}
+ 
+/*
+ * 删除Slice中的元素。
+ * params:
+ *   s: slice对象的指针，如*[]string, *[]int, ...
+ *   index: 要删除元素的索引
+ * return:
+ *   true: 删除成功
+ *   false: 删除失败（不支持的数据类型）
+ * 说明：直接操作传入的Slice对象，不需要转换为[]interface{}类型。
+ */
+func SliceRemove3(s interface{}, index int) bool {
+	if ps, ok := s.(*[]string); ok {
+		*ps = append((*ps)[:index], (*ps)[index+1:]...)
+	} else if ps, ok := s.(*[]int); ok {
+		*ps = append((*ps)[:index], (*ps)[index+1:]...)
+	} else if ps, ok := s.(*[]float64); ok {
+		*ps = append((*ps)[:index], (*ps)[index+1:]...)
+	} else {
+		fmt.Printf("<SliceRemove3> Unsupported type: %T\n", s)
+		return false
+	}
+ 
+	return true
+}
+```
+### 清空
+```
+/*
+ * 清空Slice，传入的slice对象地址发生变化。
+ * params:
+ *   s: slice对象指针，类型为*[]interface{}
+ * return:
+ *   无
+ */
+func SliceClear(s *[]interface{}) {
+	*s = append([]interface{}{})
+}
+ 
+/*
+ * 清空Slice，传入的slice对象地址不变。
+ * params:
+ *   s: slice对象指针，类型为*[]interface{}
+ * return:
+ *   无
+ */
+func SliceClear2(s *[]interface{}) {
+	*s = (*s)[0:0]
+}
+ 
+/*
+ * 清空Slice，传入的slice对象地址不变。
+ * params:
+ *   s: slice对象的指针，如*[]string, *[]int, ...
+ * return:
+ *   true: 清空成功
+ *   false: 清空失败（不支持的数据类型）
+ */
+func SliceClear3(s interface{}) bool {
+	if ps, ok := s.(*[]string); ok {
+		*ps = (*ps)[0:0]
+		//*ps = append([]string{})
+	} else if ps, ok := s.(*[]int); ok {
+		*ps = (*ps)[0:0]
+		//*ps = append([]int{})
+	} else if ps, ok := s.(*[]float64); ok {
+		*ps = (*ps)[0:0]
+		//*ps = append([]float64{})
+	} else {
+		fmt.Printf("<SliceClear3> Unsupported type: %T\n", s)
+		return false
+	}
+ 
+	return true
+}
+```
 
 # 常用操作
 
