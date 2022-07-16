@@ -583,6 +583,65 @@ if _, ok := map[key]; !ok {
 ### 快速删除所有元素
 **直接重新生成map，名字相同**
 
+### Map 实现去重与 set 的功能
+```
+package main
+ 
+var set = map[string]bool {
+ 
+}
+ 
+func main() {
+    ...
+    url := xxx
+    if set[url] {
+        // 表示集合中已经存在
+        return
+    }
+ 
+    set[url] = true           // 否则如果不存在，设置为true
+}
+ 
+// 完成后，set的所有的key值为不重复的值
+```
+### map转json
+```
+// map to json
+
+package main
+
+
+
+import (
+    "encoding/json"
+    "fmt"
+
+
+)
+
+
+func main() {
+
+    s := []map[string]interface{}{}
+
+    m1 := map[string]interface{}{"name": "John", "age": 10}
+    m2 := map[string]interface{}{"name": "Alex", "age": 12}
+
+    s = append(s, m1, m2)
+    s = append(s, m2)
+
+    b, err := json.Marshal(s)
+    if err != nil {
+        fmt.Println("json.Marshal failed:", err)
+        return
+    }
+
+
+    fmt.Println("b:", string(b))
+
+}
+```
+
 ## 切片
 切片是动态数组，可以搭配结构体或map形成多重嵌套
 ```
@@ -1072,7 +1131,8 @@ func main() {
     fmt.Println(stu)
 }
 ```
-
+### map转json
+例子在前面 **基本数据类型操作-》map相关操作**
 
 ## 字符串操作
 
