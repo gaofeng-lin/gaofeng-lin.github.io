@@ -489,6 +489,13 @@ git commit --amend
 
 此时会进入默认vim编辑器，修改注释完毕后保存就好了。
 
+
+## 将现有代码保存带其它仓库
+1. git remote add neworigin **"url"**
+2. git push -u neworigin **"分支名"**
+3. 如果第二条命令不行就：git push -u neworigin **"分支名"** : **"分支名"**
+
+
 # git bash安装zip
 git bash有些话可能没法执行zip命令
 
@@ -498,6 +505,8 @@ git bash有些话可能没法执行zip命令
 ```bash
 放置的目录不能放错，一开始放到了git/bin/目录下，结果不行。
 ```
+
+
 
 # git 所遇问题
 
