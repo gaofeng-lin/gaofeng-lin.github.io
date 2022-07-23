@@ -3,18 +3,17 @@ title: Docker
 date: 2022/3/6
 categories:
   - Docker
-  
 tags:
   - Docker
   - 运维
-
+abbrlink: 40991
 ---
 
 
 
-#  docker下载
+##  docker下载
 
-##  Docker安装
+###  Docker安装
 1）卸载旧版本
 yum list installed | grep docker 列出当前所有docker的包
 yum -y remove docker的包名称 卸载docker包
@@ -48,7 +47,7 @@ vi /etc/docker/daemon.json //没有这个文件也无妨，直接创建就好
 访问阿里云这个网址，要先登录：[镜像加速页面](https://cr.console.aliyun.com/?spm=a2c6h.12873639.0.0.7aec4073HlA7e2#/accelerator)
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/641489fc54e74da0b71ef979826d1a3f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-##  docker启动失败
+###  docker启动失败
 **错误1：**
 如图所示：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/56ed8bac9f524db3b2dbf64efaff96a0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
@@ -63,7 +62,7 @@ vi /etc/docker/daemon.json //没有这个文件也无妨，直接创建就好
 docker启动失败，有一个可能就是包（jar,war）有问题。可以先单独检测下包是否可以运行。如果包不能运行，就是代码有问题。
 **如果代码逻辑没有问题，甚至没有改动。可能要注意格式问题，比如少敲或多敲空格这种，这种错误往往看不出来，或者编译器没有明显的错误提示（idea对于这个问题就是标黄，但有时候又不影响，很容易不注意）**
 
-# 镜像、仓库的关系
+## 镜像、仓库的关系
 docker可以把服务和需要的库一起打包
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/b935cbc86c8646b9a348f85b833ee48f.png)
@@ -82,9 +81,9 @@ docker可以把服务和需要的库一起打包
 这个过程或者我可以用dockerfile来实现。
 
 
-# docke![在这里插入图片描述](https://img-blog.csdnimg.cn/b09b2d48438e4f24916b1453fe2d3207.png)
+## docke![在这里插入图片描述](https://img-blog.csdnimg.cn/b09b2d48438e4f24916b1453fe2d3207.png)
 r 基本操作
-## 镜像命令
+### 镜像命令
 
 ```bash
 docker search 镜像名称
@@ -97,10 +96,10 @@ docker commit 容器id 镜像:版本号
 
 //删除镜像
 docker rmi -f 镜像名称  
-#删除多个 其镜像ID或镜像用用空格隔开即可 
+##删除多个 其镜像ID或镜像用用空格隔开即可 
 docker rmi -f 镜像名/镜像ID 镜像名/镜像ID 镜像名/镜像ID
 
-#删除全部镜像  -a 意思为显示全部, -q 意思为只显示ID
+##删除全部镜像  -a 意思为显示全部, -q 意思为只显示ID
 docker rmi -f $(docker images -aq)
 
 //强制删除镜像
@@ -111,7 +110,7 @@ docker image rm 镜像名称/镜像ID
 docker save 镜像名/镜像ID -o 镜像保存在哪个位置与名字
 ```
 
-## 容器命令
+### 容器命令
 容器是由镜像创建而来。容器是Docker运行应用的载体，每个应用都分别运行在Docker的每个 容器中
 
 ```bash
@@ -136,14 +135,14 @@ docker run -d -it --hostname phdev -p 90:80 -p 8899:8899 -v /sys/fs/cgroup:/sys/
 docker exec -it “容器id” /bin/bash
 ```
 
-## 传输文件命令
+### 传输文件命令
 传输文件命令——本地传到docker
 
 ```bash
 docker cp “文件”  镜像id：“路径”
 ```
 
-## 导出/导入镜像
+### 导出/导入镜像
 方法1：save
 
 ```bash
@@ -169,7 +168,7 @@ docker import < 打包名.tar
 
 (2).export 导出（import导入）是根据容器拿到的镜像，再导入时会丢失镜像所有的历史，所以无法进行回滚操作（docker tag ）；而save保存（load加载）的镜像，没有丢失镜像的历史，可以回滚到之前的层（layer）。（查看方式：docker images --tree）
 
-## 删除镜像或容器
+### 删除镜像或容器
 [原文链接](https://blog.csdn.net/qq_42006301/article/details/105102020)
 方法一：删除所有未运行的容器（已经运行的删除不了，未运行的就一起被删除了）
 
@@ -192,7 +191,7 @@ docker system prune
 //命令清理得更加彻底，可以将没有容器使用Docker的镜像都删掉
 docker system prune -a 
 ```
-## 查看docker信息
+### 查看docker信息
 
 ```bash
 docker info

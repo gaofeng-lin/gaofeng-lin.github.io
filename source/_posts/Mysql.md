@@ -3,24 +3,24 @@ title: Mysql
 date: 2022/3/6
 categories:
   - 数据库
-  
 tags:
   - 数据库
   - Linux
   - 运维
   - MySQL
+abbrlink: 62688
 ---
 
 
-# Mysql变量定义与赋值
+## Mysql变量定义与赋值
 [原链接](https://blog.csdn.net/H900302/article/details/123735007?spm=1001.2101.3001.6650.5&depth_1-utm_relevant_index=10)
 
-## 局部变量
-### 变量声明
+### 局部变量
+#### 变量声明
 ```
 declare a int default value 0;
 ```
-### 变量赋值
+#### 变量赋值
 ```
 //法一
 set a=10;
@@ -28,9 +28,9 @@ set a=10;
 //法二
 select user_name into uname from t_user where id = 2;
 ```
-## 用户变量
+### 用户变量
 使用set或select直接赋值，变量名以 @ 开头.
-### 变量赋值
+#### 变量赋值
 ```
 SET @a=1,@b=2;
 
@@ -38,10 +38,10 @@ SET @a=1,@b=2;
 select @变量名:=变量值
 select @变量名:=字段名 from table where ... limit 1;
 ```
-## 系统变量
+### 系统变量
 
-# MySQL理论知识
-##  事务并发异常
+## MySQL理论知识
+###  事务并发异常
 
 SQL 标准共定义了 3 种并发异常，这三种异常分别是脏读（Dirty Read）、不可重复读（Nnrepeatable Read）和幻读（Phantom Read）。
 
@@ -88,7 +88,7 @@ SQL 标准共定义了 3 种并发异常，这三种异常分别是脏读（Dirt
 
 最终 事务A 提交事务，发现报错了。这就很奇怪，查的时候明明没有这条记录，但插入的时候 却告诉我 主键冲突，这就好像幻觉一样。这才是所有的幻读。
 
-## 事务隔离级别
+### 事务隔离级别
 ![Snipaste_2022-05-21_23-28-56.png](https://s2.loli.net/2022/05/21/A3Gb6Rtfmr571yE.png)
 上面的隔离级别由上往下，级别依次会提高，但消耗的性能也会依次提高。我们总结一下四种隔离级别：
 
@@ -97,18 +97,18 @@ SQL 标准共定义了 3 种并发异常，这三种异常分别是脏读（Dirt
 3. 可重复读：即能保证在一个事务中多次读取，数据一致，但可能会出现幻读；
 4. 可串行化：最高的隔离级别，串行的执行事务，可以避免 3 种异常，但性能耗损最高。
 
-# Mysql语句
-## 数据类型
+## Mysql语句
+### 数据类型
 MySQL 支持多种类型，大致可以分为三类：数值、日期/时间和字符串(字符)类型。
-### 数值类型
+#### 数值类型
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/c1dbf744928b4225aca0777923efbdb9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-### 日期和时间
+#### 日期和时间
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/dca2d56f9cf9450e92c8ecec362a8d05.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-### 字符串类型
+#### 字符串类型
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/96f697d0ac234fb8b92b4b72a3da027e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 
-## 创建数据表
+### 创建数据表
 
 ```
 CREATE TABLE table_name (column_name column_type);
@@ -147,7 +147,7 @@ int(10)的意思是假设有一个变量名为id，它的能显示的宽度能�
 
 注意：MySQL命令终止符为分号 ; 。
 
-## 查看数据表
+### 查看数据表
 法一：
 
 ```c
@@ -166,8 +166,8 @@ DESC 表名;
 SHOW CREATE TABLE 表名;
 ```
 在 SHOW CREATE TABLE 语句的结尾处（分号前面）添加\g或者\G参数可以改变展示形式。
-## 插入数据
-### 1.插入一行
+### 插入数据
+#### 1.插入一行
 ```bash
 INSERT INTO table_name ( field1, field2,...fieldN )
                        VALUES
@@ -181,7 +181,7 @@ INSERT INTO table_name ( field1, field2,...fieldN )
 ```
 **注意：表名后面的字段没有引号，插入的数据，如果是字符串，要加引号**
 
-### 2.插入多行
+#### 2.插入多行
 
 ```
 INSERT INTO teacher
@@ -196,7 +196,7 @@ VALUES
 
 
 
-### 3.插入一列
+#### 3.插入一列
 前提是这一列已经建好（通过ALTER），如果不加where，那是这个字段（一列）全部更新。
 
 ```c
@@ -204,8 +204,8 @@ UPDATE table_name SET field1=new-value1, field2=new-value2
 [WHERE Clause]
 ```
 
-## 修改表名和字段（增、删、改）
-### 删除、添加、修改字段
+### 修改表名和字段（增、删、改）
+#### 删除、添加、修改字段
 
 ```
 //删除字段i
@@ -238,12 +238,12 @@ alter table 表名 add column 字段名 varchar(255) FIRST;
 alter table person_param add column `module_name` VARCHAR(20) after `product_id`
 ```
 
-### 修改字段类型及名称
+#### 修改字段类型及名称
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3b1fe134a6ee4169be9014e24667eced.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 
 
-## 创建用户
+### 创建用户
 默认用户为root，但是在Linux和mysql中，可以认为root用户就是各自系统的皇帝，对其它用户的数据有生杀大权，所以最好创建其它的用户来执行。
 1.先登录
 
@@ -291,9 +291,9 @@ unlimituser用户服务器主机和远程主机登陆
 drop user 'mysqluser'@'host'
 ```
 
-## 创建外键
+### 创建外键
 
-### 创建表时增加外键
+#### 创建表时增加外键
 首先创建第一张被关联表Vendors商品供应商表。
 ```
 -- 供应商列表
@@ -334,7 +334,7 @@ CREATE TABLE Products (
 );
 ```
 
-### 已存在表增加外键
+#### 已存在表增加外键
 
 首先删除刚才两张表所创建的外键。
 然后通过下面指令对已经存在的表增加外键。语法如下：
@@ -344,7 +344,7 @@ CREATE TABLE Products (
 ALTER TABLE ZDZ ADD FOREIGN KEY (sd) REFERENCES Ws_para (snum);
 ```
 
-## 连表查询
+### 连表查询
 [详细介绍网址](https://juejin.cn/post/7043811976270577672)
 ```
 SELECT * from `products` a RIGHT JOIN `person_param` b ON a.product_id=b.product_id WHERE a.product_id=338;
@@ -352,8 +352,8 @@ SELECT * from `products` a RIGHT JOIN `person_param` b ON a.product_id=b.product
 连表查的第一步就是两个表要关连起来，在上面的代码就是 ON 后面的``` a.product_id=b.product_id```
 
 
-#  Mysql常见问题
-##  mysql官网下载老版本
+##  Mysql常见问题
+###  mysql官网下载老版本
 [下载网址，可选操作系统](https://dev.mysql.com/downloads/mysql/)
 
 进入后依次选择：DOWNLOADS（下载）——>Community(社区)——MySQL Community Downloads
@@ -361,7 +361,7 @@ SELECT * from `products` a RIGHT JOIN `person_param` b ON a.product_id=b.product
 进入后往下拉，如下图选择Looking for previous GA versions（寻找以前的GA版本）
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/1371dd641c0e4c3ab54e10660e5907ed.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
-##  centos安装mysql
+###  centos安装mysql
 本地下载mysql，但是xftp上传太慢，暂未找到解决的办法，所以尝试下面这个方法。
 
 **1 下载并安装MySQL官方的 Yum Repository**
@@ -455,9 +455,9 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
 > 6）、validate_password_special_char_count 整个密码中至少要包含特殊字符的个数；
 
 
-## 重置密码（centos7）
+### 重置密码（centos7）
 [原文链接](https://blog.csdn.net/cgtcsdn/article/details/101530671)
-### 忘记密码
+#### 忘记密码
 **1.设置MySQL为免密码登录**
 `vi /etc/my.cnf` (部分Linux安装了vim，其命令则改为`vim /etc/my.cnf`)按【i】键进入编辑模式，在[mysqld]下面加上“skip-grant-tables”，按【Esc】键，然后输入“:wq”保存并退出vi。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190927141449601.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NndGNzZG4=,size_16,color_FFFFFF,t_70#pic_center)
@@ -494,7 +494,7 @@ use mysql
 
 ALTER USER 'root'@'%' IDENTIFIED BY 'snaiL_12';  //密码要用引号括起来
 ```
-### 报错
+#### 报错
 ***问题1***
 ```
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'snaiL_123';
@@ -540,7 +540,7 @@ ALTERUSER 'root'@'localhost' IDENTIFIED BY 'Snail@10';
 ALTER USER 'root'@'%' IDENTIFIED BY 'Snail@10'; 
 ```
 
-##  Navicat连接mysql出现1130 - Host XXX is not allowed to connect to this MySQL server
+###  Navicat连接mysql出现1130 - Host XXX is not allowed to connect to this MySQL server
 接上一条，安装完成后，navicat无法正常连接，这是由于Mysql配置了不支持远程连接引起的。
 
 **1.在安装Mysql数据库的主机上登录root用户**
@@ -579,12 +579,12 @@ Host设置了“%”后便可以允许远程访问。
 flush privileges;
 ```
 
-## 批量插入数据很慢
+### 批量插入数据很慢
 [原文链接](https://www.jianshu.com/p/127e79e20d1b)
 
-### 批量提交事务
+#### 批量提交事务
 ```
-# 3、批量提交事务
+## 3、批量提交事务
 drop procedure if exists insertIntoUser;
 
 delimiter $$
@@ -612,9 +612,9 @@ create procedure insertIntoUser(in num int, in batchNum int)
         end while;
     end $$
 ```
-### 一次性提交所有事务
+#### 一次性提交所有事务
 ```
-# 4、一次性提交事务
+## 4、一次性提交事务
 drop procedure if exists insertIntoUser;
 
 delimiter $$
@@ -640,18 +640,18 @@ create procedure insertIntoUser(in num int)
         commit;
     end $$
 ```
-### 数据插入前加索引与数据插入后加索引对比
+#### 数据插入前加索引与数据插入后加索引对比
 在插入数据的时候不要加过多索引，插完再加
 
-### 修改参数
+#### 修改参数
 set global innodb_flush_log_at_trx_commit = 0;
 
 <br>
 
-# 如何设计数据库
+## 如何设计数据库
 [原文链接](https://blog.csdn.net/LLLLQZ/article/details/110231569)
 
-# 游标、存储过程、函数
+## 游标、存储过程、函数
 存储过程是为了完成特定功能的SQL语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数(需要时)来调用执行。
 
 存储过程思想上很简单，就是数据库 SQL 语言层面的代码封装与重用。

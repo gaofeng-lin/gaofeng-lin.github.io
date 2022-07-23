@@ -4,17 +4,16 @@ date: 2022/1/14
 update: 2022/1/16
 categories:
   - python
-  
 tags:
   - python
-
+abbrlink: 51872
 ---
 
 
 
 
-#  所遇问题 
-##  输出格式有问题 
+##  所遇问题 
+###  输出格式有问题 
 背景：python2.7，IDE：VSCode
 源码：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/aad38ed43cf14169a81178f15d5cab6b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
@@ -27,7 +26,7 @@ two.txt:
 
 修改最后一行的print
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/be1c33ec8b6e4593806ab989758d5641.png)
-##  打包pip install 包
+###  打包pip install 包
 
 > 背景：内网需要安装python和一些包，无法连互联网，只能外网下载再u盘拷过去。
 
@@ -63,7 +62,7 @@ pip install --no-index --find-links=packages -r requirements.txt
 ```
 pip install XXXX包名
 ```
-##  python2.7 卸载失败问题
+###  python2.7 卸载失败问题
 
 > 背景：使用.msi文件进行卸载，出现以下情况：
 
@@ -73,7 +72,7 @@ pip install XXXX包名
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/93c843b909ec45ec85865dbf3c2ae945.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 依次运行。
 
-##  open函数传参数出错
+###  open函数传参数出错
 
 > 背景：python2.7，open函数传递参数。 
 > 自定义函数，函数里面调用open函数
@@ -93,7 +92,7 @@ open(file_path,mode)
 open函数可以正常使用open(path,mode)
 
 
-##  Python编码错误的解决办法SyntaxError: Non-ASCII character '\xe5' in file
+###  Python编码错误的解决办法SyntaxError: Non-ASCII character '\xe5' in file
 
 > 原因：python的默认编码文件是用的ASCII码，而你的python文件中使用了中文等非英语字符
 
@@ -102,17 +101,17 @@ open函数可以正常使用open(path,mode)
 在Python源文件的最开始一行，加入一句：
 
 ```
-#coding=UTF-8（等号换为”:“也可以）
+##coding=UTF-8（等号换为”:“也可以）
 ```
 
 或者
 
 ```
-#-*- coding:UTF-8 -*-
+##-*- coding:UTF-8 -*-
 ```
 
 
-##  RuntimeError: dictionary changed size during iteration
+###  RuntimeError: dictionary changed size during iteration
 在字典遍历过程中修改字典元素，报错 RuntimeError: dictionary changed size during iteration
 
 得知遍历时不能修改字典元素
@@ -133,7 +132,7 @@ for k in list(func_dict.keys()):
         continue
 ```
 
-##  VScode code runner无法运行出正确的结果
+###  VScode code runner无法运行出正确的结果
 背景：
 内网电脑上，通过python程序对文件进行读写操作，但是没有出现相应的结果。单步调试可以出正确的结果。
 
@@ -164,7 +163,7 @@ for k in list(func_dict.keys()):
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/6eef8ba7ef9e47a9bbef68a0918f3b94.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
-## vscode进行调试，系统把conda activate base写入了用户输入区域该怎么办？
+### vscode进行调试，系统把conda activate base写入了用户输入区域该怎么办？
 **问题：在运行调试的时候编译器在运行语句前没有进入虚拟base环境，于是在遇到激活用户输入语句时，自动输入了conda activate base ，导致程序出错**
 
 
@@ -175,9 +174,9 @@ for k in list(func_dict.keys()):
 
 这个setting.json在在`C:\Users\Administrator\AppData\Roaming\Code\User\setting.json` 是个纯文本文件，直接打开就好。如果没有python.terminal.activateEnvironment这一行可以自己加上。
 
-#  技术知识点
+##  技术知识点
 
-##  遍历文件夹下的文件名
+###  遍历文件夹下的文件名
 
 > #方法1：使用os.listdir
 
@@ -207,9 +206,9 @@ for dirpath, dirnames, filenames in os.walk('D:'):
 ```
 
 
-## sorted排序
+### sorted排序
 
-### 案例：
+#### 案例：
 文件夹里面的文件按照文件名里面的数字进行排序
 文件如下：0.txt, 1.txt, 2.txt, 3.txt, 34.txt, 54.txt  ................
 
@@ -222,13 +221,13 @@ file_list.sort(key=lambda x:int((re.findall(r'\d+', str(x)))[0]))
 
 按照key来排序，后面是一个lambda表达式。
 
-### 对列表排序,返回的对象不会改变原列表
+#### 对列表排序,返回的对象不会改变原列表
 ```
 list = [1,5,7,2,4]
 
 sorted(list)
 Out[87]: [1, 2, 4, 5, 7]
-#可以设定时候排序方式，默认从小到大，设定reverse = False 可以从大到小
+##可以设定时候排序方式，默认从小到大，设定reverse = False 可以从大到小
 sorted(list,reverse=False)
 Out[88]: [1, 2, 4, 5, 7]
 
@@ -236,9 +235,9 @@ sorted(list,reverse=True)
 Out[89]: [7, 5, 4, 2, 1]
 ```
 
-### 根据自定义规则来排序，使用参数：key
+#### 根据自定义规则来排序，使用参数：key
 ```
-# 使用key,默认搭配lambda函数使用
+## 使用key,默认搭配lambda函数使用
 sorted(chars,key=lambda x:len(x))
 Out[92]: ['a', 'is', 'boy', 'bruce', 'handsome']
 
@@ -246,10 +245,10 @@ sorted(chars,key=lambda x:len(x),reverse= True)
 Out[93]: ['handsome', 'bruce', 'boy', 'is', 'a']
 ```
 
-### 根据自定义规则来排序，对元组构成的列表进行排序
+#### 根据自定义规则来排序，对元组构成的列表进行排序
 ```
 tuple_list = [('A', 1,5), ('B', 3,2), ('C', 2,6)]
-#key=lambda x: x[1]中可以任意选定x中可选的位置进行排序
+##key=lambda x: x[1]中可以任意选定x中可选的位置进行排序
 sorted(tuple_list, key=lambda x: x[1]) 
 
 Out[94]: [('A', 1, 5), ('C', 2, 6), ('B', 3, 2)]
@@ -261,7 +260,7 @@ sorted(tuple_list, key=lambda x: x[2])
 Out[96]: [('B', 3, 2), ('A', 1, 5), ('C', 2, 6)]
 ```
 
-### 排序的元素是自定义类
+#### 排序的元素是自定义类
 ```
 class tuple_list:
  def __init__(self, one, two, three):
@@ -283,7 +282,7 @@ Out[105]: [('A', 1, 5), ('C', 2, 6), ('B', 3, 2)]
 sorted(tuple_list_, key=lambda x: x.three)
 Out[106]: [('B', 3, 2), ('A', 1, 5), ('C', 2, 6)]
 ```
-### 根据多个字段来排序
+#### 根据多个字段来排序
 ```
 class tuple_list:
  def __init__(self, one, two, three):
@@ -294,12 +293,12 @@ class tuple_list:
   return repr((self.one, self.two, self.three))
 
 tuple_list_ = [tuple_list('C', 1,5), tuple_list('A', 3,2), tuple_list('C', 2,6)]
-# 首先根据one的位置来排序，然后根据two的位置来排序
+## 首先根据one的位置来排序，然后根据two的位置来排序
 sorted(tuple_list_, key=lambda x:(x.one, x.two))
 Out[112]: [('A', 3, 2), ('C', 1, 5), ('C', 2, 6)]
 ```
 
-### 二维排序
+#### 二维排序
 ```
 >>>l=[('a', 1), ('b', 2), ('c', 6), ('d', 4), ('e', 3)]
 >>>sorted(l, key=lambda x:x[0])
@@ -312,8 +311,8 @@ Out[41]: [('a', 1), ('b', 2), ('e', 3), ('d', 4), ('c', 6)]
 Out[42]: [('c', 6), ('d', 4), ('e', 3), ('b', 2), ('a', 1)]
 ```
 
-##  字符串操作
-###  字符串切割
+###  字符串操作
+####  字符串切割
 注：使用前需要引入包（import re）
 功能：split能够按照所能匹配的字串将字符串进行切分，返回切分后的字符串列表
 形式：
@@ -334,7 +333,7 @@ file_name=new_line[-1]
 ```
 
 
-###  替换字符串中的匹配项 
+####  替换字符串中的匹配项 
 **re.sub()** 
 
 	def sub(pattern, repl, string, count=0, flags=0):
@@ -538,13 +537,13 @@ d.去除原始字符串中的URL
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——"
 
 
-### 字符串提取--提取数字
+#### 字符串提取--提取数字
 ```
 re.findall(r'\d+', str(string))
 // '\d'是正则表达式，+表示匹配多个，如果不加，就是单个的数字
 ```
 
-###  字符串相似度比较
+####  字符串相似度比较
 python自带比较相似度的模块，difflib。比较两个字符串的模块是difflib.SequenceMatcher，使用起来很简单：
 
 ```
@@ -571,7 +570,7 @@ print string_similar('广州市医院', '广东省中医院')
 seq = difflib.SequenceMatcher(lambda x:x=" ", a, b)
 ratio = seq.ratio()
 ```
-### 去掉字符串两端的引号
+#### 去掉字符串两端的引号
 背景：有时候会出现这种情况的字符串`'"srting"'`，用type查看，是string。如果里面是整数，需要和某个整数比大小，没法直接用int强制转，需要先去掉外面那层引号
 
 ```
@@ -599,7 +598,7 @@ eval()用途：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bed4ceca7318472d959ef280c707247c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 
-### 字符串转数字，数字转字符串
+#### 字符串转数字，数字转字符串
 
 字符串str转数字:
 float(str)
@@ -609,11 +608,11 @@ int(str)
 数字num转字符串
 str(num)
 
-## 变量转换
+### 变量转换
 
 **字符串、数字互转看字符串里面的操作**
 
-### 数字、bytes
+#### 数字、bytes
 
 数字num转bytes:
 需将num转为str，再利用codec的encode函数，将str转为bytes：encode(str(num))
@@ -623,7 +622,7 @@ int(bytes)
 float(bytes)
 
 
-### 字符串、bytes
+#### 字符串、bytes
 字符串转bytes:
 ```
 from codec import encode,decode
@@ -644,7 +643,7 @@ str(bytes,'UTF-8')
 ```
 
 
-## 循环删除元素
+### 循环删除元素
 **循环删除列表中元素时千万别用正序遍历，一定要用反序遍历！**
 
 ```
@@ -681,15 +680,15 @@ data = [1, 2, 3]
 print(test(data))
 ```
 
-##  列表相关操作
+###  列表相关操作
 
-### 列表头部插入元素
+#### 列表头部插入元素
 
 ```
 names.insert(0,'Bill') //第一个参数表示索引
 ```
 
-###   两个列表取交集
+####   两个列表取交集
 
 ```
 a=[i for i in list2 if i  in list1]
@@ -700,7 +699,7 @@ a=[i for i in list2 if i  in list1]
  list(set(a).intersection(b))
 ```
 
-###   列表取并集
+####   列表取并集
 
 ```
 list(set(a).union(b))
@@ -715,7 +714,7 @@ list(set(a) | set(b))
 list(set(a).intersection(b,c)) 
 ```
 
-###   列表取差集
+####   列表取差集
 
 ```
  list(set(a).difference(b))
@@ -725,7 +724,7 @@ list(set(a).intersection(b,c))
 list(set(a).difference(b,c)) # 求特定1个list(a)中有，其他list(b、c)都没有的元素"""
 ```
 
-###   列表排序（更详细操作见文档）
+####   列表排序（更详细操作见文档）
 
 ```
 file_list.sort(key=lambda x:int(x[9:-4]))
@@ -739,7 +738,7 @@ g = lambda x:x+1
  def g(x):
      return x+1
 ```
-###   列表替换元素（更详细操作见文档）
+####   列表替换元素（更详细操作见文档）
 
 
 1.直接替换
@@ -789,7 +788,7 @@ rep
 ```
 
 
-### 列表截取元素
+#### 列表截取元素
 l=list[0:4]
 
 注意：列表的正向索引下标是从零开始，不是1，反向索引是到-1结束，不是0
@@ -851,7 +850,7 @@ print(z)
 变量[头下标:尾下标:步长]
 例如截取第三个到第五个元素，如果隔两个步长截取的话，就会截取到元素3和元素5，元素4就被跳过了
 
-### 列表查找重复元素
+#### 列表查找重复元素
 推荐方法二
 
 ```
@@ -882,9 +881,9 @@ from collections import Counter
 
 a = [1, 2, 3, 4, 3, 2, "奔奔", "benben", "奔奔"]
 b = dict(Counter(a))
-# 只展示重复元素
+## 只展示重复元素
 print ([key for key,value in b.items() if value > 1])
-# 展现重复元素和重复次数
+## 展现重复元素和重复次数
 print ({key:value for key,value in b.items()if value > 1})
 
 
@@ -910,8 +909,8 @@ for i in List:
    print (a)
 ```
 
-##  XML相关操作
-###  创建一个XML文档
+###  XML相关操作
+####  创建一个XML文档
 
 ```
 import xml.dom.minidom
@@ -942,7 +941,7 @@ fp = open('C:/Users/76585/Desktop/shell/cfdname2/tow.xml', 'w')
 doc.writexml(fp, indent='\t', addindent='\t', newl='\n', encoding="utf-8")
 ```
 
-###  对现有XML文档进行修改
+####  对现有XML文档进行修改
 
 ```
 			tree=ET.parse('C:/Users/76585/Desktop/shell/cfdname2/tow.xml')
@@ -964,8 +963,8 @@ doc.writexml(fp, indent='\t', addindent='\t', newl='\n', encoding="utf-8")
             tree.write('C:/Users/76585/Desktop/shell/cfdname2/tow.xml')
 ```
 
-## 正则表达式
-### 特殊的去首尾空格方法
+### 正则表达式
+#### 特殊的去首尾空格方法
 strip是trim掉字符串两边的空格。
 lstrip, trim掉左边的空格
 rstrip, trim掉右边的空格
@@ -976,18 +975,18 @@ print theString.strip()
 ```
 
 
-## 判断情况总结
-###  判断目录下的空文件夹并删除
+### 判断情况总结
+####  判断目录下的空文件夹并删除
 
 ```
-# 导入os
+## 导入os
 import os
-# 让用户自行输入路径
+## 让用户自行输入路径
 path=input('请输入文件目录路径')
-# 获取当前目录下的所有文件夹名称  得到的是一个列表
+## 获取当前目录下的所有文件夹名称  得到的是一个列表
 folders=os.listdir(path)
 
-# # 遍历列表
+## # 遍历列表
 for folder in folders:
     # 将上级路径path与文件夹名称folder拼接出文件夹的路径
     folder2=os.listdir(path+'\\'+folder)
@@ -999,7 +998,7 @@ for folder in folders:
         # 并将此空文件夹删除
         os.rmdir(path+'\\'+folder)
 ```
-### 判断文件内容为空
+#### 判断文件内容为空
 **方法： size = os.path.getsize(file_path)**
 
 1. 结果：如果 size == 0，则文件内容为空；
@@ -1010,7 +1009,7 @@ if os.path.getsize(file_path) == 0:
 	print('文件内容为空')
 ```
 
-###  变量类型判断
+####  变量类型判断
 
 > 1、isinstance(参数1,参数2)
 > <br>
@@ -1028,7 +1027,7 @@ if os.path.getsize(file_path) == 0:
 type(num)
 ```
 
-##  深拷贝--deep copy
+###  深拷贝--deep copy
 背景：
 
 ```
@@ -1052,14 +1051,14 @@ dict_mid[new_line[1]]=dict_tmp
 ```
 >>> import copy
 >>> origin = [1, 2, [3, 4]]
-#origin 里边有三个元素：1， 2，[3, 4]
+##origin 里边有三个元素：1， 2，[3, 4]
 >>> cop1 = copy.copy(origin)
 >>> cop2 = copy.deepcopy(origin)
 >>> cop1 == cop2
 True
 >>> cop1 is cop2
 False 
-#cop1 和 cop2 看上去相同，但已不再是同一个object
+##cop1 和 cop2 看上去相同，但已不再是同一个object
 >>> origin[2][0] = "hey!" 
 >>> origin
 [1, 2, ['hey!', 4]]
@@ -1067,7 +1066,7 @@ False
 [1, 2, ['hey!', 4]]
 >>> cop2
 [1, 2, [3, 4]]
-#把origin内的子list [3, 4] 改掉了一个元素，观察 cop1 和 cop2
+##把origin内的子list [3, 4] 改掉了一个元素，观察 cop1 和 cop2
 ```
 可以看到 cop1，也就是 shallow copy 跟着 origin 改变了。而 cop2 ，也就是 deep copy 并没有变。
 
@@ -1088,7 +1087,7 @@ Python 存储变量的方法跟其他 OOP 语言不同。它与其说是把值�
 [4, 5, 6]
 >>> b
 [1, 2, 3]
-# a 的值改变后，b 并没有随着 a 变
+## a 的值改变后，b 并没有随着 a 变
 
 >>> a = [1, 2, 3]
 >>> b = a
@@ -1097,7 +1096,7 @@ Python 存储变量的方法跟其他 OOP 语言不同。它与其说是把值�
 [4, 5, 6]
 >>> b
 [4, 5, 6]
-# a 的值改变后，b 随着 a 变了
+## a 的值改变后，b 随着 a 变了
 ```
 上面两段代码中，a 的值都发生了变化。区别在于，第一段代码中是直接赋给了 a 新的值（从 [1, 2, 3] 变为 [4, 5, 6]）；而第二段则是把 list 中每个元素分别改变。
 
@@ -1124,14 +1123,14 @@ a[0], a[1], a[2] = 4, 5, 6 则是直接改变了 [1, 2, 3] 这个物品本身。
 ```
 >>> import copy
 >>> origin = [1, 2, [3, 4]]
-#origin 里边有三个元素：1， 2，[3, 4]
+##origin 里边有三个元素：1， 2，[3, 4]
 >>> cop1 = copy.copy(origin)
 >>> cop2 = copy.deepcopy(origin)
 >>> cop1 == cop2
 True
 >>> cop1 is cop2
 False 
-#cop1 和 cop2 看上去相同，但已不再是同一个object
+##cop1 和 cop2 看上去相同，但已不再是同一个object
 >>> origin[2][0] = "hey!" 
 >>> origin
 [1, 2, ['hey!', 4]]
@@ -1139,7 +1138,7 @@ False
 [1, 2, ['hey!', 4]]
 >>> cop2
 [1, 2, [3, 4]]
-#把origin内的子list [3, 4] 改掉了一个元素，观察 cop1 和 cop2
+##把origin内的子list [3, 4] 改掉了一个元素，观察 cop1 和 cop2
 ```
 学过docker的人应该对镜像这个概念不陌生，我们可以把镜像的概念套用在copy上面。
 
@@ -1154,7 +1153,7 @@ deepcopy的时候会将复杂对象的每一层复制一个单独的个体出来
 
 
 
-##  json相关操作
+###  json相关操作
 **dumps和dump 序列化方法**
 dumps只完成了序列化为str，
 dump必须传文件描述符，将序列化的str保存到文件中
@@ -1235,8 +1234,8 @@ print(data)
 ***如果打开的文件为空，那么json.load(f)会报错，里面必须有内容才能用这个打开***
 
 
-##  字典相关操作
-###  如何检查字典(Python)中是否存在某个值
+###  字典相关操作
+####  如何检查字典(Python)中是否存在某个值
 d = {'1': 'one', '3': 'three', '2': 'two', '5': 'five', '4': 'four'}
 
 我需要一种方法来找出这个字典中是否存在诸如“one”或“two”这样的值。
@@ -1246,7 +1245,7 @@ d = {'1': 'one', '3': 'three', '2': 'two', '5': 'five', '4': 'four'}
 >>> 'one' in d.values()
 True
 ```
-##  强制结束程序或暂停程序
+###  强制结束程序或暂停程序
 
 ```
 import sys
@@ -1254,7 +1253,7 @@ sys.exit()
 ```
 
 ```
-#暂停程序
+##暂停程序
 input()
 用法：直接在欲等待处输入input()即可。
 
@@ -1278,8 +1277,8 @@ os.system("pause")
 缺点：导入模块，执行系统命令。
 ```
 
-## python执行shell脚本
-### os.system(“command”)
+### python执行shell脚本
+#### os.system(“command”)
 这是python自带的执行shell命令的方法，其中最后一个0是这个命令的返回值，为0表示命令执行成功。但是使用system()无法将执行的结果保存起来。
 ```
 
@@ -1288,7 +1287,7 @@ import os
 print(os.system("touch a.txt")) //需要用引号将命令括起来
 
 ```
-### os.popen("command")方法
+#### os.popen("command")方法
 
 上面的os.system()方法没办法查看shell命令返回的结果，通过 os.popen() 返回的是 file read 的对象，对其进行读取 read() 的操作可以看到执行的输出。
 
@@ -1309,7 +1308,7 @@ total 4
 **对于有返回值的shell命令，建议使用 os.popen()
 对于没有返回值的shell命令，建议使用 os.system()**
 
-## 在for循环体内修改i值
+### 在for循环体内修改i值
 **场景：在循环体内判断条件发生时，重新执行执行当前循环体（保留当前i值）
 常规：类似的需求一般会在循环体里写一个 if 加上continue / break
 实际：但是在for循环内修改i值，只会对当前一次的循环体内有效**
@@ -1352,13 +1351,13 @@ while i < 6:
 2
 5
 ```
-## 修改文件
+### 修改文件
 
 ```
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Date    : 2019-04-25 14:35:58
-# @Author  : 迷风小白
+##!/usr/bin/env python
+## -*- coding: utf-8 -*-
+## @Date    : 2019-04-25 14:35:58
+## @Author  : 迷风小白
 
 def changetext(a,b):
  with open('test','r',encoding='utf-8') as f:
@@ -1378,8 +1377,8 @@ def changetext(a,b):
 changetext('pig','cow')
 ```
 
-#  知识点
-##  from import和import的区别
+##  知识点
+###  from import和import的区别
 
 ```
 import Module # 引入模块
@@ -1393,17 +1392,17 @@ from Module import * # 引入模块中的所有‘公开’成员
 ```
 from datetime import datetime
 
-#引入 datetime 模块中的 datetime 类,然后就可以通过datetime这个类调用now() 方法了
+##引入 datetime 模块中的 datetime 类,然后就可以通过datetime这个类调用now() 方法了
 
-#即,内部可以通过datetime.now()来调用
+##即,内部可以通过datetime.now()来调用
 ```
 
 ```
 import datetime
 
-#引入datetime 模块,然后通过这个模块来调用模块中的类datetime和类datetime中的方法now()
+##引入datetime 模块,然后通过这个模块来调用模块中的类datetime和类datetime中的方法now()
 
-#即：内部可以通过datetime.datetime.now()来调用
+##即：内部可以通过datetime.datetime.now()来调用
 
 也就是说，有一个模块datetime,这个模块中有一个类datetime,在这个类中有一个方法now()
 ```

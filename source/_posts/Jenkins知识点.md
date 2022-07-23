@@ -2,21 +2,20 @@
 title: Jenkins知识点
 date: 2022/1/14
 update: 2022/1/16
-
 categories:
   - Jenkins
-  
 tags:
   - Jenkins
   - 运维
   - 持续集成
+abbrlink: 10218
 ---
 
 
 
 
 
-#  流水线语法找不到模板
+##  流水线语法找不到模板
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e93ad73b8c094398bdfc1b49f5388317.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 有时候在“流水线语言”板块找不到模板，即使安装了相对于的插件。如上图，安装了**publish over ssh插件**就会出现这个选项，但是当时没有。
 
@@ -26,12 +25,12 @@ tags:
 ```
 ip:port/restart
 ```
-#  Publish over ssh连接失败
+##  Publish over ssh连接失败
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/72c9e5709ded45fcadfc75afc94e0baf.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 **解决办法：**
 这里要填密钥的密码
 
-#  无法执行远程脚本
+##  无法执行远程脚本
 
 > 背景： 
 > 创建一个jenkins作业，通过ssh在另一台服务器上运行脚本，实现从harbor仓库拉取docker镜像，并运行。

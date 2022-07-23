@@ -1,14 +1,12 @@
 ---
 title: Typescript变量类型
 date: 2022/6/14
-
-
 categories:
   - 前端开发
-  
 tags:
   - JavaScript
   - Typescript
+abbrlink: 62822
 ---
 
 ##  TS语法以及类型

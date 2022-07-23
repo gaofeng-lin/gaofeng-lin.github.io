@@ -3,7 +3,6 @@ title: Linux知识点+问题
 date: 2022/3/6
 categories:
   - Linux
-  
 tags:
   - Linux
   - 运维
@@ -11,26 +10,27 @@ tags:
   - gcc
   - Linux权限用法
   - make&cmake
+abbrlink: 54220
 ---
 
-# 问题汇总
-## error while loading shared libraries错误解决办法
+## 问题汇总
+### error while loading shared libraries错误解决办法
 **背景：求解器执行的适合报找不到libmpiexec.so.12这个东西，但是在/opt/mpich/lib下面有这个东西。路径什么的也都加入到了 环境变量里面 （~/.bash_profile或~/.bashrc）。还是无法解决问题**
 [原文链接](https://blog.csdn.net/dumeifang/article/details/2963223?spm=1001.2101.3001.6650.1&depth_1-utm_relevant_index=2)
 出现这类错误表示，系统不知道xxx.so放在哪个目录下，这时候就要在/etc/ld.so.conf中加入xxx.so所在的目录。
 
 运行命令 `sudo gedit /etc/ld.so.conf` 在第一行后面空一格 添加/usr/local/lib 保存。运行`sudo /sbin/ldconfig`更新
 
-# make 和 cmake
+## make 和 cmake
 [原文链接](https://blog.csdn.net/KP1995/article/details/109569787)
 
-## 什么是make
+### 什么是make
 make工具可以看成是一个智能的批处理工具，它本身并没有编译和链接的功能，而是用类似于批处理的方式—通过调用makefile文件中用户指定的命令来进行编译和链接。
 
-## 什么是Makefile
+### 什么是Makefile
 简单的说就像一首歌的乐谱，make工具就像指挥家，指挥家根据乐谱指挥整个乐团怎么样演奏，make工具就根据makefile中的命令进行编译和链接。makefile命令中就包含了调用gcc（也可以是别的编译器）去编译某个源文件的命令。makefile在一些简单的工程完全可以用人工手写，但是当工程非常大的时候，手写makefile也是非常麻烦的，如果换了个平台makefile又要重新修改。这时候就出现了Cmake工具。
 
-## 什么是Cmake
+### 什么是Cmake
 cmake可以更加简单的生成makefile文件给上面那个make用。当然cmake还有其他功能，就是可以跨平台生成对应平台能用的makefile，你就不用再自己去修改了。cmake根据什么生成makefile呢？它又要根据一个叫CMakeLists.txt文件（学名：组态档）去生成makefile。到最后CMakeLists.txt文件谁写啊？亲，是你自己手写的。
 
 当然如果你用IDE，类似VS这些一般它都能帮你弄好了，你只需要按一下那个三角形。
@@ -45,8 +45,8 @@ Makefile+make可理解为类unix环境下的项目管理工具， 而cmake是抽
 下面给出其关系图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20201109214319194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tQMTk5NQ==,size_16,color_FFFFFF,t_70#pic_center)
 
-# ./configure && make && make install
-## ./configure
+## ./configure && make && make install
+### ./configure
 源码的安装一般由3个步骤组成：**配置(configure)、编译(make)、安装(make install)**。
 
 configure文件是一个可执行的脚本文件,是用来检测你的安装平台的目标特征的。比如它会检测你是不是有CC或GCC，并不是需要CC或GCC.
@@ -72,19 +72,19 @@ $ ./configure --prefix=/tmp/to_remove && make install
 
 然后遍历/tmp/to_remove的文件，删除对应安装位置的文件即可（因为/tmp/to_remove里的目录结构就是没有配置--prefix选项时的目录结构）。
 
-## make 
+### make 
 make 是用来编译的，它从Makefile中读取指令，然后编译。可以使用多核来make。`make -j2`
 如果是8核，那就用make -j8。
 这一步就是编译，大多数的源代码包都经过这一步进行编译（当然有些perl或python编写的软件需要调用perl或python来进行编译）。如果 在 make 过程中出现 error ，你就要记下错误代码（注意不仅仅是最后一行），然后你可以向开发者提交 bugreport（一般在 INSTALL 里有提交地址），或者你的系统少了一些依赖库等，这些需要自己仔细研究错误代码。
 
 可能遇到的错误：make *** 没有指明目标并且找不到 makefile。 停止。问题很明了，没有Makefile，怎么办，原来是要先./configure 一下，再make。
 
-## make install
+### make install
 可以使用多核安装 make -j2 install
 
 这条命令来进行安装（当然有些软件需要先运行 make check 或 make test 来进行一些测试），这一步一般需要你有 root 权限（因为要向系统写入文件）。
 
-# Linux 权限的简单用法（使用者、目录、文件）
+## Linux 权限的简单用法（使用者、目录、文件）
 [原文链接](https://blog.csdn.net/sinat_36118270/article/details/63683393)
 
 首先，我们需要知道Linux中的权限是十分重要的，而且权限分为两类：一类是使用者的权限，一类是文件以及目录的是否可读、写、执行的权限。
@@ -99,7 +99,7 @@ make 是用来编译的，它从Makefile中读取指令，然后编译。可以�
 　　下面是刚才所讲操作的具体命令：
 
 ```
-# user1是生成的用户名
+## user1是生成的用户名
 
 创建一个用户：useradd user
 
@@ -226,8 +226,8 @@ http://blog.csdn.net/sinat_36118270/article/details/62899093
 　　因为二者是互补的关系，所以umask中出现的权限不能出现在新创建的文件中，又因为默认情况下新创建的文件没有拥有者和所属组的执行权限以及other的写和执行权限。
 　　所以file_1的文件权限为：“rw- r– r–”。
 
-# gcc升级到最新版本
-## Centos7
+## gcc升级到最新版本
+### Centos7
 Centos 7默认gcc版本为4.8，有时需要更高版本的，这里以升级至8.3.1版本为例，分别执行下面三条命令即可，无需手动下载源码编译
 
 1、安装centos-release-scl
@@ -297,8 +297,8 @@ gcc --version
 g++ --version
 ```
 
-# 分区+挂载
-## 分区
+## 分区+挂载
+### 分区
 详细信息：[来源该博客](https://blog.csdn.net/qq_30604989/article/details/81163270)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/edd06e4319f24f1092d6f7bba9955937.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
@@ -318,7 +318,7 @@ df -h /home/test.txt
 
 ![Snipaste_2022-05-19_15-34-43.png](https://s2.loli.net/2022/05/19/8UEfapmwxb6zjSu.png)
 
-## 挂载
+### 挂载
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/0189f5afb0f24dde85c540fc5b8c887f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 ```
@@ -347,7 +347,7 @@ mount /dev/sdb1 /home/newdisk
 ```
 vim /etc/fstab
 ```
-## 解除挂载
+### 解除挂载
 
 ```
 umount 设备名

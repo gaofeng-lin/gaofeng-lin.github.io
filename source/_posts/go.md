@@ -3,14 +3,14 @@ title: Go
 date: 2022/3/6
 categories:
   - Go
-  
 tags:
   - Go
+abbrlink: 56435
 ---
 
 
 
-# 环境变量
+## 环境变量
 
 ```
 go version  //查看版本
@@ -18,9 +18,9 @@ go env   //查看环境变量
 ```
 
 
-# package
+## package
 
-## 包的定义
+### 包的定义
 
 ```
 package 包名
@@ -31,7 +31,7 @@ package 包名
 - 包名可以不和文件夹的名字一样。
 - 包名为```main```的包为应用程序的入口包，这种包编译后会得到一个可执行文件，而编译不含main包的源代码则不会得到可执行文件
   
-## 包的使用
+### 包的使用
 
 1. 有时候我们单独写一个go文件，测试或验证某个功能，包名都写main就好
 2. 如果要引入自定义的包。如果import失败，看一下保存的信息。一般会提示GOROOT GOPATH找不到这个包，这个时候把这个文件夹放到上面的目录里面就可以导入了。
@@ -40,7 +40,7 @@ package 包名
 我目前的GOROOT是在这个目录下面，把文件夹放进去，里面是go文件，就可以引入了。
 ![03.png](https://s2.loli.net/2022/05/25/sy6aYNIOjX5dfuM.png)
 
-## go mod配置
+### go mod配置
 
 go mod 主要用于管理第三方包，可以自动进行下载。要使用go mod，需要一些配置。
 **需要配置GO111MODULE 、GOPROXY**
@@ -50,7 +50,7 @@ go mod 主要用于管理第三方包，可以自动进行下载。要使用go m
 ![02.png](https://s2.loli.net/2022/05/25/QDjPKNHc2pI8Mn3.png)
 
 
-## go mod使用
+### go mod使用
 首先：
 ```
 go mod init "modname"
@@ -69,10 +69,10 @@ go get -u
 
 
 
-# 语法
+## 语法
 
 
-## 占位符
+### 占位符
 [原文链接](https://zhuanlan.zhihu.com/p/139758275)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/1298ce4931252dd9582b2d7571ab97c4.png#pic_center)
 输出为：
@@ -90,7 +90,7 @@ main.Student
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/566b6c8f51f9f93e95c631aac7e69778.png#pic_center)
 
 
-## 下划线  “_”
+### 下划线  “_”
 
 “_”是特殊标识符，用来忽略结果。
 
@@ -197,7 +197,7 @@ import _ "github.com/go-sql-driver/mysql"
 第二个import就是不直接使用mysql包，只是执行一下这个包的init函数，把mysql的驱动注册到sql包里，然后程序里就可以使用sql包来访问mysql数据库了。
 
 
-## = 和 :=的区别
+### = 和 :=的区别
 ```
 // = 使用必须使用先var声明例如：
 var a
@@ -211,7 +211,7 @@ var c int = 100
 d := 100
 ```
 
-## String()方法
+### String()方法
 对于定于了String()方法的类型，默认输出的时候会调用该方法，实现字符串的打印。例如下面代码：
 
 ```
@@ -271,7 +271,7 @@ func main() {
 > 所要么向楼上那位一样定义*Man类型。要么就是在输出时，向Print函数传递*Man类型的数据(改成`fmt.Println(&m)`)
 
 
-## 方法接受者
+### 方法接受者
 [原文链接](https://www.jianshu.com/p/316617954070)
 在go语言中，没有类的概念但是可以给类型（结构体，自定义类型）定义方法。所谓方法就是定义了接受者的函数。接受者定义在func关键字和函数名之间:
 
@@ -441,7 +441,7 @@ func main() {
 
 
 
-## 结构体定义中的 json 单引号（``）
+### 结构体定义中的 json 单引号（``）
 
 ```
 package main
@@ -519,14 +519,14 @@ func main() {
 ```
 
 
-# 基本数据类型操作
-## 数组
+## 基本数据类型操作
+### 数组
 ```
 
 ```
-## map相关操作
+### map相关操作
 
-### 创建map
+#### 创建map
 ```
 //初始化空map
 prevNums := map[int]int{}
@@ -537,7 +537,7 @@ countryCapitalMap := map[string]string{"France": "Paris", "Italy": "Rome", "Japa
 //value接收任意数据类型，用interface
 resMap := make(map[string]interface{})
 ```
-### 查看元素在集合中是否存在
+#### 查看元素在集合中是否存在
 ```
 capital, ok := countryCapitalMap [ "American" ] /*如果确定是真实的,则存在,否则不存在 */
     /*fmt.Println(capital) */
@@ -550,7 +550,7 @@ capital, ok := countryCapitalMap [ "American" ] /*如果确定是真实的,则�
 ```
 
 
-### 判断key是否存在
+#### 判断key是否存在
 
 ```
 package main
@@ -580,10 +580,10 @@ if _, ok := map[key]; !ok {
 }
 ```
 
-### 快速删除所有元素
+#### 快速删除所有元素
 **直接重新生成map，名字相同**
 
-### Map 实现去重与 set 的功能
+#### Map 实现去重与 set 的功能
 ```
 package main
  
@@ -604,7 +604,7 @@ func main() {
  
 // 完成后，set的所有的key值为不重复的值
 ```
-### map转json
+#### map转json
 ```
 // map to json
 
@@ -642,7 +642,7 @@ func main() {
 }
 ```
 
-## 切片
+### 切片
 切片是动态数组，可以搭配结构体或map形成多重嵌套
 ```
 var projects = make([]models.Project, 0)
@@ -652,7 +652,7 @@ var projects = make([]models.Project, 0)
 
 
 [去重、插入、删除、清空原链接](https://blog.csdn.net/youngwhz1/article/details/83026263?spm=1001.2101.3001.6661.1&depth_1-utm_relevant_index=1)
-### 切片去重
+#### 切片去重
 ```
 /* 在slice中去除重复的元素，其中a必须是已经排序的序列。
  * params:
@@ -720,7 +720,7 @@ ret_slice_float = [1.11 2.22 3.33 4.44], 0xc042034180
 <after> slice_int = [1 1 2 2 3 3 4 4 5 5], 0xc04200e1e0
 <after> slice_float = [1.11 1.11 2.22 2.22 3.33 3.33 4.44 4.44], 0xc042014200
 ```
-### 插入
+#### 插入
 ```
 /*
  * 在Slice指定位置插入元素。
@@ -789,7 +789,7 @@ func SliceInsert3(s interface{}, index int, value interface{}) bool {
 2. SliceInsert2()方法是传入一个[]interface{}类型的slice对象指针，直接修改这个slice对象。
 3. SliceInsert3()方法是传入一个具体类型的slice对象指针（如*[]string, *[]int等），方法中直接修改这个slice对象，返回操作是否成功的状态(bool)。
 
-### 删除
+#### 删除
 ```
 /*
  * 删除Slice中的元素。
@@ -842,7 +842,7 @@ func SliceRemove3(s interface{}, index int) bool {
 	return true
 }
 ```
-### 清空
+#### 清空
 ```
 /*
  * 清空Slice，传入的slice对象地址发生变化。
@@ -893,9 +893,9 @@ func SliceClear3(s interface{}) bool {
 }
 ```
 
-# 常用操作
+## 常用操作
 
-## 单引号、双引号、反引号
+### 单引号、双引号、反引号
 
 **Golang限定字符或者字符串一共三种引号，单引号（’’)，双引号("") 以及反引号(``)。反引号就是标准键盘“Esc”按钮下面的那个键。**
 
@@ -908,7 +908,7 @@ func SliceClear3(s interface{}) bool {
 
 **反引号有时候能起到很好的作用，比如一个字符串里面有双引号，分号这种，并且分布的还不规律，用反引号括起来就好**
 
-## 变量类型转换
+### 变量类型转换
 
 ```c
 string转成int：
@@ -950,7 +950,7 @@ func main() {
 2.转换变量类型后要重新用一个名字，不能用之前的变量名
 3.下划线那个地方是err，被省略了**
 
-## 判断变量类型
+### 判断变量类型
 方法一：
 
 ```
@@ -992,7 +992,7 @@ func main() {
 ```
 
 
-## 判断类型是否为map
+### 判断类型是否为map
 
 ```
 if reflect.ValueOf(map1).Kind() == reflect.Map {
@@ -1002,9 +1002,9 @@ if reflect.ValueOf(map1).Kind() == reflect.Map {
 }
 ```
 
-## json相关操作
+### json相关操作
 
-### 解析json文件
+#### 解析json文件
 
 ```
 package main
@@ -1048,14 +1048,14 @@ func con_var_name (key string) string {
 	return res
 }
 ```
-### 解析json文件，interface转int
+#### 解析json文件，interface转int
 **因为json解析得到的数据是map[string]interface，里面的字段可能是数字，有时候需要取出来比较，
 就需要将interface转为int。**
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/1b607816b68645c5b5ceaebe1859abdc.png)
 需要先转为string，在用 `strconv.Atoi`，将string转为int。
 
 
-### 结构体解析为json
+#### 结构体解析为json
 
 先上代码
 
@@ -1094,7 +1094,7 @@ func main()  {
 }
 
 ```
-### 将json字符串解码到相应的数据结构
+#### 将json字符串解码到相应的数据结构
 
 ```
 type StuRead struct {
@@ -1131,10 +1131,10 @@ func main() {
     fmt.Println(stu)
 }
 ```
-### map转json
+#### map转json
 例子在前面 **基本数据类型操作-》map相关操作**
 
-## 字符串操作
+### 字符串操作
 
 ```
 package main
@@ -1174,7 +1174,7 @@ func main() {
     fmt.Println(strings.Join(arr, ""))
 }
 ```
-## 字符串替换
+### 字符串替换
 ```
 str = strings.Replace(str, " ", "", -1)
 ```
@@ -1183,7 +1183,7 @@ func Replace(s, old, new string, n int) string
 
 **返回将s中前n个不重叠old子串都替换为new的新字符串，如果n<0会替换所有old子串**
 
-## 字符串处理函数
+### 字符串处理函数
 Golang中的strings包：
 ```
 Count(s string, str string) int：计算字符串str在s中的非重叠个数。如果str为空串则返回s中的字符（非字节）个数+1。
@@ -1226,8 +1226,8 @@ EqualFold(s1, s2 string) bool：比较UTF-8编码在小写的条件下是否相�
 Compare(s1 string, s2 string) int1：比较字符串，区分大小写，比”==”速度快。相等为0，不相等为-1。
 ```
 
-## 正则表达式
-### 常用的元字符：
+### 正则表达式
+#### 常用的元字符：
 
 ```
 . 匹配除换行符以外的任意字符
@@ -1248,7 +1248,7 @@ $ 匹配字符串的结束
 
 如果你想查找元字符本身的话，比如你查找.,或者*,就出现了问题：你没办法指定它们，因为它们会被解释成别的意思。这时你就得使用\来取消这些字符的特殊意义。因此，你应该使用\.和\*。当然，要查找\本身，你也得用\\。
 
-### 重复
+#### 重复
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/ed775dff59f64772a5e4b0c1339e55d5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 
@@ -1264,13 +1264,13 @@ $ 匹配字符串的结束
 
 重复单个字符（直接在字符后面加上限定符就行了）；但如果想要重复多个字符又该怎么办？你可以用小括号来指定子表达式(也叫做分组)，然后你就可以指定这个子表达式的重复次数了，你也可以对子表达式进行其它一些操作。
 
-### 反义字符
+#### 反义字符
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/b44bde0b2c634cac8c39987e26e035b1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 例子：\S+匹配不包含空白符的字符串。
 
 <a[^>]+>匹配用尖括号括起来的以a开头的字符串。
 
-### 常用的正则表达式函数：
+#### 常用的正则表达式函数：
 
 ```
 reg = regexp.MustCompile(`匹配模式`)
@@ -1278,7 +1278,7 @@ reg.FindAllString( )
 reg.ReplaceAllString(）
 ```
 
-### 例子
+#### 例子
 ```
 func main() {
 	text := `Hello 世界！123 Go.`
@@ -1402,7 +1402,7 @@ func main() {
 
 
 
-## 按行读文件
+### 按行读文件
 **注意下这里的第二个方法，读到最后字符串为空，有时候可能会报错（被坑过），加一个判断条件，判断长度是否为0。（代码里面自己已经加了）**
 ```
 func Readlines(filename string) {
@@ -1444,7 +1444,7 @@ func Readlines(filename string) {
 ```
 
 
-## 字符串与切片的转换
+### 字符串与切片的转换
 
 ```
 package main
@@ -1476,9 +1476,9 @@ func main() {
 
 ```
 
-## 读写文件
+### 读写文件
 [原文链接](https://www.cnblogs.com/believepd/p/10951763.html)
-### 打开关闭文件
+#### 打开关闭文件
 
 ```
 import (
@@ -1500,7 +1500,7 @@ func main() {
     }
 }
 ```
-### 读文件
+#### 读文件
 **法一：带缓冲**
 
 ```
@@ -1552,7 +1552,7 @@ func main() {
     fmt.Printf("%v\n", string(content))
 }
 ```
-### 写文件
+#### 写文件
 示例1：
 创建一个新文件，写入3行："Hello World"
 打开一个存在的文件，将原来的内容覆盖成新的内容，3行："你好，世界"
@@ -1664,7 +1664,7 @@ func main() {
 }
 ```
 
-### 判断文件是否存在
+#### 判断文件是否存在
 golang判断文件或文件夹是否存在的方法为使用 os.Stat() 函数返回的错误值进行判断：
 
 如果返回的错误为 nil，说明文件或文件夹存在；
@@ -1702,7 +1702,7 @@ func main() {
 
 ```
 
-### 拷贝文件
+#### 拷贝文件
 将src的数据拷贝到dst，直到在src上到达EOF或发生错误。返回拷贝的字节数和遇到的第一个错误。
 
 对成功的调用，返回值err为nil而非EOF，因为Copy定义为从src读取直到EOF，它不会将读取到EOF视为应报告的错误。如果src实现了WriterTo接口，本函数会调用src.WriteTo(dst)进行拷贝；否则如果dst实现了ReaderFrom接口，本函数会调用dst.ReadFrom(src)进行拷贝。
@@ -1751,7 +1751,7 @@ func main() {
 
 自己写一个函数完成拷贝文件
 ```
-### 遍历目录
+#### 遍历目录
 
 ```
 package main
@@ -1785,7 +1785,7 @@ func main() {
 }
 ```
 
-### 其它
+#### 其它
 统计一个文件中含有的英文、数字、空格以及其他字符数量。
 
 ```
@@ -1849,9 +1849,9 @@ func main() {
 }
 ```
 
-# 问题
+## 问题
 
-## map类型interface{}转换
+### map类型interface{}转换
 
 有时候我们在map里面嵌套map
 想取内存map的值就会出现以下问题

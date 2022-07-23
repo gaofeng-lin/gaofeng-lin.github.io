@@ -3,17 +3,17 @@ title: Shell 命令
 date: 2022/3/6
 categories:
   - Linux
-  
 tags:
   - Linux
   - 运维
   - sed
+abbrlink: 20005
 ---
 
 
 
-# 基本知识/命令
-## 变量赋值语句不能有空格
+## 基本知识/命令
+### 变量赋值语句不能有空格
 **1、shell脚本变量名和等号及等号和值之间不能有空格，这可能和我们熟悉的所有编程语言都不一样，变量命名须遵循如下规则：**
 •首个字符必须为字母（a-z，A-Z）。
 •中间不能有空格，可以使用下划线（_）。
@@ -44,7 +44,7 @@ echo  ../${PROV}/${DATDIR}
 
 if [ "${sdpt}" = "sdpt_js" ]; then
 
-## 将命令的输出结果赋值给变量
+### 将命令的输出结果赋值给变量
 Shell 中有两种方式可以完成命令替换，一种是反引号` `，一种是$()，使用方法如下：
 
 ```typescript
@@ -63,7 +63,7 @@ version_num 那一行是一个字符串的分割，最终得到209，我想把�
 最后相当于把输出的结果赋值给了version_num这个变量
 
 
-## shell脚本中登录mysql,执行sql
+### shell脚本中登录mysql,执行sql
 **方式一：mysql -u root -pmysql <<EOF sql语句 EOF**
 注：密码与-p之间不能有空格，否则不能识别密码，EOF中间的sql语句，与mysql正常语句无异
 
@@ -112,11 +112,11 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 ```
 
 
-## 读取文件每一行并输出
+### 读取文件每一行并输出
 方案一：
 
 ```bash
-#!/bin/bash
+##!/bin/bash
 
 while read line
 do
@@ -126,7 +126,7 @@ done < test.txt
 方案二：
 
 ```bash
-#!/bin/bash
+##!/bin/bash
 
 cat test.txt | while read line
 do
@@ -163,7 +163,7 @@ Runoob
 Taobao
 ```
 
-## if 与 for 循环
+### if 与 for 循环
 ```
 getfilesordir(){
     for file in `ls $1`
@@ -182,7 +182,7 @@ path="./"
 getfilesordir $path
 ```
 
-## 遍历文件夹
+### 遍历文件夹
 **遍历文件夹下所有文件，不包含子目录：**
 ```
 getfilesordir(){
@@ -216,7 +216,7 @@ done
 
 **遍历目录包含子目录**
 ```
-#!/bin/bash
+##!/bin/bash
 function getdir(){
     for element in `ls $1`
     do  
@@ -234,10 +234,10 @@ getdir $root_dir
 ```
 以下命令均不包含"."，".."目录，以及"."开头的隐藏文件，如需包含，ll 需要加上 -a参数#当前目录下文件个数，不包含子目录ll |grep "^-"|wc -l#当前目录下目录个数，不包含子目录ll |grep "^d"|wc -l#当前目录下文件个数，包含子目录ll -R|grep "^-"|wc -l#当前目录下目录个数，包含子目录ll -R|grep "^d"|wc -l
 
-## 字符串与整数比较
+### 字符串与整数比较
 ```
-#!/bin/sh
-#字符串比较(比较大小以及是否相等)
+##!/bin/sh
+##字符串比较(比较大小以及是否相等)
 a=hello
 b=hello
 c=how
@@ -256,7 +256,7 @@ if [[ "$a" < "$c" ]];then
 	echo "a<c"
 fi
 
-#整数比较
+##整数比较
 a=1
 b=2
 if(($a<=$b));then
@@ -267,38 +267,38 @@ if((a<=b));then
 	echo "a<=b"
 fi
 
-# 整数运算
+## 整数运算
 d=$(($a+$b))
 echo $d
 
 c=$((a+b))
 echo $c
 
-# 整数运算
+## 整数运算
 c=$((a+b))
 echo $c
 
-#浮点数运算
+##浮点数运算
 a=1.223
 b=2.3
 c=$(echo $a+$b|bc)
 echo $c
 ```
 
-## 将shell命令的执行结果放入数组
+### 将shell命令的执行结果放入数组
 ```
 arr=( `git branch | xargs` )
 echo ${arr[@]}
 ```
 
-#  实际命令分析
+##  实际命令分析
 
-## shell脚本登录mysql并执行语句
+### shell脚本登录mysql并执行语句
 
 ```bash
-#!/bin/bash
+##!/bin/bash
 
-# get 7 days ago according to input date. e.g. if input date is 20180410,it will delete those records on or before 20180403
+## get 7 days ago according to input date. e.g. if input date is 20180410,it will delete those records on or before 20180403
 wanted_date=`date -d "$1 7 days ago" +%Y%m%d`
 
 echo "0==}=========> CAUTION! Those records on or before $wanted_date will be removed!"
@@ -315,7 +315,7 @@ else
   exit 0
 fi
 
-# to call SQL statement at MySQL prompt
+## to call SQL statement at MySQL prompt
 mysql -h 172.33.101.123 -P 3306 -u tony -pYourPassword -D YourDbName <<EOF
 select current_date();
 use tony_db;
@@ -327,7 +327,7 @@ select count(*) from confirmed_order_data where paid_date<="$wanted_date";
 EOF
 ```
 
-## 提取git中某个文件的所有版本并按顺序命名
+### 提取git中某个文件的所有版本并按顺序命名
 
 ```
 git log --follow --pretty=format:%H 文件名 | xargs -I{} sh -c 'git show {}:文件名 > 文件名.{}'
@@ -387,7 +387,7 @@ $ sudo sh -c ‘echo “第二条内容” >> test.sh’
 
 ```
 
-## 给每一个远程分支在本地建立单独的文件夹，文件名就是分支名  
+### 给每一个远程分支在本地建立单独的文件夹，文件名就是分支名  
 
 ```bash
 git branch -r | xargs -d/ -n1 | grep -v 'origin' | xargs -I{} sh -c 'mkdir "C:\Users\76585\Desktop\try\{}" '
@@ -412,7 +412,7 @@ git branch -r | xargs -d/ -n1 | grep -v 'origin' | xargs -I{} sh -c 'mkdir "C:\U
 如果是非当前路径，`c/xx/xxx/1.sh  //绝对路径到sh文件就好，前面不用加./` 
 
 
-## 按提交信息来过滤提交 --grep 
+### 按提交信息来过滤提交 --grep 
 按提交信息来过滤提交，你可以使用--grep标记。它和上面的--author标记差不多，只不过它搜索的是提交信息而不是作者。
 
 背景：提取主干某文件的提交，因为主干都是其它author合并上去的，所有没有主干这个author，无法使用--author这个参数来过滤。但是每次合并到主干的commit 都有一句 "into avtivebranch"，根据这一句筛选即可。
@@ -424,11 +424,11 @@ git log --grep="JRA-224:"
 //也可以传入-i参数来忽略大小写匹配
 ```
 
-## 获取for循环中按条件筛选出的变量值
+### 获取for循环中按条件筛选出的变量值
 **将这个功能写成一个函数，函数内部用echo输出这个值，外部用一个变量接受这个值。**
 
 ```bash
-#!/bin/bash
+##!/bin/bash
 
 function func(){
 cat cfd.log | while read line
@@ -453,12 +453,12 @@ echo $res
 
 
 
-#  代码分析
-##  读取文件夹中的文件名，并存入列表
+##  代码分析
+###  读取文件夹中的文件名，并存入列表
 
 ```
-#!/bin/bash
-#读取文件夹中的文件名，并存入列表
+##!/bin/bash
+##读取文件夹中的文件名，并存入列表
 
 i=0
 for dir in $(ls 'C:\Users\76585\Desktop\cfdname1')
@@ -495,9 +495,9 @@ let a+=1
 4.打印数组的方法：${my_array[*]} 或者 ${my_array[@]}
 ```
 
-#  字符串处理
+##  字符串处理
 
-##  获取变量字符串长度
+###  获取变量字符串长度
 想要知道 "www.baidu.com" 的变量net的长度十分简单。
 
 
@@ -520,7 +520,7 @@ let a+=1
 ```
 
 
-##  变量截取
+###  变量截取
 
 **1.指定位置截取字符串**
 
@@ -547,19 +547,19 @@ www.baidu.com
 [Neptuneyt]$ echo $net
 www.baidu.com
 
-# 删除匹配字符串的左边，留下剩余部分
+## 删除匹配字符串的左边，留下剩余部分
 [Neptuneyt]$ echo ${net#*.} #这里用*.表示匹配到www.，用一个#表示删除匹配到的字符串，留下剩余的部分
 baidu.com
 
-# 用2个#号表示尽可能多的删除匹配到的字符串
+## 用2个#号表示尽可能多的删除匹配到的字符串
 [Neptuneyt]$ echo ${net##*.}
 com
 
-# 同理也可以匹配字符串的右边，留下剩余部分
+## 同理也可以匹配字符串的右边，留下剩余部分
 [Neptuneyt]$ echo ${net%.*} #用.*匹配到.com,用%删除
 www.baidu
 
-# 用2个%号表示尽可能多的删除匹配到的字符串
+## 用2个%号表示尽可能多的删除匹配到的字符串
 [Neptuneyt]$ echo ${net%%.*}    #因为2个%，这里.*表示匹配到最长的.baidu.com
 ```
 总的来说:
@@ -623,7 +623,7 @@ echo"123abc"|cut -b 2,5
 
 
 
-##  变量的字符串替换
+###  变量的字符串替换
 想要将net的 baidu替换成google怎么写呢？只需`${net/baidu/google}`即可，需要注意的是原变量并未修改
 
 ```
@@ -655,7 +655,7 @@ www/baidu/com
 www.xiaomi.com.-
 ```
 
-##  删除字符串
+###  删除字符串
 
 其实学会了替换字符串删除字符串就更简单了，只需将替换部分写成空即可，即`${variable/pattern/null}`，例如将net的第一个.删除，只需
 
@@ -672,13 +672,13 @@ wwwbaidu.com
 [Neptuneyt]$ echo ${net//.}
 wwwbaiducom
 ```
-##  变量为空时赋默认值
+###  变量为空时赋默认值
 当我们在写脚本时往往需要给脚本传递一些参数，在Shell中传递参数十分简单，只需利用特殊的位置参数变量诸如`$1,$2,$3...${10}...`即可，例如，以下脚本传递2个参数：
 
 ```
-# PassArgument.sh
-#!/bin/env bash
-# pass 2 arguments
+## PassArgument.sh
+##!/bin/env bash
+## pass 2 arguments
 arg1=$1
 arg2=$2
 echo $arg1 $arg2
@@ -689,8 +689,8 @@ Hello word
 有时候，我们想省掉最后一个参数，让它使用默认值，这个时候只需通过`${variable:='default value'}`即可，即当变量有值的时候则使用原值，若没有值则使用括号中默认定义好的值。例如，如下脚本表示当第二个参数为空时默认使用定义好的值“word”,否则是用户自己传递的参数：
 
 ```
-# PassArgument.sh
-#!/bin/env bash
+## PassArgument.sh
+##!/bin/env bash
 arg1=$1
 arg2=$2
 echo $arg1 ${arg2:='word'}  #第二个参数设置默认值
@@ -736,13 +736,13 @@ www.baidu.com
 -bash: net: error:null value
 ```
 
-## 字符串拼接
+### 字符串拼接
 在 PHP 中，使用.即可连接两个字符串；
 在 JavaScript 中，使用+即可将两个字符串合并为一个。
 在 Shell 中你不需要使用任何运算符，将两个字符串并排放在一起就能实现拼接，非常简单粗暴。请看下面的例子：
 
 ```
-#!/bin/bash
+##!/bin/bash
 name="Shell"
 url="http://c.biancheng.net/shell/"
 str1=$name$url  #中间不能有空格
@@ -770,11 +770,11 @@ ShellScript: http://c.biancheng.net/shell/index.html
 对于第 10 行代码，加{ }是为了帮助解释器识别变量的边界，这一点在《Shell变量》中已经提到。
 
 
-## 单引号内引入变量
+### 单引号内引入变量
 **方法：单引号内嵌套单引号即可使用变量**
 
 ```
-#!/bin/bash
+##!/bin/bash
 
 i=10
 echo $i
@@ -783,17 +783,17 @@ echo '$i is : '$i''
 
 执行结果
 
-# ./test.sh 
+## ./test.sh 
 10
 $i
 $i is : 10
 ```
 
 
-## shell中判断两个字符串相等
+### shell中判断两个字符串相等
 
 ```
-#! /bin/bash
+##! /bin/bash
 
 read -p "If you want to clean the trash?(y/n):" select
 str=y
@@ -817,7 +817,7 @@ fi
  
 
 
-## 实战：统计文章单词情况
+### 实战：统计文章单词情况
 这里想要统计Martin Luther King在1963年著名的**I have a dream**演讲中都使用了哪些词，哪些是高频词，单词字长如何。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/4f3976bb28594f89ab73d74c1d5b4448.png)
 思路：
@@ -828,18 +828,18 @@ ${#variable} //统计单词长读频数。
 ```
 
 ```
-# 高频词统计
+## 高频词统计
 echo "高频词统计："
 echo "频数" "单词"
 tr " " "\n" <IHaveADream.txt | \
-#使用tr将空格转换成换行符，使得每行一个单词，\续行符表示一行命令未写完可换行书写，切记其后什么字符也不能接，包括空格和注释
+##使用tr将空格转换成换行符，使得每行一个单词，\续行符表示一行命令未写完可换行书写，切记其后什么字符也不能接，包括空格和注释
 sed -e "/[^a-Z]/d;/^$/d" | \
-#使用sed匹配非字母字符和空行并删除：-e 表示执行多个操作； /[^a-Z]/，双斜线//表示匹配部分，^表示匹配除开后面a-Z的所有字符，d表示对前面匹配部分删除；/^$/表示匹配空行，^、$分别表示行首和行尾
+##使用sed匹配非字母字符和空行并删除：-e 表示执行多个操作； /[^a-Z]/，双斜线//表示匹配部分，^表示匹配除开后面a-Z的所有字符，d表示对前面匹配部分删除；/^$/表示匹配空行，^、$分别表示行首和行尾
 sort |uniq -c |    \
-#排序之后使用uniq统计，-c表示统计单词出现的次数
+##排序之后使用uniq统计，-c表示统计单词出现的次数
 sort -nr | column -t|head #将次数最多的单词排在前面，-n表示按数值排序，-r从大到小倒序排，column -t表格式输出
 
-# 字长频数统计
+## 字长频数统计
 echo
 echo "字长频数统计："
 echo "频数" "单词长度"
@@ -849,16 +849,16 @@ while read word
 do
   echo ${#word}
 done |\
-# 用while和read每次读入一个单词，使用${#word}统计单词长度
+## 用while和read每次读入一个单词，使用${#word}统计单词长度
 sort |uniq -c|sort -nr|column -t|head
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bf86067e7f744920971af70e7249ade9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_12,color_FFFFFF,t_70,g_se,x_16)
 
 
-# 字符串切割
+## 字符串切割
 将用到字符串切割，即将字符串切割为一个数组
 [原文链接](https://blog.csdn.net/u010003835/article/details/80750003?spm=1001.2101.3001.6650.5&depth_1-utm_relevant_index=10)
-## 利用shell 中 变量 的字符串替换
+### 利用shell 中 变量 的字符串替换
 原理：
 
 ```bash
@@ -868,7 +868,7 @@ ${parameter//pattern/string}
 用string来替换parameter变量中所有匹配的pattern
 
 ```bash
-#!/bin/bash
+##!/bin/bash
  
 string="hello,shell,split,test"  
 array=(${string//,/ })  
@@ -879,7 +879,7 @@ do
 done 
 ```
 ![在这里插入图片描述](https://img-blog.csdn.net/20180620184523515?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwMDM4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center)
-## 设置分隔符，通过 IFS 变量
+### 设置分隔符，通过 IFS 变量
 原理
 
 自定义IFS变量, 改变分隔符, 对字符串进行切分
@@ -909,11 +909,11 @@ $ echo "$IFS" | od -b
 **示例：**
 
 ```bash
-#!/bin/bash
+##!/bin/bash
  
 string="hello,shell,split,test"  
  
-#对IFS变量 进行替换处理
+##对IFS变量 进行替换处理
 OLD_IFS="$IFS"
 IFS=","
 array=($string)
@@ -926,35 +926,35 @@ done
 ```
 ![在这里插入图片描述](https://img-blog.csdn.net/20180620203358805?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwMDM4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center)
 
-## 利用tr 指令实现字符替换
+### 利用tr 指令实现字符替换
 详细内容可自行查看
 
 
-# sed
+## sed
 
 
-# sed脚本命令
+## sed脚本命令
 [原文链接](http://c.biancheng.net/view/4028.html)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/1724ef524d524053baa16d8b017e1dab.png)
-##  sed s 替换脚本命令
+###  sed s 替换脚本命令
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/5735a03bf5184e1f8dc331995681fe82.png)
-## sed d 替换脚本命令
+### sed d 替换脚本命令
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f4fff30466b04a079135ed30bba88b31.png)
-## sed a 和 i 脚本命令 （插入）
+### sed a 和 i 脚本命令 （插入）
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/93d8f2644c724f7096a0e63ebee6f321.png)
-## sed c 替换
+### sed c 替换
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/46aa3e463a4c4862a26f072b92ca7de6.png)
 
-## sed y 转换
+### sed y 转换
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3b2687b3243d4cfb9ae3eb4c573d7572.png)
-## sed w 文本指定内容写入文件
+### sed w 文本指定内容写入文件
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e45887cef70843378c1df10dc9b62d47.png)
-## sed p 搜索符号条件的行，并输出该行的内容
+### sed p 搜索符号条件的行，并输出该行的内容
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/454d384ba076457bbd5f69cd0c15d87b.png)
-## sed r 将一个独立文件的数据插入到当前数据流的指定位置
+### sed r 将一个独立文件的数据插入到当前数据流的指定位置
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/42d7c0ef765a4836b0f6c7c0428ff74d.png)
-## sed q 使 sed 命令在第一次匹配任务结束后，退出 sed 程序，不再进行对后续数据的处理
+### sed q 使 sed 命令在第一次匹配任务结束后，退出 sed 程序，不再进行对后续数据的处理
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f168c4bc5a7848d48c3d716256d8141f.png)
-# sed address 寻址方式
+## sed address 寻址方式
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/b380fad553d041a08afc6106e4b23ccd.png)

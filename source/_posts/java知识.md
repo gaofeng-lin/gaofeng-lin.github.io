@@ -1,20 +1,19 @@
 ---
 title: Java知识
 date: 2022/2/28
-
 categories:
   - Java
-  
 tags:
   - 动态规划
   - 数据结构
   - Java
   - SpringBoot
+abbrlink: 53165
 ---
 
 
-# Java基础知识
-## 反射
+## Java基础知识
+### 反射
 [原文链接](https://blog.csdn.net/weixin_43271086/article/details/106023108?spm=1001.2101.3001.6650.1&depth_1-utm_relevant_index=2)
 
 **JAVA反射机制是在运行状态中，对于任意一个实体类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为java语言的反射机制。**
@@ -32,7 +31,7 @@ Java代码在计算机中的三个阶段
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509170218257.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI3MTA4Ng==,size_16,color_FFFFFF,t_70#pic_center)
 
 
-### 获取Class对象
+#### 获取Class对象
 获取Class对象的三种方式对应着java代码在计算机中的三个阶段：
 
 1.源代码阶段
@@ -83,7 +82,7 @@ public class ReflectDemo {
 
 
 
-### 获取Class对象功能
+#### 获取Class对象功能
 
 ```java
 （1）获取成员变量们
@@ -280,7 +279,7 @@ Class<Person> personClass = Person.class;
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509174655701.png#pic_center)
 
-### 简单框架设计、理解反射好处
+#### 简单框架设计、理解反射好处
 准备测试类
 
 ```java
@@ -374,10 +373,10 @@ methodName = eat
 我们这样做有什么好处呢，对于框架来说，是人家封装好的，我们拿来直接用就可以了，而不能去修改框架内的代码。但如果我们使用传统的new形式来实例化，那么当类名更改时我们就要修改Java代码，这是很繁琐的。修改Java代码以后我们还要进行测试，重新编译、发布等等一系列的操作。而如果我们仅仅只是修改配置文件，就来的简单的多，配置文件就是一个实实在在的物理文件。
 
 
-## String类与StringBuilder类的区别
+### String类与StringBuilder类的区别
 [原文链接](https://www.cnblogs.com/huameitang/p/10528646.html)
 
-### StringBuilder类介绍
+#### StringBuilder类介绍
 
 **StringBuilder类是一个可变的字符序列。**
 
@@ -390,7 +389,7 @@ StringBuilder(int capacity)
 StringBuilder(String str) 
           构造一个字符串生成器，并初始化为指定的字符串内容。
 
-### StringBuilder类的几个常用方法
+#### StringBuilder类的几个常用方法
 
 ```
 append(任意类型)  追加到字符串后面
@@ -411,7 +410,7 @@ s += "world"会先在常量池开辟一个内存空间来存储“world"。然�
 
 这么以来，001与002就成为了垃圾内存空间了。这么简单的一个操作就产生了两个垃圾内存空间，如果有大量的字符串拼接，将会造成极大的浪费。
 
-### StringBuilder的作用
+#### StringBuilder的作用
 
 上面的例子可以知道String类的字符串拼接会产生大量的垃圾内存空间。但是StringBuilder的字符串拼接是直接在原来的内存空间操作的，即直接在hello这个内存空间把hello拼接为helloworld。
 
@@ -435,7 +434,7 @@ hello
 hello
 true
 
-### String类与StringBuilder类的相互转换
+#### String类与StringBuilder类的相互转换
 **1.String类转换为StringBuilder类**
 
 ```
@@ -460,16 +459,16 @@ public class String12 {
 }
 ```
 
-## 接口
+### 接口
 
-### 接口的作用
+#### 接口的作用
 
 接口的最主要的作用是达到统一访问，就是在创建对象的时候用接口创建，```【接口名】 【对象名】=new 【实现接口的类】```，这样你像用哪个类的对象就可以new哪个对象了，不需要改原来的代码，就和你的USB接口一样，插什么读什么，就是这个原理。如果我用接口，```one.method1();``` 那样我```new a()；```就是用```a```的方法，```new b()```就是用```b```的方法
 
 这个就叫统一访问，因为你实现这个接口的类的方法名相同，但是实现内容不同。
 
 
-### 为什么使用接口
+#### 为什么使用接口
 **解耦，可扩展这是设计接口的主要原因之一**
 
 如果你开发业务逻辑代码，当你好不容易的实现了它全部的功能，突然用户需求要改，你在修改你代码的同时，调用你代码的其它人也会改，如果代码关联性强的话，会有很多人都要改动代码，这样一来二去，程序会变得相当的不稳定，而且可能还会出现更多的新Bug,所有人都可能会陷入混乱。
@@ -479,10 +478,10 @@ public class String12 {
 同时：
 这样做的话，使得开发人员能够分工明确，只要确定下来接口了，就可以同时进行开发，提高开发效率。另外，使用接口还有使用方便，可读性强，结构清晰等优点。
 
-# Java内存分配
+## Java内存分配
 [原文链接](https://blog.csdn.net/shimiso/article/details/8595564)
 
-## 内存表示图
+### 内存表示图
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/02e0fdf7e9d05a24f1b00895c1726f04.png#pic_center)
 
  - l 寄存器：JVM内部虚拟寄存器，存取速度非常快，程序不可控制。
@@ -499,13 +498,13 @@ public class String12 {
  
  - 除了8个基本数据类型，其余都是引用。包括String(只是编译器对其做了特殊处理（使其和基本数据类型一样）)
 
-## 预备知识
+### 预备知识
 1.一个Java文件，只要有main入口方法，我们就认为这是一个Java程序，可以单独编译运行。
 
 2.无论是普通类型的变量还是引用类型的变量(俗称实例)，都可以作为局部变量，他们都可以出现在栈中。只不过普通类型的变量在栈中直接保存它所对应的值，而引用类型的变量保存的是一个指向堆区的指针，通过这个指针，就可以找到这个实例在堆区对应的对象。因此，普通类型变量只在栈区占用一块内存，而引用类型变量要在栈区和堆区各占一块内存。
 
 
-## 案例1
+### 案例1
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/e66638ef11aa279b0b6fd9cd9d559044.png#pic_center)
 1.JVM自动寻找main方法，执行第一句代码，创建一个Test类的实例，在栈中分配一块内存，存放一个指向堆区对象的指针110925。
 
@@ -557,10 +556,10 @@ change3方法执行完毕，立即释放局部引用变量b。
 
 以上分析只涉及了栈和堆，还有一个非常重要的内存区域：常量池，这个地方往往出现一些莫名其妙的问题。常量池是干嘛的上边已经说明了，也没必要理解多么深刻，只要记住它维护了一个已加载类的常量就可以了。接下来结合一些例子说明常量池的特性。
 
-## 预备知识2
+### 预备知识2
 基本类型和基本类型的包装类。基本类型有：byte、short、char、int、long、boolean。基本类型的包装类分别是：Byte、Short、Character、Integer、Long、Boolean。注意区分大小写。二者的区别是：基本类型体现在程序中是普通变量，基本类型的包装类是类，体现在程序中是引用变量。因此二者在内存中的存储位置不同：基本类型存储在栈中，而基本类型包装类存储在堆中。上边提到的这些包装类都实现了常量池技术，另外两种浮点数类型的包装类则没有实现。另外，String类型也实现了常量池技术。
 
-## 案例2
+### 案例2
 
 ```bash
 public class test {
@@ -625,11 +624,11 @@ d1=d2   false
 2.String类型也实现了常量池技术，但是稍微有点不同。String型是先检测常量池中有没有对应字符串，如果有，则取出来；如果没有，则把当前的添加进去。
 
 
-# 并发编程
+## 并发编程
 
-## synchronized
+### synchronized
 
-### 三种使用方式
+#### 三种使用方式
 
 Java 中每一个对象都可以作为锁，这是 synchronized 实现同步的基础。synchronized 的三种使用方式如下：
 
@@ -645,7 +644,7 @@ Java 中每一个对象都可以作为锁，这是 synchronized 实现同步的�
 4. 两个线程一个取对象锁，一个取类锁，则不能同步
 5. 两个线程一个取a对象锁，一个取b对象锁，则不能同步
 
-### 修饰普通方法：
+#### 修饰普通方法：
 1. 修饰普通方法锁的是当前对象实例，但是如果两个线程调用的是同一个对象的普通synchronized方法，持有的是不同的锁，是不会block的。
 ```
 public static void main(String[] args) throws InterruptedException {
@@ -671,7 +670,7 @@ threadOne: 2
 如果把 ``` DemoTest testNew = new DemoTest();```删掉，调用同一个对象，那么就能阻塞
 
 
-### 修饰静态方法
+#### 修饰静态方法
 **静态方法不属于任何一个实例对 象，是属于类成员。所以当线程A访问调用一个实例对象的synchronized方法，线程B调用这个实例对象的静态synchronized方法是允许的，即synchronized修饰静态方法，会对该类的所有实例加同步锁**
 ```
 public static synchronized void increase() throws InterruptedException {
@@ -683,16 +682,16 @@ public static synchronized void increase() throws InterruptedException {
 
 ```
 
-### 修饰代码块
+#### 修饰代码块
 
 **对于 synchronized 作用于同步代码，锁为任何我们创建的对象，只要是个对象即可，如 new Object () 可以作为锁，new String () 也可作为锁，当然如果传入 this，那么此时代表当前对象。**
 
-## volatile
+### volatile
 
 1. 只能修饰变量，被修饰的变量，线程读写都会直接和主内存打交道，绕过缓存。
 2. 该关键字可以确保当一个线程更新共享变量时，更新操作对其他线程马上可见
 
-### volatile & synchronized
+#### volatile & synchronized
 
 - volatile 本质是在告诉 jvm 当前变量在寄存器（工作内存）中的值是不确定的，需要从主存中读取；
 - synchronized 则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住；
@@ -703,11 +702,11 @@ public static synchronized void increase() throws InterruptedException {
 
 
 
-# 辅助知识
-## JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明
+## 辅助知识
+### JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明
 首先明白一个基础概念：
 
-### current directory(当前目录)：当前在用的目录就是当前目录
+#### current directory(当前目录)：当前在用的目录就是当前目录
 
 
 比如说当你打开NOTEPAD，并处于运行状态时候，当前目录就是c:/windows；
@@ -716,7 +715,7 @@ public static synchronized void increase() throws InterruptedException {
 如果你在用java这条指令，当前目录就是JAVA下的BIN目录所在的路径，因为java.exe在bin里面。在java开发配置环境变量时，系统默认(我们对classpath不做任何设定时)的路径也是当前目录。
 
 
-### JAVA_HOME：它是指jdk的安装目录
+#### JAVA_HOME：它是指jdk的安装目录
 
    
 像D:/j2sdk1.4.2_16，在这路径下你应该能够找到bin、lib等目录。
@@ -724,7 +723,7 @@ public static synchronized void increase() throws InterruptedException {
  我们现在就当它是一个变量代换 JAVA_HOME = D:/j2sdk1.4.2_16，就是为了避免多写字，它还有一个好处就是当我们需要改变某个jdk时，只需要改JAVA_HOME的值就可以了。等在后面看了Tomcat的启动分析时你就明白了。当在环境变量中引用它的时候要用%JAVA_HOME%来表示      D:/j2sdk1.4.2_16。
 
 
-### Path：系统变量Path告诉操作系统可执行文件(*.exe、*.bat等)所在的路径
+#### Path：系统变量Path告诉操作系统可执行文件(*.exe、*.bat等)所在的路径
 
   
  
@@ -747,7 +746,7 @@ public static synchronized void increase() throws InterruptedException {
    
  
 
-### CLASSPATH：告诉java虚拟机(jvm)要使用或执行的*.class文件放在什么地方
+#### CLASSPATH：告诉java虚拟机(jvm)要使用或执行的*.class文件放在什么地方
 
 
 CLASSPATH是专门针对java的，它相当于windows的path；path是针对整个windows的。
@@ -760,7 +759,7 @@ JAVA_HOME = D:/j2sdk1.4.2_16
 Path 环境变量中在最前面加入(若系统原来没有就新建) %JAVA_HOME%/bin; （加在最前面可以提高查找速度）
 CLASSPATH = . 这一步可以不用设。
 
-## JDK 和 JRE 的区别
+### JDK 和 JRE 的区别
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/7b9ff76b66e949fc9a04515e960b9de4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_18,color_FFFFFF,t_70,g_se,x_16)
 从图中可以看出JDK包含JRE包含JVM...
@@ -831,8 +830,8 @@ JVM屏蔽了与具体操作系统平台相关的信息，使得Java程序只需�
 
 
 
-# 常用方法
-## Math方法
+## 常用方法
+### Math方法
 1： java取整
 
      a：floor向下取整
@@ -886,7 +885,7 @@ JVM屏蔽了与具体操作系统平台相关的信息，使得Java程序只需�
      Math.sqrt(num)num的平方根
 
 
-## 随机数
+### 随机数
 使用步骤：
 
 1.导入包
@@ -925,8 +924,8 @@ public class Demo1Random {
 
  
 
-## String类
-### substring() 返回字符串字串
+### String类
+#### substring() 返回字符串字串
 
 ```
 public String substring(int beginIndex)
@@ -956,22 +955,22 @@ public class RunoobTest {
 结果：
 返回值 : is text
 返回值 : is te
-## 字符串操作
-### 字符串某个位置插入一个字符
+### 字符串操作
+#### 字符串某个位置插入一个字符
 
 ```
 StringBuffer sb = new StringBuffer("原字符串");
  
 sb.insert(index,"需要插入的字符串");
 ```
-### 字符串长度
+#### 字符串长度
 
 ```
 s.length()
 //数组长度是 num.length
 ```
 
-### 字符串修改
+#### 字符串修改
 当对字符串进行修改的时候，需要使用 StringBuffer 和 StringBuilder 类。
 
 和 String 类不同的是，StringBuffer 和 StringBuilder 类的对象能够被多次的修改，并且不产生新的未使用对象。
@@ -1001,7 +1000,7 @@ public class RunoobTest{
 }
 ```
 
-### 返回指定索引处的字符
+#### 返回指定索引处的字符
 
 实例：
 
@@ -1016,13 +1015,13 @@ public class Test {
 
 ```
 
-### 删除字符串首尾空白符
+#### 删除字符串首尾空白符
 
 ```
 str=str.trim();
 ```
 
-### 返回字符串的子字符串
+#### 返回字符串的子字符串
 
 ```
 public String substring(int beginIndex, int endIndex)
@@ -1049,7 +1048,7 @@ public class RunoobTest {
 返回值 : is te
 ```
 
-### 字符串反转
+#### 字符串反转
 使用`StringBuilder`
 
 ```
@@ -1061,14 +1060,14 @@ Scanner in = new Scanner(System.in);
         System.out.println(strb);
 ```
 
-## 数组
+### 数组
 
-### 数组长度
+#### 数组长度
 ```
 num.length
 //字符串长度是 s.length()
 ```
-### 二维数组
+#### 二维数组
 ```
 //声明int类型的二维数组
 int[][] intArray;
@@ -1094,7 +1093,7 @@ for(int i=0;i<num1.length;i++){
     System.out.println();
  }
 ```
-### 数组排序
+#### 数组排序
 
 ```
 Arrays.sort(arr);
@@ -1105,7 +1104,7 @@ sort(T[] a, Comparator<? supre T> c): 根据指定比较器产生的顺序对指
 sort(T[] a, int formIndex, int toIndex, Comparator<? supre T> c): 根据指定比较器产生的顺序对指定对象数组的指定对象数组进行排序。
 ```
 
-### 数组拷贝
+#### 数组拷贝
 **Arrays.copyOf方法**
 
 ```
@@ -1121,7 +1120,7 @@ Arrays.fill(array, from_index, to_index);
 
 **还有一点差点忘了说了，这里得提前导入Arrays类，即在开头写如下代码
 import java.utl.Arrays;**
-## 构造函数（方法）
+### 构造函数（方法）
 **作用：一般用来初始化成员属性和成员方法的，即new对象产生后，就调用了对象了属性和方法。**
 
 一个对象建立，构造函数只运行一次。
@@ -1245,7 +1244,7 @@ class PersonDemo{
 
 
 
-## 字母大小写判断与转换
+### 字母大小写判断与转换
 
 ```
 Character.isDigit(char c)　//判断字符c是否是数字字符，如‘1’，‘2’，是则返回true，否则返回false
@@ -1264,14 +1263,14 @@ Character.toUpperCase(char c)　//字母转换为大写字母字符
 
 ```
 
-## 集合
+### 集合
 Java 中集合主要分为java.util.Collection和java.util.Map两大接口。
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/87ff2a104a409b2942cbb33fd43efeee.png#pic_center)
 
 图表最下方的ArrayList、LinkedList、HashSet以及HashMap都是常用实现类。
 
-### 初始化
+#### 初始化
 
 ```
 // 无参构造实例化，初始容量为10
@@ -1287,7 +1286,7 @@ List arrayList3 = new ArrayList(arrayList2);
 ```
 List<Integer> arrayList = new ArrayList<Integer>(); // () “括号”里面如果什么都不写，会采取默认容量，也可以复制，也可以将同类型的元素直接放进去
 ```
-### Collections之间相互转换
+#### Collections之间相互转换
 背景：ArrayList元素去重
 
 ```
@@ -1313,7 +1312,7 @@ public class ArrayListExample {
 [1, 2, 3, 4, 5, 6, 7, 8]
 ```
 
-## ArrayList数据去重
+### ArrayList数据去重
 [原文链接](https://blog.csdn.net/The_clown/article/details/113339283)
 
 **法一：**
@@ -1408,12 +1407,12 @@ for (int i = 0; i < list.size(); i++) {
 
 ```
 
-## Collections.sort()
+### Collections.sort()
 [原文链接](https://www.jianshu.com/p/32f9578b9acc)
 
 > Collections类中的sort方法可以对实现了List接口的集合进行排序。这个方法假定列表元素实现了Comparable接口。
 
-### sort常用形式
+#### sort常用形式
 
 **sort有两种重载形式，第一种（默认升序）：**
 
@@ -1493,7 +1492,7 @@ public class Sort {
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/5bce696faab5422217b9fd87c15c610b.png#pic_center)
 看到这里，对 `Comparator`这个词多关注下
 
-### 排序对象不是基本数据类型
+#### 排序对象不是基本数据类型
 
 > 定义一个点类，其中有整型属性x和y，代表其坐标；除了这两个属性以外没有其他属性。随机产生10个点，并按照这些点与原点(0,0)之间的距离大小对点进行降序排序。
 
@@ -1568,7 +1567,7 @@ public class SortDemo {
 **sort方法小结：**
 实现了Comparable接口的类都可以用sort方法进行排序，默认的排序方法是升序；如果想进行降序排序，只需把Collections.reverseOrder作为第二个参数传给sort方法。
 
-### Comparator接口
+#### Comparator接口
 上面反复提到的Collections.reverseOrder方法返回的是一个Comparator对象。其实Comparator接口并不陌生，常用的equals方法就来自这个接口。Comparator接口用来定义两个对象之间的比较方法，它有一个叫做compare的方法，函数签名如下：
 
 ```
@@ -1656,7 +1655,7 @@ public class SortDemo {
 ```
 结果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/997282c1a828c3c32ff7ed4600419ccd.png#pic_center)
-## Arrays.sort()
+### Arrays.sort()
 [原文](https://www.cnblogs.com/SupremeBoy/p/12717532.html)
 Arrays.sort()是经过调优排序算法，性能能达到n*log(n)
 
@@ -1667,7 +1666,7 @@ Arrays.sort()是经过调优排序算法，性能能达到n*log(n)
  - sort(T[] a, Comparator<? supre T> c): 根据指定比较器产生的顺序对指定对象数组进行排序。
  - sort(T[] a, int formIndex, int toIndex, Comparator<? supre T> c): 根据指定比较器产生的顺序对指定对象数组的指定对象数组进行排序。
 
-### sort(T[] a)
+#### sort(T[] a)
 对指定T型数组按数字升序排序。
 
 ```
@@ -1682,7 +1681,7 @@ public class ArraysSort {
     }
 }// 结果// [1, 2, 3, 4, 5, 8]
 ```
-### sort(T[] a,int formIndex, int toIndex)
+#### sort(T[] a,int formIndex, int toIndex)
 对指定T型数组的指定范围按数字升序排序。
 
 ```
@@ -1701,7 +1700,7 @@ public class ArraysSort {
 // [2, 5, 1, 3, 4, 8]
 ```
 
-### sort(T[] a, Comparator<? supre T> c)
+#### sort(T[] a, Comparator<? supre T> c)
 （1）按第一维元素比较二维数组
 代码：
 
@@ -1920,7 +1919,7 @@ size=2 size=1 size=3
 size=1 size=2 size=3 
 */
 ```
-### sort(T[] a, int formIndex, int toIndex, Comparator<? supre T> c)
+#### sort(T[] a, int formIndex, int toIndex, Comparator<? supre T> c)
 根据指定比较器产生的顺序对指定对象数组的指定对象数组进行排序。
 
 ```
@@ -1953,7 +1952,7 @@ public class ArraysSort {
 可以看到只对第三行和第四行排序了
 */
 ```
-## 判断变量类型
+### 判断变量类型
 1.使用反射的方法： `变量名.getClass().getSimpleName()`来判断。
 2.使用 instanceof 来判断：`变量名 instanceof 类型`来判断。
 

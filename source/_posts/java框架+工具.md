@@ -1,22 +1,21 @@
 ---
 title: Java框架+工具
 date: 2022/4/28
-
 categories:
   - Java
-  
 tags:
   - Spring
   - Java
   - SpringBoot
+abbrlink: 10033
 ---
 
-# Spring
-## IDEA创建spring
+## Spring
+### IDEA创建spring
 [链接](https://blog.csdn.net/m0_67393686/article/details/124104008)
 
-## 所遇错误/注意事项
-### 基础包名不要设置为 org
+### 所遇错误/注意事项
+#### 基础包名不要设置为 org
 这与 Spring 框架的包一致，所以会导致问题。
  
 错误信息：
@@ -24,7 +23,7 @@ tags:
 @EnableAsync annotation metadata was not injected 
 ```
 
-## AOP
+### AOP
 AOP是通过代理的方式实现的，由代理对象持有原对象，在执行原对象目标方法的前后可以执行额外的增强代码。
 代理对象需要是原对象接口的实现或原对象的子类，这样就可以在对象引用处直接替换原对象。
 
@@ -39,31 +38,31 @@ AOP均有三个关注点：**切面增强内容、何地切入、何时切入**
 - 何时切入：切入发生在何时，方法执行前、执行后、还是执行前后
 
 
-# Servlet
-## 不使用ide创建Servlet
+## Servlet
+### 不使用ide创建Servlet
 [链接](http://c.biancheng.net/servlet2/deploy.html)
 有几个事情需要注意下：
 1. 各个文件夹一定要写对，之前把classes写成了class
 2. 按照上面链接的教程，用javac编译出来的是一个文件夹，里面才是class文件，要把整个文件夹复制到指定目录，不能只复制class文件。
 3. web.xml里面的< servlet-class >。Testone.MyServlet 。最后那个是类名，前面是包名。如果源文件没有package，那么web.xml里面可以只写类名；如果无妨正常访问，那么就在src目录下面加一个package包，在里面再创建java文件，再编译，web.xml里面d < servlet-class >加上包名。
 
-## ide创建Servlet
+### ide创建Servlet
 [原链接](https://blog.csdn.net/weixin_44107140/article/details/119618734)
 
 **注意把servlet-jar(在tomcat安装路径的lib文件夹中)放到lib文件夹下面，不要放到classes里面了。**
 
 
-# SSM
+## SSM
 **springboot 只是组装了spring和springmvc。SSM中的SS指的是Spring SpringMVC，M是指MyBatis。**
-## SSM（Spring+SpringMVC+MyBatis）架构
-### 工作原理
+### SSM（Spring+SpringMVC+MyBatis）架构
+#### 工作原理
 1.SSM系统架构
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/fd51aa6838fd4315ac1df679eb3500e5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 2.执行流程
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/0a57266814cb4fe395124ce40ea590a4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
-## MSCM(model ,service, controller ,mapper)
+### MSCM(model ,service, controller ,mapper)
 ***mapper的中文意思是映射器；mapper和dao是一个东西，叫法不同。***
 
 **业务逻辑：**
@@ -111,7 +110,7 @@ service包含了serviceImpl（service接口的实现类） 是提供给controlle
 controller 通过调用service来完成业务逻辑。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190806101012614.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNjQ3OTk5,size_16,color_FFFFFF,t_70#pic_center)
 
-## JavaWeb三层架构
+### JavaWeb三层架构
 **（Servlet(Controller),service,dao）**
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/1f793bb259964619876d3efb18303f2e.png)
 
@@ -135,13 +134,13 @@ Dao层是用来与数据库进行交互，也就是增删改查。可以通过�
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/92f11628821e46c48e9dbedc1901b23d.png)
 
-## Spring IOC
+### Spring IOC
 1.xml配置文件利用反射获取class对象
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/4a0f6bab3f814b2eb88ce5bf7a0752dd.png)
 2. 获取容器、获得bean对象、使用方法。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/6a34e9ded1434451bd7a166d18c3aa5e.png)
 
-## Spring AOP
+### Spring AOP
 [原文](https://blog.51cto.com/u_14625481/3485049)
 
 **IOC让模块之间解耦，AOP让JAVA动起来。**
@@ -165,8 +164,8 @@ AOP为Aspect Oriented Programming的缩写，即面向切面编程（也叫面�
 对比之前的代码我们可以明显看出，我们将关于驯兽师的相关内容从run和jump中进行了抽取，接下来，我们如何在程序运行中将关于驯兽师的动作加入到程序中呢？这就是我们这次用到的AOP实现的核心技术动态代理（Dynamic Proxy）。具体代码如下：
 
 
-# 常见缩写
-## JSP
+## 常见缩写
+### JSP
 [详情](https://www.runoob.com/jsp/jsp-tutorial.html)
 JSP 与 PHP、ASP、ASP.NET 等语言类似，运行在服务端的语言。
 
@@ -178,7 +177,7 @@ JSP文件后缀名为 *.jsp 。
 
 JSP开发的WEB应用可以跨平台使用，既可以运行在 Linux 上也能运行在 Windows 上。
 
-## POJO、JAVABean、Entity
+### POJO、JAVABean、Entity
 **1.POJO**
   （Plain Ordinary Java Object）简单的Java对象，实际就是普通JavaBeans，是为了避免和EJB混淆所创造的简称。
   其中有一些属性及其getter、setter方法的类，没有业务逻辑，有时可以作为VO（value-object）或DTO（Data Transfer Object）来使用。不允许有业务方法，也不能携带connection之类的方法，实际就是普通JavaBeans。POJO类中有属性和get、set方法，但是没有业务逻辑。
