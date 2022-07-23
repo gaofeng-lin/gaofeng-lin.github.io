@@ -3,7 +3,7 @@ title: Jenkins知识点
 date: 2022/1/14
 update: 2022/1/16
 categories:
-  - Jenkins
+  - 运维
 tags:
   - Jenkins
   - 运维
