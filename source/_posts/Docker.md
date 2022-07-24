@@ -81,8 +81,9 @@ docker可以把服务和需要的库一起打包
 这个过程或者我可以用dockerfile来实现。
 
 
-## docke![在这里插入图片描述](https://img-blog.csdnimg.cn/b09b2d48438e4f24916b1453fe2d3207.png)
-r 基本操作
+## docker基本操作
+![在这里插入图片描述](https://img-blog.csdnimg.cn/b09b2d48438e4f24916b1453fe2d3207.png)
+ 
 ### 镜像命令
 
 ```bash
