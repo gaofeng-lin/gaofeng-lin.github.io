@@ -1,10 +1,10 @@
 ---
-title: Go
+title: Golang
 date: 2022/3/6
 categories:
-  - Go
+  - 编程语言
 tags:
-  - Go
+  - Golang
 abbrlink: 56435
 ---
 
@@ -70,6 +70,161 @@ go get -u
 
 
 ## 语法
+
+### Println 与 Printf 的区别
+1. Println :可以打印出字符串，和变量
+2. Printf : 只可以打印出格式化的字符串,可以输出字符串类型的变量，不可以输出整形变量和整形
+
+也就是说，当需要格式化输出信息时一般选择 Printf，其他时候用 Println 就可以了，比如：
+
+```golang
+a := 10
+fmt.Println(a)　　//right
+fmt.Println("abc")　　//right
+fmt.Printf("%d",a)　　//right
+fmt.Printf(a)　　//error
+```
+
+### printf格式化输出
+
+1. 通用输出
+```
+%v     #仅输出该变量的值
+%+v    #输出 该变量的值，如果是数组k/v  则将k/v都输出
+%#v    #先输出结构体名字值,再输出结构体（字段名字+字段的值）
+%T	   #输出结构体名称
+%%	   #百分号
+```
+```
+package main
+ 
+import (
+	"fmt"
+)
+ 
+type student struct {
+	id   int
+	name string
+}
+func main()  {
+ 
+	ss := student{id: 1,name: "test"}
+	fmt.Printf("%v \n",ss)     //%v  当碰到数组时，仅输出value，不输出key
+	fmt.Printf("%+v \n",ss)    //%+v  当碰到数组时，将key-value 都输出
+	fmt.Printf("%#v \n",ss)    //%#v  输出时，会将方法名 +k/v都输出
+	fmt.Printf("%T \n",ss)     //%T   输出结构体名称()
+	fmt.Printf("%% \n")        //%%   没有意义，只是输出一个%
+}
+```
+
+2. 整数类型
+```
+%b     二进制表示 
+%c     相应Unicode码点所表示的字符 
+%d     十进制表示 
+%o     八进制表示 
+%q     单引号围绕的字符字面值，由Go语法安全地转义 
+%x     十六进制表示，字母形式为小写 a-f 
+%X     十六进制表示，字母形式为大写 A-F 
+%U     Unicode格式：123，等同于 "U+007B"
+```
+
+```
+package main
+ 
+import (
+    "fmt"
+)
+ 
+func main()  {
+    ss := 68
+    fmt.Printf("%b \n",ss)      //二进制表示
+    fmt.Printf("%c \n",ss)      //Unicode码表示的字符
+    fmt.Printf("%d \n",ss)      //十进制表示
+    fmt.Printf("%o \n",ss)      //八进制
+    fmt.Printf("%q \n",ss)      //输出字符，单引号包裹
+    fmt.Printf("%x \n",ss)      //十六进制输出  小写
+    fmt.Printf("%X \n",ss)      //十六进制输出  大写
+    fmt.Printf("%U \n",ss)      //Unicode格式
+}
+```
+3. 浮点数
+```
+%b	无小数部分、二进制指数的科学计数法，如-123456p-78；参见strconv.FormatFloat
+%e	科学计数法，如-1234.456e+78
+%E	科学计数法，如-1234.456E+78
+%f	有小数部分但无指数部分，如123.456
+%F	等价于%f
+%g	根据实际情况采用%e或%f格式（以获得更简洁、准确的输出）
+%G	根据实际情况采用%E或%F格式（以获得更简洁、准确的输出）
+```
+
+```
+package main
+ 
+import (
+    "fmt"
+)
+ 
+func main()  {
+    fmt.Printf("%b \n",68.10)   //二进制输出
+    fmt.Printf("%e \n",68.10)   //科学计数法 e
+    fmt.Printf("%E \n",68.10)   //科学计数法 E
+    fmt.Printf("%f \n",68.10)
+    fmt.Printf("%g \n",68.10)
+    fmt.Printf("%G \n",68.10)
+  
+}
+```
+//结果
+4792111478498918p-46 
+6.810000e+01 
+6.810000E+01 
+68.100000 
+68.1 
+68.1 
+```
+
+```
+
+4. 布尔
+```
+%t   true 或 false
+```
+5. 字符串
+```
+%s     字符串或切片的无解译字节 
+%q     双引号围绕的字符串，由Go语法安全地转义 
+%x     十六进制，小写字母，每字节两个字符 
+%X     十六进制，大写字母，每字节两个字符
+```
+```
+package main
+ 
+import (
+	"fmt"
+)
+ 
+ 
+func main() {
+	fmt.Printf("%s","I'm a girl")
+	fmt.Println()
+	fmt.Printf("%q","I'm a girl")
+	fmt.Println()
+	fmt.Printf("%x","I'm a girl")
+	fmt.Println()
+	fmt.Printf("%X","I'm a girl")
+	fmt.Println()
+}
+```
+
+```
+//结果
+I'm a girl
+"I'm a girl"
+49276d2061206769726c
+49276D2061206769726C
+```
 
 
 ### 占位符

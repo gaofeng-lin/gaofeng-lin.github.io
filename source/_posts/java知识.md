@@ -2,7 +2,7 @@
 title: Java知识
 date: 2022/2/28
 categories:
-  - Java
+  - 编程语言
 tags:
   - 动态规划
   - 数据结构

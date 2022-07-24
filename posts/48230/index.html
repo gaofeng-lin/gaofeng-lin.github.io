@@ -1,0 +1,1707 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Linux常用命令, Hexo">
+    <meta name="description" content="修改权限修改文件用户组chgrp： change group的简写，修改文件所属的用户组。
+chgrp users test.log
+
+如果要修改该目录下所有文件和目录，使用-R参数。
+chgrp -R users test
+
+修改文件所有">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>Linux常用命令 | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Linux常用命令</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                                <span class="chip bg-color">运维</span>
+                            </a>
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/ssh/">
+                                <span class="chip bg-color">ssh</span>
+                            </a>
+                        
+                            <a href="/tags/Vim/">
+                                <span class="chip bg-color">Vim</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-03-06
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    26 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h2><h3 id="修改文件用户组"><a href="#修改文件用户组" class="headerlink" title="修改文件用户组"></a>修改文件用户组</h3><p>chgrp： change group的简写，修改文件所属的用户组。</p>
+<pre class="line-numbers language-none"><code class="language-none">chgrp users test.log<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果要修改该目录下所有文件和目录，使用-R参数。</p>
+<pre class="line-numbers language-none"><code class="language-none">chgrp -R users test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="修改文件所有者"><a href="#修改文件所有者" class="headerlink" title="修改文件所有者"></a>修改文件所有者</h3><p>chown ：change owner的简写， 修改文件的所有者。</p>
+<pre class="line-numbers language-none"><code class="language-none">chown [-R] 账号名称  文件或目录<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>将所有者和组名称都修改为root。</p>
+<pre class="line-numbers language-none"><code class="language-none">chown root:root test.log<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h3><p><img src="https://img-blog.csdnimg.cn/f08c5be5513c4aea88cb3c13b3a2b3d7.png" alt="在这里插入图片描述"></p>
+<h2 id="运行sh文件命令"><a href="#运行sh文件命令" class="headerlink" title="运行sh文件命令"></a>运行sh文件命令</h2><p><strong>第一种（这种办法需要用chmod使得文件具备执行条件(x): chmod u+x datelog.sh）：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">/xx/xxx/xxx.sh   //任意路径 
+
+./XXX.sh  //当前路径<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>第二种（这种办法不需要文件具备可执行的权限也可运行）：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">sh xxx.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="解压缩命令"><a href="#解压缩命令" class="headerlink" title="解压缩命令"></a>解压缩命令</h2><h3 id="ZIP"><a href="#ZIP" class="headerlink" title="ZIP"></a>ZIP</h3><pre class="line-numbers language-none"><code class="language-none">zip [选项] 压缩包名 源文件或源目录
+-r：压缩目录
+
+示例：
+zip ana.zip anaconda-ks.cfg
+
+压缩多个文件：
+zip test.zip abc abcd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">zip对应的解压缩命令为unzip：命令所在目录为/usr/bin/unzip，所有用户可执行
+unzip [选项] 压缩包名
+-d：指定解压缩位置
+-o:不必先询问用户，unzip执行后覆盖原有文件。
+//其它参数可自行查看
+
+unzip -d /tmp/ test.zip
+unzip -d /tmp -o test.zip //这条命令和上一条相比，可以不用询问直接覆盖<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="gz"><a href="#gz" class="headerlink" title="gz"></a>gz</h3><p><img src="https://img-blog.csdnimg.cn/20190604225601664.png#pic_center" alt="在这里插入图片描述"><br>注意：使用gzip压缩文件后会将原文件删除，如果想保留原文件则可以使用-c选项将压缩过程产生的标准输出写入一个新的文件中，示例如下：&gt;的作用是覆盖内容，&gt;&gt;的作用是追加内容<br><img src="https://img-blog.csdnimg.cn/20190604230304985.png#pic_center" alt="在这里插入图片描述"><br>压缩目录下的每个文件：下述命令会将123这个目录下的每个文件分别进行压缩，而不是将整个123目录进行压缩，也就是说<strong>gzip命令不会打包压缩</strong></p>
+<p>解压缩也可以使用gunzip：<br><img src="https://img-blog.csdnimg.cn/20190604225930966.png#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="bz2"><a href="#bz2" class="headerlink" title="bz2"></a>bz2</h3><p>.bz2格式是Linux中的另一种常用压缩格式，该格式的压缩算法更先进，压缩比更高，但是压缩的时间要比.gz长，.bz2格式的压缩命令是bzip2，<strong>注意bzip2不能压缩目录，会报错</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20190604231244456.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3J1YnVsYWk=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>解压时如果原文件已存在则会报错，因此最好先将原文件删除</p>
+<p><img src="https://img-blog.csdnimg.cn/20190604231835998.png#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h3><p><strong>只是打包并不会压缩文件，.gz，.xz。这些才是压缩</strong><br>.tar格式的打包和解打包都是使用tar命令，区别只是选项不同<br><img src="https://img-blog.csdnimg.cn/20190604232717559.png#pic_center" alt="在这里插入图片描述"><br>打包示例：<br><img src="https://img-blog.csdnimg.cn/20190604232744240.png#pic_center" alt="在这里插入图片描述"><br>打包多个文件：<br><img src="https://img-blog.csdnimg.cn/20190604232921456.png#pic_center" alt="在这里插入图片描述"><br>解打包：<br><img src="https://img-blog.csdnimg.cn/20190604232957741.png#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="tar-gz和-tar-bz2"><a href="#tar-gz和-tar-bz2" class="headerlink" title=".tar.gz和.tar.bz2"></a>.tar.gz和.tar.bz2</h3><p><strong>tar 压缩、解压缩都可以使用多线程</strong></p>
+<p>.tar.gz格式和.tar.bz2格式：使用tar命令后跟选项的方式实现tar命令和gzip或者bzip2命令的组合，实现同时进行打包和压缩，这也是最经常使用的压缩和解压缩方式<br><img src="https://img-blog.csdnimg.cn/20190604233644257.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190604233704887.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190604234051220.png#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190604234541328.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3J1YnVsYWk=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="tar-xz"><a href="#tar-xz" class="headerlink" title=".tar.xz"></a>.tar.xz</h3><p>默认压缩后的文件后缀为 xz，速度慢一些，但是压缩的会更小。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">//常用参数
+-z	强制执行压缩, 默认不保留源文件。压缩后的文件名为源文件.xz
+-d	强制执行解压缩
+-l	列出压缩文件的信息
+-k	保留源文件不要删除
+-f	强制覆盖输出文件和压缩链接
+-c	写入到标准输出，输入文件不要删除
+-0<span class="token punctuation">..</span>-9	压缩比例，默认为6
+-e  使用更多的 CPU <span class="token function">time</span> 来进行压缩，提高压缩率。不会影响解压时所需要的内存。
+-T  指定线程数，默认是 <span class="token number">1</span> ，当设置为 <span class="token number">0</span> 时使用和机器核心一样多的线程。
+--format<span class="token operator">=</span>  指定压缩输出格式，可以是 raw、xz、lzma
+-v	显示更详细的信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意点： 压缩后的文件时在和源文件同一个目录。当我们压缩的文件为 /home/nginx/logs/error.log-20191126 ，当我们在任意目录执行完 xz /home/nginx/logs/error.log-20191126 后，压缩后的文件路径是 /home/nginx/logs/error.log-20191126.xz.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">//不保留源文件
+xz   /home/nginx/logs/error.log-20191126
+
+//保留源文件
+xz -k /home/nginx/logs/error.log-20191126
+
+//解压缩文件
+xz -d  /home/nginx/logs/error.log-20191126.xz
+
+//指定多线程数来进行压缩
+xz -T <span class="token number">4</span>  /home/nginx/logs/error.log-20191126<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="查询命令"><a href="#查询命令" class="headerlink" title="查询命令"></a>查询命令</h2><h3 id="查找文件及文件夹"><a href="#查找文件及文件夹" class="headerlink" title="查找文件及文件夹"></a>查找文件及文件夹</h3><pre class="line-numbers language-none"><code class="language-none">find的主要用来查找文件，查找文件的用法我们比较熟悉，也可用它来查找文件夹，用法跟查找文件类似，只要在最后面指明查找的文件类型 -type d,如果不指定type类型，会将包含查找内容的文件和文件夹一起输出。
+
+find基本语法如下：
+
+find [PATH] [Option] [action]
+
+-newer file:file为一个存在的文件，列出比file还要新的文件名
+
+find / -mtime 0———0代表当前的时间，即从现在开始到24小时前，有改动过内容的文件都会被列出来
+
+find /etc -newer /etc/passwd———寻找/etc下面的文件，如果文件日期比/etc/passwd新就列出
+
+find / -name file——/代表全文搜索
+
+find /home -user Anmy——查找/home下属于Anmy的文件
+
+find / -nouser—— 查找系统中不属于任何人的文件，可以轻易找出那些不太正常的文件
+
+find / -name passed—— 查找文件名为passed的文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>若不指定查找类型，使用命令：find / -name AnmyTest 则会将目录和文件一同输出<br><img src="https://img-blog.csdn.net/20180918104346399?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NTY4ODE0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center" alt="在这里插入图片描述"><br>若指定查找类型，使用命令：find / -name AnmyTest -type d 则只会将目录输出<br><img src="https://img-blog.csdn.net/20180918104448278?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NTY4ODE0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="复制-x2F-移动文件、文件改名"><a href="#复制-x2F-移动文件、文件改名" class="headerlink" title="复制/移动文件、文件改名"></a>复制/移动文件、文件改名</h2><p>Linux 将一个文件夹的所有内容拷贝到另外一个文件夹</p>
+<p>cp 命令使用 -r 参数可以将 packageA 下的所有文件拷贝到 packageB 中：</p>
+<pre class="line-numbers language-none"><code class="language-none">cp -r /home/packageA/* /home/cp/packageB/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>将一个文件夹复制到另一个文件夹下，以下实例 packageA 文件会拷贝到 packageB 中：</p>
+<pre class="line-numbers language-none"><code class="language-none">cp -r /home/packageA /home/packageB<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>运行命令之后 packageB 文件夹下就有 packageA 文件夹了。</p>
+<ol>
+<li><code>cp /xx/xx(a)  /xx/xx(a)</code>   :复制   ~~~~  //将a复制到b</li>
+<li><code>mv /xx /xx /xx/xx</code> :剪切</li>
+<li><code>mv 旧文件夹名 新文件夹名</code>   //更改名字</li>
+</ol>
+<h2 id="查看端口"><a href="#查看端口" class="headerlink" title="查看端口"></a>查看端口</h2><h3 id="查看某个服务的状态"><a href="#查看某个服务的状态" class="headerlink" title="查看某个服务的状态"></a>查看某个服务的状态</h3><pre class="line-numbers language-none"><code class="language-none">service ‘servicename’ status
+//centos7以上用 systemctl<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>例子</p>
+<pre class="line-numbers language-none"><code class="language-none">service sshd status //查看sshd服务的状态，可以看到它的进程号，如果不需要可以kill 杀死<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="lsof-i-端口号"><a href="#lsof-i-端口号" class="headerlink" title="lsof -i:端口号"></a>lsof -i:端口号</h3><p><img src="https://img-blog.csdnimg.cn/76c06a2619c04918af8a7331869739fd.png" alt="在这里插入图片描述"><br>可以看到 8000 端口已经被轻 nodejs 服务占用。</p>
+<p><img src="https://img-blog.csdnimg.cn/a9bdaa252c8c4083baf16c1e664416ac.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h3 id="netstat-tunlp-grep-端口号"><a href="#netstat-tunlp-grep-端口号" class="headerlink" title="netstat -tunlp | grep 端口号  "></a>netstat -tunlp | grep 端口号  <br></h3><p><strong>用于显示 tcp，udp 的端口和进程等相关情况</strong></p>
+<blockquote>
+<p>-t (tcp) 仅显示tcp相关选项<br>-u (udp)仅显示udp相关选项<br>-n 拒绝显示别名，能显示数字的全部转化为数字<br>-l 仅列出在Listen(监听)的服务状态<br>-p 显示建立相关链接的程序名</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/b16427d1c6cc430080b1dae37360358c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h3 id="kill-杀死进程"><a href="#kill-杀死进程" class="headerlink" title="kill(杀死进程)"></a>kill(杀死进程)</h3><p><img src="https://img-blog.csdnimg.cn/e228676961554ebaa0725d3cad3b14c6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h3 id="telnet-检测端口是否可用"><a href="#telnet-检测端口是否可用" class="headerlink" title="telnet(检测端口是否可用)"></a>telnet(检测端口是否可用)</h3><p>有时我们想知道端口是否开启。</p>
+<pre class="line-numbers language-none"><code class="language-none">tenlet ip 端口<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/46ee47447ace457e95d472fef5ea9ea8.png" alt="在这里插入图片描述">上图表示：80端口开放，8899端口未开放。</p>
+<h2 id="touch命令-创建文件"><a href="#touch命令-创建文件" class="headerlink" title="touch命令(创建文件)"></a>touch命令(创建文件)</h2><p><code>touch</code>命令用于修改文件或者目录的时间属性，包括存取时间和更改时间，若文件不存在，系统会建立一个新的文件。</p>
+<p>创建一个空白文件，如果文件已经存在，它将更改文件的访问时间。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> /tmp/file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>创建多个文件。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> /tmp/file1.txt /tmp/file2.txt /tmp/file3.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>修改文件的修改时间并查看文件属性。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> -m /tmp/file.txt <span class="token operator">&amp;&amp;</span> <span class="token function">stat</span> /tmp/file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>同时修改访问时间和修改时间并设置一个特定的访问与修改时间。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> -am -t <span class="token number">202007010000.00</span> /tmp/file.txt <span class="token operator">&amp;&amp;</span> <span class="token function">stat</span> /tmp/file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="cat命令-显示文件内容"><a href="#cat命令-显示文件内容" class="headerlink" title="cat命令(显示文件内容)"></a>cat命令(显示文件内容)</h2><p><code>cat</code>命令属于文件管理，用于连接文件并打印到标准输出设备上，<code>cat</code>经常用来显示文件的内容，注意，当文件较大时，文本在屏幕上迅速闪过，会出现滚屏现象，此时往往看不清所显示的内容，为了控制滚屏，可以按<code>Ctrl+S</code>键停止滚屏，按<code>Ctrl+Q</code>键可以恢复滚屏，此外可以用<code>more</code>等命令进行读文件并分页显示。</p>
+<p>使用<code>cat</code>命令创建一个文件，输入文件信息后按<code>Ctrl+D</code>输出<code>EOF</code>标识后结束输入。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> <span class="token operator">&gt;</span> file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>输出<code>file.txt</code>文件中的内容。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>同时输出<code>file.txt</code>与<code>file2.txt</code>文件中的内容。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> file.txt file2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>把<code>file.txt</code>文件的内容加上行号后追加到<code>file2.txt</code>文件中。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> -n file.txt <span class="token operator">&gt;&gt;</span> file2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>清空<code>file2.txt</code>文件，<code>/dev/null</code>称为空设备，是一个特殊的设备文件，其会丢弃一切写入其中的数据，但报告写入操作成功，读取它则会立即得到一个<code>EOF</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /dev/null <span class="token operator">&gt;</span> file2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>将<code>file.txt</code>与<code>file2.txt</code>文件内容合并输出到<code>file3.txt</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> file.txt file2.txt <span class="token operator">&gt;</span> file3.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Centos7特性"><a href="#Centos7特性" class="headerlink" title="Centos7特性"></a>Centos7特性</h2><p>服务相关命令使用systemctl，之前的版本是service</p>
+<blockquote>
+<p>systemctl (stop/restart/start)  (服务)<br>systemctl restart nginx</p>
+</blockquote>
+<h2 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h2><h3 id="开启端口（以80为例）"><a href="#开启端口（以80为例）" class="headerlink" title="开启端口（以80为例）"></a>开启端口（以80为例）</h3><blockquote>
+<p>firewall-cmd –zone=public –add-port=80/tcp –permanent<br>//zone add permanent前面是两个横杠</p>
+</blockquote>
+<h3 id="重启防火墙"><a href="#重启防火墙" class="headerlink" title="重启防火墙"></a>重启防火墙</h3><blockquote>
+<p>systemctl restart firewalld.service</p>
+</blockquote>
+<p><strong>不同的系统命令可能不同</strong></p>
+<h2 id="修改主机名"><a href="#修改主机名" class="headerlink" title="修改主机名"></a>修改主机名</h2><h3 id="debian-x2F-ubuntu系列"><a href="#debian-x2F-ubuntu系列" class="headerlink" title="debian/ubuntu系列"></a>debian/ubuntu系列</h3><pre class="line-numbers language-none"><code class="language-none">第一步：
+vi /etc/hostname
+写入
+
+HOSTNAME=yourhostname
+保存后执行以下：
+
+hostname yourhostname
+ 查看设置后的hostname
+hostname<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">第二步：
+vi /etc/hosts
+修改成新的主机名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="redhat-x2F-centos系列"><a href="#redhat-x2F-centos系列" class="headerlink" title="redhat/centos系列"></a>redhat/centos系列</h3><pre class="line-numbers language-none"><code class="language-none">vi /etc/sysconfig/network
+输入以下：
+
+HOSTNAME=yourhostname
+保存后执行以下：
+
+hostname yourhostname
+ 查看设置后的hostname
+hostname<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="vim相关操作"><a href="#vim相关操作" class="headerlink" title="vim相关操作"></a>vim相关操作</h2><h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><p>1）单行复制</p>
+<p>在命令模式下，将光标移动到将要复制的行处，按“yy”进行复制；</p>
+<p>2）多行复制 在命令模式下，将光标移动到将要复制的首行处，按“nyy”复制n行；其中n为1、2、3……</p>
+<p>【yy】 复制光标所在的那一行<br>【nyy】 复制光标所在的向下n行</p>
+<h3 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h3><p>在命令模式下，将光标移动到将要粘贴的行处，按“p”进行粘贴</p>
+<p>【p,P】 p为将已经复制的数据在光标下一行粘贴；P为将已经复制的数据在光标上一行粘贴</p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>删除一行：dd</p>
+<p>删除一个单词/光标之后的单词剩余部分：dw</p>
+<p>删除当前字符：x</p>
+<p>光标之后的该行部分：d$</p>
+<p>文本删除</p>
+<p>dd 删除一行</p>
+<p>d$ 删除以当前字符开始的一行字符</p>
+<p>ndd 删除以当前行开始的n行</p>
+<p>dw 删除以当前字符开始的一个字</p>
+<p>ndw 删除以当前字符开始的n个字</p>
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>【/word】 在文件中查找内容为word的字符串（向下查找）<br>【?word】 在文件中查找内容为word的字符串（向上查找）<br>【[n]】 表示重复查找动作，即查找下一个<br>【[N]】 反向查找下一个</p>
+<h3 id="取消高亮"><a href="#取消高亮" class="headerlink" title="取消高亮"></a>取消高亮</h3><p>搜索后，我们打开别的文件，发现也被高亮了，怎么关闭高亮？</p>
+<p>命令模式下，输入:nohlsearch  也可以:set nohlsearch； 当然，可以简写，noh或者set noh。<br>PS：nohlsearch是（no highlight search缩写）</p>
+<h3 id="设置行号"><a href="#设置行号" class="headerlink" title="设置行号"></a>设置行号</h3><p>如果编辑后，又想显示行号，同样操作按一下esc键，并输入:（冒号），输入set number    ，并按回车键，完成后即显示行号</p>
+<h3 id="跳到指定行"><a href="#跳到指定行" class="headerlink" title="跳到指定行"></a>跳到指定行</h3><p>在知道所查找的内容在文件中的具体位置时可以使用以下命令直接定位：<br>跳到文件指定行：比如跳到66行</p>
+<p>66+G（也就是66+shift+g）<br>当然你可以选择另一种跳转方式：</p>
+<p>命令行输入“ : n ” 然后回车<br>跳到文件第一行：gg （两个小写的G）</p>
+<p>跳到文件最后一行：shift+g （也就是G）</p>
+<h3 id="文件上下翻转"><a href="#文件上下翻转" class="headerlink" title="文件上下翻转"></a>文件上下翻转</h3><p>页翻转可以直接使用PgUp和PgDn</p>
+<p>向前滚动一屏：Ctrl+F</p>
+<p>向后滚动一屏：Ctrl+B</p>
+<p>向前滚动半屏：Ctrl+D（向下）</p>
+<p>向后滚动半屏：Ctrl+U（向上）</p>
+<p>向下滚动一行，保持当前光标不动：Ctrl+E</p>
+<p>向上滚动一行，保持当前光标不动：Ctrl+Y</p>
+<p>当前行滚动：<br>当前行移动到屏幕顶部并滚动：Z+Enter<br>滚动指定行到屏幕顶部： 10Z+Enter（指定第十行）<br>当前行移动到屏幕中央并滚动：Z + .<br>当前行移动到屏幕底部并滚动：Z + -<br>当前屏幕操作：<br>H：大写h，移动到当前屏幕首行；nH移动到首行下的第n行<br>M：大写m，移动到当前屏幕中间行<br>L：大写l，移动到当前屏幕末行；nL移动到末行上面的第n行</p>
+<h3 id="撤销上一步操作"><a href="#撤销上一步操作" class="headerlink" title="撤销上一步操作"></a>撤销上一步操作</h3><p>【u】 撤消上一个操作<br>【[Ctrl] + r】 多次撤消<br>【.】 这是小数点键，重复上一个操作</p>
+<p>  缩进：</p>
+<p>  插入模式下，ctrl+shift+d 减少缩进，ctrl+shift+t 增加缩进</p>
+<h3 id="vim编辑"><a href="#vim编辑" class="headerlink" title="vim编辑"></a>vim编辑</h3><p>1、进入插入模式（６个命令）<br>【i】 从目前光标所在处插入<br>【I】 从目前光标<br>【a】 从当前光标所在的下一个字符处开始插入<br>【A】 从光标所在行的最后一个字符处开始插入<br>【o】 英文小写字母o，在目前光标所在行的下一行处插入新的一行并开始插入<br>【O】 英文大写字母O，在目前光标所在行的上一行处插入新的一行并开始插入</p>
+<p> 2、进入替换模式（2个命令）<br>【r】 只会替换光标所在的那一个字符一次<br>【R】 会一直替换光标所在字符，直到按下[ESC]键为止<br>【[ESC]】 退出编辑模式回到一般模式</p>
+<p>  3、一般模式切换到命令行模式<br>【:w】 保存文件<br>【:w!】 若文件为只读，强制保存文件<br>【:q】 离开vi<br>【:q!】 不保存强制离开vi<br>【:wq】 保存后离开<br>【:wq!】 强制保存后离开<br>【:! command】 暂时离开vi到命令行下执行一个命令后的显示结果<br>【:set nu】 显示行号<br>【:set nonu】 取消显示行号<br>【:w newfile】 另存为<br>【:set fileencoding】 查看当前文件编码格式<br>【:set fileencoding=utf-8】 设置当前文件编码格式为utf-8，也可以设置成其他编码格式<br>【:set fileformat】 查看当前文件的断行格式（dos\windows,unix或macintosh）<br>【:set fileformat=unix】 将当前文件的断行格式设置为unix格式</p>
+<h3 id="多窗口功能"><a href="#多窗口功能" class="headerlink" title="多窗口功能"></a>多窗口功能</h3><p>【:sp [filename]】 打开一个新窗口，显示新文件，若只输入:sp，则两窗口显示同一个文件<br>【[Ctrl] + w + j】 光标移动到下方窗口<br>【[Ctrl] + w + k】 光标移动到上方窗口<br>【[Ctrl] + w + q】 离开当前窗口</p>
+<h3 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h3><p>批量缩进</p>
+<p>在程序代码界面，按esc，退出编辑模式，到命令模式，并在英语输入法下输入“：”</p>
+<p>将所要批量缩进的行号写上，按照格式：“行号1，行号2&gt;”输入命令，如要将2至9行批量缩进一个tab值，则命令为“2,9&gt;”</p>
+<p>输入完毕后，按回车可以执行，就可以看到2至9行全部缩进了一个tab值了，同样的，如果要缩回来一个tab值，则用命令“行号1，行号2&lt;”即可</p>
+<p>可视模式缩进</p>
+<p>方法二是在可视模式下选择要移动的列，操作为，esc从编辑模式退到命令模式，将光标移到需要缩进的行的行首，然后按shift+v，可以看到该行已被选中，且左下角提示为“可视”</p>
+<p>此时，按键盘上的上下左右方向键，如这里按向下的箭头，选中所有需要批量缩进的行</p>
+<p>选择好了之后，按shift+&gt;,是向前缩进一个tab值，按shift+&lt;，则是缩回一个tab值，</p>
+<h2 id="vscode-Remote-SSH"><a href="#vscode-Remote-SSH" class="headerlink" title="vscode Remote SSH"></a>vscode Remote SSH</h2><p>ssh登录命令：</p>
+<pre class="line-numbers language-none"><code class="language-none">ssh username@ip -p port  //密码登录 ，-p port可以不用输入，不输默认是22，因为linux默认也确实是22
+
+ssh username@ip -p port –i id_rsa //密钥登录
+
+//密钥生成的时候建议命名，不要使用默认的，否则多了容易分不清。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用Remote SSH 插件访问linux，用密钥登录。需要把公钥放在服务器，私钥放在<code>.ssh</code>目录下</p>
+<p><img src="https://img-blog.csdnimg.cn/300494cec18445139acafaa165d99186.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>再配置VScode<br>点击Remote SSH的图标后再点击箭头所指的齿轮<br><img src="https://img-blog.csdnimg.cn/img_convert/a1b38b4440e85b519ea1004ad23ae66f.png#pic_center" alt="在这里插入图片描述"><br>会弹出菜单让你选择需要编辑的配置文件，一般选第一个<br><img src="https://img-blog.csdnimg.cn/img_convert/112e1d35b8003716395a4ecbcf2946ac.png#pic_center" alt="在这里插入图片描述"><br>参数的含义分别为：</p>
+<p>Host 连接的主机的名称，可自定</p>
+<p>Hostname 远程主机的IP地址</p>
+<p>User 用于登录远程主机的用户名</p>
+<p>Port 用于登录远程主机的端口</p>
+<p>IdentityFile 本地的id_rsa的路径</p>
+<p>右键点击Connect<img src="https://img-blog.csdnimg.cn/img_convert/78b37be94d60822412e1640e5f980c6a.png#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="设置-SSH-通过密钥登录"><a href="#设置-SSH-通过密钥登录" class="headerlink" title="设置 SSH 通过密钥登录"></a>设置 SSH 通过密钥登录</h2><h3 id="制作密钥对"><a href="#制作密钥对" class="headerlink" title="制作密钥对"></a>制作密钥对</h3><blockquote>
+<p>我们一般使用 PuTTY 等 SSH 客户端来远程管理 Linux<br>服务器。但是，一般的密码方式登录，容易有密码被暴力破解的问题。所以，一般我们会将 SSH 的端口设置为默认的 22 以外的端口，或者禁用<br>root 账户登录。其实，有一个更好的办法来保证安全，而且让你可以放心地用 root 账户从远程登录——那就是通过密钥方式登录。</p>
+<p>密钥形式登录的原理是：利用密钥生成器制作一对密钥——一只公钥和一只私钥。将公钥添加到服务器的某个账户上，然后在客户端利用私钥即可完成认证并登录。这样一来，没有私钥，任何人都无法通过<br>SSH 暴力破解你的密码来远程登录到系统。此外，如果将公钥复制到其他账户甚至主机，利用私钥也可以登录。</p>
+<p>下面来讲解如何在 Linux 服务器上制作密钥对，将公钥添加给账户，设置 SSH，最后通过客户端登录。</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">首先在服务器上制作密钥对。首先用密码登录到你打算使用密钥登录的账户，然后执行以下命令：
+
+[root@host ~]$ ssh-keygen  &lt;== 建立密钥对
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): &lt;== 按 Enter。如果输入其它字符，比如test，那么生产的私钥是test，公钥是test.pub。说白了就是让你输入密钥文件名，不输入就采用默认的。
+Created directory '/root/.ssh'.
+Enter passphrase (empty for no passphrase): &lt;== 输入密钥锁码，后续使用私钥登录的时候会要求输密码，建议输入；或直接按 Enter 留空
+Enter same passphrase again: &lt;== 再输入一遍密钥锁码
+Your identification has been saved in /root/.ssh/id_rsa. &lt;== 私钥
+Your public key has been saved in /root/.ssh/id_rsa.pub. &lt;== 公钥
+The key fingerprint is:
+0f:d3:e7:1a:1c:bd:5c:03:f1:19:f1:22:df:9b:cc:08 root@host
+密钥锁码在使用私钥时必须输入，这样就可以保护私钥不被盗用。当然，也可以留空，实现无密码登录。
+
+现在，在 root 用户的家目录中生成了一个 .ssh 的隐藏目录，内含两个密钥文件。id_rsa 为私钥，id_rsa.pub 为公钥。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="在服务器上安装公钥"><a href="#在服务器上安装公钥" class="headerlink" title="在服务器上安装公钥"></a>在服务器上安装公钥</h3><pre class="line-numbers language-none"><code class="language-none">键入以下命令，在服务器上安装公钥：
+
+[root@host ~]$ cd .ssh
+[root@host .ssh]$ cat id_rsa.pub &gt;&gt; authorized_keys
+如此便完成了公钥的安装。为了确保连接成功，请保证以下文件权限正确：
+
+[root@host .ssh]$ chmod 600 authorized_keys
+[root@host .ssh]$ chmod 700 ~/.ssh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="设置-SSH，打开密钥登录功能"><a href="#设置-SSH，打开密钥登录功能" class="headerlink" title="设置 SSH，打开密钥登录功能"></a>设置 SSH，打开密钥登录功能</h3><pre class="line-numbers language-none"><code class="language-none">编辑 /etc/ssh/sshd_config 文件，进行如下设置：
+
+RSAAuthentication yes
+PubkeyAuthentication yes
+另外，请留意 root 用户能否通过 SSH 登录：
+
+PermitRootLogin yes
+当你完成全部设置，并以密钥方式登录成功后，再禁用密码登录：
+
+PasswordAuthentication no
+最后，重启 SSH 服务：
+
+[root@host .ssh]$ service sshd restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="将私钥下载到客户端，然后转换为-PuTTY-能使用的格式"><a href="#将私钥下载到客户端，然后转换为-PuTTY-能使用的格式" class="headerlink" title="将私钥下载到客户端，然后转换为 PuTTY 能使用的格式"></a>将私钥下载到客户端，然后转换为 PuTTY 能使用的格式</h3><p>使用 WinSCP、SFTP 等工具将私钥文件 id_rsa 下载到客户端机器上。然后打开 PuTTYGen，单击 Actions 中的 Load 按钮，载入你刚才下载到的私钥文件。如果你刚才设置了密钥锁码，这时则需要输入。</p>
+<p>载入成功后，PuTTYGen 会显示密钥相关的信息。在 Key comment 中键入对密钥的说明信息，然后单击 Save private key 按钮即可将私钥文件存放为 PuTTY 能使用的格式。</p>
+<p>今后，当你使用 PuTTY 登录时，可以在左侧的 Connection -&gt; SSH -&gt; Auth 中的 Private key file for authentication: 处选择你的私钥文件，然后即可登录了，过程中只需输入密钥锁码即可。</p>
+<h3 id="ssh客户端–xshell登录linux服务器"><a href="#ssh客户端–xshell登录linux服务器" class="headerlink" title="ssh客户端–xshell登录linux服务器"></a>ssh客户端–xshell登录linux服务器</h3><p>将服务器上生成的私钥，id_rsa下载到本地。<br><img src="https://img-blog.csdnimg.cn/8aa2ee35095b499c9cddaf21b877ca01.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/a96ed4029057488f9ee7a6b9acae0fd3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h3 id="ssh-keygen命令详解"><a href="#ssh-keygen命令详解" class="headerlink" title="ssh-keygen命令详解"></a>ssh-keygen命令详解</h3><p>这条命令目的是为了本地机器ssh登录远程服务器无需输入密码</p>
+<p><strong>1.ssh-keygen</strong></p>
+<blockquote>
+<p>SSH 为 Secure Shell 的缩写，SSH 为建立在应用层基础上的安全协议。SSH<br>是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。<br><br>		<br>从客户端来看，SSH提供两种级别的安全验证：<br><br>			<br>第一种级别（基于口令的安全验证）：只要你知道自己帐号和口令，就可以登录到远程主机。所有传输的数据都会被加密，但是不能保证你正在连接的服务器就是你想连接的服务器。可能会有别的服务器在冒充真正的服务器，也就是受到“中间人”这种方式的攻击。<br>    <br>	<br>第二种级别（基于密匙的安全验证）ssh-keygen：需要依靠密匙，你必须为自己创建一对密匙，并把公用密匙放在需要访问的服务器上。如果你要连接到SSH服务器上，客户端软件就会向服务器发出请求，请求用你的密匙进行安全验证。服务器收到请求之后，先在该服务器上你的主目录下寻找你的公用密匙，然后把它和你发送过来的公用密匙进行比较。如果两个密匙一致，服务器就用公用密匙加密“质询”（challenge）并把它发送给客户端软件。客户端软件收到“质询”之后就可以用你的私人密匙解密再把它发送给服务器。用这种方式，你必须知道自己密匙的口令。但是，与第一种级别相比，第二种级别不需要在网络上传送口令。第二种级别不仅加密所有传送的数据，而且“中间人”这种攻击方式也是不可能的（因为他没有你的私人密匙）。但是整个登录的过程可能需要10秒。<br><br>	ssh-keygen有很多的参数，比如这里的-t -b -C都是他的一些参数</p>
+</blockquote>
+<p><strong>2.-t rsa</strong></p>
+<blockquote>
+<p>-t即指定密钥的类型，密钥的类型有两种，一种是RSA，一种是DSA：<br><br>RSA：RSA加密算法是一种非对称加密算法，是由三个麻省理工的牛人弄出来的，RSA是他们三个人姓的开头首字母组合。<br><br>DSA：Digital Signature Algorithm (DSA)是Schnorr和ElGamal签名算法的变种。<br><br>为了让两个linux机器之间使用ssh不需要用户名和密码。所以采用了数字签名RSA或者DSA来完成这个操作。ssh-keygen默认使用rsa密钥，所以不加-t rsa也行，如果你想生成dsa密钥，就需要加参数-t dsa。</p>
+</blockquote>
+<p><strong>3.-b 4096</strong></p>
+<blockquote>
+<p>-b 指定密钥长度。对于RSA密钥，最小要求768位，默认是2048位。命令中的4096指的是RSA密钥长度为4096位。<br><br>DSA密钥必须恰好是1024位(FIPS 186-2 标准的要求)。</p>
+</blockquote>
+<p><strong>这里额外补充一个知识</strong></p>
+<blockquote>
+<p>命令后面还可以增加-C “注释内容”<br><br>-C表示要提供一个新注释，用于识别这个密钥，可以是任何内容,一个用来识别的key</p>
+</blockquote>
+<p><strong>小结：当你创建ssh的时候：-t 表示密钥的类型 ，-b表示密钥的长度，-C 用于识别这个密钥的注释 ，这个注释你可以输入任何内容</strong></p>
+<h2 id="Centos-启动-x2F-停止-x2F-重启-x2F-开机自启动服务"><a href="#Centos-启动-x2F-停止-x2F-重启-x2F-开机自启动服务" class="headerlink" title="Centos 启动/停止/重启/开机自启动服务"></a>Centos 启动/停止/重启/开机自启动服务</h2><pre class="line-numbers language-none"><code class="language-none">systemctl start sshd //启动ssh服务
+
+systemctl stop sshd //停止ssh服务
+ 
+systemctl restart sshd //重启ssh服务
+
+systemctl enable sshd //开机自启动ssh服务
+
+docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="文件内容覆盖-x2F-追加内容（cat命令）"><a href="#文件内容覆盖-x2F-追加内容（cat命令）" class="headerlink" title="文件内容覆盖/追加内容（cat命令）"></a>文件内容覆盖/追加内容（cat命令）</h2><pre class="line-numbers language-none"><code class="language-none">cat  textfile1 &gt; textfile2 //使用“&gt;” 重定向后 文件 中原本的内容会被覆盖
+
+cat  textfile1 &gt;&gt; textfile2 //"&gt;&gt;" 代表 将输出的内容已追加的方式重定向到文件
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>cat 原单词concatenate(用途是连接文件或标准输入并打印。)<br>cat 命令用于将所有文件内容打印到屏幕上。<br>语法:</p>
+<pre class="line-numbers language-none"><code class="language-none">cat 文件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h2 id="linux中的-amp-amp-和-amp-，-和"><a href="#linux中的-amp-amp-和-amp-，-和" class="headerlink" title="linux中的&amp;&amp; 和 &amp;，| 和 ||"></a>linux中的&amp;&amp; 和 &amp;，| 和 ||</h2><blockquote>
+<p>在linux中，&amp;和&amp;&amp;,|和||介绍如下：<br><br><br>&amp;  表示任务在后台执行，如要在后台运行redis-server,则有  redis-server &amp;<br><br><br>&amp;&amp; 表示前一条命令执行成功时，才执行后一条命令 ，如 echo ‘1‘ &amp;&amp; echo ‘2’<br><br><br>| 表示管道，上一条命令的输出，作为下一条命令参数，如 echo ‘yes’ | wc -l<br><br><br>|| 表示上一条命令执行失败后，才执行下一条命令，如 cat nofile || echo “fail”</p>
+</blockquote>
+<p>具体案例：<br>1.rpm -qa | grep mysql</p>
+<blockquote>
+<p>rpm -qa会输出符合筛选条件的软件套件，然后使用grep 筛选与mysql相关的软件套件</p>
+</blockquote>
+<h2 id="rpm命令"><a href="#rpm命令" class="headerlink" title="rpm命令"></a>rpm命令</h2><blockquote>
+<p>Linux rpm 命令用于管理套件。<br><br><br>rpm（英文全拼：redhat package manager） 原本是 Red Hat Linux 发行版专门用来管理 Linux<br>各项套件的程序，由于它遵循 GPL 规则且功能强大方便，因而广受欢迎。逐渐受到其他发行版的采用。RPM 套件管理方式的出现，让 Linux<br>易于安装，升级，间接提升了 Linux 的适用度。<br><br>因为是redhat的，所以这个命令对ubuntu不适用，一般就是centos用，看看是否安装了或有某个软件的套件</p>
+</blockquote>
+<p>实例：</p>
+<p>1.安装软件</p>
+<pre class="line-numbers language-none"><code class="language-none"># rpm -hvi dejagnu-1.4.2-10.noarch.rpm 
+警告：dejagnu-1.4.2-10.noarch.rpm: V3 DSA 签名：NOKEY, key ID db42a60e
+准备...           
+################################################################ [100%]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>2.显示软件安装信息</p>
+<pre class="line-numbers language-none"><code class="language-none"># rpm -qi dejagnu-1.4.2-10.noarch.rpm
+
+【第1次更新 教程、类似命令关联】<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>3.检查是否已经安装过mysql</p>
+<pre class="line-numbers language-none"><code class="language-none">rpm -qa | grep mysql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>4.删除mysql</p>
+<pre class="line-numbers language-none"><code class="language-none">rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64  
+//-e&lt;套件档&gt;或--erase&lt;套件档&gt; 　删除指定的套件。
+//--nodeps 　不验证套件档的相互关联性。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h2><h3 id="centos"><a href="#centos" class="headerlink" title="centos"></a>centos</h3><pre class="line-numbers language-none"><code class="language-none">cat /etc/redhat-release<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h2 id="更换yum源"><a href="#更换yum源" class="headerlink" title="更换yum源"></a>更换yum源</h2><p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/centos/">更换为清华源</a></p>
+<ol>
+<li>建议先备份 /etc/yum.repos.d/ 内的文件（CentOS 7 及之前为 CentOS-Base.repo，CentOS 8 为CentOS-Linux-*.repo）</li>
+<li>然后编辑 /etc/yum.repos.d/ 中的相应文件，在 mirrorlist= 开头行前面加 # 注释掉；并将 baseurl= 开头行取消注释（如果被注释的话），把该行内的域名（例如mirror.centos.org）替换为 mirrors.tuna.tsinghua.edu.cn。</li>
+<li>以上步骤可以被下方的命令一步完成</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">sudo sed -e 's|^mirrorlist=|#mirrorlist=|g' \
+        -e 's|^#baseurl=http://mirror.centos.org|baseurl=https://mirrors.tuna.tsinghua.edu.cn|g' \
+        -i.bak \
+        /etc/yum.repos.d/CentOS-*.repo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>注意其中的*通配符，如果只需要替换一些文件中的源，请自行增删。<br><br><br>注意，如果需要启用其中一些 repo，需要将其中的 enabled=0 改为 enabled=1。<br><br></p>
+</blockquote>
+<p>4.最后，更新软件包缓存</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo yum makecache<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="make-install"><a href="#make-install" class="headerlink" title="make install"></a>make install</h2><p>这个命令用与安装，可以携带一个参数。<code>PREFIX=/home/lgf</code><br>表示安装路径，在安装mpi的时候出现过这个参数。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">John Doe</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://gaofeng-lin.github.io/posts/48230/">https://gaofeng-lin.github.io/posts/48230/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">John Doe</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/ssh/">
+                                    <span class="chip bg-color">ssh</span>
+                                </a>
+                            
+                                <a href="/tags/Vim/">
+                                    <span class="chip bg-color">Vim</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/56435/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Go">
+                        
+                        <span class="card-title">Go</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Go/" class="post-category">
+                                    Go
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Go/">
+                        <span class="chip bg-color">Go</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/300/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="工具快捷键集合">
+                        
+                        <span class="card-title">工具快捷键集合</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/office/">
+                        <span class="chip bg-color">office</span>
+                    </a>
+                    
+                    <a href="/tags/IDE/">
+                        <span class="chip bg-color">IDE</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
+                        <span class="chip bg-color">编辑器</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+                        <span class="chip bg-color">快捷键</span>
+                    </a>
+                    
+                    <a href="/tags/vscode/">
+                        <span class="chip bg-color">vscode</span>
+                    </a>
+                    
+                    <a href="/tags/visio/">
+                        <span class="chip bg-color">visio</span>
+                    </a>
+                    
+                    <a href="/tags/postman/">
+                        <span class="chip bg-color">postman</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <a href="/about" target="_blank">John Doe</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">101.1k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

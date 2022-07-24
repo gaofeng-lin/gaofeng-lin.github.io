@@ -1,0 +1,2209 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="前端语法+基础知识, Hexo">
+    <meta name="description" content="javascript、ES6查漏补缺网址链接
+知识点
+TS类型详见TS与JS区别
+箭头函数总结在来看一遍 箭头函数 与 普通函数，除了写法上的区别
+
+1、箭头函数没有自己的this。箭头函数会捕获其所在上下文的 this 值，作为自己的 t">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>前端语法+基础知识 | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">前端语法+基础知识</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/JavaScript/">
+                                <span class="chip bg-color">JavaScript</span>
+                            </a>
+                        
+                            <a href="/tags/Vue/">
+                                <span class="chip bg-color">Vue</span>
+                            </a>
+                        
+                            <a href="/tags/React/">
+                                <span class="chip bg-color">React</span>
+                            </a>
+                        
+                            <a href="/tags/Json/">
+                                <span class="chip bg-color">Json</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-category">
+                                前端开发
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-06-01
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    9.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    39 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="javascript、ES6查漏补缺网址"><a href="#javascript、ES6查漏补缺网址" class="headerlink" title="javascript、ES6查漏补缺网址"></a>javascript、ES6查漏补缺网址</h2><p><a href="%5Bhttps%5D(https://wangdoc.com)">链接</a></p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><span id="more"></span>
+<h3 id="TS类型"><a href="#TS类型" class="headerlink" title="TS类型"></a>TS类型</h3><p>详见TS与JS区别</p>
+<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p><strong>总结</strong><br>在来看一遍 箭头函数 与 普通函数，除了写法上的区别</p>
+<blockquote>
+<p>1、箭头函数没有自己的this。箭头函数会捕获其所在上下文的 this 值，作为自己的 this 值。<br>2、箭头函数 this不可变。call()、apply()、bind()、这些方法也 无法改变 箭头函数 this 的指向。<br>3、箭头函数 不能用 new关键字来实例化对象，不然会报错。<br>4、箭头函数没有arguments对象。</p>
+</blockquote>
+<p>可以看出，最重要的区别还是 在 this 上，所以要想用好 箭头函数，还是要对 this 有一定认识的。</p>
+<p>箭头函数本质还是函数，我们来看看他与JavaScript中普通函数的区别，先看看写法上的区别。<br><img src="https://img-blog.csdnimg.cn/2b6243000b0d48f69f6baf1e77293818.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><strong>解释</strong><br>写箭头函数，我们记住一个顺序就好，参数、箭头、函数体、这个顺序记住就足够了，参数、箭头、函数体、这三个是必须的，函数名可以没有，但这三项必须有，一些简写的方式也是简写这三项里的东西。</p>
+<p><strong>简写</strong><br>1、只有一个参数时，() 可省略</p>
+<pre class="line-numbers language-none"><code class="language-none">//不简写
+var demo = (x) =&gt;{
+    console.log(x);
+}
+
+//简写
+var demo = x =&gt;{
+    console.log(x);
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2、函数体只有一句时， {} 可以省略</p>
+<pre class="line-numbers language-none"><code class="language-none">//不简写
+var demo = (x) =&gt;{
+    console.log(x);
+}
+
+//简写
+var demo = x =&gt; console.log(x);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>3、函数体只有一条返回语句时，{} 和 return 都可以省略</p>
+<pre class="line-numbers language-none"><code class="language-none">//不简写
+var demo = (x) =&gt; {
+     return x;
+}
+
+//简写
+var demo = (x) =&gt; x;   
+
+//注意别写成这样  
+var demo = (x) =&gt;{ x };  
+//或者 这样  
+var demo = (x) =&gt; return  x;  
+//要省略就都省略，不省略就都不省，别省一半,不然会出错的。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>注意：</strong><br>箭头函数放 参数 的地方就在 () 内，<br>没有参数，() 必须写，<br>一个参数，() 可写可不写，<br>多个参数，() 必须写。</p>
+<p>箭头函数放 函数体 的地方在 {}内，<br>函数体 就 一句 {} 可写可不写，<br>函数体 不止一句，{} 必须写。</p>
+<p>如果不知道，() {} 写不写，该不该省略，那就写，写了不会错。</p>
+<p><strong>箭头函数 如果要返回一个对象，要简写的话， 需要用()包住这个对象</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">//不简写
+var demo = () =&gt;{ 
+    return {x:1};
+}  
+
+//简写
+var demo = () =&gt;({x:1});<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>为什么会这样？因为如果不加 () ，那{ } 就表示的是语法块，不是表示一个对象，而加上()，按照规范来说，() 里面 { } 就会被解析为对象了。</p>
+<p>对于 {x:1} 这个情况，他不仅可以表示一个对象，这个对象有个x属性，值为1，也可以表示为语法块中含有 名为 x 的 label，忘记 label语法的话，可以看<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/label">这里</a><br>如果不是很明白，可以看看这个<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/40902815">回答</a>，应该会理解的更加深刻。<br>所以这也解释了为什么会出现下面代码中的情况</p>
+<pre class="line-numbers language-none"><code class="language-none">// 不报错
+var demo = () =&gt;{x:1};
+
+// 报错
+var demo = (y) =&gt;{y,x:1};<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>对象的方法用 箭头函数写时，this 的指向 可能和你想的不一样</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">window.name='window';
+var obj = {
+    name:'obj',
+    show_name:() =&gt;{
+        console.log(this.name);
+    }    
+}
+obj.show_name(); //window<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>JavaScript使用的是函数作用域，在上面这段代码中对象的括号是不能封闭作用域的，所以此时的this还是指向window。<br>我们换成普通函数看看</p>
+<pre class="line-numbers language-none"><code class="language-none">window.name='window';
+var obj = {
+    name:'obj',
+    show_name: function (){
+        console.log(this.name);
+    }    
+}
+obj.show_name();  //obj<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>换成普通函数，this 就不是指向window，而是指向 obj 对象了</p>
+<p>箭头函数 与 普通函数 其他的区别</p>
+<blockquote>
+<p>1、箭头函数没有自己的this。箭头函数会捕获其所在上下文的 this 值，作为自己的 this 值。<br> 2、箭头函数 this不可变。call()、apply()、bind()、这些方法也 无法改变 箭头函数 this 的指向。<br>  3、箭头函数 不能用 new关键字来实例化对象，不然会报错。<br>  4、箭头函数没有arguments对象。</p>
+</blockquote>
+<p>1、箭头函数没有自己的this。箭头函数会捕获其所在上下文的 this 值，作为自己的 this 值。</p>
+<pre class="line-numbers language-none"><code class="language-none">window.name = 'window';
+var obj = {
+    name:'obj',
+    show_name:function (){
+        function fn (){
+            console.log(this.name);
+        }
+        fn();
+    },
+}
+obj.show_name();  // window<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>声明一个 obj 对象，有一个name属性 与 show_name方法，上面这段代码，我的本意是想显示 obj对象的name， 但是没和我想的一样，一般我们会用 一个变量 self 或者 that 之类的留住this,像这样</p>
+<pre class="line-numbers language-none"><code class="language-none">window.name = 'window';
+var obj = {
+    name:'obj',
+    show_name:function (){
+        //留住this
+        var that = this;
+        function fn (){
+            console.log(that.name);
+        }
+        fn();
+    },
+}
+obj.show_name();  //obj<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>通常来说，箭头函数内部的this就是外层代码块的this</p>
+<pre class="line-numbers language-none"><code class="language-none">window.name = 'window';
+var obj = {
+    name:'obj',
+    show_name:function (){
+        var fn = () =&gt; {
+            console.log(this.name);
+        }
+        fn();
+    },
+}
+obj.show_name(); //obj<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2、箭头函数 this 不可变。call()、apply()、bind()、这些方法也 无法改变 箭头函数 this 的指向。</p>
+<pre class="line-numbers language-none"><code class="language-none">window.name = 'window';
+var obj = {
+    name:'obj',
+}
+function show_name(){
+    //这里 show_name 是一个普通的全局函数，所以他的this指window
+    console.log(this.name);
+}
+//用了 call 方法，把 show_nam 的this 指向了 obj 对象
+show_name.call(obj);  //obj<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>箭头函数 this 不可变</p>
+<pre class="line-numbers language-none"><code class="language-none">window.name = 'window';
+var obj = {
+    name:'obj',
+}
+var show_name = () =&gt; {
+    //这里 show_name 是箭头函数，他的this指window，并且不会变
+    console.log(this.name);
+}
+//用了 call 方法，但是 this 没变，所以打印了 window
+show_name.call(obj);  //window<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>3、箭头函数 不能用 new 关键字来实例化对象，不然会报错，箭头函数的this 不可变，new 也改变不了 this的 指向，而且更为重要的是，箭头函数内部并没有 [[Construct]] 方法，所以会没有原型属性（prototype），所以箭头函数没法当构造函数。</p>
+<p><img src="https://img-blog.csdnimg.cn/7803115884ae4f6ab5f8d4cd73cfe038.png" alt="在这里插入图片描述"><br>4、箭头函数没有arguments对象，不能通过arguments对象访问传入参数，但是可以用rest参数实现<br>。<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Rest_parameters">不了解的看这里</a></p>
+<pre class="line-numbers language-none"><code class="language-none">var demo = (...theArgs) =&gt; theArgs;
+demo(1,2,3); //[1,2,3]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+
+<h3 id="链判断运算符"><a href="#链判断运算符" class="headerlink" title="链判断运算符"></a>链判断运算符</h3><p>作用：当访问一个对象属性是用来判断对 象 是 否 存 在<br>为什么要判断？？？？？<br>在项目中如果你不去判断对象是否存在在去访问属性，项目就崩了</p>
+<p><strong>在es5要这样判断</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">const userName = Obj &amp;&amp;
+	Obj.userInfo &amp;&amp; 
+	Obj.userInfo.userName ；//这样判断是不是很繁琐
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>es6写法</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">const userName = Obj?.userInfo?.userName;  //对比上面少了一大串
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>在es5的是否我们经常使用”||” 来设置默认值</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">let a = a.name || 'default'
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>es6提供了null判断符 ？ ？ 两个问号来判断，只有当左边的值为null、undefined右边的值才会生效</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">let a = undefined ?? 'default'
+let a2 = null ?? 'default';
+console.log(a); //default
+console.log(a2); //default
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="扩展运算符-三个点"><a href="#扩展运算符-三个点" class="headerlink" title="扩展运算符-三个点"></a>扩展运算符-三个点</h3><h4 id="对象的扩展运算"><a href="#对象的扩展运算" class="headerlink" title="对象的扩展运算"></a>对象的扩展运算</h4><p>对象中的扩展运算符(…)用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中</p>
+<pre class="line-numbers language-none"><code class="language-none">let bar = { a: 1, b: 2 };
+let baz = { ...bar }; // { a: 1, b: 2 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>上述方法实际上等价于:</p>
+<pre class="line-numbers language-none"><code class="language-none">let bar = { a: 1, b: 2 };
+let baz = Object.assign({}, bar); // { a: 1, b: 2 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>Object.assign方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。</p>
+<p>Object.assign方法的第一个参数是目标对象，后面的参数都是源对象。**(如果目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性)。**</p>
+<p>同样，如果用户自定义的属性，放在扩展运算符后面，则扩展运算符内部的同名属性会被覆盖掉。</p>
+<pre class="line-numbers language-none"><code class="language-none">let bar = {a: 1, b: 2};
+let baz = {...bar, ...{a:2, b: 4}};  // {a: 2, b: 4}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>利用上述特性就可以很方便的修改对象的部分属性。在redux中的reducer函数规定必须是一个纯函数（如果不是很清楚什么是纯函数的可以参考这里），reducer中的state对象要求不能直接修改，可以通过扩展运算符把修改路径的对象都复制一遍，然后产生一个新的对象返回。</p>
+<p>这里有点需要注意的是扩展运算符对对象实例的拷贝属于一种浅拷贝。肯定有人要问什么是浅拷贝？我们知道javascript中有两种数据类型，分别是基础数据类型和引用数据类型。基础数据类型是按值访问的，常见的基础数据类型有Number、String、Boolean、Null、Undefined，这类变量的拷贝的时候会完整的复制一份；引用数据类型比如Array，在拷贝的时候拷贝的是对象的引用，当原对象发生变化的时候，拷贝对象也跟着变化，比如：</p>
+<pre class="line-numbers language-none"><code class="language-none">let obj1 = { a: 1, b: 2};
+let obj2 = { ...obj1, b: '2-edited'};
+console.log(obj1); // {a: 1, b: 2}
+console.log(obj2); //  {a: 1, b: "2-edited"}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面这个例子扩展运算符拷贝的对象是基础数据类型，因此对obj2的修改并不会影响obj1，如果改成这样：</p>
+<pre class="line-numbers language-none"><code class="language-none">let obj1 = { a: 1, b: 2, c: {nickName: 'd'}};
+let obj2 = { ...obj1};
+obj2.c.nickName = 'd-edited';
+console.log(obj1); // {a: 1, b: 2, c: {nickName: 'd-edited'}}
+console.log(obj2); // {a: 1, b: 2, c: {nickName: 'd-edited'}}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里可以看到，对obj2的修改影响到了被拷贝对象obj1，原因上面已经说了，因为obj1中的对象c是一个引用数据类型，拷贝的时候拷贝的是对象的引用。</p>
+<h4 id="数组的扩展运算"><a href="#数组的扩展运算" class="headerlink" title="数组的扩展运算"></a>数组的扩展运算</h4><p>1.可以将数组转换为参数序列</p>
+<pre class="line-numbers language-none"><code class="language-none">function add(x, y) {
+  return x + y;
+}
+
+const numbers = [4, 38];
+add(...numbers) // 42
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2.可以复制数组</p>
+<p>如果直接通过下列的方式进行数组复制是不可取的：</p>
+<pre class="line-numbers language-none"><code class="language-none">const arr1 = [1, 2];
+const arr2 = arr1;
+arr2[0] = 2;
+arr1 // [2, 2]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>原因上面已经介绍过，用扩展运算符就很方便：</p>
+<pre class="line-numbers language-none"><code class="language-none">const arr1 = [1, 2];
+const arr2 = [...arr1];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>还是记住那句话：<strong>扩展运算符(…)用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中</strong>，这里参数对象是个数组，数组里面的所有对象都是基础数据类型，将所有基础数据类型重新拷贝到新的数组中。</p>
+<p>3.扩展运算符可以与解构赋值结合起来，用于生成数组</p>
+<pre class="line-numbers language-none"><code class="language-none">const [first, ...rest] = [1, 2, 3, 4, 5];
+first // 1
+rest  // [2, 3, 4, 5]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>如果将扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错。</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">const [...rest, last] = [1, 2, 3, 4, 5];
+// 报错
+const [first, ...rest, last] = [1, 2, 3, 4, 5];
+// 报错
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>扩展运算符还可以将字符串转为真正的数组</p>
+<pre class="line-numbers language-none"><code class="language-none">[...'hello']
+// [ "h", "e", "l", "l", "o" ]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>比较常见的应用是可以将某些数据结构转为数组,比如：</p>
+<pre class="line-numbers language-none"><code class="language-none">// arguments对象
+function foo() {
+  const args = [...arguments];
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="控制台输出为输出内容为-object-Object"><a href="#控制台输出为输出内容为-object-Object" class="headerlink" title="控制台输出为输出内容为[object Object]"></a>控制台输出为输出内容为[object Object]</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d309d25789fd">原文链接</a></p>
+<p><strong>解决方法：删掉其它字符（’+’这种符号），直接输出对象</strong></p>
+<p><strong>问题原因：</strong></p>
+<ol>
+<li>加号的作用<br>首先，我们的代码中有+（加号）运算符，它在这种情况下（字符串 + 其它什么东西），会调用toString()方法，将其它类型的东西转化为字符串，再和原始字符串拼接成一个字符串；</li>
+<li>toString()从哪里来，干了什么？</li>
+</ol>
+<ul>
+<li>除了null和undefined之外，其他的类型(数值、布尔、字符串、对象)都有toString()方法，它返回相应值的字符串表现(并不修改原变量)。</li>
+<li>每个对象都有一个toString()方法。</li>
+<li>当该对象被表示为一个文本值时，或者一个对象以预期的字符串方式引用时自动调用。</li>
+<li>默认情况下，toString()方法被每个Object对象继承。如果此方法在自定义对象中未被覆盖，toString()返回 “[object type]”，其中type是对象的类型。</li>
+</ul>
+<p>而在上述项目中，res正是我们自定义的对象，所以res.toString()的结果为[object Object]，所以console.log(‘res:’ + res)的结果为res: [object Object]。</p>
+<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="forEach-遍历"><a href="#forEach-遍历" class="headerlink" title="forEach 遍历"></a>forEach 遍历</h4><p>forEach 接收一个函数作为参数，在遍历每一项的时候，这个函数会被调用，同时将当前遍历到的项、当前项的下标（索引)、遍历的数组作为函数参数传递过来。</p>
+<pre class="line-numbers language-none"><code class="language-none">var arr = ['第一项', '第二项', '第三项', '第四项', '第五项'];
+
+arr.forEach(function(item, index, arr) {
+  console.log('第' + (index + 1) + '项的值是：' + item);
+});<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangdan_2013/article/details/78316844">原文链接</a></p>
+<pre class="line-numbers language-none"><code class="language-none">let numbers = [1, 5, 10, 15];
+let doubles = numbers.map((x) =&gt; {
+   return x * 2;
+});
+
+// doubles is now [2, 10, 20, 30]
+// numbers is still [1, 5, 10, 15]
+
+
+let numbers = [1, 4, 9];
+let roots = numbers.map(Math.sqrt);
+
+// roots is now [1, 2, 3]
+// numbers is still [1, 4, 9]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>语法</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">let array = arr.map(function callback(currentValue, index, array) { 
+    // Return element for new_array 
+}[, thisArg])
+//currentValue，数组中正在处理的当前元素。
+//index，数组中正在处理的当前元素的索引。
+//array，map 方法被调用的数组。
+//thisArg可选的。执行 callback 函数时 使用的this 值。
+//返回值：一个新数组，每个元素都是回调函数的结果。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>描述</strong><br>map 方法会给原数组中的每个元素都按顺序调用一次 callback 函数。callback 每次执行后的返回值（包括 undefined）组合起来形成一个新数组。 callback 函数只会在有值的索引上被调用；那些从来没被赋过值或者使用 delete 删除的索引则不会被调用。</p>
+<p>callback 函数会被自动传入三个参数：数组元素，元素索引，原数组本身。</p>
+<p>如果 thisArg 参数有值，则每次 callback 函数被调用的时候，this 都会指向 thisArg 参数上的这个对象。如果省略了 thisArg 参数,或者赋值为 null 或 undefined，则 this 指向全局对象 。</p>
+<p>map 不修改调用它的原数组本身（当然可以在 callback 执行时改变原数组）。</p>
+<p>使用 map 方法处理数组时，数组元素的范围是在 callback 方法第一次调用之前就已经确定了。在 map 方法执行的过程中：原数组中新增加的元素将不会被 callback 访问到；若已经存在的元素被改变或删除了，则它们的传递到 callback 的值是 map 方法遍历到它们的那一时刻的值；而被删除的元素将不会被访问到。</p>
+<p><strong>更多用法见原文</strong></p>
+<h4 id="增减数组项"><a href="#增减数组项" class="headerlink" title="增减数组项"></a>增减数组项</h4><p><strong>慕课网javascript</strong></p>
+<h4 id="Arrays-from"><a href="#Arrays-from" class="headerlink" title="Arrays.from"></a>Arrays.from</h4><p>先说下<strong>类数组</strong><br>类数组并不是数组，而是长得像数组的对象。</p>
+<pre class="line-numbers language-none"><code class="language-none">var fakeArray = {
+  0: '第一项',
+  1: '第二项',
+  3: '第三项',
+  length: 3,
+};
+
+console.log(fakeArray[0]); // 输出："第一项"
+console.log(fakeArray.length); // 输出：3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>但是我们不能直接使用数组的方法，需要先把类数组转化为数组,用的就是Arrays.from</strong></p>
+<p>功能：</p>
+<ol>
+<li>类数组转化为数组</li>
+<li>从字符串生成数组</li>
+<li>从Set生成数组</li>
+<li>从Map生成数组</li>
+</ol>
+<p>具体使用见慕课网ES6</p>
+<h4 id="判断数组是否为空"><a href="#判断数组是否为空" class="headerlink" title="判断数组是否为空"></a>判断数组是否为空</h4><pre class="line-numbers language-none"><code class="language-none">var arr = [];
+if(Array.isArray(arr) &amp;&amp; arr.length === 0){
+    console.log('是空数组');
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="数组是否存在某个值"><a href="#数组是否存在某个值" class="headerlink" title="数组是否存在某个值"></a>数组是否存在某个值</h4><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000014202195">详细内容见原文</a></p>
+<ol>
+<li><p>array.indexOf<br>判断数组中是否存在某个值，如果存在返回数组元素的<strong>下标</strong>，否则返回-1</p>
+<pre class="line-numbers language-none"><code class="language-none">let arr = ['something', 'anything', 'nothing', 'anything'];
+let index = arr.indexOf('nothing');
+# 结果：2
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>array.includes(searchElement[, fromIndex])</p>
+<pre class="line-numbers language-none"><code class="language-none">let numbers = [12, 5, 8, 130, 44];
+let result = numbers.includes(8);
+# 结果： true
+result = numbers.includes(118);
+# 结果： false
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><h4 id="判断对象是否为空"><a href="#判断对象是否为空" class="headerlink" title="判断对象是否为空"></a>判断对象是否为空</h4><ol>
+<li><p>1.通过JSON自带的stringify()方法来判断</p>
+<pre class="line-numbers language-none"><code class="language-none">   function isEmptyObj(obj) {
+    return JSON.stringify(obj) === '{}'
+    }
+console.log('对象是否为空：', isEmptyObj({}))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>使用ES6的Object.keys()方法</p>
+<pre class="line-numbers language-none"><code class="language-none">function isEmptyObj(obj) {
+    return Object.keys(obj).length === 0
+}
+console.log('对象是否为空：', isEmptyObj({}))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>for in 循环判断</p>
+<pre class="line-numbers language-none"><code class="language-none">function isEmptyObj(obj) {
+    for(let item in obj) {
+        return true
+    }
+    return false
+}    
+console.log('对象是否为空：', isEmptyObj({}))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+<h4 id="Object-create-创建实例对象"><a href="#Object-create-创建实例对象" class="headerlink" title="Object.create() 创建实例对象"></a>Object.create() 创建实例对象</h4><p><strong>原文见网道</strong><br>构造函数作为模板，可以生成实例对象。但是，有时拿不到构造函数，只能拿到一个现有的对象。我们希望以这个现有的对象作为模板，生成新的实例对象，这时就可以使用Object.create()方法。</p>
+<pre class="line-numbers language-none"><code class="language-none">var person1 = {
+  name: '张三',
+  age: 38,
+  greeting: function() {
+    console.log('Hi! I\'m ' + this.name + '.');
+  }
+};
+
+var person2 = Object.create(person1);
+
+person2.name // 张三
+person2.greeting() // Hi! I'm 张三.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面代码中，对象person1是person2的模板，后者继承了前者的属性和方法。</p>
+<h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><h3 id="同步、异步"><a href="#同步、异步" class="headerlink" title="同步、异步"></a>同步、异步</h3><p><strong>同步</strong> 行为通常指代码从上到下一行一行的顺序执行，后面的代码总是在前面的代码执行完成以后才会执行。</p>
+<pre class="line-numbers language-none"><code class="language-none">let a, b;
+function foo() {
+    a = 1;
+}
+foo();
+b = a + 1;
+console.log(b); //2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>异步</strong> 行为则指代码并非按照顺序执行，后面的代码不一定总是在前面的代码执行完成以后才会执行。</p>
+<pre class="line-numbers language-none"><code class="language-none">let a, b;
+function foo() {
+    a = 1;
+}
+setTimeout(foo, 1000); //1 秒以后再调用 foo()
+b = a + 1;
+console.log(b); //NaN<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol>
+<li><p>这里没有显式的调用 foo()，而是将函数名 foo 传递给 setTimeout，JavaScript 运行时在 1 秒以后会自动调用 foo()。</p>
+</li>
+<li><p>首先代码依然顺序执行，当执行到 setTimeout(foo, 1000); 时，JavaScript 主线程发现这是一个将要异步执行的任务，就会将 foo() 放入 任务队列 然后继续执行下面的同步代码 b = a + 1;，当 b = a + 1; 执行完毕，所有同步代码都被执行完成，此时 JavaScript 主线程再去 任务队列 中取出需要执行的任务来执行，也就是 1 秒后执行 foo()。</p>
+</li>
+<li><p>因为 b = a + 1; 先于 foo() 执行，所以这段异步操作执行后，变量 b 最终结果为 NaN。</p>
+</li>
+</ol>
+<p>在 <strong>异步</strong> 操作示例中，<strong>setTimeout(foo, 1000)</strong>; 这句代码中的 <strong>foo</strong> 就可以被称作 回调函数。所谓 回调函数，就是被主线程放入到 任务队列 中的代码，这段代码通常以函数为单位，并且等到所有 同步 代码执行完成以后才会被执行。</p>
+<p><strong>解决办法：</strong><br>所以上面的 <strong>异步</strong> 操作示例程序如果想得到与 <strong>同步</strong> 操作一样的结果，就得改成这样：</p>
+<pre class="line-numbers language-none"><code class="language-none">let a, b;
+function foo() {
+    a = 1;
+    b = a + 1;
+    console.log(b); //2
+}
+setTimeout(foo, 1000); //1 秒以后再调用 foo()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>因为计算 b 的值时依赖 a 的值，而 a = 1; 是在 回调函数 中执行的，也就是说所有 同步 代码执行完成以后才会执行 回调函数 中的 异步 代码，所以 b = a + 1; 也要移动到 回调函数 中。回调函数 中的代码也是顺序执行的，所以 b = a + 1; 语句要放在 a = 1; 语句之后。这样就能使变量 b 最终结果为 2</p>
+<h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37860963/article/details/81539118?spm=1001.2101.3001.6650.8&amp;depth_1-utm_relevant_index=11">原文链接</a></p>
+<pre class="line-numbers language-none"><code class="language-none">var isLiForget = false; //给一个布尔值判断小丽有没有忘记小花的生日
+var getCloth = new Promise(function(resolve,reject){
+    if(!isLiForget){ //没忘记
+        var cloth = {
+            color:'red',
+            price:'$120'
+        };
+        resolve(cloth); // 得到衣服
+    }else{
+        var err = new Error("forgot the promise"); //忘记了
+        reject(err);
+    }
+});
+ 
+//之后就是调用Promise了
+var testFn = function(){
+    getCloth.then(function(fulfilled){
+        console.log(fulfilled);
+    }).catch(function(rejected){
+        console.log(rejected.message);
+    });
+}
+testFn();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>对于promise的理解</p>
+<ol>
+<li>resolve、reject会选择一个执行，这两个是调用这个对象的时候传过来的<strong>函数</strong></li>
+<li>以上面代码为例。<code>resolve(cloth)</code>。resolve就是外面传过来的函数，其实就是``` function(fulfilled){<br> console.log(fulfilled);<br> <pre class="line-numbers language-这个函数不就是答应吗，参数cloth与fulfilled对应，就是打印cloth的值" data-language="这个函数不就是答应吗，参数cloth与fulfilled对应，就是打印cloth的值"><code class="language-这个函数不就是答应吗，参数cloth与fulfilled对应，就是打印cloth的值">3. 要调用或者获取promise里面的值，需要用到then。写发有点区别，不过逻辑就是正确执行这个函数，错误执行那个函数。具体可以看链接。
+
+### async/await取值（很重要！！）
+
+![t2.png](https://s2.loli.net/2022/06/17/e6wAUrRa3HQzdbV.png)
+
+
+![t3.png](https://s2.loli.net/2022/06/17/9pqnMu5TcPIDGli.png)
+
+**我要把opts这个值传给组件里面的option属性，opts是一个数组，数组的值如下图所示**
+
+
+![t1.png](https://s2.loli.net/2022/06/17/1w6SBlZx39PAgpK.png)
+
+
+之前的做法是把值赋给一个变量，然后传给需要用的地方，但是行不通，估计是异步的原因，**state**可以解决这个问题。
+
+**解决方法**
+**用useState定义一个变量(Options)，然后用更新函数接(serOptions)收新的值，再把这个变量放到需要的位置(option属性)就好。**
+
+
+### async/await
+[原链接](https://blog.csdn.net/qq_46658751/article/details/123373909)
+#### async作用
+ 函数返回的是一个 Promise 对象，即便是字符串，数值，也会包装成Promise对象<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>async function testAsync() {<br> return “hello async”;<br>}</li>
+</ol>
+<p>const result = testAsync();<br>console.log(result);</p>
+<pre class="line-numbers language-none"><code class="language-none">![在这里插入图片描述](https://img-blog.csdnimg.cn/bd22592cd9fc45138b6cd8a70cbd50c6.png)
+
+#### await在等待什么
+await 等待的是一个表达式，这个表达式的计算结果是 Promise 对象或者其它值
+
+#### await等到要等的结果，之后呢？
+async 会将其后的函数（函数表达式或 Lambda）的返回值封装成一个 Promise 对象，而 await 会等待这个 Promise 完成，并将其 resolve 的结果返回出来。
+
+### 回调函数
+
+#### 用途
+
+**用途：一般情况下回调函数都用在页面与服务器的异步交互，以解决页面在提交请求后无法获得到服务器反馈的数据**
+
+为什么会出现面在提交请求后无法获得到服务器反馈的数据呢？首先来了解js的事件执行方式，如图
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020102020575826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDY0OTIxMA==,size_16,color_FFFFFF,t_70#pic_center)
+
+js在执行程序时，所有代码都在执行栈中，此时都是同步在执行，但在运行代码时如果遇见事件绑定、计时器会将抛到异步任务队列里面等待js引擎执行，然后继续执行在执行栈中的代码，于此同时，被抛到异步执行队列里面的计时器会执行等待的时间，如果等待时间结束，则会将此事件抛到执行队列里面。执行栈里面的代码执行完成后，程序会去检查执行队列里面是否有事件，如果有，则拿出来执行。如果没有，则会一直循环检查，直到异步事件队列和执行队列里面都没有才结束程序
+
+
+#### 回调示例：<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>var fs = require(“fs”);</p>
+<p>function f(x) {<br>    console.log(x)<br>}</p>
+<p>function writeFile(callback) { //callback，表示这个参数不是一个普通变量，而是一个函数<br>    fs.writeFile(‘input.txt’, ‘我是通过fs.writeFile 写入文件的内容’, function (err) {<br>        if (!err) {<br>            console.log(“文件写入完毕!”)<br>            c = 1<br>            callback(c) // 因为我们传进来的函数名是f()，所以此行相当于调用一次f(c)<br>        }<br>    });<br>}<br>var c = 0<br>writeFile(f) // 函数f作为一个参数传进writeFile函数</p>
+<pre class="line-numbers language-none"><code class="language-none">1. 此处并不一定非要写为“callback”，你可以任意写成abc, iloveyou...等等随你高兴。callback只是一种约定俗成的写法，它明确地告诉代码阅读者：此处是一个回调函数。
+2. 在大多数编程语言中，函数的形参总是从外向内传递参数，但在JS中，如果形参碰到“关键字” callback 则完全相反，它表示从内向外反向调用某个外部函数。
+
+
+有时候，我们会看到一些函数的形参列表里直接嵌套一个函数的情况，其本质上仍然是回调函数，因为没有了函数名，所以也称**匿名函数**。
+
+如本例如果要写成这种风格的话就是长成这样了：<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>var fs = require(“fs”);</p>
+<p>function writeFile(callback) {<br>    fs.writeFile(‘input.txt’, ‘我是通过fs.writeFile 写入文件的内容’, function (err) {<br>        if (!err) {<br>            console.log(“文件写入完毕!”)<br>            c = 1<br>            callback(c)<br>        }<br>    });<br>}<br>var c = 0<br>writeFile(function (x) {<br>    console.log(x)<br>})</p>
+<pre class="line-numbers language-none"><code class="language-none">
+
+### 获取异步函数返回值的方法
+
+在项目中会遇到通过ajax、setTimeout等异步操作向后台获取数据，而js自身不会等待数据拿到后再进行下一步操作，所以会导致其他函数无法获取异步操作函数内的数据。例如：<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>function back(x,y){<br>    var ret;<br>    setTimeout(function(){<br>        ret = x + y;<br>    },1000)<br>    return ret;<br>};</p>
+<p>console.log(back(10,20));    //undefined</p>
+<pre class="line-numbers language-none"><code class="language-none">
+
+1. 回调函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>function back(x,y,callback){<br>    setTimeout(function(){<br>        var ret = x + y<br>        callback(ret)<br>    },1000)<br>}</p>
+<p>back(10,20,function(a){<br>    //在这里面就可以进行对数据的操作了</p>
+<pre><code>console.log(a)	//a就是回调的结果，输出30
+</code></pre>
+<p>})</p>
+<pre class="line-numbers language-none"><code class="language-none">```
+function getSomething(cb) {
+    var r = 0;
+    setTimeout(function() {
+        r = 2;
+        cb(r)//回调函数
+    },10)
+}
+function compute(x) {
+    alert(x * 2);
+}
+getSomething(compute);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li><p>通过promise的方式</p>
+<pre class="line-numbers language-none"><code class="language-none">function getSomething() {
+    var r = 0;
+    return new Promise(function(resolve) {
+        setTimeout(function(){
+            r = 2;
+            resolve(r);
+        },10)
+    })
+}
+function compute(x) {
+    alert(x * 2);
+}
+getSomething().then(compute);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>通过async的方式</p>
+<pre class="line-numbers language-none"><code class="language-none">function getSomething() {
+    var r = 0;
+    return new Promise(function(resolve) {
+        setTimeout(function() {
+            r = 2;
+            resolve(r);
+        },10)
+    })
+}
+async function compute() {
+    var x = await getSomething();
+    alert(x * 2);
+}
+compute();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>通过generator方式实现</p>
+<pre class="line-numbers language-none"><code class="language-none">function getSomething() {
+    var r = 0;
+    setTimeout(function() {
+        r = 2;
+        it.next(r);
+    },10);
+}
+function *compute(it) {
+    var x = yield getSomething();
+    alert(x * 2);
+}
+var it = compute();
+it.next();
+//同步的写法实现异步的逻辑<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>通过promise和generator相结合的方式</p>
+<pre class="line-numbers language-none"><code class="language-none">function getSomething() {
+    var r = 0;
+    return new Promise(function(resolve) {
+        setTimeout(function() {
+            r = 2;
+            resolve(r);
+        },10)
+    })
+}
+function *compute() {
+    var x = yield getSomething();
+    alert(x * 2);
+}
+var it = compute();
+it.next().value.then(function(value) {
+    it.next(value);
+})<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+<h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><p><strong>AJAX（Asynchronous Javascript And XML）翻译成中文就是“异步的Javascript和XML”</strong><br><strong>实现前后端数据的交互</strong></p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1</span>.Ajax最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。 <span class="token punctuation">(</span>这一特点给用户的感受是在不知不觉中完成请求和响应过程<span class="token punctuation">)</span> <span class="token number">2</span>.Ajax不需要任何浏览器插件，但需要用户允许javaScript在浏览器上执行。
+同步交互: 客户端发出一个请求后，需要等待服务器响应结束后，才能发出第二个请求。
+
+异步交互: 客户端发出一个请求后，无需要等待服务器响应结束，就可以发出第二个请求。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>Ajax使用JavaScript技术向服务器发送异步请求</p>
+<p>Ajax请求无须刷新整个页面</p>
+<p>因为服务器响应内容不再是整个页面，而是页面中的部分内容，所以Ajax性能高！</p>
+<h4 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h4><p><img src="https://img-blog.csdnimg.cn/img_convert/a83d7857217f3e6d72b8fab68fb3adb9.gif#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><p><a href="%5Bhttps%5D(https://blog.csdn.net/a153375250/article/details/53434299)">原链接</a></p>
+<h3 id="JSX是什么"><a href="#JSX是什么" class="headerlink" title="JSX是什么"></a>JSX是什么</h3><p>JSX是一种像下面这样的语法：</p>
+<pre class="line-numbers language-none"><code class="language-none">const element = &lt;h1&gt;Hello, world!&lt;/h1&gt;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>它是一种JavaScript语法扩展，在React中可以方便地用来描述UI。<br>质上，JSX为我们提供了创建React元素方法（React.createElement(component, props, …children)）的语法糖（syntactic sugar）。上面的代码实质上等价于：</p>
+<pre class="line-numbers language-none"><code class="language-none">var element = React.createElement(
+  "h1",
+  null,
+  "Hello, world!"
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="在JSX中使用JavaScript表达式"><a href="#在JSX中使用JavaScript表达式" class="headerlink" title="在JSX中使用JavaScript表达式"></a>在JSX中使用JavaScript表达式</h3><p>在JSX中插入JavaScript表达式十分简单，直接<strong>在JSX中将JS表达式用大括号括起来即可</strong>。例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">function formatName(user) {
+  return user.firstName + ' ' + user.lastName;
+}
+
+const user = {
+  firstName: 'Harper',
+  lastName: 'Perez'
+};
+
+const element = (
+  &lt;h1&gt;
+    Hello, {formatName(user)}!
+  &lt;/h1&gt;
+);
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面的代码中用到了函数调用表达式fromatName(user)。</p>
+<p>在JavaScript中，表达式就是一个短语，Javascript解释器会将其计算出一个结果，常量就是最简单的一类表达式。常用的表达式有：</p>
+<ul>
+<li>变量名；</li>
+<li>函数定义表达式；</li>
+<li>属性访问表达式；</li>
+<li>函数调用表达式；</li>
+<li>算数表达式；</li>
+<li>关系表达式；</li>
+<li>逻辑表达式；</li>
+</ul>
+<p>需要注意的是，if语句以及for循环不是JavaScript表达式，不能直接作为表达式写在{}中，但可以先将其赋值给一个变量（变量是一个JavaScript表达式）:</p>
+<pre class="line-numbers language-none"><code class="language-none">function NumberDescriber(props) {
+  let description;
+  if (props.number % 2 == 0) {
+    description = &lt;strong&gt;even&lt;/strong&gt;;
+  } else {
+    description = &lt;i&gt;odd&lt;/i&gt;;
+  }
+  return &lt;div&gt;{props.number} is an {description} number&lt;/div&gt;;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="JSX属性值"><a href="#JSX属性值" class="headerlink" title="JSX属性值"></a>JSX属性值</h3><p>你可以使用引号将字符串字面量指定为属性值：<br><code>const element = &lt;div tabIndex="0"&gt;&lt;/div&gt;;</code><br><strong>注意这里的”0”是一个字符串字面量。</strong></p>
+<p>或者你可以将一个JavaScript表达式嵌在一个大括号中作为属性值：<br><code>const element = &lt;img src={user.avatarUrl}&gt;&lt;/img&gt;;</code></p>
+<p>这里用到的是JavaScript属性访问表达式，上面的代码将编译为：</p>
+<p><code>const element = React.createElement("img", { src: user.avatarUrl });</code></p>
+<h3 id="JSX的Children"><a href="#JSX的Children" class="headerlink" title="JSX的Children"></a>JSX的Children</h3><p>首先JSX可以是一个不包含Children的empty tag。如：</p>
+<p><code>const element = &lt;img src={user.avatarUrl} /&gt;;</code></p>
+<p>JSX也可以像HTML标签一样包含Children：</p>
+<pre class="line-numbers language-none"><code class="language-none">const element = (
+  &lt;div&gt;
+    &lt;h1&gt;Hello!&lt;/h1&gt;
+    &lt;h2&gt;Good to see you here.&lt;/h2&gt;
+  &lt;/div&gt;
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>后面一部分不是很重要，可看原文</strong><br>React自定义组件的chilren是不会像固有的HTML标签的子元素那样自动render的，我们看下面的例子：</p>
+<pre class="line-numbers language-none"><code class="language-none">代码1
+class Test extends React.Component {
+    render() {
+      return (
+        &lt;div&gt;
+          Here is a list:
+          &lt;ul&gt;
+            &lt;li&gt;Item 1&lt;/li&gt;
+            &lt;li&gt;Item 2&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      ) 
+    }
+};
+ReactDOM.render(
+    &lt;Test /&gt;,
+    document.getElementById('test')
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>以上代码定义的组件中都是build-in组件，类似div、p、ul、li等。它们中的子元素会直接render出来，像下面这样：</p>
+<p><img src="http://wyuhao-img.oss-cn-shanghai.aliyuncs.com/img/blog_img/jsx/htmlrender.jpg" alt="在这里插入图片描述"></p>
+<p>但是如果你使用用户定义组件，比如：</p>
+<pre class="line-numbers language-none"><code class="language-none">class Test extends React.Component {
+    render() {
+      return (
+      &lt;Em&gt;
+        Here is a list:
+        &lt;ul&gt;
+          &lt;li&gt;Item 1&lt;/li&gt;
+          &lt;li&gt;Item 2&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/Em&gt;
+    ) 
+    }
+};
+
+class Em extends React.Component {
+  render() {
+    return (&lt;div&gt;&lt;/div&gt;);
+  }
+}
+
+ReactDOM.render(
+    &lt;Test /&gt;,
+    document.getElementById('test')
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>并不能得到跟上面代码1一样的结果，我们得到的只是一个空的div标签：</p>
+<p><img src="http://wyuhao-img.oss-cn-shanghai.aliyuncs.com/img/blog_img/jsx/userrender.jpg" alt="在这里插入图片描述"></p>
+<p>如果你想得到和代码1一样的结果，需要显示地指定props.children，像下面这样：</p>
+<pre class="line-numbers language-none"><code class="language-none">class Test extends React.Component {
+    render() {
+      return (
+          &lt;Em&gt;
+            Here is a list:
+            &lt;ul&gt;
+              &lt;li&gt;Item 1&lt;/li&gt;
+              &lt;li&gt;Item 2&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/Em&gt;
+      ) 
+    }
+};
+
+class Em extends React.Component {
+  render() {
+    return (&lt;div&gt;{this.props.children}&lt;/div&gt;);
+  }
+}
+
+ReactDOM.render(
+    &lt;Test /&gt;,
+    document.getElementById('test')
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h3 id="JSX中的props"><a href="#JSX中的props" class="headerlink" title="JSX中的props"></a>JSX中的props</h3><p>指定JSX中的props有以下几种方式：</p>
+<ol>
+<li>使用JavaScript表达式</li>
+</ol>
+<p>任何有效的JavaScript表达式都可以作为prop的值，使用的时候将该表达式放在一对大括号中即可：</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;MyComponent foo={1 + 2 + 3 + 4} /&gt;
+
+&lt;YourComponent clickTodo={(id) =&gt; this.props.handleClick(id)} /&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>使用字符串字面量<br>字符串字面量可以作为prop值，下面的代码是等价的：</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">&lt;MyComponent message="hello world" /&gt;
+
+&lt;MyComponent message={'hello world'} /&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>使用扩展运算符<br>如果你想将一个prop对象传入JSX，你可以使用扩展运算符…直接将整个prop对象传入。下面的2个组件是等价的：</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">function App1() {
+  return &lt;Greeting firstName="Ben" lastName="Hector" /&gt;;
+}
+
+function App2() {
+  const props = {firstName: 'Ben', lastName: 'Hector'};
+  return &lt;Greeting {...props} /&gt;;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>扩展运算符是一个es6特性。是一种传递属性的十分便利的方式。但请注意不要滥用该运算符，注意不要将一大堆毫不相关的prop一股脑全部传入下面的组件中。</p>
+<h3 id="JSX中的Children"><a href="#JSX中的Children" class="headerlink" title="JSX中的Children"></a>JSX中的Children</h3><p>React组件中有一个特殊的prop–props.children。它指代了JSX表达式中开闭标签中包含的内容。</p>
+<p>下面讨论的是几种指定JSX的children的方法：</p>
+<p>(1)使用字符串字面量<br>(2)JSX元素作为children<br>(3)JavaScript表达式<br>(4)函数children</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>(1)使用JSX时要引入React库<br>(2)注意引入JSX中用到的自定义组件<br>(3)自定义组件首字母一定要大写<br>(4)元素标签名不能使用表达式<br>(5)设置style属性</p>
+<p>在设置标签style属性的时候，要注意，我们是将一个描述style的对象以JavaScipt表达式的形式传入。因此应该有2层大括号：</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;div style={{color:'red', margin:'10px auto'}}&gt;&lt;/div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="判断条件"><a href="#判断条件" class="headerlink" title="判断条件"></a>判断条件</h3><p>在react 组件return语句里面如果要使用判断语句，像下面这样。</p>
+<pre class="line-numbers language-none"><code class="language-none">{judgeSchema(project)? (
+        &lt;div&gt;
+          &lt;Form1 schema={projtestParaHYPara}&gt;&lt;/Form1&gt;
+        &lt;/div&gt;
+    ):
+      null
+    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="Dom"><a href="#Dom" class="headerlink" title="Dom"></a>Dom</h2><h3 id="Dom简介"><a href="#Dom简介" class="headerlink" title="Dom简介"></a>Dom简介</h3><p>DOM (Document Object Model，文档对象模型) 是 W3C 制定的访问、操作 HTML 和XML的标准。</p>
+<p>DOM 节点是契合HTML标准的，可以对其细分：</p>
+<p>整个文档是一个文档节点<br>HTML 元素内的文本是文本节点<br>每个 HTML 元素是元素节点<br>每个 HTML 属性是属性节点<br>注释为注释节点</p>
+<p><img src="http://img.mukewang.com/wiki/5e82d6a40942890d12001242.jpg" alt="在这里插入图片描述"></p>
+<h3 id="获取与操作Dom"><a href="#获取与操作Dom" class="headerlink" title="获取与操作Dom"></a>获取与操作Dom</h3><p><strong>详细的可以看慕课网</strong></p>
+<p>获取 DOM 节点的方式有很多，这里例举几个常用的，所有的 DOM 元素都具有以下方法：</p>
+<p>element.getElementById<br>element.getElementByName<br>element.getElementsByTagName<br>element.getElementsByClassName<br>element.querySelector<br>element.querySelectorAll</p>
+<h2 id="Npm"><a href="#Npm" class="headerlink" title="Npm"></a>Npm</h2><h3 id="查看包信息"><a href="#查看包信息" class="headerlink" title="查看包信息"></a>查看包信息</h3><p>方案一：<br><strong>直接看package.json，项目相关的都在里面</strong></p>
+<p>方案二：</p>
+<p>查看全局已安装（-g 的意思是 global 全局的意思）</p>
+<pre class="line-numbers language-none"><code class="language-none">$ npm ls -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>查看当前项目已安装包（项目跟目录必须有 package.json 文件）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">ls</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>查看包本版</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> view <span class="token operator">&lt;</span>packagename<span class="token operator">&gt;</span> versions --json<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>同样也是会把所有包的依赖显示出来。同上，加上 –depth 0 就好了。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">ls</span> --depth <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果只想显示生产环境依赖的包</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">ls</span> --depth <span class="token number">0</span> --prod<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>只显示开发环境依赖的包</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">ls</span> --depth <span class="token number">0</span> --dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="npm-与-npx"><a href="#npm-与-npx" class="headerlink" title="npm 与 npx"></a>npm 与 npx</h3><p>在npm的基础之上，npx让npm包中的命令行工具和其他可执行文件在使用上变得更加简单。它极大地简化了我们之前使用纯粹的npm时所需要的大量步骤。</p>
+<p><strong>区别1.一个永久存在，一个临时安装，用完后删除</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">npm install -g create-react-app
+create-react-app test-app<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">npx create-react-app test-app<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>npm他会在本地全局性的安装create-react-app，这个包会存储在node目录下面去。以后创建react项目直接执行create-react-app命令就可以了。<br>npx命令他会把create-react-app安装包临时安装上，等项目初始化完成以后，他就删除掉。</p>
+<p><strong>npx 会帮你执行依赖包里的二进制文件</strong></p>
+<p>执行webpack里面的文件 npm执行</p>
+<pre class="line-numbers language-none"><code class="language-none">npm i -D webpack ./node_modules/.bin/webpack -v
+结果是：6.9.0
+
+或者执行
+npm i -D webpack`npm bin`/webpack -v
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>npx执行</p>
+<pre class="line-numbers language-none"><code class="language-none">npm i -D webpack
+npx webpack -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p> npx 会自动查找当前依赖包中的可执行文件，如果找不到，就会去环境变量里面的 PATH 里找。如果依然找不到，就会帮你安装！</p>
+<p><strong>区别3.npx可以执行文件，但是npm不可以</strong></p>
+<h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48837605/article/details/119494467">原文链接</a></p>
+<h3 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h3><p> 当一个请求url的<strong>协议,域名,端口</strong>三者之间任意一个与当前的url不同都即为跨域</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> 当前页面url                  被请求页面url                是否跨域            原因
+http://www.test.com/    http://www.test.com/index.html    否            同源（协议、域名、端口号相同）
+http://www.test.com/    https://www.test.com/index.html   跨域          协议不同（http/https）
+http://www.test.com/    http://www.baidu.com/             跨域          主域名不同（test/baidu）
+http://www.test.com/    http://blog.test.com/             跨域          子域名不同（www/blog）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="为什么会出现跨域"><a href="#为什么会出现跨域" class="headerlink" title="为什么会出现跨域"></a>为什么会出现跨域</h3><p>出于浏览器的同源策略限制.同源策略是一种约定,它是浏览器最核心也是最基本的安全功能,如果缺少了同源策略,则浏览器的正常的功能可能会受到影响,跨域收是Web是构建在同源策略基础上的,浏览器只是针对同源策略的一种实现,同源策略会阻止一个域的JavaScript脚本和另一个域的内容进行交互,所谓同源(即指同一个域)就是两个页面具备同样的协议(protocol),主机(host)和端口号(port)</p>
+<p><strong>请求是跨域的，并不一定会报错。普通的图片请求，css文件请求是不会报错的</strong></p>
+<h3 id="跨域会阻止什么操作"><a href="#跨域会阻止什么操作" class="headerlink" title="跨域会阻止什么操作"></a>跨域会阻止什么操作</h3><p>浏览器是从两个方面去做这个同源策略的，一是针对接口的请求，二是针对Dom的查询</p>
+<h4 id="1-阻止接口请求"><a href="#1-阻止接口请求" class="headerlink" title="1.阻止接口请求"></a>1.阻止接口请求</h4><p>比如用ajax从<a target="_blank" rel="noopener" href="http://192.168.100.150:8020/%E5%AE%9E%E9%AA%8C/jsonp.html%E9%A1%B5%E9%9D%A2%E5%90%91http://192.168.100.150:8081/zhxZone/webmana/dict/jsonp%E5%8F%91%E8%B5%B7%E8%AF%B7%E6%B1%82%EF%BC%8C%E7%94%B1%E4%BA%8E%E4%B8%A4%E4%B8%AAurl%E7%AB%AF%E5%8F%A3%E4%B8%8D%E5%90%8C%EF%BC%8C%E6%89%80%E4%BB%A5%E5%B1%9E%E4%BA%8E%E8%B7%A8%E5%9F%9F%EF%BC%8C%E5%9C%A8console%E6%89%93%E5%8D%B0%E5%8F%B0%E4%BC%9A%E6%8A%A5No">http://192.168.100.150:8020/实验/jsonp.html页面向http://192.168.100.150:8081/zhxZone/webmana/dict/jsonp发起请求，由于两个url端口不同，所以属于跨域，在console打印台会报No</a> ‘Access-Control-Allow-Origin’ header is present on the requested resource<br><img src="https://img-blog.csdnimg.cn/20181207092232976.png#pic_center" alt="在这里插入图片描述"><br>值得说的是虽然浏览器禁止用户对请求返回数据的显示和操作，但浏览器确实是去请求了，如果服务器没有做限制的话会返回数据的，在调试模式的network中可以看到返回状态为200，且可看到返回数据<br><img src="https://img-blog.csdnimg.cn/20181207092757327.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpYW56aGFuZzg2MQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20181207092820725.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpYW56aGFuZzg2MQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h4 id="2-阻止dom获取和操作"><a href="#2-阻止dom获取和操作" class="headerlink" title="2.阻止dom获取和操作"></a>2.阻止dom获取和操作</h4><p>比如a页面中嵌入了iframe，src为不同源的b页面，则在a中无法操作b中的dom，也没有办法改变b中dom中的css样式。</p>
+<p>而如果ab是同源的话是可以获取并操作的。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>html<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>head<span class="token operator">&gt;</span>
+		<span class="token operator">&lt;</span>meta <span class="token assign-left variable">charset</span><span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">&gt;</span>
+		<span class="token operator">&lt;</span>title<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/title<span class="token operator">&gt;</span>
+		<span class="token operator">&lt;</span>style <span class="token assign-left variable">type</span><span class="token operator">=</span><span class="token string">"text/css"</span><span class="token operator">&gt;</span>
+			iframe<span class="token punctuation">{</span>
+				width:100%<span class="token punctuation">;</span>height:800px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token operator">&lt;</span>/style<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>/head<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>body<span class="token operator">&gt;</span>
+		<span class="token operator">&lt;</span><span class="token operator">!</span>--<span class="token operator">&lt;</span>iframe <span class="token assign-left variable">src</span><span class="token operator">=</span><span class="token string">"http://192.168.100.150:8081/zhxZone/webmana/attachment/imageManager"</span> <span class="token assign-left variable">frameborder</span><span class="token operator">=</span><span class="token string">"0"</span> <span class="token assign-left variable">id</span><span class="token operator">=</span><span class="token string">"iframe"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>/iframe<span class="token operator">&gt;</span>--<span class="token operator">&gt;</span>
+		<span class="token operator">&lt;</span>iframe <span class="token assign-left variable">src</span><span class="token operator">=</span><span class="token string">"http://192.168.100.150:8020/实验/jsonp.html"</span> <span class="token assign-left variable">frameborder</span><span class="token operator">=</span><span class="token string">"0"</span> <span class="token assign-left variable">id</span><span class="token operator">=</span><span class="token string">"iframe"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>/iframe<span class="token operator">&gt;</span>
+		<span class="token operator">&lt;</span>script <span class="token assign-left variable">type</span><span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">&gt;</span>
+			var <span class="token assign-left variable">i</span><span class="token operator">=</span>document.getElementById<span class="token punctuation">(</span><span class="token string">"iframe"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			i.onload<span class="token operator">=</span><span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+				/*console.log<span class="token punctuation">(</span>i.contentDocument<span class="token punctuation">)</span>
+				console.log<span class="token punctuation">(</span>i.contentWindow.document.getElementById<span class="token punctuation">(</span><span class="token string">"text"</span><span class="token punctuation">)</span>.innerHTML<span class="token punctuation">)</span>*/
+				var <span class="token assign-left variable">b</span><span class="token operator">=</span>i.contentWindow.document.getElementsByTagName<span class="token punctuation">(</span><span class="token string">"body"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+				i.contentWindow.document.getElementById<span class="token punctuation">(</span><span class="token string">"text"</span><span class="token punctuation">)</span>.style.background<span class="token operator">=</span><span class="token string">"gray"</span><span class="token punctuation">;</span>
+				i.contentWindow.document.getElementById<span class="token punctuation">(</span><span class="token string">"text"</span><span class="token punctuation">)</span>.innerHTML<span class="token operator">=</span><span class="token string">"111"</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token operator">&lt;</span>/script<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>/body<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>/html<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>改变了iframe中的元素 </p>
+<p><img src="https://img-blog.csdnimg.cn/8b0167fa9e5647359acc6466b8e421bd.png" alt="在这里插入图片描述"></p>
+<p>甚至是可以获取iframe中的cookie</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">var <span class="token assign-left variable">i</span><span class="token operator">=</span>document.getElementById<span class="token punctuation">(</span><span class="token string">"iframe"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+i.onload<span class="token operator">=</span><span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	console.log<span class="token punctuation">(</span>i.contentDocument.cookie<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/681d3b6bcb6d4b039578fc23e6de073b.png" alt="在这里插入图片描述"></p>
+<p>不用说也知道这是极为危险的，所以浏览器才会阻止非同源操作dom</p>
+<p>浏览器的这个限制虽然不能保证完全安全，但是会增加攻击的困难性</p>
+<p>虽然安全机制挺好，可以抵御坏人入侵，但有时我们自己需要跨域请求接口数据或者操作自己的dom，也被浏览器阻止了，所以就需要跨域</p>
+<p>跨域的前提肯定是你和服务器是一伙的，你可以控制服务器返回的数据，否则跨域是无法完成的 </p>
+<h3 id="解决跨域的方法"><a href="#解决跨域的方法" class="headerlink" title="解决跨域的方法"></a>解决跨域的方法</h3><h4 id="前端jsp"><a href="#前端jsp" class="headerlink" title="前端jsp"></a>前端jsp</h4><h4 id="CORS方案"><a href="#CORS方案" class="headerlink" title="CORS方案"></a>CORS方案</h4><p><strong>就是通过服务器设置响应头来实现跨域</strong></p>
+<p>CORS才是解决跨域的真正解决方案。<br>前端需要做什么？<br>无需做任何事情，正常发送Ajax请求即可。<br>后端需要做什么？<br>需要加 响应头 。或者使用第三方模块 cors 。<br><img src="https://img-blog.csdnimg.cn/20210807230949959.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80ODgzNzYwNQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h4 id="代理服务器（一般用Nginx）"><a href="#代理服务器（一般用Nginx）" class="headerlink" title="代理服务器（一般用Nginx）"></a>代理服务器（一般用Nginx）</h4><p><img src="https://img-blog.csdnimg.cn/20210807231812945.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80ODgzNzYwNQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>   1).代理服务和前端服务之间由于协议域名端口三者统一不存在跨域的问题,可以直接发送请求</p>
+<p>   2).代理服务和后端服务之间并不通过浏览器没有同源策略的限制,可以直接发送请求</p>
+<p>这里是一个nginx启用COSR的参考配置</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#</span>
+<span class="token comment"># Wide-open CORS config for nginx</span>
+<span class="token comment">#</span>
+location / <span class="token punctuation">{</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$request_method</span> <span class="token operator">=</span> <span class="token string">'OPTIONS'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        add_header <span class="token string">'Access-Control-Allow-Origin'</span> <span class="token string">'*'</span><span class="token punctuation">;</span>
+        add_header <span class="token string">'Access-Control-Allow-Methods'</span> <span class="token string">'GET, POST, OPTIONS'</span><span class="token punctuation">;</span>
+        <span class="token comment">#</span>
+        <span class="token comment"># Custom headers and headers various browsers *should* be OK with but aren't</span>
+        <span class="token comment">#</span>
+        add_header <span class="token string">'Access-Control-Allow-Headers'</span> <span class="token string">'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type'</span><span class="token punctuation">;</span>
+        <span class="token comment">#</span>
+        <span class="token comment"># Tell client that this pre-flight info is valid for 20 days</span>
+        <span class="token comment">#</span>
+        add_header <span class="token string">'Access-Control-Max-Age'</span> <span class="token number">1728000</span><span class="token punctuation">;</span>
+        add_header <span class="token string">'Content-Type'</span> <span class="token string">'text/plain charset=UTF-8'</span><span class="token punctuation">;</span>
+        add_header <span class="token string">'Content-Length'</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token builtin class-name">return</span> <span class="token number">204</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$request_method</span> <span class="token operator">=</span> <span class="token string">'POST'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        add_header <span class="token string">'Access-Control-Allow-Origin'</span> <span class="token string">'*'</span><span class="token punctuation">;</span>
+        add_header <span class="token string">'Access-Control-Allow-Methods'</span> <span class="token string">'GET, POST, OPTIONS'</span><span class="token punctuation">;</span>
+        add_header <span class="token string">'Access-Control-Allow-Headers'</span> <span class="token string">'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type'</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$request_method</span> <span class="token operator">=</span> <span class="token string">'GET'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        add_header <span class="token string">'Access-Control-Allow-Origin'</span> <span class="token string">'*'</span><span class="token punctuation">;</span>
+        add_header <span class="token string">'Access-Control-Allow-Methods'</span> <span class="token string">'GET, POST, OPTIONS'</span><span class="token punctuation">;</span>
+        add_header <span class="token string">'Access-Control-Allow-Headers'</span> <span class="token string">'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type'</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="调试方法"><a href="#调试方法" class="headerlink" title="调试方法"></a>调试方法</h2><p><strong>快捷键：</strong></p>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token constant">F8</span>：进入下一个断点
+<span class="token constant">F10</span>：单步执行，不进入子函数
+<span class="token constant">F11</span>：单步执行，遇到子函数会进入子函数
+shift<span class="token operator">+</span><span class="token constant">F11</span>：跳出当前函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">John Doe</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://gaofeng-lin.github.io/posts/43285/">https://gaofeng-lin.github.io/posts/43285/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">John Doe</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/JavaScript/">
+                                    <span class="chip bg-color">JavaScript</span>
+                                </a>
+                            
+                                <a href="/tags/Vue/">
+                                    <span class="chip bg-color">Vue</span>
+                                </a>
+                            
+                                <a href="/tags/React/">
+                                    <span class="chip bg-color">React</span>
+                                </a>
+                            
+                                <a href="/tags/Json/">
+                                    <span class="chip bg-color">Json</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/62822/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Typescript变量类型">
+                        
+                        <span class="card-title">Typescript变量类型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-category">
+                                    前端开发
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/Typescript/">
+                        <span class="chip bg-color">Typescript</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/41682/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="设计模式">
+                        
+                        <span class="card-title">设计模式</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <a href="/about" target="_blank">John Doe</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">101.1k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

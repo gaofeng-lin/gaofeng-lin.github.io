@@ -3,7 +3,7 @@ title: python
 date: 2022/1/14
 update: 2022/1/16
 categories:
-  - python
+  - 编程语言
 tags:
   - python
 abbrlink: 51872
