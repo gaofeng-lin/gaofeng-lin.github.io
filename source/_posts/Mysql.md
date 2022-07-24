@@ -241,7 +241,21 @@ alter table person_param add column `module_name` VARCHAR(20) after `product_id`
 #### 修改字段类型及名称
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3b1fe134a6ee4169be9014e24667eced.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
-
+#### 删除的几种情况
+1. drop table table_name
+删除表全部数据和表结构，立刻释放磁盘空间，不管是 Innodb 和 MyISAM;
+2. truncate table table_name
+删除表全部数据，保留表结构，立刻释放磁盘空间 ，不管是 Innodb 和 MyISAM;
+3. delete from table_name
+删除表全部数据，表结构不变，对于 MyISAM 会立刻释放磁盘空间，InnoDB 不会释放磁盘空间;
+4. delete from table_name where xxx
+带条件的删除，表结构不变，不管是 innodb 还是 MyISAM 都不会释放磁盘空间;
+5. delete 操作以后，使用 optimize table table_name,会立刻释放磁盘空间，不管是 innodb 还是 myisam
+```
+delete from student where T_name = "张三";
+optimize table student;
+```
+6. delete from 表以后虽然未释放磁盘空间，但是下次插入数据的时候，仍然可以使用这部分空间。
 
 ### 创建用户
 默认用户为root，但是在Linux和mysql中，可以认为root用户就是各自系统的皇帝，对其它用户的数据有生杀大权，所以最好创建其它的用户来执行。
@@ -351,6 +365,11 @@ SELECT * from `products` a RIGHT JOIN `person_param` b ON a.product_id=b.product
 ```
 连表查的第一步就是两个表要关连起来，在上面的代码就是 ON 后面的``` a.product_id=b.product_id```
 
+### 复制表数据，修改后再插入
+
+```
+INSERT INTO basic_param (origin_name,present_name,version,project_name) SELECT origin_name,present_name,(28),'xlh' FROM basic_param
+```
 
 ##  Mysql常见问题
 ###  mysql官网下载老版本
