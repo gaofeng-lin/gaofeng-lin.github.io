@@ -7,7 +7,7 @@ title: Home of Gaofeng
 subtitle: Home of Gaofeng
 description: ''
 keywords:
-author: Json Lin
+author: Jason Lin
 language: zh-CN
 timezone: ''
 
@@ -56,6 +56,24 @@ prismjs:
   preprocess: true
   line_number: true
   tab_replace: ''
+
+githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+  customEmojis:
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
