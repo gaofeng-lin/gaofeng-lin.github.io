@@ -1207,7 +1207,7 @@ func con_var_name (key string) string {
 **因为json解析得到的数据是map[string]interface，里面的字段可能是数字，有时候需要取出来比较，
 就需要将interface转为int。**
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/1b607816b68645c5b5ceaebe1859abdc.png)
-需要先转为string，在用 `strconv.Atoi`，将string转为int。
+需要先转为string，再用 `strconv.Atoi`，将string转为int。
 
 
 #### 结构体解析为json
