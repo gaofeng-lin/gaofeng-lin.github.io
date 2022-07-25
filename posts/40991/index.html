@@ -515,7 +515,7 @@
 <p><img src="https://img-blog.csdnimg.cn/b935cbc86c8646b9a348f85b833ee48f.png" alt="在这里插入图片描述"><br>1.	拉取镜像<br>2.	Docker build<br>3.	镜像-&gt;容器 docker run<br>4.	容器-&gt;镜像 docker commit。</p>
 <p>上面这图说明了三个得到镜像的途径<br>1．	从docker官方仓库拉取。<br>2．	使用dockerfile构建。<br>3．	从已有的镜像构建容器，进入容器里面（docker -it 容器名称 /bin/bash），做修改，再提交（docker commit）。//这里面 /bin/bash 是进入容器内部，交互运行，和前面的-it也有关系。</p>
 <p><strong>可以做什么？</strong><br>比如我拉取一个centos7镜像，进入里面把私有云那一堆东西全部装好。下次我就可以直接拿来用，把服务扔上去就好。<br>这个过程或者我可以用dockerfile来实现。</p>
-<h2 id="docke"><a href="#docke" class="headerlink" title="docke"></a>docke<img src="https://img-blog.csdnimg.cn/b09b2d48438e4f24916b1453fe2d3207.png" alt="在这里插入图片描述"></h2><p>r 基本操作</p>
+<h2 id="docker基本操作"><a href="#docker基本操作" class="headerlink" title="docker基本操作"></a>docker基本操作</h2><p><img src="https://img-blog.csdnimg.cn/b09b2d48438e4f24916b1453fe2d3207.png" alt="在这里插入图片描述"></p>
 <h3 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> search 镜像名称
 <span class="token function">docker</span> pull 镜像名 
 <span class="token function">docker</span> pull 镜像名:tag
@@ -1163,13 +1163,13 @@
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/gaofeng-lin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:jason_gaofeng_lin@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -1178,6 +1178,10 @@
 
 
 
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
 
 
 

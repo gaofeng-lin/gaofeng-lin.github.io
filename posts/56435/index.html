@@ -1475,7 +1475,7 @@ func con_var_name (key string) string {
 
 	return res
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="解析json文件，interface转int"><a href="#解析json文件，interface转int" class="headerlink" title="解析json文件，interface转int"></a>解析json文件，interface转int</h4><p><strong>因为json解析得到的数据是map[string]interface，里面的字段可能是数字，有时候需要取出来比较，<br>就需要将interface转为int。</strong><br><img src="https://img-blog.csdnimg.cn/1b607816b68645c5b5ceaebe1859abdc.png" alt="在这里插入图片描述"><br>需要先转为string，在用 <code>strconv.Atoi</code>，将string转为int。</p>
+<h4 id="解析json文件，interface转int"><a href="#解析json文件，interface转int" class="headerlink" title="解析json文件，interface转int"></a>解析json文件，interface转int</h4><p><strong>因为json解析得到的数据是map[string]interface，里面的字段可能是数字，有时候需要取出来比较，<br>就需要将interface转为int。</strong><br><img src="https://img-blog.csdnimg.cn/1b607816b68645c5b5ceaebe1859abdc.png" alt="在这里插入图片描述"><br>需要先转为string，再用 <code>strconv.Atoi</code>，将string转为int。</p>
 <h4 id="结构体解析为json"><a href="#结构体解析为json" class="headerlink" title="结构体解析为json"></a>结构体解析为json</h4><p>先上代码</p>
 <p><strong>最为关键的是结构体里面的成员变量名，首字母必须是大写，否则无法解析，解析出来的是空。</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">package main
@@ -2777,13 +2777,13 @@ func main() {
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/gaofeng-lin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:jason_gaofeng_lin@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -2792,6 +2792,10 @@ func main() {
 
 
 
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
 
 
 
