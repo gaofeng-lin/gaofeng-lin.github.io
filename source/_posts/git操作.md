@@ -49,7 +49,7 @@ git config --global user.name "github用户名"
 ```
 git config --global user.email "github注册邮箱"
 ```
-##  查看提交记录
+##  查看提交记录+commit相关操作
 ###  查看指定文件的历史提交记录
 ```
 git log -- <file>  //主要，这个文件要在当前目录才能直接输文件名，否则要给出路径
@@ -150,127 +150,83 @@ git branch -r | xargs -d/ -n1 | grep -v 'origin' | xargs -I{} sh -c 'mkdir "C:\U
 
 命令分线见 **博客--Linux Shell命令总结**
 
-##  git 常用操作
 
-###  git pull 与 git push 详解
-1.git remote
+### 撤回git commit 操作
+写完代码后，我们一般这样
+
+git add .
+
+git commit -m “msg”
+
+执行完commit后，想撤回commit，怎么办？
+1. 撤回操作
+
+**git reset --soft HEAD^** 
+（ps：如果控制台出现More?，则将命令改成 git reset --soft HEAD^^即可）
+
+这样就成功的撤销了你的commit
+
+注意，仅仅是撤回commit操作，您写的代码仍然保留。
+
+**说一下个人理解：**
+HEAD^的意思是上一个版本，也可以写成HEAD~1
+
+如果你进行了2次commit，想都撤回，可以使用HEAD~2
+
+2. 参数：
+**--mixed**
+意思是：不删除工作空间改动代码，撤销commit，并且撤销git add . 操作
+这个为默认参数,git reset --mixed HEAD^ 和 git reset HEAD^ 效果是一样的。
+
+**--soft**
+不删除工作空间改动代码，撤销commit，不撤销git add .
+
+**--hard**
+删除工作空间改动代码，撤销commit，撤销git add .
+
+注意完成这个操作后，就恢复到了上一次的commit状态。
+
+
+
+3. 修改注释
+
+顺便说一下，如果commit注释写错了，只是想改一下注释，只需要：
+git commit --amend
+
+此时会进入默认vim编辑器，修改注释完毕后保存就好了。
+
+### 比较两个分支的commit
+比如我们有 2 个分支：master, dev，现在想查看这两个 branch 的区别，有以下几种方式：
+1. 查看 dev 有，而 master 中没有的
 ```
-git remote add origin url  //这里面的origin 是给远程仓库起名字，不是给本地仓库！
-```
-
-2.git pull
-```
-git pull 其实就是 git fetch 和 git merge FETCH_HEAD 的简写。 命令格式如下：
-
-git pull <远程主机名> <远程分支名>:<本地分支名>
-```
-
-```
-将远程主机 origin 的 master 分支拉取过来，与本地的 brantest 分支合并。
-
-git pull origin master:brantest
-
-如果远程分支是与当前分支合并，则冒号后面的部分可以省略。
-
-git pull origin master
-```
-
-
-3.git push 
-```
-git push <远程主机名> <本地分支名>:<远程分支名>
-
-如果本地分支名与远程分支名相同，则可以省略冒号：
-
-git push <远程主机名> <本地分支名>
-
-```
-
-实例：
-以下命令将本地的 master 分支推送到 origin 主机的 master 分支。
-
-```
-git push origin master
-
-相等于：
-
-git push origin master:master
-
-如果本地版本与远程版本有差异，但又要强制推送可以使用 --force 参数：
-
-git push --force origin master
-
-删除主机的分支可以使用 --delete 参数，以下命令表示删除 origin 主机的 master 分支：
-
-git push origin --delete master
-
+git log dev ^master
 ```
 
-###  将本地代码上传到远程仓库
-1.（电脑里得先下载git）登录coding，新建一个仓库，点击代码浏览可以看到
-![在这里插入图片描述](https://img-blog.csdnimg.cn/dfad51be62a440cd86b764c2e4f16487.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7063830ad8194b8792977f5750a8d1d4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-2.在本地新建一个文件夹，作为项目根目录，再此启动 Git Bash ，进入目录，并输入
-
+查看 master 中有，而 dev 中没有的内容:
 ```
- git init
-```
-3.将本地仓库和我们在coding上创建的远程仓库对接起来，输入
-
-```
-git remote add *yourname* *git_url*  //不用输这条，输下面那条
-```
-add 后面输入你的仓库名字，自定义。git_url代表你的git地址，这里我命名为origin
-
-```
-git remote add origin *url* //这条指令是上面的详细版，输入这个就好。
+git log master ^dev
 ```
 
-> （这里可能会出现叫你设置邮箱，和姓名，跟着提示设置就行了，或者可以选择以SSH公钥进行连接，不过得先去配置公钥）
-
-回车成功后可以输入
-
+2. 查看 dev 中比 master 中多提交了哪些内容
 ```
-git remote -v
-```
-4.为了我们的代码是最新的状态 和 提交时不会产生冲突，我们先执行下pull操作，将远程仓库最新代码拉到我们本地来，输入
-
-```
-git pull origin master
+git log master..dev
 ```
 
-> （origin就是我们上面设置的仓库名，master代表主分支，你可以把分支理解为一块区域，我们最终编写完成的代码都要整合到master分支里面去。然后，我们还可创建一些其他分支，去保存我们正在编写中，或者尚未测试的代码。）
-
-
-执行完后，你可以查看目录下的文件，这时我们本地的文件就和远程仓库里面master分支里的文件一样了。
-
-5.接下来我们来模拟写代码并上传到远程仓库去。
-我们新建一个 a.js文件，并编辑一些内容进去。首先将a文件添加到暂存区
+3. 不管谁提交的多谁提交的少，单纯想知道有什么不一样
 
 ```
-git add a.js //（add后面可以带多个文件名字，用空格隔开；或者输入 . 代表全部）
-
-//然后再提交到本地仓库中去
-
-git commit -m "first commit"
-
-//然后我们需要把它push到远程仓库中去。输入
-
-git push origin master  //push到origin的master主分支里面，成功后会显示提示消息
-
+git log dev...master
 ```
 
-### 查看远程仓库的情况
-查看当前配置有哪些远程仓库
+4. 在上述情况下，再显示出每个提交是在哪个分支上：
 
-```bash
-git remote
+```
+git log --left-right dev...master
 ```
 
-本地与远程仓库的取消
-**git remote remove "仓库名"**
 
-**可以同时关联多个仓库，名字起的不一样就好，不一定非要用origin。但是要注意的是，git pull 和 git push指定的仓库名字也要改变。不然容易出问题。**
+## 分支操作
+
 
 ###  分支的使用
 
@@ -431,6 +387,152 @@ git push origin master
 ### 本地从远程仓库拉取代码，只在某分支开发
 远程仓库有master，dev1两个分支。本地用git clone拉取代码，`git branch -a`查看，本地只有一个分支。此时用`git checkout dev1` 切换到dev1分支。代码和远程仓库一致。可以用`git log`来确认是否是该分支（因为git log 只能看到当前分支的提交记录）
 
+## 合并分支--git merge应用的三种情况
+
+[原链接](https://blog.csdn.net/qq_42780289/article/details/97945300?spm=1001.2101.3001.6650.2&depth_1-utm_relevant_index=5)
+
+1. “快进”(无冲突)
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly93czEuc2luYWltZy5jbi9sYXJnZS8wMDZWckpBSmd5MWc1ajRqMXFodjNqMzBrdzBiYmRmdy5qcGc)
+
+**合并dev和master**
+由于当前 master 分支所指向的提交是你当前提交（dev的提交）的直接上游，所以 Git 只是简单的将 master 指针向前移动。 换句话说，当你试图合并两个分支时，如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候，只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧——这就叫做 “快进（fast-forward）”。合并结果如下：
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly93czEuc2luYWltZy5jbi9sYXJnZS8wMDZWckpBSmd5MWc1ajRyZms0NjFqMzBrcTBhYjN5ay5qcGc)
+
+2. 非“快进”，修改不同文件。(无冲突)
+
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly93czEuc2luYWltZy5jbi9sYXJnZS8wMDZWckpBSmd5MWc1ajVsbXViOXhqMzBndjBhb2FhNS5qcGc)
+
+在 master 分支和 dev 分支的公共祖先 B2 后，master 和 dev 的提交是对不同文件或者同一文件的不同部分进行了修改，Git 可以合并它们。（比如说原来有 test-1 和 test-2 两个文件，B4修改的是 test-1 文件，而B3修改的是 test-2 文件，然后合并两个分支。）
+
+合并是成功的。
+
+3. 非“快进”，修改相同文件。(有冲突)
+
+
+
+##  git 常用操作
+
+###  git pull 与 git push 详解
+1.git remote
+```
+git remote add origin url  //这里面的origin 是给远程仓库起名字，不是给本地仓库！
+```
+
+2.git pull
+```
+git pull 其实就是 git fetch 和 git merge FETCH_HEAD 的简写。 命令格式如下：
+
+git pull <远程主机名> <远程分支名>:<本地分支名>
+```
+
+```
+将远程主机 origin 的 master 分支拉取过来，与本地的 brantest 分支合并。
+
+git pull origin master:brantest
+
+如果远程分支是与当前分支合并，则冒号后面的部分可以省略。
+
+git pull origin master
+```
+
+
+3.git push 
+```
+git push <远程主机名> <本地分支名>:<远程分支名>
+
+如果本地分支名与远程分支名相同，则可以省略冒号：
+
+git push <远程主机名> <本地分支名>
+
+```
+
+实例：
+以下命令将本地的 master 分支推送到 origin 主机的 master 分支。
+
+```
+git push origin master
+
+相等于：
+
+git push origin master:master
+
+如果本地版本与远程版本有差异，但又要强制推送可以使用 --force 参数：
+
+git push --force origin master
+
+删除主机的分支可以使用 --delete 参数，以下命令表示删除 origin 主机的 master 分支：
+
+git push origin --delete master
+
+```
+
+###  将本地代码上传到远程仓库
+1.（电脑里得先下载git）登录coding，新建一个仓库，点击代码浏览可以看到
+![在这里插入图片描述](https://img-blog.csdnimg.cn/dfad51be62a440cd86b764c2e4f16487.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/7063830ad8194b8792977f5750a8d1d4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+2.在本地新建一个文件夹，作为项目根目录，再此启动 Git Bash ，进入目录，并输入
+
+```
+ git init
+```
+3.将本地仓库和我们在coding上创建的远程仓库对接起来，输入
+
+```
+git remote add *yourname* *git_url*  //不用输这条，输下面那条
+```
+add 后面输入你的仓库名字，自定义。git_url代表你的git地址，这里我命名为origin
+
+```
+git remote add origin *url* //这条指令是上面的详细版，输入这个就好。
+```
+
+> （这里可能会出现叫你设置邮箱，和姓名，跟着提示设置就行了，或者可以选择以SSH公钥进行连接，不过得先去配置公钥）
+
+回车成功后可以输入
+
+```
+git remote -v
+```
+4.为了我们的代码是最新的状态 和 提交时不会产生冲突，我们先执行下pull操作，将远程仓库最新代码拉到我们本地来，输入
+
+```
+git pull origin master
+```
+
+> （origin就是我们上面设置的仓库名，master代表主分支，你可以把分支理解为一块区域，我们最终编写完成的代码都要整合到master分支里面去。然后，我们还可创建一些其他分支，去保存我们正在编写中，或者尚未测试的代码。）
+
+
+执行完后，你可以查看目录下的文件，这时我们本地的文件就和远程仓库里面master分支里的文件一样了。
+
+5.接下来我们来模拟写代码并上传到远程仓库去。
+我们新建一个 a.js文件，并编辑一些内容进去。首先将a文件添加到暂存区
+
+```
+git add a.js //（add后面可以带多个文件名字，用空格隔开；或者输入 . 代表全部）
+
+//然后再提交到本地仓库中去
+
+git commit -m "first commit"
+
+//然后我们需要把它push到远程仓库中去。输入
+
+git push origin master  //push到origin的master主分支里面，成功后会显示提示消息
+
+```
+
+### 查看远程仓库的情况
+查看当前配置有哪些远程仓库
+
+```bash
+git remote
+```
+
+本地与远程仓库的取消
+**git remote remove "仓库名"**
+
+**可以同时关联多个仓库，名字起的不一样就好，不一定非要用origin。但是要注意的是，git pull 和 git push指定的仓库名字也要改变。不然容易出问题。**
+
+
 
 ### 回退到某版本
 
@@ -446,48 +548,7 @@ git reset --hard 139dcfaa558e3276b30b6b2e5cbbb9c00bbdca96
 ```bash
 git reset --hard回退之后，如果直接push会出错，因为我们本地库HEAD指向的版本比远程库的要旧，所以我们要用“git push -f”强制推上去
 ```
-### 撤回git commit 操作
-写完代码后，我们一般这样
 
-git add .
-
-git commit -m “msg”
-
-执行完commit后，想撤回commit，怎么办？
-**1. 撤回操作**
-
-```git reset --soft HEAD^``` （ps：如果控制台出现More?，则将命令改成 git reset --soft HEAD^^即可）
-
-这样就成功的撤销了你的commit
-
-注意，仅仅是撤回commit操作，您写的代码仍然保留。
-
-**说一下个人理解：**
-HEAD^的意思是上一个版本，也可以写成HEAD~1
-
-如果你进行了2次commit，想都撤回，可以使用HEAD~2
-
-**2. 参数：**
-**--mixed**
-意思是：不删除工作空间改动代码，撤销commit，并且撤销git add . 操作
-这个为默认参数,git reset --mixed HEAD^ 和 git reset HEAD^ 效果是一样的。
-
-**--soft**
-不删除工作空间改动代码，撤销commit，不撤销git add .
-
-**--hard**
-删除工作空间改动代码，撤销commit，撤销git add .
-
-注意完成这个操作后，就恢复到了上一次的commit状态。
-
-
-
-**3. 修改注释**
-
-顺便说一下，如果commit注释写错了，只是想改一下注释，只需要：
-git commit --amend
-
-此时会进入默认vim编辑器，修改注释完毕后保存就好了。
 
 
 ### 将现有代码保存带其它仓库
