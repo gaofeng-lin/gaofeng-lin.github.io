@@ -39,9 +39,9 @@ package包的定义package 包名
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -474,14 +474,14 @@ package包的定义package 包名
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11.4k
+                    11.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    50 分
+                    51 分
                 </div>
                 
 
@@ -1435,7 +1435,65 @@ func main() {
     
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="json相关操作"><a href="#json相关操作" class="headerlink" title="json相关操作"></a>json相关操作</h3><h4 id="解析json文件"><a href="#解析json文件" class="headerlink" title="解析json文件"></a>解析json文件</h4><pre class="line-numbers language-none"><code class="language-none">package main
+<h3 id="json相关操作"><a href="#json相关操作" class="headerlink" title="json相关操作"></a>json相关操作</h3><h4 id="发送json格式的http请求"><a href="#发送json格式的http请求" class="headerlink" title="发送json格式的http请求"></a>发送json格式的http请求</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/springlustre/article/details/88703851">原链接</a></p>
+<p>发送json为参数的post请求，以结构体为载体</p>
+<pre class="line-numbers language-none"><code class="language-none">type RequestBody struct {
+ 
+Id int `json:"id"`
+ 
+Name string `json:"name"`
+ 
+}
+ 
+ 
+ 
+func testPost(id int, name string) {
+ 
+request := RequestBody{
+ 
+Id: id,
+ 
+Name: name,
+ 
+}
+ 
+requestBody := new(bytes.Buffer)
+ 
+json.NewEncoder(requestBody).Encode(request)
+ 
+url := "https://test.com"
+ 
+req, err := http.NewRequest("POST", url, requestBody)
+ 
+req.Header.Set("Content-Type", "application/json")
+ 
+client := &amp;http.Client{}
+ 
+resp, err := client.Do(req)
+ 
+if err != nil {
+ 
+panic(err)
+ 
+}
+ 
+defer resp.Body.Close()
+ 
+ 
+ 
+fmt.Println("response Status:", resp.Status)
+ 
+fmt.Println("response Headers:", resp.Header)
+ 
+body, _ := ioutil.ReadAll(resp.Body)
+ 
+fmt.Println("response Body:", string(body))
+ 
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="解析json文件"><a href="#解析json文件" class="headerlink" title="解析json文件"></a>解析json文件</h4><pre class="line-numbers language-none"><code class="language-none">package main
 
 import (
 	// "bytes"
@@ -2751,7 +2809,7 @@ func main() {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">102.8k</span>
+                        class="white-color">103.1k</span>
             
             
             
