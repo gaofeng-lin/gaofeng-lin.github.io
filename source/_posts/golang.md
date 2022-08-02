@@ -1159,6 +1159,68 @@ if reflect.ValueOf(map1).Kind() == reflect.Map {
 
 ### json相关操作
 
+#### 发送json格式的http请求
+[原链接](https://blog.csdn.net/springlustre/article/details/88703851)
+
+发送json为参数的post请求，以结构体为载体
+```
+type RequestBody struct {
+ 
+Id int `json:"id"`
+ 
+Name string `json:"name"`
+ 
+}
+ 
+ 
+ 
+func testPost(id int, name string) {
+ 
+request := RequestBody{
+ 
+Id: id,
+ 
+Name: name,
+ 
+}
+ 
+requestBody := new(bytes.Buffer)
+ 
+json.NewEncoder(requestBody).Encode(request)
+ 
+url := "https://test.com"
+ 
+req, err := http.NewRequest("POST", url, requestBody)
+ 
+req.Header.Set("Content-Type", "application/json")
+ 
+client := &http.Client{}
+ 
+resp, err := client.Do(req)
+ 
+if err != nil {
+ 
+panic(err)
+ 
+}
+ 
+defer resp.Body.Close()
+ 
+ 
+ 
+fmt.Println("response Status:", resp.Status)
+ 
+fmt.Println("response Headers:", resp.Header)
+ 
+body, _ := ioutil.ReadAll(resp.Body)
+ 
+fmt.Println("response Body:", string(body))
+ 
+}
+```
+
+
+
 #### 解析json文件
 
 ```

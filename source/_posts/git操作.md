@@ -408,7 +408,14 @@ git push origin master
 
 3. 非“快进”，修改相同文件。(有冲突)
 
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly93czEuc2luYWltZy5jbi9sYXJnZS8wMDZWckpBSmd5MWc1ajVsbXViOXhqMzBndjBhb2FhNS5qcGc)
 
+
+在 master 分支和 dev 分支的公共祖先 B2 后，master 和 dev 的提交是对同一个文件的同一个部分进行了不同的修改，Git 就没法干净的合并它们。（比如说原来有 test-1 和 test-2 两个文件，B4修改的是 test-1 文件，而B3修改的也是 test-1 文件的同一部分，然后合并两个分支。）
+
+**合并是失败的。**
+
+此时 Git 做了合并，但是没有自动地创建一个新的合并提交。 Git 会暂停下来，等待你去解决合并产生的冲突。
 
 ##  git 常用操作
 
