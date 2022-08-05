@@ -387,7 +387,7 @@ git push origin master
 ### 本地从远程仓库拉取代码，只在某分支开发
 远程仓库有master，dev1两个分支。本地用git clone拉取代码，`git branch -a`查看，本地只有一个分支。此时用`git checkout dev1` 切换到dev1分支。代码和远程仓库一致。可以用`git log`来确认是否是该分支（因为git log 只能看到当前分支的提交记录）
 
-## 合并分支--git merge应用的三种情况
+### 合并分支--git merge应用的三种情况
 
 [原链接](https://blog.csdn.net/qq_42780289/article/details/97945300?spm=1001.2101.3001.6650.2&depth_1-utm_relevant_index=5)
 
@@ -416,6 +416,13 @@ git push origin master
 **合并是失败的。**
 
 此时 Git 做了合并，但是没有自动地创建一个新的合并提交。 Git 会暂停下来，等待你去解决合并产生的冲突。
+
+### 分支改名
+
+1. 修改本地分支名
+```
+git branch -m oldBranchName newBranchName
+```
 
 ##  git 常用操作
 
