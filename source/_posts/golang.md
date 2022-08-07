@@ -71,6 +71,75 @@ go get -u
 
 ## 语法
 
+
+### go func(){}()
+```
+go func() {
+
+.....
+
+}()
+```
+以并发的方式调用匿名函数func
+
+详细解释：
+```
+ func(name string) {
+        fmt.Println("Your name is", name)
+    } (str)   //这里的(str)是？
+```
+
+其实，这就是在调用这个函数，这种写法等同于：
+```
+f := func(name string) {
+        fmt.Println("Your name is", name)
+    }
+    f(str) //看吧，就是把函数复制给变量，变量（函数）传参
+
+```
+
+**以下两段代码执行结果等同：**
+```
+代码一：
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+    str := "xulinlin"
+    func(name string) {
+        fmt.Println("Your name is", name)
+    }(str)
+}
+
+
+代码二：
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+    f := func(name string) {
+        fmt.Println("Your name is", name)
+    }
+    f(str)
+}
+
+
+
+输出都是：
+Your name is xulinlin
+```
+
+### defer
+defer后面的函数在defer语句所在的函数执行结束的时候会被调用，用来做一些收尾工作
+
+[原文链接]([http://](https://blog.csdn.net/raoxiaoya/article/details/109428392?spm=1001.2101.3001.6661.1&depth_1-utm_relevant_index=1))
+
 ### Println 与 Printf 的区别
 1. Println :可以打印出字符串，和变量
 2. Printf : 只可以打印出格式化的字符串,可以输出字符串类型的变量，不可以输出整形变量和整形
