@@ -601,6 +601,7 @@ The key fingerprint is:
 [root@host .ssh]$ chmod 700 ~/.ssh
 ```
 
+
 ###  设置 SSH，打开密钥登录功能
 
 ```
@@ -618,6 +619,17 @@ PasswordAuthentication no
 
 [root@host .ssh]$ service sshd restart
 ```
+
+### 普通用户制作密钥
+
+**如果是用普通用户来制作密钥，需要在普通用户的状态下执行上述命令，生成的密钥会在/home/yskj/.ssh目录下面（这里以yskj用户为例）**
+
+如果遇到无法登录，出现
+```
+Server refused our key
+```
+这样的错误，从两个方面出发。一个是authorized_keys与.ssh的权限，一定要按照前面提到的，一个是600，一个是700。
+如果这样不行，那就看看/home目录下面或yskj目录下面的权限，有没有拥有者或组是root的，然后改正过来。
 
 ###  将私钥下载到客户端，然后转换为 PuTTY 能使用的格式
 使用 WinSCP、SFTP 等工具将私钥文件 id_rsa 下载到客户端机器上。然后打开 PuTTYGen，单击 Actions 中的 Load 按钮，载入你刚才下载到的私钥文件。如果你刚才设置了密钥锁码，这时则需要输入。
