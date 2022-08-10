@@ -290,6 +290,57 @@ echo $c
 arr=( `git branch | xargs` )
 echo ${arr[@]}
 ```
+### 自动填充密码
+有时候执行一些命令会要求输入密码，但是比较麻烦，想把密码放在命令中。
+
+**法一：**
+```
+echo "123" | sudo -S sntp -sS 182.92.12.11
+```
+**法二：**
+```
+sudo -S sntp -sS 182.92.12.11 << EOF 
+123
+EOF
+```
+
+注意点：
+1. sudo -S不能少
+2. 使用EOF要小心，最后一个EOF要贴紧，否则会报错
+
+
+### ssh密钥登录并执行脚本
+```
+ssh -t username@ip -i C:/Users/76585/.ssh/phcloudYSKJ "/home/yskj/lgf/cfdplatform/change_cfdplatform.sh"
+```
+1. usernam和ip要换成实际的
+2. -i后面的是本地的密钥文件全路径
+
+### scp加速传输与下载
+本地传输至服务器：
+```
+scp -i "这是本地密钥全路径" -c aes192-cbc -o "Compression yes" "本地要上传的东西的全路径" username@ip:"上传到服务器那个位置"
+```
+1. 上述目录引号里面的内容换位实际的后，不要引号。关键在于 -c aes192-cbc -o "Compression yes" 。-c后面的是压缩算法，自己也是试了几个选了个最快的。可以google搜索下scp下载慢
+
+服务下载至本地：
+上面命令把username@ip:xxx与本地路径交换即可。
+```
+scp -i C:/Users/76585/.ssh/phcloudYSKJ -c aes192-cbc username@ip:/home/yskj/phserver/cfdplatform.log C:/Users/76585/Desktop
+```
+
+
+### 判断上一条命令是否执行成功
+```
+##!/bin/bash
+CGO_ENABLED=0 GOOS=GOARCH=amd64 go buicfdplatform main.go 
+if [[ $? -eq $'\n' ]]; then
+	echo "编译成功"
+else
+	echo "编译失败"
+    exit 1
+fi
+```
 
 ##  实际命令分析
 
@@ -451,7 +502,50 @@ res=$(func)
 echo $res
 ```
 
+### whlie循环菜单
+```
+#!/bin/bash
 
+while :
+do
+    echo "--------------------cfdplatform------------------"
+    echo '输入 1 到 4 之间的数字:'
+    echo '1: 编译'
+    echo '2: 编译 + 传输'
+    echo '3: 传输'
+    echo '4: 下载日志到本地'
+    echo '5: 执行远程脚本'
+    echo '6: 退出'
+    echo '你输入的数字为:'
+    read aNum
+
+    case $aNum in
+        1)  
+            echo '你选择了 "编译"'
+            ;;
+        2)  
+            echo '你选择了 "编译 + 传输"'
+            ;;
+        3)  
+            echo '你选择了 "传输"'
+            ;;
+        4)  
+            echo '你选择了 "下载日志到本地"'
+            ;;
+        5)  
+            echo '你选择了 "执行远程脚本"'
+            ;;
+        6)  
+            echo '你选择了 "退出"'
+            exit 1
+            ;;
+        *)  
+            echo '你没有输入 1 到 5 之间的数字，请重新输入'
+            ;;
+    esac
+    echo -e "\n"
+done
+```
 
 ##  代码分析
 ###  读取文件夹中的文件名，并存入列表

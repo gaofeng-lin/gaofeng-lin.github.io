@@ -570,8 +570,49 @@ git reset --hard回退之后，如果直接push会出错，因为我们本地库
 2. git push -u neworigin **"分支名"**
 3. 如果第二条命令不行就：git push -u neworigin **"分支名"** : **"分支名"**
 
+## git bash扩展命令
+[原链接](https://blog.51cto.com/u_15127579/2670631)
+总共有三个思路：
+### 1.借助winpty调用cmd可以使用的命令
+  
+**winpty 是一种提供与 cmd 通信的软件包,详情请参考 https://github.com/rprichard/winpty**
 
-## git bash安装zip
+git bash 命令行内没有 tree 命令而 cmd 命令行却有 tree 命令.
+
+只不过 cmd 命令中的 tree 命令实际上是 tree.com 并不是 tree.exe 文件.
+(tree 命令是以树状结构显示文件目录的一种命令,查看目录结构层次非常直观.)
+
+```
+`winpty tree.com` 效果等价于 `cmd` 内直接执行 `tree.com` 命令,瞬间解决了中文乱码问题
+```
+
+### 2.gunWin填补（用的最多）
+绝大多数命令可以从这里找到，有的是可执行程序，有的是源码，需要先编译。
+[访问该网址](https://sourceforge.net/)
+
+### 3.工具--Babun
+### 4.工具--gitforwindows
+
+### 扩展实例
+
+### 安装make命令
+1. [前往该网址](https://sourceforge.net/projects/ezwinports/files/)，下载 make-4.1-2-without-guile-w32-bin.zip，并解压zip文件
+2. 将解压内容放到git-bash安装路径的 mingw64文件夹 Git\mingw64\ （重复文件不要覆盖）
+
+### 安装wget
+1. [前往该网址](https://eternallybored.org/misc/wget/)，下载最新的wget可执行文件（下载zip文件，包含document；或者直接下载exe文件）
+2. 得到wget.exe（如果可执行文件名称是wget64.exe，将其重命名为wget.exe）
+3. 将 wget.exe 移动到你的git-bash安装路径的bin文件夹中 Git\mingw64\bin\
+
+### 安装sshpass
+1. 从[网址](http://sourceforge.net/projects/sshpass/)下载1.05版本
+2. windows编译需要安装Cygwin编译器，如果安装的是MinGW，那么后面make会出错。[win10 安装Cygwin](https://blog.csdn.net/weixin_42109012/article/details/106060913)。关键就是把编译c语言的相关东西装好。
+3. make && make install
+
+4. 把编译好的exe程序放到：C:\Software\git\usr\bin
+5. 把上面的路径放到环境变量
+
+#### git bash安装zip
 git bash有些话可能没法执行zip命令
 
 1.打开https://sourceforge.net/projects/gnuwin32/files/
