@@ -66,8 +66,11 @@ go mod tidy
 go get -u
 ```
 
+### 导入第三方包
+背景：和公司合作开发，但是没有他们内部的开发环境，只能让他们把包单独抽出来
+![](https://s2.loli.net/2022/08/30/dSVhiE5IgfTzRls.png)
 
-
+**核心就是这里的replace，不用修改goproxy或者go111module等环境变量**
 
 ## 语法
 
