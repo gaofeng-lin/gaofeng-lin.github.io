@@ -319,6 +319,16 @@ cat file.txt file2.txt > file3.txt
 ###  重启防火墙
 > systemctl restart firewalld.service
 
+### 关闭防火墙
+```
+systemctl stop firewalld.service
+```
+
+### 开机禁用防火墙
+```
+systemctl disable firewalld.service
+```
+
 **不同的系统命令可能不同**
 
 
