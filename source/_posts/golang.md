@@ -1142,6 +1142,38 @@ go version
 
 **反引号有时候能起到很好的作用，比如一个字符串里面有双引号，分号这种，并且分布的还不规律，用反引号括起来就好**
 
+### 字符串中包含双引号
+1. 反引号
+```
+str2 := `"www.hewe.vip"`
+fmt.Println(len(str2))
+fmt.Println(str2)
+//输出结果
+14
+"www.hewe.vip"
+```
+
+2. 转义
+```
+str3 := "\"www.hewe.vip\""
+fmt.Println(len(str3))
+fmt.Println(str3)
+//输出结果
+14
+"www.hewe.vip"
+```
+
+3. 使用strconv包
+```
+str := strconv.Quote("www.hewe.vip")
+fmt.Println(len(str))
+fmt.Println(str1)
+//输出结果
+14
+"www.hewe.vip"
+```
+
+
 ### 变量类型转换
 
 ```c
@@ -1957,6 +1989,42 @@ func main() {
         fmt.Printf("写入文件出错：%v", err)
         return
     }
+}
+```
+
+
+#### 替换文件某一行内容
+```
+package main
+
+import (
+        "io/ioutil"
+        "log"
+        "strings"
+)
+
+func main() {
+        input, err := ioutil.ReadFile("C:/Users/76585/Desktop/key.hypara")
+        if err != nil {
+                log.Fatalln(err)
+        }
+
+        lines := strings.Split(string(input), "\n")
+
+        for i, line := range lines {
+                if strings.Contains(line, "nsimutask") {
+                    lines[i] = "int    nsimutask          =   0;"
+                }
+				if strings.Contains(line, "string parafilename") {
+					lines[i] = "string parafilename       =   \"../bin/grid_para.hypara\";"
+					break
+				}
+        }
+        output := strings.Join(lines, "\n")
+        err = ioutil.WriteFile("C:/Users/76585/Desktop/key.hypara", []byte(output), 0644)
+        if err != nil {
+                log.Fatalln(err)
+        }
 }
 ```
 
