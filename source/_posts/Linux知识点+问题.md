@@ -354,3 +354,17 @@ umount 设备名
 ```
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/d9ca57a5c9bf44589498a26a8baea9e5.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+
+## 远程调用shell脚本找不到库
+
+[原文链接1](http://t.zoukankan.com/GatsbyNewton-p-4776682.html)
+[原文链接2](https://feihu.me/blog/2014/env-problem-when-ssh-executing-command-on-remote/#userconsent#)
+
+背景：本地把服务编译完成，通过git bash传到服务器，然后ssh调用服务器上写好的脚本，显示找不到某个库（以安装）。以mobaxterm方式登录服务器，执行脚本没有问题。
+
+原因：配置文件没有被加载
+
+解决方法：
+1. 在Remote机上的shell脚本的开头重新配置“需要用到”的环境变量（本文所遇到的是mpi的一个库）
+2. 在Remote shell的开头设置，用source使.basn_profile文件生效
