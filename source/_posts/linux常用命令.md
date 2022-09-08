@@ -147,7 +147,13 @@ xz -d  /home/nginx/logs/error.log-20191126.xz
 xz -T 4  /home/nginx/logs/error.log-20191126
 ```
 
-## 查询命令
+## 查询或查看命令汇总
+
+### 查看某个进程或者服务是否存在
+```
+ps -aux ｜ grep xxx
+```
+
 ### 查找文件及文件夹
 
 ```
@@ -178,6 +184,63 @@ find / -name passed—— 查找文件名为passed的文件
 ![在这里插入图片描述](https://img-blog.csdn.net/20180918104448278?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NTY4ODE0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center)
 
 
+### 查看文件最后几行
+```
+//显示filename最后20行。
+tail -n 20 filename
+```
+
+
+###  查看端口
+####  查看某个服务的状态
+
+```
+service ‘servicename’ status
+//centos7以上用 systemctl
+```
+
+例子
+
+```
+service sshd status //查看sshd服务的状态，可以看到它的进程号，如果不需要可以kill 杀死
+```
+
+####   lsof -i:端口号 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/76c06a2619c04918af8a7331869739fd.png)
+可以看到 8000 端口已经被轻 nodejs 服务占用。
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/a9bdaa252c8c4083baf16c1e664416ac.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+####   netstat -tunlp | grep 端口号  <br/>
+**用于显示 tcp，udp 的端口和进程等相关情况**
+
+> -t (tcp) 仅显示tcp相关选项
+> -u (udp)仅显示udp相关选项
+> -n 拒绝显示别名，能显示数字的全部转化为数字
+> -l 仅列出在Listen(监听)的服务状态
+> -p 显示建立相关链接的程序名
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/b16427d1c6cc430080b1dae37360358c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+####  kill(杀死进程)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/e228676961554ebaa0725d3cad3b14c6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+####  telnet(检测端口是否可用)
+有时我们想知道端口是否开启。
+
+```
+tenlet ip 端口
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/46ee47447ace457e95d472fef5ea9ea8.png)上图表示：80端口开放，8899端口未开放。
+
+
+
+### 查看系统版本
+####  centos
+
+```
+cat /etc/redhat-release
+```
+
 ##  复制/移动文件、文件改名
 Linux 将一个文件夹的所有内容拷贝到另外一个文件夹
 
@@ -196,47 +259,6 @@ cp -r /home/packageA /home/packageB
 1. `cp /xx/xx(a)  /xx/xx(a)`   :复制   ~~~~  //将a复制到b
 2. `mv /xx /xx /xx/xx` :剪切
 3. `mv 旧文件夹名 新文件夹名`   //更改名字
-
-##  查看端口
-###  查看某个服务的状态
-
-```
-service ‘servicename’ status
-//centos7以上用 systemctl
-```
-
-例子
-
-```
-service sshd status //查看sshd服务的状态，可以看到它的进程号，如果不需要可以kill 杀死
-```
-
-###   lsof -i:端口号 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/76c06a2619c04918af8a7331869739fd.png)
-可以看到 8000 端口已经被轻 nodejs 服务占用。
-
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a9bdaa252c8c4083baf16c1e664416ac.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-
- ###   netstat -tunlp | grep 端口号  <br/>
-**用于显示 tcp，udp 的端口和进程等相关情况**
-
-> -t (tcp) 仅显示tcp相关选项
-> -u (udp)仅显示udp相关选项
-> -n 拒绝显示别名，能显示数字的全部转化为数字
-> -l 仅列出在Listen(监听)的服务状态
-> -p 显示建立相关链接的程序名
-
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b16427d1c6cc430080b1dae37360358c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-
-###  kill(杀死进程)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e228676961554ebaa0725d3cad3b14c6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-###  telnet(检测端口是否可用)
-有时我们想知道端口是否开启。
-
-```
-tenlet ip 端口
-```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/46ee47447ace457e95d472fef5ea9ea8.png)上图表示：80端口开放，8899端口未开放。
 
 
 ##  touch命令(创建文件)
@@ -779,12 +801,6 @@ rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
 ```
 
 
-## 查看系统版本
-###  centos
-
-```
-cat /etc/redhat-release
-```
 
 
 ##  更换yum源

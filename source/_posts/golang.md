@@ -2213,7 +2213,16 @@ func main() {
 }
 ```
 
-## 问题
+## 问题或其他知识
+
+### 使用grpcurl
+[原链接](https://zhuanlan.zhihu.com/p/415775403)
+
+如果准备使用docker来运行，那么pull完成后，使用下面的命令:
+```
+docker run fullstorydev/grpcurl ip:"端口" list
+```
+“ip”和“端口” 记得替换
 
 ### map类型interface{}转换
 
