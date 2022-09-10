@@ -607,12 +607,12 @@ git bash 命令行内没有 tree 命令而 cmd 命令行却有 tree 命�
 ### 安装sshpass
 1. 从[网址](http://sourceforge.net/projects/sshpass/)下载1.05版本
 2. windows编译需要安装Cygwin编译器，如果安装的是MinGW，那么后面make会出错。[win10 安装Cygwin](https://blog.csdn.net/weixin_42109012/article/details/106060913)。关键就是把编译c语言的相关东西装好。
-3. make && make install
+3. 进入sshpass源码，打开git bash。 **./configure**
+4. make && make install
+5. 把编译好的exe程序放到：C:\Software\git\usr\bin;如果报缺少cygwin.dll这种信息，用everything搜索这个，然后放到这个目录
+6. 把上面的路径放到环境变量
 
-4. 把编译好的exe程序放到：C:\Software\git\usr\bin
-5. 把上面的路径放到环境变量
-
-#### git bash安装zip
+### git bash安装zip
 git bash有些话可能没法执行zip命令
 
 1.打开https://sourceforge.net/projects/gnuwin32/files/
