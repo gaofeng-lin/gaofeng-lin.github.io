@@ -7,6 +7,7 @@ tags:
   - Linux
   - 运维
   - Slurm
+abbrlink: 34673
 ---
 
 ## 基础概念介绍
