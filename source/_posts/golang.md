@@ -10,13 +10,49 @@ abbrlink: 56435
 
 
 
-## 环境变量
+## 查看环境变量
 
 ```
 go version  //查看版本
 go env   //查看环境变量
 ```
 
+## 安装golang、gopath、goroot
+
+### 安装
+windows安装一路点击ok就好。
+
+Linux安装：
+1. wget https://dl.google.com/go/go1.14.1.linux-amd64.tar.gz
+2. tar -zxvf go1.14.1.linux-amd64.tar.gz -C /usr/local  # 解压
+
+3. 配置环境变量： Linux下有两个文件可以配置环境变量，其中/etc/profile是对所有用户生效的；$HOME/.profile是对当前用户生效的，根据自己的情况自行选择一个文件打开，添加如下两行代码，保存退出。
+```
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+```
+
+4. 修改/etc/profile后要重启生效，修改$HOME/.profile后使用source命令加载$HOME/.profile文件即可生效。 检查：
+```
+go version
+```
+### gopath、goroot
+
+- goroot:
+  其实就是golang 的安装路径
+当你安装好golang之后其实这个就已经有了
+
+- gopath: 
+  作用：
+
+存放sdk以外的第三方类库
+自己收藏的可复用的代码
+目录结构：$GOPATH目录约定有三个子目录
+   src存放源代码(比如：.go .c .h .s等) 按照golang默认约定，go run，go install等命令的当前工作路径（即在此路径下执行上述命令）。
+
+   pkg编译时生成的中间文件（比如：.a）　　golang编译包时
+   
+   bin编译后生成的可执行文件（为了方便，可以把此目录加入到 P A T H 变 量 中 ， 如 果 有 多 个 g o p a t h ， 那 么 使 用 PATH 变量中，如果有多个gopath，那么使用PATH变量中，如果有多个gopath，那么使用{GOPATH/bin:}/bin添加所有的bin目录）
 
 ## package
 
@@ -74,6 +110,59 @@ go get -u
 
 ## 语法
 
+### Context
+[Context 简介](https://hujingnb.com/archives/825)
+
+[Context 使用例子](https://murphypei.github.io/blog/2021/06/go-context)
+
+Context主要做两件事情：
+
+1. 通知子协程提前退出
+2. 携带环境变量
+
+
+
+
+### channel
+[channel详细使用](https://blog.csdn.net/tool007/article/details/124329558?spm=1001.2101.3001.6661.1&depth_1-utm_relevant_index=1)
+
+Goroutine(协程) 使用 Channel 传递数据
+
+![](https://img-blog.csdnimg.cn/d8fae620e5a541b49f01e27bec502bbf.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aW257OW6Iqv,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+#### 定义
+```
+// 只读 channel
+var readOnlyChan <-chan int  // channel 的类型为 int
+
+// 只写 channel
+var writeOnlyChan chan<- int
+
+// 可读可写
+var ch chan int
+
+// 或者使用 make 直接初始化
+readOnlyChan1 := make(<-chan int, 2)  // 只读且带缓存区的 channel
+readOnlyChan2 := make(<-chan int)   // 只读且不带缓存区 channel
+
+writeOnlyChan3 := make(chan<- int, 4) // 只写且带缓存区 channel
+writeOnlyChan4 := make(chan<- int) // 只写且不带缓存区 channel
+
+ch := make(chan int, 10)  // 可读可写且带缓存区
+
+ch <- 20  // 写数据
+i := <-ch  // 读数据
+i, ok := <-ch  // 还可以判断读取的数据
+```
+#### 操作channel
+
+操作 channel 一般有如下三种方式：
+
+读 <-ch
+
+写 ch<-
+
+关闭 close(ch)
 
 ### go func(){}()
 ```
@@ -2115,7 +2204,27 @@ func main() {
 
 自己写一个函数完成拷贝文件
 ```
-#### 遍历目录
+#### 读取文件最后一行
+```
+func ReadFile(file_name string) (info string) {
+    file, err := os.Open(file_name)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer file.Close()
+    var lineText string
+    scanner := bufio.NewScanner(file)
+    for scanner.Scan() {
+        lineText = scanner.Text()
+        //fmt.Print(lineText)
+    }
+
+    return string(lineText)
+}
+```
+
+
+### 遍历目录
 
 ```
 package main
@@ -2149,7 +2258,8 @@ func main() {
 }
 ```
 
-#### 其它
+
+### 其它
 统计一个文件中含有的英文、数字、空格以及其他字符数量。
 
 ```
