@@ -25,7 +25,6 @@ windows安装一路点击ok就好。
 Linux安装：
 1. wget https://dl.google.com/go/go1.14.1.linux-amd64.tar.gz
 2. tar -zxvf go1.14.1.linux-amd64.tar.gz -C /usr/local  # 解压
-
 3. 配置环境变量： Linux下有两个文件可以配置环境变量，其中/etc/profile是对所有用户生效的；$HOME/.profile是对当前用户生效的，根据自己的情况自行选择一个文件打开，添加如下两行代码，保存退出。
 ```
 export GOROOT=/usr/local/go
