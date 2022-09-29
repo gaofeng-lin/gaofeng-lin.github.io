@@ -97,7 +97,6 @@ SQL 标准共定义了 3 种并发异常，这三种异常分别是脏读（Dirt
 3. 可重复读：即能保证在一个事务中多次读取，数据一致，但可能会出现幻读；
 4. 可串行化：最高的隔离级别，串行的执行事务，可以避免 3 种异常，但性能耗损最高。
 
-## Mysql语句
 ### 数据类型
 MySQL 支持多种类型，大致可以分为三类：数值、日期/时间和字符串(字符)类型。
 #### 数值类型
@@ -107,6 +106,12 @@ MySQL 支持多种类型，大致可以分为三类：数值、日期/时间和�
 #### 字符串类型
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/96f697d0ac234fb8b92b4b72a3da027e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
+## Mysql语句
+
+### 查看表结构
+```
+desc tabl_name;
+```
 
 ### 创建数据表
 
