@@ -1210,6 +1210,17 @@ func SliceClear3(s interface{}) bool {
 
 ## 常用操作
 
+### 查看程序运行时间
+```
+import "time" // 引用time库函数
+
+start := time.Now() // 获取当前时间
+// 被测代码
+cost := time.Since(start) // 计算此时与start的时间差
+// time.Now().Sub(start)也可
+```
+
+
 ### 查看当前go版本号
 ```
 go version
