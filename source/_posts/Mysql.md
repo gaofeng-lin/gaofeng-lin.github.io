@@ -376,6 +376,35 @@ SELECT * from `products` a RIGHT JOIN `person_param` b ON a.product_id=b.product
 INSERT INTO basic_param (origin_name,present_name,version,project_name) SELECT origin_name,present_name,(28),'xlh' FROM basic_param
 ```
 
+
+### mysql在linux上快速导入sql文件
+
+mysql导入sql文件，如果文件稍大一些，速度会非常慢，以下脚本可以借鉴：
+```
+#!/bin/bash
+
+
+mysql -u root -pSBcaiyong@PASSword123 <<EOF
+
+set global innodb_flush_log_at_trx_commit=0;
+set global sync_binlog=0;
+
+use phenglei;
+source /home/yskj/lgf/db/xlh_dynpara/lgf.sql;
+
+set global innodb_flush_log_at_trx_commit=1;
+set global sync_binlog=1;
+
+EOF
+
+echo"数据库改变完成"
+
+```
+
+
+
+
+
 ##  Mysql常见问题
 ###  mysql官网下载老版本
 [下载网址，可选操作系统](https://dev.mysql.com/downloads/mysql/)
