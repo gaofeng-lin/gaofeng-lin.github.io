@@ -534,7 +534,7 @@ git push origin master  //push到origin的master主分支里面，成功后会�
 
 ```
 
-### 查看远程仓库的情况12
+### 查看远程仓库的情况
 查看当前配置有哪些远程仓库
 
 ```bash
