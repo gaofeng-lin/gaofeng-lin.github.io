@@ -149,6 +149,26 @@ xz -T 4  /home/nginx/logs/error.log-20191126
 
 ## 查询或查看命令汇总
 
+### which 与 whereis
+which和whereis命令都是Linux操作系统下查找可执行文件路径的命令
+
+#### which
+这条命令主要是用来查找系统***PATH目录下***的可执行文件。说白了就是查找那些我们已经安装好的可以直接执行的命令，比如
+```
+swq123459@swq123459PC:~$ which ls
+/bin/ls
+```
+注意上述斜体字， which 查找的可执行文件，必须是要在 PATH 下的可执行文件，而不能是没有加入 PATH 的可执行文件，即使他就是可执行文件，但是没有加入到系统搜索路径，他仍然无法被 which 发现（好吧，有点啰嗦了）。
+
+#### whereis
+这个命令可以用来查找二进制（命令）、源文件、man文件。与which不同的是这条命令可以是通过文件索引数据库而非PATH来查找的，所以查找的面比which要广。例如：
+```
+swq123459@swq123459PC:~$ whereis ls
+ls: /bin/ls
+ /usr/share/man/man1/ls.1.gz
+```
+可以看到，whereis不仅找到了 ls 可执行文件的位置，还找到了其 man 帮助文件，可见其搜索范围比较广，不局限于PATH。
+
 ### 查看某个进程或者服务是否存在
 ```
 ps -aux ｜ grep xxx
@@ -834,6 +854,3 @@ rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
 sudo yum makecache
 ```
 
-## make install
-这个命令用与安装，可以携带一个参数。`PREFIX=/home/lgf`
-表示安装路径，在安装mpi的时候出现过这个参数。
