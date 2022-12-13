@@ -6,6 +6,7 @@ categories:
 tags:
   - 运维
   - singularity
+abbrlink: 23912
 ---
 
 ## def文件
