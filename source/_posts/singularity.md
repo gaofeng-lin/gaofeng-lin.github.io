@@ -15,7 +15,7 @@ abbrlink: 23912
 说一下%environment与%post的区别：
 %environment里面的环境变量会在运行时加载；%post里面的环境变量会在build时加载
 
-**官方给的mpich例子中的def文件中的%environment环境变量有误，需要更改其中的路径，否在会报错，找不到lib库。**
+**官方给的mpich例子中的def文件中的%environment环境变量有误，需要更改其中的路径，否则会报错，找不到lib库。**
 
 官方例子：
 ```
