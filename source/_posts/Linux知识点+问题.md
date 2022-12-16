@@ -21,6 +21,9 @@ abbrlink: 54220
 
 运行命令 `sudo gedit /etc/ld.so.conf` 在第一行后面空一格 添加/usr/local/lib 保存。运行`sudo /sbin/ldconfig`更新
 
+## make命令
+[原文链接](https://www.ruanyifeng.com/blog/2015/02/make.html)
+
 ## make 和 cmake
 [原文链接](https://blog.csdn.net/KP1995/article/details/109569787)
 
