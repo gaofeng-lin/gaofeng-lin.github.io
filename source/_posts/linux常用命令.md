@@ -149,6 +149,12 @@ xz -T 4  /home/nginx/logs/error.log-20191126
 
 ## 查询或查看命令汇总
 
+### 查看某个软件对应的软连接
+```
+ls -l "xxxx"
+```
+使用```ls -al```也可也，那就是查看整个目录下面的。
+
 ### which 与 whereis
 which和whereis命令都是Linux操作系统下查找可执行文件路径的命令
 
