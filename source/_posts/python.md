@@ -1377,6 +1377,44 @@ def changetext(a,b):
 changetext('pig','cow')
 ```
 
+### windows切换python2和python3
+[同时装了Python3和Python2，怎么用pip？ - 知乎](
+https://www.zhihu.com/question/21653286/answer/95532074)
+
+已经安装了python2和python3，且Python3（>=3.3）；运行python2 使用```py -2 hello.py```；运行python3 使用```py -3 hello.py```
+
+**去掉参数 -2/-3**
+
+每次运行都要加入参数-2/-3还是比较麻烦，所以py.exe这个启动器允许你在代码中加入说明，表明这个文件应该是由python2解释运行，还是由python3解释运行。说明的方法是在代码文件的最开始加入一行
+
+```
+#! python2
+```
+
+或者
+
+```
+#! python3
+```
+
+分别表示该代码文件使用Python2或者Python3解释运行。这样，运行的时候你的命令就可以简化为
+```
+py hello.py
+```
+
+**如何使用pip**
+
+```
+py -2 -m pip install XXXX
+```
+
+-2 还是表示使用 Python2，-m pip 表示运行 pip 模块，也就是运行pip命令了。如果是为Python3安装软件，那么命令类似的变成
+
+```
+py -3 -m pip install XXXX
+```
+
+
 ##  知识点
 ###  from import和import的区别
 
