@@ -16,26 +16,28 @@ abbrlink: 51872
 ###  输出格式有问题 
 背景：python2.7，IDE：VSCode
 源码：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/aad38ed43cf14169a81178f15d5cab6b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/aad38ed43cf14169a81178f15d5cab6b.png)
+
+
 two.txt:
-![在这里插入图片描述](https://img-blog.csdnimg.cn/30f55f74a6f04008af34c386d4ac4631.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/30f55f74a6f04008af34c386d4ac4631.png)
 
 输出：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/006fd38c10064562b5261b067cd0d0e8.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/006fd38c10064562b5261b067cd0d0e8.png)
 预期应该为商品，单价，数量。
 
 修改最后一行的print
-![在这里插入图片描述](https://img-blog.csdnimg.cn/be1c33ec8b6e4593806ab989758d5641.png)
+![](https://img-blog.csdnimg.cn/be1c33ec8b6e4593806ab989758d5641.png)
 ###  打包pip install 包
 
 > 背景：内网需要安装python和一些包，无法连互联网，只能外网下载再u盘拷过去。
 
  1. 在外网机器Python的安装目录中新建一个文件夹，如packages：
- ![在这里插入图片描述](https://img-blog.csdnimg.cn/f86df46c2cc4468fa89c15c1708df6fe.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/f86df46c2cc4468fa89c15c1708df6fe.png)
  
  2. 进入到packages文件夹下，shift按住，鼠标右键“在此处打开命令行”，输入pip
 list查看系统中安装了哪些python包，如下：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/730bff4d9f30437790528bf4db3797cb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/730bff4d9f30437790528bf4db3797cb.png)
  3. 把所有包名及版本号，重定向到requirements.txt中
 ```
 pip freeze >requirements.txt
@@ -46,10 +48,10 @@ pip freeze >requirements.txt
 ```
 pip download -r requirements.txt -d packages
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1db7754fe1984892849f3d5adca5bc5b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/1db7754fe1984892849f3d5adca5bc5b.png)
 
  5. 内网安装。先复制刚才外网机器上的文件夹pacjages到内网机器对应的目录
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8a4c18aa77c040dd925733f93ade928e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/8a4c18aa77c040dd925733f93ade928e.png)
  6. 进入到D:\Python37\packages下，打开命令行，执行安装
  
 
@@ -66,10 +68,10 @@ pip install XXXX包名
 
 > 背景：使用.msi文件进行卸载，出现以下情况：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/bcd0965e3e1c4c929422fa9b879729cb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/bcd0965e3e1c4c929422fa9b879729cb.png)
 解决方法：
 找到出问题的版本，个人当时出问题的版本是2.7.10。官网下载msi文件。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/93c843b909ec45ec85865dbf3c2ae945.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/93c843b909ec45ec85865dbf3c2ae945.png)
 依次运行。
 
 ###  open函数传参数出错
@@ -79,7 +81,7 @@ pip install XXXX包名
 
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4c36a39430c747eb86e933b2ae67b809.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/4c36a39430c747eb86e933b2ae67b809.png)
 如果不在路径前面加r，就会报错。按理说应该是
 open(file_path,mode)
 
@@ -141,16 +143,16 @@ for k in list(func_dict.keys()):
 
 解决办法：
 1.首选项找到设置
-![在这里插入图片描述](https://img-blog.csdnimg.cn/84c82a81f052455385019bbc37bc93b2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/84c82a81f052455385019bbc37bc93b2.png)
 2.输入code-runner，找到 Executor Map
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b22a0f9e154642e0843ce47974245361.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/b22a0f9e154642e0843ce47974245361.png)
 3.选择这个，（将设置复制为id）
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a78e8887588e4e0591da5a2f391335aa.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/59d97e84f5384682828af42b5d5f03a1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/a78e8887588e4e0591da5a2f391335aa.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/59d97e84f5384682828af42b5d5f03a1.png)
 
 将复制的内容粘贴到里面
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0bdfe664d55944f3b118f82861f2a31a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/0bdfe664d55944f3b118f82861f2a31a.png)
 修改其中python字段的python值替换为vscode左下角的python解释器：
 结果如下;
 
@@ -161,16 +163,16 @@ for k in list(func_dict.keys()):
 "python": "\"C:/Python27/python.exe\" -u"
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6eef8ba7ef9e47a9bbef68a0918f3b94.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/6eef8ba7ef9e47a9bbef68a0918f3b94.png)
 
 ### vscode进行调试，系统把conda activate base写入了用户输入区域该怎么办？
 **问题：在运行调试的时候编译器在运行语句前没有进入虚拟base环境，于是在遇到激活用户输入语句时，自动输入了conda activate base ，导致程序出错**
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190531113214107.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW5nZmVuZzg4ODE2OA==,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190531113214107.png)
 解决办法：避免在使用这些终端命令时激活虚拟环境和conda环境，**请将python.terminal.activateEnvironment设置更改为false**
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2019053111303868.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW5nZmVuZzg4ODE2OA==,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/2019053111303868.png)
 
 这个setting.json在在`C:\Users\Administrator\AppData\Roaming\Code\User\setting.json` 是个纯文本文件，直接打开就好。如果没有python.terminal.activateEnvironment这一行可以自己加上。
 
