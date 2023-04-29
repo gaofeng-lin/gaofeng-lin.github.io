@@ -1039,7 +1039,7 @@ dict_min['name']=new_line[1]
 dict_mid[new_line[1]]=dict_min
 ```
 上面这段代码中，newline[1]发生变化时，dict_min发生变化，从而导致dict_mid受到影响。具体的效果
-![在这里插入图片描述](https://img-blog.csdnimg.cn/27eafe4c3413473b8de9f92567056d70.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/27eafe4c3413473b8de9f92567056d70.png)
 name的值会依次被后面的值覆盖，但我们不希望之前的收到影响。
 
 解决办法：
