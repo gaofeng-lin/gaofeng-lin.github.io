@@ -337,7 +337,7 @@ file_name=new_line[-1]
 
 ####  替换字符串中的匹配项 
 **re.sub()** 
-
+```
 	def sub(pattern, repl, string, count=0, flags=0):
 	    """Return the string obtained by replacing the leftmost
 	    non-overlapping occurrences of the pattern in string by the
@@ -346,7 +346,7 @@ file_name=new_line[-1]
 	    a callable, it's passed the match object and must return
 	    a replacement string to be used."""
 	    return _compile(pattern, flags).sub(repl, string, count)
-
+```
 从上面的代码中可以看到re.sub()方法中含有5个参数，下面进行一一说明（加粗的为必须参数）：
 （1）**pattern**：该参数表示正则中的模式字符串；
 （2）**repl**：该参数表示要替换的字符串（即匹配到pattern后替换为repl），也可以是个函数；
@@ -367,7 +367,7 @@ file_name=new_line[-1]
 上面 re.sub(r'[0-9]', '*', s) 这句话则表示只匹配单一数字，并将每一个数字替换为一个星号 。
 
 （2）只匹配单一字母
-
+```
 	>>> s
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn"
 	>>> re.sub(r'[a-z]', '*', s)
@@ -376,14 +376,14 @@ file_name=new_line[-1]
 	"大家好，我是一个程序员小白。* 'm so glad to introduce myself, and *’m 18 years old.   *oday is 2020/01/01. *t is a wonderful ***! @****ello,,,#111*ome*ere222...66？**？zz？——http://welcome.cn"
 	>>> re.sub(r'[A-Za-z]', '*', s)
 	"大家好，我是一个程序员小白。* '* ** **** ** ********* ******, *** *’* 18 ***** ***.   ***** ** 2020/01/01. ** ** * ********* ***! @********,,,#111********222...66？**？**？——****://*******.**"
-
+```
 上面 re.sub(r'[a-z]', '*', s) 这句话则表示只匹配单一小写字母，并将每一个小写字母替换为一个星号 。
 上面 re.sub(r'[A-Z]', '*', s) 这句话则表示只匹配单一大写字母，并将每一个大写字母替换为一个星号 。
 上面 re.sub(r'[A-Za-z]', '*', s) 这句话则表示只匹配单一字母，并将每一个字母替换为一个星号 。
 
 （3）匹配单一数字和字母
 
-
+```
 	>>> s
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn"
 	>>> re.sub(r'[0-9A-Z]', '*', s)
@@ -392,7 +392,7 @@ file_name=new_line[-1]
 	"大家好，我是一个程序员小白。I '* ** **** ** ********* ******, *** I’* ** ***** ***.   T**** ** ****/**/**. I* ** * ********* DAY! @HHHH****,,,#***C***H******...**？AA？**？——****://*******.**"
 	>>> re.sub(r'[0-9A-Za-z]', '*', s)
 	"大家好，我是一个程序员小白。* '* ** **** ** ********* ******, *** *’* ** ***** ***.   ***** ** ****/**/**. ** ** * ********* ***! @********,,,#**************...**？**？**？——****://*******.**"
-
+```
 上面 re.sub(r'[0-9A-Z]', '*', s) 这句话则表示只匹配单一数字和大写字母，并将每一个数字和大写字母替换为一个星号 。
 上面 re.sub(r'[0-9a-z]', '*', s) 这句话则表示只匹配单一数字和小写字母，并将每一个数字和小写字母替换为一个星号 。
 上面 re.sub(r'[0-9A-Za-z]', '*', s) 这句话则表示只匹配单一数字和字母，并将每一个数字和字母替换为一个星号 。
@@ -402,18 +402,18 @@ file_name=new_line[-1]
 注意：这里的所说的多个指的是大于等于一个。
 
 （1）匹配多个数字
-
+```
 
 	>>> s
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn"
 	>>> re.sub(r'[0-9]+', '*', s)
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m * years old.   Today is */*/*. It is a wonderful DAY! @HHHHello,,,#*ComeHere*...*？AA？zz？——http://welcome.cn"
-
+```
 上面 re.sub(r'[0-9]+', '*', s) 这句话则表示匹配多个连续的数字，并将多个连续的数字替换为一个星号 。
 
 （2）匹配多个字母
 
-
+```
 	>>> s
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn"
 	>>> re.sub(r'[a-z]+', '*', s)
@@ -422,38 +422,38 @@ file_name=new_line[-1]
 	"大家好，我是一个程序员小白。* 'm so glad to introduce myself, and *’m 18 years old.   *oday is 2020/01/01. *t is a wonderful *! @*ello,,,#111*ome*ere222...66？*？zz？——http://welcome.cn"
 	>>> re.sub(r'[a-zA-Z]+', '*', s)
 	"大家好，我是一个程序员小白。* '* * * * * *, * *’* 18 * *.   * * 2020/01/01. * * * * *! @*,,,#111*222...66？*？*？——*://*.*"
-
+```
 上面 re.sub(r'[a-z]+', '*', s) 这句话则表示匹配多个连续的小写字母，并将多个连续的小写字母替换为一个星号 。
 上面 re.sub(r'[A-Z]+', '*', s) 这句话则表示匹配多个连续的大写字母，并将多个连续的大写字母替换为一个星号 。
 上面 re.sub(r'[A-Za-z]+', '*', s) 这句话则表示匹配多个连续的字母，并将多个连续的字母替换为一个星号 。
 
 （3）匹配多个数字和字母
-
+```
 
 	>>> s
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn"
 	>>> re.sub(r'[0-9a-zA-Z]+', '*', s)
 	"大家好，我是一个程序员小白。* '* * * * * *, * *’* * * *.   * * */*/*. * * * * *! @*,,,#*...*？*？*？——*://*.*"
-
+```
 上面 re.sub(r'[0-9A-Za-z]+', '*', s) 这句话则表示匹配多个连续的数字和字母，并将多个连续的数字、连续的字母、连续的数字和字母替换为一个星号 。
 
 **3.匹配其他**
 
 （1）匹配非数字
-
+```
 	>>> s
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn"
 	>>> re.sub(r'[^0-9]', '*', s)
 	'********************************************************18***********************2020*01*01**************************************111********222***66**************************'
 	>>> re.sub(r'[^0-9]+', '*', s)
 	'*18*2020*01*01*111*222*66*'
-
+```
 上面 re.sub(r'[^0-9]', '*', s) 这句话则表示匹配单个非数字，并将单个非数字替换为一个星号 。
 上面 re.sub(r'[^0-9]+', '*', s) 这句话则表示匹配多个连续的非数字，并将多个连续的非数字替换为一个星号 。
 
 （2）匹配非字母
 
-
+```
 	>>> s
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn"
 	>>> re.sub(r'[^a-z]', '*', s)
@@ -468,7 +468,7 @@ file_name=new_line[-1]
 	'*I*I*T*I*DAY*HHHH*C*H*AA*'
 	>>> re.sub(r'[^A-Za-z]+', '*', s)
 	'*I*m*so*glad*to*introduce*myself*and*I*m*years*old*Today*is*It*is*a*wonderful*DAY*HHHHello*ComeHere*AA*zz*http*welcome*cn'
-
+```
 上面 re.sub(r'[^a-z]', '*', s) 这句话则表示匹配单个非小写字母，并将单个非小写字母替换为一个星号 。
 上面 re.sub(r'[^A-Z]', '*', s) 这句话则表示匹配单个非大写字母，并将单个非大写字母替换为一个星号 。
 上面 re.sub(r'[^A-Za-z]', '*', s) 这句话则表示匹配单个非字母，并将单个非字母替换为一个星号 。
@@ -478,14 +478,14 @@ file_name=new_line[-1]
 
 （3）匹配非数字和非字母
 
-
+```
 	>>> s
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn"
 	>>> re.sub(r'[^0-9A-Za-z]', '*', s)
 	'**************I**m*so*glad*to*introduce*myself**and*I*m*18*years*old****Today*is*2020*01*01**It*is*a*wonderful*DAY***HHHHello****111ComeHere222***66*AA*zz***http***welcome*cn'
 	>>> re.sub(r'[^0-9A-Za-z]+', '*', s)
 	'*I*m*so*glad*to*introduce*myself*and*I*m*18*years*old*Today*is*2020*01*01*It*is*a*wonderful*DAY*HHHHello*111ComeHere222*66*AA*zz*http*welcome*cn'
-
+```
 上面 re.sub(r'[^0-9A-Za-z]', '*', s) 这句话则表示匹配单个非数字和非字母，并将单个非数字和非字母替换为一个星号 。
 上面 re.sub(r'[^0-9A-Za-z]+', '*', s) 这句话则表示匹配多个连续的非数字和非字母，并将多个连续的非数字和非字母替换为一个星号 。
 
@@ -506,38 +506,38 @@ a.只保留字母和空格，将 repl 设置为空字符即可。
 ```
 如果要使句子语义和结构更完整，则要先将其余字符替换为空格（即repl设置为空格），然后去除多余的空格，如下：
 
-
+```
 	>>> s1 = re.sub(r'[^A-Za-z ]+', ' ', s)
 	>>> s1
 	' I  m so glad to introduce myself  and I m   years old    Today is   It is a wonderful DAY   HHHHello ComeHere AA zz http welcome cn'
 	>>> re.sub(r'[ ]+', ' ', s1)
 	' I m so glad to introduce myself and I m years old Today is It is a wonderful DAY HHHHello ComeHere AA zz http welcome cn'
-
+```
 b.去除以 @ 开头的英文单词
-
+```
 	>>> s
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn"
 	>>> re.sub(r'@[A-Za-z]+', '', s)
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! ,,,#111ComeHere222...66？AA？zz？——http://welcome.cn"
-
+```
 c.去除以 ？结尾的英文单词和数字（注意这是中文问号）
-
+```
 	>>> s
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn"
 	>>> re.sub(r'[A-Za-z]+？', '', s)
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？——http://welcome.cn"
 	>>> re.sub(r'[0-9A-Za-z]+？', '', s)
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...——http://welcome.cn"
-
+```
 
 d.去除原始字符串中的URL
 
-
+```
 	>>> s
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——http://welcome.cn"
 	>>> re.sub(r'http[:.]+\S+', '', s)
 	"大家好，我是一个程序员小白。I 'm so glad to introduce myself, and I’m 18 years old.   Today is 2020/01/01. It is a wonderful DAY! @HHHHello,,,#111ComeHere222...66？AA？zz？——"
-
+```
 
 #### 字符串提取--提取数字
 ```
@@ -591,13 +591,15 @@ print(b)
 ```
 
 eval()用途：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/488f4321054b442b97e9b42813e0e565.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/488f4321054b442b97e9b42813e0e565.png)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a384434e602d4276b5b6da7546bc67db.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/33d9dc9d343b4111afabc96caceac82d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9fec5d3536be40d1ad0676f202dd95bc.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/a384434e602d4276b5b6da7546bc67db.png)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/bed4ceca7318472d959ef280c707247c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/33d9dc9d343b4111afabc96caceac82d.png)
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/9fec5d3536be40d1ad0676f202dd95bc.png)
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/bed4ceca7318472d959ef280c707247c.png)
 
 
 #### 字符串转数字，数字转字符串
@@ -661,13 +663,13 @@ print(test(data))
 
 面对以上代码，乍一看以为会打印出空列表，因为test函数内通过for的方法将data中的元素都删除了，其实不然，实际输出如下：
 原列表在内存中为：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/bdec075c9903308b5eb69f34f3b4cad1.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/bdec075c9903308b5eb69f34f3b4cad1.png)
 第一次执行到data.remove(i)时将第一个元素‘1’删除，列表变为：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/26822bd2c18f3bb60a2028511ca0060d.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/26822bd2c18f3bb60a2028511ca0060d.png)
 第二次执行到data.remove(i)时i为第二个元素，即‘3’，此时将‘3’删除，列表变为：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/79bbdbbe59e7d8d84f527e62a5bb581d.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/79bbdbbe59e7d8d84f527e62a5bb581d.png)
 此时列表已经没有第三个元素了，即退出循环，将[2]返回。
 如何解决这个问题呢？ 我们可以用倒序删除的方法！
 
