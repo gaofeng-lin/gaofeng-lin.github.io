@@ -35,7 +35,7 @@ chown [-R] 账号名称  文件或目录
 chown root:root test.log
 ```
 ### 修改文件权限
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f08c5be5513c4aea88cb3c13b3a2b3d7.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/f08c5be5513c4aea88cb3c13b3a2b3d7.png)
 
 ## 运行sh文件命令
 **第一种（这种办法需要用chmod使得文件具备执行条件(x): chmod u+x datelog.sh）：**
@@ -77,42 +77,42 @@ unzip -d /tmp -o test.zip //这条命令和上一条相比，可以不用询问�
 ```
 
 ### gz
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604225601664.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604225601664.png)
 注意：使用gzip压缩文件后会将原文件删除，如果想保留原文件则可以使用-c选项将压缩过程产生的标准输出写入一个新的文件中，示例如下：>的作用是覆盖内容，>>的作用是追加内容
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604230304985.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604230304985.png)
 压缩目录下的每个文件：下述命令会将123这个目录下的每个文件分别进行压缩，而不是将整个123目录进行压缩，也就是说**gzip命令不会打包压缩**
 
 解压缩也可以使用gunzip：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604225930966.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604225930966.png)
 
 ### bz2
 .bz2格式是Linux中的另一种常用压缩格式，该格式的压缩算法更先进，压缩比更高，但是压缩的时间要比.gz长，.bz2格式的压缩命令是bzip2，**注意bzip2不能压缩目录，会报错**
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604231244456.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3J1YnVsYWk=,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604231244456.png)
 解压时如果原文件已存在则会报错，因此最好先将原文件删除
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604231835998.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604231835998.png)
 ### tar
 **只是打包并不会压缩文件，.gz，.xz。这些才是压缩**
 .tar格式的打包和解打包都是使用tar命令，区别只是选项不同
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604232717559.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604232717559.png)
 打包示例：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604232744240.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604232744240.png)
 打包多个文件：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604232921456.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604232921456.png)
 解打包：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604232957741.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604232957741.png)
 
 ### .tar.gz和.tar.bz2
 **tar 压缩、解压缩都可以使用多线程**
 
 .tar.gz格式和.tar.bz2格式：使用tar命令后跟选项的方式实现tar命令和gzip或者bzip2命令的组合，实现同时进行打包和压缩，这也是最经常使用的压缩和解压缩方式
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604233644257.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604233644257.png)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604233704887.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604233704887.png)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604234051220.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190604234541328.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3J1YnVsYWk=,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604234051220.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604234541328.png)
 
 ### .tar.xz
 默认压缩后的文件后缀为 xz，速度慢一些，但是压缩的会更小。
@@ -205,9 +205,9 @@ find / -name passed—— 查找文件名为passed的文件
 ```
 
 若不指定查找类型，使用命令：find / -name AnmyTest 则会将目录和文件一同输出
-![在这里插入图片描述](https://img-blog.csdn.net/20180918104346399?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NTY4ODE0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20180918104346399.png)
 若指定查找类型，使用命令：find / -name AnmyTest -type d 则只会将目录输出
-![在这里插入图片描述](https://img-blog.csdn.net/20180918104448278?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NTY4ODE0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20180918104448278.png)
 
 
 ### 查看文件最后几行
@@ -232,10 +232,10 @@ service sshd status //查看sshd服务的状态，可以看到它的进程号，
 ```
 
 ####   lsof -i:端口号 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/76c06a2619c04918af8a7331869739fd.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/76c06a2619c04918af8a7331869739fd.png)
 可以看到 8000 端口已经被轻 nodejs 服务占用。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a9bdaa252c8c4083baf16c1e664416ac.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/a9bdaa252c8c4083baf16c1e664416ac.png)
 
 ####   netstat -tunlp | grep 端口号  <br/>
 **用于显示 tcp，udp 的端口和进程等相关情况**
@@ -246,17 +246,18 @@ service sshd status //查看sshd服务的状态，可以看到它的进程号，
 > -l 仅列出在Listen(监听)的服务状态
 > -p 显示建立相关链接的程序名
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b16427d1c6cc430080b1dae37360358c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/b16427d1c6cc430080b1dae37360358c.png)
 
 ####  kill(杀死进程)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e228676961554ebaa0725d3cad3b14c6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/e228676961554ebaa0725d3cad3b14c6.png)
 ####  telnet(检测端口是否可用)
 有时我们想知道端口是否开启。
 
 ```
 tenlet ip 端口
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/46ee47447ace457e95d472fef5ea9ea8.png)上图表示：80端口开放，8899端口未开放。
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/46ee47447ace457e95d472fef5ea9ea8.png)
+上图表示：80端口开放，8899端口未开放。
 
 
 
@@ -609,12 +610,12 @@ ssh username@ip -p port –i id_rsa //密钥登录
 
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/300494cec18445139acafaa165d99186.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/300494cec18445139acafaa165d99186.png)
 再配置VScode
 点击Remote SSH的图标后再点击箭头所指的齿轮
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/a1b38b4440e85b519ea1004ad23ae66f.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/a1b38b4440e85b519ea1004ad23ae66f.png)
 会弹出菜单让你选择需要编辑的配置文件，一般选第一个
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/112e1d35b8003716395a4ecbcf2946ac.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/112e1d35b8003716395a4ecbcf2946ac.png)
 参数的含义分别为：
 
 Host 连接的主机的名称，可自定
@@ -627,7 +628,8 @@ Port 用于登录远程主机的端口
 
 IdentityFile 本地的id_rsa的路径
 
-右键点击Connect![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/78b37be94d60822412e1640e5f980c6a.png#pic_center)
+右键点击Connect!
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/78b37be94d60822412e1640e5f980c6a.png)
 
 
 ##  设置 SSH 通过密钥登录
@@ -719,8 +721,8 @@ Server refused our key
 
 ### ssh客户端--xshell登录linux服务器
 将服务器上生成的私钥，id_rsa下载到本地。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8aa2ee35095b499c9cddaf21b877ca01.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a96ed4029057488f9ee7a6b9acae0fd3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/8aa2ee35095b499c9cddaf21b877ca01.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/a96ed4029057488f9ee7a6b9acae0fd3.png)
 
 ###  ssh-keygen命令详解
 这条命令目的是为了本地机器ssh登录远程服务器无需输入密码
