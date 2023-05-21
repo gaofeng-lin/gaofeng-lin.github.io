@@ -46,7 +46,7 @@ Makefile+make可理解为类unix环境下的项目管理工具， 而cmake是抽
 ```
 
 下面给出其关系图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20201109214319194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tQMTk5NQ==,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20201109214319194.png)
 
 ## ./configure && make && make install
 ### ./configure
@@ -98,7 +98,7 @@ linux系统上面权限是一个很重要的问题，每一个目录(/opt,/home,
 以单个用户(以yskj为例)为例，每一个用户自能在指定的目录拥有读、写、执行权限，不能访问别人的目录。一般来说是在/home/yskj/
 
 /opt等目录拥有者和组几乎全是root。比如mpi在/opt，普通用户登录可以使用吗？答案是可以的。
-![某超算的mpi权限管理示意图](https://img-blog.csdnimg.cn/cfa86e15e98542dd9f83683b8ac5a85f.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/cfa86e15e98542dd9f83683b8ac5a85f.png)
 
 上图看出两个事情。
 1. 拥有者和组都是root
@@ -113,7 +113,7 @@ linux系统上面权限是一个很重要的问题，每一个目录(/opt,/home,
  1. 拥有者–所属组–other
 
   首先很多人不明白这三个使用者的权限是什么意思。一般情况下，拥有者是这个文件的创建者，即哪个用户创建的这个文件。并且在创建新用户的时候会创建出一个同名的组，这个拥有者默认包含在这个所属组中。我们先来理一理这三者的联系去区别，对于初学者来说，我们可以把这三者想象成数学中的集合，拥有者是元素，整个Linux大环境是全集，而所属组是一个一个的小集合，看张图吧。
-  ![在这里插入图片描述](https://img-blog.csdnimg.cn/df5e37bc8da24291985501de3a71f207.png)
+  ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/df5e37bc8da24291985501de3a71f207.png)
 
 拥有者就是一个一个的小红点，每个都在自己的所属组里，而且一个拥有者可以在多个所属组里。例如：1可以在所属组1，也可以在所属组2，也可以在所属组3…可以自定义设置。other就是对于所属组1来说，除所属组1中的所有拥有者外，其他的拥有者、所属组都是other。
 　　值得注意的是，在Linux下，有一个超级用户–root，有全部的权限，凌驾一切之上。
@@ -149,8 +149,7 @@ sudo的作用是仅当前操作暂时为超级权限。当然，回车过后要�
 修改所属组：普通用户--sudo chgrp 所属组名 文件名/目录名
 ```
 Linux中，输入”ll”（小写L）或者”ls -l”可以显示文件的详细信息。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1169c2fb3ee24cf7bc749ce312dfc6a4.png)
-6e.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/1169c2fb3ee24cf7bc749ce312dfc6a4.png)
 
 
 
@@ -166,7 +165,7 @@ http://blog.csdn.net/sinat_36118270/article/details/62899093
 　　分别用“-”“r”“w”“x”表示
 　　在文件列表中，使用”ll”或者”ls -l”命令查看文件详细信息，如图：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d56f4f128b6949d3b4707ec5dab42696.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/d56f4f128b6949d3b4707ec5dab42696.png)
 
 一个文件或者目录前面共有10位前置字符，第一位表示文件类型，说到这，插一句，在Linux中可以认为“一切皆文件”，且Linux下文件不以文件后缀名区分，而是以第一个字符区分。在细分一下，文件分为:
 
@@ -224,9 +223,9 @@ http://blog.csdn.net/sinat_36118270/article/details/62899093
 　　目录的写权限决定进入这个目录后，是否可以使用“mkdir”创建目录，是否可以使用“touch”创建文件…;
 　　目录的执行权限决定是否可以进入这个目录。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0f4aa69a622d433392e9bbad7f6e347b.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a0b3663e0d2b4875a0b233142dcf8ea4.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7484fbcf90034a62801d298698bc0629.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/0f4aa69a622d433392e9bbad7f6e347b.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/a0b3663e0d2b4875a0b233142dcf8ea4.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/7484fbcf90034a62801d298698bc0629.png)
 
 
 
@@ -240,7 +239,7 @@ http://blog.csdn.net/sinat_36118270/article/details/62899093
 　　所以我们要在更改umask后，计算文件权限时，基础上也不能加上拥有者和所属组的执行权限以及other的写和执行权限，除非更改的权限值给他们中的一个或多个赋上了相应的权限。
 　　umask可以自己更改，直接敲出来umask “0xxx”就ok。此后，我们的权限就为“664-xxx”
 　　
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3de223ac270642e6a5781b23c68da8d1.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/3de223ac270642e6a5781b23c68da8d1.png)
 
 初始值为：“rw-rw-r–”即为“664”
 　　我们设置的umask=032，即为“— -wx -w- ”,
@@ -299,7 +298,7 @@ gcc -v
 
 首先，安装的devtoolset是在 /opt/rh 目录下的，如图
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/ffc7754914805bcf1ad41891e9405fa5.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/ffc7754914805bcf1ad41891e9405fa5.png)
 每个版本的目录下面都有个 enable 文件，如果需要启用某个版本，只需要执行
 
 ```
@@ -332,11 +331,11 @@ g++ --version
 ## 分区+挂载
 ### 分区
 详细信息：[来源该博客](https://blog.csdn.net/qq_30604989/article/details/81163270)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/edd06e4319f24f1092d6f7bba9955937.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/edd06e4319f24f1092d6f7bba9955937.png)
 
  1. 在linux下，一个硬盘要先分区，然后才能挂载到目录上。和windows相同。
  
- ![在这里插入图片描述](https://img-blog.csdnimg.cn/a8ef1355fa2f4595a7b69da0b0bb50ec.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+ ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/a8ef1355fa2f4595a7b69da0b0bb50ec.png)
 
 
 **问题：如何确定文件或目录在那个磁盘分区？**
@@ -348,16 +347,16 @@ df -h /home/test.txt
 
 通过上面的命令就可以看出文件或目录是在那个磁盘分区里面
 
-![Snipaste_2022-05-19_15-34-43.png](https://s2.loli.net/2022/05/19/8UEfapmwxb6zjSu.png)
+![](https://s2.loli.net/2022/05/19/8UEfapmwxb6zjSu.png)
 
 ### 挂载
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0189f5afb0f24dde85c540fc5b8c887f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/0189f5afb0f24dde85c540fc5b8c887f.png)
 
 ```
 fdisk /dev/sdb
 ```
 这一步是对sdb这个磁盘分区。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/bde5f9eba20b477bbeb551a9cb4bc246.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/bde5f9eba20b477bbeb551a9cb4bc246.png)
 接下来是格式化：
 
 ```
@@ -385,7 +384,7 @@ vim /etc/fstab
 umount 设备名
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d9ca57a5c9bf44589498a26a8baea9e5.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/d9ca57a5c9bf44589498a26a8baea9e5.png)
 
 
 ## 远程调用shell脚本找不到库
