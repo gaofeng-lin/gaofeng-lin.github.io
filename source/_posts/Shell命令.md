@@ -713,7 +713,7 @@ echo"123abc"|cut -b 2,5
 
 **-c**
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/524756e2e6810b93cd8fac228f2b4b9d.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151027.png)
 
 
 
@@ -913,7 +913,7 @@ fi
 
 ### 实战：统计文章单词情况
 这里想要统计Martin Luther King在1963年著名的**I have a dream**演讲中都使用了哪些词，哪些是高频词，单词字长如何。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4f3976bb28594f89ab73d74c1d5b4448.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151123.png)
 思路：
 高频词统计：将所有单词单行输出，删除空行，删除`,./?`等非字母符号，用sort排序后使用uniq统计即可。
 字长频数统计：将所有单词单行输出，删除空行，删除`,./?`等非字母符号，使用while循环遍历每个单词，使用
@@ -946,7 +946,7 @@ done |\
 ## 用while和read每次读入一个单词，使用${#word}统计单词长度
 sort |uniq -c|sort -nr|column -t|head
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/bf86067e7f744920971af70e7249ade9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_12,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151139.png)
 
 
 ## 字符串切割
@@ -972,7 +972,7 @@ do
    echo $var
 done 
 ```
-![在这里插入图片描述](https://img-blog.csdn.net/20180620184523515?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwMDM4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151159.png)
 ### 设置分隔符，通过 IFS 变量
 原理
 
@@ -1018,7 +1018,7 @@ do
    echo $var
 done
 ```
-![在这里插入图片描述](https://img-blog.csdn.net/20180620203358805?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwMDM4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151216.png)
 
 ### 利用tr 指令实现字符替换
 详细内容可自行查看
@@ -1029,26 +1029,26 @@ done
 
 ## sed脚本命令
 [原文链接](http://c.biancheng.net/view/4028.html)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1724ef524d524053baa16d8b017e1dab.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151235.png)
 ###  sed s 替换脚本命令
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5735a03bf5184e1f8dc331995681fe82.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151254.png)
 ### sed d 替换脚本命令
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f4fff30466b04a079135ed30bba88b31.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151312.png)
 ### sed a 和 i 脚本命令 （插入）
-![在这里插入图片描述](https://img-blog.csdnimg.cn/93d8f2644c724f7096a0e63ebee6f321.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151328.png)
 ### sed c 替换
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/46aa3e463a4c4862a26f072b92ca7de6.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151344.png)
 
 ### sed y 转换
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3b2687b3243d4cfb9ae3eb4c573d7572.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151402.png)
 ### sed w 文本指定内容写入文件
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e45887cef70843378c1df10dc9b62d47.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151419.png)
 ### sed p 搜索符号条件的行，并输出该行的内容
-![在这里插入图片描述](https://img-blog.csdnimg.cn/454d384ba076457bbd5f69cd0c15d87b.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151435.png)
 ### sed r 将一个独立文件的数据插入到当前数据流的指定位置
-![在这里插入图片描述](https://img-blog.csdnimg.cn/42d7c0ef765a4836b0f6c7c0428ff74d.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151451.png)
 ### sed q 使 sed 命令在第一次匹配任务结束后，退出 sed 程序，不再进行对后续数据的处理
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f168c4bc5a7848d48c3d716256d8141f.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151508.png)
 ## sed address 寻址方式
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b380fad553d041a08afc6106e4b23ccd.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522151525.png)

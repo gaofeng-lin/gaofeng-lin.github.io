@@ -42,19 +42,19 @@ yum list docker-ce --showduplicates | sort -r
 ```
 vi /etc/docker/daemon.json //没有这个文件也无妨，直接创建就好
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/cecd311ce895425cafdd7a8edf9a376a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/cecd311ce895425cafdd7a8edf9a376a.png)
 这个地址的来源：
 访问阿里云这个网址，要先登录：[镜像加速页面](https://cr.console.aliyun.com/?spm=a2c6h.12873639.0.0.7aec4073HlA7e2#/accelerator)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/641489fc54e74da0b71ef979826d1a3f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522150025.png)
 ###  docker启动失败
 **错误1：**
 如图所示：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/56ed8bac9f524db3b2dbf64efaff96a0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522150048.png)
 原因：
 
 当时在 /etc/docker/daemon.json  添加了一行，但是忘了在第一行后面添加 "逗号"，加上就好。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7c623f0bb0114b33a4f91a93a9da0450.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522150106.png)
 
 
 
@@ -65,7 +65,7 @@ docker启动失败，有一个可能就是包（jar,war）有问题。可以先�
 ## 镜像、仓库的关系
 docker可以把服务和需要的库一起打包
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b935cbc86c8646b9a348f85b833ee48f.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522150124.png)
 1.	拉取镜像
 2.	Docker build
 3.	镜像->容器 docker run
@@ -82,7 +82,7 @@ docker可以把服务和需要的库一起打包
 
 
 ## docker基本操作
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b09b2d48438e4f24916b1453fe2d3207.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522150146.png)
  
 ### 镜像命令
 
@@ -198,7 +198,7 @@ docker system prune -a
 docker info
 ```
 可以看到docker的根路径是 /var/lib/docker
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2020032518583212.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522150209.png)
 查看docker根路径的磁盘占用率
 
 ```bash

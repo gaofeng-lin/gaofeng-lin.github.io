@@ -49,7 +49,7 @@ SQL 标准共定义了 3 种并发异常，这三种异常分别是脏读（Dirt
 
 脏读指的是读到了其他事务未提交的数据，未提交意味着这些数据可能会回滚，也就是可能最终不会存到数据库中，也就是不存在的数据。读到了并一定最终存在的数据，这就是脏读。
 
-![在这里插入图片描述](https://pics7.baidu.com/feed/d01373f082025aaf5be5454896a1dd6d024f1a37.jpeg?token=15d738bce1e19daf55fa99c5fc036539)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/d01373f082025aaf5be5454896a1dd6d024f1a37.jpeg)
 
 **脏读最大的问题就是可能会读到不存在的数据。**
 
@@ -89,7 +89,7 @@ SQL 标准共定义了 3 种并发异常，这三种异常分别是脏读（Dirt
 最终 事务A 提交事务，发现报错了。这就很奇怪，查的时候明明没有这条记录，但插入的时候 却告诉我 主键冲突，这就好像幻觉一样。这才是所有的幻读。
 
 ### 事务隔离级别
-![Snipaste_2022-05-21_23-28-56.png](https://s2.loli.net/2022/05/21/A3Gb6Rtfmr571yE.png)
+![](https://s2.loli.net/2022/05/21/A3Gb6Rtfmr571yE.png)
 上面的隔离级别由上往下，级别依次会提高，但消耗的性能也会依次提高。我们总结一下四种隔离级别：
 
 1. 读未提交：允许读未提交数据，可能会发生脏读、不可重复读和幻读异常；
@@ -100,11 +100,11 @@ SQL 标准共定义了 3 种并发异常，这三种异常分别是脏读（Dirt
 ### 数据类型
 MySQL 支持多种类型，大致可以分为三类：数值、日期/时间和字符串(字符)类型。
 #### 数值类型
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c1dbf744928b4225aca0777923efbdb9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/c1dbf744928b4225aca0777923efbdb9.png)
 #### 日期和时间
-![在这里插入图片描述](https://img-blog.csdnimg.cn/dca2d56f9cf9450e92c8ecec362a8d05.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/dca2d56f9cf9450e92c8ecec362a8d05.png)
 #### 字符串类型
-![在这里插入图片描述](https://img-blog.csdnimg.cn/96f697d0ac234fb8b92b4b72a3da027e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/96f697d0ac234fb8b92b4b72a3da027e.png)
 
 ## Mysql语句
 
@@ -136,7 +136,7 @@ PRIMARY KEY关键字用于定义列为主键。 您可以使用多列来定义�
 ENGINE 设置存储引擎，CHARSET 设置编码。
 
 实例2：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ff323136692f4472847f83481071002e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/ff323136692f4472847f83481071002e.png)
 int(10)的意思是假设有一个变量名为id，它的能显示的宽度能显示10位。在使用id时，假如我给id输入10，那么mysql会默认给你存储0000000010。当你输入的数据不足10位时，会自动帮你补全位数。假如我设计的id字段是int(20)，那么我在给id输入10时，mysql会自动补全18个0，补到20位为止。
 
 **int(M)的作用于int的范围明显是无关的，int(M)只是用来显示数据的宽度，我们能看到的宽度。当字段被设计为int类型，那么它的范围就已经被写死了（看上面的1.1节的内容），与M无关。**
@@ -244,7 +244,7 @@ alter table person_param add column `module_name` VARCHAR(20) after `product_id`
 ```
 
 #### 修改字段类型及名称
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3b1fe134a6ee4169be9014e24667eced.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/3b1fe134a6ee4169be9014e24667eced.png)
 
 #### 删除的几种情况
 1. drop table table_name
@@ -410,9 +410,9 @@ echo"数据库改变完成"
 [下载网址，可选操作系统](https://dev.mysql.com/downloads/mysql/)
 
 进入后依次选择：DOWNLOADS（下载）——>Community(社区)——MySQL Community Downloads
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d11d8469ebcd411faf3c9b67c4f4e02b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/d11d8469ebcd411faf3c9b67c4f4e02b.png)
 进入后往下拉，如下图选择Looking for previous GA versions（寻找以前的GA版本）
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1371dd641c0e4c3ab54e10660e5907ed.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/1371dd641c0e4c3ab54e10660e5907ed.png)
 
 ###  centos安装mysql
 本地下载mysql，但是xftp上传太慢，暂未找到解决的办法，所以尝试下面这个方法。
@@ -433,7 +433,7 @@ yum -y install mysql57-community-release-el7-10.noarch.rpm
 yum -y install mysql-community-server
 ```
 这步可能会花些时间，安装完成后就会覆盖掉之前的mariadb。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/000f9e71988a495bb16d7f886050e5f7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_18,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/000f9e71988a495bb16d7f886050e5f7.png)
 至此MySQL就安装完成了，然后是对MySQL的一些设置。
 
 **2 MySQL数据库设置**
@@ -443,7 +443,7 @@ systemctl start  mysqld.service // 首先启动MySQL
 
 systemctl status mysqld.service //查看MySQL运行状态
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/acda61b3da8b4837ad7bdf9020468ea1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/acda61b3da8b4837ad7bdf9020468ea1.png)
 此时MySQL已经开始正常运行，不过要想进入MySQL还得先找出此时root用户的密码，通过如下命令可以在日志文件中找出密码：
 
 ```
@@ -472,7 +472,7 @@ mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'new password';
 ```
  SHOW VARIABLES LIKE 'validate_password%';
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0d3db11aae794c05adf48c94ade4094b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/0d3db11aae794c05adf48c94ade4094b.png)
 首先需要设置密码的验证强度等级，设置 validate_password_policy 的全局参数为 LOW 即可
 
 ```
@@ -513,7 +513,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
 #### 忘记密码
 **1.设置MySQL为免密码登录**
 `vi /etc/my.cnf` (部分Linux安装了vim，其命令则改为`vim /etc/my.cnf`)按【i】键进入编辑模式，在[mysqld]下面加上“skip-grant-tables”，按【Esc】键，然后输入“:wq”保存并退出vi。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190927141449601.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NndGNzZG4=,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190927141449601.png)
 
 **重新启动MySQL服务（使配置生效，此步骤不能省略）**
 
@@ -580,7 +580,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY 'snaiL_123';
 ```
 select user,host from user;
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190927141940582.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190927141940582.png)
 
 2.2注意看，我的host是“%”，你输入的命令可能是：
 
@@ -609,7 +609,7 @@ use mysql;
 select host from user where user='root';
 ```
 可以看到当前主机配置信息为localhost.
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e4dee3a582374c6eba09244e9b947247.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/e4dee3a582374c6eba09244e9b947247.png)
 3.将Host设置为通配符%
 
 Host列指定了允许用户登录所使用的IP，比如user=root Host=192.168.1.1。这里的意思就是说root用户只能通过192.168.1.1的客户端去访问。 user=root Host=localhost，表示只能通过本机客户端去访问。而%是个通配符，如果Host=192.168.1.%，那么就表示只要是IP地址前缀为“192.168.1.”的客户端都可以连接。如果Host=%，表示所有IP都有连接权限。 
@@ -624,7 +624,7 @@ update user set host = '%' where user ='root';
 
 Host设置了“%”后便可以允许远程访问。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8a3b8bb5074a4f8b9132a2eebdec3301.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_14,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/8a3b8bb5074a4f8b9132a2eebdec3301.png)
 
 4..Host修改完成后记得执行flush privileges使配置立即生效
 

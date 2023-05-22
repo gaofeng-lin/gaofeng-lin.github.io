@@ -54,7 +54,7 @@ git config --global user.email "github注册邮箱"
 ```
 git log -- <file>  //主要，这个文件要在当前目录才能直接输文件名，否则要给出路径
 ```
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/b1dc02f3dc8d4c888f7d98443524a64f.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/b1dc02f3dc8d4c888f7d98443524a64f.png)
 
 ###  查看每次提交的内容差异
 
@@ -66,7 +66,7 @@ git log -p -2 -- <file>
 > 
 > 说明：该选项除了显示基本信息之外，还在附带了每次 commit 的变化。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/381402cab6344a00b05b3a42fe128a60.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/381402cab6344a00b05b3a42fe128a60.png)
 ###  根据哈希值查看修改代码细节
 
 ```
@@ -96,7 +96,7 @@ git log --word-diff -- <file>
 
 > 说明：进行单词层面的对比常常是没什么用的。不过当你需要在书籍、论文这种很大的文本文件上进行对比的时候，这个功能就显出用武之地了。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/dbf8557886aa4e16905b75a0fc368c29.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/dbf8557886aa4e16905b75a0fc368c29.png)
 **提示：新增加的单词被 {+ +} 括起来，被删除的单词被 [- -] 括起来。**
 
 ###  图形化查看提交历史
@@ -108,7 +108,7 @@ gitk -- <file>
 > 说明：随 Git 一同发布的 gitk 就是这样一种工具。它是用 Tcl/Tk 写成的，基本上相当于 git log 命令的可视化版本，凡是
 > git log 可以用的选项也都能用在 gitk 上。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/b981ba602f044894b93bf19d74116145.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/b981ba602f044894b93bf19d74116145.png)
 **
 
 > gitk中文乱码问题
@@ -231,7 +231,7 @@ git log --left-right dev...master
 ###  分支的使用
 
 **mster代表主分支，最终的代码都整合到这里面去，我们可以看下**
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/fcc0d993653e42e7a48a10d25328f11e.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/fcc0d993653e42e7a48a10d25328f11e.png)
 
 **这里只有一个主分支master。
 有一种情况就是，一个项目多人开发，我的任务需要开发一个功能，我没办法短时间内就开发测试等等一系列完成。所以我可以新建一个分支，然后把每次完成的代码都上传到这个分支里面去，最后等到所有操作都完成后，我再把这个分支整合到master中去。下面看步骤**
@@ -243,7 +243,7 @@ git branch -a
 ```
 
 -a代表查看本地和远程的分支，此时我们看到都只有一个master分支
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/8e219832c5df4eef8c7da9dce7cd1829.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/8e219832c5df4eef8c7da9dce7cd1829.png)
 
 
 2.新建分支dev
@@ -269,17 +269,17 @@ git push origin dev
 **注意push时要到dev分支**
 
 成功后我们去coding看已经有了dev，并且dev下有b.js，而master没有b.js
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/ca05925c026f48d4af3cc08ced1632da.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/ca05925c026f48d4af3cc08ced1632da.png)
 
 
 master：
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/abc1cba6a233436a8a4731ec90324646.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/abc1cba6a233436a8a4731ec90324646.png)
 
 
 我们可以再去看看分支情况，
 
 git branch -a
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/5323471b84664e88b25f3f6228da4e74.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/5323471b84664e88b25f3f6228da4e74.png)
 
 
 此时已经有了两个分支，且当前位于dev分之下
@@ -369,7 +369,7 @@ git merge dev
 ```
 
 merge整合操作，把dev整合到当前分之下（当前分支为master）。会提示增加了东西
-![在这里插入图片描述](https://img-blog.csdnimg.cn/249f2d65516c483a9517f8ce5affb72f.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/249f2d65516c483a9517f8ce5affb72f.png)
 
 
 4.由于当前的东西已经在本地仓库里面了，所以最后我们再执行push，到远程仓库的master
@@ -380,7 +380,7 @@ git push origin master
 
 
 成功后你可看到，master下已经有b.js文件了
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1f2c3d8b692b42619534a683d2c3f21a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_11,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/1f2c3d8b692b42619534a683d2c3f21a.png)
 
 
 
@@ -482,8 +482,8 @@ git push origin --delete master
 
 ###  将本地代码上传到远程仓库
 1.（电脑里得先下载git）登录coding，新建一个仓库，点击代码浏览可以看到
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/dfad51be62a440cd86b764c2e4f16487.png)
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/7063830ad8194b8792977f5750a8d1d4.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/dfad51be62a440cd86b764c2e4f16487.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/7063830ad8194b8792977f5750a8d1d4.png)
 2.在本地新建一个文件夹，作为项目根目录，再此启动 Git Bash ，进入目录，并输入
 
 ```

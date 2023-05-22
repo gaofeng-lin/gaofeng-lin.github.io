@@ -27,7 +27,7 @@ two.txt:
 预期应该为商品，单价，数量。
 
 修改最后一行的print
-![](https://img-blog.csdnimg.cn/be1c33ec8b6e4593806ab989758d5641.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/be1c33ec8b6e4593806ab989758d5641.png)
 ###  打包pip install 包
 
 > 背景：内网需要安装python和一些包，无法连互联网，只能外网下载再u盘拷过去。

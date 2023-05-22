@@ -28,7 +28,7 @@ Java代码在计算机中的三个阶段
  - 2.Class类对象阶段：*.class字节码文件被类加载器加载进内存，并将其封装成Class对象（用于描述在内存中描述字节码文件），Class对象将原字节码文件中的成员变量，构造函数，方法等的做了封装。
  - 3.Runtime运行阶段：创建对象的过程new
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509170218257.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI3MTA4Ng==,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20200509170218257.png)
 
 
 #### 获取Class对象
@@ -77,7 +77,7 @@ public class ReflectDemo {
     }
 }
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509171516530.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI3MTA4Ng==,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20200509171516530.png)
 两个true表示Class对象是同一个。
 
 
@@ -175,7 +175,7 @@ public class Person {
             System.out.println(field);
         }
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2020050917325871.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2020050917325871.png)
 **获取特定的成员变量（public）**
 
 ```java
@@ -189,7 +189,7 @@ public class Person {
         a.set(person,"haha");
         System.out.println(person);
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509173350461.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20200509173350461.png)
 
 **获取全部的成员变量**
 
@@ -202,7 +202,7 @@ public class Person {
         System.out.println("==============================");
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509173421562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI3MTA4Ng==,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20200509173421562.png)
 **获取特定的成员变量，在这里如果需要对private进行修改，就必须进行暴力反射，将d.setAccessible(true);设置为true**
 
 ```java
@@ -213,7 +213,7 @@ System.out.println("==============================");
         d.set(person,"222");
         System.out.println(person);
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509173436455.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20200509173436455.png)
  **普通方法获取**
 获取指定名称的方法（不带参数的获取）
 
@@ -225,7 +225,7 @@ Class<Person> personClass = Person.class;
         eat.invoke(person);//执行方法
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/202005091739379.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/202005091739379.png)
 获取指定名称的方法（带参数获取）
 
 ```java
@@ -234,7 +234,7 @@ Class<Person> personClass = Person.class;
         eat1.invoke(person,"fans");
         System.out.println("===============================");
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509173946494.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20200509173946494.png)
 获取方法列表
 
 ```java
@@ -243,7 +243,7 @@ Method[] methods = personClass.getMethods();
             System.out.println(method);//继承的方法也会被访问（前提是方法是public）
         }
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509174104725.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI3MTA4Ng==,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20200509174104725.png)
 如果设置的方法中含有私有的方法，也可以设置d.setAccessible(true);设置为true，然后就可以访问私有方法。
 
 **构造方法**
@@ -264,7 +264,7 @@ Class<Person> personClass = Person.class;
         Person person = constructor1.newInstance();
         System.out.println(person);
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509174551558.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20200509174551558.png)
 获取有参数的构造器
 ```java
 //获取有参
@@ -277,7 +277,7 @@ Class<Person> personClass = Person.class;
         System.out.println(person2);
         //对于getDeclaredConstructor方法和getDeclaredConstructors方法,此外在构造器的对象内也有setAccessible(true);方法，并设置成true就可以操作了。
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509174655701.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20200509174655701.png)
 
 #### 简单框架设计、理解反射好处
 准备测试类
@@ -360,14 +360,14 @@ public class ReflectTest {
     }
 }
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2020050917521036.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2020050917521036.png)
 改变配置文件
 
 ```java
 className = com.company.reflect.domain.Person
 methodName = eat
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200509175301411.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20200509175301411.png)
 
 好处
 我们这样做有什么好处呢，对于框架来说，是人家封装好的，我们拿来直接用就可以了，而不能去修改框架内的代码。但如果我们使用传统的new形式来实例化，那么当类名更改时我们就要修改Java代码，这是很繁琐的。修改Java代码以后我们还要进行测试，重新编译、发布等等一系列的操作。而如果我们仅仅只是修改配置文件，就来的简单的多，配置文件就是一个实实在在的物理文件。
@@ -402,7 +402,7 @@ toString()  返回String类的对象
 ```
 
 先看一段String类的字符串拼接的代码。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/388de719a9f6ee002b965e622dc87c46.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/388de719a9f6ee002b965e622dc87c46.png)
 
 String s = "hello" 会在常量池开辟一个内存空间来存储”hello"。
 
@@ -482,7 +482,7 @@ public class String12 {
 [原文链接](https://blog.csdn.net/shimiso/article/details/8595564)
 
 ### 内存表示图
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/02e0fdf7e9d05a24f1b00895c1726f04.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/02e0fdf7e9d05a24f1b00895c1726f04.png)
 
  - l 寄存器：JVM内部虚拟寄存器，存取速度非常快，程序不可控制。
  - l 栈：保存局部变量的值，包括：1.用来**保存基本数据类型的值**；2.保存**类的实例**，即堆区对象的引用(指针)。也可以用来保存加载方法时的帧。
@@ -491,7 +491,7 @@ public class String12 {
  - l 代码段：用来存放从硬盘上读取的源程序代码。
  - l 数据段：用来存放static定义的静态成员。
 
-![在这里插入图片描述](https://img-blog.csdn.net/20180607221353561#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20180607221353561.png)
 
 
  - Byte Short Double等包装类也是类，属于引用数据类型。
@@ -505,38 +505,38 @@ public class String12 {
 
 
 ### 案例1
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/e66638ef11aa279b0b6fd9cd9d559044.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/e66638ef11aa279b0b6fd9cd9d559044.png)
 1.JVM自动寻找main方法，执行第一句代码，创建一个Test类的实例，在栈中分配一块内存，存放一个指向堆区对象的指针110925。
 
 2.创建一个int型的变量date，由于是基本类型，直接在栈中存放date对应的值9。
 
 3.创建两个BirthDate类的实例d1、d2，在栈中分别存放了对应的指针指向各自的对象。他们在实例化时调用了有参数的构造方法，因此对象中有自定义初始值。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/705d238bc74dcccff8b69184132da30c.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/705d238bc74dcccff8b69184132da30c.png)
 调用test对象的change1方法，并且以date为参数。JVM读到这段代码时，检测到i是局部变量，因此会把i放在栈中，并且把date的值赋给i。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/352eb6cc1d1356088c01eff85f968f29.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/352eb6cc1d1356088c01eff85f968f29.png)
 
 把1234赋给i。很简单的一步。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/17a915e436d6d65fac2429a7a11b8866.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/17a915e436d6d65fac2429a7a11b8866.png)
 change1方法执行完毕，立即释放局部变量i所占用的栈空间。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/c26f92c212ed59baec902643ce847cdb.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/c26f92c212ed59baec902643ce847cdb.png)
 调用test对象的change2方法，以实例d1为参数。JVM检测到change2方法中的b参数为局部变量，立即加入到栈中，由于是引用类型的变量，所以b中保存的是d1中的指针，此时b和d1指向同一个堆中的对象。在b和d1之间传递是指针。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/de5ed94481f833da822dae4b0ba7829c.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/de5ed94481f833da822dae4b0ba7829c.png)
 
 change2方法中又实例化了一个BirthDate对象，并且赋给b。在内部执行过程是：在堆区new了一个对象，并且把该对象的指针保存在栈中的b对应空间，此时实例b不再指向实例d1所指向的对象，但是实例d1所指向的对象并无变化，这样无法对d1造成任何影响。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/a5962e6481115a3701e9af607d7dbef5.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/a5962e6481115a3701e9af607d7dbef5.png)
 change2方法执行完毕，立即释放局部引用变量b所占的栈空间，注意只是释放了栈空间，堆空间要等待自动回收。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/320c1cc9ffa2cb1765dce52ab4e78512.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/320c1cc9ffa2cb1765dce52ab4e78512.png)
 
 调用test实例的change3方法，以实例d2为参数。同理，JVM会在栈中为局部引用变量b分配空间，并且把d2中的指针存放在b中，此时d2和b指向同一个对象。再调用实例b的setDay方法，其实就是调用d2指向的对象的setDay方法。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/7085e0609e9a98b2cd813f7321083938.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/7085e0609e9a98b2cd813f7321083938.png)
 调用实例b的setDay方法会影响d2，因为二者指向的是同一个对象。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/20781e5bcd02ed64fce2f1f20a8f4c8d.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20781e5bcd02ed64fce2f1f20a8f4c8d.png)
 change3方法执行完毕，立即释放局部引用变量b。
 
 
@@ -761,7 +761,7 @@ CLASSPATH = . 这一步可以不用设。
 
 ### JDK 和 JRE 的区别
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7b9ff76b66e949fc9a04515e960b9de4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_18,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/7b9ff76b66e949fc9a04515e960b9de4.png)
 从图中可以看出JDK包含JRE包含JVM...
 
  
@@ -975,7 +975,7 @@ s.length()
 
 和 String 类不同的是，StringBuffer 和 StringBuilder 类的对象能够被多次的修改，并且不产生新的未使用对象。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/cdb4cc2d3e374b40bdb8a0a5897606c1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/cdb4cc2d3e374b40bdb8a0a5897606c1.png)
 
 在使用 StringBuffer 类时，每次都会对 StringBuffer 对象本身进行操作，而不是生成新的对象，所以如果需要对字符串进行修改推荐使用 StringBuffer。
 
@@ -1266,7 +1266,7 @@ Character.toUpperCase(char c)　//字母转换为大写字母字符
 ### 集合
 Java 中集合主要分为java.util.Collection和java.util.Map两大接口。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/87ff2a104a409b2942cbb33fd43efeee.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/87ff2a104a409b2942cbb33fd43efeee.png)
 
 图表最下方的ArrayList、LinkedList、HashSet以及HashMap都是常用实现类。
 
@@ -1452,7 +1452,7 @@ public class Sort {
 }
 ```
 结果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/ccfb2d08efa818a82b206d9ed8054630.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/ccfb2d08efa818a82b206d9ed8054630.png)
 
 
 **sort第二种重载（降序）：**
@@ -1489,7 +1489,7 @@ public class Sort {
 }
 ```
 结果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/5bce696faab5422217b9fd87c15c610b.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/5bce696faab5422217b9fd87c15c610b.png)
 看到这里，对 `Comparator`这个词多关注下
 
 #### 排序对象不是基本数据类型
@@ -1562,7 +1562,7 @@ public class SortDemo {
 }
 ```
 结果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/2a13ef90ac25d9d1c73a21f774ce4611.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2a13ef90ac25d9d1c73a21f774ce4611.png)
 
 **sort方法小结：**
 实现了Comparable接口的类都可以用sort方法进行排序，默认的排序方法是升序；如果想进行降序排序，只需把Collections.reverseOrder作为第二个参数传给sort方法。
@@ -1576,10 +1576,10 @@ int compare(T o1,T o2)
 o1 > o2，返回正数；o1 = o2，返回0；o1 < o2，返回负数。
   从前面的例子可以看出，可以使用Comparator对象来控制sort的排序方法，这是如何实现的？查看sort方法的相关源码，我发现其中有这样一段代码：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/da415407eb899af9aab66f06ba75028a.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/da415407eb899af9aab66f06ba75028a.png)
 注意看图中用红线框起来的部分。经分析可知，这段代码实现了这样的逻辑：如果compare的返回值为正数，就交换进行比较的两个元素的位置。于是可以得出这样一个结论，如果让 x > y 时compare(x,y)返回正数，那么交换 x 和 y 的位置后大的元素在后，这就实现了升序排序；反之，如果让 x < y 时compare(x,y)返回正数，那么交换位置后小的元素在后，这就实现了降序排序。这就是Comparator对象控制排序方式的原理。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/69bf5bc0fb7fa88c13d7a45defa84b1c.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/69bf5bc0fb7fa88c13d7a45defa84b1c.png)
 
 通过Comparator对象来实现点对象的降序排序，一种可行的实现方式如下：
 
@@ -1654,7 +1654,7 @@ public class SortDemo {
 }
 ```
 结果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/997282c1a828c3c32ff7ed4600419ccd.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/997282c1a828c3c32ff7ed4600419ccd.png)
 ### Arrays.sort()
 [原文](https://www.cnblogs.com/SupremeBoy/p/12717532.html)
 Arrays.sort()是经过调优排序算法，性能能达到n*log(n)
@@ -1957,9 +1957,9 @@ public class ArraysSort {
 2.使用 instanceof 来判断：`变量名 instanceof 类型`来判断。
 
 1.使用反射的方法来判断
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/2c5f884df06f5761442c47f2e648a233.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2c5f884df06f5761442c47f2e648a233.png)
 2.使用 instanceof 来判断
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/911efc74c4904e65843c8411be1308d1.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/911efc74c4904e65843c8411be1308d1.png)
 
 
 

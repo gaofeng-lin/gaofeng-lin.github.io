@@ -27,7 +27,7 @@ abbrlink: 10033
 AOP是通过代理的方式实现的，由代理对象持有原对象，在执行原对象目标方法的前后可以执行额外的增强代码。
 代理对象需要是原对象接口的实现或原对象的子类，这样就可以在对象引用处直接替换原对象。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210514185607752.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIwOTgwMjE=,size_16,color_FFFFFF,t_70)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20210514185607752.png)
 
 **代理方式分静态代理和动态代理，区别在于代理对象生成方式不同**
 
@@ -57,10 +57,10 @@ AOP均有三个关注点：**切面增强内容、何地切入、何时切入**
 ### SSM（Spring+SpringMVC+MyBatis）架构
 #### 工作原理
 1.SSM系统架构
-![在这里插入图片描述](https://img-blog.csdnimg.cn/fd51aa6838fd4315ac1df679eb3500e5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/fd51aa6838fd4315ac1df679eb3500e5.png)
 
 2.执行流程
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0a57266814cb4fe395124ce40ea590a4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6IiU54uXMeWPtw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/0a57266814cb4fe395124ce40ea590a4.png)
 
 ### MSCM(model ,service, controller ,mapper)
 ***mapper的中文意思是映射器；mapper和dao是一个东西，叫法不同。***
@@ -99,7 +99,7 @@ AOP均有三个关注点：**切面增强内容、何地切入、何时切入**
 **六: 它们之间的关系：**
       建立了DAO层后才可以建立Service层，而Service层又是在Controller层之下的，因而Service层应该既调用DAO层的接口，又要提供接口给Controller层的类来进行调用，它刚好处于一个中间层的位置。每个模型都有一个Service接口，每个接口分别封装各自的业务处理方法。
 
-![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zczMuYmRzdGF0aWMuY29tLzcwY0Z2OFNoX1ExWW54R2twb1dLMUhGNmhoeS9pdC91PTY1ODc1NzYzNCwzMTUzMjQ0OTA1JmZtPTI2JmdwPTAuanBn?x-oss-process=image/format,png#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/aHR0cHM6Ly9zczMuYmRzdGF0aWMuY29tLzcwY0Z2OFNoX1ExWW54R2twb1dLMUhGNmhoeS9pdC91PTY1ODc1NzYzNCwzMTUzMjQ0OTA1JmZtPTI2JmdwPTAuanBn.png)
 另一个图的解释：
 实体类这一层，有的开发写成pojo，有的写成model，也有domain，也有dto（这里做参数验证，比如password不能为空等），实体类如果你不懂什么东西的话，那你就想成是范围。
 
@@ -108,49 +108,49 @@ mapper 是Mybatis 操作数据库的那一层，就是dao层。
 service包含了serviceImpl（service接口的实现类） 是提供给controller 使用的，针对于某些业务将 dao 的对于某些表的crud进行组合，也就是说间接的和数据库打交道。
 
 controller 通过调用service来完成业务逻辑。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190806101012614.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNjQ3OTk5,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20190806101012614.png)
 
 ### JavaWeb三层架构
 **（Servlet(Controller),service,dao）**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1f793bb259964619876d3efb18303f2e.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/1f793bb259964619876d3efb18303f2e.png)
 
 第一层Servlet,也叫controller层，处理JSP页面传输的数据，一般通过request.getParameter获取表单中属性为name参数中的value值，在Servlet层中一般会通过new的方式创建一个Service。如
 
 UserService userService = new UserServiceimpl();因为一般Service层会创建一个接口写一些方法（userService）,并创建一个实现类实现这个接口(UserServiceImpl)。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a9a95bf4b1204f3cb542a1f22bb5094a.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/a9a95bf4b1204f3cb542a1f22bb5094a.png)
 service层用来处理一些前端传输过来一些数据进行数据库的增删改查，或者处理DAO层从数据库获取的数据，例如对数据进行分页。因为需要调用DAO层，所以也需要new一个DAO层。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9ef53b31f1034ac1bb14e47506482bed.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/9ef53b31f1034ac1bb14e47506482bed.png)
 
 对数据进行分页
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7ae167596761457c991e6dd569b2cc2b.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/7ae167596761457c991e6dd569b2cc2b.png)
 
 UserDao userDao = new UserDaoImpl;
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9d1e342190fd41a7882915823fc74508.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/9d1e342190fd41a7882915823fc74508.png)
 Dao层是用来与数据库进行交互，也就是增删改查。可以通过前端传输过来的数据对用户的信息进行增删改查。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/92f11628821e46c48e9dbedc1901b23d.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/92f11628821e46c48e9dbedc1901b23d.png)
 
 ### Spring IOC
 1.xml配置文件利用反射获取class对象
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4a0f6bab3f814b2eb88ce5bf7a0752dd.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/4a0f6bab3f814b2eb88ce5bf7a0752dd.png)
 2. 获取容器、获得bean对象、使用方法。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6a34e9ded1434451bd7a166d18c3aa5e.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/6a34e9ded1434451bd7a166d18c3aa5e.png)
 
 ### Spring AOP
 [原文](https://blog.51cto.com/u_14625481/3485049)
 
 **IOC让模块之间解耦，AOP让JAVA动起来。**
 AOP相对应的一个词叫OOP，AOP（Aspect Oriented Programming），即面向切面编程。OOP主要是为了实现编程的重用性、灵活性和扩展性。它的几个特征分别是继承、封装、多态和抽象。OOP重点体现在编程架构，强调的是类之间的层次关系。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0f7647b2c8414917924b5be5a50f2f69.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/0f7647b2c8414917924b5be5a50f2f69.png)
 看到上面的图，我们暂时还不能发现有什么问题。为了大家便于理解，接下来我来给大家讲解一下上面类图的实现过程。描述如下：马戏团有一条表演的小狗，这条小狗可以跑和跳，但是它完成跑和跳两个动作之前必须是在接到驯兽师发出的命令后，同时完成跑和跳的动作之后，驯兽师会给与响应的奖励，比如一块肉。
 
 了解了实现过程之后，我们在来看一下具体的代码。 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5b3feb96c994426fbc8f89aab82a3e38.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/5b3feb96c994426fbc8f89aab82a3e38.png)
 仔细看上面的代码，我们可以看出在run方法和jump方法中，存在一些相同的内容（驯兽师发出命令和给与奖励），这些内容并不能完全进行抽象，即不能按照OOP编程思想进行处理。类似这样的情况同样会出现在我们编程中的很多地方，例如：日志记录、性能统计、安全控制、事务处理、异常处理等等。但是这样的情况该如何解决呢？这就引入了AOP编程思想。
 
 
@@ -159,7 +159,7 @@ AOP为Aspect Oriented Programming的缩写，即面向切面编程（也叫面�
 **AOP实现实例**
 为了大家更好的理解AOP如何实现，接下来我们优化一下上述代码。
 首先是Dog类
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2332d45a5bb1451aa65977fca95a6f03.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2332d45a5bb1451aa65977fca95a6f03.png)
 
 对比之前的代码我们可以明显看出，我们将关于驯兽师的相关内容从run和jump中进行了抽取，接下来，我们如何在程序运行中将关于驯兽师的动作加入到程序中呢？这就是我们这次用到的AOP实现的核心技术动态代理（Dynamic Proxy）。具体代码如下：
 
