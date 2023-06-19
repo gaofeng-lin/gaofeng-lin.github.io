@@ -1,0 +1,1577 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="零散知识, Home of Gaofeng">
+    <meta name="description" content="零散知识充分条件和必要条件
+充分条件A是B的充分条件（多因一果，多个原因都能单独地导致这一后果）
+1）有前项必有后项：2）无前项时可能有后项也可能没有，但都不影响前项是后项的充分条件
+
+必要条件前项是后项的必要条件（合因一果，多个原因共同作">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>零散知识 | Home of Gaofeng</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Home of Gaofeng</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Home of Gaofeng</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">零散知识</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/IDE/">
+                                <span class="chip bg-color">IDE</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
+                                <span class="chip bg-color">编辑器</span>
+                            </a>
+                        
+                            <a href="/tags/vscode/">
+                                <span class="chip bg-color">vscode</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%85%A7%E7%89%87%E6%A8%A1%E7%B3%8A%E5%A4%84%E7%90%86/">
+                                <span class="chip bg-color">照片模糊处理</span>
+                            </a>
+                        
+                            <a href="/tags/win10/">
+                                <span class="chip bg-color">win10</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%B8%93%E5%88%A9/">
+                                <span class="chip bg-color">专利</span>
+                            </a>
+                        
+                            <a href="/tags/bat/">
+                                <span class="chip bg-color">bat</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                                <span class="chip bg-color">博客</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%B8%A6%E5%AE%BD/">
+                                <span class="chip bg-color">带宽</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                                <span class="chip bg-color">数学</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="post-category">
+                                小知识
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-01-14
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    14 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="零散知识"><a href="#零散知识" class="headerlink" title="零散知识"></a>零散知识</h2><h3 id="充分条件和必要条件"><a href="#充分条件和必要条件" class="headerlink" title="充分条件和必要条件"></a>充分条件和必要条件</h3><ol>
+<li><p>充分条件<br>A是B的充分条件（多因一果，多个原因都能单独地导致这一后果）<br><img src="https://pic1.zhimg.com/80/v2-90dcec2eab295830dded9288684c3ae3_1440w.webp?source=1940ef5c" alt=""></p>
+<p>1）有前项必有后项：<br>2）无前项时可能有后项也可能没有，但都不影响前项是后项的充分条件</p>
+</li>
+<li>必要条件<br>前项是后项的必要条件（合因一果，多个原因共同作用导致这一结果）</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/80/v2-1d7407e1c6a7d04b28631634332a86d6_1440w.webp?source=1940ef5c" alt=""></p>
+<p>缺少任何一个原因都不能导致这一后果（无前项一定无后项）所以也可认为前项假后项真这个命题为假</p>
+<h2 id="win10操作"><a href="#win10操作" class="headerlink" title="win10操作"></a>win10操作</h2><h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><h4 id="desktopwindowxamlsource窗口"><a href="#desktopwindowxamlsource窗口" class="headerlink" title="desktopwindowxamlsource窗口"></a>desktopwindowxamlsource窗口</h4><p>某一次在任务栏下面出现了“desktopwindowxamlsource“字样的东西，点击没反应，如果右键关闭，那么onedirve也会被关闭。卸载onedrive，重新安装，一开始可以，但几天后又出现了。</p>
+<p><em>*解决方法：</em><br>设置-&gt;搜索多任务处理-&gt;虚拟桌面。“在任务栏上，显示打开的窗口”。选择“仅限我正在使用的电脑”</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/Snipaste_2023-02-10_22-07-47.png" alt=""></p>
+<h3 id="Windows-10每天定时执行脚本"><a href="#Windows-10每天定时执行脚本" class="headerlink" title="Windows 10每天定时执行脚本"></a>Windows 10每天定时执行脚本</h3><p>Windows键+R 调出此窗口，输入compmgmt.msc （调用的是计算机管理）<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43336281/article/details/120146530">原文链接</a><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/11a8dfbb395d4802bf900fc38e115359.png" alt=""><br>点击下面的框，创建一个基本任务<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/a8b17d9ac08842dc8bcf39a70b18f6b1.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/790aaf2ea74545e2a8f68210e00b63dc.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/bfa2a240ba1e4263b82eec7ddc4f04ae.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/dbbc4eec03724c6eb69a30ed082c303d.png" alt=""><br>后面跟着点就好</p>
+<h3 id="Windows重启打印机服务"><a href="#Windows重启打印机服务" class="headerlink" title="Windows重启打印机服务"></a>Windows重启打印机服务</h3><p>有时候需要重启打印机，采用命令行的方式。</p>
+<blockquote>
+<p>Win+R ：services.msc  找到 Print Spooler 重启。</p>
+</blockquote>
+<h3 id="Win10开机自启动软件"><a href="#Win10开机自启动软件" class="headerlink" title="Win10开机自启动软件"></a>Win10开机自启动软件</h3><p>把该应用程序的快捷方式放到“系统启动文件夹”里；</p>
+<blockquote>
+<p>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</p>
+</blockquote>
+<h3 id="Win10查看电脑配置信息和型号"><a href="#Win10查看电脑配置信息和型号" class="headerlink" title="Win10查看电脑配置信息和型号"></a>Win10查看电脑配置信息和型号</h3><h4 id="使用dxdiag命令检查电脑配置"><a href="#使用dxdiag命令检查电脑配置" class="headerlink" title="使用dxdiag命令检查电脑配置"></a>使用dxdiag命令检查电脑配置</h4><p> 按下键盘上的Win+R组合键，打开运行窗口，输入dxdiag，点击确定。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/7ac995ab180c4465968809c73ea881cd.png" alt=""><br>在打开的页面中就可以看到当前计算机名称、操作系统、CPU、内存等重要信息。</p>
+<h4 id="使用diskmtgt-msc命令进入磁盘管理，查看硬盘大小及已使用的空间。"><a href="#使用diskmtgt-msc命令进入磁盘管理，查看硬盘大小及已使用的空间。" class="headerlink" title="使用diskmtgt.msc命令进入磁盘管理，查看硬盘大小及已使用的空间。"></a>使用diskmtgt.msc命令进入磁盘管理，查看硬盘大小及已使用的空间。</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/b507309c987f41898b08f797c24c7f4c.png" alt=""><br>465.76GB就是500G的硬盘，不要怀疑是不是奸商给你的是假货，这是没有问题的，硬盘的生产厂家在生产硬盘时用的是1000进制，即1GB=1000MB；1MB=1000KB；1KB=1000B。而电脑的计算进制是1024，即1G=1024MB；1MB=1024KB；1kB=1024B，这样就会造成电脑检测出来的容量比标称容量小。</p>
+<p>  此外，除了以上方法也可以进入设备管理器里查看电脑配置信息，步骤：右击桌面上的“计算机”—&gt;“设备管理器”，在设备管理器中就可以看见电脑配置情况了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/a53bf33bf4894fb7b610d2cf291071d0.png" alt=""></p>
+<h3 id="win10查看端口使用情况"><a href="#win10查看端口使用情况" class="headerlink" title="win10查看端口使用情况"></a>win10查看端口使用情况</h3><pre class="line-numbers language-none"><code class="language-none">netstat [选项]
+具体选项可自主查询<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>使用示例：</p>
+<pre class="line-numbers language-none"><code class="language-none">netstat -a      # 列出所有端口
+
+netstat -at     # 列出所有TCP端口
+
+netstat -au    # 列出所有UDP端口
+
+netstat -ax    # 列出所有unix端口
+
+netstat -atnlp    # 直接使用ip地址列出所有处理监听状态的TCP端口，且加上程序名
+
+netstat -ano     # 端口+显示ip+显示计时器
+
+netstat -ano |findstr "端口号"    #这个端口被哪个应用占用，实际输入端口号需要用引号括起来
+
+tasklist |findstr "进程id号"    #查看到对应的进程id之后，就可以通过id查找对应的进程名称
+
+taskkill /f /t /im "进程id或者进程名称"    #通过命令杀掉进程，或者是直接根据进程的名称杀掉所有的进程<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="mathtype试用期到期-解决办法"><a href="#mathtype试用期到期-解决办法" class="headerlink" title="mathtype试用期到期 解决办法"></a>mathtype试用期到期 解决办法</h3><ol>
+<li>win + R 打开运行窗口，输入regedit</li>
+<li>找到注册表.计算机\HKEY_CURRENT_USER\SOFTWARE\Install Options</li>
+<li>删掉options6.9</li>
+</ol>
+<h3 id="mathtype为word中的公式自动编号"><a href="#mathtype为word中的公式自动编号" class="headerlink" title="mathtype为word中的公式自动编号"></a>mathtype为word中的公式自动编号</h3><p><a target="_blank" rel="noopener" href="https://www.mathtype.cn/jiqiao/mathtype-iiiz.html">原文链接</a></p>
+<h2 id="bat脚本"><a href="#bat脚本" class="headerlink" title="bat脚本"></a>bat脚本</h2><p>案例1：拉取代码</p>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript">cmd <span class="token operator">/</span>k <span class="token string">"cd /d 执行目录&amp;&amp;git pull origin dev1:dev1&amp;&amp;cd /d 执行目录&amp;&amp;git pull origin hexo:hexo"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>&amp;&amp; 表示前面的执行完才会执行后面的<br>执行目录要替换为具体的路径。</strong></p>
+<h2 id="模糊照片变高清"><a href="#模糊照片变高清" class="headerlink" title="模糊照片变高清"></a>模糊照片变高清</h2><p>访问 </p>
+<blockquote>
+<p>bigjpg.com</p>
+</blockquote>
+<p>将照片扔上去就好。</p>
+<h2 id="右键菜单，用vscode打开文件和文件夹"><a href="#右键菜单，用vscode打开文件和文件夹" class="headerlink" title="右键菜单，用vscode打开文件和文件夹"></a>右键菜单，用vscode打开文件和文件夹</h2><p>效果如下：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/f320d8884529cf25708db00cc2f68aa6.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/eab1d51894be1554cd6b254910004e94.png" alt=""></p>
+<h3 id="方法1-重装软件"><a href="#方法1-重装软件" class="headerlink" title="方法1 重装软件"></a>方法1 重装软件</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2d3e9b77c41f48d7a4878cb4c67d2092.png" alt=""></p>
+<h3 id="方法2-修改注册表"><a href="#方法2-修改注册表" class="headerlink" title="方法2 修改注册表"></a>方法2 修改注册表</h3><p><strong>1.右键打开文件</strong> </p>
+<pre class="line-numbers language-none"><code class="language-none">1, Win+R 打开运行，输入regedit，打开注册表，找到HKEY_CLASSES_ROOT\*\shell分支，如果没有shell分支，则在*下点击右键，选择“新建－项”，建立shell分支。
+
+2, 在shell下新建“VisualCode”项，在右侧窗口的“默认”双击，在数据里输入“用VSCode打开”。这是右键上显示的文字，可以随便写，只是为了方便查看
+
+3, 在“VisualCode”下再新建Command项，在右侧窗口的“默认”键值栏内输入程序所在的安装路径，我的是："D:\anzhuang\Microsoft VS Code\Code.exe" "%1"。其中的%1表示要打开的文件参数。
+
+4, 配置缩略图。在VisualCode项上新建可扩充字符串值，命名为Icon，双击，把"D:\anzhuang\Microsoft VS Code\Code.exe"放进数据就可以了。
+
+5, 关闭注册表，即可生效。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/a7bc8278407649708c9dd5408425cfd3.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/e331e15352b245a7888d049d47429ae3.png" alt=""><br><strong>2.右键打开文件夹</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">1.Win+R 打开运行，输入regedit，打开注册表，找到HKEY_CLASSES_ROOT\Directory\Background\shell\分支
+
+2、同上面的2完全一样
+
+3、同上，把 %1 改为%V，例如："D:\anzhuang\Microsoft VS Code\Code.exe" "%V"
+
+4、5同上，完全一样<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2adc1abe19bc4eb8bd6beca9ec3a4227.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/6fd595b4dac543b1939469bffe543e6e.png" alt=""></p>
+<h2 id="专利"><a href="#专利" class="headerlink" title="专利"></a>专利</h2><h3 id="如何查询专利"><a href="#如何查询专利" class="headerlink" title="如何查询专利"></a>如何查询专利</h3><p>1.登录网站（国家知识产权）</p>
+<p>2.专利检索</p>
+<p>3.<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/8eeaf4dc126a4145a58f40de6f45b81c.png" alt=""><br>账号是:1gaofeng1<br>密码：110</p>
+<p>输入申请号查询</p>
+<h2 id="Hexo-相关内容"><a href="#Hexo-相关内容" class="headerlink" title="Hexo 相关内容"></a>Hexo 相关内容</h2><h3 id="添加自定义的内容"><a href="#添加自定义的内容" class="headerlink" title="添加自定义的内容"></a>添加自定义的内容</h3><p>我想给博客添加一些新内容，通过url访问，比如加密功能，但是不希望被模板渲染。</p>
+<p>在source目录下新建一个目录，这里取名password，然后把要添加的内容放进去。内容里面要渲染的html文件名为index.html（可以起别的名字）。</p>
+<p>然后要在_config.yml里面的”skip_render:”字段里面按固定格式加上文件名，如下图所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/Snipaste_2023-02-20_17-20-44.png" alt=""></p>
+<p>然后提交，访问的时候在url后面跟上<br><strong>/password/index.html</strong>就可以访问对应页面</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/steven_zdg988/article/details/111240905">原文链接</a></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>具体的教程网上自行搜索就好，下面重点列出几个容易出问题的地方。</p>
+<ul>
+<li>仓库名应该为：<strong>用户名</strong>.<a target="_blank" rel="noopener" href="http://github.io">http://github.io</a> 这个用户名使用你的GitHub帐号名称代替，这是固定写法。</li>
+<li>hexo配置文件里面的url要换成自己实际访问的url<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/550bbae31d85401b910e7d37c575bd7f.png" alt=""></li>
+</ul>
+<h3 id="hexo多终端同步管理"><a href="#hexo多终端同步管理" class="headerlink" title="hexo多终端同步管理"></a>hexo多终端同步管理</h3><p><strong>因为hexo只是将生成好的静态文件放在github上，没有源码。如果在另一台设备就没法。</strong><br><strong>思路：在原有仓库建一个分支，源码的拉取和推送都在分支上。但是hexo g &amp;&amp; hexo d会弄到主干上</strong></p>
+<p><strong>实现</strong><br><strong>创建分支（在 Github上操作）</strong><br>首先在Github上面创建一个分支命名为hexo，hexo 是从master 拉取，所以分支的文件和 master 一样。</p>
+<p><strong>初始化分支（PC1上面操作）</strong><br>在已经部署好Hexo环境的PC1上的安装Hexo的根目录下拉取 hexo 分支，步骤如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">git clone 仓库地址<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>将仓库文件拉取到本地，生成的文件名为 username.github.io；进入username.github.io文件夹，除了 .git 文件夹以外，其他文件全部删除；</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">git add <span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>将修改提交至暂存区；</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">git commit <span class="token operator">-</span>m “提交说明”<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>提交本次修改；</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">git push origin <span class="token class-name">Hexo</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>将本次修改推送到远端 Hexo；将刚才未删除的 .git 文件夹拷贝至Hexo根目录，删除 username.github.io 文件夹，此时本地的Hexo目录已与 Github上面的 Hexo 文件夹关联了，而且默认的 .gitignore 已经配置了忽略规则，所以已经可以将根目录下的文件同步上去，还是依次调用 git add . 、git commit -m ‘comment’、 git push origin Hexo 三个命令将当前的文件推送至远程的 Hexo分支。</p>
+<p><strong>同步分支（PC2上面操作）</strong><br>此时在PC2上，创建文件夹Blog，在Blog文件夹下面还行以下操作：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">git clone 仓库地址 <span class="token class-name">BlogName</span>
+git clone <span class="token operator">-</span>b hexo 仓库地址 hexo<span class="token punctuation">.</span>repo <span class="token comment">//这一步是将Hexo分支的代码拉到hexo.repo里面。名字可以自己起。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>在clone下来的仓库文件夹中将hexo.repo 文件夹下的文件拷贝到 BlogName 目录中（这里把hexo.repo里面的所有文件夹包括.git一起拷贝过去，这时候本地的分支就是Hexo。虽然远程和本地都有Hexo，但是PC2没有master。那么以后的推送或拉取都要把分支指定完全  git push origin Hexo:Hexo   git pull origin Hexo:Hexo）</strong></p>
+<p><strong>其实上面的问题，在pc2上把hexo.repo的文件复制过去后，可以再建一个master，把远程仓库的master拉到本地master应该就可以了，虽然这个办法没尝试过，但是下次可以试试。</strong></p>
+<p>然后安装和配置hexo环境，依次调用命令： npm install hexo、npm install、npm install hexo-deployer-git；（不需要hexo init）此时通过命令 hexo g、hexo s即可在本地开启同步下来的博客静态页面，并通过 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> 访问。</p>
+<p><strong>在新设备上使用可能遇到的问题</strong></p>
+<ol>
+<li><p>npm安装好hexo后，把github上的代码拉下来，进入指定目录后，无法使用hexo命令。<br>原因：缺少node_modules包<br>可以使用npm install安装，如果不行的话，可以把其他设备的node_modules包拷贝过来</p>
+</li>
+<li><p>新设备hexo g 与 hexo s后，页面是空白的<br>原因：themes下面的主题文件夹内容为空<br>可能是当时主题文件夹里面有git文件夹，导致没有上传到github，所以新设备拉去的时候，里面的内容是空的。只需要把原来设备的主题拷贝过来就好</p>
+</li>
+</ol>
+<p><strong>发布博文（PC1或者PC2）</strong><br>后续不管是PC1还是PC2，如果修改了主题或者新增了博文，按照以下步骤即可：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">git add <span class="token punctuation">.</span>
+git commit <span class="token operator">-</span>m “修改说明”
+git push origin <span class="token class-name">Hexo</span>
+hexo g <span class="token operator">-</span>d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="博客无法渲染出数学公式"><a href="#博客无法渲染出数学公式" class="headerlink" title="博客无法渲染出数学公式"></a>博客无法渲染出数学公式</h3><p>渲染出的页面，还是带有$$符号。</p>
+<p>以我的模板(hexo-theme-matery)为例：</p>
+<ol>
+<li>要在每篇有数学公式文章的Front-matter中加上<code>mathjax: true</code></li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/Snipaste_2023-03-15_15-36-17.png" alt=""></p>
+<ol>
+<li>把模板_config.yml中的mathjax配置项的值置为true，全局搜索就可以找到。</li>
+</ol>
+<p>如果上述方法都不行，考虑下下面的办法，每尝试一个办法，可以马上验证下是否可行。</p>
+<ol>
+<li><p>渲染引擎缺失</p>
+<pre class="line-numbers language-none"><code class="language-none">npm uninstall hexo-renderer-marked --save
+npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>语言冲突</p>
+</li>
+</ol>
+<p>修改文件 node_modules\kramed\lib\rules\inline.js</p>
+<pre class="line-numbers language-none"><code class="language-none">//  escape: /^\\([\\`*{}\[\]()#$+\-.!_&gt;])/,
+  escape: /^\\([`*\[\]()#$+\-.!_&gt;])/
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">//  em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+  em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="hexo无缘无故出现404"><a href="#hexo无缘无故出现404" class="headerlink" title="hexo无缘无故出现404"></a>hexo无缘无故出现404</h3><p>访问的时候突然出现404。hexo clean ，hexo g , hexo d不行； hexo s也不行</p>
+<p>访问url是404，hexo s出现的是cannot GET</p>
+<p><strong>解决方法</strong></p>
+<p>还一个可能产生404的原因便是因为缺少了index.html文件，解决方案如下：</p>
+<p>在git bash中敲入</p>
+<p><code>npm install hexo-generator-index --save</code></p>
+<p>之后便有index.html文件了。不妨重新hexo clean，hexo g -d试试。</p>
+<h1 id="第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。"><a href="#第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。" class="headerlink" title="第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。"></a>第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。</h1><h2 id="宽带、带宽、流量"><a href="#宽带、带宽、流量" class="headerlink" title="宽带、带宽、流量"></a>宽带、带宽、流量</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>宽带：通常别人会说你家能不能上网呀？其实这个意思就是你家有没有宽带，换句话说，就是一个名词，先有了宽带一词，然后才可以说你带宽是多少，宽带与上网的速度快慢没有直接关系。</li>
+<li>带宽：带宽是量词，指的是网速的大小，比如1Mbps的意思是一兆比特每秒</li>
+</ul>
+<h3 id="下载速度"><a href="#下载速度" class="headerlink" title="下载速度"></a>下载速度</h3><p>如果申请的带宽是10Mb/s这个单位中的b是小写的，而我们刚才说的1B(字节)=8b(位),这里刚好是8倍的关系，即下载速度：10Mb / 8 = 1.25MB</p>
+<p><strong>有的人就会问，为什么要除以8?</strong></p>
+<ul>
+<li>在计算机中，下载速度是以字节(B)为单位的，而提供商说的是以比特(b)为单位的。</li>
+</ul>
+<h3 id="流量"><a href="#流量" class="headerlink" title="流量"></a>流量</h3><p>流量是对外发送数据与接收数据包的大小总和，单位是采取1024进制的，单位有 B,KB,MB(M),GB(G)<br></p><pre class="line-numbers language-none"><code class="language-none">1G=1024MB
+1M=1024KB
+1KB=1024字节(B）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><br><pre class="line-numbers language-none"><code class="language-none">一般我们手机有 5元30MB,10元70MB的流量套餐，当我们打开一个网页，需要多少流量呢？(2005)
+
+假设某一个网页上有 100个汉字与一张100KB的图片，一个汉字=2个字节
+
+即这个页面的数据大小为：100 * 2B / 1024 + 100KB = 0.2KB +100KB =100.2KB；
+
+每访问一次这个页面，将产生100.2KB的流量，如果是70MB的流量，那么访问几个网页基本没有了，所以更不要说看视频了。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<h3 id="带宽、网速、流量的关系"><a href="#带宽、网速、流量的关系" class="headerlink" title="带宽、网速、流量的关系"></a>带宽、网速、流量的关系</h3><p>1.带宽单位是：比特/秒（bps）：10M=10Mbps</p>
+<p>2.网速是数据传输的速度，单位是：字节/秒 (B/s， KB/s， MB/s)<br></p><pre class="line-numbers language-none"><code class="language-none">1MB/s=1024KB/s
+1KB/s=1024B/s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p></p>
+<p>3.流量是用户上网 发送和接收 的 数据量总和 ，单位是：字节（Byte）；<br></p><pre class="line-numbers language-none"><code class="language-none">比特是信息的最小单位：1字节=8比特 也就是1B=8bit 或者 1B=8b
+
+1字节/秒=8比特/秒 (1B/s=8bps)
+
+1比特 (1b or 1位) 是信息技术中的最小存储单位，1位代表一个“1”或者“0”；
+
+1B（1字节）是比较小的存储单位：一般情况下1个英文字母占1个字节；一个汉字占2个字节；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<p>4.他们之间的换算：带宽大小 / 8</p>
+<h2 id="传统下载、BT下载，磁链下载"><a href="#传统下载、BT下载，磁链下载" class="headerlink" title="传统下载、BT下载，磁链下载"></a>传统下载、BT下载，磁链下载</h2><h3 id="传统下载"><a href="#传统下载" class="headerlink" title="传统下载"></a>传统下载</h3><p>采用的是C/S模式，所有的用户都从指定服务器上拿东西，对服务器有较高的要求。如果请求量过大，容易崩</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-06-03_21-10-35.png" alt=""></p>
+<h3 id="BT下载"><a href="#BT下载" class="headerlink" title="BT下载"></a>BT下载</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>BitTorrent(简称BT)是一个文件分发协议，每个下载者在下载的同时不断向其他下载者上传已下载的数据。而在FTP，HTTP协议中，每个下载者在下载自己所需文件的同时，各个下载者之间没有交互。当非常多的用户同时访问和下载服务器上的文件时，由于FTP服务器处理能力和带宽的限制，下载速度会急剧下降，有的用户可能访问不了服务器。BT协议与FTP协议不同，特点是下载的人越多，下载速度越快，原因在于每个下载者将已下载的数据提供给其他下载者下载，充分利用了用户的上载带宽。通过一定的策略保证上传速度越快，下载速度也越快。在很短时间内，BitTorrent协议成为一种新的变革技术。</p>
+<p><strong>BitTorrent 的发展依赖于peer-to-peer技术，在P2P网络中，每个参与的节点既是服务器又是客户端，既是信息的提供者又是信息的消费者。</strong></p>
+<p><strong>为什么说下载的人越多，下载速度越快？</strong></p>
+<p>假如目标文件目前有4个人持有，那我从4个人手里面取走一部分，拼凑起来就可以获得目标文件，但是理论用时为原来的1/4。</p>
+<h4 id="大概流程"><a href="#大概流程" class="headerlink" title="大概流程"></a>大概流程</h4><p>种子会告诉我联系哪个追踪服务器，然后服务器告诉我该找谁要资源。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-06-03_22-11-02.png" alt=""></p>
+<p>但是这种方式存在一个弊端，没有存在真正的去中心化，如果tracker被干掉了，那么种子就会失效。（因为大量网民下载盗版的，有电源公司和唱片公司等会想办法干掉tracker）</p>
+<h3 id="磁链接下载"><a href="#磁链接下载" class="headerlink" title="磁链接下载"></a>磁链接下载</h3><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=wifmWklnB1U">原视频</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-06-03_22-15-50.png" alt=""></p>
+<p><strong>没有种子，没有固定的追踪服务器</strong></p>
+<p>追踪服务器都是临时工，由某一个下载者兼任。要找到这个下载者需要多方打听。看看自己名单里面谁和这个下载者最近，然后层层联系。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Jason Lin</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://gaofeng-lin.github.io/posts/37060/">https://gaofeng-lin.github.io/posts/37060/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">Jason Lin</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/IDE/">
+                                    <span class="chip bg-color">IDE</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
+                                    <span class="chip bg-color">编辑器</span>
+                                </a>
+                            
+                                <a href="/tags/vscode/">
+                                    <span class="chip bg-color">vscode</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%85%A7%E7%89%87%E6%A8%A1%E7%B3%8A%E5%A4%84%E7%90%86/">
+                                    <span class="chip bg-color">照片模糊处理</span>
+                                </a>
+                            
+                                <a href="/tags/win10/">
+                                    <span class="chip bg-color">win10</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%B8%93%E5%88%A9/">
+                                    <span class="chip bg-color">专利</span>
+                                </a>
+                            
+                                <a href="/tags/bat/">
+                                    <span class="chip bg-color">bat</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                                    <span class="chip bg-color">博客</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B8%A6%E5%AE%BD/">
+                                    <span class="chip bg-color">带宽</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                                    <span class="chip bg-color">数学</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/15854/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="前端框架">
+                        
+                        <span class="card-title">前端框架</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-category">
+                                    前端开发
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                    <a href="/tags/React/">
+                        <span class="chip bg-color">React</span>
+                    </a>
+                    
+                    <a href="/tags/Json/">
+                        <span class="chip bg-color">Json</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/37060/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="零散知识">
+                        
+                        <span class="card-title">零散知识</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    小知识
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/IDE/">
+                        <span class="chip bg-color">IDE</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
+                        <span class="chip bg-color">编辑器</span>
+                    </a>
+                    
+                    <a href="/tags/vscode/">
+                        <span class="chip bg-color">vscode</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%85%A7%E7%89%87%E6%A8%A1%E7%B3%8A%E5%A4%84%E7%90%86/">
+                        <span class="chip bg-color">照片模糊处理</span>
+                    </a>
+                    
+                    <a href="/tags/win10/">
+                        <span class="chip bg-color">win10</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B8%93%E5%88%A9/">
+                        <span class="chip bg-color">专利</span>
+                    </a>
+                    
+                    <a href="/tags/bat/">
+                        <span class="chip bg-color">bat</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                        <span class="chip bg-color">博客</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B8%A6%E5%AE%BD/">
+                        <span class="chip bg-color">带宽</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                        <span class="chip bg-color">数学</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">Jason Lin</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">145.5k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/gaofeng-lin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:jason_gaofeng_lin@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

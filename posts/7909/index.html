@@ -1,0 +1,1812 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="计算机基础知识, Home of Gaofeng">
+    <meta name="description" content="数据结构哈希表详解哈希表
+哈希表的大小为何是素数
+环境变量环境变量是系统变量当中的一种，就是PATH。Windows和DOS操作系统中的path环境变量，当要求系统运行一个程序而没有告诉它程序所在的完整路径时，系统除了在当前目录下面寻找此程">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>计算机基础知识 | Home of Gaofeng</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Home of Gaofeng</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Home of Gaofeng</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">计算机基础知识</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/VM/">
+                                <span class="chip bg-color">VM</span>
+                            </a>
+                        
+                            <a href="/tags/nginx/">
+                                <span class="chip bg-color">nginx</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BC%96%E8%AF%91/">
+                                <span class="chip bg-color">编译</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">
+                                <span class="chip bg-color">环境变量</span>
+                            </a>
+                        
+                            <a href="/tags/Cookie/">
+                                <span class="chip bg-color">Cookie</span>
+                            </a>
+                        
+                            <a href="/tags/Session/">
+                                <span class="chip bg-color">Session</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">
+                                <span class="chip bg-color">密码学</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
+                                <span class="chip bg-color">硬件知识</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
+                                <span class="chip bg-color">线程、进程</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
+                                计算机基础知识
+                            </a>
+                        
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/web/" class="post-category">
+                                web
+                            </a>
+                        
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/web/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                操作系统
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-03-06
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    12k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    42 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7007218290711855134">详解哈希表</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhishengqianjun/article/details/79087525">哈希表的大小为何是素数</a></p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>环境变量是系统变量当中的一种，就是PATH。Windows和DOS操作系统中的path环境变量，当要求系统运行一个程序而没有告诉它程序所在的完整路径时，系统除了在当前目录下面寻找此程序外，还应到path中指定的路径去找。用户通过设置环境变量，来更好的运行进程。</p>
+<p><strong>说白了，把可执行程序的路径放到环境变量里面，那么以后在任意的路径下就可以直接使用这个可执行程序，而不用输入绝对路径，方便。</strong></p>
+<p>1.在Windows中，是由可视化的窗口模式展现出来的<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20190906150416564.png" alt=""><br>2.linux中，在 <code>/etc/profile</code>文件中设置<br>可以直接用vim进入文件进行设置，也可以用下面的语句</p>
+<pre class="line-numbers language-none"><code class="language-none">echo "export PATH=${PATH}:/usr/local/go/bon" &gt;&gt; /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>最好还是用vim进行修改，用echo输入到为你文件中，会出现冗余，直接添加比较好。用冒号分隔。</p>
+<p>修改好以后，需要更新环境变量</p>
+<pre class="line-numbers language-none"><code class="language-none">source /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="计组-操作系统"><a href="#计组-操作系统" class="headerlink" title="计组+操作系统"></a>计组+操作系统</h2><h3 id="cpu工作流程"><a href="#cpu工作流程" class="headerlink" title="cpu工作流程"></a>cpu工作流程</h3><p>CPU的根本任务就是执行指令，对计算机来说最终都是一串由“0”和“1”组成的序列。CPU从逻辑上可以划分成3个模块，分别是控制单元、运算单元和存储单元，这三部分由CPU内部总线连接起来。如下所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/9893254095656f4a4b405400721af669.png" alt=""></p>
+<ol>
+<li><p>控制单元：控制单元是整个CPU的指挥控制中心，由程序计数器PC（Program Counter）, 指令寄存器IR(Instruction Register)、指令译码器ID(Instruction Decoder)和操作控制器OC(Operation Controller)等，对协调整个电脑有序工作极为重要。它根据用户预先编好的程序，依次从存储器中取出各条指令，放在指令寄存器IR中，通过指令译码(分析)确定应该进行什么操作，然后通过操作控制器OC，按确定的时序，向相应的部件发出微操作控制信号。操作控制器OC中主要包括节拍脉冲发生器、控制矩阵、时钟脉冲发生器、复位电路和启停电路等控制逻辑。</p>
+</li>
+<li><p>运算单元：是运算器的核心。可以执行算术运算(包括加减乘数等基本运算及其附加运算)和逻辑运算(包括移位、逻辑测试或两个值比较)。相对控制单元而言，运算器接受控制单元的命令而进行动作，即运算单元所进行的全部操作都是由控制单元发出的控制信号来指挥的，所以它是执行部件。</p>
+</li>
+<li><p>存储单元：包括CPU片内缓存和寄存器组，是CPU中暂时存放数据的地方，里面保存着那些等待处理的数据，或已经处理过的数据，CPU访问寄存器所用的时间要比访问内存的时间短。采用寄存器，可以减少CPU访问内存的次数，从而提高了CPU的工作速度。但因为受到芯片面积和集成度所限，寄存器组的容量不可能很大。寄存器组可分为专用寄存器和通用寄存器。专用寄存器的作用是固定的，分别寄存相应的数据。而通用寄存器用途广泛并可由程序员规定其用途，通用寄存器的数目因微处理器而异。这个是我们以后要介绍这个重点，这里先提一下。</p>
+</li>
+</ol>
+<p>CPU的运行原理(简洁版):</p>
+<ol>
+<li><p>取指令：CPU的控制器从内存读取一条指令并放入指令寄存器。指令的格式一般是这个样子滴：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/f1a9b80fb3f7cd81550d3484a0bd3193.png" alt=""></p>
+</li>
+<li><p>指令译码：指令寄存器中的指令经过译码，决定该指令应进行何种操作(就是指令里的操作码)、操作数在哪里(操作数的地址)。</p>
+</li>
+<li><p>执行指令，分两个阶段“取操作数”和“进行运算”。</p>
+</li>
+<li><p>修改指令计数器，决定下一条指令的地址。</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/61f3e30367246b169b660a5ea05c0493.png" alt=""></p>
+<h3 id="微机设计"><a href="#微机设计" class="headerlink" title="微机设计"></a>微机设计</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/f86b4de44bb94a4bdb72decee9b18497.png" alt=""></p>
+<p>其中：</p>
+<ul>
+<li>时钟 (clock) 对 CPU 内部操作与系统其他组件进行同步。</li>
+<li>控制单元 (control unit, CU) 协调参与机器指令执行的步骤序列。</li>
+<li>算术逻辑单元 (arithmetic logic unit, ALU) 执行算术运算，如加法和减法，以及逻辑运算，如 AND（与）、OR（或）和 NOT（非）。</li>
+</ul>
+<p>CPU 通过主板上 CPU 插座的引脚与计算机其他部分相连。大部分引脚连接的是数据总线、控制总线和地址总线。</p>
+<p>内存存储单元 (memory storage unit) 用于在程序运行时保存指令与数据。它接受来自 CPU 的数据请求，将数据从随机存储器 (RAM) 传输到 CPU，并从 CPU 传输到内存。</p>
+<p>由于所有的数据处理都在 CPU 内进行，因此保存在内存中的程序在执行前需要被复制到 CPU 中。程序指令在复制到 CPU 时，可以一次复制一条，也可以一次复制多条。</p>
+<p>总线 (bus) 是一组并行线，用于将数据从计算机一个部分传送到另一个部分。一个计算机系统通常包含四类总线：数据类、I/O 类、控制类和地址类。</p>
+<p>数据总线 (data bus) 在 CPU 和内存之间传输指令和数据。I/O 总线在 CPU 和系统输入 / 输出设备之间传输数据。控制总线 (control bus) 用二进制信号对所有连接在系统总线上设备的行为进行同步。当前执行指令在 CPU 和内存之间传输数据时，地址总线 (address bus) 用于保持指令和数据的地址。</p>
+<p>时钟与 CPU 和系统总线相关的每一个操作都是由一个恒定速率的内部时钟脉冲来进行同步。机器指令的基本时间单位是机器周期 (machine cycle) 或时钟周期 (clock cycle)。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/ec98768c43ecf14f25c7694dea02a95e.png" alt=""></p>
+<p>时钟周期持续时间用时钟速度的倒数来计算，而时钟速度则用每秒振荡数来衡量。例如，一个每秒振荡 10 亿次 (1GHz) 的时钟，其时钟周期为 10 亿分之 1 秒 (1 纳秒 )。（CPU主频）</p>
+<p>执行一条机器指令最少需要 1 个时钟周期，有几个需要的时钟则超过了 50 个（比如 8088 处理器中的乘法指令）。由于在 CPU、系统总线和内存电路之间存在速度差异，因此，需要访问内存的指令常常需要空时钟周期，也被称为等待状态 (wait states)。</p>
+<h3 id="指令执行周期"><a href="#指令执行周期" class="headerlink" title="指令执行周期"></a>指令执行周期</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30598353/article/details/113052914">原文链接</a><br>一条机器指令不会神奇地一下就执行完成。CPU 在执行一条机器指令时，需要经过一系列预先定义好的步骤，这些步骤被称为指令执行周期 (instruction execution cycle)。</p>
+<p>假设现在指令指针寄存器中已经有了想要执行指令的地址，下面就是执行步骤：</p>
+<p>1) CPU 从被称为指令队列 (instruction queue) 的内存区域取得指令，之后立即增加指令指针的值。</p>
+<p>2) CPU 对指令的二进制位模式进行译码。这种位模式可能会表示该指令有操作数（输入值）。</p>
+<p>3) 如果有操作数，CPU 就从寄存器和内存中取得操作数。有时，这步还包括了地址计算。</p>
+<p>4) 使用步骤 3 得到的操作数，CPU 执行该指令。同时更新部分状态标志位，如零标志 (Zero)、进位标志 (Carry) 和溢出标志 (Overflow)。</p>
+<p>5) 如果输出操作数也是该指令的一部分，则 CPU 还需要存放其执行结果。</p>
+<p>通常将上述听起来很复杂的过程简化为三个步骤：取指 (Fetch)、译码 (Decode) 和执行 (Execute)。操作数 (operand) 是指操作过程中输入或输出的值。例如，表达式 Z=X+Y 有两个输入操作数 (X 和 Y)，—个输岀操作数 (Z)。</p>
+<p>下图是一个典型 CPU 中的数据流框图。该图表现了在指令执行周期中相互交互部件之间的关系。在从内存读取程序指令之前，将其地址放到地址总线上。然后，内存控制器将所需代码送到数据总线上，存入代码高速缓存 (code cache)。指令指针的值决定下一条将要执行的指令。指令由指令译码器分析，并产生相应的数值信号送往控制单元，其协调 ALU 和浮点单元。虽然图中没有画出控制总线，但是其上传输的信号用系统时钟协调不同 CPU 部件之间的数据传输。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/fe981489b47fa0e05d59e4d2d552cb7d.png" alt=""></p>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/102293437">原文链接</a><br>作为一个常见现象，计算机从内存读取数据比从内部寄存器读取速度要慢很多。这是因为从内存读取一个值，需要经过下述步骤：</p>
+<p>将想要读取的值的地址放到地址总线上。<br>设置处理器 RD（读取）引脚（改变 RD 的值）。<br>等待一个时钟周期给存储器芯片进行响应。<br>将数据从数据总线复制到目标操作数。<br>上述每一步常常只需要一个时钟周期，时钟周期是基于处理器内固定速率时钟节拍的一种时间测量方法。计算机的 CPU 通常是用其时钟速率来描述。例如，速率为 1.2GHz 意味着时钟节拍或振荡为每秒 12 亿次。</p>
+<p>因此，考虑到每个时钟周期仅为 1/1 200 000 000 秒，4 个时钟周期也是非常快的。但是，与 CPU 寄存器相比，这个速度还是慢了，因为访问寄存器一般只需要 1 个时钟周期。</p>
+<p>CPU和主存之间直接数据传输的方式转变成CPU和cache之间直接数据传输。cache负责和主存之间数据传输。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/c932d9d2255061d1fa435d6b1abccaeb.jpeg" alt=""></p>
+<h3 id="加载并执行程序"><a href="#加载并执行程序" class="headerlink" title="加载并执行程序"></a>加载并执行程序</h3><p>在程序执行之前，需要用一种工具程序将其加载到内存，这种工具程序称为程序加载器 (program loader)。加载后，操作系统必须将 CPU 指向程序的入口，即程序开始执行的地址。以下步骤是对这一过程的详细分解。</p>
+<p>1) 操作系统（OS）在当前磁盘目录下搜索程序的文件名。如果找不到，则在预定目录列表（称为路径（path））下搜索文件名。当 OS 无法检索到文件名时，它会发出一个出错信息。</p>
+<p>2) 如果程序文件被找到，OS 就访问磁盘目录中的程序文件基本信息，包括文件大小，及其在磁盘驱动器上的物理位置。</p>
+<p>3) OS 确定内存中下一个可使用的位置，将程序文件加载到内存。为该程序分配内存块，并将程序大小和位置信息加入表中（有时称为描述符表（descriptor table））。另外，OS 可能调整程序内指针的值，使得它们包括程序数据地址。</p>
+<p>4) OS 开始执行程序的第一条机器指令（程序入口）。当程序开始执行后，就成为一个进程（process）。OS 为这个进程分配一个标识号（进程 ID），用于在执行期间对其进行追踪。</p>
+<p>5) 进程自动运行。OS 的工作是追踪进程的执行，并响应系统资源的请求。这些资源包括内存、磁盘文件和输入输出设备等。</p>
+<p>6) 进程结束后，就会从内存中移除。</p>
+<p>不论使用哪个版本的 Microsoft Windows，按下 Ctrl-Alt-Delete 组合键，可以选择任务管理器（task manager）选项。在任务管理器窗口可以查看应用程序和进程列表。</p>
+<p>应用程序列表中列出了当前正在运行的完整程序名称，比如，Windows 浏览器，或者 Microsoft Visual C++。如果选择进程列表，则会看见一长串进程名。其中的每个进程都是一个独立于其他进程的，并处于运行中的小程序。</p>
+<p>可以连续追踪每个进程使用的 CPU 时间和内存容量。在某些情况下，选定一个进程名称后，按下 Delete 键就可以关闭该进程。</p>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/368777813">原链接，详细内容见原文</a></p>
+<ul>
+<li>一条指令就是机器语言的一个语句，它是一组有意义的二进制代码。</li>
+<li>一台计算机的所有指令的集合构成该机的指令系统，也称为指令集。</li>
+</ul>
+<h4 id="指令的格式"><a href="#指令的格式" class="headerlink" title="指令的格式"></a>指令的格式</h4><p>从最基本的结构上来说：一条指令通常要包括操作码字段和地址码字段两部分:</p>
+<p>操作码字段告诉用户做什么操作？<br>地址码告诉用户对谁操作？</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/18383ae3dd0d90d3775436aba4eb124a.jpeg" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/1797cee715559dec28fb0d615fc8801a.jpeg" alt=""></p>
+<h3 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/370204019">原链接，详细内容见原文</a></p>
+<p>指令寻址的方式包括两部分：</p>
+<p>一种是指令的寻址<br>（是不是很晕？指令寻址怎么又包括指令寻址。hh因为这里的指令寻址指的是具体的操作码上发出的指令。是狭义上的指令寻址。）<br>另一种是数据的寻址（可以理解为地址码上操作数的地址寻址）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/dd4748b236f46d082fe96b0c45ce444d.png" alt=""></p>
+<h3 id="指令寻址方式"><a href="#指令寻址方式" class="headerlink" title="指令寻址方式"></a>指令寻址方式</h3><p>程序执行跳转指令，将程序计数器中的数据改为7。</p>
+<ol>
+<li>顺序寻址<br>从0开始执行，我们就需要在pc中写入地址0。执行完零号指令后，由于这是普通的取数指令，因此程序计数器自动+1，于是cpu开始执行指令1。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/0a3664e358a332a4f106ea27526c1cba.png" alt=""></li>
+</ol>
+<ol>
+<li>跳转寻址<br>知道碰到跳转指令，也就是指令3,程序执行跳转指令，将程序计数器中的数据改为7。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/5fe522f26cedb98cf8b125e2abaf338c.jpeg" alt=""></li>
+</ol>
+<h3 id="数据寻址方式"><a href="#数据寻址方式" class="headerlink" title="数据寻址方式"></a>数据寻址方式</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/d4c9ef871e158164c958bdfac1ce1811.jpeg" alt=""></p>
+<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><h3 id="cookie和session"><a href="#cookie和session" class="headerlink" title="cookie和session"></a>cookie和session</h3><h4 id="cookie和seesion主要区别"><a href="#cookie和seesion主要区别" class="headerlink" title="cookie和seesion主要区别"></a>cookie和seesion主要区别</h4><p>星巴克开始优惠活动，每消费10杯咖啡，会免费赠送1杯。考虑到一个人一次性消费10杯咖啡几乎不可能，所以需要采取某种方式来记录顾客的消费数量。</p>
+<p>1)分给顾客一张卡片，每消费一次记录一次；</p>
+<p>2)发给顾客一张卡片，上面有卡号，顾客每消费一次，由店员在操作机上记录一次。</p>
+<p>而方案一和二正是对应的客户端记录和服务端记录。与之相对应的正是cookie和session。 好了，我们进入正题。</p>
+<h4 id="什么是cookie"><a href="#什么是cookie" class="headerlink" title="什么是cookie"></a>什么是cookie</h4><p>HTTP是一种无状态协议,服务器没有办法单单从网络连接上面知道访问者的身份,为了解决这个问题,就诞生了Cookie</p>
+<p>Cookie实际上是一小段的文本信息。客户端请求服务器，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个Cookie</p>
+<p>客户端浏览器会把Cookie保存起来。当浏览器再请求该网站时，浏览器把请求的网址连同该Cookie一同提交给服务器。服务器检查该Cookie。</p>
+<h4 id="cookie的弊端"><a href="#cookie的弊端" class="headerlink" title="cookie的弊端"></a>cookie的弊端</h4><p>cookie 可以让服务端程序跟踪每个客户端的访问，但是每次客户端的访问都必须传回这些Cookie，如果 Cookie 很多，这无形地增加了客户端与服务端的数据传输量，</p>
+<p><img src="https://img-blog.csdn.net/20180411123828426?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2puc2h1X2l0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
+<h4 id="session"><a href="#session" class="headerlink" title="session"></a>session</h4><p>Session 的出现正是为了解决这个问题。同一个客户端每次和服务端交互时，不需要每次都传回所有的 Cookie 值，而是只要传回一个 ID，这个 ID 是客户端第一次访问服务器的时候生成的， 而且每个客户端是唯一的。这样每个客户端就有了一个唯一的 ID，客户端只要传回这个 ID 就行了，这个 ID 通常是 NANE 为JSESIONID 的一个 Cookie。</p>
+<p>Session机制是一种服务端的机制，服务器使用一种类似散列表的结构来保存信息。</p>
+<p>当程序需要为某个客户端的请求创建一个session的时候，服务器首先检查这个客户端里的请求里是否已包含了一个session标识—sessionID，</p>
+<p>如果已经包含一个sessionID，则说明以前已经为此客户端创建过session，服务器就按照sessionID把这个session检索出来使用</p>
+<p>如果客户端请求不包含sessionID，则为此客户端创建一个session并且声称一个与此session相关联的sessionID，</p>
+<p>sessionID的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串(服务器会自动创建),这个sessionID将被在本次响应中返回给客户端保存。</p>
+<h3 id="centOS7-桥接模式设置静态Ip的方法步骤"><a href="#centOS7-桥接模式设置静态Ip的方法步骤" class="headerlink" title="centOS7 桥接模式设置静态Ip的方法步骤"></a>centOS7 桥接模式设置静态Ip的方法步骤</h3><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1722144">原文链接</a></p>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>如果你虚拟机IP是自动获取的，难免会碰到IP经常变动，给xshell相关连接工具使用造成不便，那么怎么固定IP且正常访问外网地址呢？由于主机网络采用的是自动获取IP方式,所以每次重启机器可能导致IP地址的变更,不利于项目的部署和运行</p>
+<p>静态ip就是虚拟机的ip 外界想要连你的虚拟机的ip </p>
+<h4 id="虚拟机选择桥接模式"><a href="#虚拟机选择桥接模式" class="headerlink" title="虚拟机选择桥接模式"></a>虚拟机选择桥接模式</h4><p>注意虚拟机网卡要选择主机上网的网卡</p>
+<h4 id="虚拟机设置静态ip-关键步骤"><a href="#虚拟机设置静态ip-关键步骤" class="headerlink" title="虚拟机设置静态ip(关键步骤)"></a>虚拟机设置静态ip(关键步骤)</h4><p><img src="https://ask.qcloudimg.com/http-save/yehe-1844341/npty8pp5hp.jpeg?imageView2/2/w/1620" alt=""></p>
+<p>虚拟机的网卡名称是ens33</p>
+<p>然后用vim编辑以下文件</p>
+<p><strong>/etc/sysconfig/network-scripts/ifcfg-xxx</strong></p>
+<p>上面的xxx就是虚拟机的网卡名称，不同的linux发行版名称可能不同。原因见原链接</p>
+<p>需要修改的属性：<br></p><pre class="line-numbers language-none"><code class="language-none">ONBOOT=YES #no换成yes
+BOOTPROTO=static #dhcp换成static
+添加：
+IPADDR=192.168.230.129 #静态ip地址 与主机中IP的前三位一致，最后一位需要修改，不要跟主机ip一样导致发生冲突
+GATEWAY=192.168.230.1 #默认网关 和物理主机一样就可以了
+NETMASK=255.255.255.0 #子网掩码 和物理主机一样就可以了
+DNS1=8.8.8.8　　　　　　#DNS，写谷歌的地址就可以了。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<p>具体解释：<br></p><pre class="line-numbers language-none"><code class="language-none">TYPE=Ethernet    # 网卡类型：为以太网
+PROXY_METHOD=none   # 代理方式：关闭状态
+BROWSER_ONLY=no    # 只是浏览器：否
+BOOTPROTO=dhcp    # 网卡的引导协议：DHCP[中文名称: 动态主机配置协议]
+DEFROUTE=yes    # 默认路由：是, 不明白的可以百度关键词 `默认路由`
+IPV4_FAILURE_FATAL=no  # 是不开启IPV4致命错误检测：否
+IPV6INIT=yes    # IPV6是否自动初始化: 是[不会有任何影响, 现在还没用到IPV6]
+IPV6_AUTOCONF=yes   # IPV6是否自动配置：是[不会有任何影响, 现在还没用到IPV6]
+IPV6_DEFROUTE=yes   # IPV6是否可以为默认路由：是[不会有任何影响, 现在还没用到IPV6]
+IPV6_FAILURE_FATAL=no  # 是不开启IPV6致命错误检测：否
+IPV6_ADDR_GEN_MODE=stable-privacy   # IPV6地址生成模型：stable-privacy [这只一种生成IPV6的策略]
+NAME=ens33     # 网卡物理设备名称
+UUID=f47bde51-fa78-4f79-b68f-d5dd90cfc698 # 通用唯一识别码, 每一个网卡都会有, 不能重复, 否两台linux只有一台网卡可用
+DEVICE=ens33     # 网卡设备名称, 必须和 `NAME` 值一样
+ONBOOT=no      # 是否开机启动， 要想网卡开机就启动或通过 `systemctl restart network`控制网卡,必须设置为 `yes`<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<h4 id="重启网络服务"><a href="#重启网络服务" class="headerlink" title="重启网络服务"></a>重启网络服务</h4><pre class="line-numbers language-none"><code class="language-none">#centos7
+
+systemctl restart network <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>输入命令ping www.baidu.com（测试外网） </p>
+<p>输入命令ping 192.168.2.153（宿主机ip） </p>
+<p><strong>注意：</strong><br>如果无法ping通宿主机，很有可能是因为防火墙。<br>宿主机无法ping通虚拟机，也有可能是因为防火墙。</p>
+<h3 id="VMware三种网卡解析"><a href="#VMware三种网卡解析" class="headerlink" title="VMware三种网卡解析"></a>VMware三种网卡解析</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41672971/article/details/125825563">原文链接</a></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>虚拟网卡名</th>
+<th>网络属性</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VMnet0</td>
+<td>物理网卡</td>
+<td>Bridge桥接</td>
+</tr>
+<tr>
+<td>Vmnet1</td>
+<td>虚拟网卡</td>
+<td>host-only仅主机</td>
+</tr>
+<tr>
+<td>VMnet8</td>
+<td>虚拟网卡</td>
+<td>NAT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>但是我们查看主机的网络链接，有时却看不见VMnet0</strong><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/b5aa37b6f88245799d58da6be23b497a.png" alt=""></p>
+<p>通过网络配置这里，能够看见使用那张网卡（这里是virtualbox，VMware也是差不多）<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/eee41028523f4d33a06c7c0fec4c34a8.png" alt=""><br><strong>所以根据上面两张图的对比，本地网络连接中的以太网3就是桥接模式使用的网卡。</strong></p>
+<h3 id="VM虚拟机-三种网络连接方式（桥接、NAT、仅主机模式）"><a href="#VM虚拟机-三种网络连接方式（桥接、NAT、仅主机模式）" class="headerlink" title="VM虚拟机-三种网络连接方式（桥接、NAT、仅主机模式）"></a>VM虚拟机-三种网络连接方式（桥接、NAT、仅主机模式）</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tjcwt2011/article/details/124664594">原文链接</a></p>
+<h4 id="桥接"><a href="#桥接" class="headerlink" title="桥接"></a>桥接</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2021082016475582.png" alt=""></p>
+<p><strong>桥接，即架设了一条桥，让虚拟机成为一台真正的计算机，直接连入到实际网络中了。</strong></p>
+<p>因此，它使得虚拟机能被分配到一个网络中独立的IP，所有网络功能完全和在网络中的真实机器一样，它和主机连接在同一个交换机上（此交换机通过vmnet0模拟），处于同一个 LAN，它可以访问网内任何一台机器。</p>
+<p><strong>此模式下虚拟机：</strong></p>
+<ol>
+<li><p>可以与主机相互访问</p>
+</li>
+<li><p>可以与网络中其他主机相互访问</p>
+</li>
+<li><p>可以与其他虚拟机相互访问</p>
+</li>
+</ol>
+<p>所以，桥接模式下的虚拟机，你把它直接认为是真实计算机就行了。</p>
+<p>默认情况下DHCP会自动为虚拟机配置网络，但如果你需要在桥接模式下，手动为虚拟系统配置IP地址时，配置的虚拟机的ip不能是已经被占用的地址，还要和宿主机器处于同一网段，不然会造成地址冲突，只有这样虚拟系统才能和宿主机器以及外网进行通信。</p>
+<hr>
+<p><strong>复制物理网络连接状态</strong></p>
+<p>一般在虚拟机设置为桥接时就能看见这个选项（无特殊要求默认不用勾选）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20210820141133567.png" alt=""></p>
+<p>这个选项是只在移动设备上有用，比如在笔记本上使用VMware软件，最开始主机用有线连接的局域网，开启虚拟机（使用桥接），虚拟机系统获取的局域网地址为192.168.1.4。然后你把主机的有线拔掉，连接上同一局域网的wifi时，如果你选择了复制物理网络连接状态这个选项，那你的虚拟机系统的IP不会变化（还是192.168.1.4），如果你没有选择复制物理网络连接状态这个选项，那你的虚拟机系统的IP可能就会发生变化，比如变为192.168.1.5。</p>
+<h4 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20210820164721916.png" alt=""></p>
+<p>NAT，虚拟机访问网络的所有数据都是由主机提供的，虚拟机并不真实存在于网络中，主机与网络中的任何机器都不能查看和访问到虚拟机的存在。 </p>
+<p>虚拟机和主机之间通过VMnet8这个网卡来模拟路由器的作用，进行nat地址转换功能，负责将虚拟机发到 VMnet8 的包进行地址转换之后发到实际的网络上，再将实际网络上返回的包进行地址转换后通过 VMnet8 发送给虚拟机。</p>
+<p>此模式下虚拟机：</p>
+<pre><code>   可以单向访问主机
+
+   可以单向访问其他网络中主机
+
+   不可以访问其他虚拟机
+</code></pre><p>虚拟机可以访问主机能访问到的所有网络，但是对于主机以及主机网络上的其他机器，虚拟机又是不可见的，甚至主机也访问不到虚拟机。包括所有nat模式下的虚拟机之间相互都不能访问，虚拟机与虚拟机各自完全独立，相互间无法通过网络访问彼此。</p>
+<h4 id="仅主机"><a href="#仅主机" class="headerlink" title="仅主机"></a>仅主机</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20210820172148978.png" alt=""></p>
+<p>仅主机，虚拟机的与主机通过VMnet1连接，VMnet1不提供提供任何路由服务，因此虚拟机只能和宿主机进行通信，而不能连接到实际网络上。</p>
+<p>其实就是NAT模式去除了nat地址转换功能</p>
+<p>此模式下虚拟机：</p>
+<pre><code>   可以与主机互相访问
+
+   不可以访问其他网络中主机
+
+   不可以访问其他虚拟机
+</code></pre><p>仅主机模式看着很简单，但是其实这是一种比较复杂的模式，其他模式可以实现的功能，在仅主机模式下，通过虚拟机及网卡的设置都可以被实现。所以该模式需要有比较扎实的网络基础知识</p>
+<p>这种模式下，我们可以理解为虚拟机在主机中模拟出一张专供虚拟机使用的网卡VMnet1，所有虚拟机都是连接到该网卡上的，我们可以通过设置这张网卡来实现上网及其他很多功能，比如（网卡共享、网卡桥接等）。</p>
+<h3 id="正向代理和反向代理区别"><a href="#正向代理和反向代理区别" class="headerlink" title="正向代理和反向代理区别"></a>正向代理和反向代理区别</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/taostaryu/p/10547132.html">原文链接</a></p>
+<p><strong>一 什么是代理</strong></p>
+<p>代理其实就是一个中介，A和B本来可以直连，中间插入一个C，C就是中介。<br>刚开始的时候，代理多数是帮助内网client访问外网server用的<br>后来出现了反向代理，”反向”这个词在这儿的意思其实是指方向相反，即代理将来自外网客户端的请求转发到内网服务器，从外到内</p>
+<p><strong>二 正向代理</strong></p>
+<p>正向代理类似一个跳板机，代理访问外部资源</p>
+<p>比如我们国内访问谷歌，直接访问访问不到，我们可以通过一个正向代理服务器，请求发到代理服，代理服务器能够访问谷歌，这样由代理去谷歌取到返回数据，再返回给我们，这样我们就能访问谷歌了<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/cd381c5de09a40f2bfedae52042eb66d.png" alt=""></p>
+<p><strong>正向代理的用途：</strong></p>
+<p>　　（1）访问原来无法访问的资源，如google</p>
+<p>（2） 可以做缓存，加速访问资源</p>
+<p>　　（3）对客户端访问授权，上网进行认证</p>
+<p>　　（4）代理可以记录用户访问记录（上网行为管理），对外隐藏用户信息
+　　</p>
+<p><strong>三 反向代理</strong><br>反向代理（Reverse Proxy）实际运行方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/85649ed3b62c40d38de64b5170114f5b.png" alt=""></p>
+<p><strong>反向代理的作用：</strong><br>（1）保证内网的安全，阻止web攻击，大型网站，通常将反向代理作为公网访问地址，Web服务器是内网</p>
+<p>（2）负载均衡，通过反向代理服务器来优化网站的负载</p>
+<p><strong>四 总结<br>正向代理即是客户端代理, 代理客户端, 服务端不知道实际发起请求的客户端.<br>反向代理即是服务端代理, 代理服务端, 客户端不知道实际提供服务的服务端</strong></p>
+<p>看图理解一：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/0c3860e58d2cffd66b808fe07631e358.png" alt=""></p>
+<p>看图理解二：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/7cc6fc2baf342df6a450a54ca2ad6b8a.png" alt=""></p>
+<p>正向代理中，proxy和client同属一个LAN，对server透明；<br>反向代理中，proxy和server同属一个LAN，对client透明。<br>实际上proxy在两种代理中做的事都是代为收发请求和响应，不过从结构上来看正好左右互换了下，所以把后出现的那种代理方式叫成了反向代理</p>
+<p><strong>总结：</strong><br>正向代理: 买票的黄牛</p>
+<p>反向代理: 租房的代理</p>
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904129987526663">原文链接</a><br>“Nginx 是一款轻量级的 HTTP 服务器，采用事件驱动的异步非阻塞处理方式框架，这让其具有极好的 IO 性能，时常用于服务端的<strong>反向代理</strong>和<strong>负载均衡</strong>。”<br>Nginx 是一款 http 服务器 （或叫web服务器）。它是由俄罗斯人 伊戈尔·赛索耶夫为俄罗斯访问量第二的 Rambler.ru 站点开发的，并于2004年首次公开发布的。</p>
+<pre class="line-numbers language-none"><code class="language-none">web服务器：负责处理和响应用户请求，一般也称为http服务器，如 Apache、IIS、Nginx
+
+应用服务器：存放和运行系统程序的服务器，负责处理程序中的业务逻辑，如 Tomcat、Weblogic、Jboss（现在大多数应用服务器也包含了web服务器的功能）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Nginx 是什么，总结一下就是这些：</p>
+<ul>
+<li>一种轻量级的web服务器</li>
+<li>设计思想是事件驱动的异步非阻塞处理（类node.js）</li>
+<li>占用内存少、启动速度快、并发能力强</li>
+<li>使用C语言开发</li>
+<li>扩展性好，第三方插件非常多</li>
+<li>在互联网项目中广泛应用</li>
+</ul>
+<h4 id="Nginx配置"><a href="#Nginx配置" class="headerlink" title="Nginx配置"></a>Nginx配置</h4><p><strong>安装/卸载</strong></p>
+<p><strong><em>安装、卸载、启动自查找资料</em></strong></p>
+<p>修改配置<br>经常要用到的几个文件路径：</p>
+<pre class="line-numbers language-none"><code class="language-none">/usr/local/etc/nginx/nginx.conf （nginx配置文件路径）
+/usr/local/var/www （nginx服务器默认的根目录）
+/usr/local/Cellar/nginx/1.17.9 （nginx的安装路径）
+/usr/local/var/log/nginx/error.log (nginx默认的日志路径)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>nginx 默认配置文件简介：</p>
+<pre class="line-numbers language-none"><code class="language-none">## 首尾配置暂时忽略
+server {  
+        # 当nginx接到请求后，会匹配其配置中的service模块
+        # 匹配方法就是将请求携带的host和port去跟配置中的server_name和listen相匹配
+        listen       8080;        
+        server_name  localhost; # 定义当前虚拟主机（站点）匹配请求的主机名
+
+        location / {
+            root   html; # Nginx默认值
+            # 设定Nginx服务器返回的文档名
+            index  index.html index.htm; # 先找根目录下的index.html，如果没有再找index.htm
+        }
+}
+
+## 首尾配置暂时忽略<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>server{ } 其实是包含在 http{ } 内部的。每一个 server{ } 是一个虚拟主机（站点）。<br>上面代码块的意思是：当一个请求叫做localhost:8080请求nginx服务器时，该请求就会被匹配进该代码块的 server{ } 中执行。<br>当然 nginx 的配置非常多，用的时候可以根据文档进行配置。</p>
+<p>英文文档：nginx.org/en/docs/<br>中文文档：www.nginx.cn/doc/</p>
+<p>Nginx有哪些应用？<br>主要有4大应用（动静分离、正向代理、反向代理、负载均衡）</p>
+<h4 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/e9d551a4479341cca95a54fbe13f3ebe.webp" alt=""></p>
+<p>如上图所示，动静分离其实就是 Nginx 服务器将接收到的请求分为动态请求和静态请求。<br>静态请求直接从 nginx 服务器所设定的根目录路径去取对应的资源，动态请求转发给真实的后台（前面所说的应用服务器，如图中的Tomcat）去处理。<br>这样做不仅能给应用服务器减轻压力，将后台api接口服务化，还能将前后端代码分开并行开发和部署。（传送门：<a target="_blank" rel="noopener" href="https://www.php.cn/nginx/424631.html">nginx动静分离的好处</a>）</p>
+<pre class="line-numbers language-none"><code class="language-none">server {  
+        listen       8080;        
+        server_name  localhost;
+
+        location / {
+            root   html; # Nginx默认值
+            index  index.html index.htm;
+        }
+        
+        # 静态化配置，所有静态请求都转发给 nginx 处理，存放目录为 my-project
+        location ~ .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|js|css)$ {
+            root /usr/local/var/www/my-project; # 静态请求所代理到的根目录
+        }
+        
+        # 动态请求匹配到path为'node'的就转发到8002端口处理
+        location /node/ {  
+            proxy_pass http://localhost:8002; # 充当服务代理
+        }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>访问静态资源 nginx 服务器会返回 my-project 里面的文件，如获取 index.html：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/34472ca6f5724173402dbaf6d4e6f8b3.webp" alt=""></p>
+<p>访问动态请求 nginx 服务器会将它从8002端口请求到的内容，原封不动的返回回去：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/1f897ee545286a0b59fc4243f6af84b2.webp" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/ec6173b234f9c06fe646c9b709abb44e.webp" alt=""></p>
+<h4 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h4><p>负载均衡是什么？<br>随着业务的不断增长和用户的不断增多，一台服务已经满足不了系统要求了。这个时候就出现了服务器 集群。<br>在服务器集群中，Nginx 可以将接收到的客户端请求“均匀地”（严格讲并不一定均匀，可以通过设置权重）分配到这个集群中所有的服务器上。这个就叫做负载均衡。<br>负载均衡的示意图如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/06ee1083810d768945b4234ba3e18204.webp" alt=""><br>负载均衡的作用</p>
+<p>分摊服务器集群压力<br>保证客户端访问的稳定性</p>
+<p>前面也提到了，负载均衡可以解决分摊服务器集群压力的问题。除此之外，Nginx还带有健康检查（服务器心跳检查）功能，会定期轮询向集群里的所有服务器发送健康检查请求，来检查集群中是否有服务器处于异常状态。<br>一旦发现某台服务器异常，那么在这以后代理进来的客户端请求都不会被发送到该服务器上（直健康检查发现该服务器已恢复正常），从而保证客户端访问的稳定性。</p>
+<p><strong>配置负载均衡</strong></p>
+<p>配置一个简单的负载均衡并不复杂，代码如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">## 负载均衡：设置domain
+upstream domain {
+    server localhost:8000;
+    server localhost:8001;
+}
+server {  
+        listen       8080;        
+        server_name  localhost;
+
+        location / {
+            # root   html; # Nginx默认值
+            # index  index.html index.htm;
+            
+            proxy_pass http://domain; # 负载均衡配置，请求会被平均分配到8000和8001端口
+            proxy_set_header Host $host:$server_port;
+        }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>8000和8001是我本地用 Node.js 起的两个服务，负载均衡成功后可以看到访问 localhost:8080 有时会访问到8000端口的页面，有时会访问到8001端口的页面。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2299761055052914c2f089ab072b37fd.webp" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/3440c0ca236da8de821da682fcf157b1.webp" alt=""><br>能看到这个效果，就说明你配置的负载均衡策略生效了。<br>实际项目中的负载均衡远比这个案例要更加复杂，但是万变不离其宗，都是根据这个理想模型衍生出来的。<br>受集群单台服务器内存等资源的限制，负载均衡集群的服务器也不能无限增多。但因其良好的容错机制，负载均衡成为了实现高可用架构中必不可少的一环。</p>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>不同的语言，不同的开发环境，编译出的东西不一定一样。</p>
+<blockquote>
+<p>比如C/C++，windows下编出的是后缀为exe的可执行程序，双击就能直接运行。但如果在linux下编出的后缀是没有exe的，是一个可运行的二进制文件。原因是因为编译器不同，linux环境的编译器一般是gcc，windows下一般是MinGW等（用VSCODE跑C一般就是这个编译器）</p>
+<p>不过java比较特殊，因为编出来的class文件是运行在JVM上，在os上一层，与操作系统没有直接联系。所以windows编出来的class，或者打包的tar/war可以直接扔到服务器（linux）上使用（B站黑马程序员的jenkins教程—（SpringCloud微服务部署）就是这样的）</p>
+</blockquote>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="Session-与-Cookie"><a href="#Session-与-Cookie" class="headerlink" title="Session 与 Cookie"></a>Session 与 Cookie</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/l199616j/p/11195667.html">原文链接</a></p>
+<p><strong>会话（Session）跟踪是Web程序中常用的技术，用来跟踪用户的整个会话。常用的会话跟踪技术是Cookie与Session。Cookie通过在客户端记录信息确定用户身份，Session通过在服务器端记录信息确定用户身份。</strong></p>
+<h4 id="Cookie机制"><a href="#Cookie机制" class="headerlink" title="Cookie机制"></a>Cookie机制</h4><p>在程序中，会话跟踪是很重要的事情。理论上，一个用户的所有请求操作都应该属于同一个会话，而另一个用户的所有请求操作则应该属于另一个会话，二者不能混淆。例如，用户A在超市购买的任何商品都应该放在A的购物车内，不论是用户A什么时间购买的，这都是属于同一个会话的，不能放入用户B或用户C的购物车内，这不属于同一个会话。</p>
+<p>　　而Web应用程序是使用HTTP协议传输数据的。HTTP协议是无状态的协议。一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接。这就意味着服务器无法从连接上跟踪会话。即用户A购买了一件商品放入购物车内，当再次购买商品时服务器已经无法判断该购买行为是属于用户A的会话还是用户B的会话了。要跟踪该会话，必须引入一种机制。</p>
+<p>　　Cookie就是这样的一种机制。它可以弥补HTTP协议无状态的不足。在Session出现之前，基本上所有的网站都采用Cookie来跟踪会话。</p>
+<h4 id="什么是Cookie"><a href="#什么是Cookie" class="headerlink" title="什么是Cookie"></a>什么是Cookie</h4><p>Cookie意为“甜饼”，是由W3C组织提出，最早由Netscape社区发展的一种机制。目前Cookie已经成为标准，所有的主流浏览器如IE、Netscape、Firefox、Opera等都支持Cookie。</p>
+<p>　　由于HTTP是一种无状态的协议，服务器单从网络连接上无从知道客户身份。怎么办呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。这就是Cookie的工作原理。</p>
+<p>　　Cookie实际上是一小段的文本信息。客户端请求服务器，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个Cookie。客户端浏览器会把Cookie保存起来。当浏览器再请求该网站时，浏览器把请求的网址连同该Cookie一同提交给服务器。服务器检查该Cookie，以此来辨认用户状态。服务器还可以根据需要修改Cookie的内容。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/f8e326e26add2797b05d3ed8c17a8f8b.png" alt=""></p>
+<h4 id="Session机制"><a href="#Session机制" class="headerlink" title="Session机制"></a>Session机制</h4><p>Session是服务器端使用的一种记录客户端状态的机制，使用上比Cookie简单一些，相应的也增加了服务器的存储压力。</p>
+<h4 id="什么是Session"><a href="#什么是Session" class="headerlink" title="什么是Session"></a>什么是Session</h4><p>Session是另一种记录客户状态的机制，不同的是Cookie保存在客户端浏览器中，而Session保存在服务器上。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。这就是Session。客户端浏览器再次访问时只需要从该Session中查找该客户的状态就可以了。</p>
+<p>　　如果说<strong>Cookie机制是通过检查客户身上的“通行证”来确定客户身份的话，那么Session机制就是通过检查服务器上的“客户明细表”来确认客户身份。Session相当于程序在服务器上建立的一份客户档案，客户来访的时候只需要查询客户档案表就可以了。</strong>
+　　</p>
+<h4 id="cookie和session的区别"><a href="#cookie和session的区别" class="headerlink" title="cookie和session的区别"></a>cookie和session的区别</h4><p><strong>1、cookie数据存放在客户的浏览器上，session数据放在服务器上.</strong></p>
+<p>简单的说，当你登录一个网站的时候，如果web服务器端使用的是session,那么所有的数据都保存在服务器上面，</p>
+<p>客户端每次请求服务器的时候会发送 当前会话的session_id，服务器根据当前session_id判断相应的用户数据标志，以确定用户是否登录，或具有某种权限。</p>
+<p>由于数据是存储在服务器 上面，所以你不能伪造，但是如果你能够获取某个登录用户的session_id，用特殊的浏览器伪造该用户的请求也是能够成功的。</p>
+<p>session_id是服务器和客户端链接时候随机分配的，一般来说是不会有重复，但如果有大量的并发请求，也不是没有重复的可能性。</p>
+<p>Session是由应用服务器维持的一个服务器端的存储空间，用户在连接服务器时，会由服务器生成一个唯一的SessionID,用该SessionID 为标识符来存取服务器端的Session存储空间。而SessionID这一数据则是保存到客户端，用Cookie保存的，用户提交页面时，会将这一 SessionID提交到服务器端，来存取Session数据。这一过程，是不用开发人员干预的。所以一旦客户端禁用Cookie，那么Session也会失效。</p>
+<p><strong>2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗考虑到安全应当使用session。</strong></p>
+<p><strong>3、设置cookie时间可以使cookie过期。但是使用session-destory（），我们将会销毁会话。</strong></p>
+<p><strong>4、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能考虑到减轻服务器性能方面，应当使用cookie。</strong></p>
+<p><strong>5、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。(Session对象没有对存储的数据量的限制，其中可以保存更为复杂的数据类型)</strong></p>
+<h2 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h2><h3 id="MD5加密"><a href="#MD5加密" class="headerlink" title="MD5加密"></a>MD5加密</h3><p><strong>为什么要对密码MD5</strong><br>密码明文传递或者直接写到数据库中，都有被偷看的风险</p>
+<p><strong>为什么要对密码做两次MD5</strong><br>现在存在的一些反查md5的软件，做两次为了更好的保密</p>
+<p><strong>整体流程如何实现</strong></p>
+<p><strong>1.整体加密流程</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">MD5(MD5(pass明文+固定salt)+随机salt)
+第一次固定salt写死在前端
+第二次加密采用随机的salt 并将每次生成的salt保存在数据库中<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>2.登录流程：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">前端对用户输入的密码进行md5加密（固定的salt）
+将加密后的密码传递到后端
+后端使用用户id取出用户信息
+后端对加密后的密码在进行md5加密（取出盐），然后与数据库中存储的密码进行对比，
+ok登录成功，否则登录失败<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>3.注册流程</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">前端对用户输入的密码进行md5加密（固定的salt）
+将加密后的密码传递到后端
+后端随机生成一个salt，
+使用生成salt对前端传过来的密码进行加密，然后将加密后密码和salt一起保存到db中<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="硬件知识"><a href="#硬件知识" class="headerlink" title="硬件知识"></a>硬件知识</h2><h3 id="cpu核心数与线程数"><a href="#cpu核心数与线程数" class="headerlink" title="cpu核心数与线程数"></a>cpu核心数与线程数</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86855590">原文链接</a></p>
+<p><strong>物理 cpu 数（physical cpu）</strong></p>
+<p>指主板上实际插入的 cpu 硬件个数（socket）。（但是这一概念经常被泛泛的说成是 cpu 数，这很容易导致与 core 数，processor 数等概念混淆，所以此处强调是物理 cpu 数）。</p>
+<p>由于在主板上引入多个 cpu 插槽需要更复杂的硬件支持（连接不同插槽的 cpu 到内存和其他资源），通常只会在服务器上才这样做。在家用电脑中，一般主板上只会有一个 cpu 插槽。</p>
+<p><strong>核心（core）</strong><br>一开始，每个物理 cpu 上只有一个核心（a single core），对操作系统而言，也就是同一时刻只能运行一个进程/线程。 为了提高性能，cpu 厂商开始在单个物理 cpu 上增加核心（实实在在的硬件存在），也就出现了双核心 cpu（dual-core cpu）以及多核心 cpu（multiple cores），这样一个双核心 cpu 就是同一时刻能够运行两个进程/线程的。</p>
+<p><strong>同时多线程技术（simultaneous multithreading）和 超线程技术（hyper–threading/HT）</strong></p>
+<p>本质一样，是为了提高单个 core 同一时刻能够执行的多线程数的技术（充分利用单个 core 的计算能力，尽量让其“一刻也不得闲”）。</p>
+<p>simultaneous multithreading 缩写是 SMT，AMD 和其他 cpu 厂商的称呼。 hyper–threading 是 Intel 的称呼，可以认为 hyper–threading 是 SMT 的一种具体技术实现。</p>
+<p>在类似技术下，产生了如下等价术语：</p>
+<ul>
+<li>虚拟 core： virtual core </li>
+<li>逻辑 processer： logical processor </li>
+<li>线程：thread</li>
+</ul>
+<p>所以可以这样说：某款采用 SMT 技术的 4 核心 AMD cpu 提供了 8 线程同时执行的能力；某款采用 HT 技术的 2 核心 Intel cpu 提供了 4 线程同时执行的能力。</p>
+<p><strong>查看 cpu 信息</strong><br>1.linux系统：</p>
+<pre class="line-numbers language-none"><code class="language-none">//法一
+lscpu<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">CPU(s):                24
+On-line CPU(s) list:   0-23
+Thread(s) per core:    2
+Core(s) per socket:    6
+Socket(s):             2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">//法二
+cat /proc/cpuinfo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">processor   : 0
+vendor_id   : GenuineIntel
+cpu family  : 6
+model       : 60
+model name  : Intel(R) Core(TM) i7-4700MQ CPU @ 2.40GHz
+stepping    : 3
+microcode   : 0x22
+cpu MHz     : 2393.631
+cache size  : 6144 KB
+physical id : 0
+siblings    : 8
+core id     : 0
+cpu cores   : 4
+...
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中有几个physical id,机器上就安装了几个物理CPU<br>cpu core记录了每个物理CPU,内部有几个物理核<br>siblings 代表每个物理CPU有多少个逻辑核</p>
+<p>2.windows<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/c82b797044d88e27b217706604a29bc7.png" alt=""><br><strong>多线程程序线程数</strong><br>为了让我们的多线程程序更好的利用 cpu 资源，我们通常会先了解机器拥有的 processor 数，有若干手段可以获取这一信息：</p>
+<ul>
+<li>cpuinfo 中查看：比如上文中的 cat /proc/cpuinfo | grep “processor” | wc -l</li>
+<li>top 命令查看：cpu0,cpu1,…</li>
+<li>编程：比如在 Java 中用 Runtime.getRuntime().availableProcessors()</li>
+</ul>
+<p>具体在多线程程序中设置线程数多大，对计算密集型的程序有的建议是 processor count + 1，有的建议是 processor count 的 1.5 倍，都是经验值，实测为准。</p>
+<p><strong>小结</strong></p>
+<ul>
+<li>一台完整的计算机可能包含一到多个物理 cpu </li>
+<li>从单个物理 cpu （physical cpu）的角度看，其可能是单核心、双核心甚至多核心的</li>
+<li>从单个核心（core）的角度看，还有 SMT / HT 等技术让每个 core 对计算机操作系统而言用起来像多个物理 core 差不多</li>
+</ul>
+<p>总的逻辑 cpu 数 = 物理 cpu 数 <em> 每颗物理 cpu 的核心数 </em> 每个核心的超线程数</p>
+<h3 id="cpu-线程与进程关系"><a href="#cpu-线程与进程关系" class="headerlink" title="cpu 线程与进程关系"></a>cpu 线程与进程关系</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904120684396552">原文链接</a></p>
+<h4 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h4><p>两种常见解释</p>
+<p>1.进程和线程都是一个时间段的描述，是CPU工作时间段的描述。<br>2.进程是资源分配的最小单位，线程是CPU调度的最小单位</p>
+<p>解释：</p>
+<ol>
+<li>CPU太快了,只有缓存存储器SRAM才能勉强追上它的速度,因此,一台机器上同时开30个程序,CPU可以把这30个程序变成顺序执行，每个只执行一小段，立马切换到下一个程序，再执行一小段，再切回来，人是无感知的。</li>
+<li><strong><em>一个程序准备开始执行的时候，相关资源必须要准备好，比如RAM地址，显卡，磁盘资源，这些准备好的东西打包一起就叫做上下文环境</em></strong>，然后CPU开始执行程序A，当然只执行了一小段时间，CPU就要切换到别的程序执行B，以保证几个程序的并发，切换之前要把A的上下问状态保存起来，下次切回来的时候接着用。</li>
+<li>因此，进程就是包换上下文切换的程序执行时间总和 = CPU加载上下文+CPU执行+CPU保存上下文</li>
+<li>进程的颗粒度太大，每次都要有上下的调入，保存，调出。线程就是进程的小分支，比如进程A有a，b，c三个线程，那么线程a，b，c就共享了进程A的上下文环境，成为了更细小的执行时间。</li>
+</ol>
+<h4 id="程序中的线程与CPU线程"><a href="#程序中的线程与CPU线程" class="headerlink" title="程序中的线程与CPU线程"></a>程序中的线程与CPU线程</h4><p>看到这里会懵逼，假设一台8CPU32核的服务器，是不是跑的程序最多只能开32个线程呢？</p>
+<p>答案当然是否定的，我们常说的进程中的线程，与CPU的线程，虽然都叫线程，但完全不是一回事。</p>
+<p>程序的线程是软件概念，一个程序可以有多个线程，可以在一个CPU核上轮流<strong>并发</strong>执行。<br>CPU的线程是硬件的概念,就是核。八线程就是能让八个线程<strong>并行</strong>执行。</p>
+<h4 id="linux中的线程"><a href="#linux中的线程" class="headerlink" title="linux中的线程"></a>linux中的线程</h4><p>暂时来不及总结，原文链接有。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="脚手架、框架、架构"><a href="#脚手架、框架、架构" class="headerlink" title="脚手架、框架、架构"></a>脚手架、框架、架构</h3><ul>
+<li>脚手架是指一个项目模板，通过这个模板可以生成固定模板的项目。 </li>
+<li>框架一般是说应用框架，就是别人已经搭建好的成熟组件，我们只需要填代码就行，比如Spring<br>Boot就是一个框架，我们要开发spring应用，就可以在这个框架里面按照它的规范去写代码。</li>
+<li>架构是指解决特定业务场景的技术解决方案。</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Jason Lin</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://gaofeng-lin.github.io/posts/7909/">https://gaofeng-lin.github.io/posts/7909/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">Jason Lin</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/VM/">
+                                    <span class="chip bg-color">VM</span>
+                                </a>
+                            
+                                <a href="/tags/nginx/">
+                                    <span class="chip bg-color">nginx</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BC%96%E8%AF%91/">
+                                    <span class="chip bg-color">编译</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">
+                                    <span class="chip bg-color">环境变量</span>
+                                </a>
+                            
+                                <a href="/tags/Cookie/">
+                                    <span class="chip bg-color">Cookie</span>
+                                </a>
+                            
+                                <a href="/tags/Session/">
+                                    <span class="chip bg-color">Session</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">
+                                    <span class="chip bg-color">密码学</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
+                                    <span class="chip bg-color">硬件知识</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
+                                    <span class="chip bg-color">线程、进程</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/300/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="工具快捷键集合">
+                        
+                        <span class="card-title">工具快捷键集合</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/office/">
+                        <span class="chip bg-color">office</span>
+                    </a>
+                    
+                    <a href="/tags/IDE/">
+                        <span class="chip bg-color">IDE</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
+                        <span class="chip bg-color">编辑器</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+                        <span class="chip bg-color">快捷键</span>
+                    </a>
+                    
+                    <a href="/tags/vscode/">
+                        <span class="chip bg-color">vscode</span>
+                    </a>
+                    
+                    <a href="/tags/visio/">
+                        <span class="chip bg-color">visio</span>
+                    </a>
+                    
+                    <a href="/tags/postman/">
+                        <span class="chip bg-color">postman</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/53165/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Java知识">
+                        
+                        <span class="card-title">Java知识</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    编程语言
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/SpringBoot/">
+                        <span class="chip bg-color">SpringBoot</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">Jason Lin</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">145.5k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/gaofeng-lin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:jason_gaofeng_lin@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
