@@ -570,6 +570,16 @@ git reset --hard回退之后，如果直接push会出错，因为我们本地库
 2. git push -u neworigin **"分支名"**
 3. 如果第二条命令不行就：git push -u neworigin **"分支名"** : **"分支名"**
 
+### 生成新的ssh密钥
+我们在重装系统后，如果要使用ssh来拉去代码，就需要生成密钥。
+[原文链接](https://docs.github.com/zh/enterprise-server@3.7/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+1.打开git Bash。输入 ```ssh-keygen -t ed25519 -C "your_email@example.com"```；email替换为github的email（其他eamil没有尝试过）
+2.后面一直回车就好，详细的去看原链接。**需要注意的是不要更改密钥文件名字，否则会出问题**。因为更改后，执行完后面的操作一直出问题。使用```ssh -vT git@github.com```命令发现它一直在寻找带有id_rsa_字段的文件，擅自改了名字当然找不到，这个问题如何解决目前还没有找到方法。
+3.```eval "$(ssh-agent -s)"```//确保 ssh-agent 正在运行
+4.```ssh-add ~/.ssh/id_ed25519```//将 SSH 私钥添加到 ssh-agent。
+5.将后缀为.pub的文件（公钥）添加到 GitHub 上的帐户
+
 ## git bash扩展命令
 [原链接](https://blog.51cto.com/u_15127579/2670631)
 总共有三个思路：
