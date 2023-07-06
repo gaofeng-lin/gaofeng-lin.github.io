@@ -474,14 +474,14 @@ label =">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.9k
+                    10.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    32 分
+                    39 分
                 </div>
                 
 
@@ -514,6 +514,15 @@ label =">
 <p>minibatch stochastic gradient descent:小批量随机梯度下降</p>
 <p>batch size:批量大小</p>
 <p>hyperparameter tuning:调参</p>
+<p>trade-off:取舍/权衡<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/338415312">原文链接</a></p>
+<p>深度学习领域中的几个指标也相同。</p>
+<p>主要的指标有如下四个：</p>
+<p>（1）精度：自然精度是一个模型最根本的衡量指标，如果一个模型精度不高，再快，再绿色环保也无济于事。基本上所有刷榜的工作都是用其他所有指标换精度：比如用更深的网络就是用memory和computation换精度。然而到了实际应用中，尤其是部署侧，工程师越来越多的用一些方法适当的减少精度从而换取更小的内存占用或者运算时间</p>
+<p>（2）内存：Out Of Memory Error恐怕是炼丹师最常见的情况了。内存（或者说可以高效访问的存储空间）的尺寸是有限的，如果网络训练需要的内存太大了，可能程序直接就报错了，即使不报错，也需要把内存中的数据做个取舍，一部分存到相对较慢的存储介质中（比如host memory）。</p>
+<p>(3) 通信：随着网络规模越来越大，分布式训练已经是state-of-the-art的网络模型必不可少的部分（你见过谁用单卡在ImageNet训练ResNet50？），在大规模分布式系统，通信带宽比较低，相比于computation或者memory load/sotre，network communication会慢很多，如果可以降低通信量，那么整个网络的训练时间就会有大幅减少：这样研究员就不会借口调参，实际上把模型往服务器上一扔自己就跑出去浪了。(资本家狂喜)</p>
+<p>（4）计算：虽然我们用的是计算机，但实际上恐怕只有很少的时间用于计算(computation)了，因为大多数时间都在等待数据的读取或者网络通信，不过即便如此，对于一些计算密集型的神经网络结构（比如BERT，几乎都是矩阵乘法），制约我们的往往是设备的计算能力（FLOPS），即每秒钟可以处理多少浮点计算。</p>
+<p>常见的trade-off:<br>（1）计算换内存<br>（2）通信换内存<br>（3）计算换通信<br>（4）显存换计算<br>（5）精度换计算/内存/通信</p>
+<p>孪生网络（Siamese newtowk）:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35040994">原文链接</a></p>
 <h3 id="矩阵计算"><a href="#矩阵计算" class="headerlink" title="矩阵计算"></a>矩阵计算</h3><p>在深度学习相关的资料里面，标量就表示一个数，向量是由多个数组成的。</p>
 <p>常规的导数求导没有什么难度，现在将导数扩展到向量，会出现四种情况：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/Snipaste_2023-03-02_22-49-16.png" alt=""></p>
@@ -638,6 +647,51 @@ D_{K L}(p \| q)&=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i
 </ol>
 <p>要想解决过拟合问题，就要显著减少测试误差而不过度增加训练误差，从而提高模型的泛化能力。我们可以使用正则化（Regularization）方法。那什么是正则化呢？正则化是指修改学习算法，使其降低泛化误差而非训练误差。</p>
 <p>常用的正则化方法根据具体的使用策略不同可分为：（1）直接提供正则化约束的参数正则化方法，如L1/L2正则化；（2）通过工程上的技巧来实现更低泛化误差的方法，如提前终止(Early stopping)和Dropout；（3）不直接提供约束的隐式正则化方法，如数据增强等。</p>
+<h3 id="学习率、batchsize、batch、epoch的区别"><a href="#学习率、batchsize、batch、epoch的区别" class="headerlink" title="学习率、batchsize、batch、epoch的区别"></a>学习率、batchsize、batch、epoch的区别</h3><ol>
+<li>epoch:一个Epoch就是将所有训练样本训练一次的过程。然而，当一个Epoch的样本（也就是所有的训练样本）数量可能太过庞大（对于计算机而言），就需要把它分成多个小块，也就是就是分成多个Batch 来进行训练。</li>
+<li>Batch（批 / 一批样本）:将整个训练样本分成若干个Batch。</li>
+<li>Batch Size:每批样本的大小。</li>
+<li>Iteration:训练一个Batch就是一次Iteration（这个概念跟程序语言中的迭代器相似）</li>
+</ol>
+<p>Batch Size定义：一次训练所选取的样本数。</p>
+<p>Batch Size的大小影响模型的优化程度和速度。同时其直接影响到GPU内存的使用情况，假如GPU内存不大，该数值最好设置小一点。</p>
+<h4 id="为什么要提出Batch-Size"><a href="#为什么要提出Batch-Size" class="headerlink" title="为什么要提出Batch Size?"></a>为什么要提出Batch Size?</h4><p>在没有使用Batch Size之前，这意味着网络在训练时，是一次把所有的数据（整个数据库）输入网络中，然后计算它们的梯度进行反向传播，由于在计算梯度时使用了整个数据库，所以计算得到的梯度方向更为准确。但在这情况下，计算得到不同梯度值差别巨大，难以使用一个全局的学习率，所以这时一般使用Rprop这种基于梯度符号的训练算法，单独进行梯度更新。</p>
+<p>在小样本数的数据库中，不使用Batch Size是可行的，而且效果也很好。但是一旦是大型的数据库，一次性把所有数据输进网络，肯定会引起内存的爆炸。所以就提出Batch Size的概念。</p>
+<h4 id="Batch-Size合适的优点："><a href="#Batch-Size合适的优点：" class="headerlink" title="Batch Size合适的优点："></a>Batch Size合适的优点：</h4><p>1、通过并行化提高内存的利用率。就是尽量让你的GPU满载运行，提高训练速度。</p>
+<p>2、单个epoch的迭代次数减少了，参数的调整也慢了，假如要达到相同的识别精度，需要更多的epoch。</p>
+<p>3、适当Batch Size使得梯度下降方向更加准确。</p>
+<h4 id="Batch-Size从小到大的变化对网络影响"><a href="#Batch-Size从小到大的变化对网络影响" class="headerlink" title="Batch Size从小到大的变化对网络影响"></a>Batch Size从小到大的变化对网络影响</h4><p>1、没有Batch Size，梯度准确，只适用于小样本数据库</p>
+<p>2、Batch Size=1，梯度变来变去，非常不准确，网络很难收敛。</p>
+<p>3、Batch Size增大，梯度变准确，</p>
+<p>4、Batch Size增大，梯度已经非常准确，再增加Batch Size也没有用</p>
+<p>注意：Batch Size增大了，要到达相同的准确度，必须要增大epoch。</p>
+<p>GD（Gradient Descent）：就是没有利用Batch Size，用基于整个数据库得到梯度，梯度准确，但数据量大时，计算非常耗时，同时神经网络常是非凸的，网络最终可能收敛到初始点附近的局部最优点。</p>
+<p>SGD（Stochastic Gradient Descent）：就是Batch Size=1，每次计算一个样本，梯度不准确，所以学习率要降低。</p>
+<p>mini-batch SGD：就是选着合适Batch Size的SGD算法，mini-batch利用噪声梯度，一定程度上缓解了GD算法直接掉进初始点附近的局部最优值。同时梯度准确了，学习率要加大</p>
+<h4 id="学习率和batch对学习效果的影响"><a href="#学习率和batch对学习效果的影响" class="headerlink" title="学习率和batch对学习效果的影响"></a>学习率和batch对学习效果的影响</h4><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/32673260/answer/675161450">学习率和batch对学习效果的影响</a></p>
+<h3 id="为什么把连续性特征离散化，离散化有何好处"><a href="#为什么把连续性特征离散化，离散化有何好处" class="headerlink" title="为什么把连续性特征离散化，离散化有何好处"></a>为什么把连续性特征离散化，离散化有何好处</h3><p><strong>数据离散化的原因主要有以下几点：</strong></p>
+<p>1、算法需要</p>
+<p>比如决策树、朴素贝叶斯等算法，都是基于离散型的数据展开的。如果要使用该类算法，必须将离散型的数据进行。有效的离散化能减小算法的时间和空间开销，提高系统对样本的分类聚类能力和抗噪声能力。</p>
+<p>2、离散化的特征相对于连续型特征更易理解，更接近知识层面的表达</p>
+<p>比如工资收入，月薪2000和月薪20000，从连续型特征来看高低薪的差异还要通过数值层面才能理解，但将其转换为离散型数据（底薪、高薪），则可以更加直观的表达出了我们心中所想的高薪和底薪。</p>
+<p>3、可以有效的克服数据中隐藏的缺陷，使模型结果更加稳定</p>
+<p><strong>离散化的优势</strong></p>
+<ol>
+<li><p>离散特征的增加和减少都很容易，易于模型的快速迭代；</p>
+</li>
+<li><p>稀疏向量内积乘法运算速度快，计算结果方便存储，容易扩展；</p>
+</li>
+<li><p>离散化后的特征对异常数据有很强的鲁棒性：比如一个特征是年龄&gt;30是1，否则0。如果特征没有离散化，一个异常数据“年龄300岁”会给模型造成很大的干扰；</p>
+</li>
+<li><p>逻辑回归属于广义线性模型，表达能力受限；单变量离散化为N个后，每个变量有单独的权重，相当于为模型引入了非线性，能够提升模型表达能力，加大拟合；</p>
+</li>
+<li><p>离散化后可以进行特征交叉，由M+N个变量变为M*N个变量，进一步引入非线性，提升表达能力；</p>
+</li>
+<li><p>特征离散化后，模型会更稳定，比如如果对用户年龄离散化，20-30作为一个区间，不会因为一个用户年龄长了一岁就变成一个完全不同的人。当然处于区间相邻处的样本会刚好相反，所以怎么划分区间是门学问；</p>
+</li>
+<li><p>特征离散化以后，起到了简化了逻辑回归模型的作用，降低了模型过拟合的风险。</p>
+</li>
+</ol>
 <h2 id="度量学习"><a href="#度量学习" class="headerlink" title="度量学习"></a>度量学习</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>度量学习 (Metric Learning) == 距离度量学习 (Distance Metric Learning，DML) == 相似度学习。</p>
 <p>在数学中,一个度量(或距离函数)是一个定义集合中元素之间”距离”的函数.</p>
 <p>一个具有度量的集合可以称之为度量空间.</p>
@@ -688,7 +742,7 @@ D_{K L}(p \| q)&=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i
 <p>所以当我们移动图像中的物体，用传统的方式的得出来的参数会差异很大！这是不符合图像处理的要求的。</p>
 <p><strong>CNN 解决了这个问题，他用类似视觉的方式保留了图像的特征，当图像做翻转，旋转或者变换位置时，它也能有效的识别出来是类似的图像。</strong></p>
 <h3 id="CNN的基本步骤"><a href="#CNN的基本步骤" class="headerlink" title="CNN的基本步骤"></a>CNN的基本步骤</h3><p>卷积神经网络（Convolutional Neural Network，CNN）是一种在计算机视觉和图像处理任务中广泛应用的深度学习模型。CNN通过模拟生物视觉系统中神经元的工作原理，能够自动学习图像和视频等数据的特征表示。</p>
-<p>CNN的基本概念包括以下几个要素：</p>
+<p>CNN的基本概念包括以下几个要素：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/51812459">相关链接，写的不错</a></p>
 <ol>
 <li><p>卷积层（Convolutional Layer）：卷积层是CNN的核心组成部分。它通过使用一系列可学习的滤波器（也称为卷积核）对输入图像进行卷积操作，从而提取图像中的局部特征。卷积层的输出被称为特征图（Feature Map）。</p>
 </li>
@@ -1377,7 +1431,7 @@ DLL:找不到模块<span aria-hidden="true" class="line-numbers-rows"><span></sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">146.5k</span>
+                        class="white-color">148.5k</span>
             
             
             
