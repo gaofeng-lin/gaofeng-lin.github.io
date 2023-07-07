@@ -35,9 +35,9 @@ label =">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -474,14 +474,14 @@ label =">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10.3k
+                    10.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    37 分
+                    39 分
                 </div>
                 
 
@@ -669,6 +669,29 @@ D_{K L}(p \| q)&=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i
 <p>SGD（Stochastic Gradient Descent）：就是Batch Size=1，每次计算一个样本，梯度不准确，所以学习率要降低。</p>
 <p>mini-batch SGD：就是选着合适Batch Size的SGD算法，mini-batch利用噪声梯度，一定程度上缓解了GD算法直接掉进初始点附近的局部最优值。同时梯度准确了，学习率要加大</p>
 <h4 id="学习率和batch对学习效果的影响"><a href="#学习率和batch对学习效果的影响" class="headerlink" title="学习率和batch对学习效果的影响"></a>学习率和batch对学习效果的影响</h4><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/32673260/answer/675161450">学习率和batch对学习效果的影响</a></p>
+<h3 id="为什么把连续性特征离散化，离散化有何好处"><a href="#为什么把连续性特征离散化，离散化有何好处" class="headerlink" title="为什么把连续性特征离散化，离散化有何好处"></a>为什么把连续性特征离散化，离散化有何好处</h3><p><strong>数据离散化的原因主要有以下几点：</strong></p>
+<p>1、算法需要</p>
+<p>比如决策树、朴素贝叶斯等算法，都是基于离散型的数据展开的。如果要使用该类算法，必须将离散型的数据进行。有效的离散化能减小算法的时间和空间开销，提高系统对样本的分类聚类能力和抗噪声能力。</p>
+<p>2、离散化的特征相对于连续型特征更易理解，更接近知识层面的表达</p>
+<p>比如工资收入，月薪2000和月薪20000，从连续型特征来看高低薪的差异还要通过数值层面才能理解，但将其转换为离散型数据（底薪、高薪），则可以更加直观的表达出了我们心中所想的高薪和底薪。</p>
+<p>3、可以有效的克服数据中隐藏的缺陷，使模型结果更加稳定</p>
+<p><strong>离散化的优势</strong></p>
+<ol>
+<li><p>离散特征的增加和减少都很容易，易于模型的快速迭代；</p>
+</li>
+<li><p>稀疏向量内积乘法运算速度快，计算结果方便存储，容易扩展；</p>
+</li>
+<li><p>离散化后的特征对异常数据有很强的鲁棒性：比如一个特征是年龄&gt;30是1，否则0。如果特征没有离散化，一个异常数据“年龄300岁”会给模型造成很大的干扰；</p>
+</li>
+<li><p>逻辑回归属于广义线性模型，表达能力受限；单变量离散化为N个后，每个变量有单独的权重，相当于为模型引入了非线性，能够提升模型表达能力，加大拟合；</p>
+</li>
+<li><p>离散化后可以进行特征交叉，由M+N个变量变为M*N个变量，进一步引入非线性，提升表达能力；</p>
+</li>
+<li><p>特征离散化后，模型会更稳定，比如如果对用户年龄离散化，20-30作为一个区间，不会因为一个用户年龄长了一岁就变成一个完全不同的人。当然处于区间相邻处的样本会刚好相反，所以怎么划分区间是门学问；</p>
+</li>
+<li><p>特征离散化以后，起到了简化了逻辑回归模型的作用，降低了模型过拟合的风险。</p>
+</li>
+</ol>
 <h2 id="度量学习"><a href="#度量学习" class="headerlink" title="度量学习"></a>度量学习</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>度量学习 (Metric Learning) == 距离度量学习 (Distance Metric Learning，DML) == 相似度学习。</p>
 <p>在数学中,一个度量(或距离函数)是一个定义集合中元素之间”距离”的函数.</p>
 <p>一个具有度量的集合可以称之为度量空间.</p>
@@ -1415,7 +1438,7 @@ DLL:找不到模块<span aria-hidden="true" class="line-numbers-rows"><span></sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">147.9k</span>
+                        class="white-color">149.1k</span>
             
             
             
