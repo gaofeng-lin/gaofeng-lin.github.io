@@ -21,6 +21,51 @@ abbrlink: 54220
 
 运行命令 `sudo gedit /etc/ld.so.conf` 在第一行后面空一格 添加/usr/local/lib 保存。运行`sudo /sbin/ldconfig`更新
 
+### 新建用户之后不显示用户名和路径问题解决
+先说一下如何新建用户并指定目录为根目录:
+1. 新建用户，当前用户必须为root用户
+```
+useradd -d /home/cron/log -m bbee
+```
+
+-d指定目录文件夹
+
+-m新账号名
+
+-c comment 指定一段注释性描述。
+-d 目录 指定用户主目录，如果此目录不存在，则同时使用-m选项，可以创建主目录。
+-g 用户组 指定用户所属的用户组。
+-G 用户组，用户组 指定用户所属的附加组。
+-s Shell文件 指定用户的登录Shell。
+-u 用户号 指定用户的用户号，如果同时有-o选项，则可以重复使用其他用户的标识号。
+
+2. 设置密码
+   ```passwd bbee```
+接下来会提示你输入两次密码
+
+**使用新用户登录的时候，出现了问题**
+在Linux下新增的用户登录后只有一个$，没有显示用户名和主机名，如下：
+```
+$ cd ~    
+$ ls
+$ ls -a
+```
+
+原因是新建的用户未指定shell。我们只需将其指定为一个shell即可。下面提供两种办法：
+**方法一（成功）**
+查看下当前用户使用的是什么shell
+```echo $SHELL```
+查看系统支持shell类型
+```cat /etc/shells```
+
+使用usermod命令修改shell类型
+```root@iZ2zeijeb6un95h:~# usermod -s /bin/bash bbee```
+
+**方法二（为尝试）**
+
+在新建用户的时候指定shell
+```useradd -d /home/cron/log -s /bin/bash -m bbee```
+
 ## make命令
 [原文链接](https://www.ruanyifeng.com/blog/2015/02/make.html)
 
