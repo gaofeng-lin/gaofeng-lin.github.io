@@ -35,9 +35,9 @@ label =">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -474,14 +474,14 @@ label =">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10.9k
+                    11.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    39 分
+                    40 分
                 </div>
                 
 
@@ -728,6 +728,7 @@ D_{K L}(p \| q)&=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i
 <li>找到一组已知答案的数据集，用来训练模型，估算w和b</li>
 <li>一旦新的数据产生，输入模型，就可以得到结果，同时对w和b进行校正</li>
 </ol>
+<h3 id="传统神经网络数学公式推导（全连接）"><a href="#传统神经网络数学公式推导（全连接）" class="headerlink" title="传统神经网络数学公式推导（全连接）"></a>传统神经网络数学公式推导（全连接）</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/273595649">原文链接</a></p>
 <h3 id="传统神经网络的问题"><a href="#传统神经网络的问题" class="headerlink" title="传统神经网络的问题"></a>传统神经网络的问题</h3><ol>
 <li>图像需要处理的数据量太大，导致成本很高，效率很低</li>
 </ol>
@@ -746,7 +747,7 @@ D_{K L}(p \| q)&=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i
 <ol>
 <li><p>卷积层（Convolutional Layer）：卷积层是CNN的核心组成部分。它通过使用一系列可学习的滤波器（也称为卷积核）对输入图像进行卷积操作，从而提取图像中的局部特征。卷积层的输出被称为特征图（Feature Map）。</p>
 </li>
-<li><p>池化层（Pooling Layer）：池化层用于减少特征图的空间维度，同时保留主要的特征信息。常用的池化操作包括最大池化（Max Pooling）和平均池化（Average Pooling）。池化层可以帮助减少计算量，提取图像的不变性，并且能够控制模型的过拟合。</p>
+<li><p>池化层（Pooling Layer）：池化层用于减少特征图的空间维度，同时保留主要的特征信息。池化层也称为下采样。常用的池化操作包括最大池化（Max Pooling）和平均池化（Average Pooling）。池化层可以帮助减少计算量，提取图像的不变性，并且能够控制模型的过拟合。</p>
 </li>
 <li><p>激活函数（Activation Function）：激活函数引入非线性性质，使得CNN能够学习复杂的非线性特征。常用的激活函数包括ReLU（Rectified Linear Unit）、Sigmoid和Tanh等。</p>
 </li>
@@ -773,6 +774,21 @@ D_{K L}(p \| q)&=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i
 </ol>
 <p>这个例子只是一个简化的CNN结构，实际中可能会有更多的卷积层、池化层和全连接层，以及一些正则化和优化技巧，来提高模型的性能和稳定性。</p>
 <p>请注意，具体的CNN结构和参数设置会根据不同的任务和数据集而有所不同，需要根据实际情况进行调整和优化。</p>
+<h3 id="CNN数学公式推导"><a href="#CNN数学公式推导" class="headerlink" title="CNN数学公式推导"></a>CNN数学公式推导</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weipf8/article/details/103917202">链接1</a></p>
+<p><a target="_blank" rel="noopener" href="https://tech.youmi.net/2016/07/163347168.html">链接2</a></p>
+<p>卷积的过程：</p>
+<!-- <img src="gif/convProcess.gif" width = "" height = ""> -->
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/convProcess.gif" alt=""></p>
+<p>卷积神经网络是权值共享，非全连接的神经网络。以2个卷积层和2个池化层的卷积神经网络为例，其结构图如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/a7b9429e-436f-11e6-85c5-ceab16a79342.jpg" alt=""></p>
+<p>从这个图可以看出几个关键的地方：</p>
+<ol>
+<li>卷积层和池化（采样）层结束的时候都需要一个激活函数，就是f(.)。</li>
+<li>卷积核可以不止有一个，可以采用多个卷积核分别进行卷积, 这样便可以得到多个特征图。有时, 对于一张三通道彩色图片, 或者如第三层特征图所示, 输入的是一组矩阵, 这时卷积核也不再是一层的, 而要变成相应的深度.</li>
+</ol>
+<!-- <img src="gif/Three-channelFeature.gif" width = "" height = ""> -->
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Three-channelFeature.gif" alt=""></p>
+<p>上图中是经过一次卷积后的结果，得到了3个特征图。再次卷积时，输入的是一组矩阵, 这时卷积核也不再是一层的, 而要变成相应的深度。, 最左边是输入的特征图矩阵, 深度为 3, 补零(Zero Padding)层数为 1, 每次滑动的步幅为 2. 中间两列粉色的矩阵分别是两组卷积核, 一组有三个, 三个矩阵分别对应着卷积左侧三个输入矩阵, 每一次滑动卷积会得到三个数, 这三个数的和作为卷积的输出. 最右侧两个绿色的矩阵分别是两组卷积核得到的特征图。</p>
 <h3 id="如何理解多尺度CNN中的尺度"><a href="#如何理解多尺度CNN中的尺度" class="headerlink" title="如何理解多尺度CNN中的尺度"></a>如何理解多尺度CNN中的尺度</h3><p>在多尺度CNN中，”多尺度”指的是对输入数据进行不同尺度的处理和分析。这种处理方式可以帮助网络更好地捕捉到输入数据中的多尺度特征，从而提高模型的性能和泛化能力。</p>
 <p>通常，多尺度CNN会通过以下几种方式来实现多尺度处理：</p>
 <ol>
@@ -1431,7 +1447,7 @@ DLL:找不到模块<span aria-hidden="true" class="line-numbers-rows"><span></sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">148.5k</span>
+                        class="white-color">149.5k</span>
             
             
             

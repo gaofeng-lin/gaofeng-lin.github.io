@@ -32,9 +32,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -487,14 +487,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.3k
+                    4.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    17 分
                 </div>
                 
 
@@ -519,6 +519,24 @@
             <div id="articleContent">
                 <h2 id="问题汇总"><a href="#问题汇总" class="headerlink" title="问题汇总"></a>问题汇总</h2><h3 id="error-while-loading-shared-libraries错误解决办法"><a href="#error-while-loading-shared-libraries错误解决办法" class="headerlink" title="error while loading shared libraries错误解决办法"></a>error while loading shared libraries错误解决办法</h3><p><strong>背景：求解器执行的适合报找不到libmpiexec.so.12这个东西，但是在/opt/mpich/lib下面有这个东西。路径什么的也都加入到了 环境变量里面 （~/.bash_profile或~/.bashrc）。还是无法解决问题</strong><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/dumeifang/article/details/2963223?spm=1001.2101.3001.6650.1&amp;depth_1-utm_relevant_index=2">原文链接</a><br>出现这类错误表示，系统不知道xxx.so放在哪个目录下，这时候就要在/etc/ld.so.conf中加入xxx.so所在的目录。</p>
 <p>运行命令 <code>sudo gedit /etc/ld.so.conf</code> 在第一行后面空一格 添加/usr/local/lib 保存。运行<code>sudo /sbin/ldconfig</code>更新</p>
+<h3 id="新建用户之后不显示用户名和路径问题解决"><a href="#新建用户之后不显示用户名和路径问题解决" class="headerlink" title="新建用户之后不显示用户名和路径问题解决"></a>新建用户之后不显示用户名和路径问题解决</h3><p>先说一下如何新建用户并指定目录为根目录:</p>
+<ol>
+<li>新建用户，当前用户必须为root用户<pre class="line-numbers language-none"><code class="language-none">useradd -d /home/cron/log -m bbee<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<p>-d指定目录文件夹</p>
+<p>-m新账号名</p>
+<p>-c comment 指定一段注释性描述。<br>-d 目录 指定用户主目录，如果此目录不存在，则同时使用-m选项，可以创建主目录。<br>-g 用户组 指定用户所属的用户组。<br>-G 用户组，用户组 指定用户所属的附加组。<br>-s Shell文件 指定用户的登录Shell。<br>-u 用户号 指定用户的用户号，如果同时有-o选项，则可以重复使用其他用户的标识号。</p>
+<ol>
+<li>设置密码<br><code>passwd bbee</code><br>接下来会提示你输入两次密码</li>
+</ol>
+<p><strong>使用新用户登录的时候，出现了问题</strong><br>在Linux下新增的用户登录后只有一个$，没有显示用户名和主机名，如下：<br></p><pre class="line-numbers language-none"><code class="language-none">$ cd ~    
+$ ls
+$ ls -a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p></p>
+<p>原因是新建的用户未指定shell。我们只需将其指定为一个shell即可。下面提供两种办法：<br><strong>方法一（成功）</strong><br>查看下当前用户使用的是什么shell<br><code>echo $SHELL</code><br>查看系统支持shell类型<br><code>cat /etc/shells</code></p>
+<p>使用usermod命令修改shell类型<br><code>root@iZ2zeijeb6un95h:~# usermod -s /bin/bash bbee</code></p>
+<p><strong>方法二（为尝试）</strong></p>
+<p>在新建用户的时候指定shell<br><code>useradd -d /home/cron/log -s /bin/bash -m bbee</code></p>
 <h2 id="make命令"><a href="#make命令" class="headerlink" title="make命令"></a>make命令</h2><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/02/make.html">原文链接</a></p>
 <h2 id="make-和-cmake"><a href="#make-和-cmake" class="headerlink" title="make 和 cmake"></a>make 和 cmake</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/KP1995/article/details/109569787">原文链接</a></p>
 <h3 id="什么是make"><a href="#什么是make" class="headerlink" title="什么是make"></a>什么是make</h3><p>make工具可以看成是一个智能的批处理工具，它本身并没有编译和链接的功能，而是用类似于批处理的方式—通过调用makefile文件中用户指定的命令来进行编译和链接。</p>
@@ -1261,7 +1279,7 @@ df -h /home/test.txt<span aria-hidden="true" class="line-numbers-rows"><span></s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">148.5k</span>
+                        class="white-color">149.5k</span>
             
             
             
