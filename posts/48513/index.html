@@ -474,14 +474,14 @@ label =">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11.3k
+                    12k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    40 分
+                    43 分
                 </div>
                 
 
@@ -866,6 +866,17 @@ conda env list<span aria-hidden="true" class="line-numbers-rows"><span></span><s
 <pre class="line-numbers language-none"><code class="language-none">deactivate <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>复制某个环境<br></p><pre class="line-numbers language-none"><code class="language-none">conda create --name new_env_name --clone old_env_name <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>删除某个环境<p></p>
 <pre class="line-numbers language-none"><code class="language-none">conda remove --name your_env_name --all<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="CUDA、CUDNN相关的内容"><a href="#CUDA、CUDNN相关的内容" class="headerlink" title="CUDA、CUDNN相关的内容"></a>CUDA、CUDNN相关的内容</h2><p>一般来说，如果要使用CUDA，一共需要安装3个东西Nvidia驱动、CUDA、CUDNN。</p>
+<p>CUDA看作是一个工作台，上面配有很多工具，如锤子、螺丝刀等。cuDNN是基于CUDA的深度学习GPU加速库，有了它才能在GPU上完成深度学习的计算。它就相当于工作的工具，比如它就是个扳手。但是CUDA这个工作台买来的时候，并没有送扳手。想要在CUDA上运行深度神经网络，就要安装cuDNN，就像你想要拧个螺帽就要把扳手买回来。这样才能使GPU进行深度神经网络的工作，工作速度相较CPU快很多。</p>
+<p>但是我们经常只安装CUDA Driver，比如我们的笔记本电脑，安装个CUDA Driver就可正常看视频、办公和玩游戏了。</p>
+<h3 id="Nvidia驱动"><a href="#Nvidia驱动" class="headerlink" title="Nvidia驱动"></a>Nvidia驱动</h3><p>Nvidia驱动可以单独安装，也可以使用CUDA Toolkit Installer安装，CUDA Toolkit Installer通常会集成了GPU driver Installer和CUDA。<br>安装完成以后，使用<code>nvidia-smi</code>可以驱动是否安装成功。nvidia-smi 全称是 NVIDIA System Management Interface ，是一种命令行实用工具，旨在帮助管理和监控NVIDIA GPU设备。</p>
+<h3 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h3><p>可以使用命令行、官网下载脚本、CUDA Toolkit Installer。<br><strong>不过目前看下来，使用官网下载的.run脚本（这是cuda10.1的安装包cuda_10.1.105_418.39_linux.run）是最容易成功的，虽然比较费时间。这个脚本里面也包含了驱动安装，如果安装了驱动，就不要再安装了</strong></p>
+<p><strong>安装的时候我曾经遇到过gcc版本过高的问题，并且无法直接使用命令行来降低版本。只能通过网上下载低版本的包，然后再安装</strong><br>安装后使用<code>nvcc -v</code>来看是否安装成功</p>
+<h3 id="nvcc和nvidia-smi的关系"><a href="#nvcc和nvidia-smi的关系" class="headerlink" title="nvcc和nvidia-smi的关系"></a>nvcc和nvidia-smi的关系</h3><p>nvcc 属于CUDA的编译器，将程序编译成可执行的二进制文件，nvidia-smi 全称是 NVIDIA System Management Interface ，是一种命令行实用工具，旨在帮助管理和监控NVIDIA GPU设备。</p>
+<p>CUDA有 runtime api 和 driver api，两者都有对应的CUDA版本， nvcc —version 显示的就是前者对应的CUDA版本，而 nvidia-smi显示的是后者对应的CUDA版本。</p>
+<p><strong>如果使用了单独的GPU driver installer来安装GPU dirver，这样就会导致 nvidia-smi 和 nvcc —version 显示的版本不一致了。</strong></p>
+<p>通常，<strong>driver api的版本能向下兼容runtime api的版本，即 nvidia-smi 显示的版本大于nvcc —version 的版本通常不会出现大问题。</strong></p>
+<h3 id="如何选择与CUDA版本匹配的Pytorch"><a href="#如何选择与CUDA版本匹配的Pytorch" class="headerlink" title="如何选择与CUDA版本匹配的Pytorch"></a>如何选择与CUDA版本匹配的Pytorch</h3><p>如果nvcc和nvidia-smi的版本不一致，应该如何选择pytorch的版本？<br><strong>选择与nvcc -v 对应的CUDA版本</strong></p>
 <h2 id="pytorch安装"><a href="#pytorch安装" class="headerlink" title="pytorch安装"></a>pytorch安装</h2><h3 id="cuda安装"><a href="#cuda安装" class="headerlink" title="cuda安装"></a>cuda安装</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/94220564">原链接</a></p>
 <p>桌面右键打开英伟达控制面板，点击帮助-&gt;系统信息-&gt;组件</p>
 <p>可以看到支持的版本，安装的cuda版本必须小于等于该版本</p>
@@ -1454,7 +1465,7 @@ DLL:找不到模块<span aria-hidden="true" class="line-numbers-rows"><span></sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">149.5k</span>
+                        class="white-color">150.2k</span>
             
             
             
