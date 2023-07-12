@@ -35,9 +35,9 @@ label =">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -474,14 +474,14 @@ label =">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    12k
+                    13.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    43 分
+                    47 分
                 </div>
                 
 
@@ -814,7 +814,41 @@ D_{K L}(p \| q)&=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/7df63c0c5b279fc8251f0075c04f2a9f.png" alt=""></p>
 <p>模型尺度。(a) 是一个基本的网络模型；(b)-(d) 分别单独在宽度、深度、分辨率的维度上增加尺度；(e) 是论文提出的混合尺度变换，用统一固定的比例放缩三个不同维度的尺度。</p>
 <h3 id="感受野"><a href="#感受野" class="headerlink" title="感受野"></a>感受野</h3><p>若感受野太小，表明网络只能观察到图像的局部特征；若感受野太大，虽然对全局信息理解更强，但通常也包含了许多无效信息。为了提高有效感受野从而避免冗余信息，捕获多尺度特征是当前研究者们常采用的方法。比如拿望远镜看远方为小视野，直接光看为大视野。</p>
-<h2 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h2><h2 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h2><h3 id="KNN算法"><a href="#KNN算法" class="headerlink" title="KNN算法"></a>KNN算法</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25994179">原链接</a></p>
+<h2 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h2><h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/89894058">原文链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30844905">原文链接</a></p>
+<p>在实际应用中，我们还会遇到很多序列形的数据：</p>
+<p>如：</p>
+<ol>
+<li>自然语言处理问题。x1可以看做是第一个单词，x2可以看做是第二个单词，依次类推。</li>
+<li>语音处理。此时，x1、x2、x3……是每帧的声音信号。</li>
+<li>时间序列问题。例如每天的股票价格等等。</li>
+</ol>
+<p><strong>而其中，序列形的数据就不太好用原始的神经网络处理了。所以为了解决一些这样类似的问题，能够更好的处理序列的信息，RNN就诞生了。</strong></p>
+<p>一个简单的循环神经网络如下所示：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-3884f344d71e92d70ec3c44d2795141f_720w.webp" alt=""></p>
+<p>我们现在这样来理解，如果把上面有W的那个带箭头的圈去掉，它就变成了最普通的全连接神经网络。x是一个向量，它表示输入层的值（这里面没有画出来表示神经元节点的圆圈）；s是一个向量，它表示隐藏层的值（这里隐藏层面画了一个节点，你也可以想象这一层其实是多个节点，节点数与向量s的维度相同）；</p>
+<p>U是输入层到隐藏层的权重矩阵，o也是一个向量，它表示输出层的值；V是隐藏层到输出层的权重矩阵。</p>
+<p>那么，现在我们来看看W是什么。循环神经网络的隐藏层的值s不仅仅取决于当前这次的输入x，还取决于上一次隐藏层的值s。权重矩阵 W就是隐藏层上一次的值作为这一次的输入的权重。</p>
+<p>我们给出这个抽象图对应的具体图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-206db7ba9d32a80ff56b6cc988a62440_720w.webp" alt=""></p>
+<p>如果我们把上面的图展开，循环神经网络也可以画成下面这个样子：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-b0175ebd3419f9a11a3d0d8b00e28675_720w.webp" alt=""></p>
+<p>现在看上去就比较清楚了，这个网络在t时刻接收到输入$x<em>t$之后，隐藏层的值是$s_t$，输出值是$o_t$ 。关键一点是,$s_t$的值不仅仅取决于$x_t$ ，还取决于$s</em>{t-1}$ 。我们可以用下面的公式来表示循环神经网络的计算方法：</p>
+<p>用公式表示如下：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-9524a28210c98ed130644eb3c3002087_720w.png" alt=""></p>
+<h3 id="RNN的局限：长期依赖（Long-TermDependencies）问题"><a href="#RNN的局限：长期依赖（Long-TermDependencies）问题" class="headerlink" title="RNN的局限：长期依赖（Long-TermDependencies）问题"></a>RNN的局限：长期依赖（Long-TermDependencies）问题</h3><p>一些更加复杂的场景。比如我们试着去预测“I grew up in France…I speak fluent French”最后的词“French”。当前的信息建议下一个词可能是一种语言的名字，但是如果我们需要弄清楚是什么语言，我们是需要先前提到的离当前位置很远的“France”的上下文。这说明相关信息和当前预测位置之间的间隔就肯定变得相当的大。</p>
+<p>不幸的是，在这个间隔不断增大时，RNN会丧失学习到连接如此远的信息的能力。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/38adde9a4649e5ea3809f10306d56bb0.png" alt=""></p>
+<p>在理论上，RNN绝对可以处理这样的长期依赖问题。人们可以仔细挑选参数来解决这类问题中的最初级形式，但在实践中，RNN则没法太好的学习到这些知识。Bengio,etal.(1994)等人对该问题进行了深入的研究，他们发现一些使训练RNN变得非常困难的相当根本的原因。</p>
+<p>换句话说， RNN 会受到短时记忆的影响。如果一条序列足够长，那它们将很难将信息从较早的时间步传送到后面的时间步。</p>
+<p>因此，如果你正在尝试处理一段文本进行预测，RNN 可能从一开始就会遗漏重要信息。在反向传播期间（反向传播是一个很重要的核心议题，本质是通过不断缩小误差去更新权值，从而不断去修正拟合的函数），RNN 会面临梯度消失的问题。</p>
+<p><strong>因为梯度是用于更新神经网络的权重值（新的权值 = 旧权值 - 学习率*梯度），梯度会随着时间的推移不断下降减少，而当梯度值变得非常小时，就不会继续学习。</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/7e5e9272c2f6db440c4092bca444057f.png" alt="">​</p>
+<p>换言之，在递归神经网络中，获得小梯度更新的层会停止学习—— 那些通常是较早的层。 由于这些层不学习，<strong>RNN会忘记它在较长序列中以前看到的内容，因此RNN只具有短时记忆。</strong></p>
+<p>而梯度爆炸则是因为计算的难度越来越复杂导致。</p>
+<p>然而，幸运的是，有个RNN的变体——LSTM，可以在一定程度上解决梯度消失和梯度爆炸这两个问题！</p>
+<h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/89894058">原文链接</a></p>
+<h3 id="LSTM变体"><a href="#LSTM变体" class="headerlink" title="LSTM变体"></a>LSTM变体</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/89894058">原文链接</a></p>
+<h3 id="Seq2Seq"><a href="#Seq2Seq" class="headerlink" title="Seq2Seq"></a>Seq2Seq</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/80436483b13b">原文链接</a></p>
+<h2 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h2><h3 id="KNN算法"><a href="#KNN算法" class="headerlink" title="KNN算法"></a>KNN算法</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25994179">原链接</a></p>
 <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>K近邻算法，即是给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最邻近的K个实例，这K个实例的多数属于某个类，就把该输入实例分类到这个类中。（这就类似于现实生活中少数服从多数的思想）根据这个说法，咱们来看下引自维基百科上的一幅图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/v2-c3f1d2553e7467d7da5f9cd538d2b49a_720w.png" alt=""></p>
 <p>如上图所示，有两类不同的样本数据，分别用蓝色的小正方形和红色的小三角形表示，而图正中间的那个绿色的圆所标示的数据则是待分类的数据。这也就是我们的目的，来了一个新的数据点，我要得到它的类别是什么？好的，下面我们根据k近邻的思想来给绿色圆点进行分类。</p>
@@ -1465,7 +1499,7 @@ DLL:找不到模块<span aria-hidden="true" class="line-numbers-rows"><span></sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">150.8k</span>
+                        class="white-color">152k</span>
             
             
             
