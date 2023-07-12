@@ -35,9 +35,9 @@ label =">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -711,7 +711,7 @@ D_{K L}(p \| q)&=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i
 <p>非监督的度量学习：<br>主成分分析(Pricipal Components Analysis, PCA)<br>多维尺度变换(Multi-dimensional Scaling, MDS)<br>非负矩阵分解(Non-negative Matrix Factorization,NMF)<br>独立成分分析(Independent components analysis, ICA)<br>邻域保持嵌入(Neighborhood Preserving Embedding,NPE)<br>局部保留投影(Locality Preserving Projections. LPP)</p>
 <p>（2）非线性模型<br>非线性降维算法可以看作属于非线性度量学习：<br>等距映射(Isometric Mapping,ISOMAP)<br>局部线性嵌入(Locally Linear Embedding, LLE)<br>拉普拉斯特征映射(Laplacian Eigenmap，LE ) </p>
 <p>通过核方法来对线性映射进行扩展：<br>Non-Mahalanobis Local Distance Functions<br>Mahalanobis Local Distance Functions<br>Metric Learning with Neural Networks</p>
-<h2 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h2><h3 id="传统神经网络"><a href="#传统神经网络" class="headerlink" title="传统神经网络"></a>传统神经网络</h3><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2017/07/neural-network.html">原文链接</a></p>
+<h2 id="卷积神经网络（CNN）"><a href="#卷积神经网络（CNN）" class="headerlink" title="卷积神经网络（CNN）"></a>卷积神经网络（CNN）</h2><h3 id="传统神经网络"><a href="#传统神经网络" class="headerlink" title="传统神经网络"></a>传统神经网络</h3><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2017/07/neural-network.html">原文链接</a></p>
 <p>神经网络搭建需要满足三个条件：</p>
 <ol>
 <li>输入和输出</li>
@@ -814,7 +814,7 @@ D_{K L}(p \| q)&=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/7df63c0c5b279fc8251f0075c04f2a9f.png" alt=""></p>
 <p>模型尺度。(a) 是一个基本的网络模型；(b)-(d) 分别单独在宽度、深度、分辨率的维度上增加尺度；(e) 是论文提出的混合尺度变换，用统一固定的比例放缩三个不同维度的尺度。</p>
 <h3 id="感受野"><a href="#感受野" class="headerlink" title="感受野"></a>感受野</h3><p>若感受野太小，表明网络只能观察到图像的局部特征；若感受野太大，虽然对全局信息理解更强，但通常也包含了许多无效信息。为了提高有效感受野从而避免冗余信息，捕获多尺度特征是当前研究者们常采用的方法。比如拿望远镜看远方为小视野，直接光看为大视野。</p>
-<h2 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h2><h3 id="KNN算法"><a href="#KNN算法" class="headerlink" title="KNN算法"></a>KNN算法</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25994179">原链接</a></p>
+<h2 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h2><h2 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h2><h3 id="KNN算法"><a href="#KNN算法" class="headerlink" title="KNN算法"></a>KNN算法</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25994179">原链接</a></p>
 <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>K近邻算法，即是给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最邻近的K个实例，这K个实例的多数属于某个类，就把该输入实例分类到这个类中。（这就类似于现实生活中少数服从多数的思想）根据这个说法，咱们来看下引自维基百科上的一幅图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/v2-c3f1d2553e7467d7da5f9cd538d2b49a_720w.png" alt=""></p>
 <p>如上图所示，有两类不同的样本数据，分别用蓝色的小正方形和红色的小三角形表示，而图正中间的那个绿色的圆所标示的数据则是待分类的数据。这也就是我们的目的，来了一个新的数据点，我要得到它的类别是什么？好的，下面我们根据k近邻的思想来给绿色圆点进行分类。</p>
@@ -1465,7 +1465,7 @@ DLL:找不到模块<span aria-hidden="true" class="line-numbers-rows"><span></sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">150.6k</span>
+                        class="white-color">150.8k</span>
             
             
             
