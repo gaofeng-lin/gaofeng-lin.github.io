@@ -580,6 +580,18 @@ git reset --hard回退之后，如果直接push会出错，因为我们本地库
 4.```ssh-add ~/.ssh/id_ed25519```//将 SSH 私钥添加到 ssh-agent。
 5.将后缀为.pub的文件（公钥）添加到 GitHub 上的帐户
 
+### git push之前忘记了git pull，但是已经commit
+
+背景：公司和家里面各有一台电脑。公司的电脑忘记了pull，对文件进行修改后，push无法成功。pull也被拒绝。如果直接回退，之前的记录就没了。而我想保留修改，因为也是有用的东西。
+
+解决办法：
+```
+git stash 	//保存本地快照
+git reset --hard "hash_value"	//通过git log查看离的最近的没有发生冲突的提交记录，把哈希值找到，再回退
+git pull origin hexo:hexo //hexo是博客的分支
+git stash pop	//把之前本地的修改重新补上
+```
+
 ## git bash扩展命令
 [原链接](https://blog.51cto.com/u_15127579/2670631)
 总共有三个思路：
