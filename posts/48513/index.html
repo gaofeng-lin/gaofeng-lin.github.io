@@ -35,9 +35,9 @@ label =">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -474,14 +474,14 @@ label =">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11.3k
+                    15.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    40 分
+                    53 分
                 </div>
                 
 
@@ -523,6 +523,38 @@ label =">
 <p>（4）计算：虽然我们用的是计算机，但实际上恐怕只有很少的时间用于计算(computation)了，因为大多数时间都在等待数据的读取或者网络通信，不过即便如此，对于一些计算密集型的神经网络结构（比如BERT，几乎都是矩阵乘法），制约我们的往往是设备的计算能力（FLOPS），即每秒钟可以处理多少浮点计算。</p>
 <p>常见的trade-off:<br>（1）计算换内存<br>（2）通信换内存<br>（3）计算换通信<br>（4）显存换计算<br>（5）精度换计算/内存/通信</p>
 <p>孪生网络（Siamese newtowk）:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35040994">原文链接</a></p>
+<h3 id="hard-soft-physical-constraints"><a href="#hard-soft-physical-constraints" class="headerlink" title="hard/soft physical constraints"></a>hard/soft physical constraints</h3><p>在深度学习与计算流体力学领域中，”hard physical constraints”（硬物理约束）指的是在模型建立和求解过程中必须严格遵守的物理规律或约束条件。这些约束条件通常是基于问题的物理性质和基本定律，例如质量守恒、能量守恒、动量守恒等。</p>
+<p>在计算流体力学中，硬物理约束可能包括以下方面：</p>
+<ol>
+<li>质量守恒：流体的入口和出口质量流量必须保持平衡。</li>
+<li>动量守恒：流体中的动量转移满足牛顿第二定律。</li>
+<li>能量守恒：流体中的能量转移满足能量守恒定律。</li>
+<li>不可压缩性：在不可压缩流体模拟中，流体密度保持恒定。</li>
+<li>边界条件：在模拟中，需要定义适当的边界条件以满足问题的物理要求。</li>
+</ol>
+<p>在深度学习中，硬物理约束指的是将物理约束直接嵌入到深度学习模型中的方法。通过在模型的设计和训练过程中引入这些硬物理约束，可以更好地确保生成的结果符合物理定律和约束条件。这有助于提高模型的物理合理性和实用性。</p>
+<p>总而言之，硬物理约束是指在深度学习与计算流体力学中必须遵守的严格物理规律和约束条件，确保模型与实际物理系统的一致性。</p>
+<hr>
+<p>在深度学习与计算流体力学领域中，”soft physical constraints”（软物理约束）指的是在模型建立和求解过程中考虑的物理规律或约束条件，但其遵守程度可以有一定的灵活性或容忍度。与硬物理约束相比，软物理约束更加柔性，允许在一定程度上违背或放宽约束条件，以获得更好的模型拟合或求解结果。</p>
+<p>软物理约束通常是通过引入损失函数或惩罚项来实现的，以在模型训练或优化过程中对违反约束条件进行惩罚或限制。这样可以在尽量满足物理规律的同时，允许一定程度的误差或适应性，以提高模型的灵活性和适应性。</p>
+<p>在计算流体力学中，软物理约束可以包括以下方面：</p>
+<ol>
+<li>不稳定流动约束：在流体模拟中，允许一定程度的不稳定性或涡旋生成，而不要求完全消除或压制。</li>
+<li>数值耗散约束：在数值模拟中，可以引入一定的耗散项或平滑操作，以减少数值震荡或不稳定性，同时保持一定的数值精度。</li>
+<li>材料参数估计约束：在模型中，对材料参数或未知参数的估计可以具有一定的容忍度，以考虑实际系统的不确定性或噪声。</li>
+</ol>
+<p>总而言之，软物理约束是在深度学习与计算流体力学中考虑的相对柔性的物理规律或约束条件。通过在模型的训练或优化过程中引入相应的损失函数或惩罚项，可以在一定程度上允许约束条件的违背，以提高模型的适应性和灵活性。</p>
+<h3 id="Non-intrusive-Reduced-Order-Model-非侵入式降阶模型"><a href="#Non-intrusive-Reduced-Order-Model-非侵入式降阶模型" class="headerlink" title="Non-intrusive Reduced Order Model(非侵入式降阶模型)"></a>Non-intrusive Reduced Order Model(非侵入式降阶模型)</h3><p>在深度学习中，“Non-intrusive Reduced Order Model”（非侵入式降阶模型）是一种用于减少高维问题复杂性的建模方法。它的目标是通过将高维问题映射到低维空间中，以降低计算成本和内存需求，同时保持问题的关键特征和准确性。</p>
+<p>传统的减少高维问题复杂性的方法通常是通过降阶技术，如主成分分析（PCA）或奇异值分解（SVD），来提取问题的主要模式或特征，并建立一个低维模型。然而，这些方法通常需要对问题的物理方程进行修改或重新建模，因此被称为“侵入式模型”。</p>
+<p>相比之下，非侵入式降阶模型采用机器学习技术，如深度学习，通过学习数据集中的模式和关系来构建低维模型，而无需对物理方程进行修改。它可以通过将输入数据映射到低维表示空间，并使用深度神经网络来学习映射函数，从而实现降维和建模。</p>
+<p>非侵入式降阶模型在减少计算负担、加速模拟和优化高维问题方面具有潜力。它可以在保持问题关键特征和准确性的同时，提供更高效的模型求解和分析能力。这种方法在多个领域中得到应用，包括流体力学、结构分析、图像处理等。</p>
+<p>需要注意的是，非侵入式降阶模型的性能和适用性取决于所选择的机器学习算法、数据集质量和训练过程等因素。因此，在具体应用中，需要根据问题的特点和需求，选择适当的非侵入式降阶方法和技术，以获得准确和高效的模型求解结果。</p>
+<hr>
+<p>在”Non-intrusive Reduced Order Model”中，”Non-intrusive”（非侵入式）是指建立降阶模型时，不需要对原始问题进行修改或重新建模的特性。它强调了在建立模型时不需要修改问题的物理方程或引入额外的信息，而是通过使用外部数据或机器学习方法来近似原始问题。</p>
+<p>传统的降阶方法通常要求对问题的物理方程进行简化或修改，以提取主要模式或减少系统的自由度。这种方法被称为”侵入式”，因为它们需要对原始问题进行干预或修改。</p>
+<p>相比之下，”Non-intrusive Reduced Order Model”使用非侵入式的方法来构建降阶模型。它不需要修改原始问题的物理方程，而是利用外部数据或机器学习技术来建立一个近似模型。这意味着原始问题的求解过程保持不变，只是在模拟或优化中引入降维的近似模型。</p>
+<p>非侵入式方法的优点在于它们能够在保持原始问题的准确性和复杂性的同时，减少计算成本和内存需求。它们提供了一种灵活的方式来处理高维问题，同时提供较低的计算复杂度和更高的模拟速度。</p>
+<p>总而言之，”Non-intrusive Reduced Order Model”中的”Non-intrusive”表示在构建降阶模型时不需要修改原始问题的物理方程或引入额外信息，而是通过使用外部数据或机器学习技术来近似原始问题。这种方法提供了一种非侵入性、灵活性和高效性的方式来处理高维问题的模拟和优化。</p>
 <h3 id="矩阵计算"><a href="#矩阵计算" class="headerlink" title="矩阵计算"></a>矩阵计算</h3><p>在深度学习相关的资料里面，标量就表示一个数，向量是由多个数组成的。</p>
 <p>常规的导数求导没有什么难度，现在将导数扩展到向量，会出现四种情况：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/Snipaste_2023-03-02_22-49-16.png" alt=""></p>
@@ -711,7 +743,7 @@ D_{K L}(p \| q)&=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i
 <p>非监督的度量学习：<br>主成分分析(Pricipal Components Analysis, PCA)<br>多维尺度变换(Multi-dimensional Scaling, MDS)<br>非负矩阵分解(Non-negative Matrix Factorization,NMF)<br>独立成分分析(Independent components analysis, ICA)<br>邻域保持嵌入(Neighborhood Preserving Embedding,NPE)<br>局部保留投影(Locality Preserving Projections. LPP)</p>
 <p>（2）非线性模型<br>非线性降维算法可以看作属于非线性度量学习：<br>等距映射(Isometric Mapping,ISOMAP)<br>局部线性嵌入(Locally Linear Embedding, LLE)<br>拉普拉斯特征映射(Laplacian Eigenmap，LE ) </p>
 <p>通过核方法来对线性映射进行扩展：<br>Non-Mahalanobis Local Distance Functions<br>Mahalanobis Local Distance Functions<br>Metric Learning with Neural Networks</p>
-<h2 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h2><h3 id="传统神经网络"><a href="#传统神经网络" class="headerlink" title="传统神经网络"></a>传统神经网络</h3><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2017/07/neural-network.html">原文链接</a></p>
+<h2 id="卷积神经网络（CNN）"><a href="#卷积神经网络（CNN）" class="headerlink" title="卷积神经网络（CNN）"></a>卷积神经网络（CNN）</h2><h3 id="传统神经网络"><a href="#传统神经网络" class="headerlink" title="传统神经网络"></a>传统神经网络</h3><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2017/07/neural-network.html">原文链接</a></p>
 <p>神经网络搭建需要满足三个条件：</p>
 <ol>
 <li>输入和输出</li>
@@ -742,6 +774,8 @@ D_{K L}(p \| q)&=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i
 <p>假如有圆形是1，没有圆形是0，那么圆形的位置不同就会产生完全不同的数据表达。但是从视觉的角度来看，图像的内容（本质）并没有发生变化，只是位置发生了变化。</p>
 <p>所以当我们移动图像中的物体，用传统的方式的得出来的参数会差异很大！这是不符合图像处理的要求的。</p>
 <p><strong>CNN 解决了这个问题，他用类似视觉的方式保留了图像的特征，当图像做翻转，旋转或者变换位置时，它也能有效的识别出来是类似的图像。</strong></p>
+<p>具体表现为：</p>
+<p><strong>CNN（卷积神经网络）相对于传统的全连接神经网络（FNN），可以通过卷积层（权值共享、局部连接）和池化层（空间维度的降采样）的设计来实现参数降维，从而减少模型中的参数数量。</strong></p>
 <h3 id="CNN的基本步骤"><a href="#CNN的基本步骤" class="headerlink" title="CNN的基本步骤"></a>CNN的基本步骤</h3><p>卷积神经网络（Convolutional Neural Network，CNN）是一种在计算机视觉和图像处理任务中广泛应用的深度学习模型。CNN通过模拟生物视觉系统中神经元的工作原理，能够自动学习图像和视频等数据的特征表示。</p>
 <p>CNN的基本概念包括以下几个要素：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/51812459">相关链接，写的不错</a></p>
 <ol>
@@ -814,6 +848,40 @@ D_{K L}(p \| q)&=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/7df63c0c5b279fc8251f0075c04f2a9f.png" alt=""></p>
 <p>模型尺度。(a) 是一个基本的网络模型；(b)-(d) 分别单独在宽度、深度、分辨率的维度上增加尺度；(e) 是论文提出的混合尺度变换，用统一固定的比例放缩三个不同维度的尺度。</p>
 <h3 id="感受野"><a href="#感受野" class="headerlink" title="感受野"></a>感受野</h3><p>若感受野太小，表明网络只能观察到图像的局部特征；若感受野太大，虽然对全局信息理解更强，但通常也包含了许多无效信息。为了提高有效感受野从而避免冗余信息，捕获多尺度特征是当前研究者们常采用的方法。比如拿望远镜看远方为小视野，直接光看为大视野。</p>
+<h2 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h2><h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/89894058">原文链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30844905">原文链接</a></p>
+<p>在实际应用中，我们还会遇到很多序列形的数据：</p>
+<p>如：</p>
+<ol>
+<li>自然语言处理问题。x1可以看做是第一个单词，x2可以看做是第二个单词，依次类推。</li>
+<li>语音处理。此时，x1、x2、x3……是每帧的声音信号。</li>
+<li>时间序列问题。例如每天的股票价格等等。</li>
+</ol>
+<p><strong>而其中，序列形的数据就不太好用原始的神经网络处理了。所以为了解决一些这样类似的问题，能够更好的处理序列的信息，RNN就诞生了。</strong></p>
+<p>一个简单的循环神经网络如下所示：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-3884f344d71e92d70ec3c44d2795141f_720w.webp" alt=""></p>
+<p>我们现在这样来理解，如果把上面有W的那个带箭头的圈去掉，它就变成了最普通的全连接神经网络。x是一个向量，它表示输入层的值（这里面没有画出来表示神经元节点的圆圈）；s是一个向量，它表示隐藏层的值（这里隐藏层面画了一个节点，你也可以想象这一层其实是多个节点，节点数与向量s的维度相同）；</p>
+<p>U是输入层到隐藏层的权重矩阵，o也是一个向量，它表示输出层的值；V是隐藏层到输出层的权重矩阵。</p>
+<p>那么，现在我们来看看W是什么。循环神经网络的隐藏层的值s不仅仅取决于当前这次的输入x，还取决于上一次隐藏层的值s。权重矩阵 W就是隐藏层上一次的值作为这一次的输入的权重。</p>
+<p>我们给出这个抽象图对应的具体图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-206db7ba9d32a80ff56b6cc988a62440_720w.webp" alt=""></p>
+<p>如果我们把上面的图展开，循环神经网络也可以画成下面这个样子：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-b0175ebd3419f9a11a3d0d8b00e28675_720w.webp" alt=""></p>
+<p>现在看上去就比较清楚了，这个网络在t时刻接收到输入$x<em>t$之后，隐藏层的值是$s_t$，输出值是$o_t$ 。关键一点是,$s_t$的值不仅仅取决于$x_t$ ，还取决于$s</em>{t-1}$ 。我们可以用下面的公式来表示循环神经网络的计算方法：</p>
+<p>用公式表示如下：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-9524a28210c98ed130644eb3c3002087_720w.png" alt=""></p>
+<h3 id="RNN的局限：长期依赖（Long-TermDependencies）问题"><a href="#RNN的局限：长期依赖（Long-TermDependencies）问题" class="headerlink" title="RNN的局限：长期依赖（Long-TermDependencies）问题"></a>RNN的局限：长期依赖（Long-TermDependencies）问题</h3><p>一些更加复杂的场景。比如我们试着去预测“I grew up in France…I speak fluent French”最后的词“French”。当前的信息建议下一个词可能是一种语言的名字，但是如果我们需要弄清楚是什么语言，我们是需要先前提到的离当前位置很远的“France”的上下文。这说明相关信息和当前预测位置之间的间隔就肯定变得相当的大。</p>
+<p>不幸的是，在这个间隔不断增大时，RNN会丧失学习到连接如此远的信息的能力。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/38adde9a4649e5ea3809f10306d56bb0.png" alt=""></p>
+<p>在理论上，RNN绝对可以处理这样的长期依赖问题。人们可以仔细挑选参数来解决这类问题中的最初级形式，但在实践中，RNN则没法太好的学习到这些知识。Bengio,etal.(1994)等人对该问题进行了深入的研究，他们发现一些使训练RNN变得非常困难的相当根本的原因。</p>
+<p>换句话说， RNN 会受到短时记忆的影响。如果一条序列足够长，那它们将很难将信息从较早的时间步传送到后面的时间步。</p>
+<p>因此，如果你正在尝试处理一段文本进行预测，RNN 可能从一开始就会遗漏重要信息。在反向传播期间（反向传播是一个很重要的核心议题，本质是通过不断缩小误差去更新权值，从而不断去修正拟合的函数），RNN 会面临梯度消失的问题。</p>
+<p><strong>因为梯度是用于更新神经网络的权重值（新的权值 = 旧权值 - 学习率*梯度），梯度会随着时间的推移不断下降减少，而当梯度值变得非常小时，就不会继续学习。</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/7e5e9272c2f6db440c4092bca444057f.png" alt="">​</p>
+<p>换言之，在递归神经网络中，获得小梯度更新的层会停止学习—— 那些通常是较早的层。 由于这些层不学习，<strong>RNN会忘记它在较长序列中以前看到的内容，因此RNN只具有短时记忆。</strong></p>
+<p>而梯度爆炸则是因为计算的难度越来越复杂导致。</p>
+<p>然而，幸运的是，有个RNN的变体——LSTM，可以在一定程度上解决梯度消失和梯度爆炸这两个问题！</p>
+<h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/89894058">原文链接</a></p>
+<h3 id="LSTM变体"><a href="#LSTM变体" class="headerlink" title="LSTM变体"></a>LSTM变体</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/89894058">原文链接</a></p>
+<h3 id="Seq2Seq"><a href="#Seq2Seq" class="headerlink" title="Seq2Seq"></a>Seq2Seq</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/80436483b13b">原文链接</a></p>
 <h2 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h2><h3 id="KNN算法"><a href="#KNN算法" class="headerlink" title="KNN算法"></a>KNN算法</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25994179">原链接</a></p>
 <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>K近邻算法，即是给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最邻近的K个实例，这K个实例的多数属于某个类，就把该输入实例分类到这个类中。（这就类似于现实生活中少数服从多数的思想）根据这个说法，咱们来看下引自维基百科上的一幅图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/v2-c3f1d2553e7467d7da5f9cd538d2b49a_720w.png" alt=""></p>
@@ -866,6 +934,17 @@ conda env list<span aria-hidden="true" class="line-numbers-rows"><span></span><s
 <pre class="line-numbers language-none"><code class="language-none">deactivate <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>复制某个环境<br></p><pre class="line-numbers language-none"><code class="language-none">conda create --name new_env_name --clone old_env_name <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>删除某个环境<p></p>
 <pre class="line-numbers language-none"><code class="language-none">conda remove --name your_env_name --all<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="CUDA、CUDNN相关的内容"><a href="#CUDA、CUDNN相关的内容" class="headerlink" title="CUDA、CUDNN相关的内容"></a>CUDA、CUDNN相关的内容</h2><p>一般来说，如果要使用CUDA，一共需要安装3个东西Nvidia驱动、CUDA、CUDNN。</p>
+<p>CUDA看作是一个工作台，上面配有很多工具，如锤子、螺丝刀等。cuDNN是基于CUDA的深度学习GPU加速库，有了它才能在GPU上完成深度学习的计算。它就相当于工作的工具，比如它就是个扳手。但是CUDA这个工作台买来的时候，并没有送扳手。想要在CUDA上运行深度神经网络，就要安装cuDNN，就像你想要拧个螺帽就要把扳手买回来。这样才能使GPU进行深度神经网络的工作，工作速度相较CPU快很多。</p>
+<p>但是我们经常只安装CUDA Driver，比如我们的笔记本电脑，安装个CUDA Driver就可正常看视频、办公和玩游戏了。</p>
+<h3 id="Nvidia驱动"><a href="#Nvidia驱动" class="headerlink" title="Nvidia驱动"></a>Nvidia驱动</h3><p>Nvidia驱动可以单独安装，也可以使用CUDA Toolkit Installer安装，CUDA Toolkit Installer通常会集成了GPU driver Installer和CUDA。<br>安装完成以后，使用<code>nvidia-smi</code>可以驱动是否安装成功。nvidia-smi 全称是 NVIDIA System Management Interface ，是一种命令行实用工具，旨在帮助管理和监控NVIDIA GPU设备。</p>
+<h3 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h3><p>可以使用命令行、官网下载脚本、CUDA Toolkit Installer。<br><strong>不过目前看下来，使用官网下载的.run脚本（这是cuda10.1的安装包cuda_10.1.105_418.39_linux.run）是最容易成功的，虽然比较费时间。这个脚本里面也包含了驱动安装，如果安装了驱动，就不要再安装了</strong></p>
+<p><strong>安装的时候我曾经遇到过gcc版本过高的问题，并且无法直接使用命令行来降低版本。只能通过网上下载低版本的包，然后再安装</strong><br>安装后使用<code>nvcc -v</code>来看是否安装成功</p>
+<h3 id="nvcc和nvidia-smi的关系"><a href="#nvcc和nvidia-smi的关系" class="headerlink" title="nvcc和nvidia-smi的关系"></a>nvcc和nvidia-smi的关系</h3><p>nvcc 属于CUDA的编译器，将程序编译成可执行的二进制文件，nvidia-smi 全称是 NVIDIA System Management Interface ，是一种命令行实用工具，旨在帮助管理和监控NVIDIA GPU设备。</p>
+<p>CUDA有 runtime api 和 driver api，两者都有对应的CUDA版本， nvcc —version 显示的就是前者对应的CUDA版本，而 nvidia-smi显示的是后者对应的CUDA版本。</p>
+<p><strong>如果使用了单独的GPU driver installer来安装GPU dirver，这样就会导致 nvidia-smi 和 nvcc —version 显示的版本不一致了。</strong></p>
+<p>通常，<strong>driver api的版本能向下兼容runtime api的版本，即 nvidia-smi 显示的版本大于nvcc —version 的版本通常不会出现大问题。</strong></p>
+<h3 id="如何选择与CUDA版本匹配的Pytorch"><a href="#如何选择与CUDA版本匹配的Pytorch" class="headerlink" title="如何选择与CUDA版本匹配的Pytorch"></a>如何选择与CUDA版本匹配的Pytorch</h3><p>如果nvcc和nvidia-smi的版本不一致，应该如何选择pytorch的版本？<br><strong>选择与nvcc -v 对应的CUDA版本</strong></p>
 <h2 id="pytorch安装"><a href="#pytorch安装" class="headerlink" title="pytorch安装"></a>pytorch安装</h2><h3 id="cuda安装"><a href="#cuda安装" class="headerlink" title="cuda安装"></a>cuda安装</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/94220564">原链接</a></p>
 <p>桌面右键打开英伟达控制面板，点击帮助-&gt;系统信息-&gt;组件</p>
 <p>可以看到支持的版本，安装的cuda版本必须小于等于该版本</p>
@@ -1447,7 +1526,7 @@ DLL:找不到模块<span aria-hidden="true" class="line-numbers-rows"><span></sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">149.5k</span>
+                        class="white-color">153.8k</span>
             
             
             

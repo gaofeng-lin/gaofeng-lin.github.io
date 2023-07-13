@@ -43,9 +43,9 @@ git ">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -490,14 +490,14 @@ git ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.8k
+                    5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    18 分
+                    19 分
                 </div>
                 
 
@@ -771,6 +771,11 @@ git push origin master  //push到origin的master主分支里面，成功后会�
 </ol>
 <h3 id="生成新的ssh密钥"><a href="#生成新的ssh密钥" class="headerlink" title="生成新的ssh密钥"></a>生成新的ssh密钥</h3><p>我们在重装系统后，如果要使用ssh来拉去代码，就需要生成密钥。<br><a target="_blank" rel="noopener" href="https://docs.github.com/zh/enterprise-server@3.7/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">原文链接</a></p>
 <p>1.打开git Bash。输入 <code>ssh-keygen -t ed25519 -C "your_email@example.com"</code>；email替换为github的email（其他eamil没有尝试过）<br>2.后面一直回车就好，详细的去看原链接。<strong>需要注意的是不要更改密钥文件名字，否则会出问题</strong>。因为更改后，执行完后面的操作一直出问题。使用<code>ssh -vT git@github.com</code>命令发现它一直在寻找带有id<em>rsa</em>字段的文件，擅自改了名字当然找不到，这个问题如何解决目前还没有找到方法。<br>3.<code>eval "$(ssh-agent -s)"</code>//确保 ssh-agent 正在运行<br>4.<code>ssh-add ~/.ssh/id_ed25519</code>//将 SSH 私钥添加到 ssh-agent。<br>5.将后缀为.pub的文件（公钥）添加到 GitHub 上的帐户</p>
+<h3 id="git-push之前忘记了git-pull，但是已经commit"><a href="#git-push之前忘记了git-pull，但是已经commit" class="headerlink" title="git push之前忘记了git pull，但是已经commit"></a>git push之前忘记了git pull，但是已经commit</h3><p>背景：公司和家里面各有一台电脑。公司的电脑忘记了pull，对文件进行修改后，push无法成功。pull也被拒绝。如果直接回退，之前的记录就没了。而我想保留修改，因为也是有用的东西。</p>
+<p>解决办法：<br></p><pre class="line-numbers language-none"><code class="language-none">git stash 	//保存本地快照
+git reset --hard "hash_value"	//通过git log查看离的最近的没有发生冲突的提交记录，把哈希值找到，再回退
+git pull origin hexo:hexo //hexo是博客的分支
+git stash pop	//把之前本地的修改重新补上<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p></p>
 <h2 id="git-bash扩展命令"><a href="#git-bash扩展命令" class="headerlink" title="git bash扩展命令"></a>git bash扩展命令</h2><p><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15127579/2670631">原链接</a><br>总共有三个思路：</p>
 <h3 id="1-借助winpty调用cmd可以使用的命令"><a href="#1-借助winpty调用cmd可以使用的命令" class="headerlink" title="1.借助winpty调用cmd可以使用的命令"></a>1.借助winpty调用cmd可以使用的命令</h3><p><strong>winpty 是一种提供与 cmd 通信的软件包,详情请参考 <a target="_blank" rel="noopener" href="https://github.com/rprichard/winpty">https://github.com/rprichard/winpty</a></strong></p>
 <p>git bash 命令行内没有 tree 命令而 cmd 命令行却有 tree 命令.</p>
@@ -1365,7 +1370,7 @@ Host github.com
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">149.5k</span>
+                        class="white-color">153.8k</span>
             
             
             
