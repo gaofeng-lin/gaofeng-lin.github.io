@@ -283,6 +283,15 @@ centos:
 cat /etc/redhat-release
 ```
 
+### 删除除了某个文件外的其他文件
+```
+shopt -s extglob      （打开extglob模式）
+rm -fr !(file1)
+
+# 如果是多个要排除的，可以这样：
+rm -rf !(file1|file2)
+```
+
 ##  复制/移动文件、文件改名
 Linux 将一个文件夹的所有内容拷贝到另外一个文件夹
 
