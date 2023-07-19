@@ -35,9 +35,9 @@ label =">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -474,14 +474,14 @@ label =">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    15.7k
+                    16k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    57 分
+                    58 分
                 </div>
                 
 
@@ -1000,7 +1000,7 @@ torchvision.__version__ #'0.8.2'<span aria-hidden="true" class="line-numbers-row
 &gt;&gt;&gt;a.shape    # 使用shape查看Tensor维度
 torch.Size([2,2])
 &gt;&gt;&gt;a.size()    # 使用size()函数查看Tensor维度
-torch.Size([2,2])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br><strong>数组:</strong><br><pre class="line-numbers language-none"><code class="language-none">&gt;&gt;&gt;import numpy as np
+torch.Size([2,2])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br><strong>数组或list:</strong><br><pre class="line-numbers language-none"><code class="language-none">&gt;&gt;&gt;import numpy as np
 &gt;&gt;&gt;x = [[[1,2,3],[4,5,6]],[[7,8,9],[0,1,2]],[[3,4,5],[6,7,8]]]
 &gt;&gt;&gt;np.array(x).shape
 &gt;&gt;&gt;print(x.shape) 
@@ -1069,6 +1069,20 @@ batch:3 x_data:tensor([[7, 8, 9],
        [1, 2, 3],
        [4, 5, 6],
        [7, 8, 9]])  label: tensor([66, 44, 55, 66])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<h3 id="numpy-transpose-—坐标轴转换"><a href="#numpy-transpose-—坐标轴转换" class="headerlink" title="numpy.transpose()—坐标轴转换"></a>numpy.transpose()—坐标轴转换</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012762410/article/details/78912667">原文链接</a></p>
+<p>举个例子，假设x是一个二维数组，那么<br></p><pre class="line-numbers language-x.transpose((0,1))```" data-language="x.transpose((0,1))```"><div class="caption"><span>没有变化</span></div><code class="language-x.transpose((0,1))```">
+```x.transpose((1,0))``` 把1轴的数据和0轴数据进行了交换
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p></p>
+<h1 id="x-为："><a href="#x-为：" class="headerlink" title="x 为："></a>x 为：</h1><p>array([[0, 1],<br>       [2, 3]])<br></p><pre class="line-numbers language-none"><code class="language-none">
+我们不妨设第一个方括号“[]”为 0轴 ，第二个方括号为 1轴 ，则x可在 0-1坐标系 下表示如下：
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjI3MTYxNDQ5MDA4.png)
+
+因为 x.transpose((0,1)) 表示按照原坐标轴改变序列，也就是保持不变
+而 x.transpose((1,0)) 表示交换 ‘0轴’ 和 ‘1轴’，所以就得到如下图所示结果：
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjI3MTYyMjIyNTcz.png)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>x[0][0] == 0<br>x[0][1] == 2<br>x[1][0] == 1<br>x[1][1] == 3<p></p>
+<h1 id="x-转置了"><a href="#x-转置了" class="headerlink" title="x 转置了"></a>x 转置了</h1><p>array([[0, 2],<br>       [1, 3]])<br>```</p>
+<p>注意，任何时候你都要保持清醒，告诉自己第一个方括号“[]”为 0轴 ，第二个方括号为 1轴<br>此时，transpose转换关系就清晰了。</p>
 
                 
             </div>
@@ -1604,7 +1618,7 @@ batch:3 x_data:tensor([[7, 8, 9],
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">154.5k</span>
+                        class="white-color">154.8k</span>
             
             
             
