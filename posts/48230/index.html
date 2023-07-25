@@ -626,6 +626,11 @@ df -h //查看硬盘的使用情况<span aria-hidden="true" class="line-numbers-
 <h4 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h4><pre class="line-numbers language-none"><code class="language-none">free -h<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="系统版本"><a href="#系统版本" class="headerlink" title="系统版本"></a>系统版本</h4><p>centos:</p>
 <pre class="line-numbers language-none"><code class="language-none">cat /etc/redhat-release<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="删除除了某个文件外的其他文件"><a href="#删除除了某个文件外的其他文件" class="headerlink" title="删除除了某个文件外的其他文件"></a>删除除了某个文件外的其他文件</h3><pre class="line-numbers language-none"><code class="language-none">shopt -s extglob      （打开extglob模式）
+rm -fr !(file1)
+
+# 如果是多个要排除的，可以这样：
+rm -rf !(file1|file2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="复制-移动文件、文件改名"><a href="#复制-移动文件、文件改名" class="headerlink" title="复制/移动文件、文件改名"></a>复制/移动文件、文件改名</h2><p>Linux 将一个文件夹的所有内容拷贝到另外一个文件夹</p>
 <p>cp 命令使用 -r 参数可以将 packageA 下的所有文件拷贝到 packageB 中：</p>
 <pre class="line-numbers language-none"><code class="language-none">cp -r /home/packageA/* /home/cp/packageB/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -1428,7 +1433,7 @@ cat  textfile1 &gt;&gt; textfile2 //"&gt;&gt;" 代表 将输出的内容已追�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">153.8k</span>
+                        class="white-color">155.7k</span>
             
             
             
