@@ -30,19 +30,21 @@ two.txt:
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/be1c33ec8b6e4593806ab989758d5641.png)
 ###  打包pip install 包
 
+[相似的回答](https://blog.csdn.net/weixin_43843003/article/details/98619962)
+
 > 背景：内网需要安装python和一些包，无法连互联网，只能外网下载再u盘拷过去。
 
  1. 在外网机器Python的安装目录中新建一个文件夹，如packages：
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/f86df46c2cc4468fa89c15c1708df6fe.png)
  
- 2. 进入到packages文件夹下，shift按住，鼠标右键“在此处打开命令行”，输入pip
+ 1. 进入到packages文件夹下，shift按住，鼠标右键“在此处打开命令行”，输入pip
 list查看系统中安装了哪些python包，如下：
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/730bff4d9f30437790528bf4db3797cb.png)
- 3. 把所有包名及版本号，重定向到requirements.txt中
+ 1. 把所有包名及版本号，重定向到requirements.txt中
 ```
 pip freeze >requirements.txt
 ```
- 4. 然后下载系统中已经安装的所有包到一个目录下，比如在packages的packages中，使用如下命令,此时packages下有两个文件：
+ 1. 然后下载系统中已经安装的所有包到一个目录下，比如在packages的packages中，使用如下命令,此时packages下有两个文件：
   
 
 ```
@@ -175,6 +177,19 @@ for k in list(func_dict.keys()):
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/2019053111303868.png)
 
 这个setting.json在在`C:\Users\Administrator\AppData\Roaming\Code\User\setting.json` 是个纯文本文件，直接打开就好。如果没有python.terminal.activateEnvironment这一行可以自己加上。
+
+
+### windows安装了conda，但无法在vscode使用
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-08-28_11-33-58.png)
+
+cmd可以正常使用，环境变量也添加了，但是一直不行。
+
+解决办法：
+找到conda安装目录下的Scripts下的activate,在vscode终端输入命令激活：
+```
+C:\Users\76585\Miniconda3\Scripts\activate
+```
+
 
 ##  技术知识点
 
