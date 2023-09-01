@@ -444,3 +444,42 @@ umount 设备名
 解决方法：
 1. 在Remote机上的shell脚本的开头重新配置“需要用到”的环境变量（本文所遇到的是mpi的一个库）
 2. 在Remote shell的开头设置，用source使.basn_profile文件生效
+
+## shell脚本中export无效的原分析和解决方法
+[原链接](https://blog.csdn.net/fadai1993/article/details/109085231)
+
+### 问题场景：shell脚本中的export怎么都无法起作用
+
+测试需要导入大量临时的环境变量，单个export又比较麻烦，因此创建shell脚本简化场景：
+```
+#!bin/bash  
+export PATH=$PATH:/usr/lib/java/jre  
+export PATH=$PATH:/usr/lib/java/bin 
+```
+
+就这么个系统环境变量配置，通过./path.sh 或者 sh path.sh怎么执行都无法设置成功，为什么单独执行export一点问题都没有，但是写到shell脚本中执行，export却怎么都不起作用？
+
+### 原因
+
+1. shell是一个进程，每个进程拥有独立的存储空间，进程间数据不可见
+一个shell中的系统环境变量（用export定义的变量）只会对当前shell或者他的子shell有效，该shell结束之后，变量生命周期结束（并不能返回到父shell中）
+2. export定义的变量，对当前shell及子shell有效；不用export定义的变量，仅对本shell有效
+3. 执行脚本时，是创建了一个新的子shell进程运行，脚本执行完成后，该子shell进程自动退出
+因此，子shell中定义的系统环境变量是无法作用于父shell的。
+
+### 解决办法
+上文可知，父shell可将自己的环境变量写入子shell，但子shell无法将自己空间中的数据写入父shell（至少export不行），如何达到我们的需求，那就不要创建子shell，仅导入shell文件内的内容
+```
+. path.th
+```
+
+或者
+```
+source path.th
+```
+### “.”、“source”、“sh”、“./”、“export”的区别
+
+1. source 同“.”， 用于使shell读入指定的shell文件，并依次执行文件中的所有语句（当前shell）
+2. sh 创建一个子shell，继承父shell的环境变量，同时在子shell中执行脚本里面的语句
+3. ./ 当脚本文件具有可执行属性时，与sh无异，./filename是因为当前目录并未在PATH中
+4. export 设置或显示环境变量，临时作用于当前shell
