@@ -5,10 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="深度学习, Home of Gaofeng">
-    <meta name="description" content="预备知识名词解释regression:回归
-training data set = training set:训练数据集/训练集
-sample = data point = data instance:样本/数据点/数据样本
-label =">
+    <meta name="description" content="遇到的问题loss.backward()耗时严重loss.backward()主要是计算梯度，为后面更新参数做准备，如果这一步耗时严重，要么是网络结构复杂，要么是计算图非常大。如果某个tensor的requires.grad属于被开启，那么">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -474,14 +471,14 @@ label =">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    19.9k
+                    20.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    74 分
+                    75 分
                 </div>
                 
 
@@ -504,7 +501,19 @@ label =">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>regression:回归</p>
+                <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="loss-backward-耗时严重"><a href="#loss-backward-耗时严重" class="headerlink" title="loss.backward()耗时严重"></a>loss.backward()耗时严重</h3><p>loss.backward()主要是计算梯度，为后面更新参数做准备，如果这一步耗时严重，要么是网络结构复杂，要么是<strong>计算图非常大</strong>。如果某个tensor的requires.grad属于被开启，那么就会为其分配一个计算图。</p>
+<p><strong>背景：</strong><br></p><pre class="line-numbers language-none"><code class="language-none">pde_data = torch.from_numpy(pd.read_csv(self.config.pde_data_path).values).float().to(self.device)
+
+self.pde_Xs = [pde_data[:, i:i+1].requires_grad_() for i in range(self.config.X_dim)]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><br>上面这段代码是读取数据后，然后开启requires<em>grad</em>()，但是它是对所有的数据都开启requires<em>grad</em>()，即使后面batch只使用了很小一部分数据，但是loss.backward()还是会计算这一部分，导致很慢。<p></p>
+<p><strong>正确的做法：</strong><br>在取出batch的时候才为这些数据开启requires<em>grad</em>()</p>
+<h3 id="tensor必须在同一个设备上面"><a href="#tensor必须在同一个设备上面" class="headerlink" title="tensor必须在同一个设备上面"></a>tensor必须在同一个设备上面</h3><p>有时候需要把numpy转为tensor，再转回来。</p>
+<p>可能会遇到不在同一个设备上面，需要阻断反向传播等。<br>下面给一个简单的例子：</p>
+<pre class="line-numbers language-none"><code class="language-none">// 把numpy转为tensor，再换为32位的（网络接受的是32位），在移动到同一个device上
+predict = net(torch.from_numpy(XYT).float().to(config.device))
+
+// tensor转换为numpy，除了要先放到cpu上，还需要阻断反向传播，requires_grad为false
+predict = predict.cpu().detach().numpy()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>regression:回归</p>
 <p>training data set = training set:训练数据集/训练集</p>
 <p>sample = data point = data instance:样本/数据点/数据样本</p>
 <p>label = target:标签/目标</p>
@@ -1863,7 +1872,7 @@ tensorboard --logdir=./202307230293 --port 8123<span aria-hidden="true" class="l
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">159.8k</span>
+                        class="white-color">160.2k</span>
             
             
             
