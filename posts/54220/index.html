@@ -487,14 +487,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.7k
+                    5.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    19 分
                 </div>
                 
 
@@ -714,6 +714,24 @@ df -h /home/test.txt<span aria-hidden="true" class="line-numbers-rows"><span></s
 <ol>
 <li>在Remote机上的shell脚本的开头重新配置“需要用到”的环境变量（本文所遇到的是mpi的一个库）</li>
 <li>在Remote shell的开头设置，用source使.basn_profile文件生效</li>
+</ol>
+<h2 id="shell脚本中export无效的原分析和解决方法"><a href="#shell脚本中export无效的原分析和解决方法" class="headerlink" title="shell脚本中export无效的原分析和解决方法"></a>shell脚本中export无效的原分析和解决方法</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fadai1993/article/details/109085231">原链接</a></p>
+<h3 id="问题场景：shell脚本中的export怎么都无法起作用"><a href="#问题场景：shell脚本中的export怎么都无法起作用" class="headerlink" title="问题场景：shell脚本中的export怎么都无法起作用"></a>问题场景：shell脚本中的export怎么都无法起作用</h3><p>测试需要导入大量临时的环境变量，单个export又比较麻烦，因此创建shell脚本简化场景：<br></p><pre class="line-numbers language-none"><code class="language-none">#!bin/bash  
+export PATH=$PATH:/usr/lib/java/jre  
+export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p></p>
+<p>就这么个系统环境变量配置，通过./path.sh 或者 sh path.sh怎么执行都无法设置成功，为什么单独执行export一点问题都没有，但是写到shell脚本中执行，export却怎么都不起作用？</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><ol>
+<li>shell是一个进程，每个进程拥有独立的存储空间，进程间数据不可见<br>一个shell中的系统环境变量（用export定义的变量）只会对当前shell或者他的子shell有效，该shell结束之后，变量生命周期结束（并不能返回到父shell中）</li>
+<li>export定义的变量，对当前shell及子shell有效；不用export定义的变量，仅对本shell有效</li>
+<li>执行脚本时，是创建了一个新的子shell进程运行，脚本执行完成后，该子shell进程自动退出<br>因此，子shell中定义的系统环境变量是无法作用于父shell的。</li>
+</ol>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>上文可知，父shell可将自己的环境变量写入子shell，但子shell无法将自己空间中的数据写入父shell（至少export不行），如何达到我们的需求，那就不要创建子shell，仅导入shell文件内的内容<br></p><pre class="line-numbers language-none"><code class="language-none">. path.th<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<p>或者<br></p><pre class="line-numbers language-none"><code class="language-none">source path.th<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<h3 id="“-”、“source”、“sh”、“-”、“export”的区别"><a href="#“-”、“source”、“sh”、“-”、“export”的区别" class="headerlink" title="“.”、“source”、“sh”、“./”、“export”的区别"></a>“.”、“source”、“sh”、“./”、“export”的区别</h3><ol>
+<li>source 同“.”， 用于使shell读入指定的shell文件，并依次执行文件中的所有语句（当前shell）</li>
+<li>sh 创建一个子shell，继承父shell的环境变量，同时在子shell中执行脚本里面的语句</li>
+<li>./ 当脚本文件具有可执行属性时，与sh无异，./filename是因为当前目录并未在PATH中</li>
+<li>export 设置或显示环境变量，临时作用于当前shell</li>
 </ol>
 
                 
@@ -1279,7 +1297,7 @@ df -h /home/test.txt<span aria-hidden="true" class="line-numbers-rows"><span></s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">158.1k</span>
+                        class="white-color">160.8k</span>
             
             
             

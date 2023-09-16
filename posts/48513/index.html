@@ -5,10 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="深度学习, Home of Gaofeng">
-    <meta name="description" content="预备知识名词解释regression:回归
-training data set = training set:训练数据集/训练集
-sample = data point = data instance:样本/数据点/数据样本
-label =">
+    <meta name="description" content="遇到的问题loss.backward()耗时严重loss.backward()主要是计算梯度，为后面更新参数做准备，如果这一步耗时严重，要么是网络结构复杂，要么是计算图非常大。如果某个tensor的requires.grad属于被开启，那么">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -474,14 +471,14 @@ label =">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    18.9k
+                    20.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    69 分
+                    75 分
                 </div>
                 
 
@@ -504,7 +501,19 @@ label =">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>regression:回归</p>
+                <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="loss-backward-耗时严重"><a href="#loss-backward-耗时严重" class="headerlink" title="loss.backward()耗时严重"></a>loss.backward()耗时严重</h3><p>loss.backward()主要是计算梯度，为后面更新参数做准备，如果这一步耗时严重，要么是网络结构复杂，要么是<strong>计算图非常大</strong>。如果某个tensor的requires.grad属于被开启，那么就会为其分配一个计算图。</p>
+<p><strong>背景：</strong><br></p><pre class="line-numbers language-none"><code class="language-none">pde_data = torch.from_numpy(pd.read_csv(self.config.pde_data_path).values).float().to(self.device)
+
+self.pde_Xs = [pde_data[:, i:i+1].requires_grad_() for i in range(self.config.X_dim)]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><br>上面这段代码是读取数据后，然后开启requires<em>grad</em>()，但是它是对所有的数据都开启requires<em>grad</em>()，即使后面batch只使用了很小一部分数据，但是loss.backward()还是会计算这一部分，导致很慢。<p></p>
+<p><strong>正确的做法：</strong><br>在取出batch的时候才为这些数据开启requires<em>grad</em>()</p>
+<h3 id="tensor必须在同一个设备上面"><a href="#tensor必须在同一个设备上面" class="headerlink" title="tensor必须在同一个设备上面"></a>tensor必须在同一个设备上面</h3><p>有时候需要把numpy转为tensor，再转回来。</p>
+<p>可能会遇到不在同一个设备上面，需要阻断反向传播等。<br>下面给一个简单的例子：</p>
+<pre class="line-numbers language-none"><code class="language-none">// 把numpy转为tensor，再换为32位的（网络接受的是32位），在移动到同一个device上
+predict = net(torch.from_numpy(XYT).float().to(config.device))
+
+// tensor转换为numpy，除了要先放到cpu上，还需要阻断反向传播，requires_grad为false
+predict = predict.cpu().detach().numpy()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>regression:回归</p>
 <p>training data set = training set:训练数据集/训练集</p>
 <p>sample = data point = data instance:样本/数据点/数据样本</p>
 <p>label = target:标签/目标</p>
@@ -1092,7 +1101,102 @@ OutputPadding 是添加到输出尺寸的额外元素数量。一般在进行转
 OutputSize = (16 - 1) * 2 - 2 * 1 + 4 + 0 = 32
 
 因此，你的输出特征图的尺寸就为32x32。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="数据相关操作"><a href="#数据相关操作" class="headerlink" title="数据相关操作"></a>数据相关操作</h2><h3 id="pytorch中图像分割"><a href="#pytorch中图像分割" class="headerlink" title="pytorch中图像分割"></a>pytorch中图像分割</h3><p>简单版：<strong>reshape比view更加好用</strong><br>[原文链接]（<a target="_blank" rel="noopener" href="https://blog.csdn.net/Flag_ing/article/details/109129752）">https://blog.csdn.net/Flag_ing/article/details/109129752）</a></p>
+<h2 id="数据相关操作"><a href="#数据相关操作" class="headerlink" title="数据相关操作"></a>数据相关操作</h2><h3 id="轴（axis）"><a href="#轴（axis）" class="headerlink" title="轴（axis）"></a>轴（axis）</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31275071">原文链接</a></p>
+<pre class="line-numbers language-none"><code class="language-none">&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; a = np.array([[1,2,3],[2,3,4],[3,4,9]])
+&gt;&gt;&gt; a
+array([[1, 2, 3],
+       [2, 3, 4],
+       [3, 4, 9]])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这个array的维数只有2，即axis轴有两个，分别是axis=0和axis=1。如下图所示，该二维数组的第0维(axis=0)有三个元素(左图)，即axis=0轴的长度length为3；第1维(axis=1)也有三个元素(右图)，即axis=1轴的长度length为3。正是因为axis=0、axis=1的长度都为3，矩阵横着竖着都有3个数，所以该矩阵在线性代数是3维的(rank秩为3)。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-76b727aedf756d03c854f3b045345c23_r.png" alt=""></p>
+<p>因此，axis就是数组层级。</p>
+<p>当axis=0，该轴上的元素有3个(数组的size为3)</p>
+<p>a[0]、a[1]、a[2]</p>
+<p>当axis=1，该轴上的元素有3个(数组的size为3)</p>
+<p>a[0][0]、a[0][1]、a[0][2]</p>
+<p>（或者a[1][0]、a[1][1]、a[1][2]）</p>
+<p>（或者a[2][0]、a[2][1]、a[2][2]）</p>
+<p>再比如下面shape为(3,2,4)的array：<br></p><pre class="line-numbers language-none"><code class="language-none">&gt;&gt;&gt; b = np.array([[[1,2,3,4],[1,3,4,5]],[[2,4,7,5],[8,4,3,5]],[[2,5,7,3],[1,5,3,7]]])
+&gt;&gt;&gt; b
+array([[[1, 2, 3, 4],
+        [1, 3, 4, 5]],
+
+       [[2, 4, 7, 5],
+        [8, 4, 3, 5]],
+
+       [[2, 5, 7, 3],
+        [1, 5, 3, 7]]])
+&gt;&gt;&gt; b.shape
+(3, 2, 4)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>这个shape（用tuple表示）可以理解为在每个轴（axis）上的size，也即占有的长度（length)。为了更进一步理解，我们可以暂时把多个axes想象成多层layers。axis=0表示第一层(下图黑色框框)，该层数组的size为3，对应轴上的元素length = 3；axis=1表示第二层(下图红色框框)，该层数组的size为2，对应轴上的元素length = 2；axis=2表示第三层(下图蓝色框框)，对应轴上的元素length = 4。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-5c8aad40f74a3adee72f8f7fb5be89a6_720w.webp" alt=""><p></p>
+<h3 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44330492/article/details/100126774?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-100126774-blog-78934529.235%5Ev38%5Epc_relevant_anti_t3&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-100126774-blog-78934529.235%5Ev38%5Epc_relevant_anti_t3&amp;utm_relevant_index=1">原文链接</a></p>
+<pre class="line-numbers language-none"><code class="language-none">import numpy
+a=numpy.arange(1, 7).reshape((2, 3))
+b=numpy.arange(7, 13).reshape((2, 3))
+c=numpy.arange(13, 19).reshape((2, 3))
+d=numpy.arange(19, 25).reshape((2, 3))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这四个用于堆叠的数组如下所示：<br></p><pre class="line-numbers language-none"><code class="language-none">[[1 2 3]           
+ [4 5 6]]
+ 
+[[ 7  8  9]
+ [10 11 12]]
+ 
+[[13 14 15]
+ [16 17 18]]
+ 
+[[19 20 21]
+ [22 23 24]]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<pre class="line-numbers language-none"><code class="language-none">print(numpy.stack([a, b,c,d], axis=0))
+print(numpy.stack([a, b,c,d], axis=0).shape)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>输出结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">[[[ 1  2  3]             
+  [ 4  5  6]]
+
+ [[ 7  8  9]
+  [10 11 12]]
+
+ [[13 14 15]
+  [16 17 18]]
+
+ [[19 20 21]
+  [22 23 24]]]
+  
+(4, 2, 3)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>形象理解：<strong>axis等于几就说明在哪个维度上进行堆叠</strong>。当axis=0的时候，意味着整体，也就是一个2行3列的数组。所以对于0维堆叠，相当于简单的物理罗列，比如这四个数组代表的是4张图像的数据，进行0维堆叠也就是把它们按顺序排放了起来，形成了一个(4,2,3)的3维数组。</p>
+<p>axis=1<br></p><pre class="line-numbers language-none"><code class="language-none">print(numpy.stack([a, b,c,d], axis=1))
+print(numpy.stack([a, b,c,d], axis=1).shape)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br>输出：<br><pre class="line-numbers language-none"><code class="language-none">[[[ 1  2  3]
+  [ 7  8  9]
+  [13 14 15]
+  [19 20 21]]
+
+ [[ 4  5  6]
+  [10 11 12]
+  [16 17 18]
+  [22 23 24]]]
+  
+(2, 4, 3)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>形象理解：<strong>axis等于几就说明在哪个维度上进行堆叠</strong>。当axis=1的时候，意味着第一个维度，也就是数组的每一行。所以对于1维堆叠，4个2行3列的数组，各自拿出自己的第一行数据进行堆叠形成3维数组的第一“行”，各自拿出自己的第二行数据进行堆叠形成3维数组的第二“行”，从而形成了一个(2,4,3)的3维数组。比如这四个数组分别代表的是对同一张图像进行不同处理后的数据，进行1维堆叠可以将这些不同处理方式的数据有条理的堆叠形成一个数组，方便后续的统一处理。<p></p>
+<p>axis=2<br></p><pre class="line-numbers language-none"><code class="language-none">print(numpy.stack([a, b,c,d], axis=2))
+print(numpy.stack([a, b,c,d], axis=2).shape)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br><pre class="line-numbers language-none"><code class="language-none">[[[ 1  7 13 19]
+  [ 2  8 14 20]
+  [ 3  9 15 21]]
+
+ [[ 4 10 16 22]
+  [ 5 11 17 23]
+  [ 6 12 18 24]]]
+  
+(2, 3, 4)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<h3 id="concatenate"><a href="#concatenate" class="headerlink" title="concatenate"></a>concatenate</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41770169/article/details/80565073">原文链接</a></p>
+<pre class="line-numbers language-none"><code class="language-none">&gt;&gt;&gt; a = np.array([[1, 2], [3, 4]])
+&gt;&gt;&gt; b = np.array([[5, 6]])
+&gt;&gt;&gt; np.concatenate((a, b), axis=0)
+array([[1, 2],
+       [3, 4],
+       [5, 6]])
+&gt;&gt;&gt; np.concatenate((a, b.T), axis=1)
+array([[1, 2, 5],
+       [3, 4, 6]])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="pytorch中图像分割"><a href="#pytorch中图像分割" class="headerlink" title="pytorch中图像分割"></a>pytorch中图像分割</h3><p>简单版：<strong>reshape比view更加好用</strong><br>[原文链接]（<a target="_blank" rel="noopener" href="https://blog.csdn.net/Flag_ing/article/details/109129752）">https://blog.csdn.net/Flag_ing/article/details/109129752）</a></p>
 <p>我们以实际的代码来看下：<br></p><pre class="line-numbers language-none"><code class="language-none"># 输入的是一个5维数组，我要切割为80*20的小块
 
 batch_size, seq_length, channels, h, w = data.shape
@@ -1761,7 +1865,7 @@ tensorboard --logdir=./202307230293 --port 8123<span aria-hidden="true" class="l
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">158.1k</span>
+                        class="white-color">160.8k</span>
             
             
             
