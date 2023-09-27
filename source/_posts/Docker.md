@@ -83,7 +83,23 @@ docker可以把服务和需要的库一起打包
 
 ## docker基本操作
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522150146.png)
- 
+
+### 换源
+1. 编辑/etc/docker/daemon.json文件(没有该文件就创建)，中加下面参数(注意json串的格式)：
+```
+{
+  "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn", "http://hub-mirror.c.163.com", "https://registry.docker-cn.com"]
+}
+
+```
+
+
+2. 重启docker服务
+```
+systemctl restart docker
+```
+
+**如果使用的是docker desktop，那就鼠标右键点击图案，来重启**
 ### 镜像命令
 
 ```bash
@@ -204,3 +220,24 @@ docker info
 ```bash
 df -Th /var/lib/docker
 ```
+
+# WSL2 安装docker
+[原文链接](https://hackmd.io/@CynthiaChuang/Install-Docker-in-WSL2#%E6%96%B9%E6%B3%951%EF%BD%9C%E5%AE%89%E8%A3%9D-Docker-%E6%90%AD%E9%85%8D-Docker-Desktop)
+
+方法1：安装Docker Desktop
+直接搜索，然后安装。
+一下两张图片标出的地方需要勾选
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Z9khlXF.png)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/pZdTTH9.png)
+
+如果要重启的话，需要在界面图标处右键，选择重启
+
+方法2：使用便捷腳本安裝 Docker
+
+```
+$ curl -fsSL https://get.docker.com -o get-docker.sh
+$ sudo sh get-docker.sh
+$ sudo service docker start
+```
+
+測試 docker run 可以順利進行耶！
