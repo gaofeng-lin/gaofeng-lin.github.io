@@ -32,9 +32,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -471,14 +471,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -520,6 +520,18 @@
 <p>上面这图说明了三个得到镜像的途径<br>1．    从docker官方仓库拉取。<br>2．    使用dockerfile构建。<br>3．    从已有的镜像构建容器，进入容器里面（docker -it 容器名称 /bin/bash），做修改，再提交（docker commit）。//这里面 /bin/bash 是进入容器内部，交互运行，和前面的-it也有关系。</p>
 <p><strong>可以做什么？</strong><br>比如我拉取一个centos7镜像，进入里面把私有云那一堆东西全部装好。下次我就可以直接拿来用，把服务扔上去就好。<br>这个过程或者我可以用dockerfile来实现。</p>
 <h2 id="docker基本操作"><a href="#docker基本操作" class="headerlink" title="docker基本操作"></a>docker基本操作</h2><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522150146.png" alt=""></p>
+<h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><ol>
+<li>编辑/etc/docker/daemon.json文件(没有该文件就创建)，中加下面参数(注意json串的格式)：<pre class="line-numbers language-none"><code class="language-none">{
+  "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn", "http://hub-mirror.c.163.com", "https://registry.docker-cn.com"]
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<ol>
+<li>重启docker服务<pre class="line-numbers language-none"><code class="language-none">systemctl restart docker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<p><strong>如果使用的是docker desktop，那就鼠标右键点击图案，来重启</strong></p>
 <h3 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> search 镜像名称
 <span class="token function">docker</span> pull 镜像名 
 <span class="token function">docker</span> pull 镜像名:tag
@@ -587,6 +599,14 @@
 <h3 id="查看docker信息"><a href="#查看docker信息" class="headerlink" title="查看docker信息"></a>查看docker信息</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> info<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>可以看到docker的根路径是 /var/lib/docker<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522150209.png" alt=""><br>查看docker根路径的磁盘占用率</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">df</span> -Th /var/lib/docker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="WSL2-安装docker"><a href="#WSL2-安装docker" class="headerlink" title="WSL2 安装docker"></a>WSL2 安装docker</h1><p><a target="_blank" rel="noopener" href="https://hackmd.io/@CynthiaChuang/Install-Docker-in-WSL2#%E6%96%B9%E6%B3%951%EF%BD%9C%E5%AE%89%E8%A3%9D-Docker-%E6%90%AD%E9%85%8D-Docker-Desktop">原文链接</a></p>
+<p>方法1：安装Docker Desktop<br>直接搜索，然后安装。<br>一下两张图片标出的地方需要勾选<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Z9khlXF.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/pZdTTH9.png" alt=""></p>
+<p>如果要重启的话，需要在界面图标处右键，选择重启</p>
+<p>方法2：使用便捷腳本安裝 Docker</p>
+<pre class="line-numbers language-none"><code class="language-none">$ curl -fsSL https://get.docker.com -o get-docker.sh
+$ sudo sh get-docker.sh
+$ sudo service docker start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>測試 docker run 可以順利進行耶！</p>
 
                 
             </div>
@@ -1127,7 +1147,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">160.7k</span>
+                        class="white-color">160.9k</span>
             
             
             
