@@ -82,7 +82,7 @@ docker可以把服务和需要的库一起打包
 
 
 ## docker基本操作
-![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522150146.png)
+
 
 ### 换源
 1. 编辑/etc/docker/daemon.json文件(没有该文件就创建)，中加下面参数(注意json串的格式)：
@@ -153,11 +153,37 @@ docker exec -it “容器id” /bin/bash
 ```
 
 ### 传输文件命令
-传输文件命令——本地传到docker
+1. 传输文件命令——本地传到docker
 
 ```bash
-docker cp “文件”  镜像id：“路径”
+docker cp “文件”  容器id：“路径”
 ```
+
+2. 从宿主机拷贝文件到容器中：
+```
+docker cp <path-on-host> <container-id-or-name>:<path-in-container>
+
+```
+```
+docker cp sample.txt abcd1234:/tmp/
+```
+
+### 登录镜像仓库
+```docker login registry.cn-beijing.aliyuncs.com```
+
+然后依次输入用户名和密码
+
+### 推送本地镜像到仓库
+在登录后，先要把本地镜像给打上标签，和仓库对应起来。
+```
+sudo docker tag pytorch:v3 registry.cn-beijing.aliyuncs.com/tianchi_cfd1_rematch/pytorch:v3
+```
+
+然后再推送
+```
+sudo docker push registry.cn-beijing.aliyuncs.com/tianchi_cfd1_rematch/pytorch:v3
+```
+
 
 ### 导出/导入镜像
 方法1：save
@@ -199,7 +225,7 @@ docker rm $(docker ps -qf status=exited)
 ```
 方法三：docker 1.13版本以后，可以使用 docker system 或 docker container命令清理容器。
 
-```bash
+```
 //docker container prune 删除已停用容器
 docker container prune
 
@@ -221,7 +247,8 @@ docker info
 df -Th /var/lib/docker
 ```
 
-# WSL2 安装docker
+## WSL2 安装docker
+
 [原文链接](https://hackmd.io/@CynthiaChuang/Install-Docker-in-WSL2#%E6%96%B9%E6%B3%951%EF%BD%9C%E5%AE%89%E8%A3%9D-Docker-%E6%90%AD%E9%85%8D-Docker-Desktop)
 
 方法1：安装Docker Desktop
