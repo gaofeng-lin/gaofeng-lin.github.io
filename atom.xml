@@ -456,6 +456,35 @@
   </entry>
   
   <entry>
+    <title>Shell 命令</title>
+    <link href="https://gaofeng-lin.github.io/posts/20005/"/>
+    <id>https://gaofeng-lin.github.io/posts/20005/</id>
+    <published>2022-03-05T16:00:00.000Z</published>
+    <updated>2023-06-18T15:45:25.753Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;基本知识-命令&quot;&gt;&lt;a href=&quot;#基本知识-命令&quot; class=&quot;headerlink&quot; title=&quot;基本知识/命令&quot;&gt;&lt;/a&gt;基本知识/命令&lt;/h2&gt;&lt;h3 id=&quot;变量赋值语句不能有空格&quot;&gt;&lt;a href=&quot;#变量赋值语句不能有空格&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
+    
+    
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
+    
+    <category term="sed" scheme="https://gaofeng-lin.github.io/tags/sed/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Mysql</title>
     <link href="https://gaofeng-lin.github.io/posts/62688/"/>
     <id>https://gaofeng-lin.github.io/posts/62688/</id>
@@ -478,9 +507,9 @@
     
     <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
-    <category term="数据库" scheme="https://gaofeng-lin.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
     <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
+    
+    <category term="数据库" scheme="https://gaofeng-lin.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     <category term="MySQL" scheme="https://gaofeng-lin.github.io/tags/MySQL/"/>
     
@@ -522,18 +551,18 @@
   </entry>
   
   <entry>
-    <title>Shell 命令</title>
-    <link href="https://gaofeng-lin.github.io/posts/20005/"/>
-    <id>https://gaofeng-lin.github.io/posts/20005/</id>
+    <title>Linux常用命令</title>
+    <link href="https://gaofeng-lin.github.io/posts/48230/"/>
+    <id>https://gaofeng-lin.github.io/posts/48230/</id>
     <published>2022-03-05T16:00:00.000Z</published>
-    <updated>2023-06-18T15:45:25.753Z</updated>
+    <updated>2023-07-25T10:45:01.579Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;基本知识-命令&quot;&gt;&lt;a href=&quot;#基本知识-命令&quot; class=&quot;headerlink&quot; title=&quot;基本知识/命令&quot;&gt;&lt;/a&gt;基本知识/命令&lt;/h2&gt;&lt;h3 id=&quot;变量赋值语句不能有空格&quot;&gt;&lt;a href=&quot;#变量赋值语句不能有空格&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;修改权限&quot;&gt;&lt;a href=&quot;#修改权限&quot; class=&quot;headerlink&quot; title=&quot;修改权限&quot;&gt;&lt;/a&gt;修改权限&lt;/h2&gt;&lt;h3 id=&quot;修改文件用户组&quot;&gt;&lt;a href=&quot;#修改文件用户组&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -546,32 +575,9 @@
     
     <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
-    <category term="sed" scheme="https://gaofeng-lin.github.io/tags/sed/"/>
+    <category term="ssh" scheme="https://gaofeng-lin.github.io/tags/ssh/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Golang</title>
-    <link href="https://gaofeng-lin.github.io/posts/56435/"/>
-    <id>https://gaofeng-lin.github.io/posts/56435/</id>
-    <published>2022-03-05T16:00:00.000Z</published>
-    <updated>2023-06-18T15:45:25.756Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;查看环境变量&quot;&gt;&lt;a href=&quot;#查看环境变量&quot; class=&quot;headerlink&quot; title=&quot;查看环境变量&quot;&gt;&lt;/a&gt;查看环境变量&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="编程语言" scheme="https://gaofeng-lin.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-    
-    <category term="Golang" scheme="https://gaofeng-lin.github.io/tags/Golang/"/>
+    <category term="Vim" scheme="https://gaofeng-lin.github.io/tags/Vim/"/>
     
   </entry>
   
