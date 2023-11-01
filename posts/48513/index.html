@@ -32,9 +32,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -471,14 +471,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    20.2k
+                    20.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    75 分
+                    77 分
                 </div>
                 
 
@@ -1101,7 +1101,38 @@ OutputPadding 是添加到输出尺寸的额外元素数量。一般在进行转
 OutputSize = (16 - 1) * 2 - 2 * 1 + 4 + 0 = 32
 
 因此，你的输出特征图的尺寸就为32x32。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="数据相关操作"><a href="#数据相关操作" class="headerlink" title="数据相关操作"></a>数据相关操作</h2><h3 id="轴（axis）"><a href="#轴（axis）" class="headerlink" title="轴（axis）"></a>轴（axis）</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31275071">原文链接</a></p>
+<h2 id="数据相关操作"><a href="#数据相关操作" class="headerlink" title="数据相关操作"></a>数据相关操作</h2><h3 id="dataloader简单例子"><a href="#dataloader简单例子" class="headerlink" title="dataloader简单例子"></a>dataloader简单例子</h3><p><strong>总结：对于一般的数据来说，我们把数据量放在第0维，例如[300,3,32,32]。300张3通道，高宽为32的图片。如果batch_size为16，那么每次读取的数据为[300,3,32,32]</strong></p>
+<p>假设我们有一个数据集，每个样本都是一个3通道的32x32的图像，标签是一个数字。我们将创建一个自定义的 Dataset 类，然后用 DataLoader 来加载数据，并指定一个 batch_size。我们将打印出从 DataLoader 获取的批次数据的形状。</p>
+<p>首先是自定义的 Dataset 类：<br></p><pre class="line-numbers language-none"><code class="language-none">from torch.utils.data import Dataset, DataLoader
+import torch
+
+class SimpleDataset(Dataset):
+    def __init__(self, num_samples):
+        # 假设有 num_samples 个样本，每个样本是3通道的32x32图像
+        self.data = torch.randn(num_samples, 3, 32, 32)
+        # 假设每个样本的标签是一个数字
+        self.labels = torch.randint(0, 10, (num_samples,))
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        sample = self.data[idx]
+        label = self.labels[idx]
+        return sample, label<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>然后是使用 DataLoader 来加载数据：<br><pre class="line-numbers language-none"><code class="language-none"># 创建一个含有100个样本的数据集
+simple_dataset = SimpleDataset(num_samples=100)
+
+# 使用DataLoader来加载数据，指定batch_size为4
+dataloader = DataLoader(simple_dataset, batch_size=4, shuffle=True)
+
+# 从DataLoader获取第一个批次的数据
+for batch_idx, (samples, labels) in enumerate(dataloader):
+    print(f'Batch index: {batch_idx}')
+    print('Samples shape:', samples.shape) # 预期形状：[4, 3, 32, 32]
+    print('Labels shape:', labels.shape)   # 预期形状：[4]
+    break  # 只打印第一个批次的数据<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<p>在这个例子中，samples 的形状应该是 [4, 3, 32, 32]，因为 batch_size 是4，所以有4个样本，每个样本是3通道的32x32图像。labels 的形状应该是 [4]，因为每个批次有4个标签。</p>
+<h3 id="轴（axis）"><a href="#轴（axis）" class="headerlink" title="轴（axis）"></a>轴（axis）</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31275071">原文链接</a></p>
 <pre class="line-numbers language-none"><code class="language-none">&gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; a = np.array([[1,2,3],[2,3,4],[3,4,9]])
 &gt;&gt;&gt; a
@@ -1872,7 +1903,7 @@ tensorboard --logdir=./202307230293 --port 8123<span aria-hidden="true" class="l
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">160.9k</span>
+                        class="white-color">161.5k</span>
             
             
             
