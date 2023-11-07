@@ -471,14 +471,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    21.1k
+                    21.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    78 分
+                    79 分
                 </div>
                 
 
@@ -909,8 +909,15 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/7df63c0c5b279fc8251f0075c04f2a9f.png" alt=""></p>
 <p>模型尺度。(a) 是一个基本的网络模型；(b)-(d) 分别单独在宽度、深度、分辨率的维度上增加尺度；(e) 是论文提出的混合尺度变换，用统一固定的比例放缩三个不同维度的尺度。</p>
 <h3 id="感受野"><a href="#感受野" class="headerlink" title="感受野"></a>感受野</h3><p>若感受野太小，表明网络只能观察到图像的局部特征；若感受野太大，虽然对全局信息理解更强，但通常也包含了许多无效信息。为了提高有效感受野从而避免冗余信息，捕获多尺度特征是当前研究者们常采用的方法。比如拿望远镜看远方为小视野，直接光看为大视野。</p>
-<h2 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h2><h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/89894058">原文链接</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30844905">原文链接</a></p>
+<h2 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h2><p>总结：</p>
+<ol>
+<li>RNN这个R(循环)，可以被看做是同一神经网络的多次复制，每个神经网络模块会把消息传递给下一个。</li>
+<li>常规的RNN一般是输入和输出是等长序列，为了适应不等长序列。出现了Encoder-Decoder，也叫Seq2Seq。里面的编码器和解码器可以是rnn，也可以是rnn的变种（lstm,gru）等。</li>
+<li>lstm、gru等都是RNN的变式。主要是为了解决RNN无法处理长序列的缺点。</li>
+</ol>
+<h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/89894058">rnn+lstm</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30844905">rnn</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jiqizhixin.com/articles/2018-12-14-4">rnn+seq2seq2+attention</a></p>
 <p>在实际应用中，我们还会遇到很多序列形的数据：</p>
 <p>如：</p>
 <ol>
@@ -1913,7 +1920,7 @@ tensorboard --logdir=./202307230293 --port 8123<span aria-hidden="true" class="l
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">161.9k</span>
+                        class="white-color">162k</span>
             
             
             
