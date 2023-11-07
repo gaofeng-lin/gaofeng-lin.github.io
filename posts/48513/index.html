@@ -471,14 +471,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    20.6k
+                    21.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    77 分
+                    78 分
                 </div>
                 
 
@@ -1101,7 +1101,7 @@ OutputPadding 是添加到输出尺寸的额外元素数量。一般在进行转
 OutputSize = (16 - 1) * 2 - 2 * 1 + 4 + 0 = 32
 
 因此，你的输出特征图的尺寸就为32x32。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="数据相关操作"><a href="#数据相关操作" class="headerlink" title="数据相关操作"></a>数据相关操作</h2><h3 id="dataloader简单例子"><a href="#dataloader简单例子" class="headerlink" title="dataloader简单例子"></a>dataloader简单例子</h3><p><strong>总结：对于一般的数据来说，我们把数据量放在第0维，例如[300,3,32,32]。300张3通道，高宽为32的图片。如果batch_size为16，那么每次读取的数据为[300,3,32,32]</strong></p>
+<h2 id="dataloader解析"><a href="#dataloader解析" class="headerlink" title="dataloader解析"></a>dataloader解析</h2><h3 id="简单例子"><a href="#简单例子" class="headerlink" title="简单例子"></a>简单例子</h3><p><strong>总结：对于一般的数据来说，我们把数据量放在第0维，例如[300,3,32,32]。300张3通道，高宽为32的图片。如果batch_size为16，那么每次读取的数据为[300,3,32,32]</strong></p>
 <p>假设我们有一个数据集，每个样本都是一个3通道的32x32的图像，标签是一个数字。我们将创建一个自定义的 Dataset 类，然后用 DataLoader 来加载数据，并指定一个 batch_size。我们将打印出从 DataLoader 获取的批次数据的形状。</p>
 <p>首先是自定义的 Dataset 类：<br></p><pre class="line-numbers language-none"><code class="language-none">from torch.utils.data import Dataset, DataLoader
 import torch
@@ -1132,7 +1132,17 @@ for batch_idx, (samples, labels) in enumerate(dataloader):
     print('Labels shape:', labels.shape)   # 预期形状：[4]
     break  # 只打印第一个批次的数据<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
 <p>在这个例子中，samples 的形状应该是 [4, 3, 32, 32]，因为 batch_size 是4，所以有4个样本，每个样本是3通道的32x32图像。labels 的形状应该是 [4]，因为每个批次有4个标签。</p>
-<h3 id="轴（axis）"><a href="#轴（axis）" class="headerlink" title="轴（axis）"></a>轴（axis）</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31275071">原文链接</a></p>
+<h3 id="dataloader中batch-size-getitem中idx，len之间的关联"><a href="#dataloader中batch-size-getitem中idx，len之间的关联" class="headerlink" title="dataloader中batch_size,getitem中idx，len之间的关联"></a>dataloader中batch_size,getitem中idx，len之间的关联</h3><p>首先说一下<strong>len</strong>函数，返回的是一个数值，一般来说表示的是数据集的长度/多少。<br>比如我有一个数据集特征和标签：torch.Size([180, 10, 1, 480, 120])<br>如果<strong>len</strong>函数：<br></p><pre class="line-numbers language-none"><code class="language-none">def __len__(self):
+    return len(self.features)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br>那么这个长度就是180。<p></p>
+<p>getitem中idx就是和这个长度绑定的。假设长度是180，那么idx的范围就是从0-179这180个数。</p>
+<p>batch_size就是用来表示每个数据集的大小，假设batch_size是32，那么这个数据集会被划分为5份，前四份每份有32个，最后一份因为不足32只有20个</p>
+<p>前四个batch，每个batch都会调用32次getitem函数，最后一个调用20次；idx会从0开始逐次递增，一直到179。</p>
+<p>而在创建dataloader的时候，我们往往可以选择是否打乱<br></p><pre class="line-numbers language-none"><code class="language-none">data_loader = DataLoader(dataset=DateSet, batch_size=32, shuffle=False)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<p>当数据打乱（shuffle）时，idx实际上指的是打乱后的索引顺序，而不是数据原始顺序的连续索引。也就是说，在每个epoch开始之前，整个数据集的索引会被打乱，然后这个打乱后的索引被用来访问数据集中的样本。</p>
+<p>例如原来的数据有：d1,d2,d3,d4,d5,d6,d7<br>索引为：0,1,2,3,4,5,6<br>调用的顺序：d1,d2,d3,d4,d5,d6,d7</p>
+<p>而数据（索引）打乱后，索引可能为：5,2,3,6,0,1,4<br>调用的顺序：d6,d3,d4,d7,d1,d2,d5</p>
+<p>每次启动一个新的epoch时，如果shuffle=True，则数据会再次被打乱，产生一个新的索引序列。这样做的目的是为了在训练过程中引入随机性，有助于模型泛化，避免对特定的样本顺序过拟合。</p>
+<h2 id="数据相关操作"><a href="#数据相关操作" class="headerlink" title="数据相关操作"></a>数据相关操作</h2><h3 id="轴（axis）"><a href="#轴（axis）" class="headerlink" title="轴（axis）"></a>轴（axis）</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31275071">原文链接</a></p>
 <pre class="line-numbers language-none"><code class="language-none">&gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; a = np.array([[1,2,3],[2,3,4],[3,4,9]])
 &gt;&gt;&gt; a
@@ -1903,7 +1913,7 @@ tensorboard --logdir=./202307230293 --port 8123<span aria-hidden="true" class="l
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">161.5k</span>
+                        class="white-color">161.9k</span>
             
             
             
