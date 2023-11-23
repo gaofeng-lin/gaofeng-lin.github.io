@@ -32,9 +32,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -471,14 +471,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    20.2k
+                    21.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    75 分
+                    79 分
                 </div>
                 
 
@@ -871,6 +871,9 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
 <p>请注意，具体的CNN结构和参数设置会根据不同的任务和数据集而有所不同，需要根据实际情况进行调整和优化。</p>
 <h3 id="CNN数学公式推导"><a href="#CNN数学公式推导" class="headerlink" title="CNN数学公式推导"></a>CNN数学公式推导</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weipf8/article/details/103917202">链接1</a></p>
 <p><a target="_blank" rel="noopener" href="https://tech.youmi.net/2016/07/163347168.html">链接2</a></p>
+<p>二维卷积公式：<br>nn.Conv2d(ngf * mult, out_dim, kernel_size=3, stride=2, padding=1, bias=use_bias)</p>
+<p>核大小（kernel_size）：3<br>步长（stride）：2<br>填充（padding）：1</p>
+<p>新尺寸公式：<br>（（原尺寸+2*填充-核大小）/步长）+1</p>
 <p>卷积的过程：</p>
 <!-- <img src="gif/convProcess.gif" width = "" height = ""> -->
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/convProcess.gif" alt=""></p>
@@ -909,8 +912,15 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/7df63c0c5b279fc8251f0075c04f2a9f.png" alt=""></p>
 <p>模型尺度。(a) 是一个基本的网络模型；(b)-(d) 分别单独在宽度、深度、分辨率的维度上增加尺度；(e) 是论文提出的混合尺度变换，用统一固定的比例放缩三个不同维度的尺度。</p>
 <h3 id="感受野"><a href="#感受野" class="headerlink" title="感受野"></a>感受野</h3><p>若感受野太小，表明网络只能观察到图像的局部特征；若感受野太大，虽然对全局信息理解更强，但通常也包含了许多无效信息。为了提高有效感受野从而避免冗余信息，捕获多尺度特征是当前研究者们常采用的方法。比如拿望远镜看远方为小视野，直接光看为大视野。</p>
-<h2 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h2><h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/89894058">原文链接</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30844905">原文链接</a></p>
+<h2 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h2><p>总结：</p>
+<ol>
+<li>RNN这个R(循环)，可以被看做是同一神经网络的多次复制，每个神经网络模块会把消息传递给下一个。</li>
+<li>常规的RNN一般是输入和输出是等长序列，为了适应不等长序列。出现了Encoder-Decoder，也叫Seq2Seq。里面的编码器和解码器可以是rnn，也可以是rnn的变种（lstm,gru）等。</li>
+<li>lstm、gru等都是RNN的变式。主要是为了解决RNN无法处理长序列的缺点。</li>
+</ol>
+<h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/89894058">rnn+lstm</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30844905">rnn</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jiqizhixin.com/articles/2018-12-14-4">rnn+seq2seq2+attention</a></p>
 <p>在实际应用中，我们还会遇到很多序列形的数据：</p>
 <p>如：</p>
 <ol>
@@ -1101,6 +1111,47 @@ OutputPadding 是添加到输出尺寸的额外元素数量。一般在进行转
 OutputSize = (16 - 1) * 2 - 2 * 1 + 4 + 0 = 32
 
 因此，你的输出特征图的尺寸就为32x32。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="dataloader解析"><a href="#dataloader解析" class="headerlink" title="dataloader解析"></a>dataloader解析</h2><h3 id="简单例子"><a href="#简单例子" class="headerlink" title="简单例子"></a>简单例子</h3><p><strong>总结：对于一般的数据来说，我们把数据量放在第0维，例如[300,3,32,32]。300张3通道，高宽为32的图片。如果batch_size为16，那么每次读取的数据为[300,3,32,32]</strong></p>
+<p>假设我们有一个数据集，每个样本都是一个3通道的32x32的图像，标签是一个数字。我们将创建一个自定义的 Dataset 类，然后用 DataLoader 来加载数据，并指定一个 batch_size。我们将打印出从 DataLoader 获取的批次数据的形状。</p>
+<p>首先是自定义的 Dataset 类：<br></p><pre class="line-numbers language-none"><code class="language-none">from torch.utils.data import Dataset, DataLoader
+import torch
+
+class SimpleDataset(Dataset):
+    def __init__(self, num_samples):
+        # 假设有 num_samples 个样本，每个样本是3通道的32x32图像
+        self.data = torch.randn(num_samples, 3, 32, 32)
+        # 假设每个样本的标签是一个数字
+        self.labels = torch.randint(0, 10, (num_samples,))
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        sample = self.data[idx]
+        label = self.labels[idx]
+        return sample, label<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>然后是使用 DataLoader 来加载数据：<br><pre class="line-numbers language-none"><code class="language-none"># 创建一个含有100个样本的数据集
+simple_dataset = SimpleDataset(num_samples=100)
+
+# 使用DataLoader来加载数据，指定batch_size为4
+dataloader = DataLoader(simple_dataset, batch_size=4, shuffle=True)
+
+# 从DataLoader获取第一个批次的数据
+for batch_idx, (samples, labels) in enumerate(dataloader):
+    print(f'Batch index: {batch_idx}')
+    print('Samples shape:', samples.shape) # 预期形状：[4, 3, 32, 32]
+    print('Labels shape:', labels.shape)   # 预期形状：[4]
+    break  # 只打印第一个批次的数据<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<p>在这个例子中，samples 的形状应该是 [4, 3, 32, 32]，因为 batch_size 是4，所以有4个样本，每个样本是3通道的32x32图像。labels 的形状应该是 [4]，因为每个批次有4个标签。</p>
+<h3 id="dataloader中batch-size-getitem中idx，len之间的关联"><a href="#dataloader中batch-size-getitem中idx，len之间的关联" class="headerlink" title="dataloader中batch_size,getitem中idx，len之间的关联"></a>dataloader中batch_size,getitem中idx，len之间的关联</h3><p>首先说一下<strong>len</strong>函数，返回的是一个数值，一般来说表示的是数据集的长度/多少。<br>比如我有一个数据集特征和标签：torch.Size([180, 10, 1, 480, 120])<br>如果<strong>len</strong>函数：<br></p><pre class="line-numbers language-none"><code class="language-none">def __len__(self):
+    return len(self.features)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br>那么这个长度就是180。<p></p>
+<p>getitem中idx就是和这个长度绑定的。假设长度是180，那么idx的范围就是从0-179这180个数。</p>
+<p>batch_size就是用来表示每个数据集的大小，假设batch_size是32，那么这个数据集会被划分为5份，前四份每份有32个，最后一份因为不足32只有20个</p>
+<p>前四个batch，每个batch都会调用32次getitem函数，最后一个调用20次；idx会从0开始逐次递增，一直到179。</p>
+<p>而在创建dataloader的时候，我们往往可以选择是否打乱<br></p><pre class="line-numbers language-none"><code class="language-none">data_loader = DataLoader(dataset=DateSet, batch_size=32, shuffle=False)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<p>当数据打乱（shuffle）时，idx实际上指的是打乱后的索引顺序，而不是数据原始顺序的连续索引。也就是说，在每个epoch开始之前，整个数据集的索引会被打乱，然后这个打乱后的索引被用来访问数据集中的样本。</p>
+<p>例如原来的数据有：d1,d2,d3,d4,d5,d6,d7<br>索引为：0,1,2,3,4,5,6<br>调用的顺序：d1,d2,d3,d4,d5,d6,d7</p>
+<p>而数据（索引）打乱后，索引可能为：5,2,3,6,0,1,4<br>调用的顺序：d6,d3,d4,d7,d1,d2,d5</p>
+<p>每次启动一个新的epoch时，如果shuffle=True，则数据会再次被打乱，产生一个新的索引序列。这样做的目的是为了在训练过程中引入随机性，有助于模型泛化，避免对特定的样本顺序过拟合。</p>
 <h2 id="数据相关操作"><a href="#数据相关操作" class="headerlink" title="数据相关操作"></a>数据相关操作</h2><h3 id="轴（axis）"><a href="#轴（axis）" class="headerlink" title="轴（axis）"></a>轴（axis）</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31275071">原文链接</a></p>
 <pre class="line-numbers language-none"><code class="language-none">&gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; a = np.array([[1,2,3],[2,3,4],[3,4,9]])
@@ -1865,7 +1916,7 @@ tensorboard --logdir=./202307230293 --port 8123<span aria-hidden="true" class="l
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">161.1k</span>
+                        class="white-color">162.1k</span>
             
             
             
