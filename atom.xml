@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2023-06-18T15:45:25.762Z</updated>
+  <updated>2023-11-23T09:00:45.948Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>零散知识</title>
+    <link href="https://gaofeng-lin.github.io/posts/48513/"/>
+    <id>https://gaofeng-lin.github.io/posts/48513/</id>
+    <published>2023-11-22T16:00:00.000Z</published>
+    <updated>2023-11-23T09:00:45.948Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;预备知识&quot;&gt;&lt;a href=&quot;#预备知识&quot; class=&quot;headerlink&quot; title=&quot;预备知识&quot;&gt;&lt;/a&gt;预备知识&lt;/h2&gt;&lt;h3 id=&quot;名词解释&quot;&gt;&lt;a href=&quot;#名词解释&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="深度学习" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="pytorch" scheme="https://gaofeng-lin.github.io/tags/pytorch/"/>
+    
+  </entry>
   
   <entry>
     <title>硬件知识</title>
@@ -547,37 +574,6 @@
     <category term="Linux权限用法" scheme="https://gaofeng-lin.github.io/tags/Linux%E6%9D%83%E9%99%90%E7%94%A8%E6%B3%95/"/>
     
     <category term="make&amp;cmake" scheme="https://gaofeng-lin.github.io/tags/make-cmake/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux常用命令</title>
-    <link href="https://gaofeng-lin.github.io/posts/48230/"/>
-    <id>https://gaofeng-lin.github.io/posts/48230/</id>
-    <published>2022-03-05T16:00:00.000Z</published>
-    <updated>2023-07-25T10:45:01.579Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;修改权限&quot;&gt;&lt;a href=&quot;#修改权限&quot; class=&quot;headerlink&quot; title=&quot;修改权限&quot;&gt;&lt;/a&gt;修改权限&lt;/h2&gt;&lt;h3 id=&quot;修改文件用户组&quot;&gt;&lt;a href=&quot;#修改文件用户组&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
-    
-    
-    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
-    
-    <category term="ssh" scheme="https://gaofeng-lin.github.io/tags/ssh/"/>
-    
-    <category term="Vim" scheme="https://gaofeng-lin.github.io/tags/Vim/"/>
     
   </entry>
   
