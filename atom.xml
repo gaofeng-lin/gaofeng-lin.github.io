@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2023-11-24T03:18:22.436Z</updated>
+  <updated>2023-11-24T03:20:47.549Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://gaofeng-lin.github.io/posts/43034/"/>
     <id>https://gaofeng-lin.github.io/posts/43034/</id>
     <published>2023-11-23T16:00:00.000Z</published>
-    <updated>2023-11-24T03:18:22.436Z</updated>
+    <updated>2023-11-24T03:20:47.549Z</updated>
     
     
       
@@ -48,7 +48,7 @@
     <link href="https://gaofeng-lin.github.io/posts/21309/"/>
     <id>https://gaofeng-lin.github.io/posts/21309/</id>
     <published>2023-11-23T16:00:00.000Z</published>
-    <updated>2023-11-24T03:14:24.377Z</updated>
+    <updated>2023-11-24T03:20:47.549Z</updated>
     
     
       
@@ -73,7 +73,7 @@
     <link href="https://gaofeng-lin.github.io/posts/7224/"/>
     <id>https://gaofeng-lin.github.io/posts/7224/</id>
     <published>2023-11-23T16:00:00.000Z</published>
-    <updated>2023-11-24T03:15:36.766Z</updated>
+    <updated>2023-11-24T03:31:57.525Z</updated>
     
     
       
@@ -98,7 +98,7 @@
     <link href="https://gaofeng-lin.github.io/posts/53791/"/>
     <id>https://gaofeng-lin.github.io/posts/53791/</id>
     <published>2023-11-23T16:00:00.000Z</published>
-    <updated>2023-11-24T03:20:03.548Z</updated>
+    <updated>2023-11-24T03:20:47.553Z</updated>
     
     
       
@@ -119,6 +119,106 @@
     <category term="numpy" scheme="https://gaofeng-lin.github.io/tags/numpy/"/>
     
     <category term="tensor" scheme="https://gaofeng-lin.github.io/tags/tensor/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>度量学习</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-11-23T16:00:00.000Z</published>
+    <updated>2023-11-24T03:27:32.629Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;度量学习&quot;&gt;&lt;a href=&quot;#度量学习&quot; class=&quot;headerlink&quot; title=&quot;度量学习&quot;&gt;&lt;/a&gt;度量学习&lt;/h2&gt;&lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="Metric Learning" scheme="https://gaofeng-lin.github.io/tags/Metric-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习算法</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-11-23T16:00:00.000Z</published>
+    <updated>2023-11-24T03:28:12.422Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;算法介绍&quot;&gt;&lt;a href=&quot;#算法介绍&quot; class=&quot;headerlink&quot; title=&quot;算法介绍&quot;&gt;&lt;/a&gt;算法介绍&lt;/h2&gt;&lt;h3 id=&quot;KNN算法&quot;&gt;&lt;a href=&quot;#KNN算法&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="knn" scheme="https://gaofeng-lin.github.io/tags/knn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习代码问题</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-11-23T16:00:00.000Z</published>
+    <updated>2023-11-24T03:26:21.402Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;遇到的问题&quot;&gt;&lt;a href=&quot;#遇到的问题&quot; class=&quot;headerlink&quot; title=&quot;遇到的问题&quot;&gt;&lt;/a&gt;遇到的问题&lt;/h2&gt;&lt;h3 id=&quot;loss-backward-耗时严重&quot;&gt;&lt;a href=&quot;#loss-backward-耗时严重&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="tensor" scheme="https://gaofeng-lin.github.io/tags/tensor/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习常见模型解析</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-11-23T16:00:00.000Z</published>
+    <updated>2023-11-24T03:29:41.928Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;卷积相关的内容&quot;&gt;&lt;a href=&quot;#卷积相关的内容&quot; class=&quot;headerlink&quot; title=&quot;卷积相关的内容&quot;&gt;&lt;/a&gt;卷积相关的内容&lt;/h2&gt;&lt;h3 id=&quot;网络模型参数的关系&quot;&gt;&lt;a href=&quot;#网络模型参数的关系&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="convlstm" scheme="https://gaofeng-lin.github.io/tags/convlstm/"/>
     
   </entry>
   
@@ -148,18 +248,18 @@
   </entry>
   
   <entry>
-    <title>深度学习</title>
+    <title>深度学习理论知识</title>
     <link href="https://gaofeng-lin.github.io/posts/48513/"/>
     <id>https://gaofeng-lin.github.io/posts/48513/</id>
     <published>2023-02-22T16:00:00.000Z</published>
-    <updated>2023-11-24T03:20:00.183Z</updated>
+    <updated>2023-11-24T03:29:12.990Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;遇到的问题&quot;&gt;&lt;a href=&quot;#遇到的问题&quot; class=&quot;headerlink&quot; title=&quot;遇到的问题&quot;&gt;&lt;/a&gt;遇到的问题&lt;/h2&gt;&lt;h3 id=&quot;loss-backward-耗时严重&quot;&gt;&lt;a href=&quot;#loss-backward-耗时严重&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;预备知识&quot;&gt;&lt;a href=&quot;#预备知识&quot; class=&quot;headerlink&quot; title=&quot;预备知识&quot;&gt;&lt;/a&gt;预备知识&lt;/h2&gt;&lt;h3 id=&quot;名词解释&quot;&gt;&lt;a href=&quot;#名词解释&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -168,7 +268,11 @@
     <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
     
     
-    <category term="深度学习" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <category term="熵" scheme="https://gaofeng-lin.github.io/tags/%E7%86%B5/"/>
+    
+    <category term="矩阵计算" scheme="https://gaofeng-lin.github.io/tags/%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97/"/>
+    
+    <category term="batch" scheme="https://gaofeng-lin.github.io/tags/batch/"/>
     
   </entry>
   
@@ -450,112 +554,6 @@
     <category term="Json" scheme="https://gaofeng-lin.github.io/tags/Json/"/>
     
     <category term="Yarn" scheme="https://gaofeng-lin.github.io/tags/Yarn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>设计模式</title>
-    <link href="https://gaofeng-lin.github.io/posts/41682/"/>
-    <id>https://gaofeng-lin.github.io/posts/41682/</id>
-    <published>2022-05-25T16:00:00.000Z</published>
-    <updated>2023-06-18T15:45:25.765Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;生产者和消费者&quot;&gt;&lt;a href=&quot;#生产者和消费者&quot; class=&quot;headerlink&quot; title=&quot;生产者和消费者&quot;&gt;&lt;/a&gt;生产者和消费者&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="设计模式" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-    <category term="设计模式" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java框架+工具</title>
-    <link href="https://gaofeng-lin.github.io/posts/10033/"/>
-    <id>https://gaofeng-lin.github.io/posts/10033/</id>
-    <published>2022-04-27T16:00:00.000Z</published>
-    <updated>2023-06-18T15:45:25.756Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Spring&quot;&gt;&lt;a href=&quot;#Spring&quot; class=&quot;headerlink&quot; title=&quot;Spring&quot;&gt;&lt;/a&gt;Spring&lt;/h2&gt;&lt;h3 id=&quot;IDEA创建spring&quot;&gt;&lt;a href=&quot;#IDEA创建spring&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="编程语言" scheme="https://gaofeng-lin.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-    
-    <category term="Spring" scheme="https://gaofeng-lin.github.io/tags/Spring/"/>
-    
-    <category term="Java" scheme="https://gaofeng-lin.github.io/tags/Java/"/>
-    
-    <category term="SpringBoot" scheme="https://gaofeng-lin.github.io/tags/SpringBoot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>牛客网</title>
-    <link href="https://gaofeng-lin.github.io/posts/43473/"/>
-    <id>https://gaofeng-lin.github.io/posts/43473/</id>
-    <published>2022-04-21T16:00:00.000Z</published>
-    <updated>2023-06-18T15:45:25.762Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;牛客网&quot;&gt;&lt;a href=&quot;#牛客网&quot; class=&quot;headerlink&quot; title=&quot;牛客网&quot;&gt;&lt;/a&gt;牛客网&lt;/h2&gt;&lt;h3 id=&quot;输入&quot;&gt;&lt;a href=&quot;#输入&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="编程语言" scheme="https://gaofeng-lin.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-    
-    <category term="牛客网" scheme="https://gaofeng-lin.github.io/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker</title>
-    <link href="https://gaofeng-lin.github.io/posts/40991/"/>
-    <id>https://gaofeng-lin.github.io/posts/40991/</id>
-    <published>2022-03-05T16:00:00.000Z</published>
-    <updated>2023-10-05T12:59:25.158Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;docker下载&quot;&gt;&lt;a href=&quot;#docker下载&quot; class=&quot;headerlink&quot; title=&quot;docker下载&quot;&gt;&lt;/a&gt;docker下载&lt;/h2&gt;&lt;h3 id=&quot;Docker安装&quot;&gt;&lt;a href=&quot;#Docker安装&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="运维" scheme="https://gaofeng-lin.github.io/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-    
-    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-    <category term="Docker" scheme="https://gaofeng-lin.github.io/tags/Docker/"/>
     
   </entry>
   

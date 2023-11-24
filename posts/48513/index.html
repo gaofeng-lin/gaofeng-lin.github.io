@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="深度学习, Home of Gaofeng">
-    <meta name="description" content="遇到的问题loss.backward()耗时严重loss.backward()主要是计算梯度，为后面更新参数做准备，如果这一步耗时严重，要么是网络结构复杂，要么是计算图非常大。如果某个tensor的requires.grad属于被开启，那么">
+    <meta name="keywords" content="深度学习理论知识, Home of Gaofeng">
+    <meta name="description" content="预备知识名词解释regression:回归
+training data set = training set:训练数据集/训练集
+sample = data point = data instance:样本/数据点/数据样本
+label =">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +22,7 @@
 
     
 
-    <title>深度学习 | Home of Gaofeng</title>
+    <title>深度学习理论知识 | Home of Gaofeng</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -312,12 +315,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">深度学习</h1>
+                    <h1 class="description center-align post-title">深度学习理论知识</h1>
                 </div>
             </div>
         </div>
@@ -433,8 +436,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">深度学习</span>
+                            <a href="/tags/%E7%86%B5/">
+                                <span class="chip bg-color">熵</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97/">
+                                <span class="chip bg-color">矩阵计算</span>
+                            </a>
+                        
+                            <a href="/tags/batch/">
+                                <span class="chip bg-color">batch</span>
                             </a>
                         
                     </div>
@@ -467,14 +478,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    12.7k
+                    8.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    45 分
+                    31 分
                 </div>
                 
 
@@ -497,19 +508,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="loss-backward-耗时严重"><a href="#loss-backward-耗时严重" class="headerlink" title="loss.backward()耗时严重"></a>loss.backward()耗时严重</h3><p>loss.backward()主要是计算梯度，为后面更新参数做准备，如果这一步耗时严重，要么是网络结构复杂，要么是<strong>计算图非常大</strong>。如果某个tensor的requires.grad属于被开启，那么就会为其分配一个计算图。</p>
-<p><strong>背景：</strong><br></p><pre class="line-numbers language-none"><code class="language-none">pde_data = torch.from_numpy(pd.read_csv(self.config.pde_data_path).values).float().to(self.device)
-
-self.pde_Xs = [pde_data[:, i:i+1].requires_grad_() for i in range(self.config.X_dim)]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><br>上面这段代码是读取数据后，然后开启requires<em>grad</em>()，但是它是对所有的数据都开启requires<em>grad</em>()，即使后面batch只使用了很小一部分数据，但是loss.backward()还是会计算这一部分，导致很慢。<p></p>
-<p><strong>正确的做法：</strong><br>在取出batch的时候才为这些数据开启requires<em>grad</em>()</p>
-<h3 id="tensor必须在同一个设备上面"><a href="#tensor必须在同一个设备上面" class="headerlink" title="tensor必须在同一个设备上面"></a>tensor必须在同一个设备上面</h3><p>有时候需要把numpy转为tensor，再转回来。</p>
-<p>可能会遇到不在同一个设备上面，需要阻断反向传播等。<br>下面给一个简单的例子：</p>
-<pre class="line-numbers language-none"><code class="language-none">// 把numpy转为tensor，再换为32位的（网络接受的是32位），在移动到同一个device上
-predict = net(torch.from_numpy(XYT).float().to(config.device))
-
-// tensor转换为numpy，除了要先放到cpu上，还需要阻断反向传播，requires_grad为false
-predict = predict.cpu().detach().numpy()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>regression:回归</p>
+                <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>regression:回归</p>
 <p>training data set = training set:训练数据集/训练集</p>
 <p>sample = data point = data instance:样本/数据点/数据样本</p>
 <p>label = target:标签/目标</p>
@@ -741,86 +740,6 @@ D_{K L}(p \| q)&=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i
 <p>卷积层：假设输入图像大小为28x28x1（例如，灰度图像），卷积核大小为5x5，卷积核的数量为32。那么，卷积层的参数数量就是5x5x1x32（卷积核的宽度 x 卷积核的高度 x 输入的通道数 x 卷积核的数量）=800。（<strong>因为卷积核中的每个数目都是参数，不是固定的。所有卷积核的每一项都是参数</strong>）另外，每个卷积核都有一个对应的偏置项，所以卷积层的偏置项数量就是32。因此，卷积层的总参数数量为800+32=832。</p>
 <p>全连接层：假设卷积层的输出通过池化和展平操作后，大小为512，然后连接到全连接层，全连接层的节点数量为10（例如，用于10分类的问题）。那么，全连接层的参数数量就是512x10=5120。同样，全连接层的偏置项数量就是10。因此，全连接层的总参数数量为5120+10=5130。</p>
 <p>因此，这个CNN的总参数数量为832（卷积层）+5130（全连接层）=5962。这就是参数数量的计算方式。</p>
-<h2 id="深度学习代码解析"><a href="#深度学习代码解析" class="headerlink" title="深度学习代码解析"></a>深度学习代码解析</h2><h3 id="自定义激活函数并调用"><a href="#自定义激活函数并调用" class="headerlink" title="自定义激活函数并调用"></a>自定义激活函数并调用</h3><pre class="line-numbers language-none"><code class="language-none">import torch
-import torch.nn as nn
-
-# 定义一个自定义的激活函数
-class CustomActivation(nn.Module):
-    def __init__(self, a_init_value):
-        super().__init__()
-        self.a = nn.Parameter(torch.tensor(a_init_value))
-
-    def forward(self, x):
-        return 1.0 / (1.0 + torch.exp(-self.a * x))
-
-
-# 定义一个网络层，其中使用了自定义的激活函数
-class MyLayer(nn.Module):
-    def __init__(self, input_size, output_size):
-        super(MyLayer, self).__init__()
-        self.linear = nn.Linear(input_size, output_size)
-        self.custom_activation = CustomActivation(a_init_value=0.1)
-
-    def forward(self, x):
-        x = self.linear(x)
-        x = self.custom_activation(x)
-        return x
-
-# 使用自定义的网络层
-my_layer = MyLayer(10, 20)
-
-# 随机生成一个输入数据
-input_data = torch.randn(5, 10)
-
-# 使用自定义的网络层进行前向传播
-output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>首先，我们从torch.nn模块中导入Module类，然后定义了一个新的类CustomActivation，这个类继承了Module类，所以它也是一个PyTorch的网络模块。我们在CustomActivation类的初始化函数<strong>init</strong>中定义了一个可以训练的参数self.a。这个参数是用nn.Parameter函数从输入的初始化值a_init_value创建的，它会自动添加到模块的参数列表中，所以在优化过程中，优化器会自动更新这个参数。</p>
-<p>在CustomActivation类的forward方法中，我们定义了这个自定义激活函数的具体操作。当我们用这个模块处理输入数据时，PyTorch会自动调用这个方法。在这个方法中，我们先用torch.exp函数计算-self.a * x的指数，然后再用1.0 / (1.0 + …)计算出这个自定义激活函数的输出。</p>
-<p>接下来，我们定义了一个新的网络层MyLayer。这个网络层有一个线性层self.linear和一个自定义激活函数self.custom_activation。在这个网络层的forward方法中，我们先用线性层处理输入数据，然后再用自定义激活函数处理线性层的输出。</p>
-<p>在这段代码的最后部分，我们创建了一个MyLayer的实例my_layer，然后用这个实例处理了一个随机生成的输入数据input_data。我们先用torch.randn函数生成了一个形状为(5, 10)的随机张量，然后把这个张量作为输入数据传递给了my_layer。在这个过程中，PyTorch会自动调用my_layer的forward方法，计算出网络层的输出。</p>
-<p>总的来说，这段代码主要展示了如何在PyTorch中自定义一个激活函数，并把这个激活函数用在一个网络层中。在这个过程中，我们用到了PyTorch的Module类、Parameter类、Linear类等关键功能。</p>
-<p>在my_layer = MyLayer(10, 20)中，10和20分别是神经网络层（线性层）的输入维度和输出维度。</p>
-<p>输入维度10意味着每个输入样本应有10个特征。<br>输出维度20意味着该层将每个输入样本转换为具有20个特征的输出。<br>input_data = torch.randn(5, 10)中的5和10分别代表批次大小（batch size）和特征数。其中：</p>
-<h2 id="度量学习"><a href="#度量学习" class="headerlink" title="度量学习"></a>度量学习</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>度量学习 (Metric Learning) == 距离度量学习 (Distance Metric Learning，DML) == 相似度学习。</p>
-<p>在数学中,一个度量(或距离函数)是一个定义集合中元素之间”距离”的函数.</p>
-<p>一个具有度量的集合可以称之为度量空间.</p>
-<p><strong>“不同于分类学习，度量学习是通过学习数据之间的相似性程度来获得一个更有意义或者说更具可分性的特征空间。”</strong></p>
-<h3 id="度量学习作用"><a href="#度量学习作用" class="headerlink" title="度量学习作用"></a>度量学习作用</h3><p>比较样本点和中心点的相似度.</p>
-<h3 id="为什么要用度量学习-度量学习和传统分类方法的区别"><a href="#为什么要用度量学习-度量学习和传统分类方法的区别" class="headerlink" title="为什么要用度量学习/度量学习和传统分类方法的区别"></a>为什么要用度量学习/度量学习和传统分类方法的区别</h3><p>K-means、K近邻方法、SVM等算法，比较依赖于输入时给定的度量，比如：数据之间的相似性，那么将面临的一个基本的问题是如何获取数据之间的相似度。为了处理各种各样的特征相似度，我们可以在特定的任务通过选择合适的特征并手动构建距离函数。然而这种方法会需要很大的人工投入，也可能对数据的改变非常不鲁棒。度量学习作为一个理想的替代，可以根据不同的任务来自主学习出针对某个特定任务的度量距离函数。</p>
-<h3 id="深度度量学习和传统度量学习的区别"><a href="#深度度量学习和传统度量学习的区别" class="headerlink" title="深度度量学习和传统度量学习的区别"></a>深度度量学习和传统度量学习的区别</h3><p>对于传统度量学习而言，由于其处理原始数据的能力有限，因此需要首先使用特征工程的知识对数据进行预处理，然后再用度量学习的算法进行学习。一些传统的度量学习方法只能学习出线性特征，虽然有一些能够提取非线性特征的核方法被提出，但对学习效果也没有明显提升。随着深度学习的出现，得益于激活函数学习非线性特征的优秀能力，深度学习方法能够自动地从原始数据中学出高质量的特征。因此深度学习的网络结构与传统的度量学习方法相结合能够带来理想的效果。如图2所示，采用MNIST作为例子，a中的橙色线条是同类样本之间的距离，蓝色线条是异类样本之间的距离。b是随着训练的进行，这两种距离的变化趋势。可以看出同类样本间距离减小，异类样本间距离增加。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/v2-ff8034cbf2b2e8b8740bd1e92202febb_720w.webp" alt=""></p>
-<h3 id="深度度量学习"><a href="#深度度量学习" class="headerlink" title="深度度量学习"></a>深度度量学习</h3><p>通过深层结构，学习到高抽象化的非线性特征以及数据之间的相似性关系。</p>
-<p>DML三大关键点： <strong>采样策略、合适的距离度量函数以及模型结构</strong>，因此当前DML模型往往基于指定任务在这些方面进行改进。</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/supergxt/article/details/118155049">原文链接</a></p>
-<h3 id="度量学习类别"><a href="#度量学习类别" class="headerlink" title="度量学习类别"></a>度量学习类别</h3><p>从广义上可以将度量学习分为:(1)通过线性变换的度量学习和非线性模型的度量学习.</p>
-<p>（1）线性变换的度量学习</p>
-<p>线性度量学习问题也称为马氏度量学习问题,又可以分为监督学习和非监督学习两类.</p>
-<p>监督的全局度量学习：<br>Information-theoretic metric learning(ITML)<br>Mahalanobis Metric Learning for Clustering(MMC)<br>Maximally Collapsing Metric Learning (MCML)</p>
-<p>监督的局部度量学习：<br>Neighbourhood Components Analysis (NCA)<br>Large-Margin Nearest Neighbors (LMNN)<br>Relevant Component Analysis(RCA)<br>Local Linear Discriminative Analysis(Local LDA)</p>
-<p>非监督的度量学习：<br>主成分分析(Pricipal Components Analysis, PCA)<br>多维尺度变换(Multi-dimensional Scaling, MDS)<br>非负矩阵分解(Non-negative Matrix Factorization,NMF)<br>独立成分分析(Independent components analysis, ICA)<br>邻域保持嵌入(Neighborhood Preserving Embedding,NPE)<br>局部保留投影(Locality Preserving Projections. LPP)</p>
-<p>（2）非线性模型<br>非线性降维算法可以看作属于非线性度量学习：<br>等距映射(Isometric Mapping,ISOMAP)<br>局部线性嵌入(Locally Linear Embedding, LLE)<br>拉普拉斯特征映射(Laplacian Eigenmap，LE ) </p>
-<p>通过核方法来对线性映射进行扩展：<br>Non-Mahalanobis Local Distance Functions<br>Mahalanobis Local Distance Functions<br>Metric Learning with Neural Networks</p>
-<h2 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h2><h3 id="KNN算法"><a href="#KNN算法" class="headerlink" title="KNN算法"></a>KNN算法</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25994179">原链接</a></p>
-<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>K近邻算法，即是给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最邻近的K个实例，这K个实例的多数属于某个类，就把该输入实例分类到这个类中。（这就类似于现实生活中少数服从多数的思想）根据这个说法，咱们来看下引自维基百科上的一幅图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/v2-c3f1d2553e7467d7da5f9cd538d2b49a_720w.png" alt=""></p>
-<p>如上图所示，有两类不同的样本数据，分别用蓝色的小正方形和红色的小三角形表示，而图正中间的那个绿色的圆所标示的数据则是待分类的数据。这也就是我们的目的，来了一个新的数据点，我要得到它的类别是什么？好的，下面我们根据k近邻的思想来给绿色圆点进行分类。</p>
-<p>如果K=3，绿色圆点的最邻近的3个点是2个红色小三角形和1个蓝色小正方形，少数从属于多数，基于统计的方法，判定绿色的这个待分类点属于红色的三角形一类。</p>
-<p>如果K=5，绿色圆点的最邻近的5个邻居是2个红色三角形和3个蓝色的正方形，还是少数从属于多数，基于统计的方法，判定绿色的这个待分类点属于蓝色的正方形一类。</p>
-<p>从上面例子我们可以看出，k近邻的算法思想非常的简单，也非常的容易理解，那么我们是不是就到此结束了，该算法的原理我们也已经懂了，也知道怎么给新来的点如何进行归类，只要找到离它最近的k个实例，哪个类别最多即可。</p>
-<h4 id="k近邻算法中k的选取以及特征归一化的重要性"><a href="#k近邻算法中k的选取以及特征归一化的重要性" class="headerlink" title="k近邻算法中k的选取以及特征归一化的重要性"></a>k近邻算法中k的选取以及特征归一化的重要性</h4><ol>
-<li>选取k值以及它的影响</li>
-</ol>
-<p>如果我们选取较小的k值，那么就会意味着我们的整体模型会变得复杂，容易发生过拟合</p>
-<p>如果我们选取较大的k值，就相当于用较大邻域中的训练数据进行预测，这时与输入实例较远的（不相似）训练实例也会对预测起作用，使预测发生错误，k值的增大意味着整体模型变得简单。我们很容易学习到噪声。</p>
-<p>我们想，如果k=N（N为训练样本的个数）,那么无论输入实例是什么，都将简单地预测它属于在训练实例中最多的类。这时，模型是不是非常简单，这相当于你压根就没有训练模型呀！</p>
-<ol>
-<li>距离的度量<br>在上文中说到，k近邻算法是在训练数据集中找到与该实例最邻近的K个实例，这K个实例的多数属于某个类，我们就说预测点属于哪个类。</li>
-</ol>
-<p>定义中所说的最邻近是如何度量呢？我们怎么知道谁跟测试点最邻近。这里就会引出我们几种度量俩个点之间距离的标准。</p>
-<p><strong>度量学习可以应用于此</strong></p>
-<ol>
-<li>特征归一化的必要性<br>为了保证每个特征同等重要性，我们这里对每个特征进行归一化。</li>
-</ol>
 <h2 id="线性神经网络"><a href="#线性神经网络" class="headerlink" title="线性神经网络"></a>线性神经网络</h2><h3 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h3><p>线性回归基于几个简单的假设： 首先，假设自变量$x$<br>和因变量$y$之间的关系是线性的， 即$y$可以表示为$x$<br>中元素的加权和，这里通常允许包含观测值的一些噪声； 其次，我们假设任何噪声都比较正常，如噪声遵循正态分布。</p>
 <!-- 线性模型：$\hat{y}=w_1x_1+...+w_dx_d+b$ -->
 <p><strong>线性回归的关键在于寻找最好的模型参数</strong>，需要两个东西：<br>（1）一种模型质量的度量方式：<strong>损失函数</strong><br>（2）一种能够更新模型以提高模型预测质量的方法：<strong>优化算法</strong></p>
@@ -852,50 +771,6 @@ conda env list<span aria-hidden="true" class="line-numbers-rows"><span></span><s
 <pre class="line-numbers language-none"><code class="language-none">deactivate <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>复制某个环境<br></p><pre class="line-numbers language-none"><code class="language-none">conda create --name new_env_name --clone old_env_name <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>删除某个环境<p></p>
 <pre class="line-numbers language-none"><code class="language-none">conda remove --name your_env_name --all<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="卷积相关的内容"><a href="#卷积相关的内容" class="headerlink" title="卷积相关的内容"></a>卷积相关的内容</h2><h3 id="网络模型参数的关系"><a href="#网络模型参数的关系" class="headerlink" title="网络模型参数的关系"></a>网络模型参数的关系</h3><p>编码器：<br></p><pre class="line-numbers language-none"><code class="language-none">convlstm_encoder_params = [
-    [
-        OrderedDict({'conv1_leaky_1': [1, 16, 3, 1, 1]}),
-        OrderedDict({'conv2_leaky_1': [64, 64, 3, 2, 1]}),
-        OrderedDict({'conv3_leaky_1': [96, 96, 3, 2, 1]}),
-    ],
-
-    [
-        CLSTM_cell(shape=(64,64), input_channels=16, filter_size=5, num_features=64),
-        CLSTM_cell(shape=(32,32), input_channels=64, filter_size=5, num_features=96),
-        CLSTM_cell(shape=(16,16), input_channels=96, filter_size=5, num_features=96)
-    ]
-]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>OrderedDict定义了一个卷积层的参数，包括<strong>输入通道数、输出通道数、卷积核大小、步长和填充</strong>。<p></p>
-<p>CLSTM_cell定义了一个CLSTM单元，包括<strong>特定的形状、输入通道数、滤波器（卷积核）大小和特征数量（隐藏状态通道数）</strong>。</p>
-<p>下面给一个具体的例子：<br>输入到编码器的特征维度为（16, 10, 1, 64, 64）。</p>
-<p>经过第一个卷积层conv1_leaky_1后，输出特征维度变为（16, 10, 16, 64, 64）。</p>
-<p>之后，这个输出进入到第一个CLSTM_cell，此时shape为（64, 64），输入通道为16，经过卷积LSTM后，输出特征维度为（16, 10, 64, 64, 64）。</p>
-<p>然后，这个输出经过第二个卷积层conv2_leaky_1，输出特征维度变为（16, 10, 64, 32, 32）。</p>
-<p>然后，这个输出进入到第二个CLSTM_cell，此时shape为（32, 32），输入通道为64，经过卷积LSTM后，输出特征维度为（16, 10, 96, 32, 32）。</p>
-<p>然后，这个输出经过第三个卷积层conv3_leaky_1，输出特征维度变为（16, 10, 96, 16, 16）。</p>
-<p>最后，这个输出进入到第三个CLSTM_cell，此时shape为（16, 16），输入通道为96，经过卷积LSTM后，输出特征维度为（16, 10, 96, 16, 16）。</p>
-<p>此时已经完成了编码阶段，这个输出将作为解码器的输入。</p>
-<p>在解码阶段，过程类似：</p>
-<p>这个输出经过第一个反卷积层deconv1_leaky_1，输出特征维度变为（16, 10, 96, 32, 32）。</p>
-<p>然后，这个输出进入到第一个解码器的CLSTM_cell，此时shape为（32, 32），输入通道为96，经过卷积LSTM后，输出特征维度为（16, 10, 96, 32, 32）。</p>
-<p>然后，这个输出经过第二个反卷积层deconv2_leaky_1，输出特征维度变为（16, 10, 96, 64, 64）。</p>
-<p>然后，这个输出进入到第二个解码器的CLSTM_cell，此时shape为（64, 64），输入通道为96，经过卷积LSTM后，输出特征维度为（16, 10, 64, 64, 64）。</p>
-<p>最后，这个输出经过最后一个卷积层conv3_leaky_1和conv4_leaky_1，最后的输出特征维度为（16, 10, 1, 64, 64），这就是最后的输出结果。</p>
-<h3 id="图像尺寸、卷积核大小、步长、填充之间的关系或数学公式"><a href="#图像尺寸、卷积核大小、步长、填充之间的关系或数学公式" class="headerlink" title="图像尺寸、卷积核大小、步长、填充之间的关系或数学公式"></a>图像尺寸、卷积核大小、步长、填充之间的关系或数学公式</h3><pre class="line-numbers language-none"><code class="language-none">输出高度 = (输入高度 - 核高度 + 2 * 填充) / 步长 + 1
-输出宽度 = (输入宽度 - 核宽度 + 2 * 填充) / 步长 + 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="反卷积层：图像尺寸、卷积核大小、步长、填充之间的关系或数学公式"><a href="#反卷积层：图像尺寸、卷积核大小、步长、填充之间的关系或数学公式" class="headerlink" title="反卷积层：图像尺寸、卷积核大小、步长、填充之间的关系或数学公式"></a>反卷积层：图像尺寸、卷积核大小、步长、填充之间的关系或数学公式</h3><pre class="line-numbers language-none"><code class="language-none">OutputSize = (InputSize - 1) * Stride - 2 * Padding + KernelSize + OutputPadding
-
-其中：
-
-InputSize 是输入特征图的尺寸。
-Stride 是卷积核移动的步长。
-Padding 是在输入特征图周围填充的零的数量。
-KernelSize 是卷积核的尺寸。
-OutputPadding 是添加到输出尺寸的额外元素数量。一般在进行转置卷积时，如果希望输出尺寸刚好是输入尺寸的某个倍数，且不能通过调整步长和填充来达到，那么就需要使用OutputPadding。
-例如，如果你的输入特征图尺寸为16x16，你希望将其上采样为32x32，你使用的卷积核大小为4，步长为2，那么你可以将填充设置为1，无需OutputPadding。此时，使用上述公式计算得到的输出尺寸就为：
-
-OutputSize = (16 - 1) * 2 - 2 * 1 + 4 + 0 = 32
-
-因此，你的输出特征图的尺寸就为32x32。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -960,8 +835,16 @@ OutputSize = (16 - 1) * 2 - 2 * 1 + 4 + 0 = 32
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">深度学习</span>
+                                <a href="/tags/%E7%86%B5/">
+                                    <span class="chip bg-color">熵</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97/">
+                                    <span class="chip bg-color">矩阵计算</span>
+                                </a>
+                            
+                                <a href="/tags/batch/">
+                                    <span class="chip bg-color">batch</span>
                                 </a>
                             
                         </div>
