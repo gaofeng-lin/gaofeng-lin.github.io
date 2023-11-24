@@ -469,19 +469,10 @@
                 </a>
                 
                 
-                <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" title="深度学习: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9E79F;">深度学习
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">算法
+                            style="background-color: #F9E79F;">算法
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -541,11 +532,11 @@
                 </a>
                 
                 
-                <a href="/categories/AI/" title="AI: 1">
+                <a href="/categories/AI/" title="AI: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
                             style="background-color: #A3E4D7;">AI
-                        <span class="tag-length">1</span>
+                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
@@ -563,27 +554,233 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/posts/48513/">
+                    <a href="/posts/53791/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="零散知识">
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="深度学习数据操作">
                             
-                            <span class="card-title">零散知识</span>
+                            <span class="card-title">深度学习数据操作</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                预备知识名词解释regression:回归
-training data set = training set:训练数据集/训练集
-sample = data point = data instance:样本/数据点/数据样本
-label =
+                                dataloader解析简单例子总结：对于一般的数据来说，我们把数据量放在第0维，例如[300,3,32,32]。300张3通道，高宽为32的图片。如果batch_size为16，那么每次读取的数据为[300,3,32,32]
+假设我们有一
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-24
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/AI/" class="post-category">
+                                    AI
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/dataloader/">
+                            <span class="chip bg-color">dataloader</span>
+                        </a>
+                        
+                        <a href="/tags/numpy/">
+                            <span class="chip bg-color">numpy</span>
+                        </a>
+                        
+                        <a href="/tags/tensor/">
+                            <span class="chip bg-color">tensor</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/7224/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="循环神经网络">
+                            
+                            <span class="card-title">循环神经网络</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                循环神经网络（RNN）总结：
+
+RNN这个R(循环)，可以被看做是同一神经网络的多次复制，每个神经网络模块会把消息传递给下一个。
+常规的RNN一般是输入和输出是等长序列，为了适应不等长序列。出现了Encoder-Decoder，也叫Seq2
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-24
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/AI/" class="post-category">
+                                    AI
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/rnn/">
+                            <span class="chip bg-color">rnn</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/21309/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="卷积神经网络">
+                            
+                            <span class="card-title">卷积神经网络</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                卷积神经网络（CNN）传统神经网络原文链接
+神经网络搭建需要满足三个条件：
+
+输入和输出
+权重（w）和阈值（b）
+多层感知器的结构
+
+
+其中，最困难的部分就是确定权重（w）和阈值（b）。目前为止，这两个值都是主观给出的，但现实中很难估计它们
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-24
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/AI/" class="post-category">
+                                    AI
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/cnn/">
+                            <span class="chip bg-color">cnn</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/43034/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="pytorch与cuda安装">
+                            
+                            <span class="card-title">pytorch与cuda安装</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                CUDA、CUDNN相关的内容一般来说，如果要使用CUDA，一共需要安装3个东西Nvidia驱动、CUDA、CUDNN。
+CUDA看作是一个工作台，上面配有很多工具，如锤子、螺丝刀等。cuDNN是基于CUDA的深度学习GPU加速库，有了它才
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-24
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/AI/" class="post-category">
+                                    AI
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/pytorch/">
+                            <span class="chip bg-color">pytorch</span>
+                        </a>
+                        
+                        <a href="/tags/cuda/">
+                            <span class="chip bg-color">cuda</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/48513/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="深度学习">
+                            
+                            <span class="card-title">深度学习</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                遇到的问题loss.backward()耗时严重loss.backward()主要是计算梯度，为后面更新参数做准备，如果这一步耗时严重，要么是网络结构复杂，要么是计算图非常大。如果某个tensor的requires.grad属于被开启，那么
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-23
                             </span>
                             <span class="publish-author">
                                 
@@ -603,10 +800,6 @@ label =
                         
                         <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
                             <span class="chip bg-color">深度学习</span>
-                        </a>
-                        
-                        <a href="/tags/pytorch/">
-                            <span class="chip bg-color">pytorch</span>
                         </a>
                         
                     </div>
@@ -691,7 +884,7 @@ label =
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">170.5k</span>
+                        class="white-color">162.1k</span>
             
             
             

@@ -437,10 +437,6 @@
                                 <span class="chip bg-color">深度学习</span>
                             </a>
                         
-                            <a href="/tags/pytorch/">
-                                <span class="chip bg-color">pytorch</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -449,8 +445,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                深度学习
+                            <a href="/categories/AI/" class="post-category">
+                                AI
                             </a>
                         
                     </div>
@@ -471,14 +467,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    21.3k
+                    12.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    79 分
+                    45 分
                 </div>
                 
 
@@ -804,155 +800,6 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
 <p>非监督的度量学习：<br>主成分分析(Pricipal Components Analysis, PCA)<br>多维尺度变换(Multi-dimensional Scaling, MDS)<br>非负矩阵分解(Non-negative Matrix Factorization,NMF)<br>独立成分分析(Independent components analysis, ICA)<br>邻域保持嵌入(Neighborhood Preserving Embedding,NPE)<br>局部保留投影(Locality Preserving Projections. LPP)</p>
 <p>（2）非线性模型<br>非线性降维算法可以看作属于非线性度量学习：<br>等距映射(Isometric Mapping,ISOMAP)<br>局部线性嵌入(Locally Linear Embedding, LLE)<br>拉普拉斯特征映射(Laplacian Eigenmap，LE ) </p>
 <p>通过核方法来对线性映射进行扩展：<br>Non-Mahalanobis Local Distance Functions<br>Mahalanobis Local Distance Functions<br>Metric Learning with Neural Networks</p>
-<h2 id="卷积神经网络（CNN）"><a href="#卷积神经网络（CNN）" class="headerlink" title="卷积神经网络（CNN）"></a>卷积神经网络（CNN）</h2><h3 id="传统神经网络"><a href="#传统神经网络" class="headerlink" title="传统神经网络"></a>传统神经网络</h3><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2017/07/neural-network.html">原文链接</a></p>
-<p>神经网络搭建需要满足三个条件：</p>
-<ol>
-<li>输入和输出</li>
-<li>权重（w）和阈值（b）</li>
-<li>多层感知器的结构</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/bg2017071205.png" alt=""></p>
-<p>其中，最困难的部分就是确定权重（w）和阈值（b）。目前为止，这两个值都是主观给出的，但现实中很难估计它们的值，必需有一种方法，可以找出答案。</p>
-<p>这种方法就是试错法。其他参数都不变，w（或b）的微小变动，记作Δw（或Δb），然后观察输出有什么变化。不断重复这个过程，直至得到对应最精确输出的那组w和b，就是我们要的值。这个过程称为模型的训练。</p>
-<p>因此，神经网络的运作过程如下：</p>
-<ol>
-<li>确定输入和输出</li>
-<li>找到一种或多种算法（数学公式），可以从输入得到输出</li>
-<li>找到一组已知答案的数据集，用来训练模型，估算w和b</li>
-<li>一旦新的数据产生，输入模型，就可以得到结果，同时对w和b进行校正</li>
-</ol>
-<h3 id="传统神经网络数学公式推导（全连接）"><a href="#传统神经网络数学公式推导（全连接）" class="headerlink" title="传统神经网络数学公式推导（全连接）"></a>传统神经网络数学公式推导（全连接）</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/273595649">原文链接</a></p>
-<h3 id="传统神经网络的问题"><a href="#传统神经网络的问题" class="headerlink" title="传统神经网络的问题"></a>传统神经网络的问题</h3><ol>
-<li>图像需要处理的数据量太大，导致成本很高，效率很低</li>
-</ol>
-<p>现在随随便便一张图片都是 1000×1000 像素以上的， 每个像素都有RGB 3个参数来表示颜色信息。</p>
-<p>假如我们处理一张 1000×1000 像素的图片，我们就需要处理3百万个参数！</p>
-<p>1000×1000×3=3,000,000</p>
-<p><strong>卷积神经网络 – CNN 解决的第一个问题就是「将复杂问题简化」，把大量参数降维成少量参数，再做处理。</strong></p>
-<ol>
-<li>图像在数字化的过程中很难保留原有的特征，导致图像处理的准确率不高<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/98412-2019-06-12-tuxiangtx.png.webp" alt=""></li>
-</ol>
-<p>假如有圆形是1，没有圆形是0，那么圆形的位置不同就会产生完全不同的数据表达。但是从视觉的角度来看，图像的内容（本质）并没有发生变化，只是位置发生了变化。</p>
-<p>所以当我们移动图像中的物体，用传统的方式的得出来的参数会差异很大！这是不符合图像处理的要求的。</p>
-<p><strong>CNN 解决了这个问题，他用类似视觉的方式保留了图像的特征，当图像做翻转，旋转或者变换位置时，它也能有效的识别出来是类似的图像。</strong></p>
-<p>具体表现为：</p>
-<p><strong>CNN（卷积神经网络）相对于传统的全连接神经网络（FNN），可以通过卷积层（权值共享、局部连接）和池化层（空间维度的降采样）的设计来实现参数降维，从而减少模型中的参数数量。</strong></p>
-<h3 id="CNN的基本步骤"><a href="#CNN的基本步骤" class="headerlink" title="CNN的基本步骤"></a>CNN的基本步骤</h3><p>卷积神经网络（Convolutional Neural Network，CNN）是一种在计算机视觉和图像处理任务中广泛应用的深度学习模型。CNN通过模拟生物视觉系统中神经元的工作原理，能够自动学习图像和视频等数据的特征表示。</p>
-<p>CNN的基本概念包括以下几个要素：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/51812459">相关链接，写的不错</a></p>
-<ol>
-<li><p>卷积层（Convolutional Layer）：卷积层是CNN的核心组成部分。它通过使用一系列可学习的滤波器（也称为卷积核）对输入图像进行卷积操作，从而提取图像中的局部特征。卷积层的输出被称为特征图（Feature Map）。</p>
-</li>
-<li><p>池化层（Pooling Layer）：池化层用于减少特征图的空间维度，同时保留主要的特征信息。池化层也称为下采样。常用的池化操作包括最大池化（Max Pooling）和平均池化（Average Pooling）。池化层可以帮助减少计算量，提取图像的不变性，并且能够控制模型的过拟合。</p>
-</li>
-<li><p>激活函数（Activation Function）：激活函数引入非线性性质，使得CNN能够学习复杂的非线性特征。常用的激活函数包括ReLU（Rectified Linear Unit）、Sigmoid和Tanh等。</p>
-</li>
-<li><p>全连接层（Fully Connected Layer）：全连接层将前面的卷积层和池化层的输出连接到输出层，进行最终的分类或回归任务。</p>
-</li>
-<li><p>反向传播（Backpropagation）：CNN利用反向传播算法进行训练。反向传播通过计算损失函数关于模型参数的梯度，以更新模型参数来最小化损失函数。</p>
-</li>
-</ol>
-<p>下面是一个简单的CNN示例，以图像分类为任务：</p>
-<p>输入：一张32x32像素的彩色图像</p>
-<ol>
-<li>卷积层：使用一组3x3大小的卷积核，对输入图像进行卷积操作，得到特征图。</li>
-<li>激活函数：对特征图的每个元素应用ReLU激活函数，增加非线性性质。</li>
-<li>池化层：使用2x2大小的最大池化，将特征图的尺寸减半。</li>
-<li>卷积层：再次使用一组3x3大小的卷积核，对池化后的特征图进行卷积操作，得到新的特征图。</li>
-<li>激活函数：对新的特征图的每个元素应用ReLU激活函数。</li>
-<li>池化层：再次使用2x2大小的最</li>
-</ol>
-<p>大池化，将特征图的尺寸减半。</p>
-<ol>
-<li>展平层（Flatten）：将池化层的输出展平为一维向量。</li>
-<li>全连接层：将展平的向量连接到全连接层，并应用激活函数。</li>
-<li>输出层：使用适当的激活函数（如Softmax）进行多类别分类。</li>
-</ol>
-<p>这个例子只是一个简化的CNN结构，实际中可能会有更多的卷积层、池化层和全连接层，以及一些正则化和优化技巧，来提高模型的性能和稳定性。</p>
-<p>请注意，具体的CNN结构和参数设置会根据不同的任务和数据集而有所不同，需要根据实际情况进行调整和优化。</p>
-<h3 id="CNN数学公式推导"><a href="#CNN数学公式推导" class="headerlink" title="CNN数学公式推导"></a>CNN数学公式推导</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weipf8/article/details/103917202">链接1</a></p>
-<p><a target="_blank" rel="noopener" href="https://tech.youmi.net/2016/07/163347168.html">链接2</a></p>
-<p>二维卷积公式：<br>nn.Conv2d(ngf * mult, out_dim, kernel_size=3, stride=2, padding=1, bias=use_bias)</p>
-<p>核大小（kernel_size）：3<br>步长（stride）：2<br>填充（padding）：1</p>
-<p>新尺寸公式：<br>（（原尺寸+2*填充-核大小）/步长）+1</p>
-<p>卷积的过程：</p>
-<!-- <img src="gif/convProcess.gif" width = "" height = ""> -->
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/convProcess.gif" alt=""></p>
-<p>卷积神经网络是权值共享，非全连接的神经网络。以2个卷积层和2个池化层的卷积神经网络为例，其结构图如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/a7b9429e-436f-11e6-85c5-ceab16a79342.jpg" alt=""></p>
-<p>从这个图可以看出几个关键的地方：</p>
-<ol>
-<li>卷积层和池化（采样）层结束的时候都需要一个激活函数，就是f(.)。</li>
-<li>卷积核可以不止有一个，可以采用多个卷积核分别进行卷积, 这样便可以得到多个特征图。有时, 对于一张三通道彩色图片, 或者如第三层特征图所示, 输入的是一组矩阵, 这时卷积核也不再是一层的, 而要变成相应的深度.</li>
-</ol>
-<!-- <img src="gif/Three-channelFeature.gif" width = "" height = ""> -->
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Three-channelFeature.gif" alt=""></p>
-<p>上图中是经过一次卷积后的结果，得到了3个特征图。再次卷积时，输入的是一组矩阵, 这时卷积核也不再是一层的, 而要变成相应的深度。, 最左边是输入的特征图矩阵, 深度为 3, 补零(Zero Padding)层数为 1, 每次滑动的步幅为 2. 中间两列粉色的矩阵分别是两组卷积核, 一组有三个, 三个矩阵分别对应着卷积左侧三个输入矩阵, 每一次滑动卷积会得到三个数, 这三个数的和作为卷积的输出. 最右侧两个绿色的矩阵分别是两组卷积核得到的特征图。</p>
-<h3 id="如何理解多尺度CNN中的尺度"><a href="#如何理解多尺度CNN中的尺度" class="headerlink" title="如何理解多尺度CNN中的尺度"></a>如何理解多尺度CNN中的尺度</h3><p>在多尺度CNN中，”多尺度”指的是对输入数据进行不同尺度的处理和分析。这种处理方式可以帮助网络更好地捕捉到输入数据中的多尺度特征，从而提高模型的性能和泛化能力。</p>
-<p>通常，多尺度CNN会通过以下几种方式来实现多尺度处理：</p>
-<ol>
-<li><p>多尺度输入：将输入数据在不同尺度下进行变换，例如通过缩放、裁剪或填充等操作，以获取不同尺度的图像输入。这样，网络可以同时关注不同尺度下的特征信息。</p>
-</li>
-<li><p>多尺度卷积：在网络的某些层中使用不同大小的卷积核或不同步长的卷积操作，以捕捉不同尺度的特征。这样，网络可以通过不同尺度的卷积感受野来分析输入数据。</p>
-</li>
-<li><p>多尺度池化：在池化层中使用不同大小的池化窗口或不同步长的池化操作，以对特征图进行降采样。这样可以保留不同尺度下的特征信息。</p>
-</li>
-<li><p>多尺度特征融合：将来自不同尺度的特征进行融合，以综合利用不同尺度的信息。这可以通过特征图的级联、加权求和、并行分支等方式来实现。</p>
-</li>
-</ol>
-<p>通过多尺度处理，多尺度CNN能够更好地适应不同尺度的目标或特征，并更全面地理解输入数据。这对于许多计算机视觉任务如目标检测、语义分割和图像分类等是非常有益的。</p>
-<h3 id="什么是CNN的尺度-scale"><a href="#什么是CNN的尺度-scale" class="headerlink" title="什么是CNN的尺度(scale)"></a>什么是CNN的尺度(scale)</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xjp_xujiping/article/details/110324506">原文链接</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_47891203/article/details/124202487">相关链接</a></p>
-<p>卷积神经网络里涉及到三种尺度：深度、宽度、分辨率。</p>
-<ul>
-<li>深度指的是网络有多深，或者说有多少层。</li>
-<li>宽度指的是网络有多宽，比如卷积层的通道数。</li>
-<li>分辨率指的是输入卷积层的图像、特征图的空间分辨率。</li>
-</ul>
-<p>也可以简单的理解为不同尺寸的图片，或者不同分辨率的图片。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/7df63c0c5b279fc8251f0075c04f2a9f.png" alt=""></p>
-<p>模型尺度。(a) 是一个基本的网络模型；(b)-(d) 分别单独在宽度、深度、分辨率的维度上增加尺度；(e) 是论文提出的混合尺度变换，用统一固定的比例放缩三个不同维度的尺度。</p>
-<h3 id="感受野"><a href="#感受野" class="headerlink" title="感受野"></a>感受野</h3><p>若感受野太小，表明网络只能观察到图像的局部特征；若感受野太大，虽然对全局信息理解更强，但通常也包含了许多无效信息。为了提高有效感受野从而避免冗余信息，捕获多尺度特征是当前研究者们常采用的方法。比如拿望远镜看远方为小视野，直接光看为大视野。</p>
-<h2 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h2><p>总结：</p>
-<ol>
-<li>RNN这个R(循环)，可以被看做是同一神经网络的多次复制，每个神经网络模块会把消息传递给下一个。</li>
-<li>常规的RNN一般是输入和输出是等长序列，为了适应不等长序列。出现了Encoder-Decoder，也叫Seq2Seq。里面的编码器和解码器可以是rnn，也可以是rnn的变种（lstm,gru）等。</li>
-<li>lstm、gru等都是RNN的变式。主要是为了解决RNN无法处理长序列的缺点。</li>
-</ol>
-<h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/89894058">rnn+lstm</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30844905">rnn</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jiqizhixin.com/articles/2018-12-14-4">rnn+seq2seq2+attention</a></p>
-<p>在实际应用中，我们还会遇到很多序列形的数据：</p>
-<p>如：</p>
-<ol>
-<li>自然语言处理问题。x1可以看做是第一个单词，x2可以看做是第二个单词，依次类推。</li>
-<li>语音处理。此时，x1、x2、x3……是每帧的声音信号。</li>
-<li>时间序列问题。例如每天的股票价格等等。</li>
-</ol>
-<p><strong>而其中，序列形的数据就不太好用原始的神经网络处理了。所以为了解决一些这样类似的问题，能够更好的处理序列的信息，RNN就诞生了。</strong></p>
-<p>一个简单的循环神经网络如下所示：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-3884f344d71e92d70ec3c44d2795141f_720w.webp" alt=""></p>
-<p>我们现在这样来理解，如果把上面有W的那个带箭头的圈去掉，它就变成了最普通的全连接神经网络。x是一个向量，它表示输入层的值（这里面没有画出来表示神经元节点的圆圈）；s是一个向量，它表示隐藏层的值（这里隐藏层面画了一个节点，你也可以想象这一层其实是多个节点，节点数与向量s的维度相同）；</p>
-<p>U是输入层到隐藏层的权重矩阵，o也是一个向量，它表示输出层的值；V是隐藏层到输出层的权重矩阵。</p>
-<p>那么，现在我们来看看W是什么。循环神经网络的隐藏层的值s不仅仅取决于当前这次的输入x，还取决于上一次隐藏层的值s。权重矩阵 W就是隐藏层上一次的值作为这一次的输入的权重。</p>
-<p>我们给出这个抽象图对应的具体图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-206db7ba9d32a80ff56b6cc988a62440_720w.webp" alt=""></p>
-<p>如果我们把上面的图展开，循环神经网络也可以画成下面这个样子：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-b0175ebd3419f9a11a3d0d8b00e28675_720w.webp" alt=""></p>
-<p>现在看上去就比较清楚了，这个网络在t时刻接收到输入$x<em>t$之后，隐藏层的值是$s_t$，输出值是$o_t$ 。关键一点是,$s_t$的值不仅仅取决于$x_t$ ，还取决于$s</em>{t-1}$ 。我们可以用下面的公式来表示循环神经网络的计算方法：</p>
-<p>用公式表示如下：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-9524a28210c98ed130644eb3c3002087_720w.png" alt=""></p>
-<h3 id="RNN的局限：长期依赖（Long-TermDependencies）问题"><a href="#RNN的局限：长期依赖（Long-TermDependencies）问题" class="headerlink" title="RNN的局限：长期依赖（Long-TermDependencies）问题"></a>RNN的局限：长期依赖（Long-TermDependencies）问题</h3><p>一些更加复杂的场景。比如我们试着去预测“I grew up in France…I speak fluent French”最后的词“French”。当前的信息建议下一个词可能是一种语言的名字，但是如果我们需要弄清楚是什么语言，我们是需要先前提到的离当前位置很远的“France”的上下文。这说明相关信息和当前预测位置之间的间隔就肯定变得相当的大。</p>
-<p>不幸的是，在这个间隔不断增大时，RNN会丧失学习到连接如此远的信息的能力。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/38adde9a4649e5ea3809f10306d56bb0.png" alt=""></p>
-<p>在理论上，RNN绝对可以处理这样的长期依赖问题。人们可以仔细挑选参数来解决这类问题中的最初级形式，但在实践中，RNN则没法太好的学习到这些知识。Bengio,etal.(1994)等人对该问题进行了深入的研究，他们发现一些使训练RNN变得非常困难的相当根本的原因。</p>
-<p>换句话说， RNN 会受到短时记忆的影响。如果一条序列足够长，那它们将很难将信息从较早的时间步传送到后面的时间步。</p>
-<p>因此，如果你正在尝试处理一段文本进行预测，RNN 可能从一开始就会遗漏重要信息。在反向传播期间（反向传播是一个很重要的核心议题，本质是通过不断缩小误差去更新权值，从而不断去修正拟合的函数），RNN 会面临梯度消失的问题。</p>
-<p><strong>因为梯度是用于更新神经网络的权重值（新的权值 = 旧权值 - 学习率*梯度），梯度会随着时间的推移不断下降减少，而当梯度值变得非常小时，就不会继续学习。</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/7e5e9272c2f6db440c4092bca444057f.png" alt="">​</p>
-<p>换言之，在递归神经网络中，获得小梯度更新的层会停止学习—— 那些通常是较早的层。 由于这些层不学习，<strong>RNN会忘记它在较长序列中以前看到的内容，因此RNN只具有短时记忆。</strong></p>
-<p>而梯度爆炸则是因为计算的难度越来越复杂导致。</p>
-<p>然而，幸运的是，有个RNN的变体——LSTM，可以在一定程度上解决梯度消失和梯度爆炸这两个问题！</p>
-<h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/89894058">原文链接</a></p>
-<h3 id="LSTM变体"><a href="#LSTM变体" class="headerlink" title="LSTM变体"></a>LSTM变体</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/89894058">原文链接</a></p>
-<h3 id="Seq2Seq"><a href="#Seq2Seq" class="headerlink" title="Seq2Seq"></a>Seq2Seq</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/80436483b13b">原文链接</a></p>
 <h2 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h2><h3 id="KNN算法"><a href="#KNN算法" class="headerlink" title="KNN算法"></a>KNN算法</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25994179">原链接</a></p>
 <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>K近邻算法，即是给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最邻近的K个实例，这K个实例的多数属于某个类，就把该输入实例分类到这个类中。（这就类似于现实生活中少数服从多数的思想）根据这个说法，咱们来看下引自维基百科上的一幅图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/v2-c3f1d2553e7467d7da5f9cd538d2b49a_720w.png" alt=""></p>
@@ -1005,68 +852,6 @@ conda env list<span aria-hidden="true" class="line-numbers-rows"><span></span><s
 <pre class="line-numbers language-none"><code class="language-none">deactivate <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>复制某个环境<br></p><pre class="line-numbers language-none"><code class="language-none">conda create --name new_env_name --clone old_env_name <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>删除某个环境<p></p>
 <pre class="line-numbers language-none"><code class="language-none">conda remove --name your_env_name --all<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="CUDA、CUDNN相关的内容"><a href="#CUDA、CUDNN相关的内容" class="headerlink" title="CUDA、CUDNN相关的内容"></a>CUDA、CUDNN相关的内容</h2><p>一般来说，如果要使用CUDA，一共需要安装3个东西Nvidia驱动、CUDA、CUDNN。</p>
-<p>CUDA看作是一个工作台，上面配有很多工具，如锤子、螺丝刀等。cuDNN是基于CUDA的深度学习GPU加速库，有了它才能在GPU上完成深度学习的计算。它就相当于工作的工具，比如它就是个扳手。但是CUDA这个工作台买来的时候，并没有送扳手。想要在CUDA上运行深度神经网络，就要安装cuDNN，就像你想要拧个螺帽就要把扳手买回来。这样才能使GPU进行深度神经网络的工作，工作速度相较CPU快很多。</p>
-<p>但是我们经常只安装CUDA Driver，比如我们的笔记本电脑，安装个CUDA Driver就可正常看视频、办公和玩游戏了。</p>
-<h3 id="Nvidia驱动"><a href="#Nvidia驱动" class="headerlink" title="Nvidia驱动"></a>Nvidia驱动</h3><p>Nvidia驱动可以单独安装，也可以使用CUDA Toolkit Installer安装，CUDA Toolkit Installer通常会集成了GPU driver Installer和CUDA。<br>安装完成以后，使用<code>nvidia-smi</code>可以驱动是否安装成功。nvidia-smi 全称是 NVIDIA System Management Interface ，是一种命令行实用工具，旨在帮助管理和监控NVIDIA GPU设备。</p>
-<h3 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h3><p>可以使用命令行、官网下载脚本、CUDA Toolkit Installer。<br><strong>不过目前看下来，使用官网下载的.run脚本（这是cuda10.1的安装包cuda_10.1.105_418.39_linux.run）是最容易成功的，虽然比较费时间。这个脚本里面也包含了驱动安装，如果安装了驱动，就不要再安装了</strong></p>
-<p><strong>安装的时候我曾经遇到过gcc版本过高的问题，并且无法直接使用命令行来降低版本。只能通过网上下载低版本的包，然后再安装</strong><br>安装后使用<code>nvcc -v</code>来看是否安装成功</p>
-<h3 id="nvcc和nvidia-smi的关系"><a href="#nvcc和nvidia-smi的关系" class="headerlink" title="nvcc和nvidia-smi的关系"></a>nvcc和nvidia-smi的关系</h3><p>nvcc 属于CUDA的编译器，将程序编译成可执行的二进制文件，nvidia-smi 全称是 NVIDIA System Management Interface ，是一种命令行实用工具，旨在帮助管理和监控NVIDIA GPU设备。</p>
-<p>CUDA有 runtime api 和 driver api，两者都有对应的CUDA版本， nvcc —version 显示的就是前者对应的CUDA版本，而 nvidia-smi显示的是后者对应的CUDA版本。</p>
-<p><strong>如果使用了单独的GPU driver installer来安装GPU dirver，这样就会导致 nvidia-smi 和 nvcc —version 显示的版本不一致了。</strong></p>
-<p>通常，<strong>driver api的版本能向下兼容runtime api的版本，即 nvidia-smi 显示的版本大于nvcc —version 的版本通常不会出现大问题。</strong></p>
-<h3 id="如何选择与CUDA版本匹配的Pytorch"><a href="#如何选择与CUDA版本匹配的Pytorch" class="headerlink" title="如何选择与CUDA版本匹配的Pytorch"></a>如何选择与CUDA版本匹配的Pytorch</h3><p>如果nvcc和nvidia-smi的版本不一致，应该如何选择pytorch的版本？<br><strong>选择与nvcc -v 对应的CUDA版本</strong></p>
-<h2 id="pytorch安装"><a href="#pytorch安装" class="headerlink" title="pytorch安装"></a>pytorch安装</h2><h3 id="cuda安装"><a href="#cuda安装" class="headerlink" title="cuda安装"></a>cuda安装</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/94220564">原链接</a></p>
-<p>桌面右键打开英伟达控制面板，点击帮助-&gt;系统信息-&gt;组件</p>
-<p>可以看到支持的版本，安装的cuda版本必须小于等于该版本</p>
-<p>安装好cuda后，安装cuDNN。<br>版本要和cuda对应起来</p>
-<h3 id="miniconda和pytorch安装"><a href="#miniconda和pytorch安装" class="headerlink" title="miniconda和pytorch安装"></a>miniconda和pytorch安装</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/174738684">原链接</a></p>
-<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/">miniconda的镜像</a></p>
-<p>要注意安装的是x86_64的版本，一开始装成的x86(32位，一直出问题)</p>
-<p>安装pytorch的时候要进入<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/previous-versions/">这里</a>。根据对应的cuda版本来下载，最然根据教程来验证是否安装成果。</p>
-<h3 id="安装jupyter-notebook"><a href="#安装jupyter-notebook" class="headerlink" title="安装jupyter notebook"></a>安装jupyter notebook</h3><p>安装jupyter notebook有三个办法：</p>
-<p><strong>方法1：</strong><br><strong>为每一个 conda 环境 都安装 jupyter</strong></p>
-<p>上面的安装好以后，使用<code>conda activate d2l</code>，激活d2l环境。<br>用<code>conda install jupyter</code>安装一直卡在那，换pip安装。但是还是因为网速原因没成功，可以使用临时换源的办法：</p>
-<pre class="line-numbers language-none"><code class="language-none">pip install jupyter -i https://pypi.tuna.tsinghua.edu.cn/simple<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>方法2：</strong></p>
-<p>在base环境安装好jupyter后</p>
-<pre class="line-numbers language-none"><code class="language-none">conda create -n my-conda-env                               # creates new virtual env
-conda activate my-conda-env                                # activate environment in terminal
-conda install ipykernel                                    # install Python kernel in new conda env
-ipython kernel install --user --name=my-conda-env-kernel   # configure Jupyter to use Python kernel<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>然后在base环境运行jupyter，下面两种方式都可以切换环境</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/微信图片_20230315114520.png" alt=""></p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/微信图片_20230315114528.png" alt=""></p>
-<p><strong>缺点是你新建一个环境，就要重复操作一次</strong></p>
-<p><strong>方法3：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">conda activate my-conda-env    # this is the environment for your project and code
-conda install ipykernel
-conda deactivate
-
-conda activate base      # could be also some other environment
-conda install nb_conda_kernels
-jupyter notebook<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>注意：这里的 <code>conda install nb_conda_kernels</code> 是在 base 环境下操作的。</p>
-<p>然后就可以进行conda环境求换，方式和法2相同。</p>
-<p>本人在使用方法3的时候遇到了问题，web端显示500，命令行显示的关键信息如下：</p>
-<p><strong>ImportError: cannot import name ‘contextfilter’ from ‘jinja2’</strong></p>
-<p>最后的解决方法：<br></p><pre class="line-numbers language-none"><code class="language-none">conda update nbconvert<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
-<h3 id="导入torchvision出现错误"><a href="#导入torchvision出现错误" class="headerlink" title="导入torchvision出现错误"></a>导入torchvision出现错误</h3><p>cuda和pythorch都安装成功的时候，且gpu也能正常使用。但是运行d2l里面的代码报错：<br></p><pre class="line-numbers language-none"><code class="language-none">import torch 成功
-
-import torchvision,报错
-
-DLL:找不到模块<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<p>根据torch版本找到对应的torchvision，然后卸载torchvision再安装，显示没有这个版本。当时安装torch的时候，torchvision也安装了，且版本正确。</p>
-<p><strong>解决办法：</strong></p>
-<ol>
-<li>先查看一下Pillow的版本</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">pip show Pillow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>如果没有直接安装<br></p><pre class="line-numbers language-none"><code class="language-none">pip install Pillow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
-<p>如果有，先卸载<br></p><pre class="line-numbers language-none"><code class="language-none">pip uninstall Pillow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
-<p>再安装<br></p><pre class="line-numbers language-none"><code class="language-none">pip install Pillow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
-<p>然后检验torchvision是否正常<br></p><pre class="line-numbers language-none"><code class="language-none">import torchvision
-torchvision.__version__ #'0.8.2'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p></p>
 <h2 id="卷积相关的内容"><a href="#卷积相关的内容" class="headerlink" title="卷积相关的内容"></a>卷积相关的内容</h2><h3 id="网络模型参数的关系"><a href="#网络模型参数的关系" class="headerlink" title="网络模型参数的关系"></a>网络模型参数的关系</h3><p>编码器：<br></p><pre class="line-numbers language-none"><code class="language-none">convlstm_encoder_params = [
     [
         OrderedDict({'conv1_leaky_1': [1, 16, 3, 1, 1]}),
@@ -1111,283 +896,6 @@ OutputPadding 是添加到输出尺寸的额外元素数量。一般在进行转
 OutputSize = (16 - 1) * 2 - 2 * 1 + 4 + 0 = 32
 
 因此，你的输出特征图的尺寸就为32x32。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="dataloader解析"><a href="#dataloader解析" class="headerlink" title="dataloader解析"></a>dataloader解析</h2><h3 id="简单例子"><a href="#简单例子" class="headerlink" title="简单例子"></a>简单例子</h3><p><strong>总结：对于一般的数据来说，我们把数据量放在第0维，例如[300,3,32,32]。300张3通道，高宽为32的图片。如果batch_size为16，那么每次读取的数据为[300,3,32,32]</strong></p>
-<p>假设我们有一个数据集，每个样本都是一个3通道的32x32的图像，标签是一个数字。我们将创建一个自定义的 Dataset 类，然后用 DataLoader 来加载数据，并指定一个 batch_size。我们将打印出从 DataLoader 获取的批次数据的形状。</p>
-<p>首先是自定义的 Dataset 类：<br></p><pre class="line-numbers language-none"><code class="language-none">from torch.utils.data import Dataset, DataLoader
-import torch
-
-class SimpleDataset(Dataset):
-    def __init__(self, num_samples):
-        # 假设有 num_samples 个样本，每个样本是3通道的32x32图像
-        self.data = torch.randn(num_samples, 3, 32, 32)
-        # 假设每个样本的标签是一个数字
-        self.labels = torch.randint(0, 10, (num_samples,))
-
-    def __len__(self):
-        return len(self.data)
-
-    def __getitem__(self, idx):
-        sample = self.data[idx]
-        label = self.labels[idx]
-        return sample, label<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>然后是使用 DataLoader 来加载数据：<br><pre class="line-numbers language-none"><code class="language-none"># 创建一个含有100个样本的数据集
-simple_dataset = SimpleDataset(num_samples=100)
-
-# 使用DataLoader来加载数据，指定batch_size为4
-dataloader = DataLoader(simple_dataset, batch_size=4, shuffle=True)
-
-# 从DataLoader获取第一个批次的数据
-for batch_idx, (samples, labels) in enumerate(dataloader):
-    print(f'Batch index: {batch_idx}')
-    print('Samples shape:', samples.shape) # 预期形状：[4, 3, 32, 32]
-    print('Labels shape:', labels.shape)   # 预期形状：[4]
-    break  # 只打印第一个批次的数据<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<p>在这个例子中，samples 的形状应该是 [4, 3, 32, 32]，因为 batch_size 是4，所以有4个样本，每个样本是3通道的32x32图像。labels 的形状应该是 [4]，因为每个批次有4个标签。</p>
-<h3 id="dataloader中batch-size-getitem中idx，len之间的关联"><a href="#dataloader中batch-size-getitem中idx，len之间的关联" class="headerlink" title="dataloader中batch_size,getitem中idx，len之间的关联"></a>dataloader中batch_size,getitem中idx，len之间的关联</h3><p>首先说一下<strong>len</strong>函数，返回的是一个数值，一般来说表示的是数据集的长度/多少。<br>比如我有一个数据集特征和标签：torch.Size([180, 10, 1, 480, 120])<br>如果<strong>len</strong>函数：<br></p><pre class="line-numbers language-none"><code class="language-none">def __len__(self):
-    return len(self.features)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br>那么这个长度就是180。<p></p>
-<p>getitem中idx就是和这个长度绑定的。假设长度是180，那么idx的范围就是从0-179这180个数。</p>
-<p>batch_size就是用来表示每个数据集的大小，假设batch_size是32，那么这个数据集会被划分为5份，前四份每份有32个，最后一份因为不足32只有20个</p>
-<p>前四个batch，每个batch都会调用32次getitem函数，最后一个调用20次；idx会从0开始逐次递增，一直到179。</p>
-<p>而在创建dataloader的时候，我们往往可以选择是否打乱<br></p><pre class="line-numbers language-none"><code class="language-none">data_loader = DataLoader(dataset=DateSet, batch_size=32, shuffle=False)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
-<p>当数据打乱（shuffle）时，idx实际上指的是打乱后的索引顺序，而不是数据原始顺序的连续索引。也就是说，在每个epoch开始之前，整个数据集的索引会被打乱，然后这个打乱后的索引被用来访问数据集中的样本。</p>
-<p>例如原来的数据有：d1,d2,d3,d4,d5,d6,d7<br>索引为：0,1,2,3,4,5,6<br>调用的顺序：d1,d2,d3,d4,d5,d6,d7</p>
-<p>而数据（索引）打乱后，索引可能为：5,2,3,6,0,1,4<br>调用的顺序：d6,d3,d4,d7,d1,d2,d5</p>
-<p>每次启动一个新的epoch时，如果shuffle=True，则数据会再次被打乱，产生一个新的索引序列。这样做的目的是为了在训练过程中引入随机性，有助于模型泛化，避免对特定的样本顺序过拟合。</p>
-<h2 id="数据相关操作"><a href="#数据相关操作" class="headerlink" title="数据相关操作"></a>数据相关操作</h2><h3 id="轴（axis）"><a href="#轴（axis）" class="headerlink" title="轴（axis）"></a>轴（axis）</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31275071">原文链接</a></p>
-<pre class="line-numbers language-none"><code class="language-none">&gt;&gt;&gt; import numpy as np
-&gt;&gt;&gt; a = np.array([[1,2,3],[2,3,4],[3,4,9]])
-&gt;&gt;&gt; a
-array([[1, 2, 3],
-       [2, 3, 4],
-       [3, 4, 9]])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这个array的维数只有2，即axis轴有两个，分别是axis=0和axis=1。如下图所示，该二维数组的第0维(axis=0)有三个元素(左图)，即axis=0轴的长度length为3；第1维(axis=1)也有三个元素(右图)，即axis=1轴的长度length为3。正是因为axis=0、axis=1的长度都为3，矩阵横着竖着都有3个数，所以该矩阵在线性代数是3维的(rank秩为3)。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-76b727aedf756d03c854f3b045345c23_r.png" alt=""></p>
-<p>因此，axis就是数组层级。</p>
-<p>当axis=0，该轴上的元素有3个(数组的size为3)</p>
-<p>a[0]、a[1]、a[2]</p>
-<p>当axis=1，该轴上的元素有3个(数组的size为3)</p>
-<p>a[0][0]、a[0][1]、a[0][2]</p>
-<p>（或者a[1][0]、a[1][1]、a[1][2]）</p>
-<p>（或者a[2][0]、a[2][1]、a[2][2]）</p>
-<p>再比如下面shape为(3,2,4)的array：<br></p><pre class="line-numbers language-none"><code class="language-none">&gt;&gt;&gt; b = np.array([[[1,2,3,4],[1,3,4,5]],[[2,4,7,5],[8,4,3,5]],[[2,5,7,3],[1,5,3,7]]])
-&gt;&gt;&gt; b
-array([[[1, 2, 3, 4],
-        [1, 3, 4, 5]],
-
-       [[2, 4, 7, 5],
-        [8, 4, 3, 5]],
-
-       [[2, 5, 7, 3],
-        [1, 5, 3, 7]]])
-&gt;&gt;&gt; b.shape
-(3, 2, 4)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>这个shape（用tuple表示）可以理解为在每个轴（axis）上的size，也即占有的长度（length)。为了更进一步理解，我们可以暂时把多个axes想象成多层layers。axis=0表示第一层(下图黑色框框)，该层数组的size为3，对应轴上的元素length = 3；axis=1表示第二层(下图红色框框)，该层数组的size为2，对应轴上的元素length = 2；axis=2表示第三层(下图蓝色框框)，对应轴上的元素length = 4。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-5c8aad40f74a3adee72f8f7fb5be89a6_720w.webp" alt=""><p></p>
-<h3 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44330492/article/details/100126774?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-100126774-blog-78934529.235%5Ev38%5Epc_relevant_anti_t3&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-100126774-blog-78934529.235%5Ev38%5Epc_relevant_anti_t3&amp;utm_relevant_index=1">原文链接</a></p>
-<pre class="line-numbers language-none"><code class="language-none">import numpy
-a=numpy.arange(1, 7).reshape((2, 3))
-b=numpy.arange(7, 13).reshape((2, 3))
-c=numpy.arange(13, 19).reshape((2, 3))
-d=numpy.arange(19, 25).reshape((2, 3))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这四个用于堆叠的数组如下所示：<br></p><pre class="line-numbers language-none"><code class="language-none">[[1 2 3]           
- [4 5 6]]
- 
-[[ 7  8  9]
- [10 11 12]]
- 
-[[13 14 15]
- [16 17 18]]
- 
-[[19 20 21]
- [22 23 24]]
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<pre class="line-numbers language-none"><code class="language-none">print(numpy.stack([a, b,c,d], axis=0))
-print(numpy.stack([a, b,c,d], axis=0).shape)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>输出结果：</p>
-<pre class="line-numbers language-none"><code class="language-none">[[[ 1  2  3]             
-  [ 4  5  6]]
-
- [[ 7  8  9]
-  [10 11 12]]
-
- [[13 14 15]
-  [16 17 18]]
-
- [[19 20 21]
-  [22 23 24]]]
-  
-(4, 2, 3)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>形象理解：<strong>axis等于几就说明在哪个维度上进行堆叠</strong>。当axis=0的时候，意味着整体，也就是一个2行3列的数组。所以对于0维堆叠，相当于简单的物理罗列，比如这四个数组代表的是4张图像的数据，进行0维堆叠也就是把它们按顺序排放了起来，形成了一个(4,2,3)的3维数组。</p>
-<p>axis=1<br></p><pre class="line-numbers language-none"><code class="language-none">print(numpy.stack([a, b,c,d], axis=1))
-print(numpy.stack([a, b,c,d], axis=1).shape)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br>输出：<br><pre class="line-numbers language-none"><code class="language-none">[[[ 1  2  3]
-  [ 7  8  9]
-  [13 14 15]
-  [19 20 21]]
-
- [[ 4  5  6]
-  [10 11 12]
-  [16 17 18]
-  [22 23 24]]]
-  
-(2, 4, 3)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>形象理解：<strong>axis等于几就说明在哪个维度上进行堆叠</strong>。当axis=1的时候，意味着第一个维度，也就是数组的每一行。所以对于1维堆叠，4个2行3列的数组，各自拿出自己的第一行数据进行堆叠形成3维数组的第一“行”，各自拿出自己的第二行数据进行堆叠形成3维数组的第二“行”，从而形成了一个(2,4,3)的3维数组。比如这四个数组分别代表的是对同一张图像进行不同处理后的数据，进行1维堆叠可以将这些不同处理方式的数据有条理的堆叠形成一个数组，方便后续的统一处理。<p></p>
-<p>axis=2<br></p><pre class="line-numbers language-none"><code class="language-none">print(numpy.stack([a, b,c,d], axis=2))
-print(numpy.stack([a, b,c,d], axis=2).shape)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br><pre class="line-numbers language-none"><code class="language-none">[[[ 1  7 13 19]
-  [ 2  8 14 20]
-  [ 3  9 15 21]]
-
- [[ 4 10 16 22]
-  [ 5 11 17 23]
-  [ 6 12 18 24]]]
-  
-(2, 3, 4)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<h3 id="concatenate"><a href="#concatenate" class="headerlink" title="concatenate"></a>concatenate</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41770169/article/details/80565073">原文链接</a></p>
-<pre class="line-numbers language-none"><code class="language-none">&gt;&gt;&gt; a = np.array([[1, 2], [3, 4]])
-&gt;&gt;&gt; b = np.array([[5, 6]])
-&gt;&gt;&gt; np.concatenate((a, b), axis=0)
-array([[1, 2],
-       [3, 4],
-       [5, 6]])
-&gt;&gt;&gt; np.concatenate((a, b.T), axis=1)
-array([[1, 2, 5],
-       [3, 4, 6]])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="pytorch中图像分割"><a href="#pytorch中图像分割" class="headerlink" title="pytorch中图像分割"></a>pytorch中图像分割</h3><p>简单版：<strong>reshape比view更加好用</strong><br>[原文链接]（<a target="_blank" rel="noopener" href="https://blog.csdn.net/Flag_ing/article/details/109129752）">https://blog.csdn.net/Flag_ing/article/details/109129752）</a></p>
-<p>我们以实际的代码来看下：<br></p><pre class="line-numbers language-none"><code class="language-none"># 输入的是一个5维数组，我要切割为80*20的小块
-
-batch_size, seq_length, channels, h, w = data.shape
-
-# n_h*n_w就是切割后的小块总数
-n_h = h // patch_h
-n_w = w // patch_w
-
-# 对原来的tensor形状进行变化
-images = images.view(batch_size, seq_length, channels, n_h, patch_h, n_w, patch_w)
-
-# 变化后进行重排序，原来是（0,1,2,3,4,5,6），变换后就是（batch_size, seq_length, channels，n_h， n_w， patch_h， patch_w）;再用reshape重构
-images.permute(0,1,2,3,5,4,6).reshape(batch_size, seq_length, channels, n_h*n_w, patch_h, patch_w)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<h3 id="查看数据结构的维度的维度"><a href="#查看数据结构的维度的维度" class="headerlink" title="查看数据结构的维度的维度"></a>查看数据结构的维度的维度</h3><p><strong>tensor:</strong><br></p><pre class="line-numbers language-none"><code class="language-none">&gt;&gt;&gt;a = torch.randn(2,2)
-&gt;&gt;&gt;a.shape    # 使用shape查看Tensor维度
-torch.Size([2,2])
-&gt;&gt;&gt;a.size()    # 使用size()函数查看Tensor维度
-torch.Size([2,2])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br><strong>数组或list:</strong><br><pre class="line-numbers language-none"><code class="language-none">&gt;&gt;&gt;import numpy as np
-&gt;&gt;&gt;x = [[[1,2,3],[4,5,6]],[[7,8,9],[0,1,2]],[[3,4,5],[6,7,8]]]
-&gt;&gt;&gt;np.array(x).shape
-&gt;&gt;&gt;print(x.shape) 
-(3, 2, 3)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<h3 id="TensorDataset与DataLoader的使用"><a href="#TensorDataset与DataLoader的使用" class="headerlink" title="TensorDataset与DataLoader的使用"></a>TensorDataset与DataLoader的使用</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/F845992311/article/details/123478399">原链接</a></p>
-<p>TensorDataset是个只用来存放tensor(张量)的数据集，而DataLoader是一个数据加载器，一般用到DataLoader的时候就说明需要遍历和操作数据了。TensorDataset(tensor1,tensor2)的功能就是<strong>形成数据(特征)tensor1和标签tensor2的对应，也就是说tensor1中是数据，而tensor2是tensor1所对应的标签</strong>。需要注意的是，tensor1和tensor2的最高维数要相同。比如下面这个例子，tensor1.shape(12,3); tensor2.shape(12)</p>
-<p>来个小例子:</p>
-<pre class="line-numbers language-none"><code class="language-none">from torch.utils.data import TensorDataset,DataLoader
-import torch
- 
-a = torch.tensor([[1, 2, 3],
-                  [4, 5, 6],
-                  [7, 8, 9],
-                  [1, 2, 3],
-                  [4, 5, 6],
-                  [7, 8, 9],
-                  [1, 2, 3],
-                  [4, 5, 6],
-                  [7, 8, 9],
-                  [1, 2, 3],
-                  [4, 5, 6],
-                  [7, 8, 9]])
- 
-b = torch.tensor([44, 55, 66, 44, 55, 66, 44, 55, 66, 44, 55, 66])
-train_ids = TensorDataset(a,b)
-# 切片输出
-print(train_ids[0:4]) # 第0,1,2,3行
-# 循环取数据
-for x_train,y_label in train_ids:
-    print(x_train,y_label)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>下面是对应的输出:<br></p><pre class="line-numbers language-none"><code class="language-none">(tensor([[1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9],
-        [1, 2, 3]]), tensor([44, 55, 66, 44]))
-===============================================
-tensor([1, 2, 3]) tensor(44)
-tensor([4, 5, 6]) tensor(55)
-tensor([7, 8, 9]) tensor(66)
-tensor([1, 2, 3]) tensor(44)
-tensor([4, 5, 6]) tensor(55)
-tensor([7, 8, 9]) tensor(66)
-tensor([1, 2, 3]) tensor(44)
-tensor([4, 5, 6]) tensor(55)
-tensor([7, 8, 9]) tensor(66)
-tensor([1, 2, 3]) tensor(44)
-tensor([4, 5, 6]) tensor(55)
-tensor([7, 8, 9]) tensor(66)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>从输出结果我们就可以很好的理解，tensor型数据和tensor型标签的对应了，这就是TensorDataset的基本应用。接下来我们把构造好的TensorDataset封装到DataLoader来操作里面的数据:<p></p>
-<pre class="line-numbers language-none"><code class="language-none"># 参数说明，dataset=train_ids表示需要封装的数据集，batch_size表示一次取几个
-# shuffle表示乱序取数据，设为False表示顺序取数据，True表示乱序取数据
-train_loader = DataLoader(dataset=train_ids,batch_size=4,shuffle=False)
-# 注意enumerate返回值有两个,一个是序号，一个是数据（包含训练数据和标签）
-# enumerate里面可以不要1，直接写train_loader
-# format里面也可以写为i
-for i,data in enumerate(train_loader,1):
-    train_data, label = data
-    print(' batch:{0} train_data:{1}  label: {2}'.format(i+1, train_data, label))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>下面是输出：<br></p><pre class="line-numbers language-none"><code class="language-none">batch:1 x_data:tensor([[1, 2, 3],
-       [4, 5, 6],
-       [7, 8, 9],
-       [1, 2, 3]])  label: tensor([44, 55, 66, 44])
-batch:2 x_data:tensor([[4, 5, 6],
-       [7, 8, 9],
-       [1, 2, 3],
-       [4, 5, 6]])  label: tensor([55, 66, 44, 55])
-batch:3 x_data:tensor([[7, 8, 9],
-       [1, 2, 3],
-       [4, 5, 6],
-       [7, 8, 9]])  label: tensor([66, 44, 55, 66])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<h3 id="numpy-transpose-—坐标轴转换"><a href="#numpy-transpose-—坐标轴转换" class="headerlink" title="numpy.transpose()—坐标轴转换"></a>numpy.transpose()—坐标轴转换</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012762410/article/details/78912667">原文链接</a></p>
-<p>举个例子，假设x是一个二维数组，那么</p>
-<pre><code class="lang-x.transpose((0,1))```">没有变化
-
-```x.transpose((1,0))
-</code></pre>
-<p>把1轴的数据和0轴数据进行了交换</p>
-<p>x 为：<br></p><pre class="line-numbers language-none"><code class="language-none">array([[0, 1],
-       [2, 3]])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p></p>
-<p>我们不妨设第一个方括号“[]”为 0轴 ，第二个方括号为 1轴 ，则x可在 0-1坐标系 下表示如下：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjI3MTYxNDQ5MDA4.png" alt=""></p>
-<p>因为 x.transpose((0,1)) 表示按照原坐标轴改变序列，也就是保持不变<br>而 x.transpose((1,0)) 表示交换 ‘0轴’ 和 ‘1轴’，所以就得到如下图所示结果：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjI3MTYyMjIyNTcz.png" alt=""></p>
-<pre class="line-numbers language-none"><code class="language-none">x[0][0] == 0
-x[0][1] == 2
-x[1][0] == 1
-x[1][1] == 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>x 转置了<br></p><pre class="line-numbers language-none"><code class="language-none">
-array([[0, 2],
-       [1, 3]])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p></p>
-<p>注意，任何时候你都要保持清醒，告诉自己第一个方括号“[]”为 0轴 ，第二个方括号为 1轴<br>此时，transpose转换关系就清晰了。</p>
-<h3 id="numpy复制并扩充维度"><a href="#numpy复制并扩充维度" class="headerlink" title="numpy复制并扩充维度"></a>numpy复制并扩充维度</h3><p>a的shape从（96，96）变成（1000，96，96）</p>
-<pre class="line-numbers language-none"><code class="language-none">np.expand_dims(a,0).repeat(1000,axis=0)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>解释：<br>expand_dims表示增加一个维度，这个维度增加在a的0维度。repeat代表重复的次数，axis代表在哪个维度进行重复。</p>
-<p>可以根据自己的需要更改参数。</p>
-<h3 id="loss可视化"><a href="#loss可视化" class="headerlink" title="loss可视化"></a>loss可视化</h3><p>有时候我们想观察模型训练时候的loss，可以使用tesorboard。这里举个例子</p>
-<pre class="line-numbers language-none"><code class="language-none">from torch.utils.tensorboard import SummaryWriter
-
-//将数据保存到指定的文件夹。这里注意下，一般是在代码根目录下面的./run/*。例如/run/202307230293
-tb = SummaryWriter(run_dir)
-
-
-//第一个参数是名称，第二个参数是y值，第三个参数是x值。(用x,y画图)
-tb.add_scalar('TranLoss', loss_aver, epoch)
-tb.add_scalar('ValidLoss', loss_aver, epoch)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>我们在run目录下面执行如下命令<br></p><pre class="line-numbers language-none"><code class="language-none">tensorboard --logdir=./202307230293
-
-//或者下面这个
-tensorboard --logdir=./202307230293 --port 8123<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><br>如果不指定端口，那么默认是6006<p></p>
-<p><strong>但是我们的代码是在内网跑的，很有可能只开放了22端口，本地浏览器通过 ip:端口 是没法访问的，考虑到安全性，是没法开其他端口，只有把端口映射出来</strong></p>
-<p>这里以mobaxterm为例，xshell也可以[原链接](<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40944311/article/detail">https://blog.csdn.net/qq_40944311/article/detail</a></p>
-<p>s/121396856)</p>
-<ol>
-<li>在Tools中打开MobaSSHTunnel(port forwarding)<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/311dadfca866487bbf1bff428bd9446d.png" alt=""></li>
-<li>点击New SSH tunnel<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/1ee8c2a718bb4f00971e151933e81da8.png" alt=""></li>
-<li>配置信息<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/417febd4d05c479d88adae9966308a04.png" alt=""><br>1、选择第一个Local port forwarding</li>
-</ol>
-<p>2、输入想要映射到本地的端口号</p>
-<p>3、输入远程连接的信息，ip、用户名、ssh端口号22</p>
-<p>4、输入服务器端被映射的端口信息</p>
-<ol>
-<li>点击运行<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/693532a9ffd84ed99182d4dfa8a17b1b.png" alt=""></li>
-<li>访问端口<br>在服务器上run目录下输入<pre class="line-numbers language-none"><code class="language-none">tensorboard --logdir=./202307230293<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-</ol>
-<p>在本地浏览器输入 <strong>localhost:6006</strong><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/f1012b75a3cb497fab1f00a76b5bb8d1.png" alt=""></p>
 
                 
             </div>
@@ -1454,10 +962,6 @@ tensorboard --logdir=./202307230293 --port 8123<span aria-hidden="true" class="l
                             
                                 <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
                                     <span class="chip bg-color">深度学习</span>
-                                </a>
-                            
-                                <a href="/tags/pytorch/">
-                                    <span class="chip bg-color">pytorch</span>
                                 </a>
                             
                         </div>
@@ -1916,7 +1420,7 @@ tensorboard --logdir=./202307230293 --port 8123<span aria-hidden="true" class="l
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">170.5k</span>
+                        class="white-color">162.1k</span>
             
             
             
