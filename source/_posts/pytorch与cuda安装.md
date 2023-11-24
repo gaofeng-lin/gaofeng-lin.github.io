@@ -7,6 +7,7 @@ tags:
   - cuda
   - pytorch
 mathjax: true
+abbrlink: 43034
 ---
 
 ## CUDA、CUDNN相关的内容
