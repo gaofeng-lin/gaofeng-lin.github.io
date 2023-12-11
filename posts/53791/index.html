@@ -4,11 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="深度学习常见模型解析, Home of Gaofeng">
-    <meta name="description" content="卷积相关的内容网络模型参数的关系编码器：convlstm_encoder_params = [
-    [
-        OrderedDict({&#39;conv1_leaky_1&#39;: [1, 16, 3, 1, 1]}),
-        ">
+    <meta name="keywords" content="机器学习算法, Home of Gaofeng">
+    <meta name="description" content="算法介绍KNN算法原链接
+基本概念K近邻算法，即是给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最邻近的K个实例，这K个实例的多数属于某个类，就把该输入实例分类到这个类中。（这就类似于现实生活中少数服从多数的思想）根据这个说">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +20,7 @@
 
     
 
-    <title>深度学习常见模型解析 | Home of Gaofeng</title>
+    <title>机器学习算法 | Home of Gaofeng</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -315,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">深度学习常见模型解析</h1>
+                    <h1 class="description center-align post-title">机器学习算法</h1>
                 </div>
             </div>
         </div>
@@ -436,8 +434,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/convlstm/">
-                                <span class="chip bg-color">convlstm</span>
+                            <a href="/tags/knn/">
+                                <span class="chip bg-color">knn</span>
                             </a>
                         
                     </div>
@@ -470,14 +468,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    911
+                    858
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    2 分
                 </div>
                 
 
@@ -500,50 +498,27 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="卷积相关的内容"><a href="#卷积相关的内容" class="headerlink" title="卷积相关的内容"></a>卷积相关的内容</h2><h3 id="网络模型参数的关系"><a href="#网络模型参数的关系" class="headerlink" title="网络模型参数的关系"></a>网络模型参数的关系</h3><p>编码器：<br></p><pre class="line-numbers language-none"><code class="language-none">convlstm_encoder_params = [
-    [
-        OrderedDict({'conv1_leaky_1': [1, 16, 3, 1, 1]}),
-        OrderedDict({'conv2_leaky_1': [64, 64, 3, 2, 1]}),
-        OrderedDict({'conv3_leaky_1': [96, 96, 3, 2, 1]}),
-    ],
-
-    [
-        CLSTM_cell(shape=(64,64), input_channels=16, filter_size=5, num_features=64),
-        CLSTM_cell(shape=(32,32), input_channels=64, filter_size=5, num_features=96),
-        CLSTM_cell(shape=(16,16), input_channels=96, filter_size=5, num_features=96)
-    ]
-]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>OrderedDict定义了一个卷积层的参数，包括<strong>输入通道数、输出通道数、卷积核大小、步长和填充</strong>。<p></p>
-<p>CLSTM_cell定义了一个CLSTM单元，包括<strong>特定的形状、输入通道数、滤波器（卷积核）大小和特征数量（隐藏状态通道数）</strong>。</p>
-<p>下面给一个具体的例子：<br>输入到编码器的特征维度为（16, 10, 1, 64, 64）。</p>
-<p>经过第一个卷积层conv1_leaky_1后，输出特征维度变为（16, 10, 16, 64, 64）。</p>
-<p>之后，这个输出进入到第一个CLSTM_cell，此时shape为（64, 64），输入通道为16，经过卷积LSTM后，输出特征维度为（16, 10, 64, 64, 64）。</p>
-<p>然后，这个输出经过第二个卷积层conv2_leaky_1，输出特征维度变为（16, 10, 64, 32, 32）。</p>
-<p>然后，这个输出进入到第二个CLSTM_cell，此时shape为（32, 32），输入通道为64，经过卷积LSTM后，输出特征维度为（16, 10, 96, 32, 32）。</p>
-<p>然后，这个输出经过第三个卷积层conv3_leaky_1，输出特征维度变为（16, 10, 96, 16, 16）。</p>
-<p>最后，这个输出进入到第三个CLSTM_cell，此时shape为（16, 16），输入通道为96，经过卷积LSTM后，输出特征维度为（16, 10, 96, 16, 16）。</p>
-<p>此时已经完成了编码阶段，这个输出将作为解码器的输入。</p>
-<p>在解码阶段，过程类似：</p>
-<p>这个输出经过第一个反卷积层deconv1_leaky_1，输出特征维度变为（16, 10, 96, 32, 32）。</p>
-<p>然后，这个输出进入到第一个解码器的CLSTM_cell，此时shape为（32, 32），输入通道为96，经过卷积LSTM后，输出特征维度为（16, 10, 96, 32, 32）。</p>
-<p>然后，这个输出经过第二个反卷积层deconv2_leaky_1，输出特征维度变为（16, 10, 96, 64, 64）。</p>
-<p>然后，这个输出进入到第二个解码器的CLSTM_cell，此时shape为（64, 64），输入通道为96，经过卷积LSTM后，输出特征维度为（16, 10, 64, 64, 64）。</p>
-<p>最后，这个输出经过最后一个卷积层conv3_leaky_1和conv4_leaky_1，最后的输出特征维度为（16, 10, 1, 64, 64），这就是最后的输出结果。</p>
-<h3 id="图像尺寸、卷积核大小、步长、填充之间的关系或数学公式"><a href="#图像尺寸、卷积核大小、步长、填充之间的关系或数学公式" class="headerlink" title="图像尺寸、卷积核大小、步长、填充之间的关系或数学公式"></a>图像尺寸、卷积核大小、步长、填充之间的关系或数学公式</h3><pre class="line-numbers language-none"><code class="language-none">输出高度 = (输入高度 - 核高度 + 2 * 填充) / 步长 + 1
-输出宽度 = (输入宽度 - 核宽度 + 2 * 填充) / 步长 + 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="反卷积层：图像尺寸、卷积核大小、步长、填充之间的关系或数学公式"><a href="#反卷积层：图像尺寸、卷积核大小、步长、填充之间的关系或数学公式" class="headerlink" title="反卷积层：图像尺寸、卷积核大小、步长、填充之间的关系或数学公式"></a>反卷积层：图像尺寸、卷积核大小、步长、填充之间的关系或数学公式</h3><pre class="line-numbers language-none"><code class="language-none">OutputSize = (InputSize - 1) * Stride - 2 * Padding + KernelSize + OutputPadding
-
-其中：
-
-InputSize 是输入特征图的尺寸。
-Stride 是卷积核移动的步长。
-Padding 是在输入特征图周围填充的零的数量。
-KernelSize 是卷积核的尺寸。
-OutputPadding 是添加到输出尺寸的额外元素数量。一般在进行转置卷积时，如果希望输出尺寸刚好是输入尺寸的某个倍数，且不能通过调整步长和填充来达到，那么就需要使用OutputPadding。
-例如，如果你的输入特征图尺寸为16x16，你希望将其上采样为32x32，你使用的卷积核大小为4，步长为2，那么你可以将填充设置为1，无需OutputPadding。此时，使用上述公式计算得到的输出尺寸就为：
-
-OutputSize = (16 - 1) * 2 - 2 * 1 + 4 + 0 = 32
-
-因此，你的输出特征图的尺寸就为32x32。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h2 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h2><h3 id="KNN算法"><a href="#KNN算法" class="headerlink" title="KNN算法"></a>KNN算法</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25994179">原链接</a></p>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>K近邻算法，即是给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最邻近的K个实例，这K个实例的多数属于某个类，就把该输入实例分类到这个类中。（这就类似于现实生活中少数服从多数的思想）根据这个说法，咱们来看下引自维基百科上的一幅图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/v2-c3f1d2553e7467d7da5f9cd538d2b49a_720w.png" alt=""></p>
+<p>如上图所示，有两类不同的样本数据，分别用蓝色的小正方形和红色的小三角形表示，而图正中间的那个绿色的圆所标示的数据则是待分类的数据。这也就是我们的目的，来了一个新的数据点，我要得到它的类别是什么？好的，下面我们根据k近邻的思想来给绿色圆点进行分类。</p>
+<p>如果K=3，绿色圆点的最邻近的3个点是2个红色小三角形和1个蓝色小正方形，少数从属于多数，基于统计的方法，判定绿色的这个待分类点属于红色的三角形一类。</p>
+<p>如果K=5，绿色圆点的最邻近的5个邻居是2个红色三角形和3个蓝色的正方形，还是少数从属于多数，基于统计的方法，判定绿色的这个待分类点属于蓝色的正方形一类。</p>
+<p>从上面例子我们可以看出，k近邻的算法思想非常的简单，也非常的容易理解，那么我们是不是就到此结束了，该算法的原理我们也已经懂了，也知道怎么给新来的点如何进行归类，只要找到离它最近的k个实例，哪个类别最多即可。</p>
+<h4 id="k近邻算法中k的选取以及特征归一化的重要性"><a href="#k近邻算法中k的选取以及特征归一化的重要性" class="headerlink" title="k近邻算法中k的选取以及特征归一化的重要性"></a>k近邻算法中k的选取以及特征归一化的重要性</h4><ol>
+<li>选取k值以及它的影响</li>
+</ol>
+<p>如果我们选取较小的k值，那么就会意味着我们的整体模型会变得复杂，容易发生过拟合</p>
+<p>如果我们选取较大的k值，就相当于用较大邻域中的训练数据进行预测，这时与输入实例较远的（不相似）训练实例也会对预测起作用，使预测发生错误，k值的增大意味着整体模型变得简单。我们很容易学习到噪声。</p>
+<p>我们想，如果k=N（N为训练样本的个数）,那么无论输入实例是什么，都将简单地预测它属于在训练实例中最多的类。这时，模型是不是非常简单，这相当于你压根就没有训练模型呀！</p>
+<ol>
+<li>距离的度量<br>在上文中说到，k近邻算法是在训练数据集中找到与该实例最邻近的K个实例，这K个实例的多数属于某个类，我们就说预测点属于哪个类。</li>
+</ol>
+<p>定义中所说的最邻近是如何度量呢？我们怎么知道谁跟测试点最邻近。这里就会引出我们几种度量俩个点之间距离的标准。</p>
+<p><strong>度量学习可以应用于此</strong></p>
+<ol>
+<li>特征归一化的必要性<br>为了保证每个特征同等重要性，我们这里对每个特征进行归一化。</li>
+</ol>
 
                 
             </div>
@@ -608,8 +583,8 @@ OutputSize = (16 - 1) * 2 - 2 * 1 + 4 + 0 = 32
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/convlstm/">
-                                    <span class="chip bg-color">convlstm</span>
+                                <a href="/tags/knn/">
+                                    <span class="chip bg-color">knn</span>
                                 </a>
                             
                         </div>
@@ -791,9 +766,9 @@ OutputSize = (16 - 1) * 2 - 2 * 1 + 4 + 0 = 32
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="深度学习代码问题">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="度量学习">
                         
-                        <span class="card-title">深度学习代码问题</span>
+                        <span class="card-title">度量学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -821,8 +796,8 @@ OutputSize = (16 - 1) * 2 - 2 * 1 + 4 + 0 = 32
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/tensor/">
-                        <span class="chip bg-color">tensor</span>
+                    <a href="/tags/Metric-Learning/">
+                        <span class="chip bg-color">Metric Learning</span>
                     </a>
                     
                 </div>
@@ -1068,7 +1043,7 @@ OutputSize = (16 - 1) * 2 - 2 * 1 + 4 + 0 = 32
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">185k</span>
+                        class="white-color">170.1k</span>
             
             
             
