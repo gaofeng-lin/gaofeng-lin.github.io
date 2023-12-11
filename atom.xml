@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2023-11-24T03:20:47.549Z</updated>
+  <updated>2023-12-11T02:34:47.919Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深度学习</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-12-10T16:00:00.000Z</published>
+    <updated>2023-12-11T02:34:47.919Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;CUDA、CUDNN相关的内容&quot;&gt;&lt;a href=&quot;#CUDA、CUDNN相关的内容&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    
+    <category term="深度学习理论知识" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/"/>
+    
+    <category term="循环神经网络（RNN）" scheme="https://gaofeng-lin.github.io/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88RNN%EF%BC%89/"/>
+    
+    <category term="卷积神经网络（CNN）" scheme="https://gaofeng-lin.github.io/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88CNN%EF%BC%89/"/>
+    
+    <category term="深度学习数据操作" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/"/>
+    
+    <category term="深度学习常见模型解析" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B%E8%A7%A3%E6%9E%90/"/>
+    
+    <category term="pytorch与cuda安装" scheme="https://gaofeng-lin.github.io/tags/pytorch%E4%B8%8Ecuda%E5%AE%89%E8%A3%85/"/>
+    
+  </entry>
   
   <entry>
     <title>pytorch与cuda安装</title>
@@ -521,39 +558,6 @@
     <category term="JavaScript" scheme="https://gaofeng-lin.github.io/tags/JavaScript/"/>
     
     <category term="Typescript" scheme="https://gaofeng-lin.github.io/tags/Typescript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端语法+基础知识</title>
-    <link href="https://gaofeng-lin.github.io/posts/43285/"/>
-    <id>https://gaofeng-lin.github.io/posts/43285/</id>
-    <published>2022-05-31T16:00:00.000Z</published>
-    <updated>2023-06-18T15:45:25.760Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;javascript、ES6查漏补缺网址&quot;&gt;&lt;a href=&quot;#javascript、ES6查漏补缺网址&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端开发" scheme="https://gaofeng-lin.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="JavaScript" scheme="https://gaofeng-lin.github.io/tags/JavaScript/"/>
-    
-    <category term="Vue" scheme="https://gaofeng-lin.github.io/tags/Vue/"/>
-    
-    <category term="React" scheme="https://gaofeng-lin.github.io/tags/React/"/>
-    
-    <category term="Json" scheme="https://gaofeng-lin.github.io/tags/Json/"/>
-    
-    <category term="Yarn" scheme="https://gaofeng-lin.github.io/tags/Yarn/"/>
     
   </entry>
   
