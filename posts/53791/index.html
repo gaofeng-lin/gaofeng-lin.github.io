@@ -488,14 +488,14 @@ CUDA看作是一个工作台，上面配有很多工具，如锤子、螺丝刀�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    21k
+                    21.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    78 分
+                    82 分
                 </div>
                 
 
@@ -1072,13 +1072,152 @@ tensorboard --logdir=./202307230293 --port 8123<span aria-hidden="true" class="l
 <h3 id="transformer"><a href="#transformer" class="headerlink" title="transformer"></a>transformer</h3><p><a target="_blank" rel="noopener" href="https://lulaoshi.info/deep-learning/attention/transformer-attention.html">原文</a></p>
 <p>整体架构：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2019-9-25_23-25-14.png" alt=""></p>
-<h3 id="encoder部分"><a href="#encoder部分" class="headerlink" title="encoder部分"></a>encoder部分</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2021-10-03-transformer-encoder.png" alt=""></p>
+<h4 id="encoder部分"><a href="#encoder部分" class="headerlink" title="encoder部分"></a>encoder部分</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2021-10-03-transformer-encoder.png" alt=""></p>
 <p>输入形状：（len,d）,len是句子中单词个数，d表示词向量维度。<strong>每一个 Encoder Block输出的矩阵维度与输入完全一致。</strong></p>
 <p><strong>输入的是图像如何？</strong></p>
 <p>对于图像数据来说，第一步必须先将图像数据转换成序列数据，但是怎么做呢？假如我们有一张图片形状为（h,w,c），patch大小为p，那么我们可以创建n个图像patches，可以表示为(n,p,p,c)，其中n = hw/p^2，n就是序列的长度，类似一个句子中单词的个数。在上面的图中，可以看到图片被分为了9个patches。</p>
 <p>假设每一个patch是（16,16,3）,铺平后是16<em>16</em>3=768；即一个patch变为长度为768的向量，这类似于词向量维度</p>
 <p>一般来说，在送入encoder之前，还需要添加位置信息</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-12-05_16-57-24.png" alt=""></p>
+<h4 id="基于transformer的视频外推和内插"><a href="#基于transformer的视频外推和内插" class="headerlink" title="基于transformer的视频外推和内插"></a>基于transformer的视频外推和内插</h4><p>transformer能接受的输入形状是(batch_size, len, d_model)<br>假如我的任务是视频帧预测，图像原始输入形状是：(batch_size, seq_len, num_channels, width, height)<br>那么进入模型前，需要转换为：(-1, seq_len, d_model)</p>
+<p>外推和内插的一个区别就在于位置编码有些不同。</p>
+<ol>
+<li>外推来说，位置编码是为了让模型知道序列中各元素的顺序，关注的是len和d_model，为了和词嵌入匹配；从外推的代码看，特征和标签都是用的同一个位置编码，说明它的作用就是一个位置信息。</li>
+<li>内插来说，可以看到，假如位置编码的长度是len，因为输入是一头一尾，所以它们两个的位置编码是：self.positional_encoding[0]和self.positional_encoding[-1]；而中间的插值（预测值）位置编码就是self.positional_encoding[1:-1]</li>
+</ol>
+<p>看看代码：</p>
+<p>外推：<br></p><pre class="line-numbers language-none"><code class="language-none">import torch
+import torch.nn as nn
+
+class VideoFramePredictor(nn.Module):
+    def __init__(self, num_channels, width, height, seq_len, d_model, nhead, num_encoder_layers, num_decoder_layers):
+        super(VideoFramePredictor, self).__init__()
+
+        self.seq_len = seq_len
+        self.d_model = d_model
+
+        # 将输入帧转换为模型可以处理的维度
+        self.linear_in = nn.Linear(num_channels * width * height, d_model)
+
+        # 位置编码
+        self.positional_encoding = nn.Parameter(torch.zeros(seq_len, d_model))
+        position = torch.arange(0, seq_len, dtype=torch.float).unsqueeze(1)
+        div_term = torch.exp(torch.arange(0, d_model, 2).float() * (-torch.log(torch.tensor(10000.0)) / d_model))
+        self.positional_encoding[:, 0::2] = torch.sin(position * div_term)
+        self.positional_encoding[:, 1::2] = torch.cos(position * div_term)
+
+        # Transformer模型
+        self.transformer = nn.Transformer(
+            d_model=d_model, 
+            nhead=nhead, 
+            num_encoder_layers=num_encoder_layers,
+            num_decoder_layers=num_decoder_layers
+        )
+
+        # 将Transformer的输出转换回帧的形状
+        self.linear_out = nn.Linear(d_model, num_channels * width * height)
+
+    def forward(self, src, tgt):
+        # 将输入和目标帧序列转换为模型可以处理的维度
+        src = self.linear_in(src.view(-1, self.seq_len, self.d_model)) + self.positional_encoding
+        tgt = self.linear_in(tgt.view(-1, self.seq_len, self.d_model)) + self.positional_encoding
+
+        # 传递给Transformer
+        output = self.transformer(src, tgt)
+
+        # 转换回原始帧的形状
+        output = self.linear_out(output)
+        return output.view(-1, self.seq_len, num_channels, width, height)
+
+# 创建模型实例
+num_channels = 1
+width = 64  # 假设帧宽度为64
+height = 64  # 假设帧高度为64
+seq_len = 10
+d_model = 512
+nhead = 8
+num_encoder_layers = 3
+num_decoder_layers = 3
+
+model = VideoFramePredictor(num_channels, width, height, seq_len, d_model, nhead, num_encoder_layers, num_decoder_layers)
+
+# 假设输入和目标序列
+input_sequence = torch.randn(seq_len, num_channels, width, height)
+target_sequence = torch.randn(seq_len, num_channels, width, height)
+
+# 前向传播
+predicted_sequence = model(input_sequence, target_sequence)
+
+print(predicted_sequence.shape)  # 输出预测序列的形状
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<p>内插：<br></p><pre class="line-numbers language-none"><code class="language-none">import torch
+import torch.nn as nn
+
+class VideoFrameInterpolator(nn.Module):
+
+    def _generate_positional_encoding(self, max_len, d_model):
+        """生成位置编码"""
+        positional_encoding = torch.zeros(max_len, d_model)
+        position = torch.arange(0, max_len, dtype=torch.float).unsqueeze(1)
+        div_term = torch.exp(torch.arange(0, d_model, 2).float() * (-math.log(10000.0) / d_model))
+        
+        positional_encoding[:, 0::2] = torch.sin(position * div_term)
+        positional_encoding[:, 1::2] = torch.cos(position * div_term)
+
+        return positional_encoding
+
+
+    def __init__(self, num_channels, width, height, total_seq_len, d_model, nhead, num_encoder_layers, num_decoder_layers):
+        super(VideoFrameInterpolator, self).__init__()
+        # 其他初始化代码保持不变
+
+
+
+        super(VideoFrameInterpolator, self).__init__()
+
+        self.total_seq_len = total_seq_len
+        self.d_model = d_model
+
+        # 将输入帧转换为模型可以处理的维度
+        self.linear_in = nn.Linear(num_channels * width * height, d_model)
+
+        # 初始化位置编码
+        self.positional_encoding = self._generate_positional_encoding(total_seq_len, d_model)
+
+        # Transformer模型
+        self.transformer = nn.Transformer(
+            d_model=d_model, 
+            nhead=nhead, 
+            num_encoder_layers=num_encoder_layers,
+            num_decoder_layers=num_decoder_layers
+        )
+
+        # 将Transformer的输出转换回帧的形状
+        self.linear_out = nn.Linear(d_model, num_channels * width * height)
+
+    def forward(self, start_frame, end_frame):
+        # 对起始帧和结束帧进行编码
+        start_frame_encoded = self.linear_in(start_frame.view(-1, num_channels * width * height)) + self.positional_encoding[0]
+        end_frame_encoded = self.linear_in(end_frame.view(-1, num_channels * width * height)) + self.positional_encoding[-1]
+
+        # 对于解码器，我们初始化一个空的序列用于生成插值帧
+        # 在训练时，这可以替换为真实的目标序列
+        decoder_input = torch.zeros(self.total_seq_len - 2, start_frame.size(0), self.d_model, device=start_frame.device)
+        decoder_input = decoder_input + self.positional_encoding[1:-1]
+
+        # 编码器输入是起始帧和结束帧
+        encoder_input = torch.cat([start_frame_encoded.unsqueeze(0), end_frame_encoded.unsqueeze(0)], dim=0)
+
+        # Transformer模型生成插值帧
+        interpolated_frames = self.transformer(encoder_input, decoder_input)
+
+        # 转换回原始帧的形状
+        interpolated_frames = self.linear_out(interpolated_frames)
+        return interpolated_frames.view(-1, self.total_seq_len - 2, num_channels, width, height)
+
+# 创建模型实例和测试数据
+# [剩余部分与之前代码相同]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
 <h2 id="理论知识"><a href="#理论知识" class="headerlink" title="理论知识"></a>理论知识</h2><h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>regression:回归</p>
 <p>training data set = training set:训练数据集/训练集</p>
 <p>sample = data point = data instance:样本/数据点/数据样本</p>
@@ -1978,7 +2117,7 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">162.1k</span>
+                        class="white-color">163.1k</span>
             
             
             
