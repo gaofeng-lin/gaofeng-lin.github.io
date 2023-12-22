@@ -7,6 +7,7 @@ if "%1"=="pull" (
  git add .
  git commit -m "%1"
  git push origin hexo:hexo
+ hexo clean
  hexo g
  hexo d
 )
