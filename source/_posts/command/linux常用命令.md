@@ -312,7 +312,17 @@ cp -r /home/packageA /home/packageB
 3. `mv 旧文件夹名 新文件夹名`   //更改名字
 
 
-##  touch命令(创建文件)
+## 批量操作
+### 批量删除文件夹
+某个文件夹下，有很多文件名形如：checkpoint_{epoch}_{loss}.pth；其中epoch和loss是变量；我现在希望把epoch小于400的删除
+
+```
+ls checkpoint_*.pth | awk -F'_' '{if ($2 < 400) print $0}' | xargs rm
+```
+
+## 文件操作
+
+###  touch命令(创建文件)
 `touch`命令用于修改文件或者目录的时间属性，包括存取时间和更改时间，若文件不存在，系统会建立一个新的文件。
 
 创建一个空白文件，如果文件已经存在，它将更改文件的访问时间。
@@ -339,7 +349,7 @@ touch -m /tmp/file.txt && stat /tmp/file.txt
 touch -am -t 202007010000.00 /tmp/file.txt && stat /tmp/file.txt
 ```
 
-##  cat命令(显示文件内容)
+### cat命令(显示文件内容)
 `cat`命令属于文件管理，用于连接文件并打印到标准输出设备上，`cat`经常用来显示文件的内容，注意，当文件较大时，文本在屏幕上迅速闪过，会出现滚屏现象，此时往往看不清所显示的内容，为了控制滚屏，可以按`Ctrl+S`键停止滚屏，按`Ctrl+Q`键可以恢复滚屏，此外可以用`more`等命令进行读文件并分页显示。
 
 使用`cat`命令创建一个文件，输入文件信息后按`Ctrl+D`输出`EOF`标识后结束输入。
@@ -376,6 +386,22 @@ cat /dev/null > file2.txt
 
 ```shell
 cat file.txt file2.txt > file3.txt
+```
+
+### 文件内容覆盖/追加内容（cat命令）
+
+```
+cat  textfile1 > textfile2 //使用“>” 重定向后 文件 中原本的内容会被覆盖
+
+cat  textfile1 >> textfile2 //">>" 代表 将输出的内容已追加的方式重定向到文件
+
+```
+cat 原单词concatenate(用途是连接文件或标准输入并打印。)
+cat 命令用于将所有文件内容打印到屏幕上。
+语法:
+
+```
+cat 文件
 ```
 
 ##  Centos7特性
@@ -782,21 +808,7 @@ systemctl enable sshd //开机自启动ssh服务
 docker 和其他服务也适用
 ```
 
-##  文件内容覆盖/追加内容（cat命令）
 
-```
-cat  textfile1 > textfile2 //使用“>” 重定向后 文件 中原本的内容会被覆盖
-
-cat  textfile1 >> textfile2 //">>" 代表 将输出的内容已追加的方式重定向到文件
-
-```
-cat 原单词concatenate(用途是连接文件或标准输入并打印。)
-cat 命令用于将所有文件内容打印到屏幕上。
-语法:
-
-```
-cat 文件
-```
 
 
 ##  linux中的&& 和 &，| 和 ||
