@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2023-12-22T08:35:09.132Z</updated>
+  <updated>2023-12-25T01:56:31.303Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>时空预测</title>
+    <link href="https://gaofeng-lin.github.io/posts/d7c97432/"/>
+    <id>https://gaofeng-lin.github.io/posts/d7c97432/</id>
+    <published>2023-12-24T16:00:00.000Z</published>
+    <updated>2023-12-25T01:56:31.303Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;SimVP-Towards-Simple-yet-Powerful-Spatiotemporal-Predictive-Learning&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="research_papers" scheme="https://gaofeng-lin.github.io/categories/research-papers/"/>
+    
+    
+    <category term="computer vision" scheme="https://gaofeng-lin.github.io/tags/computer-vision/"/>
+    
+    <category term="Spatiotemporal predictive learning" scheme="https://gaofeng-lin.github.io/tags/Spatiotemporal-predictive-learning/"/>
+    
+  </entry>
   
   <entry>
     <title>ai</title>
@@ -255,9 +282,9 @@
     <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
     
     
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
-    
     <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
     <category term="Slurm" scheme="https://gaofeng-lin.github.io/tags/Slurm/"/>
     
@@ -487,37 +514,6 @@
   </entry>
   
   <entry>
-    <title>Mysql</title>
-    <link href="https://gaofeng-lin.github.io/posts/62688/"/>
-    <id>https://gaofeng-lin.github.io/posts/62688/</id>
-    <published>2022-03-05T16:00:00.000Z</published>
-    <updated>2023-06-18T15:45:25.752Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Mysql变量定义与赋值&quot;&gt;&lt;a href=&quot;#Mysql变量定义与赋值&quot; class=&quot;headerlink&quot; title=&quot;Mysql变量定义与赋值&quot;&gt;&lt;/a&gt;Mysql变量定义与赋值&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="数据库" scheme="https://gaofeng-lin.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="数据库" scheme="https://gaofeng-lin.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
-    
-    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-    <category term="MySQL" scheme="https://gaofeng-lin.github.io/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Docker</title>
     <link href="https://gaofeng-lin.github.io/posts/40991/"/>
     <id>https://gaofeng-lin.github.io/posts/40991/</id>
@@ -538,38 +534,40 @@
     <category term="运维" scheme="https://gaofeng-lin.github.io/categories/%E8%BF%90%E7%BB%B4/"/>
     
     
-    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
-    
     <category term="Docker" scheme="https://gaofeng-lin.github.io/tags/Docker/"/>
+    
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
   <entry>
-    <title>Shell 命令</title>
-    <link href="https://gaofeng-lin.github.io/posts/20005/"/>
-    <id>https://gaofeng-lin.github.io/posts/20005/</id>
+    <title>Mysql</title>
+    <link href="https://gaofeng-lin.github.io/posts/62688/"/>
+    <id>https://gaofeng-lin.github.io/posts/62688/</id>
     <published>2022-03-05T16:00:00.000Z</published>
-    <updated>2023-06-18T15:45:25.753Z</updated>
+    <updated>2023-06-18T15:45:25.752Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;基本知识-命令&quot;&gt;&lt;a href=&quot;#基本知识-命令&quot; class=&quot;headerlink&quot; title=&quot;基本知识/命令&quot;&gt;&lt;/a&gt;基本知识/命令&lt;/h2&gt;&lt;h3 id=&quot;变量赋值语句不能有空格&quot;&gt;&lt;a href=&quot;#变量赋值语句不能有空格&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;Mysql变量定义与赋值&quot;&gt;&lt;a href=&quot;#Mysql变量定义与赋值&quot; class=&quot;headerlink&quot; title=&quot;Mysql变量定义与赋值&quot;&gt;&lt;/a&gt;Mysql变量定义与赋值&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
         
       
     
     
     
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
+    <category term="数据库" scheme="https://gaofeng-lin.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-    
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
     <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
-    <category term="sed" scheme="https://gaofeng-lin.github.io/tags/sed/"/>
+    <category term="数据库" scheme="https://gaofeng-lin.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
+    
+    <category term="MySQL" scheme="https://gaofeng-lin.github.io/tags/MySQL/"/>
     
   </entry>
   
