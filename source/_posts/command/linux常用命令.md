@@ -431,6 +431,49 @@ systemctl disable firewalld.service
 **不同的系统命令可能不同**
 
 
+### 防火墙限制ip访问
+可以使用ufw或iptables。
+下面以ufw为例：
+1. 添加允许进入的规则:
+```
+sudo ufw allow in on <网卡> from <ip>
+
+```
+
+2. 添加允许输出的规则
+```
+sudo ufw allow out on <网卡> to <ip>
+```
+
+这些规则将确保你的系统只能通过指定的网卡与指定的 IP 地址通信。
+
+某个例子：
+```
+sudo ufw allow in on eth0 from 192.168.1.100
+sudo ufw allow out on eth0 to 192.168.1.100
+```
+
+3. 一旦添加了规则，需要重新加载 ufw 以应用更改：
+```
+sudo ufw reload
+```
+
+4. 如果想删除某个规则
+```
+# 查看当前规则:
+sudo ufw status numbered
+
+# 使用 ufw delete 命令，后跟规则编号
+sudo ufw delete 1
+
+# 重启
+sudo ufw reset
+
+
+```
+
+
+
 ##  修改主机名
 ###  debian/ubuntu系列
 
