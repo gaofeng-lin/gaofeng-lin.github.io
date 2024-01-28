@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2023-11-28T13:43:09.031Z</updated>
+  <updated>2023-12-28T10:49:24.385Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -17,11 +17,88 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>pytorch与cuda安装</title>
-    <link href="https://gaofeng-lin.github.io/posts/43034/"/>
-    <id>https://gaofeng-lin.github.io/posts/43034/</id>
-    <published>2023-11-23T16:00:00.000Z</published>
-    <updated>2023-11-28T13:43:09.031Z</updated>
+    <title>时空预测</title>
+    <link href="https://gaofeng-lin.github.io/posts/d7c97432/"/>
+    <id>https://gaofeng-lin.github.io/posts/d7c97432/</id>
+    <published>2023-12-24T16:00:00.000Z</published>
+    <updated>2023-12-28T10:49:24.385Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;SimVP-Towards-Simple-yet-Powerful-Spatiotemporal-Predictive-Learning&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="research_papers" scheme="https://gaofeng-lin.github.io/categories/research-papers/"/>
+    
+    
+    <category term="computer vision" scheme="https://gaofeng-lin.github.io/tags/computer-vision/"/>
+    
+    <category term="Spatiotemporal predictive learning" scheme="https://gaofeng-lin.github.io/tags/Spatiotemporal-predictive-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rnn</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-12-21T16:00:00.000Z</published>
+    <updated>2023-12-27T14:47:07.347Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;rnn相关的内容&quot;&gt;&lt;a href=&quot;#rnn相关的内容&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="rnn" scheme="https://gaofeng-lin.github.io/categories/rnn/"/>
+    
+    
+    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ai</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-12-21T16:00:00.000Z</published>
+    <updated>2023-12-27T14:47:07.346Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;ai相关的内容&quot;&gt;&lt;a href=&quot;#ai相关的内容&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-12-10T16:00:00.000Z</published>
+    <updated>2024-01-10T12:39:35.698Z</updated>
     
     
       
@@ -37,188 +114,17 @@
     <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
     
     
-    <category term="cuda" scheme="https://gaofeng-lin.github.io/tags/cuda/"/>
+    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
     
-    <category term="pytorch" scheme="https://gaofeng-lin.github.io/tags/pytorch/"/>
+    <category term="深度学习理论知识" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/"/>
     
-  </entry>
-  
-  <entry>
-    <title>循环神经网络</title>
-    <link href="https://gaofeng-lin.github.io/posts/7224/"/>
-    <id>https://gaofeng-lin.github.io/posts/7224/</id>
-    <published>2023-11-23T16:00:00.000Z</published>
-    <updated>2023-12-07T13:53:40.536Z</updated>
+    <category term="循环神经网络（RNN）" scheme="https://gaofeng-lin.github.io/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88RNN%EF%BC%89/"/>
     
+    <category term="卷积神经网络（CNN）" scheme="https://gaofeng-lin.github.io/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88CNN%EF%BC%89/"/>
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;循环神经网络（RNN）&quot;&gt;&lt;a href=&quot;#循环神经网络（RNN）&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <category term="深度学习数据操作" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/"/>
     
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="rnn" scheme="https://gaofeng-lin.github.io/tags/rnn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>度量学习</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-11-23T16:00:00.000Z</published>
-    <updated>2023-11-28T13:43:09.032Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;度量学习&quot;&gt;&lt;a href=&quot;#度量学习&quot; class=&quot;headerlink&quot; title=&quot;度量学习&quot;&gt;&lt;/a&gt;度量学习&lt;/h2&gt;&lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="Metric Learning" scheme="https://gaofeng-lin.github.io/tags/Metric-Learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>卷积神经网络</title>
-    <link href="https://gaofeng-lin.github.io/posts/21309/"/>
-    <id>https://gaofeng-lin.github.io/posts/21309/</id>
-    <published>2023-11-23T16:00:00.000Z</published>
-    <updated>2023-11-28T13:43:09.032Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;卷积神经网络（CNN）&quot;&gt;&lt;a href=&quot;#卷积神经网络（CNN）&quot; class=&quot;headerlink&quot; title=&quot;卷积神经网络（CNN）&quot;&gt;&lt;/a&gt;卷积神经网络（CNN）&lt;/h2&gt;&lt;h3 id=&quot;传统神经网络&quot;&gt;&lt;a href=&quot;#传统神经网络&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="cnn" scheme="https://gaofeng-lin.github.io/tags/cnn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深度学习数据操作</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-11-23T16:00:00.000Z</published>
-    <updated>2023-11-28T13:43:09.033Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;dataloader解析&quot;&gt;&lt;a href=&quot;#dataloader解析&quot; class=&quot;headerlink&quot; title=&quot;dataloader解析&quot;&gt;&lt;/a&gt;dataloader解析&lt;/h2&gt;&lt;h3 id=&quot;简单例子&quot;&gt;&lt;a href=&quot;#简单例子&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="dataloader" scheme="https://gaofeng-lin.github.io/tags/dataloader/"/>
-    
-    <category term="numpy" scheme="https://gaofeng-lin.github.io/tags/numpy/"/>
-    
-    <category term="tensor" scheme="https://gaofeng-lin.github.io/tags/tensor/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深度学习常见模型解析</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-11-23T16:00:00.000Z</published>
-    <updated>2023-11-28T13:43:09.033Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;卷积相关的内容&quot;&gt;&lt;a href=&quot;#卷积相关的内容&quot; class=&quot;headerlink&quot; title=&quot;卷积相关的内容&quot;&gt;&lt;/a&gt;卷积相关的内容&lt;/h2&gt;&lt;h3 id=&quot;网络模型参数的关系&quot;&gt;&lt;a href=&quot;#网络模型参数的关系&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="convlstm" scheme="https://gaofeng-lin.github.io/tags/convlstm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习算法</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-11-23T16:00:00.000Z</published>
-    <updated>2023-11-28T13:43:09.032Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;算法介绍&quot;&gt;&lt;a href=&quot;#算法介绍&quot; class=&quot;headerlink&quot; title=&quot;算法介绍&quot;&gt;&lt;/a&gt;算法介绍&lt;/h2&gt;&lt;h3 id=&quot;KNN算法&quot;&gt;&lt;a href=&quot;#KNN算法&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="knn" scheme="https://gaofeng-lin.github.io/tags/knn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深度学习代码问题</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-11-23T16:00:00.000Z</published>
-    <updated>2023-11-28T13:43:09.033Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;遇到的问题&quot;&gt;&lt;a href=&quot;#遇到的问题&quot; class=&quot;headerlink&quot; title=&quot;遇到的问题&quot;&gt;&lt;/a&gt;遇到的问题&lt;/h2&gt;&lt;h3 id=&quot;loss-backward-耗时严重&quot;&gt;&lt;a href=&quot;#loss-backward-耗时严重&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="tensor" scheme="https://gaofeng-lin.github.io/tags/tensor/"/>
+    <category term="pytorch与cuda安装" scheme="https://gaofeng-lin.github.io/tags/pytorch%E4%B8%8Ecuda%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
@@ -227,7 +133,7 @@
     <link href="https://gaofeng-lin.github.io/posts/7948/"/>
     <id>https://gaofeng-lin.github.io/posts/7948/</id>
     <published>2023-05-08T16:00:00.000Z</published>
-    <updated>2023-07-03T03:02:17.227Z</updated>
+    <updated>2023-12-22T16:25:39.202Z</updated>
     
     
       
@@ -248,40 +154,11 @@
   </entry>
   
   <entry>
-    <title>深度学习理论知识</title>
-    <link href="https://gaofeng-lin.github.io/posts/48513/"/>
-    <id>https://gaofeng-lin.github.io/posts/48513/</id>
-    <published>2023-02-22T16:00:00.000Z</published>
-    <updated>2023-12-07T13:53:40.538Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;预备知识&quot;&gt;&lt;a href=&quot;#预备知识&quot; class=&quot;headerlink&quot; title=&quot;预备知识&quot;&gt;&lt;/a&gt;预备知识&lt;/h2&gt;&lt;h3 id=&quot;名词解释&quot;&gt;&lt;a href=&quot;#名词解释&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="熵" scheme="https://gaofeng-lin.github.io/tags/%E7%86%B5/"/>
-    
-    <category term="矩阵计算" scheme="https://gaofeng-lin.github.io/tags/%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97/"/>
-    
-    <category term="batch" scheme="https://gaofeng-lin.github.io/tags/batch/"/>
-    
-  </entry>
-  
-  <entry>
     <title>金融相关</title>
     <link href="https://gaofeng-lin.github.io/posts/8600/"/>
     <id>https://gaofeng-lin.github.io/posts/8600/</id>
     <published>2023-01-12T16:00:00.000Z</published>
-    <updated>2023-07-03T03:02:17.230Z</updated>
+    <updated>2023-12-22T16:25:39.207Z</updated>
     
     
       
@@ -306,7 +183,7 @@
     <link href="https://gaofeng-lin.github.io/posts/569/"/>
     <id>https://gaofeng-lin.github.io/posts/569/</id>
     <published>2022-12-20T16:00:00.000Z</published>
-    <updated>2023-12-07T13:53:40.538Z</updated>
+    <updated>2023-12-22T16:25:39.207Z</updated>
     
     
       
@@ -333,7 +210,7 @@
     <link href="https://gaofeng-lin.github.io/posts/8600/"/>
     <id>https://gaofeng-lin.github.io/posts/8600/</id>
     <published>2022-12-12T16:00:00.000Z</published>
-    <updated>2023-12-07T13:53:40.537Z</updated>
+    <updated>2024-01-28T15:06:11.173Z</updated>
     
     
       
@@ -362,7 +239,7 @@
     <link href="https://gaofeng-lin.github.io/posts/23912/"/>
     <id>https://gaofeng-lin.github.io/posts/23912/</id>
     <published>2022-12-10T16:00:00.000Z</published>
-    <updated>2023-07-03T03:02:17.223Z</updated>
+    <updated>2023-12-22T16:25:39.199Z</updated>
     
     
       
@@ -389,7 +266,7 @@
     <link href="https://gaofeng-lin.github.io/posts/34673/"/>
     <id>https://gaofeng-lin.github.io/posts/34673/</id>
     <published>2022-09-10T16:00:00.000Z</published>
-    <updated>2023-07-03T03:02:17.220Z</updated>
+    <updated>2023-12-22T16:25:39.195Z</updated>
     
     
       
@@ -405,9 +282,9 @@
     <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
     
     
-    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
-    
     <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
+    
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
     <category term="Slurm" scheme="https://gaofeng-lin.github.io/tags/Slurm/"/>
     
@@ -418,7 +295,7 @@
     <link href="https://gaofeng-lin.github.io/posts/27392/"/>
     <id>https://gaofeng-lin.github.io/posts/27392/</id>
     <published>2022-09-08T16:00:00.000Z</published>
-    <updated>2023-07-03T03:02:17.229Z</updated>
+    <updated>2023-12-22T16:25:39.202Z</updated>
     
     
       
@@ -446,7 +323,7 @@
     <link href="https://gaofeng-lin.github.io/posts/118/"/>
     <id>https://gaofeng-lin.github.io/posts/118/</id>
     <published>2022-08-16T16:00:00.000Z</published>
-    <updated>2023-07-22T13:00:45.707Z</updated>
+    <updated>2023-12-22T16:25:39.205Z</updated>
     
     
       
@@ -477,7 +354,7 @@
     <link href="https://gaofeng-lin.github.io/posts/9809/"/>
     <id>https://gaofeng-lin.github.io/posts/9809/</id>
     <published>2022-07-03T16:00:00.000Z</published>
-    <updated>2023-07-03T03:02:17.226Z</updated>
+    <updated>2023-12-22T16:25:39.200Z</updated>
     
     
       
@@ -502,7 +379,7 @@
     <link href="https://gaofeng-lin.github.io/posts/62822/"/>
     <id>https://gaofeng-lin.github.io/posts/62822/</id>
     <published>2022-06-13T16:00:00.000Z</published>
-    <updated>2023-07-03T03:02:17.220Z</updated>
+    <updated>2023-12-22T16:25:39.208Z</updated>
     
     
       
@@ -529,7 +406,7 @@
     <link href="https://gaofeng-lin.github.io/posts/43285/"/>
     <id>https://gaofeng-lin.github.io/posts/43285/</id>
     <published>2022-05-31T16:00:00.000Z</published>
-    <updated>2023-07-03T03:02:17.225Z</updated>
+    <updated>2023-12-22T16:25:39.210Z</updated>
     
     
       
@@ -545,15 +422,154 @@
     <category term="前端开发" scheme="https://gaofeng-lin.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="JavaScript" scheme="https://gaofeng-lin.github.io/tags/JavaScript/"/>
-    
     <category term="Vue" scheme="https://gaofeng-lin.github.io/tags/Vue/"/>
     
     <category term="React" scheme="https://gaofeng-lin.github.io/tags/React/"/>
     
+    <category term="JavaScript" scheme="https://gaofeng-lin.github.io/tags/JavaScript/"/>
+    
     <category term="Json" scheme="https://gaofeng-lin.github.io/tags/Json/"/>
     
     <category term="Yarn" scheme="https://gaofeng-lin.github.io/tags/Yarn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式</title>
+    <link href="https://gaofeng-lin.github.io/posts/41682/"/>
+    <id>https://gaofeng-lin.github.io/posts/41682/</id>
+    <published>2022-05-25T16:00:00.000Z</published>
+    <updated>2023-12-22T16:25:39.204Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;生产者和消费者&quot;&gt;&lt;a href=&quot;#生产者和消费者&quot; class=&quot;headerlink&quot; title=&quot;生产者和消费者&quot;&gt;&lt;/a&gt;生产者和消费者&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="设计模式" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java框架+工具</title>
+    <link href="https://gaofeng-lin.github.io/posts/10033/"/>
+    <id>https://gaofeng-lin.github.io/posts/10033/</id>
+    <published>2022-04-27T16:00:00.000Z</published>
+    <updated>2023-12-22T16:25:39.209Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Spring&quot;&gt;&lt;a href=&quot;#Spring&quot; class=&quot;headerlink&quot; title=&quot;Spring&quot;&gt;&lt;/a&gt;Spring&lt;/h2&gt;&lt;h3 id=&quot;IDEA创建spring&quot;&gt;&lt;a href=&quot;#IDEA创建spring&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编程语言" scheme="https://gaofeng-lin.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+    
+    <category term="Spring" scheme="https://gaofeng-lin.github.io/tags/Spring/"/>
+    
+    <category term="Java" scheme="https://gaofeng-lin.github.io/tags/Java/"/>
+    
+    <category term="SpringBoot" scheme="https://gaofeng-lin.github.io/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>牛客网</title>
+    <link href="https://gaofeng-lin.github.io/posts/43473/"/>
+    <id>https://gaofeng-lin.github.io/posts/43473/</id>
+    <published>2022-04-21T16:00:00.000Z</published>
+    <updated>2023-12-22T16:25:39.200Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;牛客网&quot;&gt;&lt;a href=&quot;#牛客网&quot; class=&quot;headerlink&quot; title=&quot;牛客网&quot;&gt;&lt;/a&gt;牛客网&lt;/h2&gt;&lt;h3 id=&quot;输入&quot;&gt;&lt;a href=&quot;#输入&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编程语言" scheme="https://gaofeng-lin.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+    
+    <category term="牛客网" scheme="https://gaofeng-lin.github.io/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mysql</title>
+    <link href="https://gaofeng-lin.github.io/posts/62688/"/>
+    <id>https://gaofeng-lin.github.io/posts/62688/</id>
+    <published>2022-03-05T16:00:00.000Z</published>
+    <updated>2023-12-22T16:25:39.194Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Mysql变量定义与赋值&quot;&gt;&lt;a href=&quot;#Mysql变量定义与赋值&quot; class=&quot;headerlink&quot; title=&quot;Mysql变量定义与赋值&quot;&gt;&lt;/a&gt;Mysql变量定义与赋值&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://gaofeng-lin.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="数据库" scheme="https://gaofeng-lin.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
+    
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+    <category term="MySQL" scheme="https://gaofeng-lin.github.io/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shell 命令</title>
+    <link href="https://gaofeng-lin.github.io/posts/20005/"/>
+    <id>https://gaofeng-lin.github.io/posts/20005/</id>
+    <published>2022-03-05T16:00:00.000Z</published>
+    <updated>2023-12-22T16:25:39.195Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;基本知识-命令&quot;&gt;&lt;a href=&quot;#基本知识-命令&quot; class=&quot;headerlink&quot; title=&quot;基本知识/命令&quot;&gt;&lt;/a&gt;基本知识/命令&lt;/h2&gt;&lt;h3 id=&quot;变量赋值语句不能有空格&quot;&gt;&lt;a href=&quot;#变量赋值语句不能有空格&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
+    
+    
+    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
+    
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+    <category term="sed" scheme="https://gaofeng-lin.github.io/tags/sed/"/>
     
   </entry>
   
