@@ -282,9 +282,9 @@
     <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
     
     
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
-    
     <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
     <category term="Slurm" scheme="https://gaofeng-lin.github.io/tags/Slurm/"/>
     
@@ -514,68 +514,60 @@
   </entry>
   
   <entry>
-    <title>Linux知识点+问题</title>
-    <link href="https://gaofeng-lin.github.io/posts/54220/"/>
-    <id>https://gaofeng-lin.github.io/posts/54220/</id>
+    <title>Docker</title>
+    <link href="https://gaofeng-lin.github.io/posts/40991/"/>
+    <id>https://gaofeng-lin.github.io/posts/40991/</id>
     <published>2022-03-05T16:00:00.000Z</published>
-    <updated>2023-09-01T13:08:29.559Z</updated>
+    <updated>2023-10-05T12:59:25.158Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;问题汇总&quot;&gt;&lt;a href=&quot;#问题汇总&quot; class=&quot;headerlink&quot; title=&quot;问题汇总&quot;&gt;&lt;/a&gt;问题汇总&lt;/h2&gt;&lt;h3 id=&quot;error-while-loading-shared-libraries错误解决办法&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;docker下载&quot;&gt;&lt;a href=&quot;#docker下载&quot; class=&quot;headerlink&quot; title=&quot;docker下载&quot;&gt;&lt;/a&gt;docker下载&lt;/h2&gt;&lt;h3 id=&quot;Docker安装&quot;&gt;&lt;a href=&quot;#Docker安装&quot;</summary>
         
       
     
     
     
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
+    <category term="运维" scheme="https://gaofeng-lin.github.io/categories/%E8%BF%90%E7%BB%B4/"/>
     
     
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
+    <category term="Docker" scheme="https://gaofeng-lin.github.io/tags/Docker/"/>
     
     <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-    <category term="持续集成" scheme="https://gaofeng-lin.github.io/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
-    
-    <category term="gcc" scheme="https://gaofeng-lin.github.io/tags/gcc/"/>
-    
-    <category term="Linux权限用法" scheme="https://gaofeng-lin.github.io/tags/Linux%E6%9D%83%E9%99%90%E7%94%A8%E6%B3%95/"/>
-    
-    <category term="make&amp;cmake" scheme="https://gaofeng-lin.github.io/tags/make-cmake/"/>
     
   </entry>
   
   <entry>
-    <title>代理设置</title>
-    <link href="https://gaofeng-lin.github.io/posts/58712/"/>
-    <id>https://gaofeng-lin.github.io/posts/58712/</id>
+    <title>Mysql</title>
+    <link href="https://gaofeng-lin.github.io/posts/62688/"/>
+    <id>https://gaofeng-lin.github.io/posts/62688/</id>
     <published>2022-03-05T16:00:00.000Z</published>
-    <updated>2023-07-29T02:59:04.389Z</updated>
+    <updated>2023-06-18T15:45:25.752Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;浏览器&quot;&gt;&lt;a href=&quot;#浏览器&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;Mysql变量定义与赋值&quot;&gt;&lt;a href=&quot;#Mysql变量定义与赋值&quot; class=&quot;headerlink&quot; title=&quot;Mysql变量定义与赋值&quot;&gt;&lt;/a&gt;Mysql变量定义与赋值&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
         
       
     
     
     
-    <category term="小知识" scheme="https://gaofeng-lin.github.io/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
+    <category term="数据库" scheme="https://gaofeng-lin.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-    <category term="npm" scheme="https://gaofeng-lin.github.io/tags/npm/"/>
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
-    <category term="git" scheme="https://gaofeng-lin.github.io/tags/git/"/>
+    <category term="数据库" scheme="https://gaofeng-lin.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-    <category term="yarn" scheme="https://gaofeng-lin.github.io/tags/yarn/"/>
+    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
-    <category term="梯子" scheme="https://gaofeng-lin.github.io/tags/%E6%A2%AF%E5%AD%90/"/>
+    <category term="MySQL" scheme="https://gaofeng-lin.github.io/tags/MySQL/"/>
     
   </entry>
   
