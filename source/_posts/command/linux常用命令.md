@@ -433,7 +433,9 @@ systemctl disable firewalld.service
 
 ### 防火墙限制ip访问
 可以使用ufw或iptables。
-下面以ufw为例：
+
+**ufw**
+
 1. 添加允许进入的规则:
 ```
 sudo ufw allow in on <网卡> from <ip>
@@ -472,6 +474,37 @@ sudo ufw reset
 
 ```
 
+**iptables**
+
+完全允许某个网口的流量：
+```
+sudo iptables -A INPUT -i eth0 -j ACCEPT
+sudo iptables -A OUTPUT -o eth0 -j ACCEPT
+```
+
+允许与特定 IP 的所有通信（不限制端口）：
+```
+sudo iptables -A OUTPUT -o wlan0 -d 192.168.1.100 -j ACCEPT
+sudo iptables -A INPUT -i wlan0 -s 192.168.1.100 -j ACCEPT
+```
+
+阻止与其他ip的通信：
+```
+sudo iptables -A OUTPUT -o wlan0 -j DROP
+sudo iptables -A INPUT -i wlan0 -j DROP
+```
+
+删除规则：
+```
+# 查看规则号
+sudo iptables -L --line-numbers
+
+# 根据显示的行号来删除对应的规则
+
+sudo iptables -D INPUT 3
+
+
+```
 
 
 ##  修改主机名
