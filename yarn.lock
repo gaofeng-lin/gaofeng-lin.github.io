@@ -824,7 +824,7 @@ has@^1.0.3:
 
 hexo-abbrlink@^2.2.1:
   version "2.2.1"
-  resolved "https://registry.npmjs.org/hexo-abbrlink/-/hexo-abbrlink-2.2.1.tgz"
+  resolved "https://registry.npmmirror.com/hexo-abbrlink/-/hexo-abbrlink-2.2.1.tgz"
   integrity sha512-yvazN7bbrIb7p8QU3nJ/8fbDmir1mFroYvUYcJz5xpc6DtszKggschmqZg6WNUdjhDBFyDwksrIUfwQnw0OOuA==
   dependencies:
     hexo-front-matter "^1.0.0"
