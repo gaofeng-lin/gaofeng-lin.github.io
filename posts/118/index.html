@@ -5,8 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="名词解释, Home of Gaofeng">
-    <meta name="description" content="CFDweno3、weno5在计算流体动力学（CFD）中，WENO，全称为加权基本非振荡器（Weighted Essentially Non-Oscillatory），是一种被广泛应用的数值方法，主要用于解决对流主导的流体动力学问题。
-WE">
+    <meta name="description" content="硬件半导体并行计算vectorization原文链接向量化即“批量操作”，批量操作在物理生活中也很常见，在计算机中最常见的执行模型就是SIMD（Single Instruction Multiple Data），即对批量的数据同时进行同样的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -33,9 +32,9 @@ WE">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -434,12 +433,12 @@ WE">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">
-                                <span class="chip bg-color">并行计算</span>
-                            </a>
-                        
                             <a href="/tags/CFD/">
                                 <span class="chip bg-color">CFD</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">
+                                <span class="chip bg-color">并行计算</span>
                             </a>
                         
                             <a href="/tags/%E5%90%91%E9%87%8F%E5%8C%96/">
@@ -480,14 +479,14 @@ WE">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    10 分
                 </div>
                 
 
@@ -510,10 +509,7 @@ WE">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="CFD"><a href="#CFD" class="headerlink" title="CFD"></a>CFD</h2><h3 id="weno3、weno5"><a href="#weno3、weno5" class="headerlink" title="weno3、weno5"></a>weno3、weno5</h3><p>在计算流体动力学（CFD）中，WENO，全称为加权基本非振荡器（Weighted Essentially Non-Oscillatory），是一种被广泛应用的数值方法，主要用于解决对流主导的流体动力学问题。</p>
-<p>WENO方法的主要特点是能够在光滑区域中实现高阶精度，同时在激波和不连续性附近保持非振荡的解。这是通过对一组不同的预测子方案（即预测子 stencil）进行非线性加权来实现的，每个预测子方案对应于不同的插值多项式。</p>
-<p>“WENO3”和“WENO5”指的是WENO方法的不同变体，数字表示用于构造预测子方案的插值多项式的阶数。例如，WENO3表示使用二阶插值多项式，而WENO5表示使用四阶插值多项式。<strong>理论上，WENO5在光滑区域的精度高于WENO3，但是在激波和不连续性附近，WENO5和WENO3的性能差距就不那么明显了。</strong></p>
-<h2 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h2><h3 id="半导体"><a href="#半导体" class="headerlink" title="半导体"></a>半导体</h3><h2 id="并行计算"><a href="#并行计算" class="headerlink" title="并行计算"></a>并行计算</h2><h3 id="vectorization"><a href="#vectorization" class="headerlink" title="vectorization"></a>vectorization</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/337756824">原文链接</a><br>向量化即“批量操作”，批量操作在物理生活中也很常见，在计算机中最常见的执行模型就是SIMD（Single Instruction Multiple Data），即对批量的数据同时进行同样的操作以提高效率。如下图中左边的机器一次只能计算一对标量的相乘，于是四对数相乘就要算四次，而右边的机器能直接同时处理四个数，一次操作就能完成四对数相乘。</p>
+                <h2 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h2><h3 id="半导体"><a href="#半导体" class="headerlink" title="半导体"></a>半导体</h3><h2 id="并行计算"><a href="#并行计算" class="headerlink" title="并行计算"></a>并行计算</h2><h3 id="vectorization"><a href="#vectorization" class="headerlink" title="vectorization"></a>vectorization</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/337756824">原文链接</a><br>向量化即“批量操作”，批量操作在物理生活中也很常见，在计算机中最常见的执行模型就是SIMD（Single Instruction Multiple Data），即对批量的数据同时进行同样的操作以提高效率。如下图中左边的机器一次只能计算一对标量的相乘，于是四对数相乘就要算四次，而右边的机器能直接同时处理四个数，一次操作就能完成四对数相乘。</p>
 <p><img src="https://pic4.zhimg.com/80/v2-691e76e69b27fd3a24a12b45eccbce8b_1440w.jpg" alt=""></p>
 <h3 id="Cache-efficient"><a href="#Cache-efficient" class="headerlink" title="Cache-efficient"></a>Cache-efficient</h3><p>高速缓存</p>
 <h3 id="RAM（Random-Access-Memory）"><a href="#RAM（Random-Access-Memory）" class="headerlink" title="RAM（Random Access Memory）"></a>RAM（Random Access Memory）</h3><p>随机存储器，俗称内存，我们常说的电脑内存8g，指的就是这个(也不完全正确)。RAM要求每时每刻都不断地供电，否则数据会丢失。它由半导体材料制作，是计算机的工作场所。</p>
@@ -679,12 +675,12 @@ if (x == 5)
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">
-                                    <span class="chip bg-color">并行计算</span>
-                                </a>
-                            
                                 <a href="/tags/CFD/">
                                     <span class="chip bg-color">CFD</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">
+                                    <span class="chip bg-color">并行计算</span>
                                 </a>
                             
                                 <a href="/tags/%E5%90%91%E9%87%8F%E5%8C%96/">
@@ -1155,7 +1151,7 @@ if (x == 5)
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">163.5k</span>
+                        class="white-color">166.5k</span>
             
             
             
