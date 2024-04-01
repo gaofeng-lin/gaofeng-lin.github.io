@@ -473,7 +473,7 @@ two.txt:
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10.3k
+                    10.4k
                 </div>
                 
 
@@ -577,6 +577,7 @@ two.txt:
 <h3 id="windows安装了conda，但无法在vscode使用"><a href="#windows安装了conda，但无法在vscode使用" class="headerlink" title="windows安装了conda，但无法在vscode使用"></a>windows安装了conda，但无法在vscode使用</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-08-28_11-33-58.png" alt=""></p>
 <p>cmd可以正常使用，环境变量也添加了，但是一直不行。</p>
 <p>解决办法：<br>找到conda安装目录下的Scripts下的activate,在vscode终端输入命令激活：<br></p><pre class="line-numbers language-none"><code class="language-none">C:\Users\76585\Miniconda3\Scripts\activate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<h3 id="windows安装多版本python，如何指定pip"><a href="#windows安装多版本python，如何指定pip" class="headerlink" title="windows安装多版本python，如何指定pip"></a>windows安装多版本python，如何指定pip</h3><p>不适用conda的情况下，安装多个版本python，把环境变量设置好以后，可以通过修改exe程序的名字来区分，默认都是python.exe，可以修改为python311.exe或python39.exe，<br>如果要使用对应版本的pip，可以这样做<br></p><pre class="line-numbers language-none"><code class="language-none">python37 -m pip install xxx -i https://pypi.tuna.tsinghua.edu.cn/simple<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
 <h2 id="技术知识点"><a href="#技术知识点" class="headerlink" title="技术知识点"></a>技术知识点</h2><h3 id="遍历文件夹下的文件名"><a href="#遍历文件夹下的文件名" class="headerlink" title="遍历文件夹下的文件名"></a>遍历文件夹下的文件名</h3><blockquote>
 <h1 id="方法1：使用os-listdir"><a href="#方法1：使用os-listdir" class="headerlink" title="方法1：使用os.listdir"></a>方法1：使用os.listdir</h1></blockquote>
 <pre class="line-numbers language-none"><code class="language-none">import os
@@ -1555,6 +1556,67 @@ from Module import * # 引入模块中的所有‘公开’成员<span aria-hidd
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/posts/3828/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="git操作">
+                        
+                        <span class="card-title">git操作</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/git/" class="post-category">
+                                    git
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                        <span class="chip bg-color">运维</span>
+                    </a>
+                    
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/">
+                        <span class="chip bg-color">代码管理</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/posts/15854/">
                     <div class="card-image">
                         
@@ -1571,9 +1633,9 @@ from Module import * # 引入模块中的所有‘公开’成员<span aria-hidd
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1603,91 +1665,6 @@ from Module import * # 引入模块中的所有‘公开’成员<span aria-hidd
                     
                     <a href="/tags/Json/">
                         <span class="chip bg-color">Json</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/37060/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="零散知识">
-                        
-                        <span class="card-title">零散知识</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="post-category">
-                                    小知识
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/IDE/">
-                        <span class="chip bg-color">IDE</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
-                        <span class="chip bg-color">编辑器</span>
-                    </a>
-                    
-                    <a href="/tags/vscode/">
-                        <span class="chip bg-color">vscode</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%85%A7%E7%89%87%E6%A8%A1%E7%B3%8A%E5%A4%84%E7%90%86/">
-                        <span class="chip bg-color">照片模糊处理</span>
-                    </a>
-                    
-                    <a href="/tags/win10/">
-                        <span class="chip bg-color">win10</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%B8%93%E5%88%A9/">
-                        <span class="chip bg-color">专利</span>
-                    </a>
-                    
-                    <a href="/tags/bat/">
-                        <span class="chip bg-color">bat</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%B8%A6%E5%AE%BD/">
-                        <span class="chip bg-color">带宽</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E5%AD%A6/">
-                        <span class="chip bg-color">数学</span>
                     </a>
                     
                 </div>
@@ -1884,7 +1861,7 @@ from Module import * # 引入模块中的所有‘公开’成员<span aria-hidd
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">166.5k</span>
+                        class="white-color">166.6k</span>
             
             
             
