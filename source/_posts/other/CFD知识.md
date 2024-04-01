@@ -5,6 +5,7 @@ categories:
   - CFD
 tags:
   - CFD
+abbrlink: f6b7c48b
 ---
 
 ## 名词解释

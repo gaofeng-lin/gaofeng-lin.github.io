@@ -190,6 +190,13 @@ cmd可以正常使用，环境变量也添加了，但是一直不行。
 C:\Users\76585\Miniconda3\Scripts\activate
 ```
 
+### windows安装多版本python，如何指定pip
+
+不适用conda的情况下，安装多个版本python，把环境变量设置好以后，可以通过修改exe程序的名字来区分，默认都是python.exe，可以修改为python311.exe或python39.exe，
+如果要使用对应版本的pip，可以这样做
+```
+python37 -m pip install xxx -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
 
 ##  技术知识点
 
