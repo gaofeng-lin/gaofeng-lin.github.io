@@ -33,9 +33,9 @@ W">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -537,34 +537,26 @@ W">
 </li>
 </ol>
 <p>奇异值分解的计算一般通过数值算法实现，比如利用QR分解或者其他迭代方法，因为直接计算奇异值分解在数值上可能非常复杂。</p>
-<h3 id="基于POD的降阶模型"><a href="#基于POD的降阶模型" class="headerlink" title="基于POD的降阶模型"></a>基于POD的降阶模型</h3><ol>
-<li>收集数据集并构建数据矩阵</li>
-</ol>
+<h3 id="基于POD的降阶模型"><a href="#基于POD的降阶模型" class="headerlink" title="基于POD的降阶模型"></a>基于POD的降阶模型</h3><p><strong>1 收集数据集并构建数据矩阵</strong></p>
 <p>假设我们收集了$N$个时刻的系统状态（例如流场数据），每个状态都是$M$维的向量（例如流体的速度矢量和压力）。将这些数据组织成一个数据矩阵$X$:<br>$X = [x_1,x_2,…,x_N]$</p>
-<ol>
-<li>执行奇异值分解（SVD）</li>
-</ol>
+<p><strong>2 执行奇异值分解（SVD）</strong></p>
 <p>对数据矩阵$X$执行奇异值分解：</p>
 <p>$X=U\Sigma V^{T}$</p>
 <p>U 是 $M×M$ 的单位正交矩阵，其列向量称为左奇异向量，代表数据的空间模式。</p>
 <p>Σ 是$M×N$ 的对角矩阵，其对角元素是奇异值，代表各模式的能量。</p>
 <p>V 是 $N×N$ 的单位正交矩阵，其列向量称为右奇异向量，代表时间模式。</p>
-<ol>
-<li>提取主要POD模态/模式</li>
-</ol>
+<p><strong>3 提取主要POD模态/模式</strong></p>
 <p>选择 $r $个最大的奇异值对应的左奇异向量，构成矩阵 $U_r$<br>​<br> $U_r = [u_1,u_2,…u_r]$</p>
 <p>其中 $r$ 是远小于$M$ 和 $N$ 的数，通常根据累积能量百分比来选取。</p>
-<ol>
-<li>构建降阶模型</li>
-</ol>
-<p>降阶模型的表示如下：<br>${\tilde}(t)\approx U_{r}{a}(t)$</p>
+<p><strong>4 构建降阶模型</strong></p>
+<p>降阶模型的表示如下：<br>$\tilde(t)\approx U_{r}{a}(t)$</p>
 <p>现在，对于新的时间点 $t$，我们收到了新的状态数据 $x(t)$。我们计算它在$U_r$子空间中的投影，得到：</p>
 <p>$a(t)=U_r^Tx(t)$<br>带入上面的公式即可得到重构后的值</p>
-<p>上面的约等号表示${\tilde}(t)$ 是 $x(t)$在$U_{r}$子空间中的近似。</p>
+<p>上面的约等号表示$\tilde(t)$ 是 $x(t)$在$U_{r}$子空间中的近似。</p>
 <p><strong>误差来源</strong>：误差来源于 $U_{r}$中未包含的那些方向（即剩余的$M−r $个方向）。这些方向可能包含较小的数据变化，但在某些情况下也可能含有重要信息。<br><strong>近似质量</strong>：近似的质量依赖于$r $的选择以及数据的本身特性。增加 $r$ 会改善近似的精确度，但同时会增加计算和存储的负担。</p>
 <p>如果使用全部模态，当 $r=M$ 时，$U_{r}$成为一个完整的正交基，覆盖了原始数据空间的所有维度。所以，$U$ 是一个正交矩阵，满足以下条件：</p>
 <p>$U U^{T}=U^{T}U=I$</p>
-<p>重构操作：<br>$\tilde{\bf x}(t)=U{\bf a}(t)=U(U^{T}{\bf x}(t))=(U U^{T}){\bf x}(t)=I{\bf x}(t)={\bf x}(t)$</p>
+<p><strong>重构操作</strong>：<br>$\tilde{\bf x}(t)=U{\bf a}(t)=U(U^{T}{\bf x}(t))=(U U^{T}){\bf x}(t)=I{\bf x}(t)={\bf x}(t)$</p>
 <p><strong>上面说的重构是没有考虑数据去中心化的。如果是去中心化的，要在奇异值分解前减去平均值，重构的时候要加上平均值。</strong></p>
 
                 
@@ -1023,6 +1015,13 @@ W">
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
