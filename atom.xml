@@ -69,31 +69,6 @@
   </entry>
   
   <entry>
-    <title>rnn</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-12-21T16:00:00.000Z</published>
-    <updated>2023-12-22T08:35:20.010Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;rnn相关的内容&quot;&gt;&lt;a href=&quot;#rnn相关的内容&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="rnn" scheme="https://gaofeng-lin.github.io/categories/rnn/"/>
-    
-    
-    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>ai</title>
     <link href="https://gaofeng-lin.github.io/posts/53791/"/>
     <id>https://gaofeng-lin.github.io/posts/53791/</id>
@@ -112,6 +87,31 @@
     
     
     <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rnn</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-12-21T16:00:00.000Z</published>
+    <updated>2023-12-22T08:35:20.010Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;rnn相关的内容&quot;&gt;&lt;a href=&quot;#rnn相关的内容&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="rnn" scheme="https://gaofeng-lin.github.io/categories/rnn/"/>
     
     
     <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
@@ -307,9 +307,9 @@
     <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
     
     
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
-    
     <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
     <category term="Slurm" scheme="https://gaofeng-lin.github.io/tags/Slurm/"/>
     
@@ -539,33 +539,29 @@
   </entry>
   
   <entry>
-    <title>代理设置</title>
-    <link href="https://gaofeng-lin.github.io/posts/58712/"/>
-    <id>https://gaofeng-lin.github.io/posts/58712/</id>
+    <title>Docker</title>
+    <link href="https://gaofeng-lin.github.io/posts/40991/"/>
+    <id>https://gaofeng-lin.github.io/posts/40991/</id>
     <published>2022-03-05T16:00:00.000Z</published>
-    <updated>2023-07-29T02:59:04.389Z</updated>
+    <updated>2023-10-05T12:59:25.158Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;浏览器&quot;&gt;&lt;a href=&quot;#浏览器&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;docker下载&quot;&gt;&lt;a href=&quot;#docker下载&quot; class=&quot;headerlink&quot; title=&quot;docker下载&quot;&gt;&lt;/a&gt;docker下载&lt;/h2&gt;&lt;h3 id=&quot;Docker安装&quot;&gt;&lt;a href=&quot;#Docker安装&quot;</summary>
         
       
     
     
     
-    <category term="小知识" scheme="https://gaofeng-lin.github.io/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
+    <category term="运维" scheme="https://gaofeng-lin.github.io/categories/%E8%BF%90%E7%BB%B4/"/>
     
     
-    <category term="npm" scheme="https://gaofeng-lin.github.io/tags/npm/"/>
+    <category term="Docker" scheme="https://gaofeng-lin.github.io/tags/Docker/"/>
     
-    <category term="git" scheme="https://gaofeng-lin.github.io/tags/git/"/>
-    
-    <category term="yarn" scheme="https://gaofeng-lin.github.io/tags/yarn/"/>
-    
-    <category term="梯子" scheme="https://gaofeng-lin.github.io/tags/%E6%A2%AF%E5%AD%90/"/>
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
