@@ -5,6 +5,7 @@ categories:
   - CFD
 tags:
   - CFD
+mathjax: true
 abbrlink: f6b7c48b
 ---
 
