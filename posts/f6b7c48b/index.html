@@ -33,9 +33,9 @@ W">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -548,11 +548,13 @@ W">
 <p><strong>3 提取主要POD模态/模式</strong></p>
 <p>选择 $r $个最大的奇异值对应的左奇异向量，构成矩阵 $U_r$<br>​<br> $U_r = [u_1,u_2,…u_r]$</p>
 <p>其中 $r$ 是远小于$M$ 和 $N$ 的数，通常根据累积能量百分比来选取。</p>
-<p><strong>4 构建降阶模型</strong></p>
-<p>降阶模型的表示如下：<br>$ {\tilde{x(t)}} \approx U_{r}{a}(t) $</p>
-<p>现在，对于新的时间点 $t$，我们收到了新的状态数据 $x(t)$。我们计算它在$U_r$子空间中的投影，得到：</p>
-<p>$a(t)=U_r^Tx(t)$<br>带入上面的公式即可得到重构后的值</p>
-<p>上面的约等号表示${\tilde{x(t)}}$ 是 $x(t)$在$U_{r}$子空间中的近似。</p>
+<p><strong>4 投影和重构</strong></p>
+<p>投影：</p>
+<p>将n维数据点x(t)投影到$u_r$的列向量<br>对于新的时间点 $t$，我们收到了新的状态数据 $x(t)$。我们计算它在$U_r$子空间中的投影，得到：</p>
+<p>$a(t)=U_r^Tx(t)$</p>
+<p>$a(t)$是一个r维向量，包含了x(t)在这些主成分方向上的坐标</p>
+<p>重构：<br>$ {\tilde{x(t)}} = U_{r}{a}(t) $</p>
+<p><strong>$U_{r}U_r^T$是一个n*n的矩阵，但这个矩阵通常不是单位矩阵，除非选取了所有模态。所以不会直接消除</strong></p>
 <p><strong>误差来源</strong>：误差来源于 $U_{r}$中未包含的那些方向（即剩余的$M−r $个方向）。这些方向可能包含较小的数据变化，但在某些情况下也可能含有重要信息。<br><strong>近似质量</strong>：近似的质量依赖于$r $的选择以及数据的本身特性。增加 $r$ 会改善近似的精确度，但同时会增加计算和存储的负担。</p>
 <p>如果使用全部模态，当 $r=M$ 时，$U_{r}$成为一个完整的正交基，覆盖了原始数据空间的所有维度。所以，$U$ 是一个正交矩阵，满足以下条件：</p>
 <p>$U U^{T}=U^{T}U=I$</p>
@@ -797,18 +799,17 @@ W">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/f6b7c48b/">
+                <a href="/posts/cca8c50b/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="CFD知识">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="cfd">
                         
-                        <span class="card-title">CFD知识</span>
+                        <span class="card-title">cfd</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -818,9 +819,9 @@ W">
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-03
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-23
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -833,7 +834,6 @@ W">
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1095,7 +1095,7 @@ W">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">167.2k</span>
+                        class="white-color">167.4k</span>
             
             
             
