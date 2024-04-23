@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2024-04-23T02:57:00.693Z</updated>
+  <updated>2024-04-23T08:50:00.945Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://gaofeng-lin.github.io/posts/cca8c50b/"/>
     <id>https://gaofeng-lin.github.io/posts/cca8c50b/</id>
     <published>2024-04-22T16:00:00.000Z</published>
-    <updated>2024-04-23T02:57:00.693Z</updated>
+    <updated>2024-04-23T08:50:00.945Z</updated>
     
     
       
@@ -46,7 +46,7 @@
     <link href="https://gaofeng-lin.github.io/posts/f6b7c48b/"/>
     <id>https://gaofeng-lin.github.io/posts/f6b7c48b/</id>
     <published>2024-03-02T16:00:00.000Z</published>
-    <updated>2024-04-23T04:51:16.504Z</updated>
+    <updated>2024-04-23T07:10:30.382Z</updated>
     
     
       
@@ -332,9 +332,9 @@
     <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
     
     
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
-    
     <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
     <category term="Slurm" scheme="https://gaofeng-lin.github.io/tags/Slurm/"/>
     
@@ -389,9 +389,9 @@
     <category term="并行计算" scheme="https://gaofeng-lin.github.io/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
     
     
-    <category term="CFD" scheme="https://gaofeng-lin.github.io/tags/CFD/"/>
-    
     <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
+    
+    <category term="CFD" scheme="https://gaofeng-lin.github.io/tags/CFD/"/>
     
     <category term="向量化" scheme="https://gaofeng-lin.github.io/tags/%E5%90%91%E9%87%8F%E5%8C%96/"/>
     

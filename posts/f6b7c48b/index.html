@@ -33,9 +33,9 @@ W">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -468,14 +468,14 @@ W">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    3.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    11 分
                 </div>
                 
 
@@ -554,12 +554,37 @@ W">
 <p>$a(t)=U_r^Tx(t)$</p>
 <p>$a(t)$是一个r维向量，包含了x(t)在这些主成分方向上的坐标</p>
 <p>重构：<br>$ {\tilde{x(t)}} = U_{r}{a}(t) $</p>
-<p><strong>$U_{r}U_r^T$是一个n*n的矩阵，但这个矩阵通常不是单位矩阵，除非选取了所有模态。所以不会直接消除</strong></p>
+<p><strong>$U_{r}U_r^T$是一个n*n的矩阵，但这个矩阵通常不是单位矩阵，除非选取了所有模态。所以不会直接消除。</strong></p>
 <p><strong>误差来源</strong>：误差来源于 $U_{r}$中未包含的那些方向（即剩余的$M−r $个方向）。这些方向可能包含较小的数据变化，但在某些情况下也可能含有重要信息。<br><strong>近似质量</strong>：近似的质量依赖于$r $的选择以及数据的本身特性。增加 $r$ 会改善近似的精确度，但同时会增加计算和存储的负担。</p>
 <p>如果使用全部模态，当 $r=M$ 时，$U_{r}$成为一个完整的正交基，覆盖了原始数据空间的所有维度。所以，$U$ 是一个正交矩阵，满足以下条件：</p>
 <p>$U U^{T}=U^{T}U=I$</p>
 <p><strong>重构操作</strong>：<br>$\tilde{\bf x}(t)=U{\bf a}(t)=U(U^{T}{\bf x}(t))=(U U^{T}){\bf x}(t)=I{\bf x}(t)={\bf x}(t)$</p>
-<p><strong>上面说的重构是没有考虑数据去中心化的。如果是去中心化的，要在奇异值分解前减去平均值，重构的时候要加上平均值。</strong></p>
+<p><strong>上面说的重构是没有考虑数据去中心化的。如果是去中心化的，要在奇异值分解前减去平均值，重构的时候要加上平均值。看下面的代码：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">def DimensionReductionOpt(S):
+    #POD analysis
+    # O = 3
+    # pca = PCA(n_components=O)
+    pca = PCA()
+    coeff = pca.fit_transform(S.T)
+    
+    u_mean = pca.mean_.reshape(-1,1)
+    u_modes = pca.components_.T
+    a0 = coeff[-1] 
+    
+    #Optimization
+    def Obj(a):
+        u = u_mean + u_modes@(a.reshape(-1,1))
+        # res通过读取resid_glb.out文件中的et_res来获取
+        res = Res(u)
+        obj = np.abs(res).mean()
+        return obj
+    # N*K = 100
+    # outputs = minimize(Obj, a0, method='Nelder-Mead',tol=1e-16,options={'maxiter': int(N*K/10)})
+    outputs = minimize(Obj, a0, method='Nelder-Mead',tol=1e-16,options={'maxiter': int(100/10)})
+    u = u_mean + u_modes@(outputs.x.reshape(-1,1))
+    return u<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>重构的代码就是<code>u = u_mean + u_modes@(a.reshape(-1,1))</code></p>
+<p>而投影在<code>coeff = pca.fit_transform(S.T)</code>就完成了，这个代码是自动进行了去中心化的，重构的时候要把平均值再加回去，所以上面的代码是没有问题的。</p>
 
                 
             </div>
@@ -1095,7 +1120,7 @@ W">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">167.4k</span>
+                        class="white-color">168.4k</span>
             
             
             

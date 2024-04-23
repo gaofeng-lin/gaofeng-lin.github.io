@@ -33,9 +33,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -468,14 +468,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    135
+                    990
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -500,8 +500,37 @@
             <div id="articleContent">
                 <h2 id="Extrapolation-Based-Acceleration-of-Iterative-Solvers-Application-to-Simulation-of-3D-Flows"><a href="#Extrapolation-Based-Acceleration-of-Iterative-Solvers-Application-to-Simulation-of-3D-Flows" class="headerlink" title="Extrapolation-Based Acceleration of Iterative Solvers: Application to Simulation of 3D Flows"></a>Extrapolation-Based Acceleration of Iterative Solvers: Application to Simulation of 3D Flows</h2><h3 id="要做什么"><a href="#要做什么" class="headerlink" title="要做什么"></a>要做什么</h3><ol>
 <li>获得一个新的初始状态（$u<em>{ap}$），让解算器可以加速收敛。（如果初始状态与精确解越接近，越容易收敛）；传统的做法是把上一个时间步的解作为初始状态（$u</em>{n}$）,可以计算$u<em>{n+1}$的近似解，如果|$u</em>{ap}$-$u<em>{n}$| 远小于 |$u</em>{n}$-$u_{n}$|，可以大大减少迭代次数。</li>
-<li>论文使用了两个方法来获取这个新的初始状态: POD和</li>
+<li>论文使用了两个方法来获取这个新的初始状态: POD和谱方法</li>
 </ol>
+<h3 id="方法1POD"><a href="#方法1POD" class="headerlink" title="方法1POD"></a>方法1POD</h3><p>这篇论文里面提到的pod可以称为时间相关pod，与传统的pod有些区别，先简单说下两者的区别：<br>传统POD：</p>
+<ul>
+<li>主要关注于空间上的数据降维。</li>
+<li>通过构造协方差矩阵并提取其主要成分，找到数据集的主要变异方向。</li>
+<li><p>适用于静态数据集或单一时间点的数据分析。<br>时间相关POD：</p>
+</li>
+<li><p>不仅处理空间上的降维，还考虑时间维度的变化。</p>
+</li>
+<li>构造关联矩阵不仅基于空间关系，还包括时间序列的动态特性。</li>
+<li>特别适用于连续时间步的数据，如流体动力学中的流场数据，其中状态随时间变化。</li>
+<li>引入外推技术（${\boldsymbol{\beta}}_{k}$），以预测未来状态。</li>
+</ul>
+<p>下面讲解下步骤：</p>
+<p><strong>步骤1： 构建关联矩阵C</strong><br>在时间相关的POD中，首先需要构建一个称为关联矩阵（或协方差矩阵）的结构。这个矩阵是通过计算不同时间步之间的状态向量的内积来构建的。</p>
+<p>$C(t,t^{\prime})=\int_{\Omega}{\bf u}(t,{\bf x}){\bf u}(t^{\prime},{\bf x})d{\bf x}$</p>
+<p>假设你正在分析一个流体的流动，其中$u(t,x)$代表在时间t和空间x的速度场，如果有5个连续时间步的数据（$t<em>n,t</em>{n-1},……t<em>{n-4}$），关联矩阵 C 将是一个 5x5 矩阵，其中每个元素$C</em>{i,j}$是时间步$t^{n+1-i}和t^{n+1-j}$之间的积分内积。</p>
+<p><strong>步骤2： 计算特征值和特征向量</strong></p>
+<p>$\int<em>{T}!C(t,t^{\prime})a</em>{q}(t^{\prime})d t^{\prime}=\lambda<em>{q}a</em>{q}(t)$</p>
+<p>继续使用流体流动的例子，我们求解关联矩阵 C 的特征值和特征向量。特征值$\lambda<em>{q}$越大，对应的特征向量$a</em>{q}(t)$描述的流动模式越重要。选择最大的几个特征值及其对应的特征向量进行下一步分析。</p>
+<p><strong>步骤3： 时间系数外推</strong></p>
+<p>$a<em>{q}(t^{n+1})=\sum</em>{k=0}^{Q<em>{R}-1}\beta</em>{k}a_{q}(t^{n-k})$</p>
+<p>$\beta_{k}$为外推系数</p>
+<p>q=1,…,$Q_R$</p>
+<p>如果你决定使用前三个主要模式（$Q<em>R$=3）来预测下一个时间步的流动状态，你会根据历史数据中的这些模式的活动来计算 $a</em>{q}(t^{n+1})$。</p>
+<p>$a<em>{q}(t^{n+1})$表示过去K个时间步的第q模态的时间系数。<br>每个时间系数$a</em>{q}(t^{n+1})$对应一个特定的模态$\Psi_{q}({\bf x})$。这个系数描述了该模态随时间的变化。当提到步骤3的时候，我们应该明确每个系数的计算都是独立进行的，针对每一个q。</p>
+<p>而$Q_R$就是保留的模态（特征向量）。既可以选择数量（具有最大特征值的前$Q_R$个模态）或者可以通过一个阈值（如某个能量百分比或特征值大小）来动态确定。</p>
+<p>q的变化就是从1到$Q_R$</p>
+<p><strong>步骤4： 计算近似解</strong></p>
+<p>${\bf u}<em>{a p}=\sum</em>{q=1}^{Q<em>{R}}a</em>{q}(t^{n+1})\Psi<em>{q}({\bf x})$<br>最终的流体流动的近似速度场将通过将时间系数<br>$a</em>{q}(t^{n+1})$ 乘以对应的空间模态 ​$\Psi<em>{q}({\bf x})$来构建，这些模态是从特征向量 $a</em>{q}(t^{n})$派生的。</p>
 
                 
             </div>
@@ -1035,7 +1064,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">167.4k</span>
+                        class="white-color">168.4k</span>
             
             
             
