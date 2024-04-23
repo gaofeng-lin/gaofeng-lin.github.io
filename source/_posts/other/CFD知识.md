@@ -133,7 +133,7 @@ $ {\tilde{x(t)}} = U_{r}{a}(t) $
 
 
 
-**$U_{r}U_r^T$是一个n*n的矩阵，但这个矩阵通常不是单位矩阵，除非选取了所有模态。所以不会直接消除**
+**$U_{r}U_r^T$是一个n*n的矩阵，但这个矩阵通常不是单位矩阵，除非选取了所有模态。所以不会直接消除。**
 
 **误差来源**：误差来源于 $U_{r}$中未包含的那些方向（即剩余的$M−r $个方向）。这些方向可能包含较小的数据变化，但在某些情况下也可能含有重要信息。
 **近似质量**：近似的质量依赖于$r $的选择以及数据的本身特性。增加 $r$ 会改善近似的精确度，但同时会增加计算和存储的负担。
@@ -146,4 +146,34 @@ $U U^{T}=U^{T}U=I$
 $\tilde{\bf x}(t)=U{\bf a}(t)=U(U^{T}{\bf x}(t))=(U U^{T}){\bf x}(t)=I{\bf x}(t)={\bf x}(t)$
 
 
-**上面说的重构是没有考虑数据去中心化的。如果是去中心化的，要在奇异值分解前减去平均值，重构的时候要加上平均值。**
+**上面说的重构是没有考虑数据去中心化的。如果是去中心化的，要在奇异值分解前减去平均值，重构的时候要加上平均值。看下面的代码：**
+
+```
+def DimensionReductionOpt(S):
+    #POD analysis
+    # O = 3
+    # pca = PCA(n_components=O)
+    pca = PCA()
+    coeff = pca.fit_transform(S.T)
+    
+    u_mean = pca.mean_.reshape(-1,1)
+    u_modes = pca.components_.T
+    a0 = coeff[-1] 
+    
+    #Optimization
+    def Obj(a):
+        u = u_mean + u_modes@(a.reshape(-1,1))
+        # res通过读取resid_glb.out文件中的et_res来获取
+        res = Res(u)
+        obj = np.abs(res).mean()
+        return obj
+    # N*K = 100
+    # outputs = minimize(Obj, a0, method='Nelder-Mead',tol=1e-16,options={'maxiter': int(N*K/10)})
+    outputs = minimize(Obj, a0, method='Nelder-Mead',tol=1e-16,options={'maxiter': int(100/10)})
+    u = u_mean + u_modes@(outputs.x.reshape(-1,1))
+    return u
+```
+
+重构的代码就是```u = u_mean + u_modes@(a.reshape(-1,1))```
+
+而投影在```coeff = pca.fit_transform(S.T)```就完成了，这个代码是自动进行了去中心化的，重构的时候要把平均值再加回去，所以上面的代码是没有问题的。
