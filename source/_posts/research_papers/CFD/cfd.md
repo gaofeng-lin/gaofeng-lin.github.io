@@ -74,3 +74,16 @@ ${\bf u}_{a p}=\sum_{q=1}^{Q_{R}}a_{q}(t^{n+1})\Psi_{q}({\bf x})$
 最终的流体流动的近似速度场将通过将时间系数 
 $a_{q}(t^{n+1})$ 乘以对应的空间模态 ​$\Psi_{q}({\bf x})$来构建，这些模态是从特征向量 $a_{q}(t^{n})$派生的。
 
+
+## INITIAL GUESSES FOR SEQUENCES OF LINEAR SYSTEMS IN A GPU-ACCELERATED INCOMPRESSIBLE FLOW SOLVER
+
+### 文章做了什么
+迭代求解线性系统时，initial guesses可以在gpu加速的解算器中实现
+
+提出了基于稳定多项式外推法的新初始猜测方法，并于Fischer的投影法相比，存储只需要一半，执行更少的数据移动和通信。
+
+### 背景知识
+
+- 产生initial guesses的两个方法：
+  - 合并前几个时间步的解，形成一个更好的initial guesses。带入当前时间步的线性系统，最小化残差的范数（Fishcher）
+  - 多项式外推。
