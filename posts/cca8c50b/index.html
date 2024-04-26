@@ -468,14 +468,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    990
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -502,14 +502,16 @@
 <li>获得一个新的初始状态（$u<em>{ap}$），让解算器可以加速收敛。（如果初始状态与精确解越接近，越容易收敛）；传统的做法是把上一个时间步的解作为初始状态（$u</em>{n}$）,可以计算$u<em>{n+1}$的近似解，如果|$u</em>{ap}$-$u<em>{n}$| 远小于 |$u</em>{n}$-$u_{n}$|，可以大大减少迭代次数。</li>
 <li>论文使用了两个方法来获取这个新的初始状态: POD和谱方法</li>
 </ol>
-<h3 id="方法1POD"><a href="#方法1POD" class="headerlink" title="方法1POD"></a>方法1POD</h3><p>这篇论文里面提到的pod可以称为时间相关pod，与传统的pod有些区别，先简单说下两者的区别：<br>传统POD：</p>
+<h3 id="方法1POD"><a href="#方法1POD" class="headerlink" title="方法1POD"></a>方法1POD</h3><p><strong>总结：用过去的几个时间步数据及模态来预测下一个时间步的数据；也就是外推一步</strong></p>
+<p>这篇论文里面提到的pod可以称为时间相关pod，与传统的pod有些区别，先简单说下两者的区别：<br>传统POD：</p>
 <ul>
 <li>主要关注于空间上的数据降维。</li>
 <li>通过构造协方差矩阵并提取其主要成分，找到数据集的主要变异方向。</li>
-<li><p>适用于静态数据集或单一时间点的数据分析。<br>时间相关POD：</p>
-</li>
-<li><p>不仅处理空间上的降维，还考虑时间维度的变化。</p>
-</li>
+<li>适用于静态数据集或单一时间点的数据分析。</li>
+</ul>
+<p>时间相关POD：</p>
+<ul>
+<li>不仅处理空间上的降维，还考虑时间维度的变化。</li>
 <li>构造关联矩阵不仅基于空间关系，还包括时间序列的动态特性。</li>
 <li>特别适用于连续时间步的数据，如流体动力学中的流场数据，其中状态随时间变化。</li>
 <li>引入外推技术（${\boldsymbol{\beta}}_{k}$），以预测未来状态。</li>
@@ -531,6 +533,15 @@
 <p>q的变化就是从1到$Q_R$</p>
 <p><strong>步骤4： 计算近似解</strong></p>
 <p>${\bf u}<em>{a p}=\sum</em>{q=1}^{Q<em>{R}}a</em>{q}(t^{n+1})\Psi<em>{q}({\bf x})$<br>最终的流体流动的近似速度场将通过将时间系数<br>$a</em>{q}(t^{n+1})$ 乘以对应的空间模态 ​$\Psi<em>{q}({\bf x})$来构建，这些模态是从特征向量 $a</em>{q}(t^{n})$派生的。</p>
+<h2 id="INITIAL-GUESSES-FOR-SEQUENCES-OF-LINEAR-SYSTEMS-IN-A-GPU-ACCELERATED-INCOMPRESSIBLE-FLOW-SOLVER"><a href="#INITIAL-GUESSES-FOR-SEQUENCES-OF-LINEAR-SYSTEMS-IN-A-GPU-ACCELERATED-INCOMPRESSIBLE-FLOW-SOLVER" class="headerlink" title="INITIAL GUESSES FOR SEQUENCES OF LINEAR SYSTEMS IN A GPU-ACCELERATED INCOMPRESSIBLE FLOW SOLVER"></a>INITIAL GUESSES FOR SEQUENCES OF LINEAR SYSTEMS IN A GPU-ACCELERATED INCOMPRESSIBLE FLOW SOLVER</h2><h3 id="文章做了什么"><a href="#文章做了什么" class="headerlink" title="文章做了什么"></a>文章做了什么</h3><p>迭代求解线性系统时，initial guesses可以在gpu加速的解算器中实现</p>
+<p>提出了基于稳定多项式外推法的新初始猜测方法，并于Fischer的投影法相比，存储只需要一半，执行更少的数据移动和通信。</p>
+<h3 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h3><ul>
+<li>产生initial guesses的两个方法：<ul>
+<li>合并前几个时间步的解，形成一个更好的initial guesses。带入当前时间步的线性系统，最小化残差的范数（Fishcher）</li>
+<li>多项式外推。</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -1064,7 +1075,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">168.4k</span>
+                        class="white-color">168.6k</span>
             
             
             
