@@ -46,7 +46,7 @@ $C(t,t^{\prime})=\int_{\Omega}{\bf u}(t,{\bf x}){\bf u}(t^{\prime},{\bf x})d{\bf
 
 **步骤2： 计算特征值和特征向量**
 
-$\int\_{T}\!C(t,t^{\prime})a\_{q}(t^{\prime})d t^{\prime}=\lambda\_{q}a\_{q}(t)$
+$\int\_{T}C(t,t^{\prime})a\_{q}(t^{\prime})d t^{\prime}=\lambda\_{q}a\_{q}(t)$
 
 继续使用流体流动的例子，我们求解关联矩阵 C 的特征值和特征向量。特征值$\lambda\_{q}$越大，对应的特征向量$a\_{q}(t)$描述的流动模式越重要。选择最大的几个特征值及其对应的特征向量进行下一步分析。
 
