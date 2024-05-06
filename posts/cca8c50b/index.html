@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="cfd, Home of Gaofeng">
     <meta name="description" content="Extrapolation-Based Acceleration of Iterative Solvers: Application to Simulation of 3D Flows要做什么
-获得一个新的初始状态（$u{ap}$），让解算">
+获得一个新的初始状态（$u_{ap}$），让解">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -499,10 +499,10 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="Extrapolation-Based-Acceleration-of-Iterative-Solvers-Application-to-Simulation-of-3D-Flows"><a href="#Extrapolation-Based-Acceleration-of-Iterative-Solvers-Application-to-Simulation-of-3D-Flows" class="headerlink" title="Extrapolation-Based Acceleration of Iterative Solvers: Application to Simulation of 3D Flows"></a>Extrapolation-Based Acceleration of Iterative Solvers: Application to Simulation of 3D Flows</h2><h3 id="要做什么"><a href="#要做什么" class="headerlink" title="要做什么"></a>要做什么</h3><ol>
-<li>获得一个新的初始状态（$u<em>{ap}$），让解算器可以加速收敛。（如果初始状态与精确解越接近，越容易收敛）；传统的做法是把上一个时间步的解作为初始状态（$u</em>{n}$）,可以计算$u<em>{n+1}$的近似解，如果|$u</em>{ap}$-$u<em>{n}$| 远小于 |$u</em>{n}$-$u_{n}$|，可以大大减少迭代次数。</li>
+<li>获得一个新的初始状态（$u_{ap}$），让解算器可以加速收敛。（如果初始状态与精确解越接近，越容易收敛）；传统的做法是把上一个时间步的解作为初始状态（$u_{n}$）,可以计算$u_{n+1}$的近似解，如果|$u_{ap}$ - $u_{n}$| 远小于 |$u_{n}$ - $u_{n}$|，可以大大减少迭代次数。</li>
 <li>论文使用了两个方法来获取这个新的初始状态: POD和谱方法</li>
 </ol>
-<h3 id="方法1POD"><a href="#方法1POD" class="headerlink" title="方法1POD"></a>方法1POD</h3><p><strong>总结：用过去的几个时间步数据及模态来预测下一个时间步的数据；也就是外推一步</strong></p>
+<h3 id="方法1-POD"><a href="#方法1-POD" class="headerlink" title="方法1 POD"></a>方法1 POD</h3><p><strong>总结：用过去的几个时间步数据及模态来预测下一个时间步的数据；也就是外推一步</strong></p>
 <p>这篇论文里面提到的pod可以称为时间相关pod，与传统的pod有些区别，先简单说下两者的区别：<br>传统POD：</p>
 <ul>
 <li>主要关注于空间上的数据降维。</li>
@@ -533,6 +533,10 @@
 <p>q的变化就是从1到$Q_R$</p>
 <p><strong>步骤4： 计算近似解</strong></p>
 <p>${\bf u}_{a p}=\sum_{q=1}^{Q_{R}}a_{q}(t^{n+1})\Psi_{q}({\bf x})$<br>最终的流体流动的近似速度场将通过将时间系数<br>$a_{q}(t^{n+1})$ 乘以对应的空间模态 ​$\Psi_{q}({\bf x})$来构建，这些模态是从特征向量 $a_{q}(t^{n})$派生的。</p>
+<h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><ol>
+<li>整体流程不清楚。优化的过程是只调用一次，还是调用多次，即更新一个初始状态还是多个</li>
+<li></li>
+</ol>
 <h2 id="INITIAL-GUESSES-FOR-SEQUENCES-OF-LINEAR-SYSTEMS-IN-A-GPU-ACCELERATED-INCOMPRESSIBLE-FLOW-SOLVER"><a href="#INITIAL-GUESSES-FOR-SEQUENCES-OF-LINEAR-SYSTEMS-IN-A-GPU-ACCELERATED-INCOMPRESSIBLE-FLOW-SOLVER" class="headerlink" title="INITIAL GUESSES FOR SEQUENCES OF LINEAR SYSTEMS IN A GPU-ACCELERATED INCOMPRESSIBLE FLOW SOLVER"></a>INITIAL GUESSES FOR SEQUENCES OF LINEAR SYSTEMS IN A GPU-ACCELERATED INCOMPRESSIBLE FLOW SOLVER</h2><h3 id="文章做了什么"><a href="#文章做了什么" class="headerlink" title="文章做了什么"></a>文章做了什么</h3><p>迭代求解线性系统时，initial guesses可以在gpu加速的解算器中实现</p>
 <p>提出了基于稳定多项式外推法的新初始猜测方法，并于Fischer的投影法相比，存储只需要一半，执行更少的数据移动和通信。</p>
 <h3 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h3><ul>
@@ -1075,7 +1079,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">168.7k</span>
+                        class="white-color">168.9k</span>
             
             
             
