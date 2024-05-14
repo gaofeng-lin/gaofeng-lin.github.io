@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="cfd, Home of Gaofeng">
     <meta name="description" content="Extrapolation-Based Acceleration of Iterative Solvers: Application to Simulation of 3D Flows要做什么
-获得一个新的初始状态（$u_{ap}$），让解">
+获得一个新的初始状态（$u{ap}$），让解算">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -33,9 +33,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -499,7 +499,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="Extrapolation-Based-Acceleration-of-Iterative-Solvers-Application-to-Simulation-of-3D-Flows"><a href="#Extrapolation-Based-Acceleration-of-Iterative-Solvers-Application-to-Simulation-of-3D-Flows" class="headerlink" title="Extrapolation-Based Acceleration of Iterative Solvers: Application to Simulation of 3D Flows"></a>Extrapolation-Based Acceleration of Iterative Solvers: Application to Simulation of 3D Flows</h2><h3 id="要做什么"><a href="#要做什么" class="headerlink" title="要做什么"></a>要做什么</h3><ol>
-<li>获得一个新的初始状态（$u_{ap}$），让解算器可以加速收敛。（如果初始状态与精确解越接近，越容易收敛）；传统的做法是把上一个时间步的解作为初始状态（$u_{n}$）,可以计算$u_{n+1}$的近似解，如果|$u_{ap}$ - $u_{n}$| 远小于 |$u_{n}$ - $u_{n}$|，可以大大减少迭代次数。</li>
+<li>获得一个新的初始状态（$u<em>{ap}$），让解算器可以加速收敛。（如果初始状态与精确解越接近，越容易收敛）；传统的做法是把上一个时间步的解作为初始状态（$u</em>{n}$）,可以计算$u_{n+1}$的近似解，如果|$u_{ap}$ - $u_{n}$| 远小于 |$u_{n}$ - $u_{n}$|，可以大大减少迭代次数。</li>
 <li>论文使用了两个方法来获取这个新的初始状态: POD和谱方法</li>
 </ol>
 <h3 id="方法1-POD"><a href="#方法1-POD" class="headerlink" title="方法1 POD"></a>方法1 POD</h3><p><strong>总结：用过去的几个时间步数据及模态来预测下一个时间步的数据；也就是外推一步</strong></p>
