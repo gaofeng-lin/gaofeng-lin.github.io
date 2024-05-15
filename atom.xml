@@ -94,31 +94,6 @@
   </entry>
   
   <entry>
-    <title>ai</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-12-21T16:00:00.000Z</published>
-    <updated>2023-12-22T08:35:09.132Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;ai相关的内容&quot;&gt;&lt;a href=&quot;#ai相关的内容&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>rnn</title>
     <link href="https://gaofeng-lin.github.io/posts/53791/"/>
     <id>https://gaofeng-lin.github.io/posts/53791/</id>
@@ -137,6 +112,31 @@
     
     
     <category term="rnn" scheme="https://gaofeng-lin.github.io/categories/rnn/"/>
+    
+    
+    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ai</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-12-21T16:00:00.000Z</published>
+    <updated>2023-12-22T08:35:09.132Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;ai相关的内容&quot;&gt;&lt;a href=&quot;#ai相关的内容&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
     
     
     <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
@@ -332,9 +332,9 @@
     <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
     
     
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
-    
     <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
     <category term="Slurm" scheme="https://gaofeng-lin.github.io/tags/Slurm/"/>
     
@@ -389,9 +389,9 @@
     <category term="并行计算" scheme="https://gaofeng-lin.github.io/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
     
     
-    <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
-    
     <category term="CFD" scheme="https://gaofeng-lin.github.io/tags/CFD/"/>
+    
+    <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
     
     <category term="向量化" scheme="https://gaofeng-lin.github.io/tags/%E5%90%91%E9%87%8F%E5%8C%96/"/>
     
