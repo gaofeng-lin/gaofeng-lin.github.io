@@ -93,6 +93,35 @@ Makefile+make可理解为类unix环境下的项目管理工具， 而cmake是抽
 下面给出其关系图：
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20201109214319194.png)
 
+
+### CMake项目调试
+
+很多大型C++项目都是通过CMake来构建项目，通过编译为可执行程序，然后运行。调试的话需要在CMakeLists.txt或者Config.txt中找到**Debug**这个选项，然后设置为ON。
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-05-15_16-30-02.png)
+
+然后运行的时候在命令中加入gdb
+
+例如之前的命令是：
+```mpirun -n 1 ./xxx```
+现在是：
+```mpirun -n 1 gdb ./xxx```
+
+然后命令行前面会出现(gdb)这样的情况，代表进入了gdb调试。
+
+先开始打断点，break xxx.cpp:200
+上面的表示在xxx.cpp文件的200行处打断点
+
+然后就可以输入run，然后回车。
+
+c:继续
+q:退出
+
+可以通过print 来查看变量的值 
+
+例如：print res[0][1]
+
+
+
 ## ./configure && make && make install
 ### ./configure
 源码的安装一般由3个步骤组成：**配置(configure)、编译(make)、安装(make install)**。
