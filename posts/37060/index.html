@@ -36,9 +36,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -437,6 +437,10 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/%E7%85%A7%E7%89%87%E6%A8%A1%E7%B3%8A%E5%A4%84%E7%90%86/">
+                                <span class="chip bg-color">照片模糊处理</span>
+                            </a>
+                        
                             <a href="/tags/IDE/">
                                 <span class="chip bg-color">IDE</span>
                             </a>
@@ -445,16 +449,12 @@
                                 <span class="chip bg-color">编辑器</span>
                             </a>
                         
-                            <a href="/tags/vscode/">
-                                <span class="chip bg-color">vscode</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%85%A7%E7%89%87%E6%A8%A1%E7%B3%8A%E5%A4%84%E7%90%86/">
-                                <span class="chip bg-color">照片模糊处理</span>
-                            </a>
-                        
                             <a href="/tags/win10/">
                                 <span class="chip bg-color">win10</span>
+                            </a>
+                        
+                            <a href="/tags/vscode/">
+                                <span class="chip bg-color">vscode</span>
                             </a>
                         
                             <a href="/tags/%E4%B8%93%E5%88%A9/">
@@ -511,7 +511,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.6k
+                    4.7k
                 </div>
                 
 
@@ -740,7 +740,14 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
 <p>在git bash中敲入</p>
 <p><code>npm install hexo-generator-index --save</code></p>
 <p>之后便有index.html文件了。不妨重新hexo clean，hexo g -d试试。</p>
-<h1 id="第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。"><a href="#第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。" class="headerlink" title="第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。"></a>第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。</h1><h2 id="宽带、带宽、流量"><a href="#宽带、带宽、流量" class="headerlink" title="宽带、带宽、流量"></a>宽带、带宽、流量</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<h1 id="第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。"><a href="#第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。" class="headerlink" title="第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。"></a>第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。</h1><h3 id="hexo-d-发布的时候无法访问到仓库"><a href="#hexo-d-发布的时候无法访问到仓库" class="headerlink" title="hexo d 发布的时候无法访问到仓库"></a>hexo d 发布的时候无法访问到仓库</h3><p>有时候会遇到这个错：<code>ssh: connect to host github.com port 22: Connection timed out</code></p>
+<p>如果把clash打开/关闭后还是没用，可以这样操作：</p>
+<p>找到 ~/.ssh/config 文件（windows是在C/用户/用户名/.ssh/config）</p>
+<p>然后添加：</p>
+<pre class="line-numbers language-none"><code class="language-none">Host github.com
+ Hostname ssh.github.com
+ Port 443<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="宽带、带宽、流量"><a href="#宽带、带宽、流量" class="headerlink" title="宽带、带宽、流量"></a>宽带、带宽、流量</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
 <li>宽带：通常别人会说你家能不能上网呀？其实这个意思就是你家有没有宽带，换句话说，就是一个名词，先有了宽带一词，然后才可以说你带宽是多少，宽带与上网的速度快慢没有直接关系。</li>
 <li>带宽：带宽是量词，指的是网速的大小，比如1Mbps的意思是一兆比特每秒</li>
 </ul>
@@ -782,6 +789,12 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-06-03_22-15-50.png" alt=""></p>
 <p><strong>没有种子，没有固定的追踪服务器</strong></p>
 <p>追踪服务器都是临时工，由某一个下载者兼任。要找到这个下载者需要多方打听。看看自己名单里面谁和这个下载者最近，然后层层联系。</p>
+<h2 id="近视和飞秒手术"><a href="#近视和飞秒手术" class="headerlink" title="近视和飞秒手术"></a>近视和飞秒手术</h2><h3 id="近视原因"><a href="#近视原因" class="headerlink" title="近视原因"></a>近视原因</h3><p><strong>长时间静距离用眼，导致眼轴变长</strong><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/image.webp" alt=""></p>
+<h3 id="飞秒手术原理"><a href="#飞秒手术原理" class="headerlink" title="飞秒手术原理"></a>飞秒手术原理</h3><p>把角膜切一部分，变成一个凹面镜，让光线落到视网膜上。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/lasik_img.png" alt=""></p>
+<h3 id="验光单"><a href="#验光单" class="headerlink" title="验光单"></a>验光单</h3><p>近视+散光（眼镜店验光单）：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-2f2128ece7f52e42a344674d4db2312c_1440w.webp" alt=""></p>
+<p>单纯近视（机打验光单）：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-01c13e4db3f532a626692ec533e11fd0_1440w.webp" alt=""></p>
+<p>上面两个图都是近视眼的验光单。如果是远视眼，那么前面不是负号（-），而是加号（+）</p>
 
                 
             </div>
@@ -846,6 +859,10 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/%E7%85%A7%E7%89%87%E6%A8%A1%E7%B3%8A%E5%A4%84%E7%90%86/">
+                                    <span class="chip bg-color">照片模糊处理</span>
+                                </a>
+                            
                                 <a href="/tags/IDE/">
                                     <span class="chip bg-color">IDE</span>
                                 </a>
@@ -854,16 +871,12 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
                                     <span class="chip bg-color">编辑器</span>
                                 </a>
                             
-                                <a href="/tags/vscode/">
-                                    <span class="chip bg-color">vscode</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%85%A7%E7%89%87%E6%A8%A1%E7%B3%8A%E5%A4%84%E7%90%86/">
-                                    <span class="chip bg-color">照片模糊处理</span>
-                                </a>
-                            
                                 <a href="/tags/win10/">
                                     <span class="chip bg-color">win10</span>
+                                </a>
+                            
+                                <a href="/tags/vscode/">
+                                    <span class="chip bg-color">vscode</span>
                                 </a>
                             
                                 <a href="/tags/%E4%B8%93%E5%88%A9/">
@@ -1065,13 +1078,13 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/15854/">
+                <a href="/posts/57899/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="前端框架">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="力扣算法总结">
                         
-                        <span class="card-title">前端框架</span>
+                        <span class="card-title">力扣算法总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1082,14 +1095,14 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-26
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-category">
-                                    前端开发
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -1099,20 +1112,20 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
                     </a>
                     
-                    <a href="/tags/React/">
-                        <span class="chip bg-color">React</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/%E9%80%92%E5%BD%92/">
+                        <span class="chip bg-color">递归</span>
                     </a>
                     
-                    <a href="/tags/Json/">
-                        <span class="chip bg-color">Json</span>
+                    <a href="/tags/DFS/">
+                        <span class="chip bg-color">DFS</span>
                     </a>
                     
                 </div>
@@ -1126,13 +1139,13 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/10218/">
+                <a href="/posts/3828/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Jenkins知识点">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="git操作">
                         
-                        <span class="card-title">Jenkins知识点</span>
+                        <span class="card-title">git操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1149,8 +1162,8 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
-                                    运维
+                            <a href="/categories/git/" class="post-category">
+                                    git
                                 </a>
                             
                             
@@ -1160,16 +1173,20 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
+                    </a>
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                     <a href="/tags/%E8%BF%90%E7%BB%B4/">
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">
-                        <span class="chip bg-color">持续集成</span>
-                    </a>
-                    
-                    <a href="/tags/Jenkins/">
-                        <span class="chip bg-color">Jenkins</span>
+                    <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/">
+                        <span class="chip bg-color">代码管理</span>
                     </a>
                     
                 </div>
@@ -1366,7 +1383,7 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">169.2k</span>
+                        class="white-color">159.1k</span>
             
             
             
