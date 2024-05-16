@@ -740,7 +740,14 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
 <p>在git bash中敲入</p>
 <p><code>npm install hexo-generator-index --save</code></p>
 <p>之后便有index.html文件了。不妨重新hexo clean，hexo g -d试试。</p>
-<h1 id="第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。"><a href="#第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。" class="headerlink" title="第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。"></a>第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。</h1><h2 id="宽带、带宽、流量"><a href="#宽带、带宽、流量" class="headerlink" title="宽带、带宽、流量"></a>宽带、带宽、流量</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<h1 id="第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。"><a href="#第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。" class="headerlink" title="第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。"></a>第一次写博客，还有些生涩，希望可以帮到大家。有问题可直接评论，我会不定期登录博客，和大家一起探讨。</h1><h3 id="hexo-d-发布的时候无法访问到仓库"><a href="#hexo-d-发布的时候无法访问到仓库" class="headerlink" title="hexo d 发布的时候无法访问到仓库"></a>hexo d 发布的时候无法访问到仓库</h3><p>有时候会遇到这个错：<code>ssh: connect to host github.com port 22: Connection timed out</code></p>
+<p>如果把clash打开/关闭后还是没用，可以这样操作：</p>
+<p>找到 ~/.ssh/config 文件（windows是在C/用户/用户名/.ssh/config）</p>
+<p>然后添加：</p>
+<pre class="line-numbers language-none"><code class="language-none">Host github.com
+ Hostname ssh.github.com
+ Port 443<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="宽带、带宽、流量"><a href="#宽带、带宽、流量" class="headerlink" title="宽带、带宽、流量"></a>宽带、带宽、流量</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
 <li>宽带：通常别人会说你家能不能上网呀？其实这个意思就是你家有没有宽带，换句话说，就是一个名词，先有了宽带一词，然后才可以说你带宽是多少，宽带与上网的速度快慢没有直接关系。</li>
 <li>带宽：带宽是量词，指的是网速的大小，比如1Mbps的意思是一兆比特每秒</li>
 </ul>
@@ -1401,7 +1408,7 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">159k</span>
+                        class="white-color">159.1k</span>
             
             
             
