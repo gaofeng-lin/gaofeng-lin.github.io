@@ -32,9 +32,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -487,14 +487,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.3k
+                    5.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    20 分
                 </div>
                 
 
@@ -548,15 +548,22 @@ cmake用来转译CMakeLists.txt，在linux下它会生成Makefile，来给make�
 
 Makefile+make可理解为类unix环境下的项目管理工具， 而cmake是抽象层次更高的项目管理工具。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>下面给出其关系图：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20201109214319194.png" alt=""></p>
-<h3 id="CMake项目调试"><a href="#CMake项目调试" class="headerlink" title="CMake项目调试"></a>CMake项目调试</h3><p>很多大型C++项目都是通过CMake来构建项目，通过编译为可执行程序，然后运行。调试的话需要在CMakeLists.txt或者Config.txt中找到<strong>Debug</strong>这个选项，然后设置为ON。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-05-15_16-30-02.png" alt=""></p>
+<h2 id="CMake项目调试技巧"><a href="#CMake项目调试技巧" class="headerlink" title="CMake项目调试技巧"></a>CMake项目调试技巧</h2><h3 id="如何开启调试"><a href="#如何开启调试" class="headerlink" title="如何开启调试"></a>如何开启调试</h3><p>很多大型C++项目都是通过CMake来构建项目，通过编译为可执行程序，然后运行。调试的话需要在CMakeLists.txt或者Config.txt中找到<strong>Debug</strong>这个选项，然后设置为ON。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-05-15_16-30-02.png" alt=""></p>
 <p>然后运行的时候在命令中加入gdb</p>
 <p>例如之前的命令是：<br><code>mpirun -n 1 ./xxx</code><br>现在是：<br><code>mpirun -n 1 gdb ./xxx</code></p>
 <p>然后命令行前面会出现(gdb)这样的情况，代表进入了gdb调试。</p>
-<p>先开始打断点，break xxx.cpp:200<br>上面的表示在xxx.cpp文件的200行处打断点</p>
+<h3 id="打断点"><a href="#打断点" class="headerlink" title="打断点"></a>打断点</h3><p>先开始打断点，break xxx.cpp:200<br>上面的表示在xxx.cpp文件的200行处打断点</p>
 <p>然后就可以输入run，然后回车。</p>
 <p>c:继续<br>q:退出</p>
-<p>可以通过print 来查看变量的值 </p>
+<h3 id="监控变量"><a href="#监控变量" class="headerlink" title="监控变量"></a>监控变量</h3><p>在大型项目中，如果想知道变量的变化情况，可以输入watch<br></p><pre class="line-numbers language-none"><code class="language-none">(gdb) watch variable_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>在程序还没开始运行的时候，可能会出错。可以在断点处停下后，再设置。<p></p>
+<p><strong>如果这个变量发生变化，也可以看到在哪个代码文件发生变化，很有用</strong></p>
+<p>查看监控变量情况以及删除：<br></p><pre class="line-numbers language-none"><code class="language-none">(gdb) info watchpoints
+(gdb) delete watchpoint_number // 例如：(gdb) delete watchpoint 2 ，删除编号为2的监视点
+(gdb) delete watchpoints //删除所有的监视点<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p></p>
+<p>简单的查看可以通过print 来查看变量的值 </p>
 <p>例如：print res[0][1]</p>
+<h3 id="查看调用栈"><a href="#查看调用栈" class="headerlink" title="查看调用栈"></a>查看调用栈</h3><p>代码之间相互调用，想知道调用顺序。</p>
+<p>当程序停在断点处时。<br></p><pre class="line-numbers language-none"><code class="language-none">(gdb) backtrace<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
 <h2 id="configure-amp-amp-make-amp-amp-make-install"><a href="#configure-amp-amp-make-amp-amp-make-install" class="headerlink" title="./configure &amp;&amp; make &amp;&amp; make install"></a>./configure &amp;&amp; make &amp;&amp; make install</h2><h3 id="configure"><a href="#configure" class="headerlink" title="./configure"></a>./configure</h3><p>源码的安装一般由3个步骤组成：<strong>配置(configure)、编译(make)、安装(make install)</strong>。</p>
 <p>configure文件是一个可执行的脚本文件,是用来检测你的安装平台的目标特征的。比如它会检测你是不是有CC或GCC，并不是需要CC或GCC.<br>它有很多选项，在待安装的源码目录下使用命令<code>./configure –help</code>可以输出详细的选项列表。</p>
 <p>其中—prefix选项是配置安装目录，如果不配置该选项，安装后可执行文件默认放在/usr /local/bin，库文件默认放在/usr/local/lib，配置文件默认放在/usr/local/etc，其它的资源文件放在/usr /local/share，比较凌乱。</p>
@@ -1005,6 +1012,55 @@ export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/posts/43473/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="牛客网">
+                        
+                        <span class="card-title">牛客网</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    编程语言
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/">
+                        <span class="chip bg-color">牛客网</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/posts/58712/">
                     <div class="card-image">
                         
@@ -1021,9 +1077,9 @@ export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1053,95 +1109,6 @@ export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers
                     
                     <a href="/tags/%E6%A2%AF%E5%AD%90/">
                         <span class="chip bg-color">梯子</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/7909/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="计算机基础知识">
-                        
-                        <span class="card-title">计算机基础知识</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
-                                    计算机基础知识
-                                </a>
-                            
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/web/" class="post-category">
-                                    web
-                                </a>
-                            
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/web/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                    操作系统
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/VM/">
-                        <span class="chip bg-color">VM</span>
-                    </a>
-                    
-                    <a href="/tags/nginx/">
-                        <span class="chip bg-color">nginx</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BC%96%E8%AF%91/">
-                        <span class="chip bg-color">编译</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">
-                        <span class="chip bg-color">环境变量</span>
-                    </a>
-                    
-                    <a href="/tags/Cookie/">
-                        <span class="chip bg-color">Cookie</span>
-                    </a>
-                    
-                    <a href="/tags/Session/">
-                        <span class="chip bg-color">Session</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">
-                        <span class="chip bg-color">密码学</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
-                        <span class="chip bg-color">硬件知识</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
-                        <span class="chip bg-color">线程、进程</span>
                     </a>
                     
                 </div>
@@ -1338,7 +1305,7 @@ export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">159.1k</span>
+                        class="white-color">159.3k</span>
             
             
             
