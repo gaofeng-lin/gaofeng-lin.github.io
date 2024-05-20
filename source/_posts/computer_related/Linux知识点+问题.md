@@ -94,7 +94,9 @@ Makefile+make可理解为类unix环境下的项目管理工具， 而cmake是抽
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20201109214319194.png)
 
 
-### CMake项目调试
+## CMake项目调试技巧
+
+### 如何开启调试
 
 很多大型C++项目都是通过CMake来构建项目，通过编译为可执行程序，然后运行。调试的话需要在CMakeLists.txt或者Config.txt中找到**Debug**这个选项，然后设置为ON。
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-05-15_16-30-02.png)
@@ -108,6 +110,8 @@ Makefile+make可理解为类unix环境下的项目管理工具， 而cmake是抽
 
 然后命令行前面会出现(gdb)这样的情况，代表进入了gdb调试。
 
+### 打断点
+
 先开始打断点，break xxx.cpp:200
 上面的表示在xxx.cpp文件的200行处打断点
 
@@ -116,9 +120,40 @@ Makefile+make可理解为类unix环境下的项目管理工具， 而cmake是抽
 c:继续
 q:退出
 
-可以通过print 来查看变量的值 
+### 监控变量
+
+在大型项目中，如果想知道变量的变化情况，可以输入watch
+```
+(gdb) watch variable_name
+```
+在程序还没开始运行的时候，可能会出错。可以在断点处停下后，再设置。
+
+**如果这个变量发生变化，也可以看到在哪个代码文件发生变化，很有用**
+
+
+查看监控变量情况以及删除：
+```
+(gdb) info watchpoints
+(gdb) delete watchpoint_number // 例如：(gdb) delete watchpoint 2 ，删除编号为2的监视点
+(gdb) delete watchpoints //删除所有的监视点
+```
+
+
+简单的查看可以通过print 来查看变量的值 
 
 例如：print res[0][1]
+
+
+
+### 查看调用栈
+代码之间相互调用，想知道调用顺序。
+
+当程序停在断点处时。
+```
+(gdb) backtrace
+```
+
+
 
 
 
