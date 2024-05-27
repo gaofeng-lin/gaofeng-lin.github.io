@@ -475,7 +475,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -519,24 +519,25 @@
 <p>下面讲解下步骤：</p>
 <p><strong>步骤1： 构建关联矩阵C</strong><br>在时间相关的POD中，首先需要构建一个称为关联矩阵（或协方差矩阵）的结构。这个矩阵是通过计算不同时间步之间的状态向量的内积来构建的。</p>
 <p>$C(t,t^{\prime})=\int_{\Omega}{\bf u}(t,{\bf x}){\bf u}(t^{\prime},{\bf x})d{\bf x}$</p>
-<p>假设你正在分析一个流体的流动，其中$u(t,x)$代表在时间t和空间x的速度场，如果有5个连续时间步的数据$t<em>n, t</em>{n-1}, \ldots, t<em>{n-4}$ ，关联矩阵 C 将是一个 5x5 矩阵，其中每个元素$C</em>{i,j}$是时间步$t^{n+1-i}和t^{n+1-j}$之间的积分内积。</p>
+<p>假设你正在分析一个流体的流动，其中 $u(t,x)$ 代表在时间t和空间x的速度场，如果有5个连续时间步的数据$t_n$, $t_{n-1}$, $\ldots$, $t_{n-4}$ , 关联矩阵 C 将是一个 5x5 矩阵，其中每个元素$C_(i,j)$是时间步 $t^{n+1-i}$ 和 $t^{n+1-j}$ 之间的积分内积。</p>
 <p><strong><em>构建关联矩阵的方法能够有效降低计算负担。比如原始矩阵是M </em> N, 那么关联矩阵就是 N <em> N。如果空间维度M远大于时间步数N，那马就会显著减少计算成本</em></strong></p>
 <p><strong>步骤2： 计算特征值和特征向量</strong></p>
-<p>$\int<em>{T}C(t,t^{\prime})a</em>{q}(t^{\prime})d t^{\prime}=\lambda<em>{q}a</em>{q}(t)$</p>
-<p>继续使用流体流动的例子，我们求解关联矩阵 C 的特征值和特征向量。特征值$\lambda<em>{q}$越大，对应的特征向量$a</em>{q}(t)$描述的流动模式越重要。选择最大的几个特征值及其对应的特征向量进行下一步分析。</p>
+<p>$\int_{T}C(t,t^{\prime})a_{q}(t^{\prime})d t^{\prime}=\lambda_{q}a_{q}(t)$</p>
+<p>继续使用流体流动的例子，我们求解关联矩阵 C 的特征值和特征向量。特征值 $\lambda_{q}$ 越大，对应的特征向量 $a_{q}(t)$ 描述的流动模式越重要。选择最大的几个特征值及其对应的特征向量进行下一步分析。</p>
 <p><strong>步骤3： 时间系数外推</strong></p>
-<p>$a<em>{q}(t^{n+1})=\sum</em>{k=0}^{Q<em>{R}-1}\beta</em>{k}a_{q}(t^{n-k})$</p>
+<p>$a_{q}(t^{n+1})=\sum_{k=0}^{Q_{R}-1}\beta_{k}a_{q}(t^{n-k})$</p>
 <p>$\beta_{k}$为外推系数</p>
-<p>q=1,…,$Q_R$</p>
-<p>如果你决定使用前三个主要模式（$Q<em>R$=3）来预测下一个时间步的流动状态，你会根据历史数据中的这些模式的活动来计算 $a</em>{q}(t^{n+1})$。</p>
-<p>$a<em>{q}(t^{n+1})$表示过去K个时间步的第q模态的时间系数。<br>每个时间系数$a</em>{q}(t^{n+1})$对应一个特定的模态$\Psi_{q}({\bf x})$。这个系数描述了该模态随时间的变化。当提到步骤3的时候，我们应该明确每个系数的计算都是独立进行的，针对每一个q。</p>
+<p>q=1,…, $Q_R$ </p>
+<p>如果你决定使用前三个主要模式（ $Q_R$ =3）来预测下一个时间步的流动状态，你会根据历史数据中的这些模式的活动来计算 $a_{q}(t^{n+1})$ 。</p>
+<p>$a_{q}(t^{n+1})$ 表示过去K个时间步的第q模态的时间系数。<br>每个时间系数 $a_{q}(t^{n+1})$ 对应一个特定的模态 $\Psi_{q}({\bf x})$。这个系数描述了该模态随时间的变化。当提到步骤3的时候，我们应该明确每个系数的计算都是独立进行的，针对每一个q。</p>
 <p>而$Q_R$就是保留的模态（特征向量）。既可以选择数量（具有最大特征值的前$Q_R$个模态）或者可以通过一个阈值（如某个能量百分比或特征值大小）来动态确定。</p>
 <p>q的变化就是从1到$Q_R$</p>
 <p><strong>步骤4： 计算近似解</strong></p>
-<p>${\bf u}<em>{a p}=\sum</em>{q=1}^{Q<em>{R}}a</em>{q}(t^{n+1})\Psi<em>{q}({\bf x})$<br>最终的流体流动的近似速度场将通过将时间系数<br>$a</em>{q}(t^{n+1})$ 乘以对应的空间模态 ​$\Psi<em>{q}({\bf x})$来构建，这些模态是从特征向量 $a</em>{q}(t^{n})$派生的。</p>
+<p>${\bf u}_{a p}=\sum_{q=1}^{Q_{R}}a_{q}(t^{n+1})\Psi_{q}({\bf x})$</p>
+<p>其中：$\Psi_{q}({\bf x})=\int_{T}a_{q}(t){\bf u}(t,{\bf x})d t$</p>
+<p>最终的流体流动的近似速度场将通过将时间系数<br>$a_{q}(t^{n+1})$ 乘以对应的空间模态 ​$\Psi_{q}({\bf x})$ 来构建，这些模态是从特征向量 $a_{q}(t^{n})$ 派生的。</p>
 <h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><ol>
 <li>整体流程不清楚。优化的过程是只调用一次，还是调用多次，即更新一个初始状态还是多个</li>
-<li></li>
 </ol>
 <h2 id="INITIAL-GUESSES-FOR-SEQUENCES-OF-LINEAR-SYSTEMS-IN-A-GPU-ACCELERATED-INCOMPRESSIBLE-FLOW-SOLVER"><a href="#INITIAL-GUESSES-FOR-SEQUENCES-OF-LINEAR-SYSTEMS-IN-A-GPU-ACCELERATED-INCOMPRESSIBLE-FLOW-SOLVER" class="headerlink" title="INITIAL GUESSES FOR SEQUENCES OF LINEAR SYSTEMS IN A GPU-ACCELERATED INCOMPRESSIBLE FLOW SOLVER"></a>INITIAL GUESSES FOR SEQUENCES OF LINEAR SYSTEMS IN A GPU-ACCELERATED INCOMPRESSIBLE FLOW SOLVER</h2><h3 id="文章做了什么"><a href="#文章做了什么" class="headerlink" title="文章做了什么"></a>文章做了什么</h3><p>迭代求解线性系统时，initial guesses可以在gpu加速的解算器中实现</p>
 <p>提出了基于稳定多项式外推法的新初始猜测方法，并于Fischer的投影法相比，存储只需要一半，执行更少的数据移动和通信。</p>
