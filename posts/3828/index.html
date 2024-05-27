@@ -43,9 +43,9 @@ git ">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -490,14 +490,14 @@ git ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5k
+                    5.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    20 分
                 </div>
                 
 
@@ -826,7 +826,18 @@ Host github.com
   ProxyCommand connect -H 127.0.0.1:7890 %h %p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="ssh-Connection-refused"><a href="#ssh-Connection-refused" class="headerlink" title="ssh  Connection refused"></a>ssh  Connection refused</h3><p>ssh: connect to host github.com port  22: Connection refused</p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000041909858">原链接</a></p>
+<p>这个问题其实经常遇到，可以试下几个方法:<br><strong>方法1：使用GitHub的443端口</strong><br>在config 在目录~/.ssh/下,把端口指向443</p>
+<p>修改为：<br>Host github.com<br>  Hostname ssh.github.com<br>  Port 443<br>原理是：默认情况下，SSH使用端口22来连接远程服务器。但是，一些网络防火墙或公司网络策略可能会阻止对端口22的访问。这会导致在使用git push等操作时出现连接关闭的错误。</p>
+<p>端口443是用于HTTPS的标准端口，几乎所有的网络都允许通过这个端口进行通信。将SSH连接的端口改为443，可以绕过防火墙的限制，因为防火墙通常不会阻止443端口的通信。</p>
+<p>GitHub为了应对这种情况，提供了一个可以通过端口443连接的SSH服务。通过将配置文件中的Port设置为443并将Hostname设置为ssh.github.com，你可以使用这个服务来进行SSH连接。</p>
+<p><strong>方法二：使用代理</strong><br>具体配置见上面的 git代理</p>
+<p><strong>方法三：修改仓库的地址</strong></p>
+<p>仓库从ssh的地址修改为https的，这个方法有时候也可能不行。</p>
+<pre class="line-numbers language-none"><code class="language-none">git remote //查看地址
 
+git remote remove origin //移除名为origin的地址（一般默认是这个命名）
+
+git remote add origin https://xxxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1142,13 +1153,13 @@ Host github.com
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/15854/">
+                <a href="/posts/51872/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="前端框架">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="python">
                         
-                        <span class="card-title">前端框架</span>
+                        <span class="card-title">python</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1165,8 +1176,8 @@ Host github.com
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-category">
-                                    前端开发
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    编程语言
                                 </a>
                             
                             
@@ -1176,20 +1187,8 @@ Host github.com
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
-                    </a>
-                    
-                    <a href="/tags/React/">
-                        <span class="chip bg-color">React</span>
-                    </a>
-                    
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
-                    </a>
-                    
-                    <a href="/tags/Json/">
-                        <span class="chip bg-color">Json</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -1386,7 +1385,7 @@ Host github.com
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">159.3k</span>
+                        class="white-color">159.6k</span>
             
             
             
