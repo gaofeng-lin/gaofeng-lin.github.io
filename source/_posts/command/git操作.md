@@ -697,3 +697,32 @@ ssh: connect to host github.com port  22: Connection refused
 
 [原链接](https://segmentfault.com/a/1190000041909858)
 
+
+这个问题其实经常遇到，可以试下几个方法:
+**方法1：使用GitHub的443端口**
+在config 在目录~/.ssh/下,把端口指向443
+
+修改为：
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+原理是：默认情况下，SSH使用端口22来连接远程服务器。但是，一些网络防火墙或公司网络策略可能会阻止对端口22的访问。这会导致在使用git push等操作时出现连接关闭的错误。
+
+端口443是用于HTTPS的标准端口，几乎所有的网络都允许通过这个端口进行通信。将SSH连接的端口改为443，可以绕过防火墙的限制，因为防火墙通常不会阻止443端口的通信。
+
+GitHub为了应对这种情况，提供了一个可以通过端口443连接的SSH服务。通过将配置文件中的Port设置为443并将Hostname设置为ssh.github.com，你可以使用这个服务来进行SSH连接。
+
+**方法二：使用代理**
+具体配置见上面的 git代理
+
+**方法三：修改仓库的地址**
+
+仓库从ssh的地址修改为https的，这个方法有时候也可能不行。
+
+```
+git remote //查看地址
+
+git remote remove origin //移除名为origin的地址（一般默认是这个命名）
+
+git remote add origin https://xxxx
+```
