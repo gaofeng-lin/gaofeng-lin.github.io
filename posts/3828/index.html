@@ -444,16 +444,16 @@ git ">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
-                            </a>
-                        
                             <a href="/tags/Linux/">
                                 <span class="chip bg-color">Linux</span>
                             </a>
                         
                             <a href="/tags/%E8%BF%90%E7%BB%B4/">
                                 <span class="chip bg-color">运维</span>
+                            </a>
+                        
+                            <a href="/tags/git/">
+                                <span class="chip bg-color">git</span>
                             </a>
                         
                             <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/">
@@ -490,14 +490,14 @@ git ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5k
+                    5.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    20 分
                 </div>
                 
 
@@ -826,7 +826,18 @@ Host github.com
   ProxyCommand connect -H 127.0.0.1:7890 %h %p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="ssh-Connection-refused"><a href="#ssh-Connection-refused" class="headerlink" title="ssh  Connection refused"></a>ssh  Connection refused</h3><p>ssh: connect to host github.com port  22: Connection refused</p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000041909858">原链接</a></p>
+<p>这个问题其实经常遇到，可以试下几个方法:<br><strong>方法1：使用GitHub的443端口</strong><br>在config 在目录~/.ssh/下,把端口指向443</p>
+<p>修改为：<br>Host github.com<br>  Hostname ssh.github.com<br>  Port 443<br>原理是：默认情况下，SSH使用端口22来连接远程服务器。但是，一些网络防火墙或公司网络策略可能会阻止对端口22的访问。这会导致在使用git push等操作时出现连接关闭的错误。</p>
+<p>端口443是用于HTTPS的标准端口，几乎所有的网络都允许通过这个端口进行通信。将SSH连接的端口改为443，可以绕过防火墙的限制，因为防火墙通常不会阻止443端口的通信。</p>
+<p>GitHub为了应对这种情况，提供了一个可以通过端口443连接的SSH服务。通过将配置文件中的Port设置为443并将Hostname设置为ssh.github.com，你可以使用这个服务来进行SSH连接。</p>
+<p><strong>方法二：使用代理</strong><br>具体配置见上面的 git代理</p>
+<p><strong>方法三：修改仓库的地址</strong></p>
+<p>仓库从ssh的地址修改为https的，这个方法有时候也可能不行。</p>
+<pre class="line-numbers language-none"><code class="language-none">git remote //查看地址
 
+git remote remove origin //移除名为origin的地址（一般默认是这个命名）
+
+git remote add origin https://xxxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -890,16 +901,16 @@ Host github.com
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
-                                </a>
-                            
                                 <a href="/tags/Linux/">
                                     <span class="chip bg-color">Linux</span>
                                 </a>
                             
                                 <a href="/tags/%E8%BF%90%E7%BB%B4/">
                                     <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                                <a href="/tags/git/">
+                                    <span class="chip bg-color">git</span>
                                 </a>
                             
                                 <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/">
@@ -1081,13 +1092,13 @@ Host github.com
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/57899/">
+                <a href="/posts/51872/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="力扣算法总结">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="python">
                         
-                        <span class="card-title">力扣算法总结</span>
+                        <span class="card-title">python</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1098,14 +1109,14 @@ Host github.com
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-26
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    编程语言
                                 </a>
                             
                             
@@ -1115,20 +1126,8 @@ Host github.com
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                        <span class="chip bg-color">动态规划</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%80%92%E5%BD%92/">
-                        <span class="chip bg-color">递归</span>
-                    </a>
-                    
-                    <a href="/tags/DFS/">
-                        <span class="chip bg-color">DFS</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -1139,16 +1138,16 @@ Host github.com
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/posts/15854/">
+                <a href="/posts/3828/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="前端框架">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="git操作">
                         
-                        <span class="card-title">前端框架</span>
+                        <span class="card-title">git操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1165,31 +1164,32 @@ Host github.com
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-category">
-                                    前端开发
+                            <a href="/categories/git/" class="post-category">
+                                    git
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/React/">
-                        <span class="chip bg-color">React</span>
+                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                        <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
-                    <a href="/tags/Json/">
-                        <span class="chip bg-color">Json</span>
+                    <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/">
+                        <span class="chip bg-color">代码管理</span>
                     </a>
                     
                 </div>
@@ -1386,7 +1386,7 @@ Host github.com
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">159.1k</span>
+                        class="white-color">160.6k</span>
             
             
             
