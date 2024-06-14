@@ -435,12 +435,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
                             <a href="/tags/%E8%BF%90%E7%BB%B4/">
                                 <span class="chip bg-color">运维</span>
+                            </a>
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                             <a href="/tags/ssh/">
@@ -481,14 +481,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8k
+                    8.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    30 分
+                    31 分
                 </div>
                 
 
@@ -644,6 +644,33 @@ rm -rf !(file1|file2)<span aria-hidden="true" class="line-numbers-rows"><span></
 </ol>
 <h2 id="批量操作"><a href="#批量操作" class="headerlink" title="批量操作"></a>批量操作</h2><h3 id="批量删除文件夹"><a href="#批量删除文件夹" class="headerlink" title="批量删除文件夹"></a>批量删除文件夹</h3><p>某个文件夹下，有很多文件名形如：checkpoint<em>{epoch}</em>{loss}.pth；其中epoch和loss是变量；我现在希望把epoch小于400的删除</p>
 <pre class="line-numbers language-none"><code class="language-none">ls checkpoint_*.pth | awk -F'_' '{if ($2 &lt; 400) print $0}' | xargs rm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="替换rm命令"><a href="#替换rm命令" class="headerlink" title="替换rm命令"></a>替换rm命令</h2><p>一般删除命令都是rm，但是有时候会出现用rm误删的情况，这种时候还不好恢复。所以想替换一个命令，即使删除后，还可以恢复。</p>
+<p><strong>trash-cli</strong></p>
+<ol>
+<li>安装 trash-cli</li>
+</ol>
+<p>ubuntu/debian<br></p><pre class="line-numbers language-none"><code class="language-none">sudo apt-get update
+sudo apt-get install trash-cli<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p></p>
+<p>Fedora:<br></p><pre class="line-numbers language-none"><code class="language-none">sudo dnf install trash-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<ol>
+<li>常用命令<pre class="line-numbers language-none"><code class="language-none">//删除放入回收站
+trash-put filename
+
+//查看回收站内容
+trash-list
+
+//从回收站恢复文件
+trash-restore
+
+//清空回收站
+trash-empty
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>替换rm<pre class="line-numbers language-none"><code class="language-none">alias rm='trash-put'
+
+source ~/.bashrc
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
 <h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><h3 id="touch命令-创建文件"><a href="#touch命令-创建文件" class="headerlink" title="touch命令(创建文件)"></a>touch命令(创建文件)</h3><p><code>touch</code>命令用于修改文件或者目录的时间属性，包括存取时间和更改时间，若文件不存在，系统会建立一个新的文件。</p>
 <p>创建一个空白文件，如果文件已经存在，它将更改文件的访问时间。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> /tmp/file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -997,12 +1024,12 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
-                                </a>
-                            
                                 <a href="/tags/%E8%BF%90%E7%BB%B4/">
                                     <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                                 <a href="/tags/ssh/">
@@ -1188,13 +1215,13 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/40991/">
+                <a href="/posts/62688/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Docker">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Mysql">
                         
-                        <span class="card-title">Docker</span>
+                        <span class="card-title">Mysql</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1211,8 +1238,8 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
-                                    运维
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -1226,8 +1253,16 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -1241,13 +1276,13 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/300/">
+                <a href="/posts/56435/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="工具使用技巧集合">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Golang">
                         
-                        <span class="card-title">工具使用技巧集合</span>
+                        <span class="card-title">Golang</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1264,8 +1299,8 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    编程语言
                                 </a>
                             
                             
@@ -1275,32 +1310,8 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/office/">
-                        <span class="chip bg-color">office</span>
-                    </a>
-                    
-                    <a href="/tags/IDE/">
-                        <span class="chip bg-color">IDE</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
-                        <span class="chip bg-color">编辑器</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-                        <span class="chip bg-color">快捷键</span>
-                    </a>
-                    
-                    <a href="/tags/vscode/">
-                        <span class="chip bg-color">vscode</span>
-                    </a>
-                    
-                    <a href="/tags/visio/">
-                        <span class="chip bg-color">visio</span>
-                    </a>
-                    
-                    <a href="/tags/postman/">
-                        <span class="chip bg-color">postman</span>
+                    <a href="/tags/Golang/">
+                        <span class="chip bg-color">Golang</span>
                     </a>
                     
                 </div>
@@ -1497,7 +1508,7 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">160.2k</span>
+                        class="white-color">160.8k</span>
             
             
             
