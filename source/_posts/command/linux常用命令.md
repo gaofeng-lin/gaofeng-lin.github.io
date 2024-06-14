@@ -320,6 +320,49 @@ cp -r /home/packageA /home/packageB
 ls checkpoint_*.pth | awk -F'_' '{if ($2 < 400) print $0}' | xargs rm
 ```
 
+## 替换rm命令
+
+一般删除命令都是rm，但是有时候会出现用rm误删的情况，这种时候还不好恢复。所以想替换一个命令，即使删除后，还可以恢复。
+
+**trash-cli**
+
+1. 安装 trash-cli
+
+ubuntu/debian
+```
+sudo apt-get update
+sudo apt-get install trash-cli
+```
+
+Fedora:
+```
+sudo dnf install trash-cli
+```
+
+2. 常用命令
+```
+//删除放入回收站
+trash-put filename
+
+//查看回收站内容
+trash-list
+
+//从回收站恢复文件
+trash-restore
+
+//清空回收站
+trash-empty
+
+```
+3. 替换rm
+```
+alias rm='trash-put'
+
+source ~/.bashrc
+
+```
+
+
 ## 文件操作
 
 ###  touch命令(创建文件)
