@@ -33,9 +33,9 @@ W">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -679,10 +679,10 @@ def perform_pod_eig(data):
 <h4 id="收集数据"><a href="#收集数据" class="headerlink" title="收集数据"></a>收集数据</h4><p>X1 = [x1,x2,…,$x_{m-1}$] (n×(m-1))</p>
 <p>X2 = [x2,x3,…,$x_{m}$]  (n×(m-1))</p>
 <h4 id="计算矩阵A的近似"><a href="#计算矩阵A的近似" class="headerlink" title="计算矩阵A的近似"></a>计算矩阵A的近似</h4><p>DMD算法寻求在时间上与两个快照矩阵相关的最佳拟合线性算子A的主导谱分解（特征值和特征向量）</p>
-<p>$\mathbf{X}<em>{2}\approx\mathbf{A}\mathbf{X}</em>{1}$</p>
+<p>$\mathbf{X}_2\approx\mathbf{A}\mathbf{X}_1$</p>
 <p>(n×n)</p>
 <p>为了找到最好的线性近似$A$，我们使用最小二乘法求解</p>
-<p>$\mathbf{A}=\mathbf{X}<em>{2}\mathbf{X}</em>{1}^{+}$</p>
+<p>$\mathbf{A}=\mathbf{X}_2\mathbf{X}_1^{+}$</p>
 <p>(n×n)</p>
 <h4 id="奇异值分解-1"><a href="#奇异值分解-1" class="headerlink" title="奇异值分解"></a>奇异值分解</h4><p>$\mathbf{X}_{1}=\mathbf{U}\mathbf{\Sigma}\mathbf{V}^{\ast}$</p>
 <p>(n×(m-1)) = (n×r)(r×r)(r×(m-1))</p>
@@ -691,7 +691,7 @@ def perform_pod_eig(data):
 <p>${\bf V}\in\mathbb{R}^{(m-1)\times r}$</p>
 <p>r是$X_1$的秩</p>
 <h4 id="构建低秩动态矩阵-A-r"><a href="#构建低秩动态矩阵-A-r" class="headerlink" title="构建低秩动态矩阵 $A_r$"></a>构建低秩动态矩阵 $A_r$</h4><p>利用 SVD 的结果构建一个低秩近似矩阵：</p>
-<p>$\mathbf{A}_{r}=\mathbf{U}^{<em>}\mathbf{A}\mathbf{U}$ （r</em>r）</p>
+<p>$\mathbf{A}_r = \mathbf{U}^\ast\mathbf{A}\mathbf{U}$<br>（r*r）</p>
 <p>很多公式或论文里面会把$A_r$ 写为$\tilde{A}$。</p>
 <h4 id="特征分解-1"><a href="#特征分解-1" class="headerlink" title="特征分解"></a>特征分解</h4><p>$\mathrm{A}_{r}\,\mathrm{W}=\,\mathrm{W\Lambda}$  (r*r)</p>
 <p>其中，W是特征向量矩阵，$\Lambda$是特征值矩阵。维度都是r*r</p>
@@ -704,7 +704,7 @@ def perform_pod_eig(data):
 <p>其中<br>$\mathbf{b}=\Phi\cdot\mathbf{x}_{1}$， 维度是r*1</p>
 <p>$\Lambda^{t-1}$就是$\Lambda$里面每个元素的(t-1)次方。</p>
 <p>这样重构哪个时刻的数据就使用对应的次方</p>
-<h4 id="预测数据"><a href="#预测数据" class="headerlink" title="预测数据"></a>预测数据</h4><p>和上面的重构数据一样，假设t的范围是1&lt;=t<br>&lt;=5。t=6时刻的数据为：</p>
+<h4 id="预测数据"><a href="#预测数据" class="headerlink" title="预测数据"></a>预测数据</h4><p>和上面的重构数据一样，假设t的范围是1&lt;=t&lt;=5。t=6时刻的数据为：</p>
 <p>$\mathbf{x}(6)=\Phi\Lambda^{5}\mathbf{b}$</p>
 <p>需要注意的是，这里我们是基于第一个时间步的数据来进行预测，如果是基于最后一个时间步的数据来进行预测，那么b会发生变化<br>$\mathbf{b}=\Phi\cdot\mathbf{x}_{5}$</p>
 <p>预测未来一个时间步的数据变为：<br>$\mathbf{x}(6)=\Phi\Lambda^{1}\mathbf{b}$</p>
