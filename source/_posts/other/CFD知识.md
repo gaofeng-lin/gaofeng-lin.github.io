@@ -311,13 +311,13 @@ X2 = [x2,x3,...,$x_{m}$]  (n×(m-1))
 
 DMD算法寻求在时间上与两个快照矩阵相关的最佳拟合线性算子A的主导谱分解（特征值和特征向量）
 
-$\mathbf{X}_{2}\approx\mathbf{A}\mathbf{X}_{1}$
+$\mathbf{X}_2\approx\mathbf{A}\mathbf{X}_1$
 
 (n×n)
 
 为了找到最好的线性近似$A$，我们使用最小二乘法求解
 
-$\mathbf{A}=\mathbf{X}_{2}\mathbf{X}_{1}^{+}$
+$\mathbf{A}=\mathbf{X}_2\mathbf{X}_1^{+}$
 
 
 (n×n)
@@ -342,7 +342,8 @@ r是$X_1$的秩
 
 利用 SVD 的结果构建一个低秩近似矩阵：
 
-$\mathbf{A}_{r}=\mathbf{U}^{*}\mathbf{A}\mathbf{U}$ （r*r）
+$\mathbf{A}_r = \mathbf{U}^\ast\mathbf{A}\mathbf{U}$ 
+（r*r）
 
 很多公式或论文里面会把$A_r$ 写为$\tilde{A}$。
 
@@ -377,8 +378,7 @@ $\Lambda^{t-1}$就是$\Lambda$里面每个元素的(t-1)次方。
 
 #### 预测数据
 
-和上面的重构数据一样，假设t的范围是1<=t
-<=5。t=6时刻的数据为：
+和上面的重构数据一样，假设t的范围是1<=t<=5。t=6时刻的数据为：
 
 $\mathbf{x}(6)=\Phi\Lambda^{5}\mathbf{b}$
 
