@@ -33,9 +33,9 @@ W">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -468,14 +468,14 @@ W">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.9k
+                    5.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    19 分
                 </div>
                 
 
@@ -596,6 +596,121 @@ W">
     return u<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>重构的代码就是<code>u = u_mean + u_modes@(a.reshape(-1,1))</code></p>
 <p>而投影在<code>coeff = pca.fit_transform(S.T)</code>就完成了，这个代码是自动进行了去中心化的，重构的时候要把平均值再加回去，所以上面的代码是没有问题的。</p>
+<h3 id="pod的不同实现方式"><a href="#pod的不同实现方式" class="headerlink" title="pod的不同实现方式"></a>pod的不同实现方式</h3><p>pod的实现方式大体有两种，核心的关键在于矩阵的分解，用svd分解，还是传统的特征值分解。</p>
+<p>下面我用代码来阐述下：</p>
+<h4 id="svd分解"><a href="#svd分解" class="headerlink" title="svd分解"></a>svd分解</h4><pre class="line-numbers language-none"><code class="language-none">def generate_data(n_time_steps):
+    """生成一个简单的示例数据集"""
+    t = np.linspace(0, 2 * np.pi, n_time_steps)
+    data = np.array([np.sin(t), np.cos(t)]).T  # 2变量，n时间步
+    print('data shape : ', data.shape)
+    return t, data
+
+def perform_pod(data):
+    """执行POD并重构数据，使用SVD避免复数问题"""
+    # 数据中心化
+    mean_data = np.mean(data, axis=0)
+    data_centered = data - mean_data
+    
+    # 使用SVD进行分解
+    U, Sigma, VT = np.linalg.svd(data_centered, full_matrices=False)
+
+    
+    # 提取前几个模态和模态系数
+    n_modes = 2  # 选择前3个主要模态
+    modes = U[:, :n_modes]
+    modal_coefficients = np.diag(Sigma[:n_modes]) @ VT[:n_modes, :]
+
+    # 重构数据，使用所有模态
+    reconstructed_data = np.dot(modes, modal_coefficients) + mean_data
+    return reconstructed_data
+
+def perform_pod_pca(data):
+    """执行POD并重构数据，使用SVD避免复数问题"""
+    # 数据中心化
+
+    pca = PCA(n_components=2)
+    coeff = pca.fit_transform(data)
+    u_mean = pca.mean_.reshape(-1,1)
+    u_modes = pca.components_.T
+
+    reconstructed_data = u_mean + np.dot(u_modes, coeff.T)
+
+
+    return reconstructed_data.T
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面的两个函数perform_pod_pca和perform_pod，你可以理解为一个详细版的，另一个是粗略版的。</p>
+<p><strong>关于pod的输入没有明确的规定，即样本数和特征数谁在前都是可以的，但是会对结果有些影响，但是不大。</strong></p>
+<p>gpt对此的解释是：</p>
+<ol>
+<li>分析时间上的变化模式</li>
+</ol>
+<p>如果你主要关注如何在不同时间点捕捉流场的变化模式，你可以将每个时间点的流场数据看作一个特征向量。m（样本数）：对应于时间点的数量，在你的案例中，这是10（你有10个不同时间点的流场数据）。n（特征数）：对应于每个时间点的数据点数量，在你的案例中，这是201（每个时间点有201个流场数据点）。<br>这样，每一行代表一个时间点的完整流场，列数则代表每个时间点被记录的流场数据点。</p>
+<ol>
+<li>分析空间特征</li>
+</ol>
+<p>如果你关注在所有时间点上各个特定空间位置的行为，你可能会选择将每个空间点的时间序列视为一个特征向量。m（样本数）：对应于空间点的数量，即201（每个时间点201个数据点）。<br>n（特征数）：对应于时间点的数量，即10（你有10个时间的流场数据）。<br>在这种情况下，每一行代表一个固定空间位置在所有记录时间点的流场变化。</p>
+<h4 id="特征分解"><a href="#特征分解" class="headerlink" title="特征分解"></a>特征分解</h4><pre class="line-numbers language-none"><code class="language-none"># 特征值分解
+def perform_pod_eig(data):
+    """执行POD并重构数据"""
+    # 数据中心化
+    mean_data = np.mean(data, axis=1).reshape(-1, 1)
+    data_centered = data - mean_data
+    
+    # 构建协方差矩阵
+    covariance_matrix = np.dot(data_centered, data_centered.T) / data_centered.shape[1]
+    
+    # 特征分解
+    eigenvalues, eigenvectors = np.linalg.eig(covariance_matrix)
+    
+    # 排序特征值和特征向量
+    idx = eigenvalues.argsort()[::-1]
+    eigenvalues = eigenvalues[idx]
+    eigenvectors = eigenvectors[:, idx]
+    
+    # 提取前几个模态和模态系数
+    n_modes = 2  # 选择前3个主要模态
+    modes = eigenvectors[:, :n_modes]
+    modal_coefficients = np.dot(modes.T, data_centered)
+    
+    # 重构数据
+    reconstructed_data = np.dot(modes, modal_coefficients) + mean_data
+    return reconstructed_data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="DMD-Dynamic-Mode-Decomposition"><a href="#DMD-Dynamic-Mode-Decomposition" class="headerlink" title="DMD(Dynamic Mode Decomposition)"></a>DMD(Dynamic Mode Decomposition)</h3><p>假设我们有一个时间序列数据矩阵$X$，其中每一列是系统在某一时刻的状态向量。我们将数据划分成两个矩阵$X<em>1, X_2$。它们分别包含从时间$𝑡_1$到$𝑡</em>{m-1}$和$𝑡<em>2$到$𝑡</em>{m}$的状态：</p>
+<h4 id="收集数据"><a href="#收集数据" class="headerlink" title="收集数据"></a>收集数据</h4><p>X1 = [x1,x2,…,$x_{m-1}$] (n×(m-1))</p>
+<p>X2 = [x2,x3,…,$x_{m}$]  (n×(m-1))</p>
+<h4 id="计算矩阵A的近似"><a href="#计算矩阵A的近似" class="headerlink" title="计算矩阵A的近似"></a>计算矩阵A的近似</h4><p>DMD算法寻求在时间上与两个快照矩阵相关的最佳拟合线性算子A的主导谱分解（特征值和特征向量）</p>
+<p>$\mathbf{X}<em>{2}\approx\mathbf{A}\mathbf{X}</em>{1}$</p>
+<p>(n×n)</p>
+<p>为了找到最好的线性近似$A$，我们使用最小二乘法求解</p>
+<p>$\mathbf{A}=\mathbf{X}<em>{2}\mathbf{X}</em>{1}^{+}$</p>
+<p>(n×n)</p>
+<h4 id="奇异值分解-1"><a href="#奇异值分解-1" class="headerlink" title="奇异值分解"></a>奇异值分解</h4><p>$\mathbf{X}_{1}=\mathbf{U}\mathbf{\Sigma}\mathbf{V}^{\ast}$</p>
+<p>(n×(m-1)) = (n×r)(r×r)(r×(m-1))</p>
+<p>其中<br>$\mathbf{U}\in\mathbb{R}^{n\times r}$</p>
+<p>$\textstyle\sum\in\mathbb{R}^{r\times r}$</p>
+<p>${\bf V}\in\mathbb{R}^{(m-1)\times r}$</p>
+<p>r是$X_1$的秩</p>
+<h4 id="构建低秩动态矩阵-A-r"><a href="#构建低秩动态矩阵-A-r" class="headerlink" title="构建低秩动态矩阵 $A_r$"></a>构建低秩动态矩阵 $A_r$</h4><p>利用 SVD 的结果构建一个低秩近似矩阵：</p>
+<p>$\mathbf{A}_{r}=\mathbf{U}^{<em>}\mathbf{A}\mathbf{U}$ （r</em>r）</p>
+<p>很多公式或论文里面会把$A_r$ 写为$\tilde{A}$。</p>
+<h4 id="特征分解-1"><a href="#特征分解-1" class="headerlink" title="特征分解"></a>特征分解</h4><p>$\mathrm{A}_{r}\,\mathrm{W}=\,\mathrm{W\Lambda}$  (r*r)</p>
+<p>其中，W是特征向量矩阵，$\Lambda$是特征值矩阵。维度都是r*r</p>
+<h4 id="计算DMD模态"><a href="#计算DMD模态" class="headerlink" title="计算DMD模态"></a>计算DMD模态</h4><p>$\Phi=\mathbf{X}_{2}\mathbf{V}\Sigma^{-1}\mathbf{W}$</p>
+<p>维度是(n*r)</p>
+<p><strong>这个地方需要注意下，有的地方关于模态的公式是下面这个：</strong></p>
+<p>$\Phi=UW$</p>
+<p>这是又名的投影模态。第一个写法是精确表示，如果计算出来的$\Phi$是0，那么就采用第二个计算。具体的区别可以参考《数据驱动的科学和工程》p197。</p>
+<h4 id="数据重构"><a href="#数据重构" class="headerlink" title="数据重构"></a>数据重构</h4><p>$\mathbf{x}(t)=\Phi\Lambda^{t-1}\mathbf{b}$，维度是n*1</p>
+<p>其中<br>$\mathbf{b}=\Phi\cdot\mathbf{x}_{1}$， 维度是r*1</p>
+<p>$\Lambda^{t-1}$就是$\Lambda$里面每个元素的(t-1)次方。</p>
+<p>这样重构哪个时刻的数据就使用对应的次方</p>
+<h4 id="预测数据"><a href="#预测数据" class="headerlink" title="预测数据"></a>预测数据</h4><p>和上面的重构数据一样，假设t的范围是1&lt;=t<br>&lt;=5。t=6时刻的数据为：</p>
+<p>$\mathbf{x}(6)=\Phi\Lambda^{5}\mathbf{b}$</p>
+<p>需要注意的是，这里我们是基于第一个时间步的数据来进行预测，如果是基于最后一个时间步的数据来进行预测，那么b会发生变化<br>$\mathbf{b}=\Phi\cdot\mathbf{x}_{5}$</p>
+<p>预测未来一个时间步的数据变为：<br>$\mathbf{x}(6)=\Phi\Lambda^{1}\mathbf{b}$</p>
+<p>预测未来时间步数据还有另外一种写法：</p>
+<p>$\mathbf{x}(t)=\Phi{}e^{\omega t}b$</p>
+<p>其中$\omega={\frac{\log(\lambda)}{d t}}$</p>
 
                 
             </div>
@@ -1131,7 +1246,7 @@ W">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">160.8k</span>
+                        class="white-color">162.2k</span>
             
             
             
