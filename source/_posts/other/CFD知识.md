@@ -295,3 +295,103 @@ def perform_pod_eig(data):
     reconstructed_data = np.dot(modes, modal_coefficients) + mean_data
     return reconstructed_data
 ```
+
+
+### DMD(Dynamic Mode Decomposition)
+
+假设我们有一个时间序列数据矩阵$X$，其中每一列是系统在某一时刻的状态向量。我们将数据划分成两个矩阵$X_1, X_2$。它们分别包含从时间$𝑡_1$到$𝑡_{m-1}$和$𝑡_2$到$𝑡_{m}$的状态：
+
+#### 收集数据
+
+X1 = [x1,x2,...,$x_{m-1}$] (n×(m-1))
+
+X2 = [x2,x3,...,$x_{m}$]  (n×(m-1))
+
+#### 计算矩阵A的近似
+
+DMD算法寻求在时间上与两个快照矩阵相关的最佳拟合线性算子A的主导谱分解（特征值和特征向量）
+
+$\mathbf{X}_{2}\approx\mathbf{A}\mathbf{X}_{1}$
+
+(n×n)
+
+为了找到最好的线性近似$A$，我们使用最小二乘法求解
+
+$\mathbf{A}=\mathbf{X}_{2}\mathbf{X}_{1}^{+}$
+
+
+(n×n)
+
+
+#### 奇异值分解
+
+$\mathbf{X}_{1}=\mathbf{U}\mathbf{\Sigma}\mathbf{V}^{\ast}$
+
+(n×(m-1)) = (n×r)(r×r)(r×(m-1))
+
+其中
+$\mathbf{U}\in\mathbb{R}^{n\times r}$
+
+$\textstyle\sum\in\mathbb{R}^{r\times r}$
+
+${\bf V}\in\mathbb{R}^{(m-1)\times r}$
+
+r是$X_1$的秩
+
+#### 构建低秩动态矩阵 $A_r$
+
+利用 SVD 的结果构建一个低秩近似矩阵：
+
+$\mathbf{A}_{r}=\mathbf{U}^{*}\mathbf{A}\mathbf{U}$ （r*r）
+
+很多公式或论文里面会把$A_r$ 写为$\tilde{A}$。
+
+#### 特征分解
+
+$\mathrm{A}_{r}\,\mathrm{W}=\,\mathrm{W\Lambda}$  (r*r)
+
+其中，W是特征向量矩阵，$\Lambda$是特征值矩阵。维度都是r*r
+
+#### 计算DMD模态
+
+$\Phi=\mathbf{X}_{2}\mathbf{V}\Sigma^{-1}\mathbf{W}$
+
+维度是(n*r)
+
+**这个地方需要注意下，有的地方关于模态的公式是下面这个：**
+
+$\Phi=UW$
+
+这是又名的投影模态。第一个写法是精确表示，如果计算出来的$\Phi$是0，那么就采用第二个计算。具体的区别可以参考《数据驱动的科学和工程》p197。
+
+#### 数据重构
+
+$\mathbf{x}(t)=\Phi\Lambda^{t-1}\mathbf{b}$，维度是n*1
+
+其中
+$\mathbf{b}=\Phi\cdot\mathbf{x}_{1}$， 维度是r*1
+
+$\Lambda^{t-1}$就是$\Lambda$里面每个元素的(t-1)次方。
+
+这样重构哪个时刻的数据就使用对应的次方
+
+#### 预测数据
+
+和上面的重构数据一样，假设t的范围是1<=t
+<=5。t=6时刻的数据为：
+
+$\mathbf{x}(6)=\Phi\Lambda^{5}\mathbf{b}$
+
+需要注意的是，这里我们是基于第一个时间步的数据来进行预测，如果是基于最后一个时间步的数据来进行预测，那么b会发生变化
+$\mathbf{b}=\Phi\cdot\mathbf{x}_{5}$
+
+预测未来一个时间步的数据变为：
+$\mathbf{x}(6)=\Phi\Lambda^{1}\mathbf{b}$
+
+
+预测未来时间步数据还有另外一种写法：
+
+
+$\mathbf{x}(t)=\Phi{}e^{\omega t}b$
+
+其中$\omega={\frac{\log(\lambda)}{d t}}$
