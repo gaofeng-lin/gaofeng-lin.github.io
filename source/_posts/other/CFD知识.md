@@ -391,7 +391,7 @@ def perform_pod_eig(data):
     return reconstructed_data
 ```
 
-## POD总结
+### POD总结
 不论输入矩阵的维度是$n*m$还是$m*n$，模态从U还是V中选择，最后重构出来的值都是一样的。
 
 代码中：
