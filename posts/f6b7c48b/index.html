@@ -468,14 +468,14 @@ W">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.3k
+                    6.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    24 分
                 </div>
                 
 
@@ -535,41 +535,40 @@ W">
 <p>在双时间步法中，虽然处理的是非定常问题，物理时间步是固定的，即在每个物理时间点，计算条件并不改变，这样可以在每个物理时间步的计算中达到一种“定长”或稳定状态。在这种意义上，尽管整体问题是非定常的（随时间变化的），每个物理时间步的处理过程类似于求解一个定常问题，因为在达到物理时间步的解之前，假时间的迭代使得解在该物理时间点达到稳定。</p>
 <p><strong>应用场景</strong></p>
 <p>这种方法非常适用于需要时间精确性的流动问题，如不稳定流动、振荡流动等。通过在每个物理时间步内迭代假时间步，双时间步法可以有效地稳定数值解，并加快收敛速度，特别是在使用隐式时间离散化方案时。</p>
-<h2 id="数学知识"><a href="#数学知识" class="headerlink" title="数学知识"></a>数学知识</h2><h3 id="奇异值分解"><a href="#奇异值分解" class="headerlink" title="奇异值分解"></a>奇异值分解</h3><p>奇异值分解（Singular Value Decomposition，简称SVD），是线性代数中一种重要的矩阵分解技术，在信号处理、统计学、语义分析等领域有广泛应用。奇异值分解可以看作是对矩阵进行的一种变换，它可以将任意一个矩阵分解为三个特定的矩阵乘积形式。</p>
-<p>奇异值分解有几个重要性质：</p>
-<ol>
-<li>奇异值分解提供了一种分析矩阵的结构的方法，奇异值本身可以被视作矩阵 A 的某种“能量”或“信息量”的度量。</li>
-<li><p>矩阵的秩等于非零奇异值的数量。</p>
-</li>
-<li><p>奇异值分解可以用于矩阵的压缩和降维，通过保留最大的几个奇异值及其对应的奇异向量，可以近似原矩阵，这在图像压缩和数据降维等领域非常有用。</p>
-</li>
-<li><p>在解决线性最小二乘问题、计算矩阵的伪逆等方面，奇异值分解也是一种非常重要的工具。</p>
-</li>
-</ol>
+<h2 id="数学知识"><a href="#数学知识" class="headerlink" title="数学知识"></a>数学知识</h2><h3 id="奇异值分解"><a href="#奇异值分解" class="headerlink" title="奇异值分解"></a>奇异值分解</h3><p>奇异值分解（Singular Value Decomposition，简称SVD），可以用于矩阵的压缩和降维，通过保留最大的几个奇异值及其对应的奇异向量，可以近似原矩阵，这在图像压缩和数据降维等领域非常有用。在解决线性最小二乘问题、计算矩阵的伪逆等方面，奇异值分解也是一种非常重要的工具。</p>
 <p>奇异值分解的计算一般通过数值算法实现，比如利用QR分解或者其他迭代方法，因为直接计算奇异值分解在数值上可能非常复杂。</p>
-<h3 id="基于POD的降阶模型"><a href="#基于POD的降阶模型" class="headerlink" title="基于POD的降阶模型"></a>基于POD的降阶模型</h3><p><strong>1 收集数据集并构建数据矩阵</strong></p>
-<p>假设我们收集了$N$个时刻的系统状态（例如流场数据），每个状态都是$M$维的向量（例如流体的速度矢量和压力）。将这些数据组织成一个数据矩阵$X$:<br>$X = [x_1,x_2,…,x_N]$</p>
+<p>下面讲解下奇异值分解的核心步骤：</p>
+<p><strong>1 收集数据集并构建数据矩阵</strong></p>
+<p>假设我们收集了$M$个时刻的系统状态（例如流场数据），每个状态都是$N$维的向量（例如流体的速度矢量和压力）。将这些数据组织成一个数据矩阵$X$:<br>$X = [x_1,x_2,…,x_M]$</p>
+<p>一般来说，N&gt;&gt;M。列通常被称为快照</p>
 <p><strong>2 执行奇异值分解（SVD）</strong></p>
-<p>对数据矩阵$X$执行奇异值分解：</p>
 <p>$X=U\Sigma V^{T}$</p>
-<p>U 是 $M×N$ 的单位正交矩阵，其列向量称为左奇异向量，代表数据的空间模式。</p>
-<p>Σ 是$N×N$ 的对角矩阵，其对角元素是奇异值，代表各模式的能量。</p>
-<p>V 是 $N×N$ 的单位正交矩阵，其列向量称为右奇异向量，代表时间模式。</p>
-<p><strong>3 提取主要POD模态/模式</strong></p>
-<p>模态是$V^T$，即$n*n$。</p>
-<p>对于选择的K个主成分，模态矩阵（即主成分的矩阵，即$V^T$中的前K 行）的维度将是$K*n$。这表示每个主成分在原始特征空间中的方向。</p>
+<p>U 是 $N×N$ 的单位正交矩阵，其列向量称为左奇异向量，代表数据的空间模式。</p>
+<p>Σ 是$N×M$ 的一个对角元素为非负值实数、非对角元素都为0的矩阵。对角元素被称为奇异值，由大到小排列。X的秩等于非0奇异值个数</p>
+<p>V 是 $M×M$ 的单位正交矩阵，其列向量称为右奇异向量，代表时间模式。</p>
+<p>如果X的列是依据时间获得的空间测量值，那么U对应空间模式，V对应时间模式。</p>
+<h3 id="基于POD的降阶模型-版本1：从左奇异向量U提取模态"><a href="#基于POD的降阶模型-版本1：从左奇异向量U提取模态" class="headerlink" title="基于POD的降阶模型(版本1：从左奇异向量U提取模态)"></a>基于POD的降阶模型(版本1：从左奇异向量U提取模态)</h3><p><strong>1 提取主要POD模态/模式</strong></p>
+<p>先执行前面的奇异值分解</p>
+<p>选择r个最大的奇异值对应的左奇异向量，构成矩阵$U_{r}$</p>
+<p>$U<em>{r}=[u1,u2,…u</em>{r}]$</p>
+<p><strong>构造模态系数</strong></p>
+<p>$coeff = U_r^T X$</p>
+<p><strong>数据重构</strong></p>
+<p>$\tilde{\bf X}=U_r coeff$ </p>
+<p>模态是$V^T$，即$M*M$。</p>
+<p>对于选择的K个主成分，模态矩阵（即主成分的矩阵，即$V^T$中的前K 行）的维度将是$K*M$。这表示每个主成分在原始特征空间中的方向。</p>
 <p><strong>4 模态系数</strong></p>
 <p>$coeff = XV$ 或者 $coeff=U\Sigma$</p>
-<p>如果选择K个主成分，那么coeff模态系数的维度是m*K。<br>这表示每个样本现在由 K 个特征表示，而不是原始的 n个特征。</p>
+<p>如果选择K个主成分，那么coeff模态系数的维度是N*K。<br>这表示每个样本现在由 K 个特征表示，而不是原始的 M个特征。</p>
 <p><strong>5 重构</strong></p>
 <p>降维：<br>$Z=XV_K$<br>原始数据X被投影到由$V_K$定义的新空间。Z 中的每一行现在是原始数据行的低维表示。</p>
 <p>重构：</p>
 <p>$\tilde{\bf X}=ZV_K^T$ </p>
-<p><strong>$U_{r}U_r^T$是一个n*n的矩阵，但这个矩阵通常不是单位矩阵，除非选取了所有模态。所以不会直接消除。</strong></p>
+<p>利用保留的主成分$V_K$将降维后的数据$Z$重新映射（投影）回原始的特征空间</p>
+<p><strong>$U<em>{r}U</em>{r}^{T}$是一个M*M的矩阵，但这个矩阵通常不是单位矩阵，除非选取了所有模态。所以不会直接消除。</strong></p>
 <p><strong>误差来源</strong>：误差来源于 $U_{r}$中未包含的那些方向（即剩余的$M−r $个方向）。这些方向可能包含较小的数据变化，但在某些情况下也可能含有重要信息。<br><strong>近似质量</strong>：近似的质量依赖于$r $的选择以及数据的本身特性。增加 $r$ 会改善近似的精确度，但同时会增加计算和存储的负担。</p>
 <p>如果使用全部模态，当 $r=M$ 时，$U_{r}$成为一个完整的正交基，覆盖了原始数据空间的所有维度。所以，$U$ 是一个正交矩阵，满足以下条件：</p>
 <p>$U U^{T}=U^{T}U=I$</p>
-<p><strong>重构操作</strong>：<br>$\tilde{\bf x}(t)=U{\bf a}(t)=U(U^{T}{\bf x}(t))=(U U^{T}){\bf x}(t)=I{\bf x}(t)={\bf x}(t)$</p>
 <p><strong>上面说的重构是没有考虑数据去中心化的。如果是去中心化的，要在奇异值分解前减去平均值，重构的时候要加上平均值。看下面的代码：</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">def DimensionReductionOpt(S):
     #POD analysis
@@ -596,6 +595,59 @@ W">
     return u<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>重构的代码就是<code>u = u_mean + u_modes@(a.reshape(-1,1))</code></p>
 <p>而投影在<code>coeff = pca.fit_transform(S.T)</code>就完成了，这个代码是自动进行了去中心化的，重构的时候要把平均值再加回去，所以上面的代码是没有问题的。</p>
+<p>实现代码：<br></p><pre class="line-numbers language-none"><code class="language-none">def perform_pod(data):
+    """执行POD并重构数据，使用SVD避免复数问题"""
+    # 数据中心化
+
+    # data shape :  (100, 2)
+
+    mean_data = np.mean(data, axis=0)
+    data_centered = data - mean_data
+    
+    # 使用SVD进行分解
+    U, Sigma, VT = np.linalg.svd(data_centered, full_matrices=False)
+
+    print('pod U shape: ', U.shape)
+    print('pod Sigma shape: ', Sigma.shape)
+    print('pod VT shape: ', VT.shape)
+    
+    # 提取前几个模态和模态系数
+    n_modes = 2  # 选择前3个主要模态
+    modes = U[:, :n_modes]
+
+    print('pod modes shape: ', modes.shape)
+
+    modal_coefficients = np.diag(Sigma[:n_modes]) @ VT[:n_modes, :]
+
+    # 重构数据，使用所有模态
+    reconstructed_data = np.dot(modes, modal_coefficients) + mean_data
+    return reconstructed_data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<h3 id="基于POD的降阶模型-版本2，从右奇异向量V提取模态"><a href="#基于POD的降阶模型-版本2，从右奇异向量V提取模态" class="headerlink" title="基于POD的降阶模型(版本2，从右奇异向量V提取模态)"></a>基于POD的降阶模型(版本2，从右奇异向量V提取模态)</h3><p><strong>1 提取主要POD模态/模式</strong></p>
+<p>$modes=V^T$</p>
+<p>如果选择前K个模态，那么$V_K^T$维度是$K*M$</p>
+<p><strong>2 模态系数</strong></p>
+<p>模态系数：$coeff = X_{new}V$;如果选择前K个模态，那么$coeff_K$维度是$N*K$</p>
+<p>$X = X_{mean} + coeff modes$</p>
+<p>实现代码：<br></p><pre class="line-numbers language-none"><code class="language-none">def perform_pod_v(data):
+    """执行POD并重构数据，使用SVD并选取V作为模态"""
+    # 数据中心化
+    mean_data = np.mean(data, axis=0)
+    data_centered = data - mean_data
+    
+    # 使用SVD进行分解
+    U, Sigma, VT = np.linalg.svd(data_centered, full_matrices=False)
+    
+    # 提取前几个模态和模态系数
+    n_modes = 2  # 选择前2个主要模态
+    modes = VT[:n_modes, :]  # 使用V的转置的前n_modes行
+
+    print('pod_v modes shape: ', modes.shape)
+
+    modal_coefficients = U[:, :n_modes] @ np.diag(Sigma[:n_modes])
+
+    # 重构数据
+    reconstructed_data = modal_coefficients @ modes + mean_data
+    return reconstructed_data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
 <h3 id="pod的不同实现方式"><a href="#pod的不同实现方式" class="headerlink" title="pod的不同实现方式"></a>pod的不同实现方式</h3><p>pod的实现方式大体有两种，核心的关键在于矩阵的分解，用svd分解，还是传统的特征值分解。</p>
 <p>下面我用代码来阐述下：</p>
 <h4 id="svd分解"><a href="#svd分解" class="headerlink" title="svd分解"></a>svd分解</h4><pre class="line-numbers language-none"><code class="language-none">def generate_data(n_time_steps):
@@ -675,6 +727,135 @@ def perform_pod_eig(data):
     # 重构数据
     reconstructed_data = np.dot(modes, modal_coefficients) + mean_data
     return reconstructed_data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="POD总结"><a href="#POD总结" class="headerlink" title="POD总结"></a>POD总结</h2><p>不论输入矩阵的维度是$n<em>m$还是$m</em>n$，模态从U还是V中选择，最后重构出来的值都是一样的。</p>
+<p>代码中：</p>
+<p>U, Sigma, VT = np.linalg.svd(data_centered, full_matrices=False)</p>
+<p>如果full_matrices=False，返回的U和V是经济尺寸，仅仅包含有意义的奇异值信息。</p>
+<p>假设X是M*N</p>
+<p>U的形状：M <em> min(M,N)<br>V的形状：N </em> min(M,N)</p>
+<p>代码中：<br></p><pre class="line-numbers language-none"><code class="language-none">u_modes = pca.components_.T<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>形状和V一样，说明默认选择的模态是从右奇异矩阵V里面选择的。<p></p>
+<p>下面的一段代码是可以运行的，涉及pod三种不同的代码写法，结果都是一样的：</p>
+<pre class="line-numbers language-none"><code class="language-none">import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+
+from sklearn.linear_model import LinearRegression
+
+# 这个文件是为了确定模态是从左奇异向量还是右奇异向量里面获得的
+
+def generate_data(n_time_steps):
+    """生成一个简单的示例数据集"""
+    t = np.linspace(0, 2 * np.pi, n_time_steps)
+    data = np.array([np.sin(t), np.cos(t), np.cos(t)*np.sin(t)]).T  # 2变量，n时间步
+
+    return t, data
+
+def perform_pod_u(data):
+    """执行POD并重构数据，使用SVD避免复数问题"""
+    # 数据中心化
+
+    # data shape :  (100, 2)
+
+    mean_data = np.mean(data, axis=0)
+    data_centered = data - mean_data
+    
+    # 使用SVD进行分解
+    U, Sigma, VT = np.linalg.svd(data_centered, full_matrices=False)
+
+    print('pod U shape: ', U.shape)
+    print('pod Sigma shape: ', Sigma.shape)
+    print('pod VT shape: ', VT.shape)
+    
+    # 提取前几个模态和模态系数
+    n_modes = 2  # 选择前3个主要模态
+    modes = U[:, :n_modes]
+
+    print('pod modes shape: ', modes.shape)
+
+    modal_coefficients = np.diag(Sigma[:n_modes]) @ VT[:n_modes, :]
+
+    # 重构数据，使用所有模态
+    reconstructed_data = np.dot(modes, modal_coefficients) + mean_data
+    return reconstructed_data
+
+def perform_pod_v(data):
+    """执行POD并重构数据，使用SVD并选取V作为模态"""
+    # 数据中心化
+    mean_data = np.mean(data, axis=0)
+    data_centered = data - mean_data
+    
+    # 使用SVD进行分解
+    U, Sigma, VT = np.linalg.svd(data_centered, full_matrices=False)
+    
+    # 提取前几个模态和模态系数
+    n_modes = 2  # 选择前2个主要模态
+    modes = VT[:n_modes, :]  # 使用V的转置的前n_modes行
+
+    print('pod_v modes shape: ', modes.shape)
+
+    modal_coefficients = U[:, :n_modes] @ np.diag(Sigma[:n_modes])
+
+    # 重构数据
+    reconstructed_data = modal_coefficients @ modes + mean_data
+    return reconstructed_data
+
+def perform_pod_pca(data):
+    """执行POD并重构数据，使用SVD避免复数问题"""
+    # 数据中心化
+
+    # pca = PCA(n_components=2)
+    pca = PCA(n_components=2)
+    coeff = pca.fit_transform(data)
+    u_mean = pca.mean_.reshape(-1,1)
+    u_modes = pca.components_.T
+    
+    print('u_mean: ', u_mean.shape)
+    
+    print('u_modes: ', u_modes.shape)
+    
+    print('coeff: ', coeff.shape)
+
+    reconstructed_data = u_mean + np.dot(u_modes, coeff.T)
+
+    return reconstructed_data.T
+
+def compare_arrays(arr1, arr2):
+    """比较两个numpy数组的统计差异"""
+    if arr1.shape != arr2.shape:
+        raise ValueError("Arrays must have the same dimensions")
+    
+    # 计算差异数组
+    difference = arr1 - arr2
+    
+    # 计算平均值差异
+    mean_difference = np.mean(difference)
+    
+    # 计算最大值和最小值差异
+    max_difference = np.max(difference)
+    min_difference = np.min(difference)
+    
+    # 输出结果
+    print("Mean Difference:", mean_difference)
+    print("Max Difference:", max_difference)
+    print("Min Difference:", min_difference)
+
+
+# 生成数据
+n_time_steps = 100
+t, data = generate_data(n_time_steps)
+
+
+# data = data.T
+
+print('data shape: ', data.shape)
+
+reconstructed_data0 = perform_pod_u(data)
+
+reconstructed_data1 = perform_pod_v(data)
+
+reconstructed_data2 = perform_pod_pca(data)
+
+compare_arrays(reconstructed_data1, reconstructed_data2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="DMD-Dynamic-Mode-Decomposition"><a href="#DMD-Dynamic-Mode-Decomposition" class="headerlink" title="DMD(Dynamic Mode Decomposition)"></a>DMD(Dynamic Mode Decomposition)</h3><p>假设我们有一个时间序列数据矩阵$X$，其中每一列是系统在某一时刻的状态向量。我们将数据划分成两个矩阵$X<em>1, X_2$。它们分别包含从时间$𝑡_1$到$𝑡</em>{m-1}$和$𝑡<em>2$到$𝑡</em>{m}$的状态：</p>
 <h4 id="收集数据"><a href="#收集数据" class="headerlink" title="收集数据"></a>收集数据</h4><p>X1 = [x1,x2,…,$x_{m-1}$] (n×(m-1))</p>
 <p>X2 = [x2,x3,…,$x_{m}$]  (n×(m-1))</p>
@@ -1246,7 +1427,7 @@ def perform_pod_eig(data):
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">162.2k</span>
+                        class="white-color">163.2k</span>
             
             
             
