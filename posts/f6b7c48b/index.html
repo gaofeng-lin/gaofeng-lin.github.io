@@ -33,9 +33,9 @@ W">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -468,14 +468,14 @@ W">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.3k
+                    6.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    24 分
+                    23 分
                 </div>
                 
 
@@ -550,21 +550,11 @@ W">
 <h3 id="基于POD的降阶模型-版本1：从左奇异向量U提取模态"><a href="#基于POD的降阶模型-版本1：从左奇异向量U提取模态" class="headerlink" title="基于POD的降阶模型(版本1：从左奇异向量U提取模态)"></a>基于POD的降阶模型(版本1：从左奇异向量U提取模态)</h3><p><strong>1 提取主要POD模态/模式</strong></p>
 <p>先执行前面的奇异值分解</p>
 <p>选择r个最大的奇异值对应的左奇异向量，构成矩阵$U_{r}$</p>
-<p>$U<em>{r}=[u1,u2,…u</em>{r}]$</p>
+<p>$ U<em>{r}=[u1,u2,…u</em>{r}] $</p>
 <p><strong>构造模态系数</strong></p>
 <p>$coeff = U_r^T X$</p>
 <p><strong>数据重构</strong></p>
 <p>$\tilde{\bf X}=U_r coeff$ </p>
-<p>模态是$V^T$，即$M*M$。</p>
-<p>对于选择的K个主成分，模态矩阵（即主成分的矩阵，即$V^T$中的前K 行）的维度将是$K*M$。这表示每个主成分在原始特征空间中的方向。</p>
-<p><strong>4 模态系数</strong></p>
-<p>$coeff = XV$ 或者 $coeff=U\Sigma$</p>
-<p>如果选择K个主成分，那么coeff模态系数的维度是N*K。<br>这表示每个样本现在由 K 个特征表示，而不是原始的 M个特征。</p>
-<p><strong>5 重构</strong></p>
-<p>降维：<br>$Z=XV_K$<br>原始数据X被投影到由$V_K$定义的新空间。Z 中的每一行现在是原始数据行的低维表示。</p>
-<p>重构：</p>
-<p>$\tilde{\bf X}=ZV_K^T$ </p>
-<p>利用保留的主成分$V_K$将降维后的数据$Z$重新映射（投影）回原始的特征空间</p>
 <p><strong>$U<em>{r}U</em>{r}^{T}$是一个M*M的矩阵，但这个矩阵通常不是单位矩阵，除非选取了所有模态。所以不会直接消除。</strong></p>
 <p><strong>误差来源</strong>：误差来源于 $U_{r}$中未包含的那些方向（即剩余的$M−r $个方向）。这些方向可能包含较小的数据变化，但在某些情况下也可能含有重要信息。<br><strong>近似质量</strong>：近似的质量依赖于$r $的选择以及数据的本身特性。增加 $r$ 会改善近似的精确度，但同时会增加计算和存储的负担。</p>
 <p>如果使用全部模态，当 $r=M$ 时，$U_{r}$成为一个完整的正交基，覆盖了原始数据空间的所有维度。所以，$U$ 是一个正交矩阵，满足以下条件：</p>
@@ -1427,7 +1417,7 @@ compare_arrays(reconstructed_data1, reconstructed_data2)<span aria-hidden="true"
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">163.5k</span>
+                        class="white-color">163.3k</span>
             
             
             

@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2024-07-04T01:48:04.995Z</updated>
+  <updated>2024-07-04T01:52:14.806Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://gaofeng-lin.github.io/posts/949a09f6/"/>
     <id>https://gaofeng-lin.github.io/posts/949a09f6/</id>
     <published>2024-07-03T16:00:00.000Z</published>
-    <updated>2024-07-04T01:48:04.995Z</updated>
+    <updated>2024-07-04T01:52:14.806Z</updated>
     
     
       
@@ -71,7 +71,7 @@
     <link href="https://gaofeng-lin.github.io/posts/f6b7c48b/"/>
     <id>https://gaofeng-lin.github.io/posts/f6b7c48b/</id>
     <published>2024-03-02T16:00:00.000Z</published>
-    <updated>2024-07-03T08:45:59.628Z</updated>
+    <updated>2024-07-05T03:19:31.679Z</updated>
     
     
       
@@ -119,31 +119,6 @@
   </entry>
   
   <entry>
-    <title>rnn</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-12-21T16:00:00.000Z</published>
-    <updated>2023-12-22T08:35:20.010Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;rnn相关的内容&quot;&gt;&lt;a href=&quot;#rnn相关的内容&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="rnn" scheme="https://gaofeng-lin.github.io/categories/rnn/"/>
-    
-    
-    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>ai</title>
     <link href="https://gaofeng-lin.github.io/posts/53791/"/>
     <id>https://gaofeng-lin.github.io/posts/53791/</id>
@@ -162,6 +137,31 @@
     
     
     <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rnn</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-12-21T16:00:00.000Z</published>
+    <updated>2023-12-22T08:35:20.010Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;rnn相关的内容&quot;&gt;&lt;a href=&quot;#rnn相关的内容&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="rnn" scheme="https://gaofeng-lin.github.io/categories/rnn/"/>
     
     
     <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
