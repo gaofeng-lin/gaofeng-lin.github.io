@@ -34,9 +34,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -481,14 +481,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.1k
+                    8.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    31 分
+                    32 分
                 </div>
                 
 
@@ -642,8 +642,24 @@ rm -rf !(file1|file2)<span aria-hidden="true" class="line-numbers-rows"><span></
 <li><code>mv /xx /xx /xx/xx</code> :剪切</li>
 <li><code>mv 旧文件夹名 新文件夹名</code>   //更改名字</li>
 </ol>
-<h2 id="批量操作"><a href="#批量操作" class="headerlink" title="批量操作"></a>批量操作</h2><h3 id="批量删除文件夹"><a href="#批量删除文件夹" class="headerlink" title="批量删除文件夹"></a>批量删除文件夹</h3><p>某个文件夹下，有很多文件名形如：checkpoint<em>{epoch}</em>{loss}.pth；其中epoch和loss是变量；我现在希望把epoch小于400的删除</p>
-<pre class="line-numbers language-none"><code class="language-none">ls checkpoint_*.pth | awk -F'_' '{if ($2 &lt; 400) print $0}' | xargs rm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="批量操作"><a href="#批量操作" class="headerlink" title="批量操作"></a>批量操作</h2><h3 id="批量删除高相似度文件"><a href="#批量删除高相似度文件" class="headerlink" title="批量删除高相似度文件"></a>批量删除高相似度文件</h3><p>某个文件夹下，有很多文件名形如：checkpoint_{epoch}_{loss}.pth；其中epoch和loss是变量；我现在希望把epoch小于400的删除</p>
+<pre class="line-numbers language-none"><code class="language-none">ls checkpoint_*.pth | awk -F'_' '{if ($2 &lt; 400) print $0}' | xargs rm -rf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>命令解释：</p>
+<ol>
+<li>ls checkpoint<em>*.pth：列出当前目录下所有匹配 checkpoint</em>*.pth 格式的文件。</li>
+<li><p>awk -F’<em>‘ ‘{if ($2 &lt; 400) print $0}’：是一种强大的文本处理工具，这里用来处理 ls 命令的输出。；-F’</em>‘ 设置字段分隔符为下划线 <em>。这意味着 awk 将每行（每个文件名）按 </em> 分割成多个字段。；{if ($2 &lt; 400) print $0} 是 awk 的动作部分，检查每个文件名的第二部分（$2）是否小于 400。如果是，则打印整个文件名（$0）。假设文件名是 checkpoint_350_0.5.pth，则 $2 是 350。</p>
+</li>
+<li><p>xargs 用于构建并执行命令行，它从标准输入读取数据，将其作为参数传递给指定的命令；这里，xargs 会把 awk 输出的文件名作为参数传递给 rm -rf，从而删除这些文件。</p>
+</li>
+</ol>
+<h3 id="批量删除多个子目录下高相似度文件"><a href="#批量删除多个子目录下高相似度文件" class="headerlink" title="批量删除多个子目录下高相似度文件"></a>批量删除多个子目录下高相似度文件</h3><p>在上一条命令的基础上稍微调整下：<br></p><pre class="line-numbers language-none"><code class="language-none">find /path/to/top-level-directory -type f -name "checkpoint_*.pth" | awk -F'_' '{if ($2 &lt; 400) print $0}' | xargs rm -rf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<p>命令解释：</p>
+<ol>
+<li>find /path/to/top-level-directory ;指定从哪个目录开始搜索，包括所有子目录。</li>
+<li>-type f;限制搜索只查找文件，不包括目录。</li>
+<li>-name “checkpoint_<em>.pth”;只查找文件名符合给定模式的文件。</em> 表示任何序列的字符，确保匹配如 checkpoint_123.pth 或 checkpoint_456_789.pth 这样的文件名。</li>
+</ol>
+<p><strong>一般我们使用的时候是达到指定目录下，该目录下有很多子目录，子目录里面有很多命名类似的文件，然后开始执行命令，所以/path/to/top-level-directory 一般就是./</strong></p>
 <h2 id="替换rm命令"><a href="#替换rm命令" class="headerlink" title="替换rm命令"></a>替换rm命令</h2><p>一般删除命令都是rm，但是有时候会出现用rm误删的情况，这种时候还不好恢复。所以想替换一个命令，即使删除后，还可以恢复。</p>
 <p><strong>trash-cli</strong></p>
 <ol>
@@ -1215,67 +1231,6 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/58712/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="代理设置">
-                        
-                        <span class="card-title">代理设置</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="post-category">
-                                    小知识
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
-                    </a>
-                    
-                    <a href="/tags/npm/">
-                        <span class="chip bg-color">npm</span>
-                    </a>
-                    
-                    <a href="/tags/yarn/">
-                        <span class="chip bg-color">yarn</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A2%AF%E5%AD%90/">
-                        <span class="chip bg-color">梯子</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/posts/56435/">
                     <div class="card-image">
                         
@@ -1292,9 +1247,9 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1312,6 +1267,79 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
                     
                     <a href="/tags/Golang/">
                         <span class="chip bg-color">Golang</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/300/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="工具使用技巧集合">
+                        
+                        <span class="card-title">工具使用技巧集合</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/office/">
+                        <span class="chip bg-color">office</span>
+                    </a>
+                    
+                    <a href="/tags/IDE/">
+                        <span class="chip bg-color">IDE</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
+                        <span class="chip bg-color">编辑器</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+                        <span class="chip bg-color">快捷键</span>
+                    </a>
+                    
+                    <a href="/tags/vscode/">
+                        <span class="chip bg-color">vscode</span>
+                    </a>
+                    
+                    <a href="/tags/visio/">
+                        <span class="chip bg-color">visio</span>
+                    </a>
+                    
+                    <a href="/tags/postman/">
+                        <span class="chip bg-color">postman</span>
                     </a>
                     
                 </div>
@@ -1508,7 +1536,7 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">163.3k</span>
+                        class="white-color">163.8k</span>
             
             
             
