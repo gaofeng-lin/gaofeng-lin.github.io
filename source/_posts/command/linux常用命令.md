@@ -313,12 +313,33 @@ cp -r /home/packageA /home/packageB
 
 
 ## 批量操作
-### 批量删除文件夹
-某个文件夹下，有很多文件名形如：checkpoint_{epoch}_{loss}.pth；其中epoch和loss是变量；我现在希望把epoch小于400的删除
+### 批量删除高相似度文件
+某个文件夹下，有很多文件名形如：checkpoint\_{epoch}\_{loss}.pth；其中epoch和loss是变量；我现在希望把epoch小于400的删除
 
 ```
-ls checkpoint_*.pth | awk -F'_' '{if ($2 < 400) print $0}' | xargs rm
+ls checkpoint_*.pth | awk -F'_' '{if ($2 < 400) print $0}' | xargs rm -rf
 ```
+命令解释：
+1. ls checkpoint_*.pth：列出当前目录下所有匹配 checkpoint_*.pth 格式的文件。
+2. awk -F'_' '{if ($2 < 400) print $0}'：是一种强大的文本处理工具，这里用来处理 ls 命令的输出。；-F'_' 设置字段分隔符为下划线 _。这意味着 awk 将每行（每个文件名）按 _ 分割成多个字段。；{if ($2 < 400) print $0} 是 awk 的动作部分，检查每个文件名的第二部分（$2）是否小于 400。如果是，则打印整个文件名（$0）。假设文件名是 checkpoint_350_0.5.pth，则 $2 是 350。
+
+3. xargs 用于构建并执行命令行，它从标准输入读取数据，将其作为参数传递给指定的命令；这里，xargs 会把 awk 输出的文件名作为参数传递给 rm -rf，从而删除这些文件。
+
+### 批量删除多个子目录下高相似度文件
+
+在上一条命令的基础上稍微调整下：
+```
+find /path/to/top-level-directory -type f -name "checkpoint_*.pth" | awk -F'_' '{if ($2 < 400) print $0}' | xargs rm -rf
+```
+
+命令解释：
+1. find /path/to/top-level-directory ;指定从哪个目录开始搜索，包括所有子目录。
+2. -type f;限制搜索只查找文件，不包括目录。
+3. -name "checkpoint_*.pth";只查找文件名符合给定模式的文件。* 表示任何序列的字符，确保匹配如 checkpoint_123.pth 或 checkpoint_456_789.pth 这样的文件名。
+
+**一般我们使用的时候是达到指定目录下，该目录下有很多子目录，子目录里面有很多命名类似的文件，然后开始执行命令，所以/path/to/top-level-directory 一般就是./**
+
+
 
 ## 替换rm命令
 
