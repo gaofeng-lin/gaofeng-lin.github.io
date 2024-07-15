@@ -369,7 +369,7 @@ def perform_pod_eig(data):
 ### POD总结
 
 ------------------------------
-**不论输入矩阵的维度是$n * m$还是$m * n$，模态从U还是V中选择，最后重构出来的值都是一样的。**
+**不论输入矩阵的维度是 n * m 还是 m * n ，模态从U还是V中选择，最后重构出来的值都是一样的。**
 
 ------------------------------
 :exclamation::exclamation::exclamation: 上面的回答是错的，如果把数据设置的复杂点，就会出现差异,只不过差异比较小
@@ -531,7 +531,7 @@ u_modes = pca.components_.T
 ```
 形状和V一样，说明默认选择的模态是从右奇异矩阵V里面选择的。
 
-下面的一段代码是可以运行的，涉及pod三种不同的代码写法，结果都是一样的：
+下面的一段代码是可以运行的，涉及pod三种不同的代码写法。
 
 ```
 import numpy as np
@@ -753,6 +753,109 @@ $\mathbf{x}(6)=\Phi\Lambda^{1}\mathbf{b}$
 预测未来时间步数据还有另外一种写法：
 
 
-$\mathbf{x}(t)=\Phi{}e^{\omega t}b$
+$\mathbf{x}(t)=\Phi{}e^{\omega t-1}b$
 
 其中$\omega={\frac{\log(\lambda)}{d t}}$
+
+#### 注意事项
+
+1. 如果原始数据有20个时间步，那么t的索引范围是0-19；如果要预测未来1个时间步的数据，就是t=21，那么传入代码中的t实际应该是20
+2. dmd方法中的模态数量选择，就是秩数量的选择。因为秩数量的选择取决于X1和X2矩阵，这两个矩阵的维度都是  n×(m-1)；而秩r的数量最多是min （n, m-1），而m一般远小于n，意味着秩做多就是m-1，代码里面重构的时候也应该注意，最多取到m-1。
+
+参考代码如下：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.linalg import svd, pinv
+
+# 这个版本的代码预测没有问题，但是重构代码有些问题，因为重构出来的值精度有问题
+
+def dmd(X, r):
+    # Step 1: SVD
+    U, Sigma, Vh = svd(X[:, :-1], full_matrices=False)
+    U_r = U[:, :r]
+    Sigma_r = np.diag(Sigma[:r])
+    V_r = Vh.conj().T[:, :r]
+    
+    # Step 2: 构建A_tilde
+    A_tilde = U_r.conj().T @ X[:, 1:] @ V_r @ pinv(Sigma_r)
+    
+    # Step 3: 特征值和特征向量
+    Lambda, W = np.linalg.eig(A_tilde)
+    
+    # Step 4: 计算DMD模式
+    Phi = X[:, 1:] @ V_r @ pinv(Sigma_r) @ W
+    
+    return Phi, Lambda, U_r, Sigma_r, V_r, W
+
+# DMD中时间步索引是从0开始的，原数据又20个时间步，那么索引就到19；下一个时间步的索引就是20，那么t_next就是20
+def predict_next_step(Phi, Lambda, b, t_next):
+    omega = np.log(Lambda)
+    return (Phi @ (b * np.exp(omega * t_next))).real
+
+# 下面的函数表示的是预测未来多个时间步的数据。
+# 如果一开始的训练数据是20个时间步，那么initial_time就是20，预测几个，num_steps就是多少
+def predict_future_steps(Phi, Lambda, b, initial_time, num_steps):
+    omega = np.log(Lambda)
+    predictions = []
+    for future_time in range(initial_time , initial_time + num_steps ):
+        prediction = (Phi @ (b * np.exp(omega * future_time))).real
+        predictions.append(prediction)
+    return np.array(predictions)
+
+def compare_arrays(arr1, arr2):
+    """比较两个numpy数组的统计差异，适用于可能包含复数的数组"""
+    if arr1.shape != arr2.shape:
+        raise ValueError("Arrays must have the same dimensions")
+    
+    # 计算差异数组的绝对值
+    difference = np.abs(arr1 - arr2)
+    
+    # 计算平均值差异
+    mean_difference = np.mean(difference)
+    
+    # 计算最大值和最小值差异
+    max_difference = np.max(difference)
+    min_difference = np.min(difference)
+    
+    # 输出结果
+    print("Mean Difference (Magnitude):", mean_difference)
+    print("Max Difference (Magnitude):", max_difference)
+    print("Min Difference (Magnitude):", min_difference)
+
+def reconstruct_data(Phi, Lambda, b, num_time_steps):
+    # 计算每个模式的时间动态
+    time_dynamics = np.zeros((r, num_time_steps), dtype=complex)
+    for i in range(num_time_steps):
+        time_dynamics[:, i] = b * np.power(Lambda, i)
+    
+    X_dmd = Phi @ time_dynamics
+    return X_dmd
+
+# 载入数据
+# 假设X是一个(20, 1001)的数组，你需要替换这里的代码以加载你的数据
+X = np.random.randn(20, 1001)  # 示例数据
+
+# 应用DMD
+r = 19  # 设置模式个数
+Phi, Lambda, U_r, Sigma_r, V_r, W = dmd(X.T, r)  # 转置X，使得列变为时间步
+
+# 计算初始b
+b = pinv(Phi) @ X.T[:, 0]  # 使用转置后的第一时间步的数据
+
+# 预测下一个时间步
+predicted_field = predict_next_step(Phi, Lambda, b, X.shape[0])
+
+reconstructed_X = reconstruct_data(Phi, Lambda, b, X.shape[0])
+
+print("predicted_field shape: ", predicted_field.shape)
+
+print("reconstructed_X shape: ", reconstructed_X.shape)
+
+compare_arrays(X, reconstructed_X.T)
+
+
+
+
+```
