@@ -367,7 +367,152 @@ def perform_pod_eig(data):
 ```
 
 ### POD总结
-不论输入矩阵的维度是$n*m$还是$m*n$，模态从U还是V中选择，最后重构出来的值都是一样的。
+
+------------------------------
+**不论输入矩阵的维度是$n * m$还是$m * n$，模态从U还是V中选择，最后重构出来的值都是一样的。**
+
+------------------------------
+:exclamation::exclamation::exclamation: 上面的回答是错的，如果把数据设置的复杂点，就会出现差异,只不过差异比较小
+
+
+下面的代码可以直接运行，验证上面的回答：
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+
+from sklearn.linear_model import LinearRegression
+
+# 这个文件是为了确定模态是从左奇异向量还是右奇异向量里面获得的
+
+def generate_data(n_time_steps):
+    """生成一个简单的示例数据集"""
+    t = np.linspace(0, 2 * np.pi, n_time_steps)
+    data = np.array([np.sin(t), np.cos(t), np.cos(t)*np.sin(t)]).T  # 2变量，n时间步
+
+    return t, data
+
+def perform_pod_u(data):
+    """执行POD并重构数据，使用SVD避免复数问题"""
+    # 数据中心化
+
+    # data shape :  (100, 2)
+
+    mean_data = np.mean(data, axis=0)
+    data_centered = data - mean_data
+    
+    # 使用SVD进行分解
+    U, Sigma, VT = np.linalg.svd(data_centered, full_matrices=False)
+
+    print('pod_u U shape: ', U.shape)
+    print('pod_u Sigma shape: ', Sigma.shape)
+    print('pod_u VT shape: ', VT.shape)
+    
+    # 提取前几个模态和模态系数
+    n_modes = 20  # 选择前3个主要模态
+    modes = U[:, :n_modes]
+
+    print('u pod modes shape: ', modes.shape)
+
+    modal_coefficients = np.diag(Sigma[:n_modes]) @ VT[:n_modes, :]
+
+    print("pod_u modal_coefficients shape: ", modal_coefficients.shape)
+
+    # 重构数据，使用所有模态
+    reconstructed_data = np.dot(modes, modal_coefficients) + mean_data
+    return reconstructed_data
+
+def perform_pod_v(data):
+    """执行POD并重构数据，使用SVD并选取V作为模态"""
+    # 数据中心化
+    mean_data = np.mean(data, axis=0)
+    data_centered = data - mean_data
+    
+    # 使用SVD进行分解
+    U, Sigma, VT = np.linalg.svd(data_centered, full_matrices=False)
+    
+    # 提取前几个模态和模态系数
+    n_modes = 20  # 选择前2个主要模态
+    modes = VT[:n_modes, :]  # 使用V的转置的前n_modes行
+
+    print('pod_v U shape: ', U.shape)
+    print('pod_v Sigma shape: ', Sigma.shape)
+    print('pod_v VT shape: ', VT.shape)
+
+    print('v pod modes shape: ', modes.shape)
+    modal_coefficients = U[:, :n_modes] @ np.diag(Sigma[:n_modes])
+
+    print("pod_v modal_coefficients shape: ", modal_coefficients.shape)
+
+    # 重构数据
+    reconstructed_data = modal_coefficients @ modes + mean_data
+    return reconstructed_data
+
+def perform_pod_pca(data):
+    """执行POD并重构数据，使用SVD避免复数问题"""
+    # 数据中心化
+
+    # pca = PCA(n_components=2)
+    pca = PCA(n_components=20)
+    coeff = pca.fit_transform(data)
+    u_mean = pca.mean_.reshape(-1,1)
+    u_modes = pca.components_.T
+    
+    print('u_mean: ', u_mean.shape)
+    
+    print('u_modes: ', u_modes.shape)
+    
+    print('coeff: ', coeff.shape)
+
+    reconstructed_data = u_mean + np.dot(u_modes, coeff.T)
+
+
+    return reconstructed_data.T
+
+def compare_arrays(arr1, arr2):
+    """比较两个numpy数组的统计差异"""
+    if arr1.shape != arr2.shape:
+        raise ValueError("Arrays must have the same dimensions")
+    
+    # 计算差异数组
+    difference = arr1 - arr2
+
+    # 计算平均值差异
+    mean_difference = np.mean(difference)
+    
+    # 计算最大值和最小值差异
+    max_difference = np.max(difference)
+    min_difference = np.min(difference)
+    
+    # 输出结果
+    print("Mean Difference:", mean_difference)
+    print("Max Difference:", max_difference)
+    print("Min Difference:", min_difference)
+
+# 生成数据
+n_time_steps = 100
+t, data = generate_data(n_time_steps)
+
+data = np.random.rand(20,10000)
+
+# data = data.T
+
+print('data shape: ', data.shape)
+
+reconstructed_data0 = perform_pod_u(data)
+
+# reconstructed_data1 = perform_pod_v(data)
+reconstructed_data1 = perform_pod_u(data.T)
+
+reconstructed_data2 = perform_pod_pca(data)
+
+compare_arrays(reconstructed_data1.T, reconstructed_data0)
+
+
+```
+
+
+---------------------------------
 
 代码中：
 
