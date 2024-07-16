@@ -468,7 +468,7 @@ W">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.5k
+                    7.6k
                 </div>
                 
 
@@ -550,7 +550,7 @@ W">
 <h3 id="基于POD的降阶模型-版本1：从左奇异向量U提取模态"><a href="#基于POD的降阶模型-版本1：从左奇异向量U提取模态" class="headerlink" title="基于POD的降阶模型(版本1：从左奇异向量U提取模态)"></a>基于POD的降阶模型(版本1：从左奇异向量U提取模态)</h3><p><strong>1 提取主要POD模态/模式</strong></p>
 <p>先执行前面的奇异值分解</p>
 <p>选择r个最大的奇异值对应的左奇异向量，构成矩阵$U_{r}$</p>
-<p>$ U<em>{r}=[u1,u2,…u</em>{r}] $</p>
+<p>$ U_{r}=[u1,u2,…u_{r}] $</p>
 <p><strong>构造模态系数</strong></p>
 <p>$coeff = U_r^T X$</p>
 <p><strong>数据重构</strong></p>
@@ -997,7 +997,13 @@ compare_arrays(reconstructed_data1, reconstructed_data2)<span aria-hidden="true"
 <p>$\textstyle\sum\in\mathbb{R}^{r\times r}$</p>
 <p>${\bf V}\in\mathbb{R}^{(m-1)\times r}$</p>
 <p>r是$X_1$的秩</p>
-<h4 id="构建低秩动态矩阵-A-r"><a href="#构建低秩动态矩阵-A-r" class="headerlink" title="构建低秩动态矩阵 $A_r$"></a>构建低秩动态矩阵 $A_r$</h4><p>利用 SVD 的结果构建一个低秩近似矩阵：</p>
+<h4 id="构建低秩动态矩阵-A-r"><a href="#构建低秩动态矩阵-A-r" class="headerlink" title="构建低秩动态矩阵 $A_r$"></a>构建低秩动态矩阵 $A_r$</h4><p>为了得到矩阵A的一个更容易处理的表达形式，我们将X1和X2投影到由U构成的低维空间，$\mathbf{U}^\ast X_1$， $\mathbf{U}^\ast X_2$ 。</p>
+<p>现在需要一个矩阵$\tilde{A}$ 使得两个投影矩阵接近，<br>$\mathbf{U}^\ast X_2 = \tilde{A} \mathbf{U}^\ast X_1$</p>
+<p>根据上一步对X1进行SVD分解的结果，带入方程可以得到：</p>
+<p>$\mathbf{U}^\ast X_2 = \tilde{A} \mathbf{\Sigma} \mathbf{V}^{\ast}$</p>
+<p>可以得到$\tilde{A} = \mathbf{U}^{\ast}X_{2}\mathbf{V}\mathbf{\Sigma}^{-1}$<br>（r*r）</p>
+<p><strong>下面是另一种简单的写法，展开后和上面的结果是一样的</strong></p>
+<p>利用 SVD 的结果构建一个低秩近似矩阵：</p>
 <p>$\mathbf{A}_r = \mathbf{U}^\ast\mathbf{A}\mathbf{U}$<br>（r*r）</p>
 <p>很多公式或论文里面会把$A_r$ 写为$\tilde{A}$。</p>
 <h4 id="特征分解-1"><a href="#特征分解-1" class="headerlink" title="特征分解"></a>特征分解</h4><p>$\mathrm{A}_{r}\,\mathrm{W}=\,\mathrm{W\Lambda}$  (r*r)</p>
@@ -1651,7 +1657,7 @@ compare_arrays<span class="token punctuation">(</span>X<span class="token punctu
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">165.1k</span>
+                        class="white-color">165.2k</span>
             
             
             

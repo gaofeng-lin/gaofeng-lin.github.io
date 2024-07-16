@@ -96,7 +96,7 @@
     <link href="https://gaofeng-lin.github.io/posts/f6b7c48b/"/>
     <id>https://gaofeng-lin.github.io/posts/f6b7c48b/</id>
     <published>2024-03-02T16:00:00.000Z</published>
-    <updated>2024-07-15T06:56:04.069Z</updated>
+    <updated>2024-07-16T06:23:26.725Z</updated>
     
     
       
@@ -353,9 +353,9 @@
     <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
     
     
-    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
-    
     <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
+    
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
     <category term="Slurm" scheme="https://gaofeng-lin.github.io/tags/Slurm/"/>
     
@@ -410,9 +410,9 @@
     <category term="并行计算" scheme="https://gaofeng-lin.github.io/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
     
     
-    <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
-    
     <category term="CFD" scheme="https://gaofeng-lin.github.io/tags/CFD/"/>
+    
+    <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
     
     <category term="向量化" scheme="https://gaofeng-lin.github.io/tags/%E5%90%91%E9%87%8F%E5%8C%96/"/>
     
