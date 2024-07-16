@@ -33,9 +33,9 @@ W">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -982,7 +982,7 @@ reconstructed_data1 = perform_pod_v(data)
 reconstructed_data2 = perform_pod_pca(data)
 
 compare_arrays(reconstructed_data1, reconstructed_data2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="DMD-Dynamic-Mode-Decomposition"><a href="#DMD-Dynamic-Mode-Decomposition" class="headerlink" title="DMD(Dynamic Mode Decomposition)"></a>DMD(Dynamic Mode Decomposition)</h3><p>假设我们有一个时间序列数据矩阵$X$，其中每一列是系统在某一时刻的状态向量。我们将数据划分成两个矩阵$X<em>1, X_2$。它们分别包含从时间$𝑡_1$到$𝑡</em>{m-1}$和$𝑡<em>2$到$𝑡</em>{m}$的状态：</p>
+<h3 id="DMD-Dynamic-Mode-Decomposition"><a href="#DMD-Dynamic-Mode-Decomposition" class="headerlink" title="DMD(Dynamic Mode Decomposition)"></a>DMD(Dynamic Mode Decomposition)</h3><p>假设我们有一个时间序列数据矩阵$X$，其中每一列是系统在某一时刻的状态向量。我们将数据划分成两个矩阵$X<em>{1}$, $X</em>{2}$。它们分别包含从时间$𝑡<em>{1}$到$𝑡</em>{m-1}$和$𝑡<em>{2}$到$𝑡</em>{m}$的状态：</p>
 <h4 id="收集数据"><a href="#收集数据" class="headerlink" title="收集数据"></a>收集数据</h4><p>X1 = [x1,x2,…,$x_{m-1}$] (n×(m-1))</p>
 <p>X2 = [x2,x3,…,$x_{m}$]  (n×(m-1))</p>
 <h4 id="计算矩阵A的近似"><a href="#计算矩阵A的近似" class="headerlink" title="计算矩阵A的近似"></a>计算矩阵A的近似</h4><p>DMD算法寻求在时间上与两个快照矩阵相关的最佳拟合线性算子A的主导谱分解（特征值和特征向量）</p>
@@ -1012,7 +1012,7 @@ compare_arrays(reconstructed_data1, reconstructed_data2)<span aria-hidden="true"
 <p>维度是(n*r)</p>
 <p><strong>这个地方需要注意下，有的地方关于模态的公式是下面这个：</strong></p>
 <p>$\Phi=UW$</p>
-<p>这是又名的投影模态。第一个写法是精确表示，如果计算出来的$\Phi$是0，那么就采用第二个计算。具体的区别可以参考《数据驱动的科学和工程》p197。</p>
+<p>这是有名的投影模态。第一个写法是精确表示，如果计算出来的$\Phi$是0，那么就采用第二个计算。具体的区别可以参考《数据驱动的科学和工程》p197。</p>
 <h4 id="数据重构"><a href="#数据重构" class="headerlink" title="数据重构"></a>数据重构</h4><p>$\mathbf{x}(t)=\Phi\Lambda^{t-1}\mathbf{b}$，维度是n*1</p>
 <p>其中<br>$\mathbf{b}=\Phi\cdot\mathbf{x}_{1}$， 维度是r*1</p>
 <p>$\Lambda^{t-1}$就是$\Lambda$里面每个元素的(t-1)次方。</p>
@@ -1657,7 +1657,7 @@ compare_arrays<span class="token punctuation">(</span>X<span class="token punctu
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">165.2k</span>
+                        class="white-color">165.3k</span>
             
             
             
