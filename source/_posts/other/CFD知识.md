@@ -133,7 +133,7 @@ V 是 $M×M$ 的单位正交矩阵，其列向量称为右奇异向量，代表�
 
 选择r个最大的奇异值对应的左奇异向量，构成矩阵$U_{r}$
 
-$ U_{r}=[u1,u2,...u_{r}] $
+$ U\_{r}=[u1,u2,...u\_{r}] $
 
 
 **构造模态系数**
@@ -700,6 +700,21 @@ ${\bf V}\in\mathbb{R}^{(m-1)\times r}$
 r是$X_1$的秩
 
 #### 构建低秩动态矩阵 $A_r$
+
+为了得到矩阵A的一个更容易处理的表达形式，我们将X1和X2投影到由U构成的低维空间，$\mathbf{U}^\ast X_1$， $\mathbf{U}^\ast X_2$ 。
+
+现在需要一个矩阵$\tilde{A}$ 使得两个投影矩阵接近，
+$\mathbf{U}^\ast X_2 = \tilde{A} \mathbf{U}^\ast X_1$
+
+根据上一步对X1进行SVD分解的结果，带入方程可以得到：
+
+$\mathbf{U}^\ast X_2 = \tilde{A} \mathbf{\Sigma} \mathbf{V}^{\ast}$
+
+可以得到$\tilde{A} = \mathbf{U}^{\ast}X_{2}\mathbf{V}\mathbf{\Sigma}^{-1}$
+（r*r）
+
+**下面是另一种简单的写法，展开后和上面的结果是一样的**
+
 
 利用 SVD 的结果构建一个低秩近似矩阵：
 
