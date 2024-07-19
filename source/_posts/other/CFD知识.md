@@ -763,7 +763,9 @@ $\Phi=UW$
 $\mathbf{x}(t)=\Phi\Lambda^{t-1}\mathbf{b}$，维度是n*1
 
 其中
-$\mathbf{b}=\Phi\cdot\mathbf{x}_{1}$， 维度是r*1
+$\mathbf{b}=\Phi^{+}\cdot\mathbf{x}_{1}$， 维度是r*1
+
+"+"表示伪逆
 
 $\Lambda^{t-1}$就是$\Lambda$里面每个元素的(t-1)次方。
 
