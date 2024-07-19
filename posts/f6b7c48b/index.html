@@ -468,14 +468,14 @@ W">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.6k
+                    7.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    30 分
+                    31 分
                 </div>
                 
 
@@ -535,6 +535,20 @@ W">
 <p>在双时间步法中，虽然处理的是非定常问题，物理时间步是固定的，即在每个物理时间点，计算条件并不改变，这样可以在每个物理时间步的计算中达到一种“定长”或稳定状态。在这种意义上，尽管整体问题是非定常的（随时间变化的），每个物理时间步的处理过程类似于求解一个定常问题，因为在达到物理时间步的解之前，假时间的迭代使得解在该物理时间点达到稳定。</p>
 <p><strong>应用场景</strong></p>
 <p>这种方法非常适用于需要时间精确性的流动问题，如不稳定流动、振荡流动等。通过在每个物理时间步内迭代假时间步，双时间步法可以有效地稳定数值解，并加快收敛速度，特别是在使用隐式时间离散化方案时。</p>
+<h3 id="定长-amp-非定常"><a href="#定长-amp-非定常" class="headerlink" title="定长&amp;非定常"></a>定长&amp;非定常</h3><p><strong>定长：</strong></p>
+<ul>
+<li>定常流动指的是流体流动的特性（如速度、压力等）在时间上不发生变化。这意味着即使流体在空间上的性质（如速度和压力）可能随位置变化，但在任何给定位置，这些性质随时间是恒定的。</li>
+</ul>
+<p><strong>非定常：</strong></p>
+<ul>
+<li>非定常流动指的是流体流动的特性在时间上有变化。在这种情况下，流体的速度、压力等参数不仅随空间位置变化，而且随时间也在变化。</li>
+</ul>
+<p><strong>区别</strong></p>
+<ul>
+<li>定常流动没有时间依赖性，而非定常流动具有时间依赖性。</li>
+<li>通常，非定常流动的模拟比定常流动的模拟更为复杂和计算量更大，因为它需要解决流体特性随时间的变化，而定常流动只需考虑空间变化。</li>
+<li>定常流动常用于工程设计和分析中相对简单或长期稳定的流动情况，而非定常流动则适用于研究流体动力学中的瞬态现象和时间变化效应。</li>
+</ul>
 <h2 id="数学知识"><a href="#数学知识" class="headerlink" title="数学知识"></a>数学知识</h2><h3 id="奇异值分解"><a href="#奇异值分解" class="headerlink" title="奇异值分解"></a>奇异值分解</h3><p>奇异值分解（Singular Value Decomposition，简称SVD），可以用于矩阵的压缩和降维，通过保留最大的几个奇异值及其对应的奇异向量，可以近似原矩阵，这在图像压缩和数据降维等领域非常有用。在解决线性最小二乘问题、计算矩阵的伪逆等方面，奇异值分解也是一种非常重要的工具。</p>
 <p>奇异值分解的计算一般通过数值算法实现，比如利用QR分解或者其他迭代方法，因为直接计算奇异值分解在数值上可能非常复杂。</p>
 <p>下面讲解下奇异值分解的核心步骤：</p>
@@ -1014,7 +1028,8 @@ compare_arrays(reconstructed_data1, reconstructed_data2)<span aria-hidden="true"
 <p>$\Phi=UW$</p>
 <p>这是有名的投影模态。第一个写法是精确表示，如果计算出来的$\Phi$是0，那么就采用第二个计算。具体的区别可以参考《数据驱动的科学和工程》p197。</p>
 <h4 id="数据重构"><a href="#数据重构" class="headerlink" title="数据重构"></a>数据重构</h4><p>$\mathbf{x}(t)=\Phi\Lambda^{t-1}\mathbf{b}$，维度是n*1</p>
-<p>其中<br>$\mathbf{b}=\Phi\cdot\mathbf{x}_{1}$， 维度是r*1</p>
+<p>其中<br>$\mathbf{b}=\Phi^{+}\cdot\mathbf{x}_{1}$， 维度是r*1</p>
+<p>“+”表示伪逆</p>
 <p>$\Lambda^{t-1}$就是$\Lambda$里面每个元素的(t-1)次方。</p>
 <p>这样重构哪个时刻的数据就使用对应的次方</p>
 <h4 id="预测数据"><a href="#预测数据" class="headerlink" title="预测数据"></a>预测数据</h4><p>和上面的重构数据一样，假设t的范围是1&lt;=t&lt;=5。t=6时刻的数据为：</p>
@@ -1657,7 +1672,7 @@ compare_arrays<span class="token punctuation">(</span>X<span class="token punctu
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">165.3k</span>
+                        class="white-color">165.7k</span>
             
             
             
