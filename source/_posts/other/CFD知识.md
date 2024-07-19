@@ -787,7 +787,7 @@ $\mathbf{x}(6)=\Phi\Lambda^{1}\mathbf{b}$
 预测未来时间步数据还有另外一种写法：
 
 
-$\mathbf{x}(t)=\Phi{}e^{\omega t-1}b$
+$\mathbf{x}(t)=\Phi{}e^{\omega (t-1)}b$
 
 其中$\omega={\frac{\log(\lambda)}{d t}}$
 
