@@ -4,10 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="硬件知识, Home of Gaofeng">
-    <meta name="description" content="diy电脑功耗怎么考虑电源功耗如何计算
-台式机电源功耗如何计算（简洁版）（CPU TDP功耗 + 显卡TDP功耗 + 其它硬件功耗按40W）÷ 0.6 = 电源额定功率（单位：W瓦）
-CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
+    <meta name="keywords" content="pod, Home of Gaofeng">
+    <meta name="description" content="Enhancing dynamic mode decomposition workflow with in situ visualization and data compression流式svd的步骤:
+Mode Multigrid - ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +20,7 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
 
     
 
-    <title>硬件知识 | Home of Gaofeng</title>
+    <title>pod | Home of Gaofeng</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -314,12 +313,12 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">硬件知识</h1>
+                    <h1 class="description center-align post-title">pod</h1>
                 </div>
             </div>
         </div>
@@ -435,8 +434,8 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%94%B5%E6%BA%90/">
-                                <span class="chip bg-color">电源</span>
+                            <a href="/tags/pod/">
+                                <span class="chip bg-color">pod</span>
                             </a>
                         
                     </div>
@@ -447,8 +446,8 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="post-category">
-                                硬件
+                            <a href="/categories/pod/" class="post-category">
+                                pod
                             </a>
                         
                     </div>
@@ -460,7 +459,7 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-05-09
+                    2024-07-13
                 </div>
                 
 
@@ -469,14 +468,14 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    355
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    1 分
                 </div>
                 
 
@@ -499,50 +498,42 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="diy电脑功耗怎么考虑"><a href="#diy电脑功耗怎么考虑" class="headerlink" title="diy电脑功耗怎么考虑"></a>diy电脑功耗怎么考虑</h2><p><a target="_blank" rel="noopener" href="http://www.lotpc.com/zjzn/8670.html">电源功耗如何计算</a></p>
-<h3 id="台式机电源功耗如何计算（简洁版）"><a href="#台式机电源功耗如何计算（简洁版）" class="headerlink" title="台式机电源功耗如何计算（简洁版）"></a>台式机电源功耗如何计算（简洁版）</h3><p><strong>（CPU TDP功耗 + 显卡TDP功耗 + 其它硬件功耗按40W）÷ 0.6 = 电源额定功率（单位：W瓦）</strong></p>
-<p>CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功耗，虽然TDP功耗并不是实际功耗，但是可以借用TDP功耗指标来计算。</p>
-<p>其它硬件可以打包功耗为40W，例如主板6W，内存2W一根，机械硬盘8W，固态硬盘2W，还有其它包括机箱风扇或者光驱等。</p>
-<p>为什么除以0.6，在满载时仍然保留40%冗余功率。</p>
-<p>以上电源功率计算公式为独立显卡为主，核心显卡（集成显卡）通常使用250W-300W额定功率足够了，建议额定300W起步。</p>
-<p>注意：得出的电源功率需要根据实际情况适当加减取整，如果怕不够可以再加50W。</p>
-<p>例子：<br>i3-9100F+GTX1650电脑主机，i3-9100F TDP功耗为65W，GTX1650 TDP功耗为75W，其它硬件大致按40W算。那么就是（65+75+40）÷ 0.6=300W，建议额定300W-350W。</p>
-<p>i5-9400F+GTX1660Super的电脑主机，i5-9400F TDP功耗为65W，GTX1660Super TDP功耗为125W，其它硬件大致按40W算。那么就是（65+125+40）÷ 0.6=383W，建议额定400W-450W。</p>
-<p>i7-9700F+RTX2060 SUPER的电脑主机，i7-9700F TDP功耗为65W，RTX2060 SUPER TDP功耗为175W，其它硬件大致按40W算。那么就是（65+175+40）÷ 0.6=466W，建议500W-550W。</p>
-<p>i7-9700K+RTX2070Super的电脑主机，i7-9700K TDP功耗为95W，RTX2070Super TDP功耗为215W，其它硬件大致按40W算。那么就是（95+215+40）÷ 0.6=583W，建议额定550W-600W。</p>
-<p>i7-9900K+RTX2080Super的电脑主机，i9-9900K TDP功耗为95W，RTX2080Super TDP功耗为250W，其它硬件大致按40W算。那么就是（95+250+40）÷ 0.6=641W，建议额定650W。</p>
-<p>R5 3600+RX5700的电脑主机，R5 3600 TDP功耗为65W，RX5700 TDP功耗为185W，其它硬件大致按40W算。那么就是（65+185+40）÷ 0.6=483W，建议500W-550W。</p>
-<h3 id="迷你主机功耗计算例子"><a href="#迷你主机功耗计算例子" class="headerlink" title="迷你主机功耗计算例子"></a>迷你主机功耗计算例子</h3><p>以HP EliteDesk 800 65W G2微型台式电脑为例，其中65W表示整个电脑系统在正常运行时的平均功耗。</p>
-<p><strong>通常情况下，整个电脑系统在正常运行时的平均功耗应该远低于组件的额定功耗之和。这是因为硬件组件在实际使用过程中的功耗并不是始终保持在额定功耗水平，而是根据系统负载和任务需求而变化的。考虑到整体系统功耗的控制，设计者会在选择和配置硬件组件时进行平衡。他们会考虑到各个组件的功耗特性，系统的散热能力以及整体系统在正常使用情况下的功耗。如果CPU的额定功耗为65W，加上内存、硬盘等其他组件的功耗，整体功耗可能会超过65W，但这并不意味着系统不能正常运行。系统设计者通常会预留一定的功耗余量，以应对高负载情况和临时功耗峰值。</strong></p>
-<p>以下是一些硬件组件的功耗范例：</p>
-<p>CPU：例如Intel Core i5-6600，功耗范围为65W。</p>
-<p>内存：通常情况下，内存的功耗较低，可以忽略不计。</p>
-<p>硬盘：例如固态硬盘（SSD），功耗范围为1W至4W，具体取决于型号和容量。</p>
-<p>显卡（如果有独立显卡）：例如NVIDIA GeForce GTX 1650，功耗范围为75W至150W，具体取决于型号和厂商。</p>
-<p>主板：主板的功耗通常较低，一般在10W以下。</p>
-<p>散热器和风扇：功耗较小，一般在1W至5W之间。</p>
-<p><strong>电源的额定功率一定要比各个硬件的功耗之和高，不然可能带不动。</strong></p>
-<h3 id="功耗过高，可能出现的问题"><a href="#功耗过高，可能出现的问题" class="headerlink" title="功耗过高，可能出现的问题"></a>功耗过高，可能出现的问题</h3><ol>
-<li><p>过热问题：高功耗会导致系统各个组件（如CPU、显卡、硬盘等）的温度升高。如果散热不足，可能会引发过热问题，导致系统性能下降、崩溃或损坏硬件。</p>
+                <h2 id="Enhancing-dynamic-mode-decomposition-workflow-with-in-situ-visualization-and-data-compression"><a href="#Enhancing-dynamic-mode-decomposition-workflow-with-in-situ-visualization-and-data-compression" class="headerlink" title="Enhancing dynamic mode decomposition workflow with in situ visualization and data compression"></a>Enhancing dynamic mode decomposition workflow with in situ visualization and data compression</h2><p>流式svd的步骤:<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/%E6%B5%81%E5%BC%8Fsvd.png" alt=""></p>
+<h2 id="Mode-Multigrid-A-novel-convergence-acceleration-method"><a href="#Mode-Multigrid-A-novel-convergence-acceleration-method" class="headerlink" title="Mode Multigrid - A novel convergence acceleration method"></a>Mode Multigrid - A novel convergence acceleration method</h2><p><strong>《非结构网格高阶数值格式与加速收敛方法》</strong></p>
+<p>这篇论文是上面这篇博士论文里面的内容，实验部分都是一样的。</p>
+<ul>
+<li><strong>做的什么方向</strong>：<ul>
+<li>流场加速收敛</li>
+</ul>
 </li>
-<li><p>电源供电不足：高功耗可能超出电源的供电能力，导致电压下降、电流不稳定等问题。这可能引起系统不稳定，甚至造成系统崩溃或无法正常启动。</p>
+<li><p><strong>解决了什么问题</strong>：</p>
+<ul>
+<li>多重网格在非结构网格上面因为非结构网格随机存储的原因，难以实现，而且不便并行计算。</li>
+</ul>
 </li>
-<li><p>性能下降：当系统整体功耗过高时，电源和其他组件可能无法提供足够的电能来支持系统的高性能运行。这可能导致系统性能下降，例如运行速度变慢、应用程序响应变慢等。</p>
+<li><p><strong>方法步骤</strong></p>
+<ul>
+<li>收集流场快照，进行DMD分解，然后重构流场（论文没直接说预测外推，只说了结合向量外插类方法，那么认为是重构的未来一个时间步的流场）。然后基于重构的结果续算，达到加速收敛的目的。<strong>DMD的公式步骤和代码实现可以看博客。</strong></li>
+</ul>
 </li>
-<li><p>硬件故障：长期以高功耗运行系统可能会对硬件组件造成损坏或加速磨损。例如，过高的电压、电流可能导致电路元件损坏、芯片烧毁等。</p>
+</ul>
+<h2 id="Improved-Mode-Multigrid-Method-for-Accelerating-Turbulence-Flows"><a href="#Improved-Mode-Multigrid-Method-for-Accelerating-Turbulence-Flows" class="headerlink" title="Improved Mode Multigrid Method for Accelerating Turbulence Flows"></a>Improved Mode Multigrid Method for Accelerating Turbulence Flows</h2><p>这篇论文是在上一篇论文《Mode Multigrid - A novel convergence acceleration method》的基础上进行调整的，实验的对比对象也是上一篇论文提到的方法</p>
+<ul>
+<li><strong>做的什么方向</strong>：<ul>
+<li>流场加速收敛</li>
+</ul>
 </li>
-</ol>
-<p>为了避免这些问题，建议根据硬件组件的功耗规格和系统的电源供应能力，合理选择和配置硬件，并确保系统整体功耗在可接受范围内。定期清理和维护散热系统也是保持系统性能和稳定性的重要措施。</p>
-<h3 id="即使电源功率足够，功耗过高也有问题"><a href="#即使电源功率足够，功耗过高也有问题" class="headerlink" title="即使电源功率足够，功耗过高也有问题"></a>即使电源功率足够，功耗过高也有问题</h3><p>虽然电源功率足够大可以提供更高的功耗，但系统功耗高并不意味着一定没有问题。尽管电源功率足够大可以满足系统的高功耗需求，但仍然需要考虑以下几个方面：</p>
-<ol>
-<li><p>散热问题：高功耗会导致系统内部产生更多的热量，需要足够的散热系统来有效降低温度。如果散热不足，可能会导致硬件温度升高，影响系统的稳定性和寿命。</p>
+<li><p><strong>解决了什么问题</strong>：</p>
+<ul>
+<li>消除模态多重网格方法（上一篇论文提出的）出现的不规则残差跳跃问题</li>
+</ul>
 </li>
-<li><p>稳定性问题：虽然电源功率足够大，但电源供电的稳定性也是至关重要的。如果电源的输出电压、电流不稳定，可能导致系统的不稳定运行、崩溃或损坏硬件。</p>
+<li><p><strong>方法步骤</strong></p>
+<ul>
+<li>在DMD重构的时候，保留“零频移动模态”（zero-frequency shift modes），可以加速收敛</li>
+</ul>
 </li>
-<li><p>能效问题：高功耗意味着系统需要更多的电能供应，这可能导致能效下降。较高的功耗也会导致电费增加。</p>
-</li>
-</ol>
-<p>因此，尽管电源功率足够大可以支持高功耗系统，但仍建议根据实际需求选择适当的硬件配置，以平衡性能、稳定性、散热和能效等因素。定期清理和维护散热系统也是保持系统性能和稳定性的重要措施。</p>
+</ul>
 
                 
             </div>
@@ -569,7 +560,7 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://gaofeng-lin.github.io/posts/7948/">https://gaofeng-lin.github.io/posts/7948/</a>
+                    <a href="https://gaofeng-lin.github.io/posts/30a636b/">https://gaofeng-lin.github.io/posts/30a636b/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -607,8 +598,8 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%94%B5%E6%BA%90/">
-                                    <span class="chip bg-color">电源</span>
+                                <a href="/tags/pod/">
+                                    <span class="chip bg-color">pod</span>
                                 </a>
                             
                         </div>
@@ -782,17 +773,18 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/53791/">
+                <a href="/posts/30a636b/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="深度学习">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="pod">
                         
-                        <span class="card-title">深度学习</span>
+                        <span class="card-title">pod</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -802,46 +794,27 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-12-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/AI/" class="post-category">
-                                    AI
+                            <a href="/categories/pod/" class="post-category">
+                                    pod
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/">
-                        <span class="chip bg-color">深度学习代码问题</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/">
-                        <span class="chip bg-color">深度学习理论知识</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88RNN%EF%BC%89/">
-                        <span class="chip bg-color">循环神经网络（RNN）</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88CNN%EF%BC%89/">
-                        <span class="chip bg-color">卷积神经网络（CNN）</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/">
-                        <span class="chip bg-color">深度学习数据操作</span>
-                    </a>
-                    
-                    <a href="/tags/pytorch%E4%B8%8Ecuda%E5%AE%89%E8%A3%85/">
-                        <span class="chip bg-color">pytorch与cuda安装</span>
+                    <a href="/tags/pod/">
+                        <span class="chip bg-color">pod</span>
                     </a>
                     
                 </div>
@@ -855,13 +828,13 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/8600/">
+                <a href="/posts/949a09f6/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="金融相关">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="运动康复">
                         
-                        <span class="card-title">金融相关</span>
+                        <span class="card-title">运动康复</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -872,14 +845,14 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-04
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%87%91%E8%9E%8D/" class="post-category">
-                                    金融
+                            <a href="/categories/%E8%BF%90%E5%8A%A8%E5%BA%B7%E5%A4%8D/" class="post-category">
+                                    运动康复
                                 </a>
                             
                             
@@ -889,8 +862,8 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%87%91%E8%9E%8D/">
-                        <span class="chip bg-color">金融</span>
+                    <a href="/tags/%E8%BF%90%E5%8A%A8%E5%BA%B7%E5%A4%8D/">
+                        <span class="chip bg-color">运动康复</span>
                     </a>
                     
                 </div>
@@ -1014,6 +987,13 @@ CPU和显卡是硬件中功耗大户，所以取这两个硬件的TDP功">
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
