@@ -6,7 +6,6 @@ categories:
 tags:
   - pod
 mathjax: true
-abbrlink: cca8c50b
 ---
 
 ## Enhancing dynamic mode decomposition workflow with in situ visualization and data compression
