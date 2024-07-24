@@ -33,9 +33,9 @@ Mode Multigrid - ">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -468,14 +468,14 @@ Mode Multigrid - ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    355
+                    666
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -531,6 +531,27 @@ Mode Multigrid - ">
 <li><p><strong>方法步骤</strong></p>
 <ul>
 <li>在DMD重构的时候，保留“零频移动模态”（zero-frequency shift modes），可以加速收敛</li>
+</ul>
+</li>
+</ul>
+<h2 id="AI-enhanced-iterative-solvers-for-accelerating-the-solution-of-large-scale-parametrized-systems"><a href="#AI-enhanced-iterative-solvers-for-accelerating-the-solution-of-large-scale-parametrized-systems" class="headerlink" title="AI-enhanced iterative solvers for accelerating the solution of large-scale parametrized systems"></a>AI-enhanced iterative solvers for accelerating the solution of large-scale parametrized systems</h2><ul>
+<li><strong>做的什么方向</strong>：<ul>
+<li>构建高效的数值求解器</li>
+</ul>
+</li>
+<li><strong>做了什么事情</strong>：<ul>
+<li>使用标准有限元方法进行一组简化的模型评估，并使用相应的解决方案，使用深度前馈神经网络和卷积自编码器的组合建立从问题的参数空间到其解空间的近似映射。这种映射的成本忽略不计，而且精度比较高</li>
+<li>基于代数多重网格法结合本征正交分解( POD )开发了迭代求解器POD - 2G，将代理模型的初始预测逐次精化到精确解。</li>
+</ul>
+</li>
+<li><p><strong>解决了什么问题</strong>：</p>
+<ul>
+<li>传统方法可能需要较高的计算资源，占用较高的内存；神经网络推理出来的解不满足任何物理规律</li>
+</ul>
+</li>
+<li><p><strong>创新点出发</strong></p>
+<ul>
+<li>将传统方法和神经网络的优势结合起来，用机器学习算法来增强线性代数求解器；例如，POD已成功地用于截断增广的Krylov子空间，仅保留高能量模式63，以有效地求解具有右端变化和对称正定矩阵特征的线性方程组序列。</li>
 </ul>
 </li>
 </ul>
@@ -1067,7 +1088,7 @@ Mode Multigrid - ">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">165.9k</span>
+                        class="white-color">166.8k</span>
             
             
             
