@@ -33,9 +33,9 @@ W">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -468,14 +468,14 @@ W">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.9k
+                    8.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    31 分
+                    32 分
                 </div>
                 
 
@@ -996,6 +996,12 @@ reconstructed_data1 = perform_pod_v(data)
 reconstructed_data2 = perform_pod_pca(data)
 
 compare_arrays(reconstructed_data1, reconstructed_data2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="POD和DMD的区别"><a href="#POD和DMD的区别" class="headerlink" title="POD和DMD的区别"></a>POD和DMD的区别</h3><h4 id="“POD中的能量和DMD中的频率”"><a href="#“POD中的能量和DMD中的频率”" class="headerlink" title="“POD中的能量和DMD中的频率”"></a>“POD中的能量和DMD中的频率”</h4><p>如何理解下面这句话：</p>
+<p><strong>“pod是按能量进行区分，dmd是按照频率进行区分”</strong></p>
+<ul>
+<li>在POD中，所谓的“能量”通常指的是数据集中的方差，它衡量的是每个模态在描述数据集的整体波动中所占的份额。在POD方法中，每个模态都会有一个对应的奇异值（在计算中来自奇异值分解或协方巧矩阵的特征值），这个奇异值的大小表示了该模态在数据中所包含的“能量”或信息量。第一个模态包含最大的能量，即方差最大，解释了数据集中最主要的波动；随后的模态所包含的能量依次减少。</li>
+<li>DMD的关注点在于捕捉数据的时间动态，特别是周期性和增长/衰减特性。在DMD中，每个模态不仅与一个空间模式相关联，还与一个复数特征值相关联，这个复数特征值的实部和虚部分别表示该模态的增长/衰减率和振荡频率。频率这里直接对应于物理和工程中的频率概念，表示模态随时间振荡的速度；高频模态表现为快速振荡，而低频模态变化较慢。</li>
+</ul>
 <h3 id="DMD-Dynamic-Mode-Decomposition"><a href="#DMD-Dynamic-Mode-Decomposition" class="headerlink" title="DMD(Dynamic Mode Decomposition)"></a>DMD(Dynamic Mode Decomposition)</h3><p>假设我们有一个时间序列数据矩阵$X$，其中每一列是系统在某一时刻的状态向量。我们将数据划分成两个矩阵$X<em>{1}$, $X</em>{2}$。它们分别包含从时间$𝑡<em>{1}$到$𝑡</em>{m-1}$和$𝑡<em>{2}$到$𝑡</em>{m}$的状态：</p>
 <h4 id="收集数据"><a href="#收集数据" class="headerlink" title="收集数据"></a>收集数据</h4><p>X1 = [x1,x2,…,$x_{m-1}$] (n×(m-1))</p>
 <p>X2 = [x2,x3,…,$x_{m}$]  (n×(m-1))</p>
@@ -1032,6 +1038,7 @@ compare_arrays(reconstructed_data1, reconstructed_data2)<span aria-hidden="true"
 <p>“+”表示伪逆</p>
 <p>$\Lambda^{t-1}$就是$\Lambda$里面每个元素的(t-1)次方。</p>
 <p>这样重构哪个时刻的数据就使用对应的次方</p>
+<p><strong>b也被称为模态时间系数或模态幅值</strong></p>
 <h4 id="预测数据"><a href="#预测数据" class="headerlink" title="预测数据"></a>预测数据</h4><p>和上面的重构数据一样，假设t的范围是1&lt;=t&lt;=5。t=6时刻的数据为：</p>
 <p>$\mathbf{x}(6)=\Phi\Lambda^{5}\mathbf{b}$</p>
 <p>需要注意的是，这里我们是基于第一个时间步的数据来进行预测，如果是基于最后一个时间步的数据来进行预测，那么b会发生变化<br>$\mathbf{b}=\Phi\cdot\mathbf{x}_{5}$</p>
@@ -1672,7 +1679,7 @@ compare_arrays<span class="token punctuation">(</span>X<span class="token punctu
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">167.9k</span>
+                        class="white-color">168.8k</span>
             
             
             
