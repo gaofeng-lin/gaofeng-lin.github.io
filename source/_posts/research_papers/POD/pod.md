@@ -14,26 +14,26 @@ abbrlink: 30a636b
 ### Summary
 写完笔记之后最后填，概述文章的内容，以后查阅笔记的时候先看这一段。注：写文章summary切记需要通过自己的思考，用自己的语言描述。忌讳直接Ctrl + c原文。
 
-### Research Objective(s)
-作者的研究目标是什么？
+### Background 
+**（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）**
 
-### Background / Problem Statement
-研究的背景以及问题陈述：作者需要解决的问题是什么？
+### Problem Statement
+**（问题陈述：问题作者需要解决的问题是什么？）**
 
 ### Method(s)
-作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？
+**（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）**
 
 ### Evaluation
-作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？
+**（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）**
 
 ### Conclusion
-作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions（即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence）?
+**（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）**
 
 ### Notes(optional) 
-不在以上列表中，但需要特别记录的笔记。
+**（不在以上列表中，但需要特别记录的笔记。）**
 
 ### References(optional) 
-列出相关性高的文献，以便之后可以继续track下去。
+**（列出相关性高的文献，以便之后可以继续track下去。）**
 
 
 ## Enhancing dynamic mode decomposition workflow with in situ visualization and data compression
@@ -93,23 +93,23 @@ abbrlink: 30a636b
 ## Enhancing dynamic mode decomposition workflow with in situ visualization and data compression
 
 ### Summary
-写完笔记之后最后填，概述文章的内容，以后查阅笔记的时候先看这一段。注：写文章summary切记需要通过自己的思考，用自己的语言描述。忌讳直接Ctrl + c原文。
+
 
 ### Background 
-（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）
+**（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）**
 
 - 数据驱动方法在工程和科学应用中的使用大幅增长。
 - 从数据中提取信息非常有用，可以做很多事。
 
 
 ### Problem Statement
-（问题陈述：问题作者需要解决的问题是什么？）
+**（问题陈述：问题作者需要解决的问题是什么？）**
 - 计算速率和I/O速率之间差距大，大型仿真很难将结果保存到磁盘。
 - 非线性系统中获取的数据很可能是高维的，保存到磁盘需要大量空间。
 
 
 ### Method(s)
-（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）
+**（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）**
 
 #### 运行时原位数据可视化
   - 在仿真运行的时候进行原位可视化和数据分析，减少磁盘写入的数据量。
@@ -123,7 +123,7 @@ abbrlink: 30a636b
 
 
 ### Evaluation
-（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）
+**（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）**
 
 #### 实验一：Particle‐driven gravity flow
 
@@ -134,10 +134,10 @@ abbrlink: 30a636b
 
 
 ### Conclusion
-作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions（即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence）?
+**作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?**
 
 ### Notes(optional) 
-（不在以上列表中，但需要特别记录的笔记。）
+**（不在以上列表中，但需要特别记录的笔记。）**
 
 
 因为我是用ipca来重构flow-star里面的数据，重构p和v的时候，误差非常大；邓老师让我看看这篇论文实验部分中重构误差是多大。
@@ -150,4 +150,50 @@ abbrlink: 30a636b
 
 
 ### References(optional) 
-（列出相关性高的文献，以便之后可以继续track下去。）
+**（列出相关性高的文献，以便之后可以继续track下去。）**
+
+## An improved mode time coefficient for dynamic mode decomposition
+
+### Summary
+
+
+### Background 
+**（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）**
+
+- CFD方法进步->越精确的细节->大量的流数据->提取有用信息难度增加；非定常流需要有效的提取方法，数据驱动的模态分解方法已被证明是有效的技术。
+  
+- POD方法的缺陷：
+  - 模态通常包含多频分量，限制了pod在单频模式分析中的应用。有人提出了一种F-POD的方式来克服这个问题。
+  - pod从能量角度对模态排序，没有考虑模态的 动态性
+  - 对于模态的截断没有明确的标准
+
+- DMD的模态时间系数还存在问题：
+  - 模态时间系数无法处理模态呈非指数演化的流场。尽管multi-resolution DMD and the timedelay DMD 一定程度缓解这个问题，但是对于空间维远大于时间维的大规模流场来说是不行的
+  - 模态时间系数可能还会影响DMD模态的排序，从而影响主导模态的选择
+
+
+### Problem Statement
+**（问题陈述：问题作者需要解决的问题是什么？）**
+
+- DMD的模态时间系数无法处理不稳定流场。
+- 不准确的模态时间系数可能会导致分解模态的排序不合理，从而导致主导模态被忽略。
+
+
+### Method(s)
+**（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）**
+
+- 提出了一种基于Moore-Penrose伪逆的改进模式时间系数
+- 定义了一种基于改进模式时间系数的新积分参数来对分解模式进行排序
+
+
+### Evaluation
+**（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）**
+
+### Conclusion
+**（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）**
+
+### Notes(optional) 
+**（不在以上列表中，但需要特别记录的笔记。）**
+
+### References(optional) 
+**（列出相关性高的文献，以便之后可以继续track下去。）**
