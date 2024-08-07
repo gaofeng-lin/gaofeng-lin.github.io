@@ -774,16 +774,51 @@ $\Phi=UW$
 $\mathbf{x}(t)=\Phi\Lambda^{t-1}\mathbf{b}$，维度是n*1
 
 其中
-$\mathbf{b}=\Phi^{+}\cdot\mathbf{x}_{1}$， 维度是r*1
+$\mathbf{b}=\Phi^{+}\cdot\mathbf{x}_{1}= [\alpha_{1},..., \alpha_{r}]$， 维度是r*1
 
 "+"表示伪逆
 
+**b通常被称为初始幅度向量**
+
+$\alpha_{i}$表示第i个模态的振幅，可以一般是根据模态振幅的大小对DMD模态排序。
+
+---------------------------
 $\Lambda^{t-1}$就是$\Lambda$里面每个元素的(t-1)次方。
 
 这样重构哪个时刻的数据就使用对应的次方
 
 
-**b也被称为模态时间系数或模态幅值**
+-----------------------------
+
+上面的公式可以改写下，也是很多论文里面经常介绍DMD会用到的：
+
+
+$x_{i} = \Phi\Lambda^{i-1}\mathbf{b} = \sum_{j=1}^{r}\Phi_{j}(\lambda_{j})^{i-1}\alpha_{j}$
+
+$X = [x_{1},...,x_{n}] = \Phi D_{\alpha}V_{and}$
+
+
+
+其中
+
+$D_{\alpha }=\begin{bmatrix}
+  \alpha_{1}&  & \\
+  &  ...& \\
+  &  &\alpha_{r}
+\end{bmatrix}$
+
+$V_{and}=\begin{bmatrix}
+  1&  \lambda_{1} &\lambda_{1}^{n-1} \\
+  ...&  ...& ...\\
+  1&  \lambda_{r}&\lambda_{r}^{n-1}
+\end{bmatrix}$
+
+$V_{and}$表示范德蒙矩阵
+
+定义模态时间系数
+$B_{standard} = D_{\alpha}V_{and}$
+
+包含了DMD的时间演化信息
 
 #### 预测数据
 
