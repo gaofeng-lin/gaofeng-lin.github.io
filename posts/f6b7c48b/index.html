@@ -33,9 +33,9 @@ W">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -468,14 +468,14 @@ W">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.3k
+                    8.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    32 分
+                    33 分
                 </div>
                 
 
@@ -1034,11 +1034,23 @@ compare_arrays(reconstructed_data1, reconstructed_data2)<span aria-hidden="true"
 <p>$\Phi=UW$</p>
 <p>这是有名的投影模态。第一个写法是精确表示，如果计算出来的$\Phi$是0，那么就采用第二个计算。具体的区别可以参考《数据驱动的科学和工程》p197。</p>
 <h4 id="数据重构"><a href="#数据重构" class="headerlink" title="数据重构"></a>数据重构</h4><p>$\mathbf{x}(t)=\Phi\Lambda^{t-1}\mathbf{b}$，维度是n*1</p>
-<p>其中<br>$\mathbf{b}=\Phi^{+}\cdot\mathbf{x}_{1}$， 维度是r*1</p>
+<p>其中<br>$\mathbf{b}=\Phi^{+}\cdot\mathbf{x}<em>{1}= [\alpha</em>{1},…, \alpha_{r}]$， 维度是r*1</p>
 <p>“+”表示伪逆</p>
+<p><strong>b通常被称为初始幅度向量</strong></p>
+<p>$\alpha_{i}$表示第i个模态的振幅，可以一般是根据模态振幅的大小对DMD模态排序。</p>
+<hr>
 <p>$\Lambda^{t-1}$就是$\Lambda$里面每个元素的(t-1)次方。</p>
 <p>这样重构哪个时刻的数据就使用对应的次方</p>
-<p><strong>b也被称为模态时间系数或模态幅值</strong></p>
+<hr>
+<p>上面的公式可以改写下，也是很多论文里面经常介绍DMD会用到的：</p>
+<p>$x<em>{i} = \Phi\Lambda^{i-1}\mathbf{b} = \sum</em>{j=1}^{r}\Phi<em>{j}(\lambda</em>{j})^{i-1}\alpha_{j}$</p>
+<p>$X = [x<em>{1},…,x</em>{n}] = \Phi D<em>{\alpha}V</em>{and}$</p>
+<p>其中</p>
+<p>$D<em>{\alpha }=\begin{bmatrix}<br>  \alpha</em>{1}&amp;  &amp; \<br>  &amp;  …&amp; \<br>  &amp;  &amp;\alpha_{r}<br>\end{bmatrix}$</p>
+<p>$V<em>{and}=\begin{bmatrix}<br>  1&amp;  \lambda</em>{1} &amp;\lambda<em>{1}^{n-1} \<br>  …&amp;  …&amp; …\<br>  1&amp;  \lambda</em>{r}&amp;\lambda_{r}^{n-1}<br>\end{bmatrix}$</p>
+<p>$V_{and}$表示范德蒙矩阵</p>
+<p>定义模态时间系数<br>$B<em>{standard} = D</em>{\alpha}V_{and}$</p>
+<p>包含了DMD的时间演化信息</p>
 <h4 id="预测数据"><a href="#预测数据" class="headerlink" title="预测数据"></a>预测数据</h4><p>和上面的重构数据一样，假设t的范围是1&lt;=t&lt;=5。t=6时刻的数据为：</p>
 <p>$\mathbf{x}(6)=\Phi\Lambda^{5}\mathbf{b}$</p>
 <p>需要注意的是，这里我们是基于第一个时间步的数据来进行预测，如果是基于最后一个时间步的数据来进行预测，那么b会发生变化<br>$\mathbf{b}=\Phi\cdot\mathbf{x}_{5}$</p>
@@ -1679,7 +1691,7 @@ compare_arrays<span class="token punctuation">(</span>X<span class="token punctu
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">168.8k</span>
+                        class="white-color">169k</span>
             
             
             
