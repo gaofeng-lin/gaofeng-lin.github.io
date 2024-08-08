@@ -286,7 +286,16 @@ $ER\_{j}=\frac{E\_{j}}{\displaystyle\sum\_{j=1}^{r}E\_{j}}\$
 
 #### 实验1：验证改进时间系数的有效性
 
+图中的横轴表示时间，纵轴表示时间系数
 
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-08_21-06-29.png)
+
+就u2而言，其振幅应该呈对数增长。如图2 ( b )所示，由DMD - TC得到的模式时间系数以对数形式变化。然而，DMD的增长似乎是以指数形式增长的。这表明DMD - TC可以准确地描述对数增长模式，而DMD不能。
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-08_20-58-46.png)
+
+
+u3具有较小的初始振幅，但随后线性增长到显著水平。如图2 ( c )所示，DMD - TC正确地画出了模式时间系数。然而，DMD显著低估了模态时间系数的幅值。值得注意的是，由DMD绘制的模式时间系数仍然以指数形式变化。
 
 #### 实验2：改进时间系数的应用
 
