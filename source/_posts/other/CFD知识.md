@@ -774,7 +774,7 @@ $\Phi=UW$
 $\mathbf{x}(t)=\Phi\Lambda^{t-1}\mathbf{b}$，维度是n*1
 
 其中
-$\mathbf{b}=\Phi^{+}\cdot\mathbf{x}_{1}= [\alpha_{1},..., \alpha_{r}]$， 维度是r*1
+$\mathbf{b}=\Phi^{+}\cdot\mathbf{x}\_{1}= [\alpha\_{1},..., \alpha\_{r}]$， 维度是r*1
 
 "+"表示伪逆
 
@@ -793,30 +793,36 @@ $\Lambda^{t-1}$就是$\Lambda$里面每个元素的(t-1)次方。
 上面的公式可以改写下，也是很多论文里面经常介绍DMD会用到的：
 
 
-$x_{i} = \Phi\Lambda^{i-1}\mathbf{b} = \sum_{j=1}^{r}\Phi_{j}(\lambda_{j})^{i-1}\alpha_{j}$
+$x\_{i} = \Phi\Lambda^{i-1}\mathbf{b} = \sum\_{j=1}^{r}\Phi\_{j}(\lambda\_{j})^{i-1}\alpha\_{j}$
 
-$X = [x_{1},...,x_{n}] = \Phi D_{\alpha}V_{and}$
+$X = [x\_{1},...,x\_{n}] = \Phi D\_{\alpha}V\_{and}$
 
 
 
 其中
 
-$D_{\alpha }=\begin{bmatrix}
-  \alpha_{1}&  & \\
+$D\_{\alpha }=
+\begin{bmatrix}
+  \alpha\_{1}&  & \\
   &  ...& \\
-  &  &\alpha_{r}
+  &  &\alpha\_{r}
 \end{bmatrix}$
 
-$V_{and}=\begin{bmatrix}
-  1&  \lambda_{1} &\lambda_{1}^{n-1} \\
+$V\_{and}=\begin{bmatrix}
+  1&  \lambda\_{1} &\lambda\_{1}^{n-1} \\
   ...&  ...& ...\\
-  1&  \lambda_{r}&\lambda_{r}^{n-1}
+  1&  \lambda\_{r}&\lambda\_{r}^{n-1}
 \end{bmatrix}$
 
-$V_{and}$表示范德蒙矩阵
+$V\_{and}$表示范德蒙矩阵
 
-定义模态时间系数
-$B_{standard} = D_{\alpha}V_{and}$
+(因为渲染的原因，$D\_{\alpha}$和$V\_{and}$ 显示有问题，正常显示如下图：)
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-08_09-49-31.png)
+
+-------------------------
+**定义模态时间系数**
+$B\_{standard} = D\_{\alpha}V\_{and}$
 
 包含了DMD的时间演化信息
 

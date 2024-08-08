@@ -170,27 +170,51 @@ abbrlink: 30a636b
     - intrusive modeling(侵入式建模)：将正交模态投影到原偏微分方程组上，建立一个由常微分方程组描述的系统
   -  DMD技术在模拟流动动态时更为方便，因为所有可用的动态模态都伴随着以相应模态特征值表征的时间动态。这一优势使得基于数据驱动的DMD方法成为模拟复杂湍流流动的有效方法。
 
-- DMD的模态时间系数还存在问题：
-  - 模态时间系数无法处理模态呈非指数演化的流场。尽管multi-resolution DMD and the timedelay DMD 一定程度缓解这个问题，但是对于空间维远大于时间维的大规模流场来说是不行的
-  - 模态时间系数可能还会影响DMD模态的排序，从而影响主导模态的选择
+- 提取DMD的主导模态（dominant modes）的**标准不唯一**，模态选择的目的是通过少量模态找到非定常流的紧凑表示（compact representation），提供物理特征的最佳近似。
 
+
+我们提供了一种有效且通用的方法来选择主要 DMD 模式。在评估每种模式的贡献时，考虑了每种 DMD 模式的初始条件和时间演化，并开发了适合不同 DMD 表达式的简单标准。
 
 ### Problem Statement
 **（问题陈述：问题作者需要解决的问题是什么？）**
 
-- DMD的模态时间系数无法处理不稳定流场。
-- 不准确的模态时间系数可能会导致分解模态的排序不合理，从而导致主导模态被忽略。
+
+- **以前的模态选择策略不适合不稳定系统**【以前的模态选择策略适用于周期流或完整线性系统的主要流动。这是因为在大多数周期性或线性流中，每种模态的大小差异很大，并且可以从初始条件或每个模态范数中轻松识别出主导模态。然而，对于不稳定系统（例如，低雷诺数的圆柱体的瞬态或具有移动冲击波的跨音速流）或高度湍流，捕获主要流动特征变得困难，因为可能存在多个基本频率并且在数值上更多需要瞬态模式来完全近似样本。】
 
 
 ### Method(s)
 **（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）**
 
-- 提出了一种基于Moore-Penrose伪逆的改进模式时间系数
-- 定义了一种基于改进模式时间系数的新积分参数来对分解模式进行排序
+- 提出了模态选择策略。对时间系数进行积分，以此来排序模态
+- 收到Sayadi工作的启发，将振幅重新定义为与时间相关的系数（T. Sayadi, P.J. Schmid, F. Richecoeur, D. Durox, Parametrized datadriven decomposition for bifurcation analysis, with application to thermo-acoustically unstable systems, Phys. Fluids 27 (2015) 037102. http://dx.doi.org/10.1063/1.4913868.）
 
+下面是用相似矩阵得到的DMD重构表达式：
+
+$x\_{i} = \Phi\Lambda^{i-1}\mathbf{b} = \sum\_{j=1}^{r}\Phi\_{j}(\lambda\_{j})^{i-1}\alpha\_{j}$
+
+其中$i$表示某个时刻，$j$某个模态
+
+假设
+$b\_{ij} = (\lambda\_{j})^{i-1}\alpha\_{j}$
+
+其中$b\_{ij}$被称为时间系数，每个模态对数据集的贡献仅由其时间系数决定，如果$b\_{ij}$比较大，对应的模态占据了该时刻的大部分能量，对时间系数进行积分。**表示第 j 个动态模式对整个采样空间的影响。**
+
+$I\_{j}=\int\left|b\_{j}(t)\right|d t\approx\int\_{i=1}^{N}\left|b\_{i j}\right|d t$
+
+用DMD中相似矩阵的公式可以进一步得到下面的表达式：
+
+$I\_{j}=\sum\_{i=1}^{N}\,\big|\alpha\_{j}(\lambda\_{j})^{i-1}\big|\,\big|\big|\Phi\_{j}\big|_{F}^{2}\times\Delta t$
 
 ### Evaluation
 **（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）**
+
+- 想要证明什么结论
+  - 利用所提出的准则，以合理的方式对每个DMD模式的主导地位进行排序，并且可以通过最少数量的DMD模式和最多的流能量实现高分辨率流重建和预测。
+
+
+- 实验例子
+  - 低雷诺数的气缸
+  - 跨音速流中的翼型抖振
 
 ### Conclusion
 **（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）**
@@ -233,12 +257,42 @@ abbrlink: 30a636b
 ### Method(s)
 **（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）**
 
-- 提出了一种基于Moore-Penrose伪逆的改进模式时间系数
-- 定义了一种基于改进模式时间系数的新积分参数来对分解模式进行排序
+#### 提出了一种基于Moore-Penrose伪逆的改进模式时间系数
+  - 常规的时间系数定义：$\Phi D\_{\alpha}V\_{and}$，论文里面经过公式的带入和变量替换，新的定义：$W^{-1}\Sigma V^{\mathbb{H}}$
+  - 改进的时间系数定义**不受限于具有指数增长的模态**，理论上适合任何增长类型的模态
 
+
+#### 定义了一种基于改进模式时间系数的新积分参数来对分解模式进行排序
+  - 本文的排序方式是在这篇论文进行修改的（J. Kou and W. Zhang, “An improved criterion to select dominant modes from dynamic mode decomposition,” Eur. J. Mech. B 62, 109–129 (2017).）
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-08_10-44-54.png)
+
+本文的排序方式：
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-08_10-45-43.png)
+
+
+变化主要有两处
+1. 时间系数的定义不同
+2. 模态的处理方式不同，之前的处理方式是二范数平方，现在是取绝对值
+
+
+然后通过能量比来确定第$j$个模态的重要性
+
+$ER\_{j}=\frac{E\_{j}}{\displaystyle\sum\_{j=1}^{r}E\_{j}}\$
+
+根据参数$ER\_{j}$的排序选择主导动态模式，**与Kou的方法相比，该标准以非指数的增长率提供了更合理的排名**
 
 ### Evaluation
 **（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）**
+
+#### 实验1：验证改进时间系数的有效性
+
+
+
+#### 实验2：改进时间系数的应用
+
+##### 圆柱绕流
+
+##### 俯仰翼型的动态失速
 
 ### Conclusion
 **（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）**
