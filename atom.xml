@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2024-07-24T15:06:32.809Z</updated>
+  <updated>2024-08-08T00:38:04.714Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -21,14 +21,14 @@
     <link href="https://gaofeng-lin.github.io/posts/30a636b/"/>
     <id>https://gaofeng-lin.github.io/posts/30a636b/</id>
     <published>2024-07-12T16:00:00.000Z</published>
-    <updated>2024-07-24T15:06:32.809Z</updated>
+    <updated>2024-08-08T00:38:04.714Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;Enhancing-dynamic-mode-decomposition-workflow-with-in-situ-visualization-and-data-compression&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;论文笔记框架&quot;&gt;&lt;a href=&quot;#论文笔记框架&quot; class=&quot;headerlink&quot; title=&quot;论文笔记框架&quot;&gt;&lt;/a&gt;论文笔记框架&lt;/h2&gt;&lt;h3 id=&quot;Summary&quot;&gt;&lt;a href=&quot;#Summary&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -96,7 +96,7 @@
     <link href="https://gaofeng-lin.github.io/posts/f6b7c48b/"/>
     <id>https://gaofeng-lin.github.io/posts/f6b7c48b/</id>
     <published>2024-03-02T16:00:00.000Z</published>
-    <updated>2024-07-19T13:35:28.143Z</updated>
+    <updated>2024-08-07T13:28:12.343Z</updated>
     
     
       
@@ -144,31 +144,6 @@
   </entry>
   
   <entry>
-    <title>ai</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-12-21T16:00:00.000Z</published>
-    <updated>2023-12-27T14:47:07.346Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;ai相关的内容&quot;&gt;&lt;a href=&quot;#ai相关的内容&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>rnn</title>
     <link href="https://gaofeng-lin.github.io/posts/53791/"/>
     <id>https://gaofeng-lin.github.io/posts/53791/</id>
@@ -187,6 +162,31 @@
     
     
     <category term="rnn" scheme="https://gaofeng-lin.github.io/categories/rnn/"/>
+    
+    
+    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ai</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-12-21T16:00:00.000Z</published>
+    <updated>2023-12-27T14:47:07.346Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;ai相关的内容&quot;&gt;&lt;a href=&quot;#ai相关的内容&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
     
     
     <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
