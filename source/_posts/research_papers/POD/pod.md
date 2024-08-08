@@ -152,6 +152,57 @@ abbrlink: 30a636b
 ### References(optional) 
 **（列出相关性高的文献，以便之后可以继续track下去。）**
 
+
+
+## An improved criterion to select dominant modes from dynamic mode decomposition
+
+### Summary
+
+
+### Background 
+**（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）**
+
+- 建立复杂的降阶模型在许多领域（动力学建模、优化、机理分析）有广泛的工程价值->目前基于输入-输出数据构造的ROM（Autoregressive with exogenous input model、神经网络）效果不错->研究去全阶流体时，更适合采用模态分解技术。
+  
+- 模态分解技术对动力学系统建模取决于所选择的模态和时间系数。
+  - POD模态可以通过能量来确定，但是时间系数的外推不容易，确定POD时间系数发展规律有两个方法。
+    - nonintrusive modeling(非侵入式建模)：利用一些代理模型进行系数插值
+    - intrusive modeling(侵入式建模)：将正交模态投影到原偏微分方程组上，建立一个由常微分方程组描述的系统
+  -  DMD技术在模拟流动动态时更为方便，因为所有可用的动态模态都伴随着以相应模态特征值表征的时间动态。这一优势使得基于数据驱动的DMD方法成为模拟复杂湍流流动的有效方法。
+
+- DMD的模态时间系数还存在问题：
+  - 模态时间系数无法处理模态呈非指数演化的流场。尽管multi-resolution DMD and the timedelay DMD 一定程度缓解这个问题，但是对于空间维远大于时间维的大规模流场来说是不行的
+  - 模态时间系数可能还会影响DMD模态的排序，从而影响主导模态的选择
+
+
+### Problem Statement
+**（问题陈述：问题作者需要解决的问题是什么？）**
+
+- DMD的模态时间系数无法处理不稳定流场。
+- 不准确的模态时间系数可能会导致分解模态的排序不合理，从而导致主导模态被忽略。
+
+
+### Method(s)
+**（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）**
+
+- 提出了一种基于Moore-Penrose伪逆的改进模式时间系数
+- 定义了一种基于改进模式时间系数的新积分参数来对分解模式进行排序
+
+
+### Evaluation
+**（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）**
+
+### Conclusion
+**（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）**
+
+### Notes(optional) 
+**（不在以上列表中，但需要特别记录的笔记。）**
+
+### References(optional) 
+**（列出相关性高的文献，以便之后可以继续track下去。）**
+
+
+
 ## An improved mode time coefficient for dynamic mode decomposition
 
 ### Summary
