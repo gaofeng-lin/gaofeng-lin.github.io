@@ -339,3 +339,15 @@ DMD-TC重建结果与CFD结果一致。然而，DMD 的结果相对于 CFD 结�
 
 ### References(optional) 
 **（列出相关性高的文献，以便之后可以继续track下去。）**
+
+
+## Modal Analysis of Fluid Flows: Applications and Outlook
+
+（这篇论文是综述）
+
+### Summary
+
+介绍模态分析技术在研究、建模和控制典型气动流动中的应用。为了说明模态分析技术如何以互补的方式提供物理见解，选取了**圆柱尾迹、附壁流动、翼型尾迹和空腔流动**的四个基本例子。
+
+### Background 
+**（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）**
