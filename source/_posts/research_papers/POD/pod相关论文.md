@@ -1,5 +1,5 @@
 ---
-title: pod
+title: pod相关论文
 date: 2024/07/13
 categories:
   - pod
@@ -351,3 +351,5 @@ DMD-TC重建结果与CFD结果一致。然而，DMD 的结果相对于 CFD 结�
 
 ### Background 
 **（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）**
+
+
