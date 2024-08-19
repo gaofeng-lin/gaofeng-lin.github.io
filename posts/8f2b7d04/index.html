@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="cfd, Home of Gaofeng">
+    <meta name="keywords" content="流场加速收敛论文, Home of Gaofeng">
     <meta name="description" content="Extrapolation-Based Acceleration of Iterative Solvers: Application to Simulation of 3D Flows要做什么
 获得一个新的初始状态（$u{ap}$），让解算">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +20,7 @@
 
     
 
-    <title>cfd | Home of Gaofeng</title>
+    <title>流场加速收敛论文 | Home of Gaofeng</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">cfd</h1>
+                    <h1 class="description center-align post-title">流场加速收敛论文</h1>
                 </div>
             </div>
         </div>
@@ -434,8 +434,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CFD/">
-                                <span class="chip bg-color">CFD</span>
+                            <a href="/tags/%E6%B5%81%E5%9C%BA%E5%8A%A0%E9%80%9F%E6%94%B6%E6%95%9B/">
+                                <span class="chip bg-color">流场加速收敛</span>
                             </a>
                         
                     </div>
@@ -446,8 +446,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CFD/" class="post-category">
-                                CFD
+                            <a href="/categories/CFD%E8%AE%BA%E6%96%87/" class="post-category">
+                                CFD论文
                             </a>
                         
                     </div>
@@ -468,14 +468,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    7 分
                 </div>
                 
 
@@ -548,6 +548,62 @@
 </ul>
 </li>
 </ul>
+<h2 id="AI-enhanced-iterative-solvers-for-accelerating-the-solution-of-large-scale-parametrized-systems"><a href="#AI-enhanced-iterative-solvers-for-accelerating-the-solution-of-large-scale-parametrized-systems" class="headerlink" title="AI-enhanced iterative solvers for accelerating the solution of large-scale parametrized systems"></a>AI-enhanced iterative solvers for accelerating the solution of large-scale parametrized systems</h2><ul>
+<li><strong>做的什么方向</strong>：<ul>
+<li>构建高效的数值求解器</li>
+</ul>
+</li>
+<li><strong>做了什么事情</strong>：<ul>
+<li>使用标准有限元方法进行一组简化的模型评估，并使用相应的解决方案，使用深度前馈神经网络和卷积自编码器的组合建立从问题的参数空间到其解空间的近似映射。这种映射的成本忽略不计，而且精度比较高</li>
+<li>基于代数多重网格法结合本征正交分解( POD )开发了迭代求解器POD - 2G，将代理模型的初始预测逐次精化到精确解。</li>
+</ul>
+</li>
+<li><p><strong>解决了什么问题</strong>：</p>
+<ul>
+<li>传统方法可能需要较高的计算资源，占用较高的内存；神经网络推理出来的解不满足任何物理规律</li>
+</ul>
+</li>
+<li><p><strong>创新点出发</strong></p>
+<ul>
+<li>将传统方法和神经网络的优势结合起来，用机器学习算法来增强线性代数求解器；例如，POD已成功地用于截断增广的Krylov子空间，仅保留高能量模式63，以有效地求解具有右端变化和对称正定矩阵特征的线性方程组序列。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Mode-Multigrid-A-novel-convergence-acceleration-method"><a href="#Mode-Multigrid-A-novel-convergence-acceleration-method" class="headerlink" title="Mode Multigrid - A novel convergence acceleration method"></a>Mode Multigrid - A novel convergence acceleration method</h2><p><strong>《非结构网格高阶数值格式与加速收敛方法》</strong></p>
+<p>这篇论文是上面这篇博士论文里面的内容，实验部分都是一样的。</p>
+<ul>
+<li><strong>做的什么方向</strong>：<ul>
+<li>流场加速收敛</li>
+</ul>
+</li>
+<li><p><strong>解决了什么问题</strong>：</p>
+<ul>
+<li>多重网格在非结构网格上面因为非结构网格随机存储的原因，难以实现，而且不便并行计算。</li>
+</ul>
+</li>
+<li><p><strong>方法步骤</strong></p>
+<ul>
+<li>收集流场快照，进行DMD分解，然后重构流场（论文没直接说预测外推，只说了结合向量外插类方法，那么认为是重构的未来一个时间步的流场）。然后基于重构的结果续算，达到加速收敛的目的。<strong>DMD的公式步骤和代码实现可以看博客。</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="Improved-Mode-Multigrid-Method-for-Accelerating-Turbulence-Flows"><a href="#Improved-Mode-Multigrid-Method-for-Accelerating-Turbulence-Flows" class="headerlink" title="Improved Mode Multigrid Method for Accelerating Turbulence Flows"></a>Improved Mode Multigrid Method for Accelerating Turbulence Flows</h2><p>这篇论文是在上一篇论文《Mode Multigrid - A novel convergence acceleration method》的基础上进行调整的，实验的对比对象也是上一篇论文提到的方法</p>
+<ul>
+<li><strong>做的什么方向</strong>：<ul>
+<li>流场加速收敛</li>
+</ul>
+</li>
+<li><p><strong>解决了什么问题</strong>：</p>
+<ul>
+<li>消除模态多重网格方法（上一篇论文提出的）出现的不规则残差跳跃问题</li>
+</ul>
+</li>
+<li><p><strong>方法步骤</strong></p>
+<ul>
+<li>在DMD重构的时候，保留“零频移动模态”（zero-frequency shift modes），可以加速收敛</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -574,7 +630,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://gaofeng-lin.github.io/posts/cca8c50b/">https://gaofeng-lin.github.io/posts/cca8c50b/</a>
+                    <a href="https://gaofeng-lin.github.io/posts/8f2b7d04/">https://gaofeng-lin.github.io/posts/8f2b7d04/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -612,8 +668,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/CFD/">
-                                    <span class="chip bg-color">CFD</span>
+                                <a href="/tags/%E6%B5%81%E5%9C%BA%E5%8A%A0%E9%80%9F%E6%94%B6%E6%95%9B/">
+                                    <span class="chip bg-color">流场加速收敛</span>
                                 </a>
                             
                         </div>
@@ -1079,7 +1135,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">171.4k</span>
+                        class="white-color">171.5k</span>
             
             
             

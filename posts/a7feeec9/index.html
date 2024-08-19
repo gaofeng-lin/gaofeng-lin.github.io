@@ -1,0 +1,1428 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="POD-DMD论文, Home of Gaofeng">
+    <meta name="description" content="Enhancing dynamic mode decomposition workflow with in situ visualization and data compressionSummaryBackground（研究的背景，帮助你">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>POD-DMD论文 | Home of Gaofeng</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Home of Gaofeng</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Home of Gaofeng</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">POD-DMD论文</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/POD/">
+                                <span class="chip bg-color">POD</span>
+                            </a>
+                        
+                            <a href="/tags/DMD/">
+                                <span class="chip bg-color">DMD</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/CFD%E8%AE%BA%E6%96%87/" class="post-category">
+                                CFD论文
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-08-19
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    13 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Enhancing-dynamic-mode-decomposition-workflow-with-in-situ-visualization-and-data-compression"><a href="#Enhancing-dynamic-mode-decomposition-workflow-with-in-situ-visualization-and-data-compression" class="headerlink" title="Enhancing dynamic mode decomposition workflow with in situ visualization and data compression"></a>Enhancing dynamic mode decomposition workflow with in situ visualization and data compression</h2><h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p><strong>（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）</strong></p>
+<ul>
+<li>数据驱动方法在工程和科学应用中的使用大幅增长。</li>
+<li>从数据中提取信息非常有用，可以做很多事。</li>
+</ul>
+<h3 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h3><p><strong>（问题陈述：问题作者需要解决的问题是什么？）</strong></p>
+<ul>
+<li>计算速率和I/O速率之间差距大，大型仿真很难将结果保存到磁盘。</li>
+<li>非线性系统中获取的数据很可能是高维的，保存到磁盘需要大量空间。</li>
+</ul>
+<h3 id="Method-s"><a href="#Method-s" class="headerlink" title="Method(s)"></a>Method(s)</h3><p><strong>（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）</strong></p>
+<h4 id="运行时原位数据可视化"><a href="#运行时原位数据可视化" class="headerlink" title="运行时原位数据可视化"></a>运行时原位数据可视化</h4><ul>
+<li>在仿真运行的时候进行原位可视化和数据分析，减少磁盘写入的数据量。</li>
+<li>作者在已有的原位可视化框架ParaView Catalyst进行开发。</li>
+<li>利用ParaView Catalyst创建png图像文件，将当前的视图（像素信息）输入到流式DMD算法，避免标量/矢量等大文件。</li>
+<li>流式DMD是在已有的基础上做了些小的改变（we have implemented a slightly different version [68] of the usual iSVD algorithm, initially proposed for Proper Orthogonal Decomposition (POD) applications.）<h4 id="数据压缩"><a href="#数据压缩" class="headerlink" title="数据压缩"></a>数据压缩</h4></li>
+<li>压缩方法采用新兴的ZFP库。</li>
+<li>仿真完成后，将所有的输出文件通过压缩算法压缩为HDF5文件。对这边部分文件的处理采用传统的DMD。</li>
+</ul>
+<h3 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h3><p><strong>（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）</strong></p>
+<h4 id="实验一：Particle‐driven-gravity-flow"><a href="#实验一：Particle‐driven-gravity-flow" class="headerlink" title="实验一：Particle‐driven gravity flow"></a>实验一：Particle‐driven gravity flow</h4><ul>
+<li>时间步长为0.001，运行20个时间单位；意味着有20000个时间点</li>
+</ul>
+<h4 id="实验二：Bubble-rising-problem"><a href="#实验二：Bubble-rising-problem" class="headerlink" title="实验二：Bubble rising problem"></a>实验二：Bubble rising problem</h4><h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p><strong>作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?</strong></p>
+<h3 id="Notes-optional"><a href="#Notes-optional" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h3><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
+<p>因为我是用ipca来重构flow-star里面的数据，重构p和v的时候，误差非常大；邓老师让我看看这篇论文实验部分中重构误差是多大。</p>
+<p>论文里面将流式DMD应用到PNG重构，两个实验。</p>
+<ol>
+<li>实验一：PNG保留的是concentration这个变量，<strong>我无法知道这个变量的范围是多少，无法和flow-star中的p和v进行比较。</strong></li>
+<li>实验二：PNG保存的是气泡的形状，<strong>也不知道这个变量的范围是多少，无法和flow-star中的p和v进行比较。</strong></li>
+</ol>
+<h3 id="References-optional"><a href="#References-optional" class="headerlink" title="References(optional)"></a>References(optional)</h3><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
+<h2 id="An-improved-criterion-to-select-dominant-modes-from-dynamic-mode-decomposition"><a href="#An-improved-criterion-to-select-dominant-modes-from-dynamic-mode-decomposition" class="headerlink" title="An improved criterion to select dominant modes from dynamic mode decomposition"></a>An improved criterion to select dominant modes from dynamic mode decomposition</h2><h3 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h3><h3 id="Background-1"><a href="#Background-1" class="headerlink" title="Background"></a>Background</h3><p><strong>（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）</strong></p>
+<ul>
+<li><p>建立复杂的降阶模型在许多领域（动力学建模、优化、机理分析）有广泛的工程价值-&gt;目前基于输入-输出数据构造的ROM（Autoregressive with exogenous input model、神经网络）效果不错-&gt;研究去全阶流体时，更适合采用模态分解技术。</p>
+</li>
+<li><p>模态分解技术对动力学系统建模取决于所选择的模态和时间系数。</p>
+<ul>
+<li>POD模态可以通过能量来确定，但是时间系数的外推不容易，确定POD时间系数发展规律有两个方法。<ul>
+<li>nonintrusive modeling(非侵入式建模)：利用一些代理模型进行系数插值</li>
+<li>intrusive modeling(侵入式建模)：将正交模态投影到原偏微分方程组上，建立一个由常微分方程组描述的系统</li>
+</ul>
+</li>
+<li>DMD技术在模拟流动动态时更为方便，因为所有可用的动态模态都伴随着以相应模态特征值表征的时间动态。这一优势使得基于数据驱动的DMD方法成为模拟复杂湍流流动的有效方法。</li>
+</ul>
+</li>
+<li><p>提取DMD的主导模态（dominant modes）的<strong>标准不唯一</strong>，模态选择的目的是通过少量模态找到非定常流的紧凑表示（compact representation），提供物理特征的最佳近似。</p>
+</li>
+</ul>
+<p>我们提供了一种有效且通用的方法来选择主要 DMD 模式。在评估每种模式的贡献时，考虑了每种 DMD 模式的初始条件和时间演化，并开发了适合不同 DMD 表达式的简单标准。</p>
+<h3 id="Problem-Statement-1"><a href="#Problem-Statement-1" class="headerlink" title="Problem Statement"></a>Problem Statement</h3><p><strong>（问题陈述：问题作者需要解决的问题是什么？）</strong></p>
+<ul>
+<li><strong>以前的模态选择策略不适合不稳定系统</strong>【以前的模态选择策略适用于周期流或完整线性系统的主要流动。这是因为在大多数周期性或线性流中，每种模态的大小差异很大，并且可以从初始条件或每个模态范数中轻松识别出主导模态。然而，对于不稳定系统（例如，低雷诺数的圆柱体的瞬态或具有移动冲击波的跨音速流）或高度湍流，捕获主要流动特征变得困难，因为可能存在多个基本频率并且在数值上更多需要瞬态模式来完全近似样本。】</li>
+</ul>
+<h3 id="Method-s-1"><a href="#Method-s-1" class="headerlink" title="Method(s)"></a>Method(s)</h3><p><strong>（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）</strong></p>
+<ul>
+<li>提出了模态选择策略。对时间系数进行积分，以此来排序模态</li>
+<li>收到Sayadi工作的启发，将振幅重新定义为与时间相关的系数（T. Sayadi, P.J. Schmid, F. Richecoeur, D. Durox, Parametrized datadriven decomposition for bifurcation analysis, with application to thermo-acoustically unstable systems, Phys. Fluids 27 (2015) 037102. <a target="_blank" rel="noopener" href="http://dx.doi.org/10.1063/1.4913868.）">http://dx.doi.org/10.1063/1.4913868.）</a></li>
+</ul>
+<p>下面是用相似矩阵得到的DMD重构表达式：</p>
+<p>$x_{i} = \Phi\Lambda^{i-1}\mathbf{b} = \sum_{j=1}^{r}\Phi_{j}(\lambda_{j})^{i-1}\alpha_{j}$</p>
+<p>其中$i$表示某个时刻，$j$某个模态</p>
+<p>假设<br>$b_{ij} = (\lambda_{j})^{i-1}\alpha_{j}$</p>
+<p>其中$b_{ij}$被称为时间系数，每个模态对数据集的贡献仅由其时间系数决定，如果$b_{ij}$比较大，对应的模态占据了该时刻的大部分能量，对时间系数进行积分。<strong>表示第 j 个动态模式对整个采样空间的影响。</strong></p>
+<p>$I_{j}=\int\left|b_{j}(t)\right|d t\approx\int_{i=1}^{N}\left|b_{i j}\right|d t$</p>
+<p>用DMD中相似矩阵的公式可以进一步得到下面的表达式：</p>
+<p>$I_{j}=\sum_{i=1}^{N}\,\big|\alpha_{j}(\lambda_{j})^{i-1}\big|\,\big|\big|\Phi_{j}\big|_{F}^{2}\times\Delta t$</p>
+<h3 id="Evaluation-1"><a href="#Evaluation-1" class="headerlink" title="Evaluation"></a>Evaluation</h3><p><strong>（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）</strong></p>
+<ul>
+<li>想要证明什么结论<ul>
+<li>利用所提出的准则，以合理的方式对每个DMD模式的主导地位进行排序，并且可以通过最少数量的DMD模式和最多的流能量实现高分辨率流重建和预测。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>实验例子<ul>
+<li>低雷诺数的气缸</li>
+<li>跨音速流中的翼型抖振</li>
+</ul>
+</li>
+</ul>
+<h3 id="Conclusion-1"><a href="#Conclusion-1" class="headerlink" title="Conclusion"></a>Conclusion</h3><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
+<h3 id="Notes-optional-1"><a href="#Notes-optional-1" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h3><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
+<h3 id="References-optional-1"><a href="#References-optional-1" class="headerlink" title="References(optional)"></a>References(optional)</h3><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
+<h2 id="An-improved-mode-time-coefficient-for-dynamic-mode-decomposition"><a href="#An-improved-mode-time-coefficient-for-dynamic-mode-decomposition" class="headerlink" title="An improved mode time coefficient for dynamic mode decomposition"></a>An improved mode time coefficient for dynamic mode decomposition</h2><h3 id="Summary-2"><a href="#Summary-2" class="headerlink" title="Summary"></a>Summary</h3><h3 id="Background-2"><a href="#Background-2" class="headerlink" title="Background"></a>Background</h3><p><strong>（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）</strong></p>
+<ul>
+<li><p>CFD方法进步-&gt;越精确的细节-&gt;大量的流数据-&gt;提取有用信息难度增加；非定常流需要有效的提取方法，数据驱动的模态分解方法已被证明是有效的技术。</p>
+</li>
+<li><p>POD方法的缺陷：</p>
+<ul>
+<li>模态通常包含多频分量，限制了pod在单频模式分析中的应用。有人提出了一种F-POD的方式来克服这个问题。</li>
+<li>pod从能量角度对模态排序，没有考虑模态的 动态性</li>
+<li>对于模态的截断没有明确的标准</li>
+</ul>
+</li>
+<li><p>DMD的模态时间系数还存在问题：</p>
+<ul>
+<li>模态时间系数无法处理模态呈非指数演化的流场。尽管multi-resolution DMD and the timedelay DMD 一定程度缓解这个问题，但是对于空间维远大于时间维的大规模流场来说是不行的</li>
+<li>模态时间系数可能还会影响DMD模态的排序，从而影响主导模态的选择</li>
+</ul>
+</li>
+</ul>
+<h3 id="Problem-Statement-2"><a href="#Problem-Statement-2" class="headerlink" title="Problem Statement"></a>Problem Statement</h3><p><strong>（问题陈述：问题作者需要解决的问题是什么？）</strong></p>
+<ul>
+<li>DMD的模态时间系数无法处理不稳定流场。</li>
+<li>不准确的模态时间系数可能会导致分解模态的排序不合理，从而导致主导模态被忽略。</li>
+</ul>
+<h3 id="Method-s-2"><a href="#Method-s-2" class="headerlink" title="Method(s)"></a>Method(s)</h3><p><strong>（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）</strong></p>
+<h4 id="提出了一种基于Moore-Penrose伪逆的改进模式时间系数"><a href="#提出了一种基于Moore-Penrose伪逆的改进模式时间系数" class="headerlink" title="提出了一种基于Moore-Penrose伪逆的改进模式时间系数"></a>提出了一种基于Moore-Penrose伪逆的改进模式时间系数</h4><ul>
+<li>常规的时间系数定义：$\Phi D_{\alpha}V_{and}$，论文里面经过公式的带入和变量替换，新的定义：$W^{-1}\Sigma V^{\mathbb{H}}$</li>
+<li>改进的时间系数定义<strong>不受限于具有指数增长的模态</strong>，理论上适合任何增长类型的模态</li>
+</ul>
+<h4 id="定义了一种基于改进模式时间系数的新积分参数来对分解模式进行排序"><a href="#定义了一种基于改进模式时间系数的新积分参数来对分解模式进行排序" class="headerlink" title="定义了一种基于改进模式时间系数的新积分参数来对分解模式进行排序"></a>定义了一种基于改进模式时间系数的新积分参数来对分解模式进行排序</h4><ul>
+<li>本文的排序方式是在这篇论文进行修改的（J. Kou and W. Zhang, “An improved criterion to select dominant modes from dynamic mode decomposition,” Eur. J. Mech. B 62, 109–129 (2017).）<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-08_10-44-54.png" alt=""></li>
+</ul>
+<p>本文的排序方式：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-08_10-45-43.png" alt=""></p>
+<p>变化主要有两处</p>
+<ol>
+<li>时间系数的定义不同</li>
+<li>模态的处理方式不同，之前的处理方式是二范数平方，现在是取绝对值</li>
+</ol>
+<p>然后通过能量比来确定第$j$个模态的重要性</p>
+<p>$ER_{j}=\frac{E_{j}}{\displaystyle\sum_{j=1}^{r}E_{j}}$</p>
+<p>根据参数$ER_{j}$的排序选择主导动态模式，<strong>与Kou的方法相比，该标准以非指数的增长率提供了更合理的排名</strong></p>
+<h3 id="Evaluation-2"><a href="#Evaluation-2" class="headerlink" title="Evaluation"></a>Evaluation</h3><p><strong>（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）</strong></p>
+<h4 id="实验1：验证改进时间系数的有效性"><a href="#实验1：验证改进时间系数的有效性" class="headerlink" title="实验1：验证改进时间系数的有效性"></a>实验1：验证改进时间系数的有效性</h4><p>图中的横轴表示时间，纵轴表示时间系数，时间系数的计算DMD用常规的方法，DMD-TC使用论文提出的方法</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-08_21-06-29.png" alt=""></p>
+<p>就u2而言，其振幅应该呈对数增长。如图2 ( b )所示，由DMD - TC得到的模式时间系数以对数形式变化。然而，DMD的增长似乎是以指数形式增长的。这表明DMD - TC可以准确地描述对数增长模式，而DMD不能。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-08_20-58-46.png" alt=""></p>
+<p>u3具有较小的初始振幅，但随后线性增长到显著水平。如图2 ( c )所示，DMD - TC正确地画出了模式时间系数。然而，DMD显著低估了模态时间系数的幅值。值得注意的是，由DMD绘制的模式时间系数仍然以指数形式变化。</p>
+<h4 id="实验2：改进时间系数的应用"><a href="#实验2：改进时间系数的应用" class="headerlink" title="实验2：改进时间系数的应用"></a>实验2：改进时间系数的应用</h4><h5 id="圆柱绕流"><a href="#圆柱绕流" class="headerlink" title="圆柱绕流"></a>圆柱绕流</h5><p><strong>比较重构流场的精度</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-09_10-44-22.png" alt=""></p>
+<p>N表示选取的模态数量，在足够的动态模式下，DMD-TC 的损失函数可以达到接近于零。然而，DMD和Kou和Zhang方法的损失函数只能收敛到9%。这表明DMD-TC方法比其他两种方法具有更好的收敛性能。</p>
+<p>三种方法分解得到的模态相同，影响重构的收敛性能由时间系数与模态的顺序有关</p>
+<p><strong>因此，DMD-TC 的模式时间系数和模式排序标准通常比其他两种方法表现得更好。</strong></p>
+<hr>
+<p>横轴表示时间，纵轴表示压力值，一共有5个检测点，下图展示的是其中一个。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-09_11-05-11.png" alt=""></p>
+<p>DMD-TC重建结果与CFD结果一致。然而，DMD 的结果相对于 CFD 结果存在较大偏差（波动幅度被明显低估）。这证实了DMD-TC具有更准确的模式时间系数，进而得出更合理的模式等级标准。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-09_11-16-57.png" alt=""></p>
+<p>两种初始振幅较小的模态，但是随着时间的推移迅速增长。这意味着这两种模态对流场的贡献更为显着，应选择为主导模态。DMD-TC获得的两种模式的排名分别为第8名和第14名；然而，DMD获得的排名是第17位和第26位。它清楚地表明，<strong>DMD 存在忽略某些主导模式的风险，而 DMD-TC 能够识别这些相应的模式。</strong></p>
+<h5 id="俯仰翼型的动态失速"><a href="#俯仰翼型的动态失速" class="headerlink" title="俯仰翼型的动态失速"></a>俯仰翼型的动态失速</h5><h3 id="Conclusion-2"><a href="#Conclusion-2" class="headerlink" title="Conclusion"></a>Conclusion</h3><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
+<ul>
+<li>所提出的模态时间系数可以准确地描述不稳定系统复杂形式模态的时间演化，并为分解模态提供更合理的排序。</li>
+</ul>
+<h3 id="Notes-optional-2"><a href="#Notes-optional-2" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h3><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
+<h3 id="References-optional-2"><a href="#References-optional-2" class="headerlink" title="References(optional)"></a>References(optional)</h3><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
+<h2 id="Modal-Analysis-of-Fluid-Flows-Applications-and-Outlook"><a href="#Modal-Analysis-of-Fluid-Flows-Applications-and-Outlook" class="headerlink" title="Modal Analysis of Fluid Flows: Applications and Outlook"></a>Modal Analysis of Fluid Flows: Applications and Outlook</h2><p>（这篇论文是综述）</p>
+<h3 id="Summary-3"><a href="#Summary-3" class="headerlink" title="Summary"></a>Summary</h3><p>介绍模态分析技术在研究、建模和控制典型气动流动中的应用。为了说明模态分析技术如何以互补的方式提供物理见解，选取了<strong>圆柱尾迹、附壁流动、翼型尾迹和空腔流动</strong>的四个基本例子。</p>
+<h3 id="Background-3"><a href="#Background-3" class="headerlink" title="Background"></a>Background</h3><p><strong>（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）</strong></p>
+<h2 id="Enhancing-dynamic-mode-decomposition-workflow-with-in-situ-visualization-and-data-compression-1"><a href="#Enhancing-dynamic-mode-decomposition-workflow-with-in-situ-visualization-and-data-compression-1" class="headerlink" title="Enhancing dynamic mode decomposition workflow with in situ visualization and data compression"></a>Enhancing dynamic mode decomposition workflow with in situ visualization and data compression</h2><p>流式svd的步骤:<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/%E6%B5%81%E5%BC%8Fsvd.png" alt=""></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Jason Lin</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://gaofeng-lin.github.io/posts/a7feeec9/">https://gaofeng-lin.github.io/posts/a7feeec9/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">Jason Lin</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/POD/">
+                                    <span class="chip bg-color">POD</span>
+                                </a>
+                            
+                                <a href="/tags/DMD/">
+                                    <span class="chip bg-color">DMD</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/posts/a7feeec9/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="POD-DMD论文">
+                        
+                        <span class="card-title">POD-DMD论文</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-08-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CFD%E8%AE%BA%E6%96%87/" class="post-category">
+                                    CFD论文
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/POD/">
+                        <span class="chip bg-color">POD</span>
+                    </a>
+                    
+                    <a href="/tags/DMD/">
+                        <span class="chip bg-color">DMD</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/5ecc6c1a/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="流场时间维预测-插值论文">
+                        
+                        <span class="card-title">流场时间维预测-插值论文</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-08-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CFD%E8%AE%BA%E6%96%87/" class="post-category">
+                                    CFD论文
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/temporal-extrapolation-interpolation/">
+                        <span class="chip bg-color">temporal-extrapolation-interpolation</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2024</span>
+            
+            <a href="/about" target="_blank">Jason Lin</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">171.5k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/gaofeng-lin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:jason_gaofeng_lin@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
