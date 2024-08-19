@@ -1,12 +1,11 @@
 ---
-title: pod关注点
+title: POD关注点
 date: 2024/08/16
 categories:
-  - pod
+  - CFD论文
 tags:
-  - pod
+  - POD
 mathjax: true
-abbrlink: 30a636b
 ---
 
 ## 基于本征正交分解的流场快速预测方法研究
