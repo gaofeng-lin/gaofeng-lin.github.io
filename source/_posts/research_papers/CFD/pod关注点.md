@@ -6,6 +6,7 @@ categories:
 tags:
   - POD
 mathjax: true
+abbrlink: e7a840c2
 ---
 
 ## 基于本征正交分解的流场快速预测方法研究

@@ -7,6 +7,7 @@ tags:
   - POD
   - DMD
 mathjax: true
+abbrlink: a7feeec9
 ---
 
 
