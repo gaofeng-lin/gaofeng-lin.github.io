@@ -1056,7 +1056,8 @@ compare_arrays(reconstructed_data1, reconstructed_data2)<span aria-hidden="true"
 <p>包含了DMD的时间演化信息</p>
 <h4 id="预测数据"><a href="#预测数据" class="headerlink" title="预测数据"></a>预测数据</h4><p>和上面的重构数据一样，假设t的范围是1&lt;=t&lt;=5。t=6时刻的数据为：</p>
 <p>$\mathbf{x}(6)=\Phi\Lambda^{5}\mathbf{b}$</p>
-<p>需要注意的是，这里我们是基于第一个时间步的数据来进行预测，如果是基于最后一个时间步的数据来进行预测，那么b会发生变化<br>$\mathbf{b}=\Phi\cdot\mathbf{x}_{5}$</p>
+<p>需要注意的是，这里我们是基于第一个时间步的数据来进行预测，如果是基于最后一个时间步的数据来进行预测，那么b会发生变化</p>
+<p>$\mathbf{b}=\Phi^{+}\cdot\mathbf{x}_{5}$</p>
 <p>预测未来一个时间步的数据变为：<br>$\mathbf{x}(6)=\Phi\Lambda^{1}\mathbf{b}$</p>
 <p>预测未来时间步数据还有另外一种写法：</p>
 <p>$\mathbf{x}(t)=\Phi{}e^{\omega (t-1)}b$</p>
