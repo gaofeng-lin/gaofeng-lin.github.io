@@ -833,7 +833,10 @@ $B\_{standard} = D\_{\alpha}V\_{and}$
 $\mathbf{x}(6)=\Phi\Lambda^{5}\mathbf{b}$
 
 需要注意的是，这里我们是基于第一个时间步的数据来进行预测，如果是基于最后一个时间步的数据来进行预测，那么b会发生变化
-$\mathbf{b}=\Phi\cdot\mathbf{x}_{5}$
+
+$\mathbf{b}=\Phi^{+}\cdot\mathbf{x}_{5}$
+
+
 
 预测未来一个时间步的数据变为：
 $\mathbf{x}(6)=\Phi\Lambda^{1}\mathbf{b}$
