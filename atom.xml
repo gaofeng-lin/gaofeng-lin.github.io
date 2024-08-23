@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2024-08-13T23:28:37.423Z</updated>
+  <updated>2024-08-23T02:29:09.627Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -17,11 +17,113 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>pod</title>
+    <title>流场加速收敛</title>
+    <link href="https://gaofeng-lin.github.io/posts/e2cc1df4/"/>
+    <id>https://gaofeng-lin.github.io/posts/e2cc1df4/</id>
+    <published>2024-08-22T16:00:00.000Z</published>
+    <updated>2024-08-23T02:29:09.627Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;直接预测模态系数-对模态系数进行pca分解，选择全部模态然后对模态系数进行预测，然后再重构回来。&quot;&gt;&lt;a href=&quot;#直接预测模态系数-对模态系数进行pca分解，选择全部模态然后对模态系数进行预测，然后再重构回来。&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="CFD" scheme="https://gaofeng-lin.github.io/categories/CFD/"/>
+    
+    
+    <category term="加速收敛" scheme="https://gaofeng-lin.github.io/tags/%E5%8A%A0%E9%80%9F%E6%94%B6%E6%95%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>POD-DMD论文</title>
+    <link href="https://gaofeng-lin.github.io/posts/a7feeec9/"/>
+    <id>https://gaofeng-lin.github.io/posts/a7feeec9/</id>
+    <published>2024-08-18T16:00:00.000Z</published>
+    <updated>2024-08-20T00:05:07.621Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Enhancing-dynamic-mode-decomposition-workflow-with-in-situ-visualization-and-data-compression&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="CFD论文" scheme="https://gaofeng-lin.github.io/categories/CFD%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="POD" scheme="https://gaofeng-lin.github.io/tags/POD/"/>
+    
+    <category term="DMD" scheme="https://gaofeng-lin.github.io/tags/DMD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>流场时间维预测-插值论文</title>
+    <link href="https://gaofeng-lin.github.io/posts/5ecc6c1a/"/>
+    <id>https://gaofeng-lin.github.io/posts/5ecc6c1a/</id>
+    <published>2024-08-18T16:00:00.000Z</published>
+    <updated>2024-08-20T00:05:07.622Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Spatio-temporal-deep-learning-models-of-3D-turbulence-with-physics-informed-diagnostics&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="CFD论文" scheme="https://gaofeng-lin.github.io/categories/CFD%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="temporal-extrapolation-interpolation" scheme="https://gaofeng-lin.github.io/tags/temporal-extrapolation-interpolation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>POD关注点</title>
+    <link href="https://gaofeng-lin.github.io/posts/e7a840c2/"/>
+    <id>https://gaofeng-lin.github.io/posts/e7a840c2/</id>
+    <published>2024-08-15T16:00:00.000Z</published>
+    <updated>2024-08-20T00:05:07.621Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;基于本征正交分解的流场快速预测方法研究&quot;&gt;&lt;a href=&quot;#基于本征正交分解的流场快速预测方法研究&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="CFD论文" scheme="https://gaofeng-lin.github.io/categories/CFD%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="POD" scheme="https://gaofeng-lin.github.io/tags/POD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pod相关论文</title>
     <link href="https://gaofeng-lin.github.io/posts/30a636b/"/>
     <id>https://gaofeng-lin.github.io/posts/30a636b/</id>
     <published>2024-07-12T16:00:00.000Z</published>
-    <updated>2024-08-13T23:28:37.423Z</updated>
+    <updated>2024-08-20T00:05:07.622Z</updated>
     
     
       
@@ -67,11 +169,11 @@
   </entry>
   
   <entry>
-    <title>cfd</title>
-    <link href="https://gaofeng-lin.github.io/posts/cca8c50b/"/>
-    <id>https://gaofeng-lin.github.io/posts/cca8c50b/</id>
+    <title>流场加速收敛论文</title>
+    <link href="https://gaofeng-lin.github.io/posts/8f2b7d04/"/>
+    <id>https://gaofeng-lin.github.io/posts/8f2b7d04/</id>
     <published>2024-04-22T16:00:00.000Z</published>
-    <updated>2024-05-31T11:47:04.125Z</updated>
+    <updated>2024-08-20T00:05:07.621Z</updated>
     
     
       
@@ -84,10 +186,10 @@
     
     
     
-    <category term="CFD" scheme="https://gaofeng-lin.github.io/categories/CFD/"/>
+    <category term="CFD论文" scheme="https://gaofeng-lin.github.io/categories/CFD%E8%AE%BA%E6%96%87/"/>
     
     
-    <category term="CFD" scheme="https://gaofeng-lin.github.io/tags/CFD/"/>
+    <category term="流场加速收敛" scheme="https://gaofeng-lin.github.io/tags/%E6%B5%81%E5%9C%BA%E5%8A%A0%E9%80%9F%E6%94%B6%E6%95%9B/"/>
     
   </entry>
   
@@ -96,7 +198,7 @@
     <link href="https://gaofeng-lin.github.io/posts/f6b7c48b/"/>
     <id>https://gaofeng-lin.github.io/posts/f6b7c48b/</id>
     <published>2024-03-02T16:00:00.000Z</published>
-    <updated>2024-08-08T12:48:39.634Z</updated>
+    <updated>2024-08-20T11:25:17.816Z</updated>
     
     
       
@@ -144,31 +246,6 @@
   </entry>
   
   <entry>
-    <title>rnn</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-12-21T16:00:00.000Z</published>
-    <updated>2023-12-27T14:47:07.347Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;rnn相关的内容&quot;&gt;&lt;a href=&quot;#rnn相关的内容&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="rnn" scheme="https://gaofeng-lin.github.io/categories/rnn/"/>
-    
-    
-    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>ai</title>
     <link href="https://gaofeng-lin.github.io/posts/53791/"/>
     <id>https://gaofeng-lin.github.io/posts/53791/</id>
@@ -187,6 +264,31 @@
     
     
     <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rnn</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-12-21T16:00:00.000Z</published>
+    <updated>2023-12-27T14:47:07.347Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;rnn相关的内容&quot;&gt;&lt;a href=&quot;#rnn相关的内容&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="rnn" scheme="https://gaofeng-lin.github.io/categories/rnn/"/>
     
     
     <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
@@ -353,9 +455,9 @@
     <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
     
     
-    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
-    
     <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
+    
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
     <category term="Slurm" scheme="https://gaofeng-lin.github.io/tags/Slurm/"/>
     
@@ -410,9 +512,9 @@
     <category term="并行计算" scheme="https://gaofeng-lin.github.io/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
     
     
-    <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
-    
     <category term="CFD" scheme="https://gaofeng-lin.github.io/tags/CFD/"/>
+    
+    <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
     
     <category term="向量化" scheme="https://gaofeng-lin.github.io/tags/%E5%90%91%E9%87%8F%E5%8C%96/"/>
     
@@ -442,120 +544,6 @@
     
     
     <category term="正则表达式" scheme="https://gaofeng-lin.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Typescript变量类型</title>
-    <link href="https://gaofeng-lin.github.io/posts/62822/"/>
-    <id>https://gaofeng-lin.github.io/posts/62822/</id>
-    <published>2022-06-13T16:00:00.000Z</published>
-    <updated>2023-12-22T16:25:39.208Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;TS语法以及类型&quot;&gt;&lt;a href=&quot;#TS语法以及类型&quot; class=&quot;headerlink&quot; title=&quot;TS语法以及类型&quot;&gt;&lt;/a&gt;TS语法以及类型&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="前端开发" scheme="https://gaofeng-lin.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="JavaScript" scheme="https://gaofeng-lin.github.io/tags/JavaScript/"/>
-    
-    <category term="Typescript" scheme="https://gaofeng-lin.github.io/tags/Typescript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端语法+基础知识</title>
-    <link href="https://gaofeng-lin.github.io/posts/43285/"/>
-    <id>https://gaofeng-lin.github.io/posts/43285/</id>
-    <published>2022-05-31T16:00:00.000Z</published>
-    <updated>2023-12-22T16:25:39.210Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;javascript、ES6查漏补缺网址&quot;&gt;&lt;a href=&quot;#javascript、ES6查漏补缺网址&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端开发" scheme="https://gaofeng-lin.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="Vue" scheme="https://gaofeng-lin.github.io/tags/Vue/"/>
-    
-    <category term="React" scheme="https://gaofeng-lin.github.io/tags/React/"/>
-    
-    <category term="JavaScript" scheme="https://gaofeng-lin.github.io/tags/JavaScript/"/>
-    
-    <category term="Json" scheme="https://gaofeng-lin.github.io/tags/Json/"/>
-    
-    <category term="Yarn" scheme="https://gaofeng-lin.github.io/tags/Yarn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>设计模式</title>
-    <link href="https://gaofeng-lin.github.io/posts/41682/"/>
-    <id>https://gaofeng-lin.github.io/posts/41682/</id>
-    <published>2022-05-25T16:00:00.000Z</published>
-    <updated>2023-12-22T16:25:39.204Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;生产者和消费者&quot;&gt;&lt;a href=&quot;#生产者和消费者&quot; class=&quot;headerlink&quot; title=&quot;生产者和消费者&quot;&gt;&lt;/a&gt;生产者和消费者&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="设计模式" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-    <category term="设计模式" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java框架+工具</title>
-    <link href="https://gaofeng-lin.github.io/posts/10033/"/>
-    <id>https://gaofeng-lin.github.io/posts/10033/</id>
-    <published>2022-04-27T16:00:00.000Z</published>
-    <updated>2023-12-22T16:25:39.209Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Spring&quot;&gt;&lt;a href=&quot;#Spring&quot; class=&quot;headerlink&quot; title=&quot;Spring&quot;&gt;&lt;/a&gt;Spring&lt;/h2&gt;&lt;h3 id=&quot;IDEA创建spring&quot;&gt;&lt;a href=&quot;#IDEA创建spring&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="编程语言" scheme="https://gaofeng-lin.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-    
-    <category term="Spring" scheme="https://gaofeng-lin.github.io/tags/Spring/"/>
-    
-    <category term="Java" scheme="https://gaofeng-lin.github.io/tags/Java/"/>
-    
-    <category term="SpringBoot" scheme="https://gaofeng-lin.github.io/tags/SpringBoot/"/>
     
   </entry>
   

@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="cfd, Home of Gaofeng">
-    <meta name="description" content="Extrapolation-Based Acceleration of Iterative Solvers: Application to Simulation of 3D Flows要做什么
-获得一个新的初始状态（$u{ap}$），让解算">
+    <meta name="keywords" content="POD关注点, Home of Gaofeng">
+    <meta name="description" content="基于本征正交分解的流场快速预测方法研究
+这篇论文里面提到了：POD结合插值方法在跨声速范围（流场在该区域随马赫数的变化存在间断特征）的流场插值结果的可靠性无法保证。这也是这篇文献《基于本征正交分解和代理模型的流场预测方法》提到的“噪声”激波">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +20,7 @@
 
     
 
-    <title>cfd | Home of Gaofeng</title>
+    <title>POD关注点 | Home of Gaofeng</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">cfd</h1>
+                    <h1 class="description center-align post-title">POD关注点</h1>
                 </div>
             </div>
         </div>
@@ -434,8 +434,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CFD/">
-                                <span class="chip bg-color">CFD</span>
+                            <a href="/tags/POD/">
+                                <span class="chip bg-color">POD</span>
                             </a>
                         
                     </div>
@@ -446,8 +446,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CFD/" class="post-category">
-                                CFD
+                            <a href="/categories/CFD%E8%AE%BA%E6%96%87/" class="post-category">
+                                CFD论文
                             </a>
                         
                     </div>
@@ -459,7 +459,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-04-23
+                    2024-08-16
                 </div>
                 
 
@@ -468,14 +468,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    167
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    1 分
                 </div>
                 
 
@@ -498,56 +498,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Extrapolation-Based-Acceleration-of-Iterative-Solvers-Application-to-Simulation-of-3D-Flows"><a href="#Extrapolation-Based-Acceleration-of-Iterative-Solvers-Application-to-Simulation-of-3D-Flows" class="headerlink" title="Extrapolation-Based Acceleration of Iterative Solvers: Application to Simulation of 3D Flows"></a>Extrapolation-Based Acceleration of Iterative Solvers: Application to Simulation of 3D Flows</h2><h3 id="要做什么"><a href="#要做什么" class="headerlink" title="要做什么"></a>要做什么</h3><ol>
-<li>获得一个新的初始状态（$u<em>{ap}$），让解算器可以加速收敛。（如果初始状态与精确解越接近，越容易收敛）；传统的做法是把上一个时间步的解作为初始状态（$u</em>{n}$）,可以计算$u<em>{n+1}$的近似解，如果|$u</em>{ap}$ - $u<em>{n}$| 远小于 |$u</em>{n}$ - $u_{n}$|，可以大大减少迭代次数。</li>
-<li>论文使用了两个方法来获取这个新的初始状态: POD和谱方法</li>
-</ol>
-<h3 id="方法1-POD"><a href="#方法1-POD" class="headerlink" title="方法1 POD"></a>方法1 POD</h3><p><strong>总结：用过去的几个时间步数据及模态来预测下一个时间步的数据；也就是外推一步</strong></p>
-<p>这篇论文里面提到的pod可以称为时间相关pod，与传统的pod有些区别，先简单说下两者的区别：<br>传统POD：</p>
-<ul>
-<li>主要关注于空间上的数据降维。</li>
-<li>通过构造协方差矩阵并提取其主要成分，找到数据集的主要变异方向。</li>
-<li>适用于静态数据集或单一时间点的数据分析。</li>
-</ul>
-<p>时间相关POD：</p>
-<ul>
-<li>不仅处理空间上的降维，还考虑时间维度的变化。</li>
-<li>构造关联矩阵不仅基于空间关系，还包括时间序列的动态特性。</li>
-<li>特别适用于连续时间步的数据，如流体动力学中的流场数据，其中状态随时间变化。</li>
-<li>引入外推技术（${\boldsymbol{\beta}}_{k}$），以预测未来状态。</li>
-</ul>
-<p>下面讲解下步骤：</p>
-<p><strong>步骤1： 构建关联矩阵C</strong><br>在时间相关的POD中，首先需要构建一个称为关联矩阵（或协方差矩阵）的结构。这个矩阵是通过计算不同时间步之间的状态向量的内积来构建的。</p>
-<p>$C(t,t^{\prime})=\int_{\Omega}{\bf u}(t,{\bf x}){\bf u}(t^{\prime},{\bf x})d{\bf x}$</p>
-<p>假设你正在分析一个流体的流动，其中 $u(t,x)$ 代表在时间t和空间x的速度场，如果有5个连续时间步的数据$t_n$, $t_{n-1}$, $\ldots$, $t_{n-4}$ , 关联矩阵 C 将是一个 5x5 矩阵，其中每个元素$C_(i,j)$是时间步 $t^{n+1-i}$ 和 $t^{n+1-j}$ 之间的积分内积。</p>
-<p><strong><em>构建关联矩阵的方法能够有效降低计算负担。比如原始矩阵是M </em> N, 那么关联矩阵就是 N <em> N。如果空间维度M远大于时间步数N，那马就会显著减少计算成本</em></strong></p>
-<p><strong>步骤2： 计算特征值和特征向量</strong></p>
-<p>$\int_{T}C(t,t^{\prime})a_{q}(t^{\prime})d t^{\prime}=\lambda_{q}a_{q}(t)$</p>
-<p>继续使用流体流动的例子，我们求解关联矩阵 C 的特征值和特征向量。特征值 $\lambda_{q}$ 越大，对应的特征向量 $a_{q}(t)$ 描述的流动模式越重要。选择最大的几个特征值及其对应的特征向量进行下一步分析。</p>
-<p><strong>步骤3： 时间系数外推</strong></p>
-<p>$a_{q}(t^{n+1})=\sum_{k=0}^{Q_{R}-1}\beta_{k}a_{q}(t^{n-k})$</p>
-<p>$\beta_{k}$为外推系数</p>
-<p>q=1,…, $Q_R$ </p>
-<p>如果你决定使用前三个主要模式（ $Q_R$ =3）来预测下一个时间步的流动状态，你会根据历史数据中的这些模式的活动来计算 $a_{q}(t^{n+1})$ 。</p>
-<p>$a_{q}(t^{n+1})$ 表示过去K个时间步的第q模态的时间系数。<br>每个时间系数 $a_{q}(t^{n+1})$ 对应一个特定的模态 $\Psi_{q}({\bf x})$。这个系数描述了该模态随时间的变化。当提到步骤3的时候，我们应该明确每个系数的计算都是独立进行的，针对每一个q。</p>
-<p>而$Q_R$就是保留的模态（特征向量）。既可以选择数量（具有最大特征值的前$Q_R$个模态）或者可以通过一个阈值（如某个能量百分比或特征值大小）来动态确定。</p>
-<p>q的变化就是从1到$Q_R$</p>
-<p><strong>步骤4： 计算近似解</strong></p>
-<p>${\bf u}_{a p}=\sum_{q=1}^{Q_{R}}a_{q}(t^{n+1})\Psi_{q}({\bf x})$</p>
-<p>其中：$\Psi_{q}({\bf x})=\int_{T}a_{q}(t){\bf u}(t,{\bf x})d t$</p>
-<p>最终的流体流动的近似速度场将通过将时间系数<br>$a_{q}(t^{n+1})$ 乘以对应的空间模态 ​$\Psi_{q}({\bf x})$ 来构建，这些模态是从特征向量 $a_{q}(t^{n})$ 派生的。</p>
-<h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><ol>
-<li>整体流程不清楚。优化的过程是只调用一次，还是调用多次，即更新一个初始状态还是多个</li>
-</ol>
-<h2 id="INITIAL-GUESSES-FOR-SEQUENCES-OF-LINEAR-SYSTEMS-IN-A-GPU-ACCELERATED-INCOMPRESSIBLE-FLOW-SOLVER"><a href="#INITIAL-GUESSES-FOR-SEQUENCES-OF-LINEAR-SYSTEMS-IN-A-GPU-ACCELERATED-INCOMPRESSIBLE-FLOW-SOLVER" class="headerlink" title="INITIAL GUESSES FOR SEQUENCES OF LINEAR SYSTEMS IN A GPU-ACCELERATED INCOMPRESSIBLE FLOW SOLVER"></a>INITIAL GUESSES FOR SEQUENCES OF LINEAR SYSTEMS IN A GPU-ACCELERATED INCOMPRESSIBLE FLOW SOLVER</h2><h3 id="文章做了什么"><a href="#文章做了什么" class="headerlink" title="文章做了什么"></a>文章做了什么</h3><p>迭代求解线性系统时，initial guesses可以在gpu加速的解算器中实现</p>
-<p>提出了基于稳定多项式外推法的新初始猜测方法，并于Fischer的投影法相比，存储只需要一半，执行更少的数据移动和通信。</p>
-<h3 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h3><ul>
-<li>产生initial guesses的两个方法：<ul>
-<li>合并前几个时间步的解，形成一个更好的initial guesses。带入当前时间步的线性系统，最小化残差的范数（Fishcher）</li>
-<li>多项式外推。</li>
-</ul>
-</li>
-</ul>
+                <h2 id="基于本征正交分解的流场快速预测方法研究"><a href="#基于本征正交分解的流场快速预测方法研究" class="headerlink" title="基于本征正交分解的流场快速预测方法研究"></a>基于本征正交分解的流场快速预测方法研究</h2><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-16_10-11-23.png" alt=""></p>
+<p>这篇论文里面提到了：POD结合插值方法在跨声速范围（流场在该区域随马赫数的变化存在间断特征）的流场插值结果的可靠性无法保证。这也是这篇文献《基于本征正交分解和代理模型的流场预测方法》提到的“噪声”激波的真实根源。</p>
+<h2 id="基于本征正交分解和代理模型的流场预测方法"><a href="#基于本征正交分解和代理模型的流场预测方法" class="headerlink" title="基于本征正交分解和代理模型的流场预测方法"></a>基于本征正交分解和代理模型的流场预测方法</h2><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-08-16_11-36-53.png" alt=""></p>
+<p><strong>这样的话，或许如刘溢浪里面提到的，DMD或许可以从频率的角度去解决这个问题。</strong></p>
 
                 
             </div>
@@ -574,7 +528,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://gaofeng-lin.github.io/posts/cca8c50b/">https://gaofeng-lin.github.io/posts/cca8c50b/</a>
+                    <a href="https://gaofeng-lin.github.io/posts/e7a840c2/">https://gaofeng-lin.github.io/posts/e7a840c2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -612,8 +566,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/CFD/">
-                                    <span class="chip bg-color">CFD</span>
+                                <a href="/tags/POD/">
+                                    <span class="chip bg-color">POD</span>
                                 </a>
                             
                         </div>
@@ -791,13 +745,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/949a09f6/">
+                <a href="/posts/5ecc6c1a/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="运动康复">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="流场时间维预测-插值论文">
                         
-                        <span class="card-title">运动康复</span>
+                        <span class="card-title">流场时间维预测-插值论文</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -808,14 +762,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-07-04
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-08-19
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%BF%90%E5%8A%A8%E5%BA%B7%E5%A4%8D/" class="post-category">
-                                    运动康复
+                            <a href="/categories/CFD%E8%AE%BA%E6%96%87/" class="post-category">
+                                    CFD论文
                                 </a>
                             
                             
@@ -825,8 +779,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BF%90%E5%8A%A8%E5%BA%B7%E5%A4%8D/">
-                        <span class="chip bg-color">运动康复</span>
+                    <a href="/tags/temporal-extrapolation-interpolation/">
+                        <span class="chip bg-color">temporal-extrapolation-interpolation</span>
                     </a>
                     
                 </div>
@@ -840,13 +794,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/f6b7c48b/">
+                <a href="/posts/30a636b/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="CFD知识">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="pod相关论文">
                         
-                        <span class="card-title">CFD知识</span>
+                        <span class="card-title">pod相关论文</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -857,14 +811,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CFD/" class="post-category">
-                                    CFD
+                            <a href="/categories/pod/" class="post-category">
+                                    pod
                                 </a>
                             
                             
@@ -874,8 +828,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CFD/">
-                        <span class="chip bg-color">CFD</span>
+                    <a href="/tags/pod/">
+                        <span class="chip bg-color">pod</span>
                     </a>
                     
                 </div>
@@ -1079,7 +1033,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">171.2k</span>
+                        class="white-color">172.1k</span>
             
             
             
