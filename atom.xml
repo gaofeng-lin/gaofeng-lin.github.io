@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2024-08-19T03:45:06.297Z</updated>
+  <updated>2024-09-08T07:42:54.567Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>流场加速收敛</title>
+    <link href="https://gaofeng-lin.github.io/posts/e2cc1df4/"/>
+    <id>https://gaofeng-lin.github.io/posts/e2cc1df4/</id>
+    <published>2024-08-22T16:00:00.000Z</published>
+    <updated>2024-09-08T07:42:54.567Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;直接预测模态系数-对模态系数进行pca分解，选择全部模态然后对模态系数进行预测，然后再重构回来。&quot;&gt;&lt;a href=&quot;#直接预测模态系数-对模态系数进行pca分解，选择全部模态然后对模态系数进行预测，然后再重构回来。&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="CFD" scheme="https://gaofeng-lin.github.io/categories/CFD/"/>
+    
+    
+    <category term="加速收敛" scheme="https://gaofeng-lin.github.io/tags/%E5%8A%A0%E9%80%9F%E6%94%B6%E6%95%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>POD-DMD论文</title>
@@ -487,9 +512,9 @@
     <category term="并行计算" scheme="https://gaofeng-lin.github.io/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
     
     
-    <category term="CFD" scheme="https://gaofeng-lin.github.io/tags/CFD/"/>
-    
     <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
+    
+    <category term="CFD" scheme="https://gaofeng-lin.github.io/tags/CFD/"/>
     
     <category term="向量化" scheme="https://gaofeng-lin.github.io/tags/%E5%90%91%E9%87%8F%E5%8C%96/"/>
     
@@ -519,33 +544,6 @@
     
     
     <category term="正则表达式" scheme="https://gaofeng-lin.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Typescript变量类型</title>
-    <link href="https://gaofeng-lin.github.io/posts/62822/"/>
-    <id>https://gaofeng-lin.github.io/posts/62822/</id>
-    <published>2022-06-13T16:00:00.000Z</published>
-    <updated>2023-06-18T15:45:25.755Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;TS语法以及类型&quot;&gt;&lt;a href=&quot;#TS语法以及类型&quot; class=&quot;headerlink&quot; title=&quot;TS语法以及类型&quot;&gt;&lt;/a&gt;TS语法以及类型&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="前端开发" scheme="https://gaofeng-lin.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="JavaScript" scheme="https://gaofeng-lin.github.io/tags/JavaScript/"/>
-    
-    <category term="Typescript" scheme="https://gaofeng-lin.github.io/tags/Typescript/"/>
     
   </entry>
   
