@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2024-09-08T07:42:54.567Z</updated>
+  <updated>2024-10-09T14:20:27.194Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>异常检测论文</title>
+    <link href="https://gaofeng-lin.github.io/posts/14d68935/"/>
+    <id>https://gaofeng-lin.github.io/posts/14d68935/</id>
+    <published>2024-10-08T16:00:00.000Z</published>
+    <updated>2024-10-09T14:20:27.194Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;An-Efficient-Adaptive-Multi-Kernel-Learning-With-Safe-Screening-Rule-for-Outlier-Detection&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="异常检测" scheme="https://gaofeng-lin.github.io/categories/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
+    
+    
+    <category term="机器学习" scheme="https://gaofeng-lin.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>流场加速收敛</title>
@@ -455,9 +480,9 @@
     <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
     
     
-    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
-    
     <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
+    
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
     <category term="Slurm" scheme="https://gaofeng-lin.github.io/tags/Slurm/"/>
     
@@ -512,38 +537,13 @@
     <category term="并行计算" scheme="https://gaofeng-lin.github.io/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
     
     
-    <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
-    
     <category term="CFD" scheme="https://gaofeng-lin.github.io/tags/CFD/"/>
+    
+    <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
     
     <category term="向量化" scheme="https://gaofeng-lin.github.io/tags/%E5%90%91%E9%87%8F%E5%8C%96/"/>
     
     <category term="容器" scheme="https://gaofeng-lin.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>正则表达式</title>
-    <link href="https://gaofeng-lin.github.io/posts/9809/"/>
-    <id>https://gaofeng-lin.github.io/posts/9809/</id>
-    <published>2022-07-03T16:00:00.000Z</published>
-    <updated>2023-06-18T15:45:25.762Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;实战案例&quot;&gt;&lt;a href=&quot;#实战案例&quot; class=&quot;headerlink&quot; title=&quot;实战案例&quot;&gt;&lt;/a&gt;实战案例&lt;/h2&gt;&lt;h3 id=&quot;将markdown文章所有标题多加一级&quot;&gt;&lt;a href=&quot;#将markdown文章所有标题多加一级&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/categories/Linux/"/>
-    
-    
-    <category term="正则表达式" scheme="https://gaofeng-lin.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     
   </entry>
   
