@@ -224,6 +224,35 @@ git log dev...master
 git log --left-right dev...master
 ```
 
+### 修改提交的信息
+假设你想修改当前分支的所有 commit message，可以通过以下方式：
+
+```
+git rebase -i --root
+```
+
+你将看到一个编辑器窗口，列出当前分支的所有提交，格式类似于：
+
+pick a1b2c3d commit message 1
+pick b2c3d4e commit message 2
+pick c3d4e5f commit message 3
+
+你需要将每个 pick 改为 reword，例如：
+
+
+reword a1b2c3d commit message 1
+reword b2c3d4e commit message 2
+reword c3d4e5f commit message 3
+
+然后保存并退出。这个时候只需要修改
+
+接着去修改每个message
+
+这里的编辑器，有可能是vim，也有可能是nano。
+
+nano直接编辑即可，通过Ctrl + O（保存）然后按下回车键来确认保存文件，接着按下Ctrl + X来关闭nano编辑器
+
+
 
 ## 分支操作
 

@@ -198,6 +198,51 @@ C:\Users\76585\Miniconda3\Scripts\activate
 python37 -m pip install xxx -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
+
+### Conda环境下无法正常使用mpi或mpi4py
+
+首先理解下关于mpi的一些知识，mpi是一个概念，和SSH类似。
+
+OpenMPI 和 MPICH 是两种不同的 MPI（Message Passing Interface）实现，而 mpicc 和 mpirun 是 MPI 编译器和运行时工具。
+
+如果系统上安装了，那么输入``which mpicc``或者``which mpirun``是能够找到这两个可执行程序的路径。如果没有启动Conda环境，那么一般是在/usr/bin目录下；如果启动了Conda环境，那么一般是在这种目录下：/home/zhpe/anaconda3/envs/lgf-py310-pyfr/bin/
+
+如果Conda环境下，输出这两个都没问题，那么可以接着用``mpicc --version``和``mpirun --version``看看
+
+我当时使用``mpicc --version``报错了，信息如下：
+
+The Open MPI wrapper compiler was unable to find the specified compiler
+x86_64-conda_cos6-linux-gnu-cc in your PATH.
+
+Note that this compiler was either specified at configure time or in
+one of several possible environment variables.
+
+--------------
+
+解决的方法是，把系统的gcc拷贝到该Conda环境的bin目录下，然后改名为x86_64-conda_cos6-linux-gnu-cc。
+
+启动Conda环境，会优先在该Conda环境下的bin和lib目录下去找可执行程序和库文件。假如你还是想调用系统的东西，那么做法就是在Conda环境下，设置环境变量，``export PATH=/usr/bin:$PATH``，上面的命令是临时的，关闭shell后就没了。
+
+我当时报的错是：
+
+ImportError: /home/zhpe/anaconda3/envs/lgf-py310-pyfr/lib/python3.10/site-packages/mpi4py/MPI.cpython-310-x86_64-linux-gnu.so: undefined symbol: MPI_UNWEIGHTED
+
+用pip卸载mpi4py重新安装还是不行，后面尝试了一种方法成果了：
+
+```
+pip uninstall mpi4py
+
+pip install --no-cache-dir mpi4py
+```
+
+
+--no-cache-dir 是 pip 的一个选项，它告诉 pip 在安装过程中不使用本地缓存来存储包。这意味着，pip 会每次都从远程源（比如 PyPI）重新下载包，而不会使用本地缓存中可能已经存在的包版本。
+
+
+关于上面的gcc编译器的问题，也不确定如果不设置编译器的情况下使用pip install --no-cache-dir mpi4py能否成功。
+
+
+
 ##  技术知识点
 
 ###  遍历文件夹下的文件名
