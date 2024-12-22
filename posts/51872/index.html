@@ -473,14 +473,14 @@ two.txt:
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10.4k
+                    10.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    46 分
+                    48 分
                 </div>
                 
 
@@ -578,6 +578,24 @@ two.txt:
 <p>cmd可以正常使用，环境变量也添加了，但是一直不行。</p>
 <p>解决办法：<br>找到conda安装目录下的Scripts下的activate,在vscode终端输入命令激活：<br></p><pre class="line-numbers language-none"><code class="language-none">C:\Users\76585\Miniconda3\Scripts\activate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
 <h3 id="windows安装多版本python，如何指定pip"><a href="#windows安装多版本python，如何指定pip" class="headerlink" title="windows安装多版本python，如何指定pip"></a>windows安装多版本python，如何指定pip</h3><p>不适用conda的情况下，安装多个版本python，把环境变量设置好以后，可以通过修改exe程序的名字来区分，默认都是python.exe，可以修改为python311.exe或python39.exe，<br>如果要使用对应版本的pip，可以这样做<br></p><pre class="line-numbers language-none"><code class="language-none">python37 -m pip install xxx -i https://pypi.tuna.tsinghua.edu.cn/simple<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<h3 id="Conda环境下无法正常使用mpi或mpi4py"><a href="#Conda环境下无法正常使用mpi或mpi4py" class="headerlink" title="Conda环境下无法正常使用mpi或mpi4py"></a>Conda环境下无法正常使用mpi或mpi4py</h3><p>首先理解下关于mpi的一些知识，mpi是一个概念，和SSH类似。</p>
+<p>OpenMPI 和 MPICH 是两种不同的 MPI（Message Passing Interface）实现，而 mpicc 和 mpirun 是 MPI 编译器和运行时工具。</p>
+<p>如果系统上安装了，那么输入<code>which mpicc</code>或者<code>which mpirun</code>是能够找到这两个可执行程序的路径。如果没有启动Conda环境，那么一般是在/usr/bin目录下；如果启动了Conda环境，那么一般是在这种目录下：/home/zhpe/anaconda3/envs/lgf-py310-pyfr/bin/</p>
+<p>如果Conda环境下，输出这两个都没问题，那么可以接着用<code>mpicc --version</code>和<code>mpirun --version</code>看看</p>
+<p>我当时使用<code>mpicc --version</code>报错了，信息如下：</p>
+<p>The Open MPI wrapper compiler was unable to find the specified compiler<br>x86_64-conda_cos6-linux-gnu-cc in your PATH.</p>
+<p>Note that this compiler was either specified at configure time or in<br>one of several possible environment variables.</p>
+<hr>
+<p>解决的方法是，把系统的gcc拷贝到该Conda环境的bin目录下，然后改名为x86_64-conda_cos6-linux-gnu-cc。</p>
+<p>启动Conda环境，会优先在该Conda环境下的bin和lib目录下去找可执行程序和库文件。假如你还是想调用系统的东西，那么做法就是在Conda环境下，设置环境变量，<code>export PATH=/usr/bin:$PATH</code>，上面的命令是临时的，关闭shell后就没了。</p>
+<p>我当时报的错是：</p>
+<p>ImportError: /home/zhpe/anaconda3/envs/lgf-py310-pyfr/lib/python3.10/site-packages/mpi4py/MPI.cpython-310-x86_64-linux-gnu.so: undefined symbol: MPI_UNWEIGHTED</p>
+<p>用pip卸载mpi4py重新安装还是不行，后面尝试了一种方法成果了：</p>
+<pre class="line-numbers language-none"><code class="language-none">pip uninstall mpi4py
+
+pip install --no-cache-dir mpi4py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>—no-cache-dir 是 pip 的一个选项，它告诉 pip 在安装过程中不使用本地缓存来存储包。这意味着，pip 会每次都从远程源（比如 PyPI）重新下载包，而不会使用本地缓存中可能已经存在的包版本。</p>
+<p>关于上面的gcc编译器的问题，也不确定如果不设置编译器的情况下使用pip install —no-cache-dir mpi4py能否成功。</p>
 <h2 id="技术知识点"><a href="#技术知识点" class="headerlink" title="技术知识点"></a>技术知识点</h2><h3 id="遍历文件夹下的文件名"><a href="#遍历文件夹下的文件名" class="headerlink" title="遍历文件夹下的文件名"></a>遍历文件夹下的文件名</h3><blockquote>
 <h1 id="方法1：使用os-listdir"><a href="#方法1：使用os-listdir" class="headerlink" title="方法1：使用os.listdir"></a>方法1：使用os.listdir</h1></blockquote>
 <pre class="line-numbers language-none"><code class="language-none">import os
@@ -1590,16 +1608,16 @@ from Module import * # 引入模块中的所有‘公开’成员<span aria-hidd
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
-                    </a>
-                    
                     <a href="/tags/Vue/">
                         <span class="chip bg-color">Vue</span>
                     </a>
                     
                     <a href="/tags/React/">
                         <span class="chip bg-color">React</span>
+                    </a>
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                     <a href="/tags/Json/">
@@ -1614,16 +1632,16 @@ from Module import * # 引入模块中的所有‘公开’成员<span aria-hidd
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/51872/">
+                <a href="/posts/37060/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="python">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="零散知识">
                         
-                        <span class="card-title">python</span>
+                        <span class="card-title">零散知识</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1640,20 +1658,59 @@ from Module import * # 引入模块中的所有‘公开’成员<span aria-hidd
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    编程语言
+                            <a href="/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    小知识
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/IDE/">
+                        <span class="chip bg-color">IDE</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
+                        <span class="chip bg-color">编辑器</span>
+                    </a>
+                    
+                    <a href="/tags/vscode/">
+                        <span class="chip bg-color">vscode</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%85%A7%E7%89%87%E6%A8%A1%E7%B3%8A%E5%A4%84%E7%90%86/">
+                        <span class="chip bg-color">照片模糊处理</span>
+                    </a>
+                    
+                    <a href="/tags/win10/">
+                        <span class="chip bg-color">win10</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B8%93%E5%88%A9/">
+                        <span class="chip bg-color">专利</span>
+                    </a>
+                    
+                    <a href="/tags/bat/">
+                        <span class="chip bg-color">bat</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                        <span class="chip bg-color">博客</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B8%A6%E5%AE%BD/">
+                        <span class="chip bg-color">带宽</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                        <span class="chip bg-color">数学</span>
+                    </a>
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
@@ -1850,7 +1907,7 @@ from Module import * # 引入模块中的所有‘公开’成员<span aria-hidd
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">176.6k</span>
+                        class="white-color">178.4k</span>
             
             
             
