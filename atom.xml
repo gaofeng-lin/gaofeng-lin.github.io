@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2024-10-28T07:28:39.782Z</updated>
+  <updated>2024-12-23T06:36:34.645Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C++命令</title>
+    <link href="https://gaofeng-lin.github.io/posts/55264222/"/>
+    <id>https://gaofeng-lin.github.io/posts/55264222/</id>
+    <published>2024-12-22T16:00:00.000Z</published>
+    <updated>2024-12-23T06:36:34.645Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Linux下操作&quot;&gt;&lt;a href=&quot;#Linux下操作&quot; class=&quot;headerlink&quot; title=&quot;Linux下操作&quot;&gt;&lt;/a&gt;Linux下操作&lt;/h2&gt;&lt;h3 id=&quot;编译指令&quot;&gt;&lt;a href=&quot;#编译指令&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="programming-language" scheme="https://gaofeng-lin.github.io/categories/programming-language/"/>
+    
+    
+    <category term="cpp" scheme="https://gaofeng-lin.github.io/tags/cpp/"/>
+    
+  </entry>
   
   <entry>
     <title>异常检测论文</title>
@@ -67,6 +92,31 @@
   </entry>
   
   <entry>
+    <title>流场时间维预测-插值论文</title>
+    <link href="https://gaofeng-lin.github.io/posts/5ecc6c1a/"/>
+    <id>https://gaofeng-lin.github.io/posts/5ecc6c1a/</id>
+    <published>2024-08-18T16:00:00.000Z</published>
+    <updated>2024-08-20T00:05:07.622Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Spatio-temporal-deep-learning-models-of-3D-turbulence-with-physics-informed-diagnostics&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="CFD论文" scheme="https://gaofeng-lin.github.io/categories/CFD%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="temporal-extrapolation-interpolation" scheme="https://gaofeng-lin.github.io/tags/temporal-extrapolation-interpolation/"/>
+    
+  </entry>
+  
+  <entry>
     <title>POD-DMD论文</title>
     <link href="https://gaofeng-lin.github.io/posts/a7feeec9/"/>
     <id>https://gaofeng-lin.github.io/posts/a7feeec9/</id>
@@ -90,31 +140,6 @@
     <category term="POD" scheme="https://gaofeng-lin.github.io/tags/POD/"/>
     
     <category term="DMD" scheme="https://gaofeng-lin.github.io/tags/DMD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>流场时间维预测-插值论文</title>
-    <link href="https://gaofeng-lin.github.io/posts/5ecc6c1a/"/>
-    <id>https://gaofeng-lin.github.io/posts/5ecc6c1a/</id>
-    <published>2024-08-18T16:00:00.000Z</published>
-    <updated>2024-08-20T00:05:07.622Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Spatio-temporal-deep-learning-models-of-3D-turbulence-with-physics-informed-diagnostics&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="CFD论文" scheme="https://gaofeng-lin.github.io/categories/CFD%E8%AE%BA%E6%96%87/"/>
-    
-    
-    <category term="temporal-extrapolation-interpolation" scheme="https://gaofeng-lin.github.io/tags/temporal-extrapolation-interpolation/"/>
     
   </entry>
   
@@ -223,7 +248,7 @@
     <link href="https://gaofeng-lin.github.io/posts/f6b7c48b/"/>
     <id>https://gaofeng-lin.github.io/posts/f6b7c48b/</id>
     <published>2024-03-02T16:00:00.000Z</published>
-    <updated>2024-08-20T11:25:17.816Z</updated>
+    <updated>2024-12-23T08:06:57.617Z</updated>
     
     
       
@@ -271,31 +296,6 @@
   </entry>
   
   <entry>
-    <title>ai</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-12-21T16:00:00.000Z</published>
-    <updated>2023-12-27T14:47:07.346Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;ai相关的内容&quot;&gt;&lt;a href=&quot;#ai相关的内容&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>rnn</title>
     <link href="https://gaofeng-lin.github.io/posts/53791/"/>
     <id>https://gaofeng-lin.github.io/posts/53791/</id>
@@ -314,6 +314,31 @@
     
     
     <category term="rnn" scheme="https://gaofeng-lin.github.io/categories/rnn/"/>
+    
+    
+    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ai</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-12-21T16:00:00.000Z</published>
+    <updated>2023-12-27T14:47:07.346Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;ai相关的内容&quot;&gt;&lt;a href=&quot;#ai相关的内容&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
     
     
     <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
@@ -513,37 +538,6 @@
     <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
     <category term="VM" scheme="https://gaofeng-lin.github.io/tags/VM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>名词解释</title>
-    <link href="https://gaofeng-lin.github.io/posts/118/"/>
-    <id>https://gaofeng-lin.github.io/posts/118/</id>
-    <published>2022-08-16T16:00:00.000Z</published>
-    <updated>2024-05-06T15:19:50.501Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;硬件&quot;&gt;&lt;a href=&quot;#硬件&quot; class=&quot;headerlink&quot; title=&quot;硬件&quot;&gt;&lt;/a&gt;硬件&lt;/h2&gt;&lt;h3 id=&quot;半导体&quot;&gt;&lt;a href=&quot;#半导体&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="并行计算" scheme="https://gaofeng-lin.github.io/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
-    
-    
-    <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
-    
-    <category term="CFD" scheme="https://gaofeng-lin.github.io/tags/CFD/"/>
-    
-    <category term="向量化" scheme="https://gaofeng-lin.github.io/tags/%E5%90%91%E9%87%8F%E5%8C%96/"/>
-    
-    <category term="容器" scheme="https://gaofeng-lin.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
     
   </entry>
   
