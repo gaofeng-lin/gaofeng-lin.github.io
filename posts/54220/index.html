@@ -433,12 +433,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
                             <a href="/tags/%E8%BF%90%E7%BB%B4/">
                                 <span class="chip bg-color">运维</span>
+                            </a>
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                             <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">
@@ -487,14 +487,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.5k
+                    5.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    20 分
+                    18 分
                 </div>
                 
 
@@ -539,15 +539,6 @@ $ ls -a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 <p>在新建用户的时候指定shell<br><code>useradd -d /home/cron/log -s /bin/bash -m bbee</code></p>
 <h2 id="make命令"><a href="#make命令" class="headerlink" title="make命令"></a>make命令</h2><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/02/make.html">原文链接</a></p>
 <h2 id="make-和-cmake"><a href="#make-和-cmake" class="headerlink" title="make 和 cmake"></a>make 和 cmake</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/KP1995/article/details/109569787">原文链接</a></p>
-<h3 id="什么是make"><a href="#什么是make" class="headerlink" title="什么是make"></a>什么是make</h3><p>make工具可以看成是一个智能的批处理工具，它本身并没有编译和链接的功能，而是用类似于批处理的方式—通过调用makefile文件中用户指定的命令来进行编译和链接。</p>
-<h3 id="什么是Makefile"><a href="#什么是Makefile" class="headerlink" title="什么是Makefile"></a>什么是Makefile</h3><p>简单的说就像一首歌的乐谱，make工具就像指挥家，指挥家根据乐谱指挥整个乐团怎么样演奏，make工具就根据makefile中的命令进行编译和链接。makefile命令中就包含了调用gcc（也可以是别的编译器）去编译某个源文件的命令。makefile在一些简单的工程完全可以用人工手写，但是当工程非常大的时候，手写makefile也是非常麻烦的，如果换了个平台makefile又要重新修改。这时候就出现了Cmake工具。</p>
-<h3 id="什么是Cmake"><a href="#什么是Cmake" class="headerlink" title="什么是Cmake"></a>什么是Cmake</h3><p>cmake可以更加简单的生成makefile文件给上面那个make用。当然cmake还有其他功能，就是可以跨平台生成对应平台能用的makefile，你就不用再自己去修改了。cmake根据什么生成makefile呢？它又要根据一个叫CMakeLists.txt文件（学名：组态档）去生成makefile。到最后CMakeLists.txt文件谁写啊？亲，是你自己手写的。</p>
-<p>当然如果你用IDE，类似VS这些一般它都能帮你弄好了，你只需要按一下那个三角形。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">简单总结
-cmake用来转译CMakeLists.txt，在linux下它会生成Makefile，来给make执行。
-
-Makefile+make可理解为类unix环境下的项目管理工具， 而cmake是抽象层次更高的项目管理工具。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>下面给出其关系图：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20201109214319194.png" alt=""></p>
 <h2 id="CMake项目调试技巧"><a href="#CMake项目调试技巧" class="headerlink" title="CMake项目调试技巧"></a>CMake项目调试技巧</h2><h3 id="如何开启调试"><a href="#如何开启调试" class="headerlink" title="如何开启调试"></a>如何开启调试</h3><p>很多大型C++项目都是通过CMake来构建项目，通过编译为可执行程序，然后运行。调试的话需要在CMakeLists.txt或者Config.txt中找到<strong>Debug</strong>这个选项，然后设置为ON。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-05-15_16-30-02.png" alt=""></p>
 <p>然后运行的时候在命令中加入gdb</p>
 <p>例如之前的命令是：<br><code>mpirun -n 1 ./xxx</code><br>现在是：<br><code>mpirun -n 1 gdb ./xxx</code></p>
@@ -813,12 +804,12 @@ export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
-                                </a>
-                            
                                 <a href="/tags/%E8%BF%90%E7%BB%B4/">
                                     <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                                 <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">
@@ -1012,13 +1003,13 @@ export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/20005/">
+                <a href="/posts/48230/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Shell 命令">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Linux常用命令">
                         
-                        <span class="card-title">Shell 命令</span>
+                        <span class="card-title">Linux常用命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1046,16 +1037,20 @@ export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
                     <a href="/tags/%E8%BF%90%E7%BB%B4/">
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/sed/">
-                        <span class="chip bg-color">sed</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/ssh/">
+                        <span class="chip bg-color">ssh</span>
+                    </a>
+                    
+                    <a href="/tags/Vim/">
+                        <span class="chip bg-color">Vim</span>
                     </a>
                     
                 </div>
@@ -1313,7 +1308,7 @@ export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">179.8k</span>
+                        class="white-color">179.9k</span>
             
             
             
