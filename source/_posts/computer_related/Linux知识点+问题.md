@@ -72,26 +72,7 @@ $ ls -a
 ## make 和 cmake
 [原文链接](https://blog.csdn.net/KP1995/article/details/109569787)
 
-### 什么是make
-make工具可以看成是一个智能的批处理工具，它本身并没有编译和链接的功能，而是用类似于批处理的方式—通过调用makefile文件中用户指定的命令来进行编译和链接。
 
-### 什么是Makefile
-简单的说就像一首歌的乐谱，make工具就像指挥家，指挥家根据乐谱指挥整个乐团怎么样演奏，make工具就根据makefile中的命令进行编译和链接。makefile命令中就包含了调用gcc（也可以是别的编译器）去编译某个源文件的命令。makefile在一些简单的工程完全可以用人工手写，但是当工程非常大的时候，手写makefile也是非常麻烦的，如果换了个平台makefile又要重新修改。这时候就出现了Cmake工具。
-
-### 什么是Cmake
-cmake可以更加简单的生成makefile文件给上面那个make用。当然cmake还有其他功能，就是可以跨平台生成对应平台能用的makefile，你就不用再自己去修改了。cmake根据什么生成makefile呢？它又要根据一个叫CMakeLists.txt文件（学名：组态档）去生成makefile。到最后CMakeLists.txt文件谁写啊？亲，是你自己手写的。
-
-当然如果你用IDE，类似VS这些一般它都能帮你弄好了，你只需要按一下那个三角形。
-
-```bash
-简单总结
-cmake用来转译CMakeLists.txt，在linux下它会生成Makefile，来给make执行。
-
-Makefile+make可理解为类unix环境下的项目管理工具， 而cmake是抽象层次更高的项目管理工具。
-```
-
-下面给出其关系图：
-![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20201109214319194.png)
 
 
 ## CMake项目调试技巧
