@@ -511,14 +511,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.4k
+                    8.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    26 分
+                    32 分
                 </div>
                 
 
@@ -553,6 +553,48 @@
 <p>假设我们要求一个数的平方根（a），那么可以写为一个函数：$f(x) = x^2 -a$，令$f(x)$为0，得到的x就是我们要的结果。这个函数在二维平面上画出来是一个往y轴平移的抛物线。</p>
 <p>在f(x)上任意一点$x<em>i$做对应的切线，这条切线和X轴的交点的横坐标为$x</em>{i+1}$，可以算出斜率，后续的推导见下图，可以从理论上证明该方法最后能求出平方根</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-10-28_15-35-20.png" alt=""></p>
+<h2 id="微分和导数的关系"><a href="#微分和导数的关系" class="headerlink" title="微分和导数的关系"></a>微分和导数的关系</h2><p>参考链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/22199657/answer/115178055">https://www.zhihu.com/question/22199657/answer/115178055</a></p>
+<p>从历史角度来看，微积分被发明了两次，<strong>古典微积分和极限微积分</strong>。古典微积分存在一定的缺陷，极限微积分弥补了这个缺陷，也是目前一直在使用的。</p>
+<h3 id="古典微积分"><a href="#古典微积分" class="headerlink" title="古典微积分"></a>古典微积分</h3><p>导数的出现不是牛顿和莱布尼兹发明的，之前数学家已经在对曲线的切线进行研究了，但是牛顿和莱布尼兹在解决曲面下面积的时候把导数的定义确定下来了。</p>
+<h4 id="曲线下的面积"><a href="#曲线下的面积" class="headerlink" title="曲线下的面积"></a>曲线下的面积</h4><p>曲线下的面积在微积分出现之前是一个很复杂的问题，微积分求解的主要思想是把曲线下的面积划分成了无数个矩形面积之和：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/7a309c5ac7d603626f6fc252bd3176a6.webp" alt=""></p>
+<p>直觉告诉我们，如果$n$越大，则这个近似越准确：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/5396faefd2f3501c287903faf98600d0.webp" alt=""></p>
+<p>无穷小量就在这里出现了，无穷小量是建立微积分的基础，莱布尼兹介绍微积分的论文就叫做《论深度隐藏的几何学及无穷小与无穷大的分析》。在当时的观点下，无穷小量到底是什么也是有争论的，当时有数学家打比喻：“无穷小量就好比山上的灰尘，去掉和增加都没有什么影响”，很显然有人认为这是真实存在的。</p>
+<p>在具体计算曲面下面积，即我们现在所说的定积分的时候，必然会遇到导数的问题，所以很自然的开始了对导数的定义和讨论。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/c628daac6d6219eadca61396aa853ebe.webp" alt=""></p>
+<p>割线可以反应曲线的平均变化率，也就是说这一段大概总的趋势是上升还是下降，上升了多少，但是并不精确。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/88c4a488ae041a39da5c1e4892c6a055.webp" alt=""></p>
+<p>有了切线之后我们进一步去定义导数：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/3c7eb94341181775449815dddb9a6d51.webp" alt=""></p>
+<p>从上图就可以得到导数的定义：$ f^{\prime}\left(x\right)=\frac{d y}{d x}$，而${d x}$和${d y} $被称为x和y的微分，被称为无穷小量，所以导数也被莱布尼兹成为微商（微分之商）。</p>
+<h3 id="导数、微分的正确定义（极限微积分）"><a href="#导数、微分的正确定义（极限微积分）" class="headerlink" title="导数、微分的正确定义（极限微积分）"></a>导数、微分的正确定义（极限微积分）</h3><p>极限微积分下，先发明极限，用极限去定义导数。再使用导数去定义微分。</p>
+<h4 id="基于极限重建微积分"><a href="#基于极限重建微积分" class="headerlink" title="基于极限重建微积分"></a>基于极限重建微积分</h4><p>莱布尼兹、欧拉等都认识到了无穷小量导致的麻烦，一直拼命想要修补，但是这个问题要等到200年后，19世纪极限概念的清晰之后才得到解决。</p>
+<p>解决办法是，完全摈弃无穷小量，基于极限的概念，重新建立了微积分。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/0afe3d0aafd33781261c35f90f085a07.webp" alt=""></p>
+<p>导数的定义：</p>
+<p>$\begin{aligned}<br>f^{\prime}\left(x<em>{0}\right) &amp; =\frac{d y}{d x} \<br>&amp; =\lim </em>{\Delta x \rightarrow 0} \frac{\Delta y}{\Delta x} \<br>&amp; =\lim <em>{\Delta x \rightarrow 0} \frac{f\left(x</em>{0}+\Delta x\right)-f\left(x_{0}\right)}{\Delta x}<br>\end{aligned}$</p>
+<p>接下来通过导数去定义微分：</p>
+<p>$\begin{aligned}<br>\lim <em>{\Delta x \rightarrow 0} \frac{\Delta y}{\Delta x}=f^{\prime}\left(x</em>{0}\right) &amp; \Longrightarrow \lim <em>{\Delta x \rightarrow 0} \frac{\Delta y}{\Delta x}-f^{\prime}\left(x</em>{0}\right)=0 \<br>&amp; \Longrightarrow \frac{\Delta y}{\Delta x}-f^{\prime}\left(x<em>{0}\right)=a, \lim </em>{\Delta x \rightarrow 0} a=0 \<br>&amp; \Longrightarrow \Delta y=f^{\prime}\left(x_{0}\right) \Delta x+a \Delta x<br>\end{aligned}$</p>
+<p>${\Delta y} = f^{\prime}\left(x_{0}\right) \Delta x + a\Delta x$可以得出，${\Delta y}$ 由两部分组成，通过图来观察下几何意义：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/38aa32221424bf6a6c924080ac9ecba6.webp" alt=""></p>
+<p>${d y}=f^{\prime}\left(x\right) \Delta x$，这是${d y}$的定义。</p>
+<p>令$y=x \Longrightarrow {d y}=1 \Delta x \Longrightarrow {d x}=\Delta x$，这个就是${d x}$的定义。</p>
+<p>最后可以得到${d y}=f^{\prime}\left(x\right) {d x}\Longrightarrow \frac{d y}{d x}=f^{\prime}\left(x\right)$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/96748e87494305f0274d0921a7d17484.webp" alt=""></p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>导数：被定义为一个极限，其意义就是变化率<br>微分：是一个线性函数，其意义就是变化的具体数值<br>切线：有了导数之后就可以被确定下来了</p>
+<h3 id="古典微积分与极限微积分的对比"><a href="#古典微积分与极限微积分的对比" class="headerlink" title="古典微积分与极限微积分的对比"></a>古典微积分与极限微积分的对比</h3><ul>
+<li>古典微积分是先定义微分再定义导数，极限微积分是先定义导数再定义微分。</li>
+<li>古典微积分的导数是基于无穷小量定义的，极限微积分的导数是基于极限定义的。</li>
+<li>古典微积分的微分是无穷小量，极限微积分的微分是一个线性函数。</li>
+<li>古典微积分的定积分是求无穷小矩形面积的和，极限微积分的定积分是求黎曼和。</li>
+<li>古典微积分的切线是可以画出来的，极限微积分的切线是算出来的。古典微积分的建立过程很直观，极限微积分的建立过程更抽象。</li>
+</ul>
+<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><ul>
+<li>${\frac{d y}{d x}}\ = {\frac{d y}{d u}}\;{\frac{d u}{d x}}$。在古典微积分中可以理解为消去，但是在极限微积分中我们应该认识到，这两个<br>${d u}$实际上是不同的函数。</li>
+<li>$\textstyle\int<em>{a}^{b}{\frac{d y}{d x}}\,d x$古典微积分中，${d x}$确实表明是无穷多个矩形的底边，消去也是合理的，而极限微积分中，$\textstyle\int</em>{a}^{b}\,d x$是求黎曼和，我们可以把$\textstyle\int_{a}^{b}\,d x$当作左括号，${d x}$当作右括号，就好比（2+6）=8，计算完毕之后，括号自然就消失了。</li>
+<li>古典微积分其实已经被摒弃了，我们应该知道这一点，重新从极限的角度去认识微积分。</li>
+</ul>
 <h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><h3 id="手机拍照专业模式"><a href="#手机拍照专业模式" class="headerlink" title="手机拍照专业模式"></a>手机拍照专业模式</h3><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1FM41137Tt/?share_source=copy_web&amp;vd_source=0aac08942099868c6eaf781c9de8ebb1">【【小米13Ultra】相机专业模式不会用？进来看看，包教包会！】 </a><br>以小米系列手机为例，可以调节的参数依次有：</p>
 <ol>
 <li>WB<br>白平衡。能够调节画面的冷暖调。尽量不要动这个参数，自动就好。即使要调节，也可以通过调节色温来矫正色彩。</li>
@@ -1208,12 +1250,12 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/Jenkins/">
-                        <span class="chip bg-color">Jenkins</span>
-                    </a>
-                    
                     <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">
                         <span class="chip bg-color">持续集成</span>
+                    </a>
+                    
+                    <a href="/tags/Jenkins/">
+                        <span class="chip bg-color">Jenkins</span>
                     </a>
                     
                 </div>
@@ -1492,7 +1534,7 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2024</span>
+                <span id="year">2019-2025</span>
             
             <a href="/about" target="_blank">Jason Lin</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
@@ -1500,7 +1542,7 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">179.9k</span>
+                        class="white-color">181.6k</span>
             
             
             
