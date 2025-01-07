@@ -143,3 +143,117 @@ Makefile+make可理解为类unix环境下的项目管理工具， 而cmake是抽
 一般来说，如果是在一个已有的项目上进行更改，这个项目之前能顺利编译，更改后无法编译，一般来说是没有找到相关的库或者头文件，或者没有链接到库。
 
 这些既可以在CMakeLists.txt里面指出，也可以在终端里面指出，具体的命令可以用
+
+
+## 虚函数和纯虚函数
+
+参考链接：https://www.cnblogs.com/dijkstra2003/p/17254053.html
+
+在 C++ 中，虚函数（virtual function）是一个可以被子类重写的成员函数，而纯虚函数（pure virtual function）是一个在基类中声明的虚函数，但不会在基类中实现，而是要求派生类中实现的函数。
+
+区别如下：
+
+1. 虚函数是有实现的，而纯虚函数没有实现。虚函数在基类中有默认实现，子类可以重写它，也可以不重写，但纯虚函数必须在子类中实现。
+
+2. 如果一个类中包含至少一个纯虚函数，那么这个类就是抽象类，不能直接实例化对象。而虚函数不会强制一个类成为抽象类。
+
+3. 调用纯虚函数会导致链接错误，除非在派生类中实现该函数。而虚函数可以被调用，如果派生类没有重写该函数，将调用基类的实现。
+
+4. 纯虚函数可以为接口提供一个规范，子类必须实现这些接口。而虚函数则允许子类通过重写来扩展或修改父类的实现。
+
+5. 纯虚函数只能在抽象类中声明，而虚函数可以在任何类中声明
+
+例如，考虑一个基类 Shape，它定义了一个纯虚函数 getArea()，用于计算形状的面积。Shape 类不能直接实例化，因为它是一个抽象类，没有提供 getArea() 函数的具体实现。相反，派生类如 Circle 和 Rectangle 必须实现 getArea() 函数以提供具体的实现，并且可以实例化对象。
+
+```
+class Shape {
+public:
+    virtual double getArea() = 0; // 纯虚函数
+};
+
+class Circle : public Shape {
+public:
+    Circle(double r) : radius(r) {}
+    double getArea() { return 3.14 * radius * radius; }
+
+private:
+    double radius;
+};
+
+class Rectangle : public Shape {
+public:
+    Rectangle(double w, double h) : width(w), height(h) {}
+    double getArea() { return width * height; }
+
+private:
+    double width;
+    double height;
+};
+
+int main() {
+    // Shape s; 不能直接实例化
+    Circle c(5);
+    Rectangle r(4, 6);
+    cout << "Circle area: " << c.getArea() << endl;
+    cout << "Rectangle area: " << r.getArea() << endl;
+    return 0;
+}
+```
+
+下面定义了一个 Shape 类，它包含一个虚函数 getArea()，该函数计算图形的面积。Circle 和 Rectangle 类派生自 Shape 类，并重写 getArea() 函数以提供自己的具体实现
+
+同时，因为是虚函数，因此Shape并不是抽象类，可以被实例化，并且其getArea()可以被调用：
+
+```
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    virtual double getArea() {
+        cout << "Shape::getArea() called!" << endl;
+        return 0;
+    }
+};
+
+class Circle : public Shape {
+public:
+    Circle(double r) : radius(r) {}
+    double getArea() {
+        cout << "Circle::getArea() called!" << endl;
+        return 3.14 * radius * radius;
+    }
+
+private:
+    double radius;
+};
+
+class Rectangle : public Shape {
+public:
+    Rectangle(double w, double h) : width(w), height(h) {}
+    double getArea() {
+        cout << "Rectangle::getArea() called!" << endl;
+        return width * height;
+    }
+
+private:
+    double width;
+    double height;
+};
+
+int main() {
+    Shape* pShape = new Shape();
+    Circle* pCircle = new Circle(5);
+    Rectangle* pRect = new Rectangle(4, 6);
+
+    pShape->getArea();
+    pCircle->getArea();
+    pRect->getArea();
+
+    delete pShape;
+    delete pCircle;
+    delete pRect;
+
+    return 0;
+}
+```
