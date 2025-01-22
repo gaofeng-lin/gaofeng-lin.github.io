@@ -97,16 +97,25 @@ namespace mflow
 #endif //~MFL_UTILITY_FUNCTIONS_H
 ```
 
-1. #ifndef MFL_UTILITY_FUNCTIONS_H 和 #define MFL_UTILITY_FUNCTIONS_H
+--------
 
-这是一种防止 头文件重复包含 的常见机制，叫做 include guard：
+```
 
-- #ifndef：检查 MFL_UTILITY_FUNCTIONS_H 宏是否未定义。
-- #define：如果未定义，就定义MFL_UTILITY_FUNCTIONS_H 宏。
+// 这是一种防止 头文件重复包含 的常见机制，叫做 include guard
+#ifndef MFL_UTILITY_FUNCTIONS_H 
+#define MFL_UTILITY_FUNCTIONS_H
 
-- #endif：对应于 #ifndef，表示 include guard 的结束。
+// 检查 MFL_UTILITY_FUNCTIONS_H 宏是否未定义。
+#ifndef MFL_UTILITY_FUNCTIONS_H
 
-2. namespace mflow
+//如果未定义，就定义
+#define MFL_UTILITY_FUNCTIONS_H
+
+// 对应于 #ifndef，表示 include guard 的结束。
+#endif：
+```
+
+1. namespace mflow
 - 定义了一个名为 mflow 的命名空间（namespace）。
 - 命名空间用于将代码进行逻辑分组，避免不同模块中名称冲突。
 - 在 mflow 命名空间内，可以定义函数、类、变量等。
