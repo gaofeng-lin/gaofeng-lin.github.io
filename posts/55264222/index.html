@@ -628,15 +628,20 @@ namespace mflow
 }
 
 #endif //~MFL_UTILITY_FUNCTIONS_H<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol>
-<li><h1 id="ifndef-MFL-UTILITY-FUNCTIONS-H-和-define-MFL-UTILITY-FUNCTIONS-H"><a href="#ifndef-MFL-UTILITY-FUNCTIONS-H-和-define-MFL-UTILITY-FUNCTIONS-H" class="headerlink" title="ifndef MFL_UTILITY_FUNCTIONS_H 和 #define MFL_UTILITY_FUNCTIONS_H"></a>ifndef MFL_UTILITY_FUNCTIONS_H 和 #define MFL_UTILITY_FUNCTIONS_H</h1></li>
-</ol>
-<p>这是一种防止 头文件重复包含 的常见机制，叫做 include guard：</p>
-<ul>
-<li><h1 id="ifndef：检查-MFL-UTILITY-FUNCTIONS-H-宏是否未定义。"><a href="#ifndef：检查-MFL-UTILITY-FUNCTIONS-H-宏是否未定义。" class="headerlink" title="ifndef：检查 MFL_UTILITY_FUNCTIONS_H 宏是否未定义。"></a>ifndef：检查 MFL_UTILITY_FUNCTIONS_H 宏是否未定义。</h1></li>
-<li><h1 id="define：如果未定义，就定义MFL-UTILITY-FUNCTIONS-H-宏。"><a href="#define：如果未定义，就定义MFL-UTILITY-FUNCTIONS-H-宏。" class="headerlink" title="define：如果未定义，就定义MFL_UTILITY_FUNCTIONS_H 宏。"></a>define：如果未定义，就定义MFL_UTILITY_FUNCTIONS_H 宏。</h1></li>
-<li><h1 id="endif：对应于-ifndef，表示-include-guard-的结束。"><a href="#endif：对应于-ifndef，表示-include-guard-的结束。" class="headerlink" title="endif：对应于 #ifndef，表示 include guard 的结束。"></a>endif：对应于 #ifndef，表示 include guard 的结束。</h1></li>
-</ul>
+<hr>
+<pre class="line-numbers language-none"><code class="language-none">
+// 这是一种防止 头文件重复包含 的常见机制，叫做 include guard
+#ifndef MFL_UTILITY_FUNCTIONS_H 
+#define MFL_UTILITY_FUNCTIONS_H
+
+// 检查 MFL_UTILITY_FUNCTIONS_H 宏是否未定义。
+#ifndef MFL_UTILITY_FUNCTIONS_H
+
+//如果未定义，就定义
+#define MFL_UTILITY_FUNCTIONS_H
+
+// 对应于 #ifndef，表示 include guard 的结束。
+#endif：<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol>
 <li>namespace mflow</li>
 </ol>
