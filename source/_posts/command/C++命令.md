@@ -138,20 +138,31 @@ Makefile+make可理解为类unix环境下的项目管理工具， 而cmake是抽
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20201109214319194.png)
 
 
-## cmake相关问题
+### cmake相关问题
 
 一般来说，如果是在一个已有的项目上进行更改，这个项目之前能顺利编译，更改后无法编译，一般来说是没有找到相关的库或者头文件，或者没有链接到库。
 
 这些既可以在CMakeLists.txt里面指出，也可以在终端里面指出，具体的命令可以用
 
 
-## make命令
+### make命令
 [原文链接](https://www.ruanyifeng.com/blog/2015/02/make.html)
 
-## make 和 cmake
+### make 和 cmake
 [原文链接](https://blog.csdn.net/KP1995/article/details/109569787)
 
+### ccmake
 
+ccmake是CMake提供的一个图形化配置工具，帮助你配置CMake项目，，选择编译选项、设置变量，并生成构建系统。
+
+### 命令分析
+
+1. ccmake -GNinja ..
+
+- -G
+-G是CMake中的一个选项，用来指定生成构建系统的生成器。
+生成器决定了 CMake 会生成哪种类型的构建系统文件。常见的生成器包括 Unix Makefiles、Ninja、Visual Studio 等。
+在这个命令中，-G后面跟随的是Ninja，这表示 CMake 会使用 Ninja 构建工具来生成构建系统。
 
 
 ## CMake项目调试技巧（gdb调试技巧）
