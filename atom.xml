@@ -92,31 +92,6 @@
   </entry>
   
   <entry>
-    <title>流场时间维预测-插值论文</title>
-    <link href="https://gaofeng-lin.github.io/posts/5ecc6c1a/"/>
-    <id>https://gaofeng-lin.github.io/posts/5ecc6c1a/</id>
-    <published>2024-08-18T16:00:00.000Z</published>
-    <updated>2024-08-20T00:05:07.622Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Spatio-temporal-deep-learning-models-of-3D-turbulence-with-physics-informed-diagnostics&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="CFD论文" scheme="https://gaofeng-lin.github.io/categories/CFD%E8%AE%BA%E6%96%87/"/>
-    
-    
-    <category term="temporal-extrapolation-interpolation" scheme="https://gaofeng-lin.github.io/tags/temporal-extrapolation-interpolation/"/>
-    
-  </entry>
-  
-  <entry>
     <title>POD-DMD论文</title>
     <link href="https://gaofeng-lin.github.io/posts/a7feeec9/"/>
     <id>https://gaofeng-lin.github.io/posts/a7feeec9/</id>
@@ -140,6 +115,31 @@
     <category term="POD" scheme="https://gaofeng-lin.github.io/tags/POD/"/>
     
     <category term="DMD" scheme="https://gaofeng-lin.github.io/tags/DMD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>流场时间维预测-插值论文</title>
+    <link href="https://gaofeng-lin.github.io/posts/5ecc6c1a/"/>
+    <id>https://gaofeng-lin.github.io/posts/5ecc6c1a/</id>
+    <published>2024-08-18T16:00:00.000Z</published>
+    <updated>2024-08-20T00:05:07.622Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Spatio-temporal-deep-learning-models-of-3D-turbulence-with-physics-informed-diagnostics&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="CFD论文" scheme="https://gaofeng-lin.github.io/categories/CFD%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="temporal-extrapolation-interpolation" scheme="https://gaofeng-lin.github.io/tags/temporal-extrapolation-interpolation/"/>
     
   </entry>
   
@@ -223,7 +223,7 @@
     <link href="https://gaofeng-lin.github.io/posts/8f2b7d04/"/>
     <id>https://gaofeng-lin.github.io/posts/8f2b7d04/</id>
     <published>2024-04-22T16:00:00.000Z</published>
-    <updated>2024-08-20T00:05:07.621Z</updated>
+    <updated>2025-01-27T03:13:51.722Z</updated>
     
     
       
@@ -296,31 +296,6 @@
   </entry>
   
   <entry>
-    <title>rnn</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-12-21T16:00:00.000Z</published>
-    <updated>2023-12-27T14:47:07.347Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;rnn相关的内容&quot;&gt;&lt;a href=&quot;#rnn相关的内容&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="rnn" scheme="https://gaofeng-lin.github.io/categories/rnn/"/>
-    
-    
-    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>ai</title>
     <link href="https://gaofeng-lin.github.io/posts/53791/"/>
     <id>https://gaofeng-lin.github.io/posts/53791/</id>
@@ -346,11 +321,36 @@
   </entry>
   
   <entry>
+    <title>rnn</title>
+    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
+    <id>https://gaofeng-lin.github.io/posts/53791/</id>
+    <published>2023-12-21T16:00:00.000Z</published>
+    <updated>2023-12-27T14:47:07.347Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;rnn相关的内容&quot;&gt;&lt;a href=&quot;#rnn相关的内容&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="rnn" scheme="https://gaofeng-lin.github.io/categories/rnn/"/>
+    
+    
+    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
     <title>深度学习</title>
     <link href="https://gaofeng-lin.github.io/posts/53791/"/>
     <id>https://gaofeng-lin.github.io/posts/53791/</id>
     <published>2023-12-10T16:00:00.000Z</published>
-    <updated>2024-12-09T07:24:53.255Z</updated>
+    <updated>2025-02-08T07:18:32.860Z</updated>
     
     
       
