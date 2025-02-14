@@ -511,14 +511,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.5k
+                    10.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    34 分
+                    37 分
                 </div>
                 
 
@@ -887,10 +887,52 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
 <li>改进已有技术。</li>
 <li>基于一个新的理论去实现一种技术，和之前的方法进行对比，只要有一个特点比他们好就可以。比如正确率、泛化性等。</li>
 </ol>
-<h3 id="研究背景与意义"><a href="#研究背景与意义" class="headerlink" title="研究背景与意义"></a>研究背景与意义</h3><p>期刊/会议论文（小论文）和大论文的写法有些不一样</p>
+<h3 id="小论文-VS-大论文"><a href="#小论文-VS-大论文" class="headerlink" title="小论文 VS 大论文"></a>小论文 VS 大论文</h3><p>期刊/会议论文（小论文）中的Introduction和related word 和 大论文的研究背景与意义和国内外研究现状差不多是相互对应的。<strong>但是 Introduction和研究背景与意义写法有些不一样。</strong></p>
 <p>小论文是针对一个研究问题去写，大论文是几个章节的问题整合起来，一个章节正常情况是可以发一篇小论文。</p>
-<p>但是大体的行文逻辑比较相似，先说大体的逻辑:</p>
-<p><strong>第一段：</strong></p>
+<p>但是大体的行文逻辑比较相似，先说小论文的逻辑。</p>
+<h3 id="小论文-Introduction"><a href="#小论文-Introduction" class="headerlink" title="小论文-Introduction"></a>小论文-Introduction</h3><p>一般包含的内容：</p>
+<ul>
+<li>交代研究内容<ul>
+<li><strong>让读者知道你要做什么</strong></li>
+</ul>
+</li>
+<li>阐述研究现状并总结不足<ul>
+<li><strong>给读者一些研究背景的铺垫，并且带出挑战以及难点（如果挑战非常重要，可以单独出一段）</strong></li>
+</ul>
+</li>
+<li>提出解决的新思路<ul>
+<li><strong>引出论文的解决思路或者说idea</strong></li>
+</ul>
+</li>
+<li>给出新方案的设计<ul>
+<li><strong>较为详细的介绍idea的实现</strong></li>
+</ul>
+</li>
+<li>总结论文的贡献以及实验结论<ul>
+<li><strong>总结并且强调论文的贡献</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="参考例子1"><a href="#参考例子1" class="headerlink" title="参考例子1"></a>参考例子1</h4><h4 id="参考例子2"><a href="#参考例子2" class="headerlink" title="参考例子2"></a>参考例子2</h4><h3 id="related-work和Introduction中的内容重复怎么办？"><a href="#related-work和Introduction中的内容重复怎么办？" class="headerlink" title="related work和Introduction中的内容重复怎么办？"></a>related work和Introduction中的内容重复怎么办？</h3><p>小论文中的related work和Introduction；以及大论文中的国内外研究现状和研究背景是相互对应的。以小论文为例，我们可能会觉得related work和Introduction中的研究现状有重复，不知道怎么办？</p>
+<p><strong>有重复的内容是正常的，但是侧重点不一样以及有新东西。</strong></p>
+<p>我们以小论文为例，大论文有一些区别，会在后面一起提到。</p>
+<p>Introducion中的研究现状是针对你前面提到的问题别人是怎么做的。<strong>而related work 是你提出的解决方法涉及到的研究方向的国内外研究现状。</strong>那么这就意味着你的related work至少可以写两个部分，一个是补全Introduction中没有说的很详细的研究现状；另一个就是要增加你”新“加入东西的研究现状：</p>
+<ol>
+<li><strong>补全</strong>：Introducion中的研究现状概述，是一个比较粗略的过程。针对某个研究问题，目前的研究方法有这么几大类，每个大类需要解释下方法原理，然后引入几篇论文。并对每类方法进行点评。因为Introducion后面部分就要给出你的方法，不出意外你的方法应该是属于上述几类方法中的某一种。在related work里面就可以把这类方法目前的研究现状给讲出来，因为这个大类里面又可以分为几个小类，所以就能展开写。</li>
+</ol>
+<p>如果是大论文，在Introduction里面可以把非你方法所属的几个大类方法写的详细点，你自己的大类就简单说下，留到国内外研究现状再写（参考《数据驱动的CFD迭代加速收敛方法研究》p4-5）。</p>
+<ol>
+<li><strong>新增</strong>：你提出的方法，总有点“新”东西吧，就这个“新”东西，就可以让你的related work和Introduction中的研究现状不一样。</li>
+</ol>
+<h4 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h4><p>自己构思的论文</p>
+<p>研究方向：流场加速收敛</p>
+<ul>
+<li><p>Introduction中提到的研究现状，<strong>要指出流场加速收敛方法有哪几类</strong>：大体分为两大类：高效时间推进方法和更好的初值，高效的时间推进方法有可以分为xxx，更好的初值方法可以分为xxx。</p>
+</li>
+<li><p>related work：Introduction中我表面我的方法是属于“基于数据驱动的方法”，那么这部分就要全面的写出<strong>应用于流场加速收敛的基于数据驱动的方法</strong></p>
+</li>
+</ul>
+<h4 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h4><h3 id="八股式写法—（研究背景与意义或Introduction）"><a href="#八股式写法—（研究背景与意义或Introduction）" class="headerlink" title="八股式写法—（研究背景与意义或Introduction）"></a>八股式写法—（研究背景与意义或Introduction）</h3><p><strong>第一段：</strong></p>
 <ol>
 <li>说明这个东西用的很多。</li>
 <li>解释概念，并说明这个东西有什么优点。</li>
@@ -904,7 +946,6 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
 <p>然后你要说，现在这些方法还存在什么问题。这个要说一下，不用很细，主要是逻辑和流程清楚。</p>
 <p>前面说的都是背景</p>
 <p>最后一段说，这个问题如果不解决的话，就很，麻烦。为此，我们提出了什么什么方案。这就是意义</p>
-<h4 id="小论文Introduction"><a href="#小论文Introduction" class="headerlink" title="小论文Introduction"></a>小论文Introduction</h4><p>Introduction里面就要把idea和解决方法说出来，但是不要太细。</p>
 <h3 id="大论文-研究背景与意义"><a href="#大论文-研究背景与意义" class="headerlink" title="大论文-研究背景与意义"></a>大论文-研究背景与意义</h3><h4 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h4><p><strong>研究背景作用：引出你的研究内容</strong></p>
 <p>研究背景的写法并不是固定的，一步一步的引导读者，直至引出研究内容。写法不固定，可以根据你的工作来选择，</p>
 <p>整体的思路是：</p>
@@ -919,19 +960,19 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
 </li>
 </ol>
 <p>下面提供三个写法供参考。</p>
-<h4 id="从一个宽泛的概念入手，再细化，并引出大问题"><a href="#从一个宽泛的概念入手，再细化，并引出大问题" class="headerlink" title="从一个宽泛的概念入手，再细化，并引出大问题"></a>从一个宽泛的概念入手，再细化，并引出大问题</h4><p>参考论文：《开源CFD云平台的持续部署方案设计与实现——林高锋》</p>
+<h4 id="参考例子1：从一个宽泛的概念入手，再细化，并引出大问题"><a href="#参考例子1：从一个宽泛的概念入手，再细化，并引出大问题" class="headerlink" title="参考例子1：从一个宽泛的概念入手，再细化，并引出大问题"></a>参考例子1：从一个宽泛的概念入手，再细化，并引出大问题</h4><p>参考论文：《开源CFD云平台的持续部署方案设计与实现——林高锋》</p>
 <p>第一段：引出宽泛概念CFD，并介绍。然后引出小概念CFD软件，并介绍其作用。</p>
 <p>第二段：对CFD软件做分类介绍，然后引出CFD软件已经被垄断，会对经济造成损失。并引出NNW工程，为后面的风雷软件做铺垫。</p>
 <p>第三段：对风雷软件做介绍。</p>
 <p>第四-六段：风雷软件目前存在的一些问题。</p>
 <p>第七段：研究意义。</p>
-<h4 id="从宏观环境，再到微观，并引出大问题"><a href="#从宏观环境，再到微观，并引出大问题" class="headerlink" title="从宏观环境，再到微观，并引出大问题"></a>从宏观环境，再到微观，并引出大问题</h4><p>参考论文：《基于时空特征挖掘的异常检测研究——胡智超》</p>
+<h4 id="参考例子2：-从宏观环境，再到微观，并引出大问题"><a href="#参考例子2：-从宏观环境，再到微观，并引出大问题" class="headerlink" title="参考例子2： 从宏观环境，再到微观，并引出大问题"></a>参考例子2： 从宏观环境，再到微观，并引出大问题</h4><p>参考论文：《基于时空特征挖掘的异常检测研究——胡智超》</p>
 <p>第一段：从互联网通信飞速发展入手，提到终端设备也会增加很多。通过终端设备增多来引出问题。通过引入公开数据说明网络完全问题很重要。</p>
 <p>第二段：细说网络完全问题。</p>
 <p>第三段：提出异常检测的概念，表明其能为网络安全提供支撑。</p>
 <p>第四-六段：异常检测在当下的互联网环境下，还存在的问题，每段对应一个问题。</p>
 <p>第七段：研究意义。</p>
-<h4 id="从一个概念入手，并引出大问题"><a href="#从一个概念入手，并引出大问题" class="headerlink" title="从一个概念入手，并引出大问题"></a>从一个概念入手，并引出大问题</h4><p>参考论文：《深度Spiking神经网络模型及其算法研究——陈一》</p>
+<h4 id="参考例子3：-从一个概念入手，并引出大问题"><a href="#参考例子3：-从一个概念入手，并引出大问题" class="headerlink" title="参考例子3： 从一个概念入手，并引出大问题"></a>参考例子3： 从一个概念入手，并引出大问题</h4><p>参考论文：《深度Spiking神经网络模型及其算法研究——陈一》</p>
 <p>第一段：引入DNN的概念，说明其应用广泛，并解释概念。后面提到DNN存在的缺陷。</p>
 <p>第二段：针对第一段提到的问题，国内外是如何做的。分类阐述，并总结优缺点。</p>
 <p>第三段：介绍SNN，表明其能为DNN存在的缺陷提供支撑。</p>
@@ -1530,7 +1571,7 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">190k</span>
+                        class="white-color">190.9k</span>
             
             
             
