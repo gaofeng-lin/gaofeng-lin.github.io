@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2024-10-10T13:05:29.026Z</updated>
+  <updated>2025-01-05T00:44:08.455Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C++命令</title>
+    <link href="https://gaofeng-lin.github.io/posts/55264222/"/>
+    <id>https://gaofeng-lin.github.io/posts/55264222/</id>
+    <published>2024-12-22T16:00:00.000Z</published>
+    <updated>2025-01-05T00:44:08.455Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;构建流程&quot;&gt;&lt;a href=&quot;#构建流程&quot; class=&quot;headerlink&quot; title=&quot;构建流程&quot;&gt;&lt;/a&gt;构建流程&lt;/h2&gt;&lt;h3 id=&quot;命令解释&quot;&gt;&lt;a href=&quot;#命令解释&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="programming-language" scheme="https://gaofeng-lin.github.io/categories/programming-language/"/>
+    
+    
+    <category term="cpp" scheme="https://gaofeng-lin.github.io/tags/cpp/"/>
+    
+  </entry>
   
   <entry>
     <title>异常检测论文</title>
@@ -223,7 +248,7 @@
     <link href="https://gaofeng-lin.github.io/posts/f6b7c48b/"/>
     <id>https://gaofeng-lin.github.io/posts/f6b7c48b/</id>
     <published>2024-03-02T16:00:00.000Z</published>
-    <updated>2024-08-20T05:46:12.857Z</updated>
+    <updated>2025-01-05T00:44:08.457Z</updated>
     
     
       
@@ -410,7 +435,7 @@
     <link href="https://gaofeng-lin.github.io/posts/569/"/>
     <id>https://gaofeng-lin.github.io/posts/569/</id>
     <published>2022-12-20T16:00:00.000Z</published>
-    <updated>2024-12-22T05:25:31.683Z</updated>
+    <updated>2025-01-05T00:44:08.458Z</updated>
     
     
       
@@ -513,37 +538,6 @@
     <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
     <category term="VM" scheme="https://gaofeng-lin.github.io/tags/VM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>名词解释</title>
-    <link href="https://gaofeng-lin.github.io/posts/118/"/>
-    <id>https://gaofeng-lin.github.io/posts/118/</id>
-    <published>2022-08-16T16:00:00.000Z</published>
-    <updated>2024-05-06T06:25:30.541Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;硬件&quot;&gt;&lt;a href=&quot;#硬件&quot; class=&quot;headerlink&quot; title=&quot;硬件&quot;&gt;&lt;/a&gt;硬件&lt;/h2&gt;&lt;h3 id=&quot;半导体&quot;&gt;&lt;a href=&quot;#半导体&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="并行计算" scheme="https://gaofeng-lin.github.io/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
-    
-    
-    <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
-    
-    <category term="CFD" scheme="https://gaofeng-lin.github.io/tags/CFD/"/>
-    
-    <category term="向量化" scheme="https://gaofeng-lin.github.io/tags/%E5%90%91%E9%87%8F%E5%8C%96/"/>
-    
-    <category term="容器" scheme="https://gaofeng-lin.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
     
   </entry>
   

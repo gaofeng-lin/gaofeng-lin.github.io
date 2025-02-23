@@ -468,14 +468,14 @@ W">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.5k
+                    8.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    33 分
+                    34 分
                 </div>
                 
 
@@ -561,6 +561,13 @@ W">
 <p>Σ 是$N×M$ 的一个对角元素为非负值实数、非对角元素都为0的矩阵。对角元素被称为奇异值，由大到小排列。X的秩等于非0奇异值个数</p>
 <p>V 是 $M×M$ 的单位正交矩阵，其列向量称为右奇异向量，代表时间模式。</p>
 <p>如果X的列是依据时间获得的空间测量值，那么U对应空间模式，V对应时间模式。</p>
+<h3 id="奇异值分解和特征分解的联系"><a href="#奇异值分解和特征分解的联系" class="headerlink" title="奇异值分解和特征分解的联系"></a>奇异值分解和特征分解的联系</h3><p>任何一个矩阵$A$都可以进行奇异值分解，分解为$U$，$\Sigma$， $V^{T}$三个矩阵</p>
+<p>SVD的步骤一般就是两个：</p>
+<ol>
+<li>求$A^{T}A$的特征向量（构成的矩阵就是V）和特征值（默认由大到小，对这个值求平凡根就是奇异值）</li>
+<li>求$AA^{T}$的特征向量（构成的矩阵就是U）</li>
+</ol>
+<p>$AA^{T}$和$A^{T}A$的特征值是一样的</p>
 <h3 id="基于POD的降阶模型-版本1：从左奇异向量U提取模态"><a href="#基于POD的降阶模型-版本1：从左奇异向量U提取模态" class="headerlink" title="基于POD的降阶模型(版本1：从左奇异向量U提取模态)"></a>基于POD的降阶模型(版本1：从左奇异向量U提取模态)</h3><p><strong>1 提取主要POD模态/模式</strong></p>
 <p>先执行前面的奇异值分解</p>
 <p>选择r个最大的奇异值对应的左奇异向量，构成矩阵$U_{r}$</p>
@@ -1687,7 +1694,7 @@ compare_arrays<span class="token punctuation">(</span>X<span class="token punctu
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2024</span>
+                <span id="year">2019-2025</span>
             
             <a href="/about" target="_blank">Jason Lin</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
@@ -1695,7 +1702,7 @@ compare_arrays<span class="token punctuation">(</span>X<span class="token punctu
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">178.4k</span>
+                        class="white-color">179.9k</span>
             
             
             
