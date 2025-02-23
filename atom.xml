@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-01-05T00:44:08.455Z</updated>
+  <updated>2025-02-23T03:31:30.921Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://gaofeng-lin.github.io/posts/55264222/"/>
     <id>https://gaofeng-lin.github.io/posts/55264222/</id>
     <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2025-01-05T00:44:08.455Z</updated>
+    <updated>2025-02-23T03:31:30.921Z</updated>
     
     
       
@@ -223,7 +223,7 @@
     <link href="https://gaofeng-lin.github.io/posts/8f2b7d04/"/>
     <id>https://gaofeng-lin.github.io/posts/8f2b7d04/</id>
     <published>2024-04-22T16:00:00.000Z</published>
-    <updated>2024-08-19T03:45:06.298Z</updated>
+    <updated>2025-02-23T03:31:30.928Z</updated>
     
     
       
@@ -350,7 +350,7 @@
     <link href="https://gaofeng-lin.github.io/posts/53791/"/>
     <id>https://gaofeng-lin.github.io/posts/53791/</id>
     <published>2023-12-10T16:00:00.000Z</published>
-    <updated>2024-12-22T05:25:31.681Z</updated>
+    <updated>2025-02-23T03:31:30.920Z</updated>
     
     
       
@@ -406,36 +406,11 @@
   </entry>
   
   <entry>
-    <title>金融相关</title>
-    <link href="https://gaofeng-lin.github.io/posts/8600/"/>
-    <id>https://gaofeng-lin.github.io/posts/8600/</id>
-    <published>2023-01-12T16:00:00.000Z</published>
-    <updated>2023-06-18T15:45:25.766Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;为什么不能直接印钱&quot;&gt;&lt;a href=&quot;#为什么不能直接印钱&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="金融" scheme="https://gaofeng-lin.github.io/categories/%E9%87%91%E8%9E%8D/"/>
-    
-    
-    <category term="金融" scheme="https://gaofeng-lin.github.io/tags/%E9%87%91%E8%9E%8D/"/>
-    
-  </entry>
-  
-  <entry>
     <title>生活小知识</title>
     <link href="https://gaofeng-lin.github.io/posts/569/"/>
     <id>https://gaofeng-lin.github.io/posts/569/</id>
     <published>2022-12-20T16:00:00.000Z</published>
-    <updated>2025-01-05T00:44:08.458Z</updated>
+    <updated>2025-02-23T03:31:30.925Z</updated>
     
     
       
@@ -538,6 +513,37 @@
     <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
     <category term="VM" scheme="https://gaofeng-lin.github.io/tags/VM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>名词解释</title>
+    <link href="https://gaofeng-lin.github.io/posts/118/"/>
+    <id>https://gaofeng-lin.github.io/posts/118/</id>
+    <published>2022-08-16T16:00:00.000Z</published>
+    <updated>2024-05-06T06:25:30.541Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;硬件&quot;&gt;&lt;a href=&quot;#硬件&quot; class=&quot;headerlink&quot; title=&quot;硬件&quot;&gt;&lt;/a&gt;硬件&lt;/h2&gt;&lt;h3 id=&quot;半导体&quot;&gt;&lt;a href=&quot;#半导体&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="并行计算" scheme="https://gaofeng-lin.github.io/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
+    
+    
+    <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
+    
+    <category term="CFD" scheme="https://gaofeng-lin.github.io/tags/CFD/"/>
+    
+    <category term="向量化" scheme="https://gaofeng-lin.github.io/tags/%E5%90%91%E9%87%8F%E5%8C%96/"/>
+    
+    <category term="容器" scheme="https://gaofeng-lin.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
     
   </entry>
   

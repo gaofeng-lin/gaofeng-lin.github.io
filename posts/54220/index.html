@@ -487,14 +487,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.1k
+                    3.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    18 分
+                    14 分
                 </div>
                 
 
@@ -537,40 +537,6 @@ $ ls -a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 <p>使用usermod命令修改shell类型<br><code>root@iZ2zeijeb6un95h:~# usermod -s /bin/bash bbee</code></p>
 <p><strong>方法二（为尝试）</strong></p>
 <p>在新建用户的时候指定shell<br><code>useradd -d /home/cron/log -s /bin/bash -m bbee</code></p>
-<h2 id="make命令"><a href="#make命令" class="headerlink" title="make命令"></a>make命令</h2><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/02/make.html">原文链接</a></p>
-<h2 id="make-和-cmake"><a href="#make-和-cmake" class="headerlink" title="make 和 cmake"></a>make 和 cmake</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/KP1995/article/details/109569787">原文链接</a></p>
-<h2 id="CMake项目调试技巧"><a href="#CMake项目调试技巧" class="headerlink" title="CMake项目调试技巧"></a>CMake项目调试技巧</h2><h3 id="如何开启调试"><a href="#如何开启调试" class="headerlink" title="如何开启调试"></a>如何开启调试</h3><p>很多大型C++项目都是通过CMake来构建项目，通过编译为可执行程序，然后运行。调试的话需要在CMakeLists.txt或者Config.txt中找到<strong>Debug</strong>这个选项，然后设置为ON。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-05-15_16-30-02.png" alt=""></p>
-<p>然后运行的时候在命令中加入gdb</p>
-<p>例如之前的命令是：<br><code>mpirun -n 1 ./xxx</code><br>现在是：<br><code>mpirun -n 1 gdb ./xxx</code></p>
-<p>然后命令行前面会出现(gdb)这样的情况，代表进入了gdb调试。</p>
-<h3 id="打断点"><a href="#打断点" class="headerlink" title="打断点"></a>打断点</h3><p>先开始打断点，break xxx.cpp:200<br>上面的表示在xxx.cpp文件的200行处打断点</p>
-<p>然后就可以输入run，然后回车。</p>
-<p>c:继续<br>q:退出</p>
-<h3 id="监控变量"><a href="#监控变量" class="headerlink" title="监控变量"></a>监控变量</h3><p>在大型项目中，如果想知道变量的变化情况，可以输入watch<br></p><pre class="line-numbers language-none"><code class="language-none">(gdb) watch variable_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>在程序还没开始运行的时候，可能会出错。可以在断点处停下后，再设置。<p></p>
-<p><strong>如果这个变量发生变化，也可以看到在哪个代码文件发生变化，很有用</strong></p>
-<p>查看监控变量情况以及删除：<br></p><pre class="line-numbers language-none"><code class="language-none">(gdb) info watchpoints
-(gdb) delete watchpoint_number // 例如：(gdb) delete watchpoint 2 ，删除编号为2的监视点
-(gdb) delete watchpoints //删除所有的监视点<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p></p>
-<p>简单的查看可以通过print 来查看变量的值 </p>
-<p>例如：print res[0][1]</p>
-<h3 id="查看调用栈"><a href="#查看调用栈" class="headerlink" title="查看调用栈"></a>查看调用栈</h3><p>代码之间相互调用，想知道调用顺序。</p>
-<p>当程序停在断点处时。<br></p><pre class="line-numbers language-none"><code class="language-none">(gdb) backtrace<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
-<h2 id="configure-amp-amp-make-amp-amp-make-install"><a href="#configure-amp-amp-make-amp-amp-make-install" class="headerlink" title="./configure &amp;&amp; make &amp;&amp; make install"></a>./configure &amp;&amp; make &amp;&amp; make install</h2><h3 id="configure"><a href="#configure" class="headerlink" title="./configure"></a>./configure</h3><p>源码的安装一般由3个步骤组成：<strong>配置(configure)、编译(make)、安装(make install)</strong>。</p>
-<p>configure文件是一个可执行的脚本文件,是用来检测你的安装平台的目标特征的。比如它会检测你是不是有CC或GCC，并不是需要CC或GCC.<br>它有很多选项，在待安装的源码目录下使用命令<code>./configure –help</code>可以输出详细的选项列表。</p>
-<p>其中—prefix选项是配置安装目录，如果不配置该选项，安装后可执行文件默认放在/usr /local/bin，库文件默认放在/usr/local/lib，配置文件默认放在/usr/local/etc，其它的资源文件放在/usr /local/share，比较凌乱。</p>
-<p>如果配置了—prefix，如：</p>
-<p>$ ./configure —prefix=/usr/local/test</p>
-<p>安装后的所有资源文件都会被放在/usr/local/test目录中，不会分散到其他目录。</p>
-<p>使用—prefix选项的另一个好处是方便卸载软件或移植软件；当某个安装的软件不再需要时，只须简单的删除该安装目录，就可以把软件卸载得干干净净；而移植软件只需拷贝整个目录到另外一个机器即可（相同的操作系统下）。</p>
-<p>当然要卸载程序，也可以在原来的make目录下用一次make uninstall，但前提是Makefile文件有uninstall命令（nodejs的源码包里有uninstall命令，测试版本v0.10.35）。</p>
-<p><strong>关于卸载：</strong><br>如果没有配置—prefix选项，源码包也没有提供make uninstall，则可以通过以下方式可以完整卸载：</p>
-<p>找一个临时目录重新安装一遍，如：<br>$ ./configure —prefix=/tmp/to_remove &amp;&amp; make install</p>
-<p>然后遍历/tmp/to_remove的文件，删除对应安装位置的文件即可（因为/tmp/to_remove里的目录结构就是没有配置—prefix选项时的目录结构）。</p>
-<h3 id="make"><a href="#make" class="headerlink" title="make"></a>make</h3><p>make 是用来编译的，它从Makefile中读取指令，然后编译。可以使用多核来make。<code>make -j2</code><br>如果是8核，那就用make -j8。<br>这一步就是编译，大多数的源代码包都经过这一步进行编译（当然有些perl或python编写的软件需要调用perl或python来进行编译）。如果 在 make 过程中出现 error ，你就要记下错误代码（注意不仅仅是最后一行），然后你可以向开发者提交 bugreport（一般在 INSTALL 里有提交地址），或者你的系统少了一些依赖库等，这些需要自己仔细研究错误代码。</p>
-<p>可能遇到的错误：make <em>*</em> 没有指明目标并且找不到 makefile。 停止。问题很明了，没有Makefile，怎么办，原来是要先./configure 一下，再make。</p>
-<h3 id="make-install"><a href="#make-install" class="headerlink" title="make install"></a>make install</h3><p>可以使用多核安装 make -j2 install</p>
-<p>这条命令来进行安装（当然有些软件需要先运行 make check 或 make test 来进行一些测试），这一步一般需要你有 root 权限（因为要向系统写入文件）。</p>
-<p>这个命令用与安装，可以携带一个参数。<code>PREFIX=/home/lgf</code><br>表示安装路径，在安装mpi的时候出现过这个参数。</p>
 <h2 id="Linux-权限"><a href="#Linux-权限" class="headerlink" title="Linux 权限"></a>Linux 权限</h2><h3 id="目录、文件夹的权限如何分配"><a href="#目录、文件夹的权限如何分配" class="headerlink" title="目录、文件夹的权限如何分配"></a>目录、文件夹的权限如何分配</h3><p>linux系统上面权限是一个很重要的问题，每一个目录(/opt,/home,/usr)权限到底该如何设置，什么时候使用sudo。</p>
 <p>以单个用户(以yskj为例)为例，每一个用户自能在指定的目录拥有读、写、执行权限，不能访问别人的目录。一般来说是在/home/yskj/</p>
 <p>/opt等目录拥有者和组几乎全是root。比如mpi在/opt，普通用户登录可以使用吗？答案是可以的。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/cfa86e15e98542dd9f83683b8ac5a85f.png" alt=""></p>
@@ -1003,13 +969,13 @@ export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/300/">
+                <a href="/posts/58712/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="工具使用技巧集合">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="代理设置">
                         
-                        <span class="card-title">工具使用技巧集合</span>
+                        <span class="card-title">代理设置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1026,8 +992,8 @@ export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    小知识
                                 </a>
                             
                             
@@ -1037,32 +1003,20 @@ export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/office/">
-                        <span class="chip bg-color">office</span>
+                    <a href="/tags/npm/">
+                        <span class="chip bg-color">npm</span>
                     </a>
                     
-                    <a href="/tags/IDE/">
-                        <span class="chip bg-color">IDE</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
-                    <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
-                        <span class="chip bg-color">编辑器</span>
+                    <a href="/tags/yarn/">
+                        <span class="chip bg-color">yarn</span>
                     </a>
                     
-                    <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-                        <span class="chip bg-color">快捷键</span>
-                    </a>
-                    
-                    <a href="/tags/vscode/">
-                        <span class="chip bg-color">vscode</span>
-                    </a>
-                    
-                    <a href="/tags/visio/">
-                        <span class="chip bg-color">visio</span>
-                    </a>
-                    
-                    <a href="/tags/postman/">
-                        <span class="chip bg-color">postman</span>
+                    <a href="/tags/%E6%A2%AF%E5%AD%90/">
+                        <span class="chip bg-color">梯子</span>
                     </a>
                     
                 </div>
@@ -1348,7 +1302,7 @@ export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">179.9k</span>
+                        class="white-color">190.9k</span>
             
             
             
