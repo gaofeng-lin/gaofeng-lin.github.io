@@ -97,16 +97,25 @@ namespace mflow
 #endif //~MFL_UTILITY_FUNCTIONS_H
 ```
 
-1. #ifndef MFL_UTILITY_FUNCTIONS_H 和 #define MFL_UTILITY_FUNCTIONS_H
+--------
 
-这是一种防止 头文件重复包含 的常见机制，叫做 include guard：
+```
 
-- #ifndef：检查 MFL_UTILITY_FUNCTIONS_H 宏是否未定义。
-- #define：如果未定义，就定义MFL_UTILITY_FUNCTIONS_H 宏。
+// 这是一种防止 头文件重复包含 的常见机制，叫做 include guard
+#ifndef MFL_UTILITY_FUNCTIONS_H 
+#define MFL_UTILITY_FUNCTIONS_H
 
-- #endif：对应于 #ifndef，表示 include guard 的结束。
+// 检查 MFL_UTILITY_FUNCTIONS_H 宏是否未定义。
+#ifndef MFL_UTILITY_FUNCTIONS_H
 
-2. namespace mflow
+//如果未定义，就定义
+#define MFL_UTILITY_FUNCTIONS_H
+
+// 对应于 #ifndef，表示 include guard 的结束。
+#endif：
+```
+
+1. namespace mflow
 - 定义了一个名为 mflow 的命名空间（namespace）。
 - 命名空间用于将代码进行逻辑分组，避免不同模块中名称冲突。
 - 在 mflow 命名空间内，可以定义函数、类、变量等。
@@ -138,8 +147,278 @@ Makefile+make可理解为类unix环境下的项目管理工具， 而cmake是抽
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20201109214319194.png)
 
 
-## cmake相关问题
+### cmake相关问题
 
 一般来说，如果是在一个已有的项目上进行更改，这个项目之前能顺利编译，更改后无法编译，一般来说是没有找到相关的库或者头文件，或者没有链接到库。
 
 这些既可以在CMakeLists.txt里面指出，也可以在终端里面指出，具体的命令可以用
+
+
+### make命令
+[原文链接](https://www.ruanyifeng.com/blog/2015/02/make.html)
+
+### make 和 cmake
+[原文链接](https://blog.csdn.net/KP1995/article/details/109569787)
+
+### ccmake
+
+ccmake是CMake提供的一个图形化配置工具，帮助你配置CMake项目，，选择编译选项、设置变量，并生成构建系统。
+
+### 命令分析
+
+1. ccmake -GNinja ..
+
+- -G
+-G是CMake中的一个选项，用来指定生成构建系统的生成器。
+生成器决定了 CMake 会生成哪种类型的构建系统文件。常见的生成器包括 Unix Makefiles、Ninja、Visual Studio 等。
+在这个命令中，-G后面跟随的是Ninja，这表示 CMake 会使用 Ninja 构建工具来生成构建系统。
+
+
+## CMake项目调试技巧（gdb调试技巧）
+
+### 如何开启调试
+
+很多大型C++项目都是通过CMake来构建项目，通过编译为可执行程序，然后运行。调试的话需要在CMakeLists.txt或者Config.txt中找到**Debug**这个选项，然后设置为ON。
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-05-15_16-30-02.png)
+
+然后运行的时候在命令中加入gdb
+
+如果有的例子没有上面的这种写法，需要自己在cmake的时候添加命令。例如，当前在build目录下，CMakeLists在上一级目录。
+```cmake -DCMAKE_BUILD_TYPE=Debug ..```
+
+也可以通过```cmake -L ..``` 列出当前项目支持的选项
+
+### gdb如何运行
+
+**情况一：**
+
+
+例如之前的命令是：
+```mpirun -n 1 ./xxx```
+现在是：
+```mpirun -n 1 gdb ./xxx```
+
+然后命令行前面会出现(gdb)这样的情况，代表进入了gdb调试。
+
+**情况二**
+
+有的程序在运行的时候需要参数才能运行，例如：
+
+```./Temporal_Advection /home/zhpe/lgf/vtk-m-v2.2.0/data/data/rectilinear/DoubleGyre_0.vtk 0.0 /home/zhpe/lgf/vtk-m-v2.2.0/data/data/rectilinear/DoubleGyre_5.vtk 5.0 velocity 500 0.025 pathlines.vtk```
+
+
+这个时候要使用gdb，有两种方法：
+
+方法1：
+启动gdb：```gdb ./Temporal_Advection```
+
+设置运行参数：```set args /home/zhpe/lgf/vtk-m-v2.2.0/data/data/rectilinear/DoubleGyre_0.vtk 0.0 /home/zhpe/lgf/vtk-m-v2.2.0/data/data/rectilinear/DoubleGyre_5.vtk 5.0 velocity 500 0.025 pathlines.vtk```
+
+运行程序：```run```
+
+方法2：
+```gdb --args ./Temporal_Advection /home/zhpe/lgf/vtk-m-v2.2.0/data/data/rectilinear/DoubleGyre_0.vtk 0.0 /home/zhpe/lgf/vtk-m-v2.2.0/data/data/rectilinear/DoubleGyre_5.vtk 5.0 velocity 500 0.025 pathlines.vtk```
+
+
+### 打断点
+
+先开始打断点，break xxx.cpp:200
+上面的表示在xxx.cpp文件的200行处打断点
+
+然后就可以输入run，然后回车。
+
+c:继续
+q:退出
+step:进入这个函数中
+
+### 监控变量
+
+在大型项目中，如果想知道变量的变化情况，可以输入watch
+```
+(gdb) watch variable_name
+```
+在程序还没开始运行的时候，可能会出错。可以在断点处停下后，再设置。
+
+**如果这个变量发生变化，也可以看到在哪个代码文件发生变化，很有用**
+
+
+查看监控变量情况以及删除：
+```
+(gdb) info watchpoints
+(gdb) delete watchpoint_number // 例如：(gdb) delete watchpoint 2 ，删除编号为2的监视点
+(gdb) delete watchpoints //删除所有的监视点
+```
+
+
+简单的查看可以通过print 来查看变量的值 
+
+例如：print res[0][1]
+
+
+
+### 查看调用栈
+代码之间相互调用，想知道调用顺序。
+
+当程序停在断点处时。
+```
+(gdb) backtrace
+```
+
+
+
+
+
+## ./configure && make && make install
+### ./configure
+源码的安装一般由3个步骤组成：**配置(configure)、编译(make)、安装(make install)**。
+
+configure文件是一个可执行的脚本文件,是用来检测你的安装平台的目标特征的。比如它会检测你是不是有CC或GCC，并不是需要CC或GCC.
+它有很多选项，在待安装的源码目录下使用命令`./configure –help`可以输出详细的选项列表。
+
+其中--prefix选项是配置安装目录，如果不配置该选项，安装后可执行文件默认放在/usr /local/bin，库文件默认放在/usr/local/lib，配置文件默认放在/usr/local/etc，其它的资源文件放在/usr /local/share，比较凌乱。
+
+如果配置了--prefix，如：
+
+$ ./configure --prefix=/usr/local/test
+
+安装后的所有资源文件都会被放在/usr/local/test目录中，不会分散到其他目录。
+
+使用--prefix选项的另一个好处是方便卸载软件或移植软件；当某个安装的软件不再需要时，只须简单的删除该安装目录，就可以把软件卸载得干干净净；而移植软件只需拷贝整个目录到另外一个机器即可（相同的操作系统下）。
+
+当然要卸载程序，也可以在原来的make目录下用一次make uninstall，但前提是Makefile文件有uninstall命令（nodejs的源码包里有uninstall命令，测试版本v0.10.35）。
+
+**关于卸载：**
+如果没有配置--prefix选项，源码包也没有提供make uninstall，则可以通过以下方式可以完整卸载：
+
+找一个临时目录重新安装一遍，如：
+$ ./configure --prefix=/tmp/to_remove && make install
+
+然后遍历/tmp/to_remove的文件，删除对应安装位置的文件即可（因为/tmp/to_remove里的目录结构就是没有配置--prefix选项时的目录结构）。
+
+### make 
+make 是用来编译的，它从Makefile中读取指令，然后编译。可以使用多核来make。`make -j2`
+如果是8核，那就用make -j8。
+这一步就是编译，大多数的源代码包都经过这一步进行编译（当然有些perl或python编写的软件需要调用perl或python来进行编译）。如果 在 make 过程中出现 error ，你就要记下错误代码（注意不仅仅是最后一行），然后你可以向开发者提交 bugreport（一般在 INSTALL 里有提交地址），或者你的系统少了一些依赖库等，这些需要自己仔细研究错误代码。
+
+可能遇到的错误：make *** 没有指明目标并且找不到 makefile。 停止。问题很明了，没有Makefile，怎么办，原来是要先./configure 一下，再make。
+
+### make install
+可以使用多核安装 make -j2 install
+
+这条命令来进行安装（当然有些软件需要先运行 make check 或 make test 来进行一些测试），这一步一般需要你有 root 权限（因为要向系统写入文件）。
+
+这个命令用与安装，可以携带一个参数。`PREFIX=/home/lgf`
+表示安装路径，在安装mpi的时候出现过这个参数。
+
+## 虚函数和纯虚函数
+
+参考链接：https://www.cnblogs.com/dijkstra2003/p/17254053.html
+
+在 C++ 中，虚函数（virtual function）是一个可以被子类重写的成员函数，而纯虚函数（pure virtual function）是一个在基类中声明的虚函数，但不会在基类中实现，而是要求派生类中实现的函数。
+
+区别如下：
+
+1. 虚函数是有实现的，而纯虚函数没有实现。虚函数在基类中有默认实现，子类可以重写它，也可以不重写，但纯虚函数必须在子类中实现。
+
+2. 如果一个类中包含至少一个纯虚函数，那么这个类就是抽象类，不能直接实例化对象。而虚函数不会强制一个类成为抽象类。
+
+3. 调用纯虚函数会导致链接错误，除非在派生类中实现该函数。而虚函数可以被调用，如果派生类没有重写该函数，将调用基类的实现。
+
+4. 纯虚函数可以为接口提供一个规范，子类必须实现这些接口。而虚函数则允许子类通过重写来扩展或修改父类的实现。
+
+5. 纯虚函数只能在抽象类中声明，而虚函数可以在任何类中声明
+
+例如，考虑一个基类 Shape，它定义了一个纯虚函数 getArea()，用于计算形状的面积。Shape 类不能直接实例化，因为它是一个抽象类，没有提供 getArea() 函数的具体实现。相反，派生类如 Circle 和 Rectangle 必须实现 getArea() 函数以提供具体的实现，并且可以实例化对象。
+
+```
+class Shape {
+public:
+    virtual double getArea() = 0; // 纯虚函数
+};
+
+class Circle : public Shape {
+public:
+    Circle(double r) : radius(r) {}
+    double getArea() { return 3.14 * radius * radius; }
+
+private:
+    double radius;
+};
+
+class Rectangle : public Shape {
+public:
+    Rectangle(double w, double h) : width(w), height(h) {}
+    double getArea() { return width * height; }
+
+private:
+    double width;
+    double height;
+};
+
+int main() {
+    // Shape s; 不能直接实例化
+    Circle c(5);
+    Rectangle r(4, 6);
+    cout << "Circle area: " << c.getArea() << endl;
+    cout << "Rectangle area: " << r.getArea() << endl;
+    return 0;
+}
+```
+
+下面定义了一个 Shape 类，它包含一个虚函数 getArea()，该函数计算图形的面积。Circle 和 Rectangle 类派生自 Shape 类，并重写 getArea() 函数以提供自己的具体实现
+
+同时，因为是虚函数，因此Shape并不是抽象类，可以被实例化，并且其getArea()可以被调用：
+
+```
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    virtual double getArea() {
+        cout << "Shape::getArea() called!" << endl;
+        return 0;
+    }
+};
+
+class Circle : public Shape {
+public:
+    Circle(double r) : radius(r) {}
+    double getArea() {
+        cout << "Circle::getArea() called!" << endl;
+        return 3.14 * radius * radius;
+    }
+
+private:
+    double radius;
+};
+
+class Rectangle : public Shape {
+public:
+    Rectangle(double w, double h) : width(w), height(h) {}
+    double getArea() {
+        cout << "Rectangle::getArea() called!" << endl;
+        return width * height;
+    }
+
+private:
+    double width;
+    double height;
+};
+
+int main() {
+    Shape* pShape = new Shape();
+    Circle* pCircle = new Circle(5);
+    Rectangle* pRect = new Rectangle(4, 6);
+
+    pShape->getArea();
+    pCircle->getArea();
+    pRect->getArea();
+
+    delete pShape;
+    delete pCircle;
+    delete pRect;
+
+    return 0;
+}
+```
