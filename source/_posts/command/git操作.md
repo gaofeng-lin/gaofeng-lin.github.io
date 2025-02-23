@@ -755,3 +755,54 @@ git remote remove origin //移除名为origin的地址（一般默认是这个�
 
 git remote add origin https://xxxx
 ```
+
+### 两台设备之前同步出问题
+
+背景：
+
+两台设备，共用同一个git仓库。设备a之前做了修改，但是忘记了提交。设备b一直在修改核提交。
+我目前想在设备a上面**push**，失败：
+To github.com:gaofeng-lin/gaofeng-lin.github.io.git
+ ! [rejected]          hexo -> hexo (non-fast-forward)
+error: failed to push some refs to 'github.com:gaofeng-lin/gaofeng-lin.github.io.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+**拉取**也失败：
+From github.com:gaofeng-lin/gaofeng-lin.github.io
+ * branch              hexo       -> FETCH_HEAD
+   735387a4..943f2d3b  hexo       -> origin/hexo
+error: Your local changes to the following files would be overwritten by merge:
+        source/_posts/other/零散知识.md
+Please commit your changes or stash them before you merge.
+
+
+解决办法：
+
+1. 处理设备a的本地未提交修改
+```
+# 方案1：提交本地修改（推荐）
+git add source/_posts/other/零散知识.md  # 只暂存特定文件
+git commit -m "保存设备a的修改"           # 提交说明
+
+# 方案2：临时暂存修改（后续需要恢复）
+git stash save "设备a的临时修改"         # 暂存所有未提交内容
+```
+
+2. 获取远程代码
+```
+git fetch origin                        # 获取远程分支信息
+git pull origin hexo                    # 合并远程hexo分支到本地
+```
+
+3. 处理合并的冲突
+```
+打开冲突文件查看<<<<<<<和>>>>>>>标记
+手动保留合理修改后删除标记
+执行 git add <冲突文件> 标记解决
+继续 git commit -m "解决合并冲突"
+```
+
+4. git push重新提交
