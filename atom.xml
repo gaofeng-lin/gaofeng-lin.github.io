@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-01-22T07:56:40.279Z</updated>
+  <updated>2025-02-26T09:09:19.646Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Transformer</title>
+    <link href="https://gaofeng-lin.github.io/posts/e0d2147a/"/>
+    <id>https://gaofeng-lin.github.io/posts/e0d2147a/</id>
+    <published>2025-02-25T16:00:00.000Z</published>
+    <updated>2025-02-26T09:09:19.646Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;参考资料：&quot;&gt;&lt;a href=&quot;#参考资料：&quot; class=&quot;headerlink&quot; title=&quot;参考资料：&quot;&gt;&lt;/a&gt;参考资料：&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="循环神经网络（RNN）" scheme="https://gaofeng-lin.github.io/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88RNN%EF%BC%89/"/>
+    
+    <category term="Transformer" scheme="https://gaofeng-lin.github.io/tags/Transformer/"/>
+    
+  </entry>
   
   <entry>
     <title>C++命令</title>
@@ -366,11 +393,11 @@
     <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
     
     
+    <category term="循环神经网络（RNN）" scheme="https://gaofeng-lin.github.io/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88RNN%EF%BC%89/"/>
+    
     <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
     
     <category term="深度学习理论知识" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/"/>
-    
-    <category term="循环神经网络（RNN）" scheme="https://gaofeng-lin.github.io/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88RNN%EF%BC%89/"/>
     
     <category term="卷积神经网络（CNN）" scheme="https://gaofeng-lin.github.io/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88CNN%EF%BC%89/"/>
     
@@ -513,37 +540,6 @@
     <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
     <category term="VM" scheme="https://gaofeng-lin.github.io/tags/VM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>名词解释</title>
-    <link href="https://gaofeng-lin.github.io/posts/118/"/>
-    <id>https://gaofeng-lin.github.io/posts/118/</id>
-    <published>2022-08-16T16:00:00.000Z</published>
-    <updated>2024-05-06T15:19:50.501Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;硬件&quot;&gt;&lt;a href=&quot;#硬件&quot; class=&quot;headerlink&quot; title=&quot;硬件&quot;&gt;&lt;/a&gt;硬件&lt;/h2&gt;&lt;h3 id=&quot;半导体&quot;&gt;&lt;a href=&quot;#半导体&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="并行计算" scheme="https://gaofeng-lin.github.io/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
-    
-    
-    <category term="CFD" scheme="https://gaofeng-lin.github.io/tags/CFD/"/>
-    
-    <category term="并行计算" scheme="https://gaofeng-lin.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/"/>
-    
-    <category term="向量化" scheme="https://gaofeng-lin.github.io/tags/%E5%90%91%E9%87%8F%E5%8C%96/"/>
-    
-    <category term="容器" scheme="https://gaofeng-lin.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
     
   </entry>
   
