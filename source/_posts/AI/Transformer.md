@@ -7,6 +7,7 @@ tags:
   - 循环神经网络（RNN）
   - Transformer
 mathjax: true
+abbrlink: e0d2147a
 ---
 
 ## 参考资料：
