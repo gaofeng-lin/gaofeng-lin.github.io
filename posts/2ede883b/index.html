@@ -468,14 +468,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -534,6 +534,11 @@
 <p>如果模型将所有样本都预测为正常（Negative）</p>
 <p>TP:0 (没有检测到任何异常)<br>FN:10 （所有异常都被漏检）<br>FP:0  （没有误报）<br>TN:990  （所有正常样本都被识别）</p>
 <p>召回率就是0，精确率因为分母也为0，没有意义。实际上可能有少数是误报的。</p>
+<h2 id="显示关联建模（Explicit-Association-Modeling）"><a href="#显示关联建模（Explicit-Association-Modeling）" class="headerlink" title="显示关联建模（Explicit Association Modeling）"></a>显示关联建模（Explicit Association Modeling）</h2><p><strong>直接定义和量化时间序列内部或不同变量之间的关联关系</strong>来进行异常检测的方法。这类方法的核心是<strong>人为设定或数学化描述变量间的相互作用模式</strong>​（如线性关系、状态转移、图连接等），而非依赖神经网络等黑箱模型隐式学习关联。</p>
+<p>典型方法有：向量自回归、状态空间模型、基于图的方法</p>
+<p>与隐式关联建模（如深度学习相比），显示关联建模可解释性高、计算成本低。但是不适用非线性关系场景。</p>
+<p>尽管显式方法在复杂场景中被神经网络取代，但其思想仍被借鉴：</p>
+<p><strong>​图神经网络（GNN）​：</strong><br>结合显式图结构与隐式特征学习，如用Transformer建模时空图（如STGNN）。<br><strong>​可解释性AI：</strong><br>在神经网络中引入显式关联约束（如稀疏注意力、因果掩码），增强可解释性。<br><strong>​混合建模：</strong><br>用VAR捕捉线性趋势，用LSTM拟合非线性残差，提升预测鲁棒性。</p>
 
                 
             </div>
@@ -1067,7 +1072,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.4k</span>
+                        class="white-color">197.7k</span>
             
             
             
