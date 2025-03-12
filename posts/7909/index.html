@@ -987,7 +987,7 @@ cpu cores   : 4
 <p>解释：</p>
 <ol>
 <li>CPU太快了,只有缓存存储器SRAM才能勉强追上它的速度,因此,一台机器上同时开30个程序,CPU可以把这30个程序变成顺序执行，每个只执行一小段，立马切换到下一个程序，再执行一小段，再切回来，人是无感知的。</li>
-<li><strong><em>一个程序准备开始执行的时候，相关资源必须要准备好，比如RAM地址，显卡，磁盘资源，这些准备好的东西打包一起就叫做上下文环境</em></strong>，然后CPU开始执行程序A，当然只执行了一小段时间，CPU就要切换到别的程序执行B，以保证几个程序的并发，切换之前要把A的上下问状态保存起来，下次切回来的时候接着用。</li>
+<li><strong><em>一个程序准备开始执行的时候，相关资源必须要准备好，比如RAM地址，显卡，磁盘资源，这些准备好的东西打包一起就叫做上下文环境</em></strong>，然后CPU开始执行程序A，当然只执行了一小段时间，CPU就要切换到别的程序执行B，以保证几个程序的并发，切换之前要把A的上下文状态保存起来，下次切回来的时候接着用。</li>
 <li>因此，进程就是包换上下文切换的程序执行时间总和 = CPU加载上下文+CPU执行+CPU保存上下文</li>
 <li>进程的颗粒度太大，每次都要有上下的调入，保存，调出。线程就是进程的小分支，比如进程A有a，b，c三个线程，那么线程a，b，c就共享了进程A的上下文环境，成为了更细小的执行时间。</li>
 </ol>
@@ -1275,13 +1275,13 @@ cpu cores   : 4
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/62688/">
+                <a href="/posts/56435/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Mysql">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Golang">
                         
-                        <span class="card-title">Mysql</span>
+                        <span class="card-title">Golang</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1298,8 +1298,8 @@ cpu cores   : 4
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    编程语言
                                 </a>
                             
                             
@@ -1309,20 +1309,8 @@ cpu cores   : 4
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                        <span class="chip bg-color">运维</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
-                    </a>
-                    
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/Golang/">
+                        <span class="chip bg-color">Golang</span>
                     </a>
                     
                 </div>
@@ -1336,13 +1324,13 @@ cpu cores   : 4
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/20005/">
+                <a href="/posts/48230/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Shell 命令">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Linux常用命令">
                         
-                        <span class="card-title">Shell 命令</span>
+                        <span class="card-title">Linux常用命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1378,8 +1366,12 @@ cpu cores   : 4
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/sed/">
-                        <span class="chip bg-color">sed</span>
+                    <a href="/tags/ssh/">
+                        <span class="chip bg-color">ssh</span>
+                    </a>
+                    
+                    <a href="/tags/Vim/">
+                        <span class="chip bg-color">Vim</span>
                     </a>
                     
                 </div>
@@ -1576,7 +1568,7 @@ cpu cores   : 4
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.2k</span>
+                        class="white-color">197k</span>
             
             
             
@@ -1804,6 +1796,23 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </body>
 

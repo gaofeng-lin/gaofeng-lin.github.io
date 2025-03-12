@@ -36,7 +36,119 @@
 <meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -468,14 +580,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    876
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -501,6 +613,8 @@
                 <h2 id="无监督训练流程"><a href="#无监督训练流程" class="headerlink" title="无监督训练流程"></a>无监督训练流程</h2><p>无监督训练和有监督训练的区别在于没有标签，数据不需要提前标注。之所以采用无监督训练，是因为异常检测领域中异常数据往往是很少的。如果采用有监督训练，那么会优先学习正常数据的分布，就无法识别异常。</p>
 <p>采用无监督训练，一种常见的策略是重建。我们这里以设备监控为例，一台设备在100个连续时刻采集了5个传感器的数据，这样的数据为一个样本。一共采集10个这样的数据。输入维度为（10，100，5）</p>
 <p>模型的输出是重构后的时序数据，与原始的数据比较后，计算Loss，反向传播更新参数。设定阈值，假设超过阈值的就是异常，就判定哪个时刻，哪个传感器的值是异常的。</p>
+<h2 id="无监督和自监督的区别"><a href="#无监督和自监督的区别" class="headerlink" title="无监督和自监督的区别"></a>无监督和自监督的区别</h2><p>深度学习中，自监督(self-supervised)和无监督(unsupervised)有什么区别？ - Zarathustra的回答 - 知乎<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/329202439/answer/2786160932">https://www.zhihu.com/question/329202439/answer/2786160932</a></p>
+<p><strong>自监督学习与无监督学习，这二者就是一样的</strong></p>
 <h2 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h2><p>混淆矩阵是分类任务中评价指标很重要的概念。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-4e0f7a071cd42e3a19e5fc594e35443b_1440w.jpg" alt=""></p>
 <p>Positive/Negative 表示的预测结果，前面的True/False表示预测的结果是否为真。</p>
@@ -518,20 +632,25 @@
 <h3 id="召回率"><a href="#召回率" class="headerlink" title="召回率"></a>召回率</h3><p>所有正样本中，被正确预测占多少</p>
 <p>Recall = TP / (TP + FN)</p>
 <p>衡量模型的覆盖能力。召回率高意味着模型“宁可错检，也不漏检”。</p>
-<h2 id="为什么在异常样本较少的时候，我们大多采用无监督而非有监督训练"><a href="#为什么在异常样本较少的时候，我们大多采用无监督而非有监督训练" class="headerlink" title="为什么在异常样本较少的时候，我们大多采用无监督而非有监督训练"></a>为什么在异常样本较少的时候，我们大多采用无监督而非有监督训练</h2><p>有监督训练：学习异常与正常的决策边界，将数据分为两类；数学本质是条件概率；代表性方法有SVM、神经网络分类器</p>
-<p>这种情况下，<strong>模型有可能把所有样本都预测为正常的</strong>，无法区分异常样本。</p>
-<p>下面来分析下为什么会有可能把样本都预测为正常的：</p>
-<h3 id="为什么有监督可能会把所有样本都预测为正常的"><a href="#为什么有监督可能会把所有样本都预测为正常的" class="headerlink" title="为什么有监督可能会把所有样本都预测为正常的"></a>为什么有监督可能会把所有样本都预测为正常的</h3><p><strong>在异常检测中，我们把异常定义为”Positive“，就和新冠检测阳性一样。</strong></p>
-<p>从损失函数的角度去理解，监督学习的loss函数采用的是条件概率</p>
+<h2 id="为什么在异常样本较少时，大多采用无监督而非有监督"><a href="#为什么在异常样本较少时，大多采用无监督而非有监督" class="headerlink" title="为什么在异常样本较少时，大多采用无监督而非有监督"></a>为什么在异常样本较少时，大多采用无监督而非有监督</h2><h3 id="有监督学习为什么不行"><a href="#有监督学习为什么不行" class="headerlink" title="有监督学习为什么不行"></a>有监督学习为什么不行</h3><p><strong>核心问题：损失函数设计</strong></p>
+<p>有监督依赖<strong>交叉熵损失函数</strong>优化，目的是最大化正确分类的概率（<strong>学习正常和异常的边界</strong>）。当异常样本极少时（如占比1%以下），损失函数会被正常样本主导，导致模型偏向预测所有样本为正常类别。无法学习异常特征。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-03-07_16-29-17.png" alt=""></p>
-<p><strong>同时优化正常样本和异常样本的损失，数据不平衡导致所有都预测为正常</strong></p>
-<h3 id="无监督的策略"><a href="#无监督的策略" class="headerlink" title="无监督的策略"></a>无监督的策略</h3><p>无监督对正常数据进行密度估计；数学本质是概率密度函数；</p>
+<p>模型直接学习“将所有样本预测为正常”的简单策略，准确率可能高达99%，但对异常完全无效。</p>
+<h3 id="无监督的策略"><a href="#无监督的策略" class="headerlink" title="无监督的策略"></a>无监督的策略</h3><p>无监督方法（如自编码器）通过<strong>重构正常数据分布</strong>检测异常，其核心逻辑与有监督完全不同：</p>
+<p>无监督对正常数据进行密度估计；数学本质是概率密度函数；<br>如果任务是重构，那么训练目标就是最小化预测结果和输入的差异。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-03-07_16-33-09.png" alt=""></p>
-<p><strong>无监督仅仅优化正常样本的重构误差，模型专注于正常样本的分布，异常自然偏离。</strong></p>
+<p><strong>无监督仅仅优化正常样本的重构误差，模型专注于正常样本的分布，只要偏离正常分布，异常自然检测到。</strong></p>
+<h3 id="传统无监督存在的问题"><a href="#传统无监督存在的问题" class="headerlink" title="传统无监督存在的问题"></a>传统无监督存在的问题</h3><p>如果采用基本的MSE作为loss函数，因为正常数据量太大，导致被正常样本主导，可能过拟合。如果正常样本周围出现噪声，那么有可能因为重构误差大而被判定为异常。</p>
+<p>还有一种可能是MSE只从”点“的角度评估，忽略了时序的关联性。比如心跳具有周期性，单点值可能是正常的，但是异常房颤表现为周期紊乱，可能无法捕捉周期性异常。</p>
 <h3 id="一般提高准确率通常会导致召回率下降，反之亦然"><a href="#一般提高准确率通常会导致召回率下降，反之亦然" class="headerlink" title="一般提高准确率通常会导致召回率下降，反之亦然"></a>一般提高准确率通常会导致召回率下降，反之亦然</h3><p>总样本：1000<br>异常样本(Positive)：10<br>正常样本(Negative)：990</p>
 <p>如果模型将所有样本都预测为正常（Negative）</p>
 <p>TP:0 (没有检测到任何异常)<br>FN:10 （所有异常都被漏检）<br>FP:0  （没有误报）<br>TN:990  （所有正常样本都被识别）</p>
 <p>召回率就是0，精确率因为分母也为0，没有意义。实际上可能有少数是误报的。</p>
+<h2 id="显示关联建模（Explicit-Association-Modeling）"><a href="#显示关联建模（Explicit-Association-Modeling）" class="headerlink" title="显示关联建模（Explicit Association Modeling）"></a>显示关联建模（Explicit Association Modeling）</h2><p><strong>直接定义和量化时间序列内部或不同变量之间的关联关系</strong>来进行异常检测的方法。这类方法的核心是<strong>人为设定或数学化描述变量间的相互作用模式</strong>​（如线性关系、状态转移、图连接等），而非依赖神经网络等黑箱模型隐式学习关联。</p>
+<p>典型方法有：向量自回归、状态空间模型、基于图的方法</p>
+<p>与隐式关联建模（如深度学习相比），显示关联建模可解释性高、计算成本低。但是不适用非线性关系场景。</p>
+<p>尽管显式方法在复杂场景中被神经网络取代，但其思想仍被借鉴：</p>
+<p><strong>​图神经网络（GNN）​：</strong><br>结合显式图结构与隐式特征学习，如用Transformer建模时空图（如STGNN）。<br><strong>​可解释性AI：</strong><br>在神经网络中引入显式关联约束（如稀疏注意力、因果掩码），增强可解释性。<br><strong>​混合建模：</strong><br>用VAR捕捉线性趋势，用LSTM拟合非线性残差，提升预测鲁棒性。</p>
 
                 
             </div>
@@ -1065,7 +1184,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.2k</span>
+                        class="white-color">197k</span>
             
             
             
@@ -1293,6 +1412,23 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </body>
 

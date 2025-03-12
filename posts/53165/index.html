@@ -529,7 +529,7 @@ JAVA反射机制是在运行状态中，对于任意一个实体类，都能够�
 <p>测试代码：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>company<span class="token punctuation">.</span>reflect</span><span class="token punctuation">;</span>
  
-<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>company<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>domain<span class="token punctuation">.</span></span><span class="token class-name">Person</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>company<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>domain<span class="token punctuation">.</span></span><span class="token class-name">Person</span></span><span class="token punctuation">;</span>
  
 <span class="token comment">/**
  * ⊙﹏⊙&amp;&amp;&amp;&amp;&amp;&amp;⊙▽⊙
@@ -726,10 +726,10 @@ methodName <span class="token operator">=</span> sleep<span aria-hidden="true" c
 <p>（1）将需要创建的对象的全类名和需要执行的方法定义在配置文件中 （2）在程序中加载读取配置文件 （3）使用反射技术来加载类文件进内存 （4）创建对象 （5）执行方法</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>company<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span></span>反射案例<span class="token punctuation">;</span>
  
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStream</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span></span><span class="token class-name">Method</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Properties</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStream</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span></span><span class="token class-name">Method</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Properties</span></span><span class="token punctuation">;</span>
  
 <span class="token comment">/**
  * ⊙﹏⊙&amp;&amp;&amp;&amp;&amp;&amp;⊙▽⊙
@@ -1035,7 +1035,7 @@ d:  神级方法直接加(int)强制转换，直接去掉小数点位，没有�
 <p>Random r = new Random();</p>
 <p>3.产生随机数</p>
 <p>int num = r.nextInt(10);<br>代码解析：10代表的是一个范围，如果括号写10，产生的随机数就是0-9，括号写20，参数的随机数则是0-19</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Random</span><span class="token punctuation">;</span> <span class="token comment">//1. 导入包</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Random</span></span><span class="token punctuation">;</span> <span class="token comment">//1. 导入包</span>
 
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo1Random</span> <span class="token punctuation">{</span>
 
@@ -2095,13 +2095,13 @@ public class ArraysSort {
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/56435/">
+                <a href="/posts/300/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Golang">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="工具使用技巧集合">
                         
-                        <span class="card-title">Golang</span>
+                        <span class="card-title">工具使用技巧集合</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -2118,8 +2118,8 @@ public class ArraysSort {
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    编程语言
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
                                 </a>
                             
                             
@@ -2129,8 +2129,32 @@ public class ArraysSort {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Golang/">
-                        <span class="chip bg-color">Golang</span>
+                    <a href="/tags/office/">
+                        <span class="chip bg-color">office</span>
+                    </a>
+                    
+                    <a href="/tags/IDE/">
+                        <span class="chip bg-color">IDE</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
+                        <span class="chip bg-color">编辑器</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+                        <span class="chip bg-color">快捷键</span>
+                    </a>
+                    
+                    <a href="/tags/vscode/">
+                        <span class="chip bg-color">vscode</span>
+                    </a>
+                    
+                    <a href="/tags/visio/">
+                        <span class="chip bg-color">visio</span>
+                    </a>
+                    
+                    <a href="/tags/postman/">
+                        <span class="chip bg-color">postman</span>
                     </a>
                     
                 </div>
@@ -2388,7 +2412,7 @@ public class ArraysSort {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.2k</span>
+                        class="white-color">197k</span>
             
             
             
@@ -2616,6 +2640,23 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </body>
 
