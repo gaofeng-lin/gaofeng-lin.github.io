@@ -766,7 +766,7 @@ main.Student
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522150829.png" alt=""></p>
 <h3 id="下划线-“-”"><a href="#下划线-“-”" class="headerlink" title="下划线  “_”"></a>下划线  “_”</h3><p>“_”是特殊标识符，用来忽略结果。</p>
 <p><strong>1.下划线在import中</strong></p>
-<p>在Golang里，import的作用是导入其他package。<br>　　 import 下划线（如：import <em> hello/imp）的作用：当导入一个包时，该包下的文件里所有init()函数都会被执行，然而，有些时候我们并不需要把整个包都导入进来，仅仅是是希望它执行init()函数而已。这个时候就可以使用 import </em> 引用该包。即使用【import _ 包路径】只是引用该包，仅仅是为了调用init()函数，所以无法通过包名来调用包中的其他函数。<br>示例：</p>
+<p>在Golang里，import的作用是导入其他package。<br>　　 import 下划线（如：import _ hello/imp）的作用：当导入一个包时，该包下的文件里所有init()函数都会被执行，然而，有些时候我们并不需要把整个包都导入进来，仅仅是是希望它执行init()函数而已。这个时候就可以使用 import _ 引用该包。即使用【import _ 包路径】只是引用该包，仅仅是为了调用init()函数，所以无法通过包名来调用包中的其他函数。<br>示例：</p>
 <pre class="line-numbers language-none"><code class="language-none">src 
 |
 +--- main.go            
@@ -1793,7 +1793,7 @@ Compare(s1 string, s2 string) int1：比较字符串，区分大小写，比”=
 
 $ 匹配字符串的结束<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>字符转义：</p>
-<p>如果你想查找元字符本身的话，比如你查找.,或者<em>,就出现了问题：你没办法指定它们，因为它们会被解释成别的意思。这时你就得使用\来取消这些字符的特殊意义。因此，你应该使用.和\</em>。当然，要查找\本身，你也得用\。</p>
+<p>如果你想查找元字符本身的话，比如你查找.,或者<em>,就出现了问题：你没办法指定它们，因为它们会被解释成别的意思。这时你就得使用\来取消这些字符的特殊意义。因此，你应该使用.和\</em>。当然，要查找\本身，你也得用\\。</p>
 <h4 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522150907.png" alt=""></p>
 <p>如果你想匹配没有预定义元字符的字符集合(比如元音字母a,e,i,o,u),应该怎么办？</p>
 <p>很简单，你只需要在方括号里列出它们就行了，像[aeiou]就匹配任何一个英文元音字母，[.?!]匹配标点符号(.或?或!)。</p>
@@ -2646,12 +2646,12 @@ func main() {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
                     <a href="/tags/%E8%BF%90%E7%BB%B4/">
                         <span class="chip bg-color">运维</span>
+                    </a>
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                     <a href="/tags/ssh/">
@@ -2917,7 +2917,7 @@ func main() {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.7k</span>
+                        class="white-color">197.1k</span>
             
             
             
@@ -3146,6 +3146,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

@@ -439,12 +439,12 @@ select user_name into uname from t_user ">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
                             <a href="/tags/%E8%BF%90%E7%BB%B4/">
                                 <span class="chip bg-color">运维</span>
+                            </a>
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                             <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
@@ -629,14 +629,14 @@ optimize table student;<span aria-hidden="true" class="line-numbers-rows"><span>
 <li>delete from 表以后虽然未释放磁盘空间，但是下次插入数据的时候，仍然可以使用这部分空间。</li>
 </ol>
 <h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><p>默认用户为root，但是在Linux和mysql中，可以认为root用户就是各自系统的皇帝，对其它用户的数据有生杀大权，所以最好创建其它的用户来执行。<br>1.先登录</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mysql -uroot -p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mysql <span class="token parameter variable">-uroot</span> <span class="token parameter variable">-p</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>2.创建一个只能在mysql服务器所在主机使用的用户，此处为localuser</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">create user <span class="token string">'用户名'</span>@<span class="token string">'localhost'</span> identified by <span class="token string">'用户的密码'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>localuser可以在mysql服务器所在主机正常使用</p>
 <p>3.在另外一台主机登陆时，会报错</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">本机登陆：mysql -ulcocaluser -p
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">本机登陆：mysql <span class="token parameter variable">-ulcocaluser</span> <span class="token parameter variable">-p</span>
 
-远程登陆：mysql -h mysql服务器ip -ulocaluser -p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+远程登陆：mysql <span class="token parameter variable">-h</span> mysql服务器ip <span class="token parameter variable">-ulocaluser</span> <span class="token parameter variable">-p</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>4、创建一个只能由特定远程主机使用的帐户，此处为limituser。</p>
 <p>limituser只能在指定的主机使用。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">create user <span class="token string">'limituser'</span>@<span class="token string">'远程主机ip'</span> identified by <span class="token string">'123'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -929,12 +929,12 @@ DECLARE CONTINUE HANDLER FOR NOT FOUND SET s=1;<span aria-hidden="true" class="l
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
-                                </a>
-                            
                                 <a href="/tags/%E8%BF%90%E7%BB%B4/">
                                     <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                                 <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
@@ -1120,13 +1120,13 @@ DECLARE CONTINUE HANDLER FOR NOT FOUND SET s=1;<span aria-hidden="true" class="l
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/40991/">
+                <a href="/posts/20005/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Docker">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Shell 命令">
                         
-                        <span class="card-title">Docker</span>
+                        <span class="card-title">Shell 命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1143,8 +1143,8 @@ DECLARE CONTINUE HANDLER FOR NOT FOUND SET s=1;<span aria-hidden="true" class="l
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
-                                    运维
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
@@ -1158,8 +1158,12 @@ DECLARE CONTINUE HANDLER FOR NOT FOUND SET s=1;<span aria-hidden="true" class="l
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/sed/">
+                        <span class="chip bg-color">sed</span>
                     </a>
                     
                 </div>
@@ -1173,13 +1177,13 @@ DECLARE CONTINUE HANDLER FOR NOT FOUND SET s=1;<span aria-hidden="true" class="l
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/20005/">
+                <a href="/posts/48230/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Shell 命令">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Linux常用命令">
                         
-                        <span class="card-title">Shell 命令</span>
+                        <span class="card-title">Linux常用命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1207,16 +1211,20 @@ DECLARE CONTINUE HANDLER FOR NOT FOUND SET s=1;<span aria-hidden="true" class="l
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
                     <a href="/tags/%E8%BF%90%E7%BB%B4/">
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/sed/">
-                        <span class="chip bg-color">sed</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/ssh/">
+                        <span class="chip bg-color">ssh</span>
+                    </a>
+                    
+                    <a href="/tags/Vim/">
+                        <span class="chip bg-color">Vim</span>
                     </a>
                     
                 </div>
@@ -1413,7 +1421,7 @@ DECLARE CONTINUE HANDLER FOR NOT FOUND SET s=1;<span aria-hidden="true" class="l
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.7k</span>
+                        class="white-color">197.1k</span>
             
             
             
@@ -1642,6 +1650,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

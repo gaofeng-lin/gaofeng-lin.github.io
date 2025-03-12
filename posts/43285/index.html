@@ -1358,13 +1358,13 @@ function App2() {
 <p>查看全局已安装（-g 的意思是 global 全局的意思）</p>
 <pre class="line-numbers language-none"><code class="language-none">$ npm ls -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>查看当前项目已安装包（项目跟目录必须有 package.json 文件）<br></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">ls</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>查看包本版<p></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> view <span class="token operator">&lt;</span>packagename<span class="token operator">&gt;</span> versions --json<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> view <span class="token operator">&lt;</span>packagename<span class="token operator">&gt;</span> versions <span class="token parameter variable">--json</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>同样也是会把所有包的依赖显示出来。同上，加上 —depth 0 就好了。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">ls</span> --depth <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">ls</span> <span class="token parameter variable">--depth</span> <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>如果只想显示生产环境依赖的包</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">ls</span> --depth <span class="token number">0</span> --prod<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">ls</span> <span class="token parameter variable">--depth</span> <span class="token number">0</span> <span class="token parameter variable">--prod</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>只显示开发环境依赖的包</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">ls</span> --depth <span class="token number">0</span> --dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">ls</span> <span class="token parameter variable">--depth</span> <span class="token number">0</span> <span class="token parameter variable">--dev</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="npm-与-npx"><a href="#npm-与-npx" class="headerlink" title="npm 与 npx"></a>npm 与 npx</h3><p>在npm的基础之上，npx让npm包中的命令行工具和其他可执行文件在使用上变得更加简单。它极大地简化了我们之前使用纯粹的npm时所需要的大量步骤。</p>
 <p><strong>区别1.一个永久存在，一个临时安装，用完后删除</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">npm install -g create-react-app
@@ -1423,7 +1423,7 @@ http://www.test.com/    http://blog.test.com/             跨域          子域
 		<span class="token operator">&lt;</span>iframe <span class="token assign-left variable">src</span><span class="token operator">=</span><span class="token string">"http://192.168.100.150:8020/实验/jsonp.html"</span> <span class="token assign-left variable">frameborder</span><span class="token operator">=</span><span class="token string">"0"</span> <span class="token assign-left variable">id</span><span class="token operator">=</span><span class="token string">"iframe"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>/iframe<span class="token operator">&gt;</span>
 		<span class="token operator">&lt;</span>script <span class="token assign-left variable">type</span><span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">&gt;</span>
 			var <span class="token assign-left variable">i</span><span class="token operator">=</span>document.getElementById<span class="token punctuation">(</span><span class="token string">"iframe"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			i.onload<span class="token operator">=</span><span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token assign-left variable">i.onload</span><span class="token operator">=</span><span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
 				/*console.log<span class="token punctuation">(</span>i.contentDocument<span class="token punctuation">)</span>
 				console.log<span class="token punctuation">(</span>i.contentWindow.document.getElementById<span class="token punctuation">(</span><span class="token string">"text"</span><span class="token punctuation">)</span>.innerHTML<span class="token punctuation">)</span>*/
 				var <span class="token assign-left variable">b</span><span class="token operator">=</span>i.contentWindow.document.getElementsByTagName<span class="token punctuation">(</span><span class="token string">"body"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -1437,7 +1437,7 @@ http://www.test.com/    http://blog.test.com/             跨域          子域
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/8b0167fa9e5647359acc6466b8e421bd.png" alt=""></p>
 <p>甚至是可以获取iframe中的cookie</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">var <span class="token assign-left variable">i</span><span class="token operator">=</span>document.getElementById<span class="token punctuation">(</span><span class="token string">"iframe"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-i.onload<span class="token operator">=</span><span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token assign-left variable">i.onload</span><span class="token operator">=</span><span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
 	console.log<span class="token punctuation">(</span>i.contentDocument.cookie<span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/681d3b6bcb6d4b039578fc23e6de073b.png" alt=""></p>
@@ -2029,7 +2029,7 @@ shift<span class="token operator">+</span><span class="token constant">F11</span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.7k</span>
+                        class="white-color">197.1k</span>
             
             
             
@@ -2258,6 +2258,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

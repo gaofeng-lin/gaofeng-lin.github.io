@@ -529,7 +529,7 @@ JAVA反射机制是在运行状态中，对于任意一个实体类，都能够�
 <p>测试代码：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>company<span class="token punctuation">.</span>reflect</span><span class="token punctuation">;</span>
  
-<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>company<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>domain<span class="token punctuation">.</span></span><span class="token class-name">Person</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>company<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>domain<span class="token punctuation">.</span></span><span class="token class-name">Person</span></span><span class="token punctuation">;</span>
  
 <span class="token comment">/**
  * ⊙﹏⊙&amp;&amp;&amp;&amp;&amp;&amp;⊙▽⊙
@@ -726,10 +726,10 @@ methodName <span class="token operator">=</span> sleep<span aria-hidden="true" c
 <p>（1）将需要创建的对象的全类名和需要执行的方法定义在配置文件中 （2）在程序中加载读取配置文件 （3）使用反射技术来加载类文件进内存 （4）创建对象 （5）执行方法</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>company<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span></span>反射案例<span class="token punctuation">;</span>
  
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStream</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span></span><span class="token class-name">Method</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Properties</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStream</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span></span><span class="token class-name">Method</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Properties</span></span><span class="token punctuation">;</span>
  
 <span class="token comment">/**
  * ⊙﹏⊙&amp;&amp;&amp;&amp;&amp;&amp;⊙▽⊙
@@ -1035,7 +1035,7 @@ d:  神级方法直接加(int)强制转换，直接去掉小数点位，没有�
 <p>Random r = new Random();</p>
 <p>3.产生随机数</p>
 <p>int num = r.nextInt(10);<br>代码解析：10代表的是一个范围，如果括号写10，产生的随机数就是0-9，括号写20，参数的随机数则是0-19</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Random</span><span class="token punctuation">;</span> <span class="token comment">//1. 导入包</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Random</span></span><span class="token punctuation">;</span> <span class="token comment">//1. 导入包</span>
 
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo1Random</span> <span class="token punctuation">{</span>
 
@@ -2388,7 +2388,7 @@ public class ArraysSort {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.7k</span>
+                        class="white-color">197.1k</span>
             
             
             
@@ -2617,6 +2617,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

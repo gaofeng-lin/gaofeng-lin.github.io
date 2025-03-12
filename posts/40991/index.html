@@ -540,25 +540,25 @@
 <span class="token function">docker</span> commit 容器id 镜像:版本号
 
 //删除镜像
-<span class="token function">docker</span> rmi -f 镜像名称  
+<span class="token function">docker</span> rmi <span class="token parameter variable">-f</span> 镜像名称  
 <span class="token comment">##删除多个 其镜像ID或镜像用用空格隔开即可 </span>
-<span class="token function">docker</span> rmi -f 镜像名/镜像ID 镜像名/镜像ID 镜像名/镜像ID
+<span class="token function">docker</span> rmi <span class="token parameter variable">-f</span> 镜像名/镜像ID 镜像名/镜像ID 镜像名/镜像ID
 
 <span class="token comment">##删除全部镜像  -a 意思为显示全部, -q 意思为只显示ID</span>
-<span class="token function">docker</span> rmi -f <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> images -aq<span class="token variable">)</span></span>
+<span class="token function">docker</span> rmi <span class="token parameter variable">-f</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> images <span class="token parameter variable">-aq</span><span class="token variable">)</span></span>
 
 //强制删除镜像
 <span class="token function">docker</span> image <span class="token function">rm</span> 镜像名称/镜像ID
 
 //保存镜像
 //将我们的镜像 保存为tar 压缩文件 这样方便镜像转移和保存 ,然后 可以在任何一台安装了docker的服务器上 加载这//个镜像
-<span class="token function">docker</span> save 镜像名/镜像ID -o 镜像保存在哪个位置与名字<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">docker</span> save 镜像名/镜像ID <span class="token parameter variable">-o</span> 镜像保存在哪个位置与名字<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h3><p>容器是由镜像创建而来。容器是Docker运行应用的载体，每个应用都分别运行在Docker的每个 容器中</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run -i 镜像名称:标签   //运行容器（默认是前台运行） 
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run <span class="token parameter variable">-i</span> 镜像名称:标签   //运行容器（默认是前台运行） 
 <span class="token function">docker</span> <span class="token function">ps</span>  //查看运行的容器 
-<span class="token function">docker</span> <span class="token function">ps</span> -a  //查询所有容器<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span>  //查询所有容器<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>实际命令分析：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run -d -it --hostname phdev -p <span class="token number">90</span>:80 -p <span class="token number">8899</span>:8899 -v /sys/fs/cgroup:/sys/fs/cgroup --privileged “镜像名字” /usr/sbin/init
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">-it</span> <span class="token parameter variable">--hostname</span> phdev <span class="token parameter variable">-p</span> <span class="token number">90</span>:80 <span class="token parameter variable">-p</span> <span class="token number">8899</span>:8899 <span class="token parameter variable">-v</span> /sys/fs/cgroup:/sys/fs/cgroup <span class="token parameter variable">--privileged</span> “镜像名字” /usr/sbin/init
 
 //-d 容器以后台方式运行，不会直接进入到容器里面
 //hostname 指定主机名称；
@@ -566,7 +566,7 @@
 //-v 是挂载到指定目录
 //  privileged  /usr/sbin/init  是给容器赋予更高的权限<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">//以shell方式进入到一个已经运行的容器当中，和上一条命令搭配起来使用
-<span class="token function">docker</span> <span class="token builtin class-name">exec</span> -it “容器id” /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> “容器id” /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="传输文件命令"><a href="#传输文件命令" class="headerlink" title="传输文件命令"></a>传输文件命令</h3><ol>
 <li>传输文件命令——本地传到docker</li>
 </ol>
@@ -596,9 +596,9 @@
 <p>区别：<br>(1).export导出的镜像文件大小 小于 save保存的镜像</p>
 <p>(2).export 导出（import导入）是根据容器拿到的镜像，再导入时会丢失镜像所有的历史，所以无法进行回滚操作（docker tag ）；而save保存（load加载）的镜像，没有丢失镜像的历史，可以回滚到之前的层（layer）。（查看方式：docker images —tree）</p>
 <h3 id="删除镜像或容器"><a href="#删除镜像或容器" class="headerlink" title="删除镜像或容器"></a>删除镜像或容器</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42006301/article/details/105102020">原文链接</a><br>方法一：删除所有未运行的容器（已经运行的删除不了，未运行的就一起被删除了）</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> <span class="token function">ps</span> -a -q<span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span> <span class="token parameter variable">-q</span><span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>方法二：根据容器的状态，删除Exited状态的容器</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> <span class="token function">ps</span> -qf <span class="token assign-left variable">status</span><span class="token operator">=</span>exited<span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-qf</span> <span class="token assign-left variable">status</span><span class="token operator">=</span>exited<span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>方法三：docker 1.13版本以后，可以使用 docker system 或 docker container命令清理容器。</p>
 <pre class="line-numbers language-none"><code class="language-none">//docker container prune 删除已停用容器
 docker container prune
@@ -609,7 +609,7 @@ docker system prune
 docker system prune -a <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="查看docker信息"><a href="#查看docker信息" class="headerlink" title="查看docker信息"></a>查看docker信息</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> info<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>可以看到docker的根路径是 /var/lib/docker<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20230522150209.png" alt=""><br>查看docker根路径的磁盘占用率</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">df</span> -Th /var/lib/docker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">df</span> <span class="token parameter variable">-Th</span> /var/lib/docker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="WSL2-安装docker"><a href="#WSL2-安装docker" class="headerlink" title="WSL2 安装docker"></a>WSL2 安装docker</h2><p><a target="_blank" rel="noopener" href="https://hackmd.io/@CynthiaChuang/Install-Docker-in-WSL2#%E6%96%B9%E6%B3%951%EF%BD%9C%E5%AE%89%E8%A3%9D-Docker-%E6%90%AD%E9%85%8D-Docker-Desktop">原文链接</a></p>
 <p>方法1：安装Docker Desktop<br>直接搜索，然后安装。<br>一下两张图片标出的地方需要勾选<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Z9khlXF.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/pZdTTH9.png" alt=""></p>
 <p>如果要重启的话，需要在界面图标处右键，选择重启</p>
@@ -865,13 +865,13 @@ $ sudo service docker start<span aria-hidden="true" class="line-numbers-rows"><s
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/300/">
+                <a href="/posts/7909/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="工具使用技巧集合">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="计算机基础知识">
                         
-                        <span class="card-title">工具使用技巧集合</span>
+                        <span class="card-title">计算机基础知识</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -888,8 +888,16 @@ $ sudo service docker start<span aria-hidden="true" class="line-numbers-rows"><s
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    计算机基础知识
+                                </a>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/web/" class="post-category">
+                                    web
+                                </a>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/web/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
                                 </a>
                             
                             
@@ -899,32 +907,40 @@ $ sudo service docker start<span aria-hidden="true" class="line-numbers-rows"><s
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/office/">
-                        <span class="chip bg-color">office</span>
+                    <a href="/tags/VM/">
+                        <span class="chip bg-color">VM</span>
                     </a>
                     
-                    <a href="/tags/IDE/">
-                        <span class="chip bg-color">IDE</span>
+                    <a href="/tags/nginx/">
+                        <span class="chip bg-color">nginx</span>
                     </a>
                     
-                    <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
-                        <span class="chip bg-color">编辑器</span>
+                    <a href="/tags/%E7%BC%96%E8%AF%91/">
+                        <span class="chip bg-color">编译</span>
                     </a>
                     
-                    <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-                        <span class="chip bg-color">快捷键</span>
+                    <a href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">
+                        <span class="chip bg-color">环境变量</span>
                     </a>
                     
-                    <a href="/tags/vscode/">
-                        <span class="chip bg-color">vscode</span>
+                    <a href="/tags/Cookie/">
+                        <span class="chip bg-color">Cookie</span>
                     </a>
                     
-                    <a href="/tags/visio/">
-                        <span class="chip bg-color">visio</span>
+                    <a href="/tags/Session/">
+                        <span class="chip bg-color">Session</span>
                     </a>
                     
-                    <a href="/tags/postman/">
-                        <span class="chip bg-color">postman</span>
+                    <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">
+                        <span class="chip bg-color">密码学</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
+                        <span class="chip bg-color">硬件知识</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
+                        <span class="chip bg-color">线程、进程</span>
                     </a>
                     
                 </div>
@@ -938,13 +954,13 @@ $ sudo service docker start<span aria-hidden="true" class="line-numbers-rows"><s
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/62688/">
+                <a href="/posts/20005/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Mysql">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Shell 命令">
                         
-                        <span class="card-title">Mysql</span>
+                        <span class="card-title">Shell 命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -961,8 +977,8 @@ $ sudo service docker start<span aria-hidden="true" class="line-numbers-rows"><s
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
@@ -972,20 +988,16 @@ $ sudo service docker start<span aria-hidden="true" class="line-numbers-rows"><s
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
                     <a href="/tags/%E8%BF%90%E7%BB%B4/">
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/sed/">
+                        <span class="chip bg-color">sed</span>
                     </a>
                     
                 </div>
@@ -1182,7 +1194,7 @@ $ sudo service docker start<span aria-hidden="true" class="line-numbers-rows"><s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.7k</span>
+                        class="white-color">197.1k</span>
             
             
             
@@ -1411,6 +1423,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

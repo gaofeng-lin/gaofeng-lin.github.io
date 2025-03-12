@@ -433,12 +433,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
                             <a href="/tags/%E8%BF%90%E7%BB%B4/">
                                 <span class="chip bg-color">运维</span>
+                            </a>
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                             <a href="/tags/sed/">
@@ -529,7 +529,7 @@ version_num<span class="token operator">=</span><span class="token template-stri
 <h3 id="shell脚本中登录mysql-执行sql"><a href="#shell脚本中登录mysql-执行sql" class="headerlink" title="shell脚本中登录mysql,执行sql"></a>shell脚本中登录mysql,执行sql</h3><p><strong>方式一：mysql -u root -pmysql &lt;&lt;EOF sql语句 EOF</strong><br>注：密码与-p之间不能有空格，否则不能识别密码，EOF中间的sql语句，与mysql正常语句无异</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1</span> <span class="token comment">#!/bin/bash</span>
 <span class="token number">2</span> <span class="token builtin class-name">echo</span> <span class="token string">"链接mysql"</span>
-<span class="token number">3</span> mysql -u root -pmysql <span class="token operator">&lt;&lt;</span>EOF
+<span class="token number">3</span> mysql <span class="token parameter variable">-u</span> root <span class="token parameter variable">-pmysql</span> <span class="token operator">&lt;&lt;</span>EOF
 <span class="token number">4</span> use shelltest<span class="token punctuation">;</span>
 <span class="token number">5</span> <span class="token keyword">select</span> * from student<span class="token punctuation">;</span>
 <span class="token number">6</span> EOF
@@ -547,7 +547,7 @@ mysql: <span class="token punctuation">[</span>Warning<span class="token punctua
 <span class="token number">2</span> <span class="token builtin class-name">echo</span> <span class="token string">"链接mysql"</span>
 <span class="token number">3</span> <span class="token assign-left variable">sql</span><span class="token operator">=</span><span class="token string">"use shelltest;
 4 select * from student;"</span>
-<span class="token number">5</span> mysql -u root -pmysql -e <span class="token string">"<span class="token variable">${sql}</span>"</span>
+<span class="token number">5</span> mysql <span class="token parameter variable">-u</span> root <span class="token parameter variable">-pmysql</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${sql}</span>"</span>
 <span class="token number">6</span> <span class="token builtin class-name">echo</span> <span class="token string">"连接成功"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>执行结果：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python@ubuntu:~/shellscrip$ ./mys_connec.sh 
@@ -726,7 +726,7 @@ fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <h2 id="实际命令分析"><a href="#实际命令分析" class="headerlink" title="实际命令分析"></a>实际命令分析</h2><h3 id="shell脚本登录mysql并执行语句"><a href="#shell脚本登录mysql并执行语句" class="headerlink" title="shell脚本登录mysql并执行语句"></a>shell脚本登录mysql并执行语句</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">##!/bin/bash</span>
 
 <span class="token comment">## get 7 days ago according to input date. e.g. if input date is 20180410,it will delete those records on or before 20180403</span>
-<span class="token assign-left variable">wanted_date</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">date</span> -d <span class="token string">"<span class="token variable">$1</span> 7 days ago"</span> +%Y%m%d<span class="token variable">`</span></span>
+<span class="token assign-left variable">wanted_date</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">date</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">$1</span> 7 days ago"</span> +%Y%m%d<span class="token variable">`</span></span>
 
 <span class="token builtin class-name">echo</span> <span class="token string">"0==}=========&gt; CAUTION! Those records on or before <span class="token variable">$wanted_date</span> will be removed!"</span>
 <span class="token builtin class-name">echo</span> <span class="token string">"0==}=========&gt; Are you sure to continue? yes/no"</span>
@@ -743,7 +743,7 @@ fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <span class="token keyword">fi</span>
 
 <span class="token comment">## to call SQL statement at MySQL prompt</span>
-mysql -h <span class="token number">172.33</span>.101.123 -P <span class="token number">3306</span> -u tony -pYourPassword -D YourDbName <span class="token operator">&lt;&lt;</span><span class="token string">EOF
+mysql <span class="token parameter variable">-h</span> <span class="token number">172.33</span>.101.123 <span class="token parameter variable">-P</span> <span class="token number">3306</span> <span class="token parameter variable">-u</span> tony <span class="token parameter variable">-pYourPassword</span> <span class="token parameter variable">-D</span> YourDbName <span class="token operator">&lt;&lt;</span><span class="token string">EOF
 select current_date();
 use tony_db;
 desc confirmed_order_data;
@@ -799,7 +799,7 @@ $ echo “信息” &gt; test.sh
 利用 “sh -c” 命令，它可以让 bash 将一个字串作为完整的命令来执行，这样就可以将 sudo 的影响范围扩展到整条命令。具体用法如下：
 $ sudo sh -c ‘echo “第二条内容” &gt;&gt; test.sh’
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="给每一个远程分支在本地建立单独的文件夹，文件名就是分支名"><a href="#给每一个远程分支在本地建立单独的文件夹，文件名就是分支名" class="headerlink" title="给每一个远程分支在本地建立单独的文件夹，文件名就是分支名"></a>给每一个远程分支在本地建立单独的文件夹，文件名就是分支名</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> branch -r <span class="token operator">|</span> <span class="token function">xargs</span> -d/ -n1 <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token string">'origin'</span> <span class="token operator">|</span> <span class="token function">xargs</span> -I<span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token function">sh</span> -c <span class="token string">'mkdir "C:\Users\76585\Desktop\try\{}" '</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="给每一个远程分支在本地建立单独的文件夹，文件名就是分支名"><a href="#给每一个远程分支在本地建立单独的文件夹，文件名就是分支名" class="headerlink" title="给每一个远程分支在本地建立单独的文件夹，文件名就是分支名"></a>给每一个远程分支在本地建立单独的文件夹，文件名就是分支名</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> branch <span class="token parameter variable">-r</span> <span class="token operator">|</span> <span class="token function">xargs</span> -d/ <span class="token parameter variable">-n1</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-v</span> <span class="token string">'origin'</span> <span class="token operator">|</span> <span class="token function">xargs</span> -I<span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token function">sh</span> <span class="token parameter variable">-c</span> <span class="token string">'mkdir "C:\Users\76585\Desktop\try\{}" '</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>分析：</p>
 <pre class="line-numbers language-none"><code class="language-none">1.  git branch -r //显示远程分支。注意，本地分支可能只有一个，master这种。但远程分支可能有很多个。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-none"><code class="language-none">2. | xargs -d/ -n1 // -d -n都是xargs的参数，详细可以去查文档。-d/  以"/"为分隔符；-n1，每行输出一个。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -1147,7 +1147,7 @@ sort |uniq -c|sort -nr|column -t|head<span aria-hidden="true" class="line-number
 <p>1、查看变量 IFS 的值。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token environment constant">$IFS</span>  
   
-$ <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token environment constant">$IFS</span>"</span> <span class="token operator">|</span> od -b  
+$ <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token environment constant">$IFS</span>"</span> <span class="token operator">|</span> od <span class="token parameter variable">-b</span>  
 0000000 040 011 012 012  
 0000004  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>直接输出IFS是看不到的，把它转化为二进制就可以看到了，”040”是空格，”011”是Tab，”012”是换行符”\n” 。最后一个 012 是因为 echo 默认是会换行的。</p>
@@ -1243,12 +1243,12 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
-                                </a>
-                            
                                 <a href="/tags/%E8%BF%90%E7%BB%B4/">
                                     <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                                 <a href="/tags/sed/">
@@ -1430,13 +1430,13 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/62688/">
+                <a href="/posts/40991/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Mysql">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Docker">
                         
-                        <span class="card-title">Mysql</span>
+                        <span class="card-title">Docker</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1453,8 +1453,8 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                    运维
                                 </a>
                             
                             
@@ -1464,20 +1464,12 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
                     <a href="/tags/%E8%BF%90%E7%BB%B4/">
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
-                    </a>
-                    
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
                     </a>
                     
                 </div>
@@ -1491,13 +1483,13 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/48230/">
+                <a href="/posts/62688/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Linux常用命令">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Mysql">
                         
-                        <span class="card-title">Linux常用命令</span>
+                        <span class="card-title">Mysql</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1514,8 +1506,8 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -1525,20 +1517,20 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
                     <a href="/tags/%E8%BF%90%E7%BB%B4/">
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/ssh/">
-                        <span class="chip bg-color">ssh</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/Vim/">
-                        <span class="chip bg-color">Vim</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -1735,7 +1727,7 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.7k</span>
+                        class="white-color">197.1k</span>
             
             
             
@@ -1964,6 +1956,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

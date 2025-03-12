@@ -435,12 +435,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
                             <a href="/tags/%E8%BF%90%E7%BB%B4/">
                                 <span class="chip bg-color">运维</span>
+                            </a>
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                             <a href="/tags/ssh/">
@@ -550,29 +550,29 @@ unzip -d /tmp -o test.zip //这条命令和上一条相比，可以不用询问�
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604234051220.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/20190604234541328.png" alt=""></p>
 <h3 id="tar-xz"><a href="#tar-xz" class="headerlink" title=".tar.xz"></a>.tar.xz</h3><p>默认压缩后的文件后缀为 xz，速度慢一些，但是压缩的会更小。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">//常用参数
--z	强制执行压缩, 默认不保留源文件。压缩后的文件名为源文件.xz
--d	强制执行解压缩
--l	列出压缩文件的信息
--k	保留源文件不要删除
--f	强制覆盖输出文件和压缩链接
--c	写入到标准输出，输入文件不要删除
+<span class="token parameter variable">-z</span>	强制执行压缩, 默认不保留源文件。压缩后的文件名为源文件.xz
+<span class="token parameter variable">-d</span>	强制执行解压缩
+<span class="token parameter variable">-l</span>	列出压缩文件的信息
+<span class="token parameter variable">-k</span>	保留源文件不要删除
+<span class="token parameter variable">-f</span>	强制覆盖输出文件和压缩链接
+<span class="token parameter variable">-c</span>	写入到标准输出，输入文件不要删除
 -0<span class="token punctuation">..</span>-9	压缩比例，默认为6
--e  使用更多的 CPU <span class="token function">time</span> 来进行压缩，提高压缩率。不会影响解压时所需要的内存。
--T  指定线程数，默认是 <span class="token number">1</span> ，当设置为 <span class="token number">0</span> 时使用和机器核心一样多的线程。
---format<span class="token operator">=</span>  指定压缩输出格式，可以是 raw、xz、lzma
--v	显示更详细的信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token parameter variable">-e</span>  使用更多的 CPU <span class="token function">time</span> 来进行压缩，提高压缩率。不会影响解压时所需要的内存。
+<span class="token parameter variable">-T</span>  指定线程数，默认是 <span class="token number">1</span> ，当设置为 <span class="token number">0</span> 时使用和机器核心一样多的线程。
+<span class="token parameter variable">--format</span><span class="token operator">=</span>  指定压缩输出格式，可以是 raw、xz、lzma
+<span class="token parameter variable">-v</span>	显示更详细的信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>注意点： 压缩后的文件时在和源文件同一个目录。当我们压缩的文件为 /home/nginx/logs/error.log-20191126 ，当我们在任意目录执行完 xz /home/nginx/logs/error.log-20191126 后，压缩后的文件路径是 /home/nginx/logs/error.log-20191126.xz.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">//不保留源文件
 xz   /home/nginx/logs/error.log-20191126
 
 //保留源文件
-xz -k /home/nginx/logs/error.log-20191126
+xz <span class="token parameter variable">-k</span> /home/nginx/logs/error.log-20191126
 
 //解压缩文件
-xz -d  /home/nginx/logs/error.log-20191126.xz
+xz <span class="token parameter variable">-d</span>  /home/nginx/logs/error.log-20191126.xz
 
 //指定多线程数来进行压缩
-xz -T <span class="token number">4</span>  /home/nginx/logs/error.log-20191126<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+xz <span class="token parameter variable">-T</span> <span class="token number">4</span>  /home/nginx/logs/error.log-20191126<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="查询或查看命令汇总"><a href="#查询或查看命令汇总" class="headerlink" title="查询或查看命令汇总"></a>查询或查看命令汇总</h2><h3 id="查看某个软件对应的软连接"><a href="#查看某个软件对应的软连接" class="headerlink" title="查看某个软件对应的软连接"></a>查看某个软件对应的软连接</h3><pre class="line-numbers language-none"><code class="language-none">ls -l "xxxx"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>使用<code>ls -al</code>也可也，那就是查看整个目录下面的。</p>
 <h3 id="which-与-whereis"><a href="#which-与-whereis" class="headerlink" title="which 与 whereis"></a>which 与 whereis</h3><p>which和whereis命令都是Linux操作系统下查找可执行文件路径的命令</p>
@@ -646,8 +646,8 @@ rm -rf !(file1|file2)<span aria-hidden="true" class="line-numbers-rows"><span></
 <pre class="line-numbers language-none"><code class="language-none">ls checkpoint_*.pth | awk -F'_' '{if ($2 &lt; 400) print $0}' | xargs rm -rf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>命令解释：</p>
 <ol>
-<li>ls checkpoint<em>*.pth：列出当前目录下所有匹配 checkpoint</em>*.pth 格式的文件。</li>
-<li><p>awk -F’<em>‘ ‘{if ($2 &lt; 400) print $0}’：是一种强大的文本处理工具，这里用来处理 ls 命令的输出。；-F’</em>‘ 设置字段分隔符为下划线 <em>。这意味着 awk 将每行（每个文件名）按 </em> 分割成多个字段。；{if ($2 &lt; 400) print $0} 是 awk 的动作部分，检查每个文件名的第二部分（$2）是否小于 400。如果是，则打印整个文件名（$0）。假设文件名是 checkpoint_350_0.5.pth，则 $2 是 350。</p>
+<li>ls checkpoint_<em>.pth：列出当前目录下所有匹配 checkpoint_</em>.pth 格式的文件。</li>
+<li><p>awk -F’_’ ‘{if ($2 &lt; 400) print $0}’：是一种强大的文本处理工具，这里用来处理 ls 命令的输出。；-F’_’ 设置字段分隔符为下划线 _。这意味着 awk 将每行（每个文件名）按 _ 分割成多个字段。；{if ($2 &lt; 400) print $0} 是 awk 的动作部分，检查每个文件名的第二部分（$2）是否小于 400。如果是，则打印整个文件名（$0）。假设文件名是 checkpoint_350_0.5.pth，则 $2 是 350。</p>
 </li>
 <li><p>xargs 用于构建并执行命令行，它从标准输入读取数据，将其作为参数传递给指定的命令；这里，xargs 会把 awk 输出的文件名作为参数传递给 rm -rf，从而删除这些文件。</p>
 </li>
@@ -693,9 +693,9 @@ source ~/.bashrc
 <p>创建多个文件。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> /tmp/file1.txt /tmp/file2.txt /tmp/file3.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>修改文件的修改时间并查看文件属性。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> -m /tmp/file.txt <span class="token operator">&amp;&amp;</span> <span class="token function">stat</span> /tmp/file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> <span class="token parameter variable">-m</span> /tmp/file.txt <span class="token operator">&amp;&amp;</span> <span class="token function">stat</span> /tmp/file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>同时修改访问时间和修改时间并设置一个特定的访问与修改时间。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> -am -t <span class="token number">202007010000.00</span> /tmp/file.txt <span class="token operator">&amp;&amp;</span> <span class="token function">stat</span> /tmp/file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> <span class="token parameter variable">-am</span> <span class="token parameter variable">-t</span> <span class="token number">202007010000.00</span> /tmp/file.txt <span class="token operator">&amp;&amp;</span> <span class="token function">stat</span> /tmp/file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="cat命令-显示文件内容"><a href="#cat命令-显示文件内容" class="headerlink" title="cat命令(显示文件内容)"></a>cat命令(显示文件内容)</h3><p><code>cat</code>命令属于文件管理，用于连接文件并打印到标准输出设备上，<code>cat</code>经常用来显示文件的内容，注意，当文件较大时，文本在屏幕上迅速闪过，会出现滚屏现象，此时往往看不清所显示的内容，为了控制滚屏，可以按<code>Ctrl+S</code>键停止滚屏，按<code>Ctrl+Q</code>键可以恢复滚屏，此外可以用<code>more</code>等命令进行读文件并分页显示。</p>
 <p>使用<code>cat</code>命令创建一个文件，输入文件信息后按<code>Ctrl+D</code>输出<code>EOF</code>标识后结束输入。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> <span class="token operator">&gt;</span> file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -704,7 +704,7 @@ source ~/.bashrc
 <p>同时输出<code>file.txt</code>与<code>file2.txt</code>文件中的内容。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> file.txt file2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>把<code>file.txt</code>文件的内容加上行号后追加到<code>file2.txt</code>文件中。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> -n file.txt <span class="token operator">&gt;&gt;</span> file2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> <span class="token parameter variable">-n</span> file.txt <span class="token operator">&gt;&gt;</span> file2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>清空<code>file2.txt</code>文件，<code>/dev/null</code>称为空设备，是一个特殊的设备文件，其会丢弃一切写入其中的数据，但报告写入操作成功，读取它则会立即得到一个<code>EOF</code>。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /dev/null <span class="token operator">&gt;</span> file2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>将<code>file.txt</code>与<code>file2.txt</code>文件内容合并输出到<code>file3.txt</code>。</p>
@@ -1040,12 +1040,12 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
-                                </a>
-                            
                                 <a href="/tags/%E8%BF%90%E7%BB%B4/">
                                     <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                                 <a href="/tags/ssh/">
@@ -1231,13 +1231,13 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/20005/">
+                <a href="/posts/62688/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Shell 命令">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Mysql">
                         
-                        <span class="card-title">Shell 命令</span>
+                        <span class="card-title">Mysql</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1254,8 +1254,8 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -1265,16 +1265,20 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
                     <a href="/tags/%E8%BF%90%E7%BB%B4/">
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/sed/">
-                        <span class="chip bg-color">sed</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -1520,7 +1524,7 @@ docker 和其他服务也适用<span aria-hidden="true" class="line-numbers-rows
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.7k</span>
+                        class="white-color">197.1k</span>
             
             
             
@@ -1749,6 +1753,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

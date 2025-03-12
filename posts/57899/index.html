@@ -517,7 +517,7 @@
 <p>根据这种确定性去解决链表中的一些问题。使用这种思想还可以解决链表的以下问题：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">「力扣」第 <span class="token number">19</span> 题： 倒数第 k 个结点，快指针先走几步，不是靠猜的，要在纸上画图模拟一下，就清楚了；
 「力扣」第 <span class="token number">141</span> 题：环形链表，在环中的时候可以想象，<span class="token class-name">A</span> 同学开始有存款 <span class="token number">100</span> 元，每天赚 <span class="token number">1</span> 元，<span class="token class-name">B</span> 同学开始有存款 <span class="token number">50</span> 元，每天赚 <span class="token number">2</span> 元，<span class="token class-name">B</span> 同学一定会在某一天和 <span class="token class-name">A</span> 同学的存款一样；
-「力扣」第 <span class="token number">142</span> 题：环形链表 II；
+「力扣」第 <span class="token number">142</span> 题：环形链表 <span class="token constant">II</span>；
 「力扣」第 <span class="token number">161</span> 题：相交链表，起点不同，构造相同长度让它们相遇，同样是利用了同步走这个等量关系。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="动态规划解题框架"><a href="#动态规划解题框架" class="headerlink" title="动态规划解题框架"></a>动态规划解题框架</h2><p>框架：<br></p><pre class="line-numbers language-none"><code class="language-none">for 状态1 in 状态1的所有取值：
     for 状态2 in 状态2的所有取值：
@@ -1319,16 +1319,16 @@ public class SonSet {
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/Jenkins/">
+                        <span class="chip bg-color">Jenkins</span>
+                    </a>
+                    
                     <a href="/tags/%E8%BF%90%E7%BB%B4/">
                         <span class="chip bg-color">运维</span>
                     </a>
                     
                     <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">
                         <span class="chip bg-color">持续集成</span>
-                    </a>
-                    
-                    <a href="/tags/Jenkins/">
-                        <span class="chip bg-color">Jenkins</span>
                     </a>
                     
                 </div>
@@ -1525,7 +1525,7 @@ public class SonSet {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.7k</span>
+                        class="white-color">197.1k</span>
             
             
             
@@ -1754,6 +1754,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
