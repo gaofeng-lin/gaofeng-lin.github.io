@@ -511,7 +511,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11k
+                    11.2k
                 </div>
                 
 
@@ -549,7 +549,24 @@
 </ol>
 <p><img src="https://pic1.zhimg.com/80/v2-1d7407e1c6a7d04b28631634332a86d6_1440w.webp?source=1940ef5c" alt=""></p>
 <p>缺少任何一个原因都不能导致这一后果（无前项一定无后项）所以也可认为前项假后项真这个命题为假</p>
-<h3 id="牛顿迭代法求平方根"><a href="#牛顿迭代法求平方根" class="headerlink" title="牛顿迭代法求平方根"></a>牛顿迭代法求平方根</h3><p>该方法主要思想就是<strong>切线是曲线的线性逼近</strong>。</p>
+<h2 id="汉语"><a href="#汉语" class="headerlink" title="汉语"></a>汉语</h2><h3 id="”的“-”地“的区别"><a href="#”的“-”地“的区别" class="headerlink" title="”的“  ”地“的区别"></a>”的“  ”地“的区别</h3><ol>
+<li><p><strong>的</strong></p>
+<p> <strong>判断技巧</strong><br> 如果“的”后面的词语是名词（或可补出名词），则用“的”。</p>
+<p> <strong>例子：</strong></p>
+<p> 这本书是老师的。（“的”代替省略的名词“书”）</p>
+</li>
+</ol>
+<ol>
+<li><p><strong>地</strong></p>
+<p> <strong>判断技巧</strong><br> 如果“地”后面的词语是动词或形容词（表示动作/状态），则用“地”。</p>
+</li>
+</ol>
+<pre><code>**例子：**
+
+认真地学习（副词+地+动词）
+开心地笑了（形容词+地+动词）
+出奇地安静（副词+地+形容词）
+</code></pre><h3 id="牛顿迭代法求平方根"><a href="#牛顿迭代法求平方根" class="headerlink" title="牛顿迭代法求平方根"></a>牛顿迭代法求平方根</h3><p>该方法主要思想就是<strong>切线是曲线的线性逼近</strong>。</p>
 <p>假设我们要求一个数的平方根（a），那么可以写为一个函数：$f(x) = x^2 -a$，令$f(x)$为0，得到的x就是我们要的结果。这个函数在二维平面上画出来是一个往y轴平移的抛物线。</p>
 <p>在f(x)上任意一点$x_i$做对应的切线，这条切线和X轴的交点的横坐标为$x_{i+1}$，可以算出斜率，后续的推导见下图，可以从理论上证明该方法最后能求出平方根</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-10-28_15-35-20.png" alt=""></p>
@@ -772,7 +789,7 @@ npm install hexo-renderer-mathjax --save<span aria-hidden="true" class="line-num
 <ol>
 <li>更新MathJax的CDN链接</li>
 </ol>
-<p>将最后一行cdn地址改为（版本可以根据实际情况修改，我是2.7.3）</p>
+<p>搜索mathjax.html文件，将最后一行cdn地址改为（版本可以根据实际情况修改，我是2.7.3）</p>
 <pre class="line-numbers language-none"><code class="language-none">
 &lt;script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"&gt;&lt;/script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol>
@@ -783,7 +800,7 @@ npm install hexo-renderer-kramed --save<span aria-hidden="true" class="line-numb
 <ol>
 <li>更改转义规则</li>
 </ol>
-<p>首先， 打开/node_modules/kramed/lib/rules、inline.js</p>
+<p>首先， 打开/node_modules/kramed/lib/rules/inline.js</p>
 <p>第11行的escape变量的值做相应的修改：</p>
 <pre class="line-numbers language-none"><code class="language-none">escape: /^\\([`*\[\]()#$+\-.!_&gt;])/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这一步是在原基础上取消了对\,{,}的转义(escape)。<br>同时把第20行的em变量也要做相应的修改</p>
@@ -1352,12 +1369,12 @@ mathjax: true<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">
-                        <span class="chip bg-color">持续集成</span>
-                    </a>
-                    
                     <a href="/tags/Jenkins/">
                         <span class="chip bg-color">Jenkins</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">
+                        <span class="chip bg-color">持续集成</span>
                     </a>
                     
                 </div>
@@ -1644,7 +1661,7 @@ mathjax: true<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.1k</span>
+                        class="white-color">197.2k</span>
             
             
             
