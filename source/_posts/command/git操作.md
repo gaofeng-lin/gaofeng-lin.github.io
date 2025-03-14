@@ -13,6 +13,110 @@ abbrlink: 3828
 ---
 
 
+## git 工作区
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/git%E5%B7%A5%E4%BD%9C%E6%B5%81.drawio.png)
+
+**工作区**：我们直接编辑的地方，记事本打开的文本等，肉眼可见，直接操作。
+
+**暂存区**：数据暂时存放的区域，可在工作区和版本库之间进行数据的友好交流。
+
+**本地仓库**：存放已经提交的数据
+
+**远程仓库**：存放本地仓库push的数据
+
+## 撤回命令
+
+这里重点说一下撤销命令，可以分为四个阶段：
+
+1. 撤销工作区的未暂存修改（未执行 git add）
+
+```
+# 撤销单个文件的修改
+git restore <file>      
+
+# 撤销所有未暂存的修改
+git restore . 
+```
+
+
+2. 撤销暂存区的已暂存修改（已执行 git add）
+
+```
+# 将单个文件移出暂存区（保留工作区修改）
+git restore --staged <file>  # 推荐（Git 2.23+）
+
+# 将所有文件移出暂存区
+git restore --staged .       # 谨慎使用！会清空暂存区
+```
+
+3. 撤销本地仓库的提交（已执行 git commit）
+```
+# 撤销最近一次提交，保留修改到工作区
+git reset HEAD~1       # 默认 --mixed 模式
+
+# 彻底删除最近一次提交（丢弃所有修改）​
+git reset --hard HEAD~1  # 慎用！会彻底丢弃提交和修改
+
+# 撤销最近一次提交，保留修改到暂存区
+git reset --soft HEAD~1
+
+# 修改上一次提交的 message 或内容
+git commit --amend       # 修改提交信息或追加新修改
+```
+
+4. 撤销远程仓库的提交（已执行 git push）
+
+```
+# 生成一个反向提交，抵消之前的修改
+git revert <commit-hash>  
+```
+
+## stash命令
+
+**背景：在一个分支开发新功能，还没开发完毕，做到一半时有反馈紧急bug需要处理，但是新功能开发了一半又不想提交。分支有改变时不提交又不能切换分支**
+
+```
+# message为添加的一些注释
+git stash save 'message...' 
+```
+
+它会保存当前工作进度，会把暂存区和工作区的改动保存到一个未完结变更的堆栈中；执行完这个命令后，在运行 git status 命令，就会发现当前是一个干净的工作区，没有任何改动。
+
+```
+# 恢复的时候使用 git stash list 查看有没有已经 stash 的记录
+
+# 然后使用git stash apply n 回到指定版本
+
+# n为stash list结果里面的需要0、1、2、3
+
+# 查看有无用的 list，可以先使用 git stash drop n 删除，直到 list 为空
+
+
+```
+
+## clone、pull、fetch命令
+
+**git clone**：将远程仓库完整复制到本地，适合第一次从远程获取项目。
+
+**pull = fetch + merge**
+
+**git fetch**：拉取远程仓库的最新提交、分支和标签，**但不会修改本地工作区，所以fetch后看不到文件变化**
+
+```
+# 拉取远程所有分支的最新信息
+git fetch origin
+
+# 拉取特定分支的更新
+git fetch origin main
+```
+
+如果需要看到变化，需要手动合并到本地分支：
+```
+git merge origin/main  # 或使用 git pull（等同于 fetch + merge）
+```
+
+
 
 ## config相关命令
 ###  查看配置信息
@@ -760,7 +864,7 @@ git remote add origin https://xxxx
 
 背景：
 
-两台设备，共用同一个git仓库。设备a之前做了修改，但是忘记了提交。设备b一直在修改核提交。
+两台设备，共用同一个git仓库。设备a之前做了修改，但是忘记了提交。设备b一直在修改和提交。
 我目前想在设备a上面**push**，失败：
 To github.com:gaofeng-lin/gaofeng-lin.github.io.git
  ! [rejected]          hexo -> hexo (non-fast-forward)
