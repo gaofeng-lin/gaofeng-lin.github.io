@@ -600,14 +600,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    22.9k
+                    23.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    85 分
+                    86 分
                 </div>
                 
 
@@ -1445,6 +1445,10 @@ x.grad<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <p>解码：使重建的数据尽可能接近原始输入数据。</p>
 <p>训练过程中，Convolutional Autoencoder (CAE)通常使用重构损失（比如均方误差）来衡量重建的数据和原始输入数据的差异，然后通过反向传播和优化算法来不断调整网络参数，使得重构损失最小。</p>
 <p>总的来说，Convolutional Autoencoder (CAE)的主要步骤是：输入数据 —&gt; 编码器（卷积+池化）—&gt; 潜在特征表示 —&gt; 解码器（上采样+卷积）—&gt; 输出数据（重建的数据）。</p>
+<h3 id="预训练和传统训练的区别"><a href="#预训练和传统训练的区别" class="headerlink" title="预训练和传统训练的区别"></a>预训练和传统训练的区别</h3><p>预训练是指在一个<strong>大规模通用数据集</strong>上先训练模型，使其学习数据的<strong>通用特征</strong>表示。这个过程通常是无监督或自监督的（无需人工标注标签）。例如：</p>
+<p>在自然语言处理（NLP）中，BERT 模型通过预训练学习词语、句子的上下文关系。</p>
+<p>传统训练时是针对特定任务（如时间序列异常检测），直接在<strong>目标数据集</strong>上训练模型。</p>
+<p>微调往往和预训练结合，在<strong>目标数据集</strong>上，用少量标注数据调整预训练模型的参数，使其适应具体任务（如异常检测）。</p>
 <h3 id="熵、信息熵、相对熵、KL散度、交叉熵损失、softmax"><a href="#熵、信息熵、相对熵、KL散度、交叉熵损失、softmax" class="headerlink" title="熵、信息熵、相对熵、KL散度、交叉熵损失、softmax"></a>熵、信息熵、相对熵、KL散度、交叉熵损失、softmax</h3><h4 id="softmax"><a href="#softmax" class="headerlink" title="softmax"></a>softmax</h4><p>softmax函数能够将未规范化的预测变换为非负数并且总和为1，同时让模型保持 可导的性质</p>
 <h4 id="熵和信息熵"><a href="#熵和信息熵" class="headerlink" title="熵和信息熵"></a>熵和信息熵</h4><p>熵和信息熵本质是一个东西，就是换了个说法而已。</p>
 <p>熵：在信息论中则表示事务的不确定性。信息量与信息熵是相对的，告诉你一件事实，你获取了信息量，但减少了熵。或者说，得知一件事实后信息熵减少的量，就是你得到的这个事实所包含的信息的量。</p>
@@ -1968,9 +1972,9 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="ai">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="rnn">
                         
-                        <span class="card-title">ai</span>
+                        <span class="card-title">rnn</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1987,8 +1991,8 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/AI/" class="post-category">
-                                    AI
+                            <a href="/categories/rnn/" class="post-category">
+                                    rnn
                                 </a>
                             
                             
@@ -2252,7 +2256,7 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.1k</span>
+                        class="white-color">198.3k</span>
             
             
             

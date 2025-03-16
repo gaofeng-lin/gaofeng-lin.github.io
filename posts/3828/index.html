@@ -5,18 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="git操作, Home of Gaofeng">
-    <meta name="description" content="config相关命令查看配置信息
-查看系统config
-
-git config --system --list
-
-查看当前用户（global）配置
-
-git config --global  --list
-
-查看当前仓库配置信息
-
-git ">
+    <meta name="description" content="git 工作区
+工作区：我们直接编辑的地方，记事本打开的文本等，肉眼可见，直接操作。
+暂存区：数据暂时存放的区域，可在工作区和版本库之间进行数据的友好交流。
+本地仓库：存放已经提交的数据
+远程仓库：存放本地仓库push的数据
+撤回命令这里重">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -444,12 +438,12 @@ git ">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                                <span class="chip bg-color">运维</span>
-                            </a>
-                        
                             <a href="/tags/Linux/">
                                 <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                                <span class="chip bg-color">运维</span>
                             </a>
                         
                             <a href="/tags/git/">
@@ -490,14 +484,14 @@ git ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.9k
+                    6.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    23 分
+                    25 分
                 </div>
                 
 
@@ -520,7 +514,70 @@ git ">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="config相关命令"><a href="#config相关命令" class="headerlink" title="config相关命令"></a>config相关命令</h2><h3 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h3><ol>
+                <h2 id="git-工作区"><a href="#git-工作区" class="headerlink" title="git 工作区"></a>git 工作区</h2><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/git%E5%B7%A5%E4%BD%9C%E6%B5%81.drawio.png" alt=""></p>
+<p><strong>工作区</strong>：我们直接编辑的地方，记事本打开的文本等，肉眼可见，直接操作。</p>
+<p><strong>暂存区</strong>：数据暂时存放的区域，可在工作区和版本库之间进行数据的友好交流。</p>
+<p><strong>本地仓库</strong>：存放已经提交的数据</p>
+<p><strong>远程仓库</strong>：存放本地仓库push的数据</p>
+<h2 id="撤回命令"><a href="#撤回命令" class="headerlink" title="撤回命令"></a>撤回命令</h2><p>这里重点说一下撤销命令，可以分为四个阶段：</p>
+<ol>
+<li>撤销工作区的未暂存修改（未执行 git add）</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none"># 撤销单个文件的修改
+git restore &lt;file&gt;      
+
+# 撤销所有未暂存的修改
+git restore . <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>撤销暂存区的已暂存修改（已执行 git add）</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none"># 将单个文件移出暂存区（保留工作区修改）
+git restore --staged &lt;file&gt;  # 推荐（Git 2.23+）
+
+# 将所有文件移出暂存区
+git restore --staged .       # 谨慎使用！会清空暂存区<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li><p>撤销本地仓库的提交（已执行 git commit）</p>
+<pre class="line-numbers language-none"><code class="language-none"># 撤销最近一次提交，保留修改到工作区
+git reset HEAD~1       # 默认 --mixed 模式
+
+# 彻底删除最近一次提交（丢弃所有修改）​
+git reset --hard HEAD~1  # 慎用！会彻底丢弃提交和修改
+
+# 撤销最近一次提交，保留修改到暂存区
+git reset --soft HEAD~1
+
+# 修改上一次提交的 message 或内容
+git commit --amend       # 修改提交信息或追加新修改<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>撤销远程仓库的提交（已执行 git push）</p>
+</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none"># 生成一个反向提交，抵消之前的修改
+git revert &lt;commit-hash&gt;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="stash命令"><a href="#stash命令" class="headerlink" title="stash命令"></a>stash命令</h2><p><strong>背景：在一个分支开发新功能，还没开发完毕，做到一半时有反馈紧急bug需要处理，但是新功能开发了一半又不想提交。分支有改变时不提交又不能切换分支</strong></p>
+<pre class="line-numbers language-none"><code class="language-none"># message为添加的一些注释
+git stash save 'message...' <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>它会保存当前工作进度，会把暂存区和工作区的改动保存到一个未完结变更的堆栈中；执行完这个命令后，在运行 git status 命令，就会发现当前是一个干净的工作区，没有任何改动。</p>
+<pre class="line-numbers language-none"><code class="language-none"># 恢复的时候使用 git stash list 查看有没有已经 stash 的记录
+
+# 然后使用git stash apply n 回到指定版本
+
+# n为stash list结果里面的需要0、1、2、3
+
+# 查看有无用的 list，可以先使用 git stash drop n 删除，直到 list 为空
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="clone、pull、fetch命令"><a href="#clone、pull、fetch命令" class="headerlink" title="clone、pull、fetch命令"></a>clone、pull、fetch命令</h2><p><strong>git clone</strong>：将远程仓库完整复制到本地，适合第一次从远程获取项目。</p>
+<p><strong>pull = fetch + merge</strong></p>
+<p><strong>git fetch</strong>：拉取远程仓库的最新提交、分支和标签，<strong>但不会修改本地工作区，所以fetch后看不到文件变化</strong></p>
+<pre class="line-numbers language-none"><code class="language-none"># 拉取远程所有分支的最新信息
+git fetch origin
+
+# 拉取特定分支的更新
+git fetch origin main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果需要看到变化，需要手动合并到本地分支：<br></p><pre class="line-numbers language-none"><code class="language-none">git merge origin/main  # 或使用 git pull（等同于 fetch + merge）<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<h2 id="config相关命令"><a href="#config相关命令" class="headerlink" title="config相关命令"></a>config相关命令</h2><h3 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h3><ol>
 <li>查看系统config</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">git config --system --list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -849,7 +906,7 @@ git remote remove origin //移除名为origin的地址（一般默认是这个�
 
 git remote add origin https://xxxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="两台设备之前同步出问题"><a href="#两台设备之前同步出问题" class="headerlink" title="两台设备之前同步出问题"></a>两台设备之前同步出问题</h3><p>背景：</p>
-<p>两台设备，共用同一个git仓库。设备a之前做了修改，但是忘记了提交。设备b一直在修改核提交。<br>我目前想在设备a上面<strong>push</strong>，失败：<br>To github.com:gaofeng-lin/gaofeng-lin.github.io.git<br> ! [rejected]          hexo -&gt; hexo (non-fast-forward)<br>error: failed to push some refs to ‘github.com:gaofeng-lin/gaofeng-lin.github.io.git’<br>hint: Updates were rejected because the tip of your current branch is behind<br>hint: its remote counterpart. Integrate the remote changes (e.g.<br>hint: ‘git pull …’) before pushing again.<br>hint: See the ‘Note about fast-forwards’ in ‘git push —help’ for details.</p>
+<p>两台设备，共用同一个git仓库。设备a之前做了修改，但是忘记了提交。设备b一直在修改和提交。<br>我目前想在设备a上面<strong>push</strong>，失败：<br>To github.com:gaofeng-lin/gaofeng-lin.github.io.git<br> ! [rejected]          hexo -&gt; hexo (non-fast-forward)<br>error: failed to push some refs to ‘github.com:gaofeng-lin/gaofeng-lin.github.io.git’<br>hint: Updates were rejected because the tip of your current branch is behind<br>hint: its remote counterpart. Integrate the remote changes (e.g.<br>hint: ‘git pull …’) before pushing again.<br>hint: See the ‘Note about fast-forwards’ in ‘git push —help’ for details.</p>
 <p><strong>拉取</strong>也失败：<br>From github.com:gaofeng-lin/gaofeng-lin.github.io</p>
 <ul>
 <li>branch              hexo       -&gt; FETCH_HEAD<br>735387a4..943f2d3b  hexo       -&gt; origin/hexo<br>error: Your local changes to the following files would be overwritten by merge:<pre><code> source/_posts/other/零散知识.md
@@ -942,12 +999,12 @@ git pull origin hexo                    # 合并远程hexo分支到本地<span a
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                                    <span class="chip bg-color">运维</span>
-                                </a>
-                            
                                 <a href="/tags/Linux/">
                                     <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">运维</span>
                                 </a>
                             
                                 <a href="/tags/git/">
@@ -1133,95 +1190,6 @@ git pull origin hexo                    # 合并远程hexo分支到本地<span a
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/37060/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="零散知识">
-                        
-                        <span class="card-title">零散知识</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="post-category">
-                                    小知识
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/IDE/">
-                        <span class="chip bg-color">IDE</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
-                        <span class="chip bg-color">编辑器</span>
-                    </a>
-                    
-                    <a href="/tags/vscode/">
-                        <span class="chip bg-color">vscode</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%85%A7%E7%89%87%E6%A8%A1%E7%B3%8A%E5%A4%84%E7%90%86/">
-                        <span class="chip bg-color">照片模糊处理</span>
-                    </a>
-                    
-                    <a href="/tags/win10/">
-                        <span class="chip bg-color">win10</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%B8%93%E5%88%A9/">
-                        <span class="chip bg-color">专利</span>
-                    </a>
-                    
-                    <a href="/tags/bat/">
-                        <span class="chip bg-color">bat</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%B8%A6%E5%AE%BD/">
-                        <span class="chip bg-color">带宽</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E5%AD%A6/">
-                        <span class="chip bg-color">数学</span>
-                    </a>
-                    
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/posts/51872/">
                     <div class="card-image">
                         
@@ -1238,9 +1206,9 @@ git pull origin hexo                    # 合并远程hexo分支到本地<span a
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1258,6 +1226,67 @@ git pull origin hexo                    # 合并远程hexo分支到本地<span a
                     
                     <a href="/tags/python/">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/15854/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="前端框架">
+                        
+                        <span class="card-title">前端框架</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-category">
+                                    前端开发
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                    <a href="/tags/React/">
+                        <span class="chip bg-color">React</span>
+                    </a>
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/Json/">
+                        <span class="chip bg-color">Json</span>
                     </a>
                     
                 </div>
@@ -1454,7 +1483,7 @@ git pull origin hexo                    # 合并远程hexo分支到本地<span a
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">197.1k</span>
+                        class="white-color">198.3k</span>
             
             
             
