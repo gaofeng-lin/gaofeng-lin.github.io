@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-03-09T09:19:05.811Z</updated>
+  <updated>2025-03-22T02:03:11.159Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,89 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>异常解释论文</title>
+    <link href="https://gaofeng-lin.github.io/posts/5772011f/"/>
+    <id>https://gaofeng-lin.github.io/posts/5772011f/</id>
+    <published>2025-03-20T16:00:00.000Z</published>
+    <updated>2025-03-22T02:03:11.159Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;A-survey-of-visual-analytics-for-Explainable-Artificial-Intelligence-methods&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="异常检测" scheme="https://gaofeng-lin.github.io/categories/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
+    
+    
+    <category term="机器学习" scheme="https://gaofeng-lin.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>latex公式</title>
+    <link href="https://gaofeng-lin.github.io/posts/47c30637/"/>
+    <id>https://gaofeng-lin.github.io/posts/47c30637/</id>
+    <published>2025-03-16T16:00:00.000Z</published>
+    <updated>2025-03-17T12:43:04.605Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;&lt;mjx-container class=&quot;MathJax&quot; jax=&quot;SVG&quot;&gt;&lt;svg style=&quot;vertical-align:</summary>
+        
+      
+    
+    
+    
+    <category term="latex" scheme="https://gaofeng-lin.github.io/categories/latex/"/>
+    
+    
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
+    
+    <category term="代码管理" scheme="https://gaofeng-lin.github.io/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/"/>
+    
+    <category term="latex" scheme="https://gaofeng-lin.github.io/tags/latex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>异常解释</title>
+    <link href="https://gaofeng-lin.github.io/posts/c2f86c81/"/>
+    <id>https://gaofeng-lin.github.io/posts/c2f86c81/</id>
+    <published>2025-03-06T16:00:00.000Z</published>
+    <updated>2025-03-21T12:25:33.752Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;常见的深度学习异常解释方法&quot;&gt;&lt;a href=&quot;#常见的深度学习异常解释方法&quot; class=&quot;headerlink&quot; title=&quot;常见的深度学习异常解释方法&quot;&gt;&lt;/a&gt;常见的深度学习异常解释方法&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="DataMining" scheme="https://gaofeng-lin.github.io/categories/DataMining/"/>
+    
+    
+    <category term="异常解释" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E8%A7%A3%E9%87%8A/"/>
+    
+    <category term="深度学习" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>异常检测</title>
@@ -454,85 +537,6 @@
     <category term="深度学习数据操作" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/"/>
     
     <category term="pytorch与cuda安装" scheme="https://gaofeng-lin.github.io/tags/pytorch%E4%B8%8Ecuda%E5%AE%89%E8%A3%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>硬件知识</title>
-    <link href="https://gaofeng-lin.github.io/posts/7948/"/>
-    <id>https://gaofeng-lin.github.io/posts/7948/</id>
-    <published>2023-05-08T16:00:00.000Z</published>
-    <updated>2023-06-18T15:45:25.762Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;diy电脑功耗怎么考虑&quot;&gt;&lt;a href=&quot;#diy电脑功耗怎么考虑&quot; class=&quot;headerlink&quot; title=&quot;diy电脑功耗怎么考虑&quot;&gt;&lt;/a&gt;diy电脑功耗怎么考虑&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="硬件" scheme="https://gaofeng-lin.github.io/categories/%E7%A1%AC%E4%BB%B6/"/>
-    
-    
-    <category term="电源" scheme="https://gaofeng-lin.github.io/tags/%E7%94%B5%E6%BA%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>生活小知识</title>
-    <link href="https://gaofeng-lin.github.io/posts/569/"/>
-    <id>https://gaofeng-lin.github.io/posts/569/</id>
-    <published>2022-12-20T16:00:00.000Z</published>
-    <updated>2025-02-23T03:31:30.925Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;食物配料表计算热量&quot;&gt;&lt;a href=&quot;#食物配料表计算热量&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="生活" scheme="https://gaofeng-lin.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="发烧" scheme="https://gaofeng-lin.github.io/tags/%E5%8F%91%E7%83%A7/"/>
-    
-    <category term="做饭" scheme="https://gaofeng-lin.github.io/tags/%E5%81%9A%E9%A5%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>singularity</title>
-    <link href="https://gaofeng-lin.github.io/posts/23912/"/>
-    <id>https://gaofeng-lin.github.io/posts/23912/</id>
-    <published>2022-12-10T16:00:00.000Z</published>
-    <updated>2023-06-18T15:45:25.758Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;def文件&quot;&gt;&lt;a href=&quot;#def文件&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="运维" scheme="https://gaofeng-lin.github.io/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-    
-    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-    <category term="singularity" scheme="https://gaofeng-lin.github.io/tags/singularity/"/>
     
   </entry>
   
