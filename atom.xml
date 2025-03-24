@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-03-21T08:39:27.116Z</updated>
+  <updated>2025-03-24T00:55:45.225Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://gaofeng-lin.github.io/posts/5772011f/"/>
     <id>https://gaofeng-lin.github.io/posts/5772011f/</id>
     <published>2025-03-20T16:00:00.000Z</published>
-    <updated>2025-03-21T08:39:27.116Z</updated>
+    <updated>2025-03-24T00:55:45.225Z</updated>
     
     
       
@@ -102,7 +102,7 @@
     <link href="https://gaofeng-lin.github.io/posts/c2f86c81/"/>
     <id>https://gaofeng-lin.github.io/posts/c2f86c81/</id>
     <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-03-21T08:09:32.304Z</updated>
+    <updated>2025-03-21T09:04:49.001Z</updated>
     
     
       
@@ -252,31 +252,6 @@
   </entry>
   
   <entry>
-    <title>流场时间维预测-插值论文</title>
-    <link href="https://gaofeng-lin.github.io/posts/5ecc6c1a/"/>
-    <id>https://gaofeng-lin.github.io/posts/5ecc6c1a/</id>
-    <published>2024-08-18T16:00:00.000Z</published>
-    <updated>2024-08-20T00:05:07.622Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Spatio-temporal-deep-learning-models-of-3D-turbulence-with-physics-informed-diagnostics&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="CFD论文" scheme="https://gaofeng-lin.github.io/categories/CFD%E8%AE%BA%E6%96%87/"/>
-    
-    
-    <category term="temporal-extrapolation-interpolation" scheme="https://gaofeng-lin.github.io/tags/temporal-extrapolation-interpolation/"/>
-    
-  </entry>
-  
-  <entry>
     <title>POD-DMD论文</title>
     <link href="https://gaofeng-lin.github.io/posts/a7feeec9/"/>
     <id>https://gaofeng-lin.github.io/posts/a7feeec9/</id>
@@ -300,6 +275,31 @@
     <category term="POD" scheme="https://gaofeng-lin.github.io/tags/POD/"/>
     
     <category term="DMD" scheme="https://gaofeng-lin.github.io/tags/DMD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>流场时间维预测-插值论文</title>
+    <link href="https://gaofeng-lin.github.io/posts/5ecc6c1a/"/>
+    <id>https://gaofeng-lin.github.io/posts/5ecc6c1a/</id>
+    <published>2024-08-18T16:00:00.000Z</published>
+    <updated>2024-08-20T00:05:07.622Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Spatio-temporal-deep-learning-models-of-3D-turbulence-with-physics-informed-diagnostics&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="CFD论文" scheme="https://gaofeng-lin.github.io/categories/CFD%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="temporal-extrapolation-interpolation" scheme="https://gaofeng-lin.github.io/tags/temporal-extrapolation-interpolation/"/>
     
   </entry>
   

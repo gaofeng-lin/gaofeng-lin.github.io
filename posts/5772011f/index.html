@@ -34,10 +34,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -149,7 +146,10 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head>
+</style>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -619,12 +619,24 @@ mjx-container[display="true"] + br {
 <p>每类进一步分为两个维度：</p>
 <p>​- Model Usage：如何从技术角度使用模型（即解释模型的什么内容？）。<br>​- Visual Approaches：如何用可视化技术实现解释（即用什么图表或交互方式呈现？）。</p>
 <h2 id="VI（视觉解释）的详细拆解"><a href="#VI（视觉解释）的详细拆解" class="headerlink" title="VI（视觉解释）的详细拆解"></a>VI（视觉解释）的详细拆解</h2><p><strong>(1) VI的Model Usage（模型使用方式）​</strong><br>指 ​仅通过可视化技术直接分析模型自身，不依赖外部XAI算法，具体包括：</p>
-<p>​特征选择（Feature Selection）​<br>​目的：找出模型依赖的关键输入特征。<br>​例子：用热图显示图像分类模型关注的像素区域（如高亮狗头）。<br>​性能分析（Performance Analysis）​<br>​目的：评估模型的整体表现（如准确率、误差分布）。<br>​例子：用混淆矩阵比较多个模型在测试集上的分类效果。<br>​模型架构理解（Architecture Understanding）​<br>​目的：理解模型的内部结构或训练动态。<br>​例子：用网络结构图展示CNN的层连接，或用激活图显示神经元响应模式。</p>
-<p>​<strong>(2) VI的Visual Approaches（视觉方法）​</strong><br>指 ​实现上述目标的具体可视化技术，分为三类：</p>
-<p>​数据表示（Data Representation）​<br>​方法：原始数据可视化（如图像网格）、降维投影（如t-SNE散点图）。<br>​例子：用t-SNE将高维特征投影到2D，观察数据聚类。<br>​架构可视化（Architecture Visualization）​<br>​方法：网络结构图（如DAG有向无环图）、节点-链接图、热图。<br>​例子：用节点大小表示卷积核重要性，连线表示层间连接。<br>​性能分析视图（Performance Views）​<br>​方法：混淆矩阵、动态训练曲线、误差实例跟踪。<br>​例子：用桑基图展示模型在不同类别间的错误流动。<br>​VI的核心特点<br>​不依赖XAI算法，直接通过可视化技术分析模型。<br>​关注模型自身属性​（结构、特征、性能），而非决策逻辑。</p>
+<p><strong>​特征选择（Feature Selection）​</strong><br>​目的：找出模型依赖的关键输入特征。<br>​例子：用热图显示图像分类模型关注的像素区域（如高亮狗头）。</p>
+<p><strong>​性能分析（Performance Analysis）​</strong><br>​目的：评估模型的整体表现（如准确率、误差分布）。<br>​例子：用混淆矩阵比较多个模型在测试集上的分类效果。</p>
+<p><strong>​模型架构理解（Architecture Understanding）​</strong><br>​目的：理解模型的内部结构或训练动态。<br>​例子：用网络结构图展示CNN的层连接，或用激活图显示神经元响应模式。</p>
+<p>​<strong>(2) VI的Visual Approaches（视觉方法）​</strong></p>
+<p>指 ​实现上述目标的具体可视化技术，分为三类：</p>
+<p><strong>​数据表示（Data Representation）​</strong><br>​方法：原始数据可视化（如图像网格）、降维投影（如t-SNE散点图）。<br>​例子：用t-SNE将高维特征投影到2D，观察数据聚类。</p>
+<p><strong>​架构可视化（Architecture Visualization）​</strong><br>​方法：网络结构图（如DAG有向无环图）、节点-链接图、热图。<br>​例子：用节点大小表示卷积核重要性，连线表示层间连接。</p>
+<p><strong>​性能分析视图（Performance Views）​</strong><br>​方法：混淆矩阵、动态训练曲线、误差实例跟踪。<br>​例子：用桑基图展示模型在不同类别间的错误流动。</p>
+<p><strong>​VI的核心特点</strong><br>​不依赖XAI算法，直接通过可视化技术分析模型。<br>​关注模型自身属性​（结构、特征、性能），而非决策逻辑。</p>
 <h2 id="vXAI（基于视觉的XAI）的详细拆解"><a href="#vXAI（基于视觉的XAI）的详细拆解" class="headerlink" title="vXAI（基于视觉的XAI）的详细拆解"></a>vXAI（基于视觉的XAI）的详细拆解</h2><p><strong>(1) vXAI的Model Usage（模型使用方式）​</strong><br>指 ​依赖XAI算法生成解释，再通过可视化呈现，具体分为：</p>
-<p>​基于特征的XAI（Feature-based XAI）​<br>​目的：用XAI算法（如LIME、SHAP）计算特征重要性。<br>​例子：用SHAP值条形图显示影响房价预测的关键因素。<br>​基于规则的XAI（Rule-based XAI）​<br>​目的：提取模型的决策规则（如IF-THEN逻辑）。<br>​例子：用矩阵图展示规则列表（如“收入&gt;50k且信用分&gt;700 → 批准贷款”）。<br>​基于传播的XAI（Propagation-based XAI）​<br>​目的：分析模型内部的信息流动或贡献传播。<br>​例子：用LRP（层相关性传播）热图显示输入像素对分类的贡献度。<br>​<strong>(2) vXAI的Visual Approaches（视觉方法）​</strong><br>指 ​呈现XAI解释结果的可视化技术，分为三类：</p>
-<p>​数据表示（Data Representation）​<br>​方法：原始数据与解释叠加（如热图覆盖在图像上）、实例聚类。<br>​例子：在医学影像上用红色覆盖层显示病灶区域的SHAP贡献值。<br>​解释可视化（Explanation Views）​<br>​方法：特征重要性条形图、规则流程图、贡献传播路径图。<br>​例子：用瀑布图展示SHAP值如何将预测从基线值推至最终结果。<br>​交互功能（Interaction）​<br>​方法：动态调整解释范围、多模型对比、焦点区域缩放。<br>​例子：用户拖拽滑块调整LIME的扰动样本数量，实时更新热图。<br>​vXAI的核心特点<br>​依赖XAI算法​（如LIME、SHAP、规则提取）生成解释。<br>​关注模型决策逻辑​（为什么预测这个结果？哪些因素驱动了决策？）。</p>
+<p><strong>​基于特征的XAI（Feature-based XAI）​</strong><br>​目的：用XAI算法（如LIME、SHAP）计算特征重要性。<br>​例子：用SHAP值条形图显示影响房价预测的关键因素。</p>
+<p><strong>​基于规则的XAI（Rule-based XAI）​</strong><br>​目的：提取模型的决策规则（如IF-THEN逻辑）。<br>​例子：用矩阵图展示规则列表（如“收入&gt;50k且信用分&gt;700 → 批准贷款”）。</p>
+<p><strong>​基于传播的XAI（Propagation-based XAI）​</strong><br>​目的：分析模型内部的信息流动或贡献传播。<br>​例子：用LRP（层相关性传播）热图显示输入像素对分类的贡献度。</p>
+<p>​<strong>(2) vXAI的Visual Approaches（视觉方法）​</strong><br>指 ​呈现XAI解释结果的可视化技术，分为三类：</p>
+<p><strong>​数据表示（Data Representation）​</strong><br>​方法：原始数据与解释叠加（如热图覆盖在图像上）、实例聚类。<br>​例子：在医学影像上用红色覆盖层显示病灶区域的SHAP贡献值。</p>
+<p><strong>​解释可视化（Explanation Views）​</strong><br>​方法：特征重要性条形图、规则流程图、贡献传播路径图。<br>​例子：用瀑布图展示SHAP值如何将预测从基线值推至最终结果。</p>
+<p><strong>​交互功能（Interaction）​</strong><br>​方法：动态调整解释范围、多模型对比、焦点区域缩放。<br>​例子：用户拖拽滑块调整LIME的扰动样本数量，实时更新热图。</p>
+<p><strong>​vXAI的核心特点</strong><br>​依赖XAI算法​（如LIME、SHAP、规则提取）生成解释。<br>​关注模型决策逻辑​（为什么预测这个结果？哪些因素驱动了决策？）。</p>
 <h2 id="案例区分"><a href="#案例区分" class="headerlink" title="案例区分"></a>案例区分</h2><p><strong>​案例1：分析CNN模型的特征关注区域</strong><br>​</p>
 <ul>
 <li><p>VI方法：<br>​</p>
@@ -1445,6 +1457,23 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </body>
 
