@@ -31,3 +31,20 @@ ${\mathcal{L}}_{Total}(\hat{\mathcal{X}},\mathcal{P}_{\mathrm{\mathcal{d}\mathca
 
 ${\mathcal{L}}_{Total} = 重构误差 - \lambda \cdot 关联差异$
 
+$\mathcal{L}_{\mathrm{OD}}=\left\{\begin{array}{ll}
+\mathcal{L}_{\mathrm{KD}}\left(l_{s}^{(i)}, \vec{l}_{t}^{(i)}, y^{(i)}\right) & \text { if } \sum_{j=1}^{N} u_{j}^{(i)}>0 \\
+\mathcal{L}_{\mathrm{CE}}\left(l_{s}^{(i)}, y^{(i)}\right) & \text { otherwise }
+\end{array}\right.$
+
+
+
+$\begin{array}{l}
+\mathcal{L}_{\mathrm{OD}}=\left\{\begin{array}{ll}
+\mathcal{L}_{\mathrm{KD}}\left(l_{s}^{(i)}, \vec{l}_{t}^{(i)}, y^{(i)}\right) & \text { if } \sum_{j=1}^{N} u_{j}^{(i)}>0 \\
+\mathcal{L}_{\mathrm{CE}}\left(l_{s}^{(i)}, y^{(i)}\right) & \text { otherwise }
+\end{array}\right.\\
+\text { where }\\
+\vec{l}_{t}^{(i)}=\frac{\sum_{j=1}^{N} u_{j}^{(i)} l_{t, j}^{(i)}}{\sum_{j=1}^{N} u_{j}^{(i)}}
+\end{array}$
+
+$\sum_{t=1}^{T}[\mathcal{L}_{\mathrm{KL}}\Bigl(l_{s}^{(i)(t)},l_{t}^{(i)(t)}\Bigr)+\alpha\mathrm{KL}\Bigl(l_{s}^{(i)(t)},(l_{t}^{(i)(t-1)}+l_{t}^{(i)(t+1)}\Bigr)/2\Bigr)\Bigr]$
