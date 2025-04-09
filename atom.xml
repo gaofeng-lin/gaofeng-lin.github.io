@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-03-22T02:03:11.159Z</updated>
+  <updated>2025-03-28T12:27:38.039Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>模型压缩</title>
+    <link href="https://gaofeng-lin.github.io/posts/28330fcf/"/>
+    <id>https://gaofeng-lin.github.io/posts/28330fcf/</id>
+    <published>2025-03-25T16:00:00.000Z</published>
+    <updated>2025-03-28T12:27:38.039Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;知识蒸馏&quot;&gt;&lt;a href=&quot;#知识蒸馏&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="LLM" scheme="https://gaofeng-lin.github.io/categories/LLM/"/>
+    
+    
+    <category term="知识蒸馏" scheme="https://gaofeng-lin.github.io/tags/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>异常解释论文</title>
     <link href="https://gaofeng-lin.github.io/posts/5772011f/"/>
     <id>https://gaofeng-lin.github.io/posts/5772011f/</id>
     <published>2025-03-20T16:00:00.000Z</published>
-    <updated>2025-03-22T02:03:11.159Z</updated>
+    <updated>2025-03-22T02:03:47.327Z</updated>
     
     
       
@@ -46,7 +71,7 @@
     <link href="https://gaofeng-lin.github.io/posts/47c30637/"/>
     <id>https://gaofeng-lin.github.io/posts/47c30637/</id>
     <published>2025-03-16T16:00:00.000Z</published>
-    <updated>2025-03-17T12:43:04.605Z</updated>
+    <updated>2025-04-09T13:09:12.372Z</updated>
     
     
       
@@ -73,33 +98,6 @@
   </entry>
   
   <entry>
-    <title>异常解释</title>
-    <link href="https://gaofeng-lin.github.io/posts/c2f86c81/"/>
-    <id>https://gaofeng-lin.github.io/posts/c2f86c81/</id>
-    <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-03-21T12:25:33.752Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;常见的深度学习异常解释方法&quot;&gt;&lt;a href=&quot;#常见的深度学习异常解释方法&quot; class=&quot;headerlink&quot; title=&quot;常见的深度学习异常解释方法&quot;&gt;&lt;/a&gt;常见的深度学习异常解释方法&lt;/h1&gt;&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="DataMining" scheme="https://gaofeng-lin.github.io/categories/DataMining/"/>
-    
-    
-    <category term="异常解释" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E8%A7%A3%E9%87%8A/"/>
-    
-    <category term="深度学习" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>异常检测</title>
     <link href="https://gaofeng-lin.github.io/posts/2ede883b/"/>
     <id>https://gaofeng-lin.github.io/posts/2ede883b/</id>
@@ -121,6 +119,33 @@
     
     
     <category term="异常检测" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>异常解释</title>
+    <link href="https://gaofeng-lin.github.io/posts/c2f86c81/"/>
+    <id>https://gaofeng-lin.github.io/posts/c2f86c81/</id>
+    <published>2025-03-06T16:00:00.000Z</published>
+    <updated>2025-03-22T02:03:47.324Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;常见的深度学习异常解释方法&quot;&gt;&lt;a href=&quot;#常见的深度学习异常解释方法&quot; class=&quot;headerlink&quot; title=&quot;常见的深度学习异常解释方法&quot;&gt;&lt;/a&gt;常见的深度学习异常解释方法&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="DataMining" scheme="https://gaofeng-lin.github.io/categories/DataMining/"/>
+    
+    
+    <category term="异常解释" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E8%A7%A3%E9%87%8A/"/>
+    
+    <category term="深度学习" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -502,41 +527,6 @@
     
     
     <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深度学习</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-12-10T16:00:00.000Z</published>
-    <updated>2025-03-16T03:17:34.148Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;CUDA、CUDNN相关的内容&quot;&gt;&lt;a href=&quot;#CUDA、CUDNN相关的内容&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="循环神经网络（RNN）" scheme="https://gaofeng-lin.github.io/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88RNN%EF%BC%89/"/>
-    
-    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
-    
-    <category term="深度学习理论知识" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/"/>
-    
-    <category term="卷积神经网络（CNN）" scheme="https://gaofeng-lin.github.io/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88CNN%EF%BC%89/"/>
-    
-    <category term="深度学习数据操作" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/"/>
-    
-    <category term="pytorch与cuda安装" scheme="https://gaofeng-lin.github.io/tags/pytorch%E4%B8%8Ecuda%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
