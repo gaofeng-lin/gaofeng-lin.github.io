@@ -7,7 +7,11 @@
     <meta name="keywords" content="计算机基础知识, Home of Gaofeng">
     <meta name="description" content="数据结构哈希表详解哈希表
 哈希表的大小为何是素数
-环境变量环境变量是系统变量当中的一种，就是PATH。Windows和DOS操作系统中的path环境变量，当要求系统运行一个程序而没有告诉它程序所在的完整路径时，系统除了在当前目录下面寻找此程">
+算法解决问题的方案
+算法是给人看的，代码是给机器看的。
+复杂度复杂度是用来衡量算法效率的一个指标
+时间复杂度和空间复杂度，分别从运行时间和内存占用两个维度评估算法的优劣
+时间复杂度时间复杂度">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -34,9 +38,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -439,6 +443,14 @@
                                 <span class="chip bg-color">VM</span>
                             </a>
                         
+                            <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
+                                <span class="chip bg-color">硬件知识</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
+                                <span class="chip bg-color">线程、进程</span>
+                            </a>
+                        
                             <a href="/tags/nginx/">
                                 <span class="chip bg-color">nginx</span>
                             </a>
@@ -461,14 +473,6 @@
                         
                             <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">
                                 <span class="chip bg-color">密码学</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
-                                <span class="chip bg-color">硬件知识</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
-                                <span class="chip bg-color">线程、进程</span>
                             </a>
                         
                     </div>
@@ -509,14 +513,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    12.5k
+                    9.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    44 分
+                    34 分
                 </div>
                 
 
@@ -541,6 +545,18 @@
             <div id="articleContent">
                 <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7007218290711855134">详解哈希表</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhishengqianjun/article/details/79087525">哈希表的大小为何是素数</a></p>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p><strong>解决问题的方案</strong></p>
+<p><strong>算法是给人看的，代码是给机器看的。</strong></p>
+<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p><strong>复杂度是用来衡量算法效率的一个指标</strong></p>
+<p>时间复杂度和空间复杂度，分别从运行时间和内存占用两个维度评估算法的优劣</p>
+<h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><p>时间复杂度描述算法的运行时间随输入规模增长的趋势</p>
+<p>核心思想：</p>
+<ul>
+<li>不关注具体的数值：只关心输入规模n趋近无穷大时增长的趋势，例如$n^2$比$n$增长快</li>
+<li>忽略常数项和低阶项，例如$3n^2+5n+100$的时间复杂度为$n^2$</li>
+<li>关注最坏情况：除非特别说明，时间复杂度默认指最坏情况</li>
+</ul>
+<h4 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h4><p>临时占用的存储空间随输入规模增长的趋势，同样用大O符号表示。它关注的是算法额外使用的内存（不包括输入本身的存储空间）。</p>
 <h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>环境变量是系统变量当中的一种，就是PATH。Windows和DOS操作系统中的path环境变量，当要求系统运行一个程序而没有告诉它程序所在的完整路径时，系统除了在当前目录下面寻找此程序外，还应到path中指定的路径去找。用户通过设置环境变量，来更好的运行进程。</p>
 <p><strong>说白了，把可执行程序的路径放到环境变量里面，那么以后在任意的路径下就可以直接使用这个可执行程序，而不用输入绝对路径，方便。</strong></p>
 <p>1.在Windows中，是由可视化的窗口模式展现出来的<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20190906150416564.png" alt=""><br>2.linux中，在 <code>/etc/profile</code>文件中设置<br>可以直接用vim进入文件进行设置，也可以用下面的语句</p>
@@ -548,90 +564,6 @@
 <p>最好还是用vim进行修改，用echo输入到为你文件中，会出现冗余，直接添加比较好。用冒号分隔。</p>
 <p>修改好以后，需要更新环境变量</p>
 <pre class="line-numbers language-none"><code class="language-none">source /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="计组-操作系统"><a href="#计组-操作系统" class="headerlink" title="计组+操作系统"></a>计组+操作系统</h2><h3 id="cpu工作流程"><a href="#cpu工作流程" class="headerlink" title="cpu工作流程"></a>cpu工作流程</h3><p>CPU的根本任务就是执行指令，对计算机来说最终都是一串由“0”和“1”组成的序列。CPU从逻辑上可以划分成3个模块，分别是控制单元、运算单元和存储单元，这三部分由CPU内部总线连接起来。如下所示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/9893254095656f4a4b405400721af669.png" alt=""></p>
-<ol>
-<li><p>控制单元：控制单元是整个CPU的指挥控制中心，由程序计数器PC（Program Counter）, 指令寄存器IR(Instruction Register)、指令译码器ID(Instruction Decoder)和操作控制器OC(Operation Controller)等，对协调整个电脑有序工作极为重要。它根据用户预先编好的程序，依次从存储器中取出各条指令，放在指令寄存器IR中，通过指令译码(分析)确定应该进行什么操作，然后通过操作控制器OC，按确定的时序，向相应的部件发出微操作控制信号。操作控制器OC中主要包括节拍脉冲发生器、控制矩阵、时钟脉冲发生器、复位电路和启停电路等控制逻辑。</p>
-</li>
-<li><p>运算单元：是运算器的核心。可以执行算术运算(包括加减乘数等基本运算及其附加运算)和逻辑运算(包括移位、逻辑测试或两个值比较)。相对控制单元而言，运算器接受控制单元的命令而进行动作，即运算单元所进行的全部操作都是由控制单元发出的控制信号来指挥的，所以它是执行部件。</p>
-</li>
-<li><p>存储单元：包括CPU片内缓存和寄存器组，是CPU中暂时存放数据的地方，里面保存着那些等待处理的数据，或已经处理过的数据，CPU访问寄存器所用的时间要比访问内存的时间短。采用寄存器，可以减少CPU访问内存的次数，从而提高了CPU的工作速度。但因为受到芯片面积和集成度所限，寄存器组的容量不可能很大。寄存器组可分为专用寄存器和通用寄存器。专用寄存器的作用是固定的，分别寄存相应的数据。而通用寄存器用途广泛并可由程序员规定其用途，通用寄存器的数目因微处理器而异。这个是我们以后要介绍这个重点，这里先提一下。</p>
-</li>
-</ol>
-<p>CPU的运行原理(简洁版):</p>
-<ol>
-<li><p>取指令：CPU的控制器从内存读取一条指令并放入指令寄存器。指令的格式一般是这个样子滴：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/f1a9b80fb3f7cd81550d3484a0bd3193.png" alt=""></p>
-</li>
-<li><p>指令译码：指令寄存器中的指令经过译码，决定该指令应进行何种操作(就是指令里的操作码)、操作数在哪里(操作数的地址)。</p>
-</li>
-<li><p>执行指令，分两个阶段“取操作数”和“进行运算”。</p>
-</li>
-<li><p>修改指令计数器，决定下一条指令的地址。</p>
-</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/61f3e30367246b169b660a5ea05c0493.png" alt=""></p>
-<h3 id="微机设计"><a href="#微机设计" class="headerlink" title="微机设计"></a>微机设计</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/f86b4de44bb94a4bdb72decee9b18497.png" alt=""></p>
-<p>其中：</p>
-<ul>
-<li>时钟 (clock) 对 CPU 内部操作与系统其他组件进行同步。</li>
-<li>控制单元 (control unit, CU) 协调参与机器指令执行的步骤序列。</li>
-<li>算术逻辑单元 (arithmetic logic unit, ALU) 执行算术运算，如加法和减法，以及逻辑运算，如 AND（与）、OR（或）和 NOT（非）。</li>
-</ul>
-<p>CPU 通过主板上 CPU 插座的引脚与计算机其他部分相连。大部分引脚连接的是数据总线、控制总线和地址总线。</p>
-<p>内存存储单元 (memory storage unit) 用于在程序运行时保存指令与数据。它接受来自 CPU 的数据请求，将数据从随机存储器 (RAM) 传输到 CPU，并从 CPU 传输到内存。</p>
-<p>由于所有的数据处理都在 CPU 内进行，因此保存在内存中的程序在执行前需要被复制到 CPU 中。程序指令在复制到 CPU 时，可以一次复制一条，也可以一次复制多条。</p>
-<p>总线 (bus) 是一组并行线，用于将数据从计算机一个部分传送到另一个部分。一个计算机系统通常包含四类总线：数据类、I/O 类、控制类和地址类。</p>
-<p>数据总线 (data bus) 在 CPU 和内存之间传输指令和数据。I/O 总线在 CPU 和系统输入 / 输出设备之间传输数据。控制总线 (control bus) 用二进制信号对所有连接在系统总线上设备的行为进行同步。当前执行指令在 CPU 和内存之间传输数据时，地址总线 (address bus) 用于保持指令和数据的地址。</p>
-<p>时钟与 CPU 和系统总线相关的每一个操作都是由一个恒定速率的内部时钟脉冲来进行同步。机器指令的基本时间单位是机器周期 (machine cycle) 或时钟周期 (clock cycle)。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/ec98768c43ecf14f25c7694dea02a95e.png" alt=""></p>
-<p>时钟周期持续时间用时钟速度的倒数来计算，而时钟速度则用每秒振荡数来衡量。例如，一个每秒振荡 10 亿次 (1GHz) 的时钟，其时钟周期为 10 亿分之 1 秒 (1 纳秒 )。（CPU主频）</p>
-<p>执行一条机器指令最少需要 1 个时钟周期，有几个需要的时钟则超过了 50 个（比如 8088 处理器中的乘法指令）。由于在 CPU、系统总线和内存电路之间存在速度差异，因此，需要访问内存的指令常常需要空时钟周期，也被称为等待状态 (wait states)。</p>
-<h3 id="指令执行周期"><a href="#指令执行周期" class="headerlink" title="指令执行周期"></a>指令执行周期</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30598353/article/details/113052914">原文链接</a><br>一条机器指令不会神奇地一下就执行完成。CPU 在执行一条机器指令时，需要经过一系列预先定义好的步骤，这些步骤被称为指令执行周期 (instruction execution cycle)。</p>
-<p>假设现在指令指针寄存器中已经有了想要执行指令的地址，下面就是执行步骤：</p>
-<p>1) CPU 从被称为指令队列 (instruction queue) 的内存区域取得指令，之后立即增加指令指针的值。</p>
-<p>2) CPU 对指令的二进制位模式进行译码。这种位模式可能会表示该指令有操作数（输入值）。</p>
-<p>3) 如果有操作数，CPU 就从寄存器和内存中取得操作数。有时，这步还包括了地址计算。</p>
-<p>4) 使用步骤 3 得到的操作数，CPU 执行该指令。同时更新部分状态标志位，如零标志 (Zero)、进位标志 (Carry) 和溢出标志 (Overflow)。</p>
-<p>5) 如果输出操作数也是该指令的一部分，则 CPU 还需要存放其执行结果。</p>
-<p>通常将上述听起来很复杂的过程简化为三个步骤：取指 (Fetch)、译码 (Decode) 和执行 (Execute)。操作数 (operand) 是指操作过程中输入或输出的值。例如，表达式 Z=X+Y 有两个输入操作数 (X 和 Y)，—个输岀操作数 (Z)。</p>
-<p>下图是一个典型 CPU 中的数据流框图。该图表现了在指令执行周期中相互交互部件之间的关系。在从内存读取程序指令之前，将其地址放到地址总线上。然后，内存控制器将所需代码送到数据总线上，存入代码高速缓存 (code cache)。指令指针的值决定下一条将要执行的指令。指令由指令译码器分析，并产生相应的数值信号送往控制单元，其协调 ALU 和浮点单元。虽然图中没有画出控制总线，但是其上传输的信号用系统时钟协调不同 CPU 部件之间的数据传输。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/fe981489b47fa0e05d59e4d2d552cb7d.png" alt=""></p>
-<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/102293437">原文链接</a><br>作为一个常见现象，计算机从内存读取数据比从内部寄存器读取速度要慢很多。这是因为从内存读取一个值，需要经过下述步骤：</p>
-<p>将想要读取的值的地址放到地址总线上。<br>设置处理器 RD（读取）引脚（改变 RD 的值）。<br>等待一个时钟周期给存储器芯片进行响应。<br>将数据从数据总线复制到目标操作数。<br>上述每一步常常只需要一个时钟周期，时钟周期是基于处理器内固定速率时钟节拍的一种时间测量方法。计算机的 CPU 通常是用其时钟速率来描述。例如，速率为 1.2GHz 意味着时钟节拍或振荡为每秒 12 亿次。</p>
-<p>因此，考虑到每个时钟周期仅为 1/1 200 000 000 秒，4 个时钟周期也是非常快的。但是，与 CPU 寄存器相比，这个速度还是慢了，因为访问寄存器一般只需要 1 个时钟周期。</p>
-<p>CPU和主存之间直接数据传输的方式转变成CPU和cache之间直接数据传输。cache负责和主存之间数据传输。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/c932d9d2255061d1fa435d6b1abccaeb.jpeg" alt=""></p>
-<h3 id="加载并执行程序"><a href="#加载并执行程序" class="headerlink" title="加载并执行程序"></a>加载并执行程序</h3><p>在程序执行之前，需要用一种工具程序将其加载到内存，这种工具程序称为程序加载器 (program loader)。加载后，操作系统必须将 CPU 指向程序的入口，即程序开始执行的地址。以下步骤是对这一过程的详细分解。</p>
-<p>1) 操作系统（OS）在当前磁盘目录下搜索程序的文件名。如果找不到，则在预定目录列表（称为路径（path））下搜索文件名。当 OS 无法检索到文件名时，它会发出一个出错信息。</p>
-<p>2) 如果程序文件被找到，OS 就访问磁盘目录中的程序文件基本信息，包括文件大小，及其在磁盘驱动器上的物理位置。</p>
-<p>3) OS 确定内存中下一个可使用的位置，将程序文件加载到内存。为该程序分配内存块，并将程序大小和位置信息加入表中（有时称为描述符表（descriptor table））。另外，OS 可能调整程序内指针的值，使得它们包括程序数据地址。</p>
-<p>4) OS 开始执行程序的第一条机器指令（程序入口）。当程序开始执行后，就成为一个进程（process）。OS 为这个进程分配一个标识号（进程 ID），用于在执行期间对其进行追踪。</p>
-<p>5) 进程自动运行。OS 的工作是追踪进程的执行，并响应系统资源的请求。这些资源包括内存、磁盘文件和输入输出设备等。</p>
-<p>6) 进程结束后，就会从内存中移除。</p>
-<p>不论使用哪个版本的 Microsoft Windows，按下 Ctrl-Alt-Delete 组合键，可以选择任务管理器（task manager）选项。在任务管理器窗口可以查看应用程序和进程列表。</p>
-<p>应用程序列表中列出了当前正在运行的完整程序名称，比如，Windows 浏览器，或者 Microsoft Visual C++。如果选择进程列表，则会看见一长串进程名。其中的每个进程都是一个独立于其他进程的，并处于运行中的小程序。</p>
-<p>可以连续追踪每个进程使用的 CPU 时间和内存容量。在某些情况下，选定一个进程名称后，按下 Delete 键就可以关闭该进程。</p>
-<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/368777813">原链接，详细内容见原文</a></p>
-<ul>
-<li>一条指令就是机器语言的一个语句，它是一组有意义的二进制代码。</li>
-<li>一台计算机的所有指令的集合构成该机的指令系统，也称为指令集。</li>
-</ul>
-<h4 id="指令的格式"><a href="#指令的格式" class="headerlink" title="指令的格式"></a>指令的格式</h4><p>从最基本的结构上来说：一条指令通常要包括操作码字段和地址码字段两部分:</p>
-<p>操作码字段告诉用户做什么操作？<br>地址码告诉用户对谁操作？</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/18383ae3dd0d90d3775436aba4eb124a.jpeg" alt=""></p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/1797cee715559dec28fb0d615fc8801a.jpeg" alt=""></p>
-<h3 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/370204019">原链接，详细内容见原文</a></p>
-<p>指令寻址的方式包括两部分：</p>
-<p>一种是指令的寻址<br>（是不是很晕？指令寻址怎么又包括指令寻址。hh因为这里的指令寻址指的是具体的操作码上发出的指令。是狭义上的指令寻址。）<br>另一种是数据的寻址（可以理解为地址码上操作数的地址寻址）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/dd4748b236f46d082fe96b0c45ce444d.png" alt=""></p>
-<h3 id="指令寻址方式"><a href="#指令寻址方式" class="headerlink" title="指令寻址方式"></a>指令寻址方式</h3><p>程序执行跳转指令，将程序计数器中的数据改为7。</p>
-<ol>
-<li>顺序寻址<br>从0开始执行，我们就需要在pc中写入地址0。执行完零号指令后，由于这是普通的取数指令，因此程序计数器自动+1，于是cpu开始执行指令1。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/0a3664e358a332a4f106ea27526c1cba.png" alt=""></li>
-</ol>
-<ol>
-<li>跳转寻址<br>知道碰到跳转指令，也就是指令3,程序执行跳转指令，将程序计数器中的数据改为7。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/5fe522f26cedb98cf8b125e2abaf338c.jpeg" alt=""></li>
-</ol>
-<h3 id="数据寻址方式"><a href="#数据寻址方式" class="headerlink" title="数据寻址方式"></a>数据寻址方式</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/d4c9ef871e158164c958bdfac1ce1811.jpeg" alt=""></p>
 <h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><h3 id="cookie和session"><a href="#cookie和session" class="headerlink" title="cookie和session"></a>cookie和session</h3><h4 id="cookie和seesion主要区别"><a href="#cookie和seesion主要区别" class="headerlink" title="cookie和seesion主要区别"></a>cookie和seesion主要区别</h4><p>星巴克开始优惠活动，每消费10杯咖啡，会免费赠送1杯。考虑到一个人一次性消费10杯咖啡几乎不可能，所以需要采取某种方式来记录顾客的消费数量。</p>
 <p>1)分给顾客一张卡片，每消费一次记录一次；</p>
 <p>2)发给顾客一张卡片，上面有卡号，顾客每消费一次，由店员在操作机上记录一次。</p>
@@ -926,7 +858,9 @@ ok登录成功，否则登录失败<span aria-hidden="true" class="line-numbers-
 将加密后的密码传递到后端
 后端随机生成一个salt，
 使用生成salt对前端传过来的密码进行加密，然后将加密后密码和salt一起保存到db中<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="硬件知识"><a href="#硬件知识" class="headerlink" title="硬件知识"></a>硬件知识</h2><h3 id="cpu核心数与线程数"><a href="#cpu核心数与线程数" class="headerlink" title="cpu核心数与线程数"></a>cpu核心数与线程数</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86855590">原文链接</a></p>
+<h2 id="硬件知识"><a href="#硬件知识" class="headerlink" title="硬件知识"></a>硬件知识</h2><h3 id="多核cpu和多个cpu的区别"><a href="#多核cpu和多个cpu的区别" class="headerlink" title="多核cpu和多个cpu的区别"></a>多核cpu和多个cpu的区别</h3><p>多核 CPU 和多个 CPU 有何区别？ - 老狼的回答 - 知乎<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20998226/answer/705020723">https://www.zhihu.com/question/20998226/answer/705020723</a></p>
+<p><strong>多核CPU和多CPU的区别主要在于性能和成本。多核CPU性能（延迟小、带宽高）最好，但成本最高；多CPU成本小，便宜，但性能相对较差。</strong></p>
+<h3 id="cpu核心数与线程数"><a href="#cpu核心数与线程数" class="headerlink" title="cpu核心数与线程数"></a>cpu核心数与线程数</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86855590">原文链接</a></p>
 <p><strong>物理 cpu 数（physical cpu）</strong></p>
 <p>指主板上实际插入的 cpu 硬件个数（socket）。（但是这一概念经常被泛泛的说成是 cpu 数，这很容易导致与 core 数，processor 数等概念混淆，所以此处强调是物理 cpu 数）。</p>
 <p>由于在主板上引入多个 cpu 插槽需要更复杂的硬件支持（连接不同插槽的 cpu 到内存和其他资源），通常只会在服务器上才这样做。在家用电脑中，一般主板上只会有一个 cpu 插槽。</p>
@@ -1068,6 +1002,14 @@ cpu cores   : 4
                                     <span class="chip bg-color">VM</span>
                                 </a>
                             
+                                <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
+                                    <span class="chip bg-color">硬件知识</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
+                                    <span class="chip bg-color">线程、进程</span>
+                                </a>
+                            
                                 <a href="/tags/nginx/">
                                     <span class="chip bg-color">nginx</span>
                                 </a>
@@ -1090,14 +1032,6 @@ cpu cores   : 4
                             
                                 <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">
                                     <span class="chip bg-color">密码学</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
-                                    <span class="chip bg-color">硬件知识</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
-                                    <span class="chip bg-color">线程、进程</span>
                                 </a>
                             
                         </div>
@@ -1275,13 +1209,13 @@ cpu cores   : 4
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/58712/">
+                <a href="/posts/7ada0001/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="代理设置">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="计组+操作系统">
                         
-                        <span class="card-title">代理设置</span>
+                        <span class="card-title">计组+操作系统</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1298,8 +1232,8 @@ cpu cores   : 4
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="post-category">
-                                    小知识
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    计算机基础知识
                                 </a>
                             
                             
@@ -1309,20 +1243,12 @@ cpu cores   : 4
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
+                        <span class="chip bg-color">硬件知识</span>
                     </a>
                     
-                    <a href="/tags/npm/">
-                        <span class="chip bg-color">npm</span>
-                    </a>
-                    
-                    <a href="/tags/yarn/">
-                        <span class="chip bg-color">yarn</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A2%AF%E5%AD%90/">
-                        <span class="chip bg-color">梯子</span>
+                    <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
+                        <span class="chip bg-color">线程、进程</span>
                     </a>
                     
                 </div>
@@ -1336,13 +1262,13 @@ cpu cores   : 4
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/300/">
+                <a href="/posts/54220/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="工具使用技巧集合">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Linux知识点+问题">
                         
-                        <span class="card-title">工具使用技巧集合</span>
+                        <span class="card-title">Linux知识点+问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1359,8 +1285,8 @@ cpu cores   : 4
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
@@ -1370,32 +1296,28 @@ cpu cores   : 4
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/office/">
-                        <span class="chip bg-color">office</span>
+                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                        <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/IDE/">
-                        <span class="chip bg-color">IDE</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">
-                        <span class="chip bg-color">编辑器</span>
+                    <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">
+                        <span class="chip bg-color">持续集成</span>
                     </a>
                     
-                    <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-                        <span class="chip bg-color">快捷键</span>
+                    <a href="/tags/gcc/">
+                        <span class="chip bg-color">gcc</span>
                     </a>
                     
-                    <a href="/tags/vscode/">
-                        <span class="chip bg-color">vscode</span>
+                    <a href="/tags/Linux%E6%9D%83%E9%99%90%E7%94%A8%E6%B3%95/">
+                        <span class="chip bg-color">Linux权限用法</span>
                     </a>
                     
-                    <a href="/tags/visio/">
-                        <span class="chip bg-color">visio</span>
-                    </a>
-                    
-                    <a href="/tags/postman/">
-                        <span class="chip bg-color">postman</span>
+                    <a href="/tags/make-cmake/">
+                        <span class="chip bg-color">make&amp;cmake</span>
                     </a>
                     
                 </div>
@@ -1592,7 +1514,7 @@ cpu cores   : 4
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">203k</span>
+                        class="white-color">204.2k</span>
             
             
             
@@ -1821,6 +1743,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
