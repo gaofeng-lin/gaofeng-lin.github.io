@@ -5,9 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="计组+操作系统, Home of Gaofeng">
-    <meta name="description" content="进程和线程进程是系统资源分配和调度的基本单位
+    <meta name="description" content="进程、线程、CPU进程是系统资源分配和调度的基本单位
 线程是CPU任务调度和执行的基本单位
-一个进程中至少有一个线程甚至多个，线程是进程的一部分。同一个进程内的线程共享进程的地址空间，每个线程都有自己独立的运行栈和程序计数器，线程之间切换的开销小。">
+一个进程中至少有一个线程甚至多个，线程是进程的一部分。同一个进程内的线程共享进程的地址空间，每个线程都有自己独立的运行栈和程序计数器，线程之间切换的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -473,14 +473,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4k
+                    6.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    22 分
                 </div>
                 
 
@@ -503,7 +503,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h2><p>进程是系统资源分配和调度的基本单位</p>
+                <h2 id="进程、线程、CPU"><a href="#进程、线程、CPU" class="headerlink" title="进程、线程、CPU"></a>进程、线程、CPU</h2><p>进程是系统资源分配和调度的基本单位</p>
 <p>线程是CPU任务调度和执行的基本单位</p>
 <p>一个进程中至少有一个线程甚至多个，线程是进程的一部分。同一个进程内的线程共享进程的地址空间，每个线程都有自己独立的运行栈和程序计数器，线程之间切换的开销小。</p>
 <p>一个可执行程序可以被称为进程，比如Windows中任务管理器里面的任务，就是进程。比如打开浏览器。浏览器的进程内部可能有多个线程，如渲染线程、网络请求线程、事件处理线程等。</p>
@@ -512,7 +512,169 @@
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/4-%E8%BF%9B%E7%A8%8B%E4%BA%A4%E6%9B%BF%E8%BF%90%E8%A1%8C.webp" alt=""></p>
 <p>这就是早期的“多个进程、交替执行”思想。</p>
 <p>只要切换速度够快，其实就感觉不出来，好像是在并行执行，其实是并发。</p>
-<h3 id="发展历史—近代操作系统"><a href="#发展历史—近代操作系统" class="headerlink" title="发展历史—近代操作系统"></a>发展历史—近代操作系统</h3><p>进程内部的任务不是并发执行，影响使用效率。而多线程之间的通信开销比较大</p>
+<h3 id="发展历史—近代操作系统"><a href="#发展历史—近代操作系统" class="headerlink" title="发展历史—近代操作系统"></a>发展历史—近代操作系统</h3><p>进程的局限性​​</p>
+<ul>
+<li><strong>​高昂的创建/切换成本</strong>​​：进程需独立分配内存、文件描述符等资源，创建和上下文切换涉及大量内核操作（约需数毫秒）<br>​​</li>
+<li><strong>资源共享困难</strong>​​：进程间通信需通过IPC机制（管道/消息队列等），数据传递效率低（例如：管道传输需两次内存拷贝）<br>​</li>
+<li><strong>​响应能力受限</strong>​​：单进程无法同时处理多个任务（如GUI程序无法在计算时保持界面响应）</li>
+</ul>
+<p>线程的核心优势​​</p>
+<ul>
+<li>​​轻量级执行单元​​：线程共享进程资源，创建速度比进程快10-100倍（Linux中线程创建约需10μs）<br>​</li>
+<li>​高效上下文切换​​：同进程线程切换仅需保存寄存器（约数百时钟周期），无需TLB刷新<br>​​并发性能提升​​：Web服务器（如Nginx）使用线程池，可同时处理数千连接，吞吐量比进程模型提升10倍以上<br>​​</li>
+<li>多核利用率​​：8核CPU上，多线程程序可实现近线性加速（Amdahl定律），而多进程受限于通信开销</li>
+</ul>
+<p><strong>线程的引入本质是计算机体系结构发展（多核/超线程）与软件需求（高并发/低延迟）共同驱动的结果</strong></p>
+<h3 id="多核cpu和多个cpu的区别"><a href="#多核cpu和多个cpu的区别" class="headerlink" title="多核cpu和多个cpu的区别"></a>多核cpu和多个cpu的区别</h3><p>多核 CPU 和多个 CPU 有何区别？ - 老狼的回答 - 知乎<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20998226/answer/705020723">https://www.zhihu.com/question/20998226/answer/705020723</a></p>
+<p><strong>多核CPU和多CPU的区别主要在于性能和成本。多核CPU性能（延迟小、带宽高）最好，但成本最高；多CPU成本小，便宜，但性能相对较差。</strong></p>
+<h3 id="cpu核心数与线程数"><a href="#cpu核心数与线程数" class="headerlink" title="cpu核心数与线程数"></a>cpu核心数与线程数</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86855590">原文链接</a></p>
+<ul>
+<li>一个核心只能运行一个进程/线程。如果要运行多线程，只能使用并发的方式。</li>
+<li>一般来说几个核心就能并行运行几个线程，但是AMD和Intel都有各自的超线程技术，实际上一个核心能运行两个线程。‘</li>
+<li>线程数并不是越多越好，超过了核心数目，部分线程就只能并发</li>
+</ul>
+<p><strong>物理 cpu 数（physical cpu）</strong></p>
+<p>指主板上实际插入的 cpu 硬件个数（socket）。（但是这一概念经常被泛泛的说成是 cpu 数，这很容易导致与 core 数，processor 数等概念混淆，所以此处强调是物理 cpu 数）。</p>
+<p>由于在主板上引入多个 cpu 插槽需要更复杂的硬件支持（连接不同插槽的 cpu 到内存和其他资源），通常只会在服务器上才这样做。在家用电脑中，一般主板上只会有一个 cpu 插槽。</p>
+<p><strong>核心（core）</strong><br>一开始，每个物理 cpu 上只有一个核心（a single core），对操作系统而言，也就是同一时刻只能运行一个进程/线程。 为了提高性能，cpu 厂商开始在单个物理 cpu 上增加核心（实实在在的硬件存在），也就出现了双核心 cpu（dual-core cpu）以及多核心 cpu（multiple cores），这样一个双核心 cpu 就是同一时刻能够运行两个进程/线程的。</p>
+<p><strong>同时多线程技术（simultaneous multithreading）和 超线程技术（hyper–threading/HT）</strong></p>
+<p>本质一样，是为了提高单个 core 同一时刻能够执行的多线程数的技术（充分利用单个 core 的计算能力，尽量让其“一刻也不得闲”）。</p>
+<p>simultaneous multithreading 缩写是 SMT，AMD 和其他 cpu 厂商的称呼。 hyper–threading 是 Intel 的称呼，可以认为 hyper–threading 是 SMT 的一种具体技术实现。</p>
+<p>在类似技术下，产生了如下等价术语：</p>
+<ul>
+<li>虚拟 core： virtual core </li>
+<li>逻辑 processer： logical processor </li>
+<li>线程：thread</li>
+</ul>
+<p>所以可以这样说：某款采用 SMT 技术的 4 核心 AMD cpu 提供了 8 线程同时执行的能力；某款采用 HT 技术的 2 核心 Intel cpu 提供了 4 线程同时执行的能力。</p>
+<p><strong>查看 cpu 信息</strong><br>1.linux系统：</p>
+<pre class="line-numbers language-none"><code class="language-none">//法一
+lscpu<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">CPU(s):                24
+On-line CPU(s) list:   0-23
+Thread(s) per core:    2
+Core(s) per socket:    6
+Socket(s):             2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">//法二
+cat /proc/cpuinfo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">processor   : 0
+vendor_id   : GenuineIntel
+cpu family  : 6
+model       : 60
+model name  : Intel(R) Core(TM) i7-4700MQ CPU @ 2.40GHz
+stepping    : 3
+microcode   : 0x22
+cpu MHz     : 2393.631
+cache size  : 6144 KB
+physical id : 0
+siblings    : 8
+core id     : 0
+cpu cores   : 4
+...
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中有几个physical id,机器上就安装了几个物理CPU<br>cpu core记录了每个物理CPU,内部有几个物理核<br>siblings 代表每个物理CPU有多少个逻辑核</p>
+<p>2.windows<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/c82b797044d88e27b217706604a29bc7.png" alt=""><br><strong>多线程程序线程数</strong><br>为了让我们的多线程程序更好的利用 cpu 资源，我们通常会先了解机器拥有的 processor 数，有若干手段可以获取这一信息：</p>
+<ul>
+<li>cpuinfo 中查看：比如上文中的 cat /proc/cpuinfo | grep “processor” | wc -l</li>
+<li>top 命令查看：cpu0,cpu1,…</li>
+<li>编程：比如在 Java 中用 Runtime.getRuntime().availableProcessors()</li>
+</ul>
+<p>具体在多线程程序中设置线程数多大，对计算密集型的程序有的建议是 processor count + 1，有的建议是 processor count 的 1.5 倍，都是经验值，实测为准。</p>
+<p><strong>小结</strong></p>
+<ul>
+<li>一台完整的计算机可能包含一到多个物理 cpu </li>
+<li>从单个物理 cpu （physical cpu）的角度看，其可能是单核心、双核心甚至多核心的</li>
+<li>从单个核心（core）的角度看，还有 SMT / HT 等技术让每个 core 对计算机操作系统而言用起来像多个物理 core 差不多</li>
+</ul>
+<p>总的逻辑 cpu 数 = 物理 cpu 数 <em> 每颗物理 cpu 的核心数 </em> 每个核心的超线程数</p>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h3 id="基本概念-主要功能"><a href="#基本概念-主要功能" class="headerlink" title="基本概念+主要功能"></a>基本概念+主要功能</h3><p>操作系统是管理硬件和软件资源的程序</p>
+<p>主要包括：</p>
+<ul>
+<li>资源管理：<ul>
+<li>硬件资源：管理CPU、内存、存储设备、输入输出设备等。</li>
+<li>软件资源：协调应用程序对资源的访问（如文件、网络等）。</li>
+</ul>
+</li>
+<li>进程管理：<ul>
+<li>负责进程的创建、调度、终止，确保多任务高效执行（如时间片轮转）。</li>
+</ul>
+</li>
+<li>内存管理：<ul>
+<li>通过虚拟内存技术分配和回收内存，实现内存保护和地址映射。</li>
+</ul>
+</li>
+<li>文件系统管理：<ul>
+<li>组织和管理文件存储（如文件读写、权限控制）。</li>
+</ul>
+</li>
+<li>用户接口：<ul>
+<li>提供命令行（如Linux的Shell）或图形界面（如Windows的桌面）供用户交互。</li>
+</ul>
+</li>
+<li>设备驱动管理：<ul>
+<li>通过驱动程序与硬件通信（如显卡、声卡）</li>
+</ul>
+</li>
+</ul>
+<h3 id="层次结构"><a href="#层次结构" class="headerlink" title="层次结构"></a>层次结构</h3><ul>
+<li>硬件层：物理设备（CPU、内存、硬盘等）。</li>
+<li>内核层（Kernel Space）：<ul>
+<li>操作系统的核心部分，运行在内核态（高权限），直接管理硬件资源。</li>
+<li>负责进程调度、内存分配、设备驱动等基础功能。</li>
+</ul>
+</li>
+<li>系统调用接口层：<ul>
+<li>用户程序通过系统调用（如open()、read()）请求内核服务。</li>
+</ul>
+</li>
+<li>用户层（User Space）：<ul>
+<li>运行应用程序、库文件和工具（如浏览器、文字处理软件）。</li>
+<li>通过库函数（如C标准库）间接调用内核功能。</li>
+</ul>
+</li>
+</ul>
+<h2 id="内核"><a href="#内核" class="headerlink" title="内核"></a>内核</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>内核（Kernel）是操作系统的核心组件，是系统启动后加载到内存中的第一个程序，始终驻留内存直到系统关闭。它是操作系统与硬件之间的直接接口，负责最底层的资源控制。</p>
+<h3 id="主要任务"><a href="#主要任务" class="headerlink" title="主要任务"></a>主要任务</h3><ul>
+<li>进程调度：<ul>
+<li>决定哪个进程获得CPU使用权，分配时间片（如Linux的CFS完全公平调度器）。</li>
+</ul>
+</li>
+<li>内存管理：<ul>
+<li>管理物理内存和虚拟内存，实现进程间的内存隔离和保护。</li>
+</ul>
+</li>
+<li>文件系统管理：<ul>
+<li>通过虚拟文件系统（VFS）支持多种文件系统（如ext4、NTFS）。</li>
+</ul>
+</li>
+<li>设备驱动管理：<ul>
+<li>为硬件设备提供统一接口（如显卡驱动、网络驱动）。</li>
+</ul>
+</li>
+<li>系统调用处理：<ul>
+<li>将用户程序的请求（如文件读写）转换为硬件操作。</li>
+</ul>
+</li>
+<li>中断和异常处理：<ul>
+<li>处理硬件中断（如键盘输入）和软件异常（如除零错误）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户态和内核态"><a href="#用户态和内核态" class="headerlink" title="用户态和内核态"></a>用户态和内核态</h3><p>早期操作系统，线程管理由用户空间的线程库实现，这些线程就是用户态线程。</p>
+<ul>
+<li>优点：创建/销毁成本低，切换快，适合轻量级任务。</li>
+<li>致命缺陷：<ul>
+<li>无法利用多核：<strong>内核只调度进程，无法感知用户线程</strong>。因此，同一进程的多个用户线程只能并发（单核）或受限并行（依赖内核线程）。</li>
+<li>阻塞导致进程崩溃：若一个用户线程执行系统调用（如read()）进入内核态，整个进程会被阻塞，其他用户线程无法运行。</li>
+<li>无内核调度支持：用户线程的调度由应用程序自行实现，容易因调度不合理导致性能问题。</li>
+</ul>
+</li>
+</ul>
+<p><strong>后面就诞生了内核态线程</strong></p>
+<p>用户态线程由用户空间的线程库（如Glibc的Pthreads）管理，完全运行在用户态，内核对其不可见。</p>
+<p>内核态线程由操作系统内核直接管理，每个内核线程在内核中有独立的线程控制块（TCB），运行在内核态或用户态（根据代码位置）。</p>
+<p>用户线程本身无法直接获得CPU时间片，必须通过绑定内核线程才能运行。</p>
+<p>绑定的意义<br>解决阻塞问题：通过内核线程的独立调度，避免用户线程阻塞导致进程崩溃。<br>利用多核资源：内核线程可分配到不同CPU核心，用户线程通过绑定实现并行。</p>
 <h2 id="cpu工作流程"><a href="#cpu工作流程" class="headerlink" title="cpu工作流程"></a>cpu工作流程</h2><p>CPU的根本任务就是执行指令，对计算机来说最终都是一串由“0”和“1”组成的序列。CPU从逻辑上可以划分成3个模块，分别是控制单元、运算单元和存储单元，这三部分由CPU内部总线连接起来。如下所示：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/9893254095656f4a4b405400721af669.png" alt=""></p>
 <ol>
@@ -854,67 +1016,6 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/48230/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Linux常用命令">
-                        
-                        <span class="card-title">Linux常用命令</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                        <span class="chip bg-color">运维</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/ssh/">
-                        <span class="chip bg-color">ssh</span>
-                    </a>
-                    
-                    <a href="/tags/Vim/">
-                        <span class="chip bg-color">Vim</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/posts/7909/">
                     <div class="card-image">
                         
@@ -931,9 +1032,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -957,18 +1058,6 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/VM/">
-                        <span class="chip bg-color">VM</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
-                        <span class="chip bg-color">硬件知识</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
-                        <span class="chip bg-color">线程、进程</span>
-                    </a>
-                    
                     <a href="/tags/nginx/">
                         <span class="chip bg-color">nginx</span>
                     </a>
@@ -991,6 +1080,87 @@
                     
                     <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">
                         <span class="chip bg-color">密码学</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
+                        <span class="chip bg-color">硬件知识</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
+                        <span class="chip bg-color">线程、进程</span>
+                    </a>
+                    
+                    <a href="/tags/VM/">
+                        <span class="chip bg-color">VM</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/54220/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Linux知识点+问题">
+                        
+                        <span class="card-title">Linux知识点+问题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                        <span class="chip bg-color">运维</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">
+                        <span class="chip bg-color">持续集成</span>
+                    </a>
+                    
+                    <a href="/tags/gcc/">
+                        <span class="chip bg-color">gcc</span>
+                    </a>
+                    
+                    <a href="/tags/Linux%E6%9D%83%E9%99%90%E7%94%A8%E6%B3%95/">
+                        <span class="chip bg-color">Linux权限用法</span>
+                    </a>
+                    
+                    <a href="/tags/make-cmake/">
+                        <span class="chip bg-color">make&amp;cmake</span>
                     </a>
                     
                 </div>
@@ -1187,7 +1357,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">204.2k</span>
+                        class="white-color">211.8k</span>
             
             
             

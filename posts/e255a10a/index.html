@@ -1,0 +1,1534 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="计算机网络, Home of Gaofeng">
+    <meta name="description" content="计算机网络TCP/IP网络模型一般都是七层模型，如果简答的划分，四层就可以。从上至下分别是：应用层、传输层、网络层、网络接口层
+应用层：传输什么内容（图片、文字、音频）。定义​​数据格式​​和​​端到端交互规则​​。协议如HTTP、FTP。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>计算机网络 | Home of Gaofeng</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Home of Gaofeng</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Home of Gaofeng</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">计算机网络</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">计算机网络</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
+                                计算机基础知识
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    0205-04-16
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    20 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><h3 id="TCP-IP网络模型"><a href="#TCP-IP网络模型" class="headerlink" title="TCP/IP网络模型"></a>TCP/IP网络模型</h3><p>一般都是七层模型，如果简答的划分，四层就可以。从上至下分别是：应用层、传输层、网络层、网络接口层</p>
+<p>应用层：传输什么内容（图片、文字、音频）。定义​​数据格式​​和​​端到端交互规则​​。协议如HTTP、FTP。</p>
+<p>HTTP定义网页请求/响应的格式（如 GET /index.html）</p>
+<p>传输层：对应用层的数据进行封装，提供​​端到端通信​​（发送给哪个端口）。协议如TCP、UDP。</p>
+<p>网络层：对传输层进程封装，通过​​逻辑寻址（IP地址）​​和​​路由选择​​，实现跨网络的设备间通信。IP协议</p>
+<p>网络接口层：对网络层进行封装，找到传输的设备，嵌入MAC地址。同一局域网内​​通过物理地址（MAC地址）直接通信。</p>
+<h3 id="cookie和session"><a href="#cookie和session" class="headerlink" title="cookie和session"></a>cookie和session</h3><h4 id="cookie和seesion主要区别"><a href="#cookie和seesion主要区别" class="headerlink" title="cookie和seesion主要区别"></a>cookie和seesion主要区别</h4><p>星巴克开始优惠活动，每消费10杯咖啡，会免费赠送1杯。考虑到一个人一次性消费10杯咖啡几乎不可能，所以需要采取某种方式来记录顾客的消费数量。</p>
+<p>1)分给顾客一张卡片，每消费一次记录一次；</p>
+<p>2)发给顾客一张卡片，上面有卡号，顾客每消费一次，由店员在操作机上记录一次。</p>
+<p>而方案一和二正是对应的客户端记录和服务端记录。与之相对应的正是cookie和session。 好了，我们进入正题。</p>
+<h4 id="什么是cookie"><a href="#什么是cookie" class="headerlink" title="什么是cookie"></a>什么是cookie</h4><p>HTTP是一种无状态协议,服务器没有办法单单从网络连接上面知道访问者的身份,为了解决这个问题,就诞生了Cookie</p>
+<p>Cookie实际上是一小段的文本信息。客户端请求服务器，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个Cookie</p>
+<p>客户端浏览器会把Cookie保存起来。当浏览器再请求该网站时，浏览器把请求的网址连同该Cookie一同提交给服务器。服务器检查该Cookie。</p>
+<h4 id="cookie的弊端"><a href="#cookie的弊端" class="headerlink" title="cookie的弊端"></a>cookie的弊端</h4><p>cookie 可以让服务端程序跟踪每个客户端的访问，但是每次客户端的访问都必须传回这些Cookie，如果 Cookie 很多，这无形地增加了客户端与服务端的数据传输量，</p>
+<p><img src="https://img-blog.csdn.net/20180411123828426?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2puc2h1X2l0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
+<h4 id="session"><a href="#session" class="headerlink" title="session"></a>session</h4><p>Session 的出现正是为了解决这个问题。同一个客户端每次和服务端交互时，不需要每次都传回所有的 Cookie 值，而是只要传回一个 ID，这个 ID 是客户端第一次访问服务器的时候生成的， 而且每个客户端是唯一的。这样每个客户端就有了一个唯一的 ID，客户端只要传回这个 ID 就行了，这个 ID 通常是 NANE 为JSESIONID 的一个 Cookie。</p>
+<p>Session机制是一种服务端的机制，服务器使用一种类似散列表的结构来保存信息。</p>
+<p>当程序需要为某个客户端的请求创建一个session的时候，服务器首先检查这个客户端里的请求里是否已包含了一个session标识—sessionID，</p>
+<p>如果已经包含一个sessionID，则说明以前已经为此客户端创建过session，服务器就按照sessionID把这个session检索出来使用</p>
+<p>如果客户端请求不包含sessionID，则为此客户端创建一个session并且声称一个与此session相关联的sessionID，</p>
+<p>sessionID的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串(服务器会自动创建),这个sessionID将被在本次响应中返回给客户端保存。</p>
+<h3 id="centOS7-桥接模式设置静态Ip的方法步骤"><a href="#centOS7-桥接模式设置静态Ip的方法步骤" class="headerlink" title="centOS7 桥接模式设置静态Ip的方法步骤"></a>centOS7 桥接模式设置静态Ip的方法步骤</h3><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1722144">原文链接</a></p>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>如果你虚拟机IP是自动获取的，难免会碰到IP经常变动，给xshell相关连接工具使用造成不便，那么怎么固定IP且正常访问外网地址呢？由于主机网络采用的是自动获取IP方式,所以每次重启机器可能导致IP地址的变更,不利于项目的部署和运行</p>
+<p>静态ip就是虚拟机的ip 外界想要连你的虚拟机的ip </p>
+<h4 id="虚拟机选择桥接模式"><a href="#虚拟机选择桥接模式" class="headerlink" title="虚拟机选择桥接模式"></a>虚拟机选择桥接模式</h4><p>注意虚拟机网卡要选择主机上网的网卡</p>
+<h4 id="虚拟机设置静态ip-关键步骤"><a href="#虚拟机设置静态ip-关键步骤" class="headerlink" title="虚拟机设置静态ip(关键步骤)"></a>虚拟机设置静态ip(关键步骤)</h4><p><img src="https://ask.qcloudimg.com/http-save/yehe-1844341/npty8pp5hp.jpeg?imageView2/2/w/1620" alt=""></p>
+<p>虚拟机的网卡名称是ens33</p>
+<p>然后用vim编辑以下文件</p>
+<p><strong>/etc/sysconfig/network-scripts/ifcfg-xxx</strong></p>
+<p>上面的xxx就是虚拟机的网卡名称，不同的linux发行版名称可能不同。原因见原链接</p>
+<p>需要修改的属性：<br></p><pre class="line-numbers language-none"><code class="language-none">ONBOOT=YES #no换成yes
+BOOTPROTO=static #dhcp换成static
+添加：
+IPADDR=192.168.230.129 #静态ip地址 与主机中IP的前三位一致，最后一位需要修改，不要跟主机ip一样导致发生冲突
+GATEWAY=192.168.230.1 #默认网关 和物理主机一样就可以了
+NETMASK=255.255.255.0 #子网掩码 和物理主机一样就可以了
+DNS1=8.8.8.8　　　　　　#DNS，写谷歌的地址就可以了。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<p>具体解释：<br></p><pre class="line-numbers language-none"><code class="language-none">TYPE=Ethernet    # 网卡类型：为以太网
+PROXY_METHOD=none   # 代理方式：关闭状态
+BROWSER_ONLY=no    # 只是浏览器：否
+BOOTPROTO=dhcp    # 网卡的引导协议：DHCP[中文名称: 动态主机配置协议]
+DEFROUTE=yes    # 默认路由：是, 不明白的可以百度关键词 `默认路由`
+IPV4_FAILURE_FATAL=no  # 是不开启IPV4致命错误检测：否
+IPV6INIT=yes    # IPV6是否自动初始化: 是[不会有任何影响, 现在还没用到IPV6]
+IPV6_AUTOCONF=yes   # IPV6是否自动配置：是[不会有任何影响, 现在还没用到IPV6]
+IPV6_DEFROUTE=yes   # IPV6是否可以为默认路由：是[不会有任何影响, 现在还没用到IPV6]
+IPV6_FAILURE_FATAL=no  # 是不开启IPV6致命错误检测：否
+IPV6_ADDR_GEN_MODE=stable-privacy   # IPV6地址生成模型：stable-privacy [这只一种生成IPV6的策略]
+NAME=ens33     # 网卡物理设备名称
+UUID=f47bde51-fa78-4f79-b68f-d5dd90cfc698 # 通用唯一识别码, 每一个网卡都会有, 不能重复, 否两台linux只有一台网卡可用
+DEVICE=ens33     # 网卡设备名称, 必须和 `NAME` 值一样
+ONBOOT=no      # 是否开机启动， 要想网卡开机就启动或通过 `systemctl restart network`控制网卡,必须设置为 `yes`<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<h4 id="重启网络服务"><a href="#重启网络服务" class="headerlink" title="重启网络服务"></a>重启网络服务</h4><pre class="line-numbers language-none"><code class="language-none">#centos7
+
+systemctl restart network <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>输入命令ping www.baidu.com（测试外网） </p>
+<p>输入命令ping 192.168.2.153（宿主机ip） </p>
+<p><strong>注意：</strong><br>如果无法ping通宿主机，很有可能是因为防火墙。<br>宿主机无法ping通虚拟机，也有可能是因为防火墙。</p>
+<h3 id="VMware三种网卡解析"><a href="#VMware三种网卡解析" class="headerlink" title="VMware三种网卡解析"></a>VMware三种网卡解析</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41672971/article/details/125825563">原文链接</a></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>虚拟网卡名</th>
+<th>网络属性</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VMnet0</td>
+<td>物理网卡</td>
+<td>Bridge桥接</td>
+</tr>
+<tr>
+<td>Vmnet1</td>
+<td>虚拟网卡</td>
+<td>host-only仅主机</td>
+</tr>
+<tr>
+<td>VMnet8</td>
+<td>虚拟网卡</td>
+<td>NAT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>但是我们查看主机的网络链接，有时却看不见VMnet0</strong><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/b5aa37b6f88245799d58da6be23b497a.png" alt=""></p>
+<p>通过网络配置这里，能够看见使用那张网卡（这里是virtualbox，VMware也是差不多）<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/eee41028523f4d33a06c7c0fec4c34a8.png" alt=""><br><strong>所以根据上面两张图的对比，本地网络连接中的以太网3就是桥接模式使用的网卡。</strong></p>
+<h3 id="VM虚拟机-三种网络连接方式（桥接、NAT、仅主机模式）"><a href="#VM虚拟机-三种网络连接方式（桥接、NAT、仅主机模式）" class="headerlink" title="VM虚拟机-三种网络连接方式（桥接、NAT、仅主机模式）"></a>VM虚拟机-三种网络连接方式（桥接、NAT、仅主机模式）</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tjcwt2011/article/details/124664594">原文链接</a></p>
+<h4 id="桥接"><a href="#桥接" class="headerlink" title="桥接"></a>桥接</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2021082016475582.png" alt=""></p>
+<p><strong>桥接，即架设了一条桥，让虚拟机成为一台真正的计算机，直接连入到实际网络中了。</strong></p>
+<p>因此，它使得虚拟机能被分配到一个网络中独立的IP，所有网络功能完全和在网络中的真实机器一样，它和主机连接在同一个交换机上（此交换机通过vmnet0模拟），处于同一个 LAN，它可以访问网内任何一台机器。</p>
+<p><strong>此模式下虚拟机：</strong></p>
+<ol>
+<li><p>可以与主机相互访问</p>
+</li>
+<li><p>可以与网络中其他主机相互访问</p>
+</li>
+<li><p>可以与其他虚拟机相互访问</p>
+</li>
+</ol>
+<p>所以，桥接模式下的虚拟机，你把它直接认为是真实计算机就行了。</p>
+<p>默认情况下DHCP会自动为虚拟机配置网络，但如果你需要在桥接模式下，手动为虚拟系统配置IP地址时，配置的虚拟机的ip不能是已经被占用的地址，还要和宿主机器处于同一网段，不然会造成地址冲突，只有这样虚拟系统才能和宿主机器以及外网进行通信。</p>
+<hr>
+<p><strong>复制物理网络连接状态</strong></p>
+<p>一般在虚拟机设置为桥接时就能看见这个选项（无特殊要求默认不用勾选）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20210820141133567.png" alt=""></p>
+<p>这个选项是只在移动设备上有用，比如在笔记本上使用VMware软件，最开始主机用有线连接的局域网，开启虚拟机（使用桥接），虚拟机系统获取的局域网地址为192.168.1.4。然后你把主机的有线拔掉，连接上同一局域网的wifi时，如果你选择了复制物理网络连接状态这个选项，那你的虚拟机系统的IP不会变化（还是192.168.1.4），如果你没有选择复制物理网络连接状态这个选项，那你的虚拟机系统的IP可能就会发生变化，比如变为192.168.1.5。</p>
+<h4 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20210820164721916.png" alt=""></p>
+<p>NAT，虚拟机访问网络的所有数据都是由主机提供的，虚拟机并不真实存在于网络中，主机与网络中的任何机器都不能查看和访问到虚拟机的存在。 </p>
+<p>虚拟机和主机之间通过VMnet8这个网卡来模拟路由器的作用，进行nat地址转换功能，负责将虚拟机发到 VMnet8 的包进行地址转换之后发到实际的网络上，再将实际网络上返回的包进行地址转换后通过 VMnet8 发送给虚拟机。</p>
+<p>此模式下虚拟机：</p>
+<pre><code>   可以单向访问主机
+
+   可以单向访问其他网络中主机
+
+   不可以访问其他虚拟机
+</code></pre><p>虚拟机可以访问主机能访问到的所有网络，但是对于主机以及主机网络上的其他机器，虚拟机又是不可见的，甚至主机也访问不到虚拟机。包括所有nat模式下的虚拟机之间相互都不能访问，虚拟机与虚拟机各自完全独立，相互间无法通过网络访问彼此。</p>
+<h4 id="仅主机"><a href="#仅主机" class="headerlink" title="仅主机"></a>仅主机</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20210820172148978.png" alt=""></p>
+<p>仅主机，虚拟机的与主机通过VMnet1连接，VMnet1不提供提供任何路由服务，因此虚拟机只能和宿主机进行通信，而不能连接到实际网络上。</p>
+<p>其实就是NAT模式去除了nat地址转换功能</p>
+<p>此模式下虚拟机：</p>
+<pre><code>   可以与主机互相访问
+
+   不可以访问其他网络中主机
+
+   不可以访问其他虚拟机
+</code></pre><p>仅主机模式看着很简单，但是其实这是一种比较复杂的模式，其他模式可以实现的功能，在仅主机模式下，通过虚拟机及网卡的设置都可以被实现。所以该模式需要有比较扎实的网络基础知识</p>
+<p>这种模式下，我们可以理解为虚拟机在主机中模拟出一张专供虚拟机使用的网卡VMnet1，所有虚拟机都是连接到该网卡上的，我们可以通过设置这张网卡来实现上网及其他很多功能，比如（网卡共享、网卡桥接等）。</p>
+<h3 id="正向代理和反向代理区别"><a href="#正向代理和反向代理区别" class="headerlink" title="正向代理和反向代理区别"></a>正向代理和反向代理区别</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/taostaryu/p/10547132.html">原文链接</a></p>
+<p><strong>一 什么是代理</strong></p>
+<p>代理其实就是一个中介，A和B本来可以直连，中间插入一个C，C就是中介。<br>刚开始的时候，代理多数是帮助内网client访问外网server用的<br>后来出现了反向代理，”反向”这个词在这儿的意思其实是指方向相反，即代理将来自外网客户端的请求转发到内网服务器，从外到内</p>
+<p><strong>二 正向代理</strong></p>
+<p>正向代理类似一个跳板机，代理访问外部资源</p>
+<p>比如我们国内访问谷歌，直接访问访问不到，我们可以通过一个正向代理服务器，请求发到代理服，代理服务器能够访问谷歌，这样由代理去谷歌取到返回数据，再返回给我们，这样我们就能访问谷歌了<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/cd381c5de09a40f2bfedae52042eb66d.png" alt=""></p>
+<p><strong>正向代理的用途：</strong></p>
+<p>　　（1）访问原来无法访问的资源，如google</p>
+<p>（2） 可以做缓存，加速访问资源</p>
+<p>　　（3）对客户端访问授权，上网进行认证</p>
+<p>　　（4）代理可以记录用户访问记录（上网行为管理），对外隐藏用户信息
+　　</p>
+<p><strong>三 反向代理</strong><br>反向代理（Reverse Proxy）实际运行方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/85649ed3b62c40d38de64b5170114f5b.png" alt=""></p>
+<p><strong>反向代理的作用：</strong><br>（1）保证内网的安全，阻止web攻击，大型网站，通常将反向代理作为公网访问地址，Web服务器是内网</p>
+<p>（2）负载均衡，通过反向代理服务器来优化网站的负载</p>
+<p><strong>四 总结<br>正向代理即是客户端代理, 代理客户端, 服务端不知道实际发起请求的客户端.<br>反向代理即是服务端代理, 代理服务端, 客户端不知道实际提供服务的服务端</strong></p>
+<p>看图理解一：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/0c3860e58d2cffd66b808fe07631e358.png" alt=""></p>
+<p>看图理解二：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/7cc6fc2baf342df6a450a54ca2ad6b8a.png" alt=""></p>
+<p>正向代理中，proxy和client同属一个LAN，对server透明；<br>反向代理中，proxy和server同属一个LAN，对client透明。<br>实际上proxy在两种代理中做的事都是代为收发请求和响应，不过从结构上来看正好左右互换了下，所以把后出现的那种代理方式叫成了反向代理</p>
+<p><strong>总结：</strong><br>正向代理: 买票的黄牛</p>
+<p>反向代理: 租房的代理</p>
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904129987526663">原文链接</a><br>“Nginx 是一款轻量级的 HTTP 服务器，采用事件驱动的异步非阻塞处理方式框架，这让其具有极好的 IO 性能，时常用于服务端的<strong>反向代理</strong>和<strong>负载均衡</strong>。”<br>Nginx 是一款 http 服务器 （或叫web服务器）。它是由俄罗斯人 伊戈尔·赛索耶夫为俄罗斯访问量第二的 Rambler.ru 站点开发的，并于2004年首次公开发布的。</p>
+<pre class="line-numbers language-none"><code class="language-none">web服务器：负责处理和响应用户请求，一般也称为http服务器，如 Apache、IIS、Nginx
+
+应用服务器：存放和运行系统程序的服务器，负责处理程序中的业务逻辑，如 Tomcat、Weblogic、Jboss（现在大多数应用服务器也包含了web服务器的功能）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Nginx 是什么，总结一下就是这些：</p>
+<ul>
+<li>一种轻量级的web服务器</li>
+<li>设计思想是事件驱动的异步非阻塞处理（类node.js）</li>
+<li>占用内存少、启动速度快、并发能力强</li>
+<li>使用C语言开发</li>
+<li>扩展性好，第三方插件非常多</li>
+<li>在互联网项目中广泛应用</li>
+</ul>
+<h4 id="Nginx配置"><a href="#Nginx配置" class="headerlink" title="Nginx配置"></a>Nginx配置</h4><p><strong>安装/卸载</strong></p>
+<p><strong><em>安装、卸载、启动自查找资料</em></strong></p>
+<p>修改配置<br>经常要用到的几个文件路径：</p>
+<pre class="line-numbers language-none"><code class="language-none">/usr/local/etc/nginx/nginx.conf （nginx配置文件路径）
+/usr/local/var/www （nginx服务器默认的根目录）
+/usr/local/Cellar/nginx/1.17.9 （nginx的安装路径）
+/usr/local/var/log/nginx/error.log (nginx默认的日志路径)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>nginx 默认配置文件简介：</p>
+<pre class="line-numbers language-none"><code class="language-none">## 首尾配置暂时忽略
+server {  
+        # 当nginx接到请求后，会匹配其配置中的service模块
+        # 匹配方法就是将请求携带的host和port去跟配置中的server_name和listen相匹配
+        listen       8080;        
+        server_name  localhost; # 定义当前虚拟主机（站点）匹配请求的主机名
+
+        location / {
+            root   html; # Nginx默认值
+            # 设定Nginx服务器返回的文档名
+            index  index.html index.htm; # 先找根目录下的index.html，如果没有再找index.htm
+        }
+}
+
+## 首尾配置暂时忽略<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>server{ } 其实是包含在 http{ } 内部的。每一个 server{ } 是一个虚拟主机（站点）。<br>上面代码块的意思是：当一个请求叫做localhost:8080请求nginx服务器时，该请求就会被匹配进该代码块的 server{ } 中执行。<br>当然 nginx 的配置非常多，用的时候可以根据文档进行配置。</p>
+<p>英文文档：nginx.org/en/docs/<br>中文文档：www.nginx.cn/doc/</p>
+<p>Nginx有哪些应用？<br>主要有4大应用（动静分离、正向代理、反向代理、负载均衡）</p>
+<h4 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/e9d551a4479341cca95a54fbe13f3ebe.webp" alt=""></p>
+<p>如上图所示，动静分离其实就是 Nginx 服务器将接收到的请求分为动态请求和静态请求。<br>静态请求直接从 nginx 服务器所设定的根目录路径去取对应的资源，动态请求转发给真实的后台（前面所说的应用服务器，如图中的Tomcat）去处理。<br>这样做不仅能给应用服务器减轻压力，将后台api接口服务化，还能将前后端代码分开并行开发和部署。（传送门：<a target="_blank" rel="noopener" href="https://www.php.cn/nginx/424631.html">nginx动静分离的好处</a>）</p>
+<pre class="line-numbers language-none"><code class="language-none">server {  
+        listen       8080;        
+        server_name  localhost;
+
+        location / {
+            root   html; # Nginx默认值
+            index  index.html index.htm;
+        }
+        
+        # 静态化配置，所有静态请求都转发给 nginx 处理，存放目录为 my-project
+        location ~ .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|js|css)$ {
+            root /usr/local/var/www/my-project; # 静态请求所代理到的根目录
+        }
+        
+        # 动态请求匹配到path为'node'的就转发到8002端口处理
+        location /node/ {  
+            proxy_pass http://localhost:8002; # 充当服务代理
+        }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>访问静态资源 nginx 服务器会返回 my-project 里面的文件，如获取 index.html：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/34472ca6f5724173402dbaf6d4e6f8b3.webp" alt=""></p>
+<p>访问动态请求 nginx 服务器会将它从8002端口请求到的内容，原封不动的返回回去：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/1f897ee545286a0b59fc4243f6af84b2.webp" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/ec6173b234f9c06fe646c9b709abb44e.webp" alt=""></p>
+<h4 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h4><p>负载均衡是什么？<br>随着业务的不断增长和用户的不断增多，一台服务已经满足不了系统要求了。这个时候就出现了服务器 集群。<br>在服务器集群中，Nginx 可以将接收到的客户端请求“均匀地”（严格讲并不一定均匀，可以通过设置权重）分配到这个集群中所有的服务器上。这个就叫做负载均衡。<br>负载均衡的示意图如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/06ee1083810d768945b4234ba3e18204.webp" alt=""><br>负载均衡的作用</p>
+<p>分摊服务器集群压力<br>保证客户端访问的稳定性</p>
+<p>前面也提到了，负载均衡可以解决分摊服务器集群压力的问题。除此之外，Nginx还带有健康检查（服务器心跳检查）功能，会定期轮询向集群里的所有服务器发送健康检查请求，来检查集群中是否有服务器处于异常状态。<br>一旦发现某台服务器异常，那么在这以后代理进来的客户端请求都不会被发送到该服务器上（直健康检查发现该服务器已恢复正常），从而保证客户端访问的稳定性。</p>
+<p><strong>配置负载均衡</strong></p>
+<p>配置一个简单的负载均衡并不复杂，代码如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">## 负载均衡：设置domain
+upstream domain {
+    server localhost:8000;
+    server localhost:8001;
+}
+server {  
+        listen       8080;        
+        server_name  localhost;
+
+        location / {
+            # root   html; # Nginx默认值
+            # index  index.html index.htm;
+            
+            proxy_pass http://domain; # 负载均衡配置，请求会被平均分配到8000和8001端口
+            proxy_set_header Host $host:$server_port;
+        }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>8000和8001是我本地用 Node.js 起的两个服务，负载均衡成功后可以看到访问 localhost:8080 有时会访问到8000端口的页面，有时会访问到8001端口的页面。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2299761055052914c2f089ab072b37fd.webp" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/3440c0ca236da8de821da682fcf157b1.webp" alt=""><br>能看到这个效果，就说明你配置的负载均衡策略生效了。<br>实际项目中的负载均衡远比这个案例要更加复杂，但是万变不离其宗，都是根据这个理想模型衍生出来的。<br>受集群单台服务器内存等资源的限制，负载均衡集群的服务器也不能无限增多。但因其良好的容错机制，负载均衡成为了实现高可用架构中必不可少的一环。</p>
+<h3 id="ping和ssh"><a href="#ping和ssh" class="headerlink" title="ping和ssh"></a>ping和ssh</h3><p><strong>ping 和 ssh 的连通性是相互独立的。如果你不能 ping 通一个 IP，不意味着你不能 ssh 到它；同样，如果你可以 ping 通一个 IP，也不意味着你可以 ssh 到它。</strong></p>
+<p>ping 和 ssh 使用的是不同的网络协议和端口。ping 使用的是 ICMP (Internet Control Message Protocol)，而 ssh 使用的是 TCP 协议，默认端口为22。这意味着以下几种情况可能发生：</p>
+<ol>
+<li><p>ICMP 被阻止：在许多网络环境中，出于安全原因，ICMP 可能被防火墙或路由器屏蔽。这意味着你可能无法 ping 通一个 IP，但是还是可以通过 ssh 连接它。</p>
+</li>
+<li><p>SSH 服务未运行：即使你可以 ping 通一个 IP，如果那台计算机上没有运行 SSH 服务，或者 SSH 服务配置不当，你仍然无法通过 ssh 连接它。</p>
+</li>
+<li><p>SSH 端口被阻止：某些网络可能允许 ICMP，但阻止了 SSH 的默认端口（22）。这可能是因为网络管理员想要防止未经授权的远程访问。</p>
+</li>
+<li><p>使用非默认端口的 SSH：有时，为了安全或其他原因，SSH 可能配置为在非默认端口上运行。在这种情况下，即使默认的 SSH 端口被阻止，你仍然可能能够连接，只要你知道正确的端口号。</p>
+</li>
+</ol>
+<h3 id="代理软件全局模型ip是否被修改"><a href="#代理软件全局模型ip是否被修改" class="headerlink" title="代理软件全局模型ip是否被修改"></a>代理软件全局模型ip是否被修改</h3><p>使用全局代理模式时，你的公共 IP 地址（从外部服务器或网站看到的 IP 地址）会被修改为代理服务器的 IP 地址。这是因为所有的网络请求都通过代理服务器进行，在到达最终的服务器或网站之前，首先到达代理服务器，然后由代理服务器转发。因此，对于外部服务器或网站，它们看到的请求似乎是来自代理服务器，而不是你的原始设备。</p>
+<p><strong>不过本地cmd查看ip是没有变化的</strong></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Jason Lin</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://gaofeng-lin.github.io/posts/e255a10a/">https://gaofeng-lin.github.io/posts/e255a10a/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">Jason Lin</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">计算机网络</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/10218/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Jenkins知识点">
+                        
+                        <span class="card-title">Jenkins知识点</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                    运维
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                        <span class="chip bg-color">运维</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">
+                        <span class="chip bg-color">持续集成</span>
+                    </a>
+                    
+                    <a href="/tags/Jenkins/">
+                        <span class="chip bg-color">Jenkins</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/e255a10a/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="计算机网络">
+                        
+                        <span class="card-title">计算机网络</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>0205-04-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    计算机基础知识
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">计算机网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2025</span>
+            
+            <a href="/about" target="_blank">Jason Lin</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">211.8k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/gaofeng-lin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:jason_gaofeng_lin@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>

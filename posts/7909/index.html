@@ -439,18 +439,6 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/VM/">
-                                <span class="chip bg-color">VM</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
-                                <span class="chip bg-color">硬件知识</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
-                                <span class="chip bg-color">线程、进程</span>
-                            </a>
-                        
                             <a href="/tags/nginx/">
                                 <span class="chip bg-color">nginx</span>
                             </a>
@@ -473,6 +461,18 @@
                         
                             <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">
                                 <span class="chip bg-color">密码学</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
+                                <span class="chip bg-color">硬件知识</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
+                                <span class="chip bg-color">线程、进程</span>
+                            </a>
+                        
+                            <a href="/tags/VM/">
+                                <span class="chip bg-color">VM</span>
                             </a>
                         
                     </div>
@@ -513,14 +513,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.6k
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    34 分
+                    11 分
                 </div>
                 
 
@@ -564,254 +564,6 @@
 <p>最好还是用vim进行修改，用echo输入到为你文件中，会出现冗余，直接添加比较好。用冒号分隔。</p>
 <p>修改好以后，需要更新环境变量</p>
 <pre class="line-numbers language-none"><code class="language-none">source /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><h3 id="cookie和session"><a href="#cookie和session" class="headerlink" title="cookie和session"></a>cookie和session</h3><h4 id="cookie和seesion主要区别"><a href="#cookie和seesion主要区别" class="headerlink" title="cookie和seesion主要区别"></a>cookie和seesion主要区别</h4><p>星巴克开始优惠活动，每消费10杯咖啡，会免费赠送1杯。考虑到一个人一次性消费10杯咖啡几乎不可能，所以需要采取某种方式来记录顾客的消费数量。</p>
-<p>1)分给顾客一张卡片，每消费一次记录一次；</p>
-<p>2)发给顾客一张卡片，上面有卡号，顾客每消费一次，由店员在操作机上记录一次。</p>
-<p>而方案一和二正是对应的客户端记录和服务端记录。与之相对应的正是cookie和session。 好了，我们进入正题。</p>
-<h4 id="什么是cookie"><a href="#什么是cookie" class="headerlink" title="什么是cookie"></a>什么是cookie</h4><p>HTTP是一种无状态协议,服务器没有办法单单从网络连接上面知道访问者的身份,为了解决这个问题,就诞生了Cookie</p>
-<p>Cookie实际上是一小段的文本信息。客户端请求服务器，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个Cookie</p>
-<p>客户端浏览器会把Cookie保存起来。当浏览器再请求该网站时，浏览器把请求的网址连同该Cookie一同提交给服务器。服务器检查该Cookie。</p>
-<h4 id="cookie的弊端"><a href="#cookie的弊端" class="headerlink" title="cookie的弊端"></a>cookie的弊端</h4><p>cookie 可以让服务端程序跟踪每个客户端的访问，但是每次客户端的访问都必须传回这些Cookie，如果 Cookie 很多，这无形地增加了客户端与服务端的数据传输量，</p>
-<p><img src="https://img-blog.csdn.net/20180411123828426?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2puc2h1X2l0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
-<h4 id="session"><a href="#session" class="headerlink" title="session"></a>session</h4><p>Session 的出现正是为了解决这个问题。同一个客户端每次和服务端交互时，不需要每次都传回所有的 Cookie 值，而是只要传回一个 ID，这个 ID 是客户端第一次访问服务器的时候生成的， 而且每个客户端是唯一的。这样每个客户端就有了一个唯一的 ID，客户端只要传回这个 ID 就行了，这个 ID 通常是 NANE 为JSESIONID 的一个 Cookie。</p>
-<p>Session机制是一种服务端的机制，服务器使用一种类似散列表的结构来保存信息。</p>
-<p>当程序需要为某个客户端的请求创建一个session的时候，服务器首先检查这个客户端里的请求里是否已包含了一个session标识—sessionID，</p>
-<p>如果已经包含一个sessionID，则说明以前已经为此客户端创建过session，服务器就按照sessionID把这个session检索出来使用</p>
-<p>如果客户端请求不包含sessionID，则为此客户端创建一个session并且声称一个与此session相关联的sessionID，</p>
-<p>sessionID的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串(服务器会自动创建),这个sessionID将被在本次响应中返回给客户端保存。</p>
-<h3 id="centOS7-桥接模式设置静态Ip的方法步骤"><a href="#centOS7-桥接模式设置静态Ip的方法步骤" class="headerlink" title="centOS7 桥接模式设置静态Ip的方法步骤"></a>centOS7 桥接模式设置静态Ip的方法步骤</h3><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1722144">原文链接</a></p>
-<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>如果你虚拟机IP是自动获取的，难免会碰到IP经常变动，给xshell相关连接工具使用造成不便，那么怎么固定IP且正常访问外网地址呢？由于主机网络采用的是自动获取IP方式,所以每次重启机器可能导致IP地址的变更,不利于项目的部署和运行</p>
-<p>静态ip就是虚拟机的ip 外界想要连你的虚拟机的ip </p>
-<h4 id="虚拟机选择桥接模式"><a href="#虚拟机选择桥接模式" class="headerlink" title="虚拟机选择桥接模式"></a>虚拟机选择桥接模式</h4><p>注意虚拟机网卡要选择主机上网的网卡</p>
-<h4 id="虚拟机设置静态ip-关键步骤"><a href="#虚拟机设置静态ip-关键步骤" class="headerlink" title="虚拟机设置静态ip(关键步骤)"></a>虚拟机设置静态ip(关键步骤)</h4><p><img src="https://ask.qcloudimg.com/http-save/yehe-1844341/npty8pp5hp.jpeg?imageView2/2/w/1620" alt=""></p>
-<p>虚拟机的网卡名称是ens33</p>
-<p>然后用vim编辑以下文件</p>
-<p><strong>/etc/sysconfig/network-scripts/ifcfg-xxx</strong></p>
-<p>上面的xxx就是虚拟机的网卡名称，不同的linux发行版名称可能不同。原因见原链接</p>
-<p>需要修改的属性：<br></p><pre class="line-numbers language-none"><code class="language-none">ONBOOT=YES #no换成yes
-BOOTPROTO=static #dhcp换成static
-添加：
-IPADDR=192.168.230.129 #静态ip地址 与主机中IP的前三位一致，最后一位需要修改，不要跟主机ip一样导致发生冲突
-GATEWAY=192.168.230.1 #默认网关 和物理主机一样就可以了
-NETMASK=255.255.255.0 #子网掩码 和物理主机一样就可以了
-DNS1=8.8.8.8　　　　　　#DNS，写谷歌的地址就可以了。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<p>具体解释：<br></p><pre class="line-numbers language-none"><code class="language-none">TYPE=Ethernet    # 网卡类型：为以太网
-PROXY_METHOD=none   # 代理方式：关闭状态
-BROWSER_ONLY=no    # 只是浏览器：否
-BOOTPROTO=dhcp    # 网卡的引导协议：DHCP[中文名称: 动态主机配置协议]
-DEFROUTE=yes    # 默认路由：是, 不明白的可以百度关键词 `默认路由`
-IPV4_FAILURE_FATAL=no  # 是不开启IPV4致命错误检测：否
-IPV6INIT=yes    # IPV6是否自动初始化: 是[不会有任何影响, 现在还没用到IPV6]
-IPV6_AUTOCONF=yes   # IPV6是否自动配置：是[不会有任何影响, 现在还没用到IPV6]
-IPV6_DEFROUTE=yes   # IPV6是否可以为默认路由：是[不会有任何影响, 现在还没用到IPV6]
-IPV6_FAILURE_FATAL=no  # 是不开启IPV6致命错误检测：否
-IPV6_ADDR_GEN_MODE=stable-privacy   # IPV6地址生成模型：stable-privacy [这只一种生成IPV6的策略]
-NAME=ens33     # 网卡物理设备名称
-UUID=f47bde51-fa78-4f79-b68f-d5dd90cfc698 # 通用唯一识别码, 每一个网卡都会有, 不能重复, 否两台linux只有一台网卡可用
-DEVICE=ens33     # 网卡设备名称, 必须和 `NAME` 值一样
-ONBOOT=no      # 是否开机启动， 要想网卡开机就启动或通过 `systemctl restart network`控制网卡,必须设置为 `yes`<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<h4 id="重启网络服务"><a href="#重启网络服务" class="headerlink" title="重启网络服务"></a>重启网络服务</h4><pre class="line-numbers language-none"><code class="language-none">#centos7
-
-systemctl restart network <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>输入命令ping www.baidu.com（测试外网） </p>
-<p>输入命令ping 192.168.2.153（宿主机ip） </p>
-<p><strong>注意：</strong><br>如果无法ping通宿主机，很有可能是因为防火墙。<br>宿主机无法ping通虚拟机，也有可能是因为防火墙。</p>
-<h3 id="VMware三种网卡解析"><a href="#VMware三种网卡解析" class="headerlink" title="VMware三种网卡解析"></a>VMware三种网卡解析</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41672971/article/details/125825563">原文链接</a></p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>虚拟网卡名</th>
-<th>网络属性</th>
-<th>定义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>VMnet0</td>
-<td>物理网卡</td>
-<td>Bridge桥接</td>
-</tr>
-<tr>
-<td>Vmnet1</td>
-<td>虚拟网卡</td>
-<td>host-only仅主机</td>
-</tr>
-<tr>
-<td>VMnet8</td>
-<td>虚拟网卡</td>
-<td>NAT</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>但是我们查看主机的网络链接，有时却看不见VMnet0</strong><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/b5aa37b6f88245799d58da6be23b497a.png" alt=""></p>
-<p>通过网络配置这里，能够看见使用那张网卡（这里是virtualbox，VMware也是差不多）<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/eee41028523f4d33a06c7c0fec4c34a8.png" alt=""><br><strong>所以根据上面两张图的对比，本地网络连接中的以太网3就是桥接模式使用的网卡。</strong></p>
-<h3 id="VM虚拟机-三种网络连接方式（桥接、NAT、仅主机模式）"><a href="#VM虚拟机-三种网络连接方式（桥接、NAT、仅主机模式）" class="headerlink" title="VM虚拟机-三种网络连接方式（桥接、NAT、仅主机模式）"></a>VM虚拟机-三种网络连接方式（桥接、NAT、仅主机模式）</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tjcwt2011/article/details/124664594">原文链接</a></p>
-<h4 id="桥接"><a href="#桥接" class="headerlink" title="桥接"></a>桥接</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2021082016475582.png" alt=""></p>
-<p><strong>桥接，即架设了一条桥，让虚拟机成为一台真正的计算机，直接连入到实际网络中了。</strong></p>
-<p>因此，它使得虚拟机能被分配到一个网络中独立的IP，所有网络功能完全和在网络中的真实机器一样，它和主机连接在同一个交换机上（此交换机通过vmnet0模拟），处于同一个 LAN，它可以访问网内任何一台机器。</p>
-<p><strong>此模式下虚拟机：</strong></p>
-<ol>
-<li><p>可以与主机相互访问</p>
-</li>
-<li><p>可以与网络中其他主机相互访问</p>
-</li>
-<li><p>可以与其他虚拟机相互访问</p>
-</li>
-</ol>
-<p>所以，桥接模式下的虚拟机，你把它直接认为是真实计算机就行了。</p>
-<p>默认情况下DHCP会自动为虚拟机配置网络，但如果你需要在桥接模式下，手动为虚拟系统配置IP地址时，配置的虚拟机的ip不能是已经被占用的地址，还要和宿主机器处于同一网段，不然会造成地址冲突，只有这样虚拟系统才能和宿主机器以及外网进行通信。</p>
-<hr>
-<p><strong>复制物理网络连接状态</strong></p>
-<p>一般在虚拟机设置为桥接时就能看见这个选项（无特殊要求默认不用勾选）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20210820141133567.png" alt=""></p>
-<p>这个选项是只在移动设备上有用，比如在笔记本上使用VMware软件，最开始主机用有线连接的局域网，开启虚拟机（使用桥接），虚拟机系统获取的局域网地址为192.168.1.4。然后你把主机的有线拔掉，连接上同一局域网的wifi时，如果你选择了复制物理网络连接状态这个选项，那你的虚拟机系统的IP不会变化（还是192.168.1.4），如果你没有选择复制物理网络连接状态这个选项，那你的虚拟机系统的IP可能就会发生变化，比如变为192.168.1.5。</p>
-<h4 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20210820164721916.png" alt=""></p>
-<p>NAT，虚拟机访问网络的所有数据都是由主机提供的，虚拟机并不真实存在于网络中，主机与网络中的任何机器都不能查看和访问到虚拟机的存在。 </p>
-<p>虚拟机和主机之间通过VMnet8这个网卡来模拟路由器的作用，进行nat地址转换功能，负责将虚拟机发到 VMnet8 的包进行地址转换之后发到实际的网络上，再将实际网络上返回的包进行地址转换后通过 VMnet8 发送给虚拟机。</p>
-<p>此模式下虚拟机：</p>
-<pre><code>   可以单向访问主机
-
-   可以单向访问其他网络中主机
-
-   不可以访问其他虚拟机
-</code></pre><p>虚拟机可以访问主机能访问到的所有网络，但是对于主机以及主机网络上的其他机器，虚拟机又是不可见的，甚至主机也访问不到虚拟机。包括所有nat模式下的虚拟机之间相互都不能访问，虚拟机与虚拟机各自完全独立，相互间无法通过网络访问彼此。</p>
-<h4 id="仅主机"><a href="#仅主机" class="headerlink" title="仅主机"></a>仅主机</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20210820172148978.png" alt=""></p>
-<p>仅主机，虚拟机的与主机通过VMnet1连接，VMnet1不提供提供任何路由服务，因此虚拟机只能和宿主机进行通信，而不能连接到实际网络上。</p>
-<p>其实就是NAT模式去除了nat地址转换功能</p>
-<p>此模式下虚拟机：</p>
-<pre><code>   可以与主机互相访问
-
-   不可以访问其他网络中主机
-
-   不可以访问其他虚拟机
-</code></pre><p>仅主机模式看着很简单，但是其实这是一种比较复杂的模式，其他模式可以实现的功能，在仅主机模式下，通过虚拟机及网卡的设置都可以被实现。所以该模式需要有比较扎实的网络基础知识</p>
-<p>这种模式下，我们可以理解为虚拟机在主机中模拟出一张专供虚拟机使用的网卡VMnet1，所有虚拟机都是连接到该网卡上的，我们可以通过设置这张网卡来实现上网及其他很多功能，比如（网卡共享、网卡桥接等）。</p>
-<h3 id="正向代理和反向代理区别"><a href="#正向代理和反向代理区别" class="headerlink" title="正向代理和反向代理区别"></a>正向代理和反向代理区别</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/taostaryu/p/10547132.html">原文链接</a></p>
-<p><strong>一 什么是代理</strong></p>
-<p>代理其实就是一个中介，A和B本来可以直连，中间插入一个C，C就是中介。<br>刚开始的时候，代理多数是帮助内网client访问外网server用的<br>后来出现了反向代理，”反向”这个词在这儿的意思其实是指方向相反，即代理将来自外网客户端的请求转发到内网服务器，从外到内</p>
-<p><strong>二 正向代理</strong></p>
-<p>正向代理类似一个跳板机，代理访问外部资源</p>
-<p>比如我们国内访问谷歌，直接访问访问不到，我们可以通过一个正向代理服务器，请求发到代理服，代理服务器能够访问谷歌，这样由代理去谷歌取到返回数据，再返回给我们，这样我们就能访问谷歌了<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/cd381c5de09a40f2bfedae52042eb66d.png" alt=""></p>
-<p><strong>正向代理的用途：</strong></p>
-<p>　　（1）访问原来无法访问的资源，如google</p>
-<p>（2） 可以做缓存，加速访问资源</p>
-<p>　　（3）对客户端访问授权，上网进行认证</p>
-<p>　　（4）代理可以记录用户访问记录（上网行为管理），对外隐藏用户信息
-　　</p>
-<p><strong>三 反向代理</strong><br>反向代理（Reverse Proxy）实际运行方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/85649ed3b62c40d38de64b5170114f5b.png" alt=""></p>
-<p><strong>反向代理的作用：</strong><br>（1）保证内网的安全，阻止web攻击，大型网站，通常将反向代理作为公网访问地址，Web服务器是内网</p>
-<p>（2）负载均衡，通过反向代理服务器来优化网站的负载</p>
-<p><strong>四 总结<br>正向代理即是客户端代理, 代理客户端, 服务端不知道实际发起请求的客户端.<br>反向代理即是服务端代理, 代理服务端, 客户端不知道实际提供服务的服务端</strong></p>
-<p>看图理解一：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/0c3860e58d2cffd66b808fe07631e358.png" alt=""></p>
-<p>看图理解二：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/7cc6fc2baf342df6a450a54ca2ad6b8a.png" alt=""></p>
-<p>正向代理中，proxy和client同属一个LAN，对server透明；<br>反向代理中，proxy和server同属一个LAN，对client透明。<br>实际上proxy在两种代理中做的事都是代为收发请求和响应，不过从结构上来看正好左右互换了下，所以把后出现的那种代理方式叫成了反向代理</p>
-<p><strong>总结：</strong><br>正向代理: 买票的黄牛</p>
-<p>反向代理: 租房的代理</p>
-<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904129987526663">原文链接</a><br>“Nginx 是一款轻量级的 HTTP 服务器，采用事件驱动的异步非阻塞处理方式框架，这让其具有极好的 IO 性能，时常用于服务端的<strong>反向代理</strong>和<strong>负载均衡</strong>。”<br>Nginx 是一款 http 服务器 （或叫web服务器）。它是由俄罗斯人 伊戈尔·赛索耶夫为俄罗斯访问量第二的 Rambler.ru 站点开发的，并于2004年首次公开发布的。</p>
-<pre class="line-numbers language-none"><code class="language-none">web服务器：负责处理和响应用户请求，一般也称为http服务器，如 Apache、IIS、Nginx
-
-应用服务器：存放和运行系统程序的服务器，负责处理程序中的业务逻辑，如 Tomcat、Weblogic、Jboss（现在大多数应用服务器也包含了web服务器的功能）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>Nginx 是什么，总结一下就是这些：</p>
-<ul>
-<li>一种轻量级的web服务器</li>
-<li>设计思想是事件驱动的异步非阻塞处理（类node.js）</li>
-<li>占用内存少、启动速度快、并发能力强</li>
-<li>使用C语言开发</li>
-<li>扩展性好，第三方插件非常多</li>
-<li>在互联网项目中广泛应用</li>
-</ul>
-<h4 id="Nginx配置"><a href="#Nginx配置" class="headerlink" title="Nginx配置"></a>Nginx配置</h4><p><strong>安装/卸载</strong></p>
-<p><strong><em>安装、卸载、启动自查找资料</em></strong></p>
-<p>修改配置<br>经常要用到的几个文件路径：</p>
-<pre class="line-numbers language-none"><code class="language-none">/usr/local/etc/nginx/nginx.conf （nginx配置文件路径）
-/usr/local/var/www （nginx服务器默认的根目录）
-/usr/local/Cellar/nginx/1.17.9 （nginx的安装路径）
-/usr/local/var/log/nginx/error.log (nginx默认的日志路径)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>nginx 默认配置文件简介：</p>
-<pre class="line-numbers language-none"><code class="language-none">## 首尾配置暂时忽略
-server {  
-        # 当nginx接到请求后，会匹配其配置中的service模块
-        # 匹配方法就是将请求携带的host和port去跟配置中的server_name和listen相匹配
-        listen       8080;        
-        server_name  localhost; # 定义当前虚拟主机（站点）匹配请求的主机名
-
-        location / {
-            root   html; # Nginx默认值
-            # 设定Nginx服务器返回的文档名
-            index  index.html index.htm; # 先找根目录下的index.html，如果没有再找index.htm
-        }
-}
-
-## 首尾配置暂时忽略<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>server{ } 其实是包含在 http{ } 内部的。每一个 server{ } 是一个虚拟主机（站点）。<br>上面代码块的意思是：当一个请求叫做localhost:8080请求nginx服务器时，该请求就会被匹配进该代码块的 server{ } 中执行。<br>当然 nginx 的配置非常多，用的时候可以根据文档进行配置。</p>
-<p>英文文档：nginx.org/en/docs/<br>中文文档：www.nginx.cn/doc/</p>
-<p>Nginx有哪些应用？<br>主要有4大应用（动静分离、正向代理、反向代理、负载均衡）</p>
-<h4 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/e9d551a4479341cca95a54fbe13f3ebe.webp" alt=""></p>
-<p>如上图所示，动静分离其实就是 Nginx 服务器将接收到的请求分为动态请求和静态请求。<br>静态请求直接从 nginx 服务器所设定的根目录路径去取对应的资源，动态请求转发给真实的后台（前面所说的应用服务器，如图中的Tomcat）去处理。<br>这样做不仅能给应用服务器减轻压力，将后台api接口服务化，还能将前后端代码分开并行开发和部署。（传送门：<a target="_blank" rel="noopener" href="https://www.php.cn/nginx/424631.html">nginx动静分离的好处</a>）</p>
-<pre class="line-numbers language-none"><code class="language-none">server {  
-        listen       8080;        
-        server_name  localhost;
-
-        location / {
-            root   html; # Nginx默认值
-            index  index.html index.htm;
-        }
-        
-        # 静态化配置，所有静态请求都转发给 nginx 处理，存放目录为 my-project
-        location ~ .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|js|css)$ {
-            root /usr/local/var/www/my-project; # 静态请求所代理到的根目录
-        }
-        
-        # 动态请求匹配到path为'node'的就转发到8002端口处理
-        location /node/ {  
-            proxy_pass http://localhost:8002; # 充当服务代理
-        }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>访问静态资源 nginx 服务器会返回 my-project 里面的文件，如获取 index.html：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/34472ca6f5724173402dbaf6d4e6f8b3.webp" alt=""></p>
-<p>访问动态请求 nginx 服务器会将它从8002端口请求到的内容，原封不动的返回回去：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/1f897ee545286a0b59fc4243f6af84b2.webp" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/ec6173b234f9c06fe646c9b709abb44e.webp" alt=""></p>
-<h4 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h4><p>负载均衡是什么？<br>随着业务的不断增长和用户的不断增多，一台服务已经满足不了系统要求了。这个时候就出现了服务器 集群。<br>在服务器集群中，Nginx 可以将接收到的客户端请求“均匀地”（严格讲并不一定均匀，可以通过设置权重）分配到这个集群中所有的服务器上。这个就叫做负载均衡。<br>负载均衡的示意图如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/06ee1083810d768945b4234ba3e18204.webp" alt=""><br>负载均衡的作用</p>
-<p>分摊服务器集群压力<br>保证客户端访问的稳定性</p>
-<p>前面也提到了，负载均衡可以解决分摊服务器集群压力的问题。除此之外，Nginx还带有健康检查（服务器心跳检查）功能，会定期轮询向集群里的所有服务器发送健康检查请求，来检查集群中是否有服务器处于异常状态。<br>一旦发现某台服务器异常，那么在这以后代理进来的客户端请求都不会被发送到该服务器上（直健康检查发现该服务器已恢复正常），从而保证客户端访问的稳定性。</p>
-<p><strong>配置负载均衡</strong></p>
-<p>配置一个简单的负载均衡并不复杂，代码如下：</p>
-<pre class="line-numbers language-none"><code class="language-none">## 负载均衡：设置domain
-upstream domain {
-    server localhost:8000;
-    server localhost:8001;
-}
-server {  
-        listen       8080;        
-        server_name  localhost;
-
-        location / {
-            # root   html; # Nginx默认值
-            # index  index.html index.htm;
-            
-            proxy_pass http://domain; # 负载均衡配置，请求会被平均分配到8000和8001端口
-            proxy_set_header Host $host:$server_port;
-        }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>8000和8001是我本地用 Node.js 起的两个服务，负载均衡成功后可以看到访问 localhost:8080 有时会访问到8000端口的页面，有时会访问到8001端口的页面。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2299761055052914c2f089ab072b37fd.webp" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/3440c0ca236da8de821da682fcf157b1.webp" alt=""><br>能看到这个效果，就说明你配置的负载均衡策略生效了。<br>实际项目中的负载均衡远比这个案例要更加复杂，但是万变不离其宗，都是根据这个理想模型衍生出来的。<br>受集群单台服务器内存等资源的限制，负载均衡集群的服务器也不能无限增多。但因其良好的容错机制，负载均衡成为了实现高可用架构中必不可少的一环。</p>
-<h3 id="ping和ssh"><a href="#ping和ssh" class="headerlink" title="ping和ssh"></a>ping和ssh</h3><p><strong>ping 和 ssh 的连通性是相互独立的。如果你不能 ping 通一个 IP，不意味着你不能 ssh 到它；同样，如果你可以 ping 通一个 IP，也不意味着你可以 ssh 到它。</strong></p>
-<p>ping 和 ssh 使用的是不同的网络协议和端口。ping 使用的是 ICMP (Internet Control Message Protocol)，而 ssh 使用的是 TCP 协议，默认端口为22。这意味着以下几种情况可能发生：</p>
-<ol>
-<li><p>ICMP 被阻止：在许多网络环境中，出于安全原因，ICMP 可能被防火墙或路由器屏蔽。这意味着你可能无法 ping 通一个 IP，但是还是可以通过 ssh 连接它。</p>
-</li>
-<li><p>SSH 服务未运行：即使你可以 ping 通一个 IP，如果那台计算机上没有运行 SSH 服务，或者 SSH 服务配置不当，你仍然无法通过 ssh 连接它。</p>
-</li>
-<li><p>SSH 端口被阻止：某些网络可能允许 ICMP，但阻止了 SSH 的默认端口（22）。这可能是因为网络管理员想要防止未经授权的远程访问。</p>
-</li>
-<li><p>使用非默认端口的 SSH：有时，为了安全或其他原因，SSH 可能配置为在非默认端口上运行。在这种情况下，即使默认的 SSH 端口被阻止，你仍然可能能够连接，只要你知道正确的端口号。</p>
-</li>
-</ol>
-<h3 id="代理软件全局模型ip是否被修改"><a href="#代理软件全局模型ip是否被修改" class="headerlink" title="代理软件全局模型ip是否被修改"></a>代理软件全局模型ip是否被修改</h3><p>使用全局代理模式时，你的公共 IP 地址（从外部服务器或网站看到的 IP 地址）会被修改为代理服务器的 IP 地址。这是因为所有的网络请求都通过代理服务器进行，在到达最终的服务器或网站之前，首先到达代理服务器，然后由代理服务器转发。因此，对于外部服务器或网站，它们看到的请求似乎是来自代理服务器，而不是你的原始设备。</p>
-<p><strong>不过本地cmd查看ip是没有变化的</strong></p>
 <h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>不同的语言，不同的开发环境，编译出的东西不一定一样。</p>
 <blockquote>
 <p>比如C/C++，windows下编出的是后缀为exe的可执行程序，双击就能直接运行。但如果在linux下编出的后缀是没有exe的，是一个可运行的二进制文件。原因是因为编译器不同，linux环境的编译器一般是gcc，windows下一般是MinGW等（用VSCODE跑C一般就是这个编译器）</p>
@@ -858,64 +610,7 @@ ok登录成功，否则登录失败<span aria-hidden="true" class="line-numbers-
 将加密后的密码传递到后端
 后端随机生成一个salt，
 使用生成salt对前端传过来的密码进行加密，然后将加密后密码和salt一起保存到db中<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="硬件知识"><a href="#硬件知识" class="headerlink" title="硬件知识"></a>硬件知识</h2><h3 id="多核cpu和多个cpu的区别"><a href="#多核cpu和多个cpu的区别" class="headerlink" title="多核cpu和多个cpu的区别"></a>多核cpu和多个cpu的区别</h3><p>多核 CPU 和多个 CPU 有何区别？ - 老狼的回答 - 知乎<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20998226/answer/705020723">https://www.zhihu.com/question/20998226/answer/705020723</a></p>
-<p><strong>多核CPU和多CPU的区别主要在于性能和成本。多核CPU性能（延迟小、带宽高）最好，但成本最高；多CPU成本小，便宜，但性能相对较差。</strong></p>
-<h3 id="cpu核心数与线程数"><a href="#cpu核心数与线程数" class="headerlink" title="cpu核心数与线程数"></a>cpu核心数与线程数</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86855590">原文链接</a></p>
-<p><strong>物理 cpu 数（physical cpu）</strong></p>
-<p>指主板上实际插入的 cpu 硬件个数（socket）。（但是这一概念经常被泛泛的说成是 cpu 数，这很容易导致与 core 数，processor 数等概念混淆，所以此处强调是物理 cpu 数）。</p>
-<p>由于在主板上引入多个 cpu 插槽需要更复杂的硬件支持（连接不同插槽的 cpu 到内存和其他资源），通常只会在服务器上才这样做。在家用电脑中，一般主板上只会有一个 cpu 插槽。</p>
-<p><strong>核心（core）</strong><br>一开始，每个物理 cpu 上只有一个核心（a single core），对操作系统而言，也就是同一时刻只能运行一个进程/线程。 为了提高性能，cpu 厂商开始在单个物理 cpu 上增加核心（实实在在的硬件存在），也就出现了双核心 cpu（dual-core cpu）以及多核心 cpu（multiple cores），这样一个双核心 cpu 就是同一时刻能够运行两个进程/线程的。</p>
-<p><strong>同时多线程技术（simultaneous multithreading）和 超线程技术（hyper–threading/HT）</strong></p>
-<p>本质一样，是为了提高单个 core 同一时刻能够执行的多线程数的技术（充分利用单个 core 的计算能力，尽量让其“一刻也不得闲”）。</p>
-<p>simultaneous multithreading 缩写是 SMT，AMD 和其他 cpu 厂商的称呼。 hyper–threading 是 Intel 的称呼，可以认为 hyper–threading 是 SMT 的一种具体技术实现。</p>
-<p>在类似技术下，产生了如下等价术语：</p>
-<ul>
-<li>虚拟 core： virtual core </li>
-<li>逻辑 processer： logical processor </li>
-<li>线程：thread</li>
-</ul>
-<p>所以可以这样说：某款采用 SMT 技术的 4 核心 AMD cpu 提供了 8 线程同时执行的能力；某款采用 HT 技术的 2 核心 Intel cpu 提供了 4 线程同时执行的能力。</p>
-<p><strong>查看 cpu 信息</strong><br>1.linux系统：</p>
-<pre class="line-numbers language-none"><code class="language-none">//法一
-lscpu<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-none"><code class="language-none">CPU(s):                24
-On-line CPU(s) list:   0-23
-Thread(s) per core:    2
-Core(s) per socket:    6
-Socket(s):             2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-none"><code class="language-none">//法二
-cat /proc/cpuinfo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-none"><code class="language-none">processor   : 0
-vendor_id   : GenuineIntel
-cpu family  : 6
-model       : 60
-model name  : Intel(R) Core(TM) i7-4700MQ CPU @ 2.40GHz
-stepping    : 3
-microcode   : 0x22
-cpu MHz     : 2393.631
-cache size  : 6144 KB
-physical id : 0
-siblings    : 8
-core id     : 0
-cpu cores   : 4
-...
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>其中有几个physical id,机器上就安装了几个物理CPU<br>cpu core记录了每个物理CPU,内部有几个物理核<br>siblings 代表每个物理CPU有多少个逻辑核</p>
-<p>2.windows<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/c82b797044d88e27b217706604a29bc7.png" alt=""><br><strong>多线程程序线程数</strong><br>为了让我们的多线程程序更好的利用 cpu 资源，我们通常会先了解机器拥有的 processor 数，有若干手段可以获取这一信息：</p>
-<ul>
-<li>cpuinfo 中查看：比如上文中的 cat /proc/cpuinfo | grep “processor” | wc -l</li>
-<li>top 命令查看：cpu0,cpu1,…</li>
-<li>编程：比如在 Java 中用 Runtime.getRuntime().availableProcessors()</li>
-</ul>
-<p>具体在多线程程序中设置线程数多大，对计算密集型的程序有的建议是 processor count + 1，有的建议是 processor count 的 1.5 倍，都是经验值，实测为准。</p>
-<p><strong>小结</strong></p>
-<ul>
-<li>一台完整的计算机可能包含一到多个物理 cpu </li>
-<li>从单个物理 cpu （physical cpu）的角度看，其可能是单核心、双核心甚至多核心的</li>
-<li>从单个核心（core）的角度看，还有 SMT / HT 等技术让每个 core 对计算机操作系统而言用起来像多个物理 core 差不多</li>
-</ul>
-<p>总的逻辑 cpu 数 = 物理 cpu 数 <em> 每颗物理 cpu 的核心数 </em> 每个核心的超线程数</p>
-<h3 id="cpu-线程与进程关系"><a href="#cpu-线程与进程关系" class="headerlink" title="cpu 线程与进程关系"></a>cpu 线程与进程关系</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904120684396552">原文链接</a></p>
+<h2 id="硬件知识"><a href="#硬件知识" class="headerlink" title="硬件知识"></a>硬件知识</h2><h3 id="cpu-线程与进程关系"><a href="#cpu-线程与进程关系" class="headerlink" title="cpu 线程与进程关系"></a>cpu 线程与进程关系</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904120684396552">原文链接</a></p>
 <h4 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h4><p>两种常见解释</p>
 <p>1.进程和线程都是一个时间段的描述，是CPU工作时间段的描述。<br>2.进程是资源分配的最小单位，线程是CPU调度的最小单位</p>
 <p>解释：</p>
@@ -998,18 +693,6 @@ cpu cores   : 4
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/VM/">
-                                    <span class="chip bg-color">VM</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
-                                    <span class="chip bg-color">硬件知识</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
-                                    <span class="chip bg-color">线程、进程</span>
-                                </a>
-                            
                                 <a href="/tags/nginx/">
                                     <span class="chip bg-color">nginx</span>
                                 </a>
@@ -1032,6 +715,18 @@ cpu cores   : 4
                             
                                 <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">
                                     <span class="chip bg-color">密码学</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
+                                    <span class="chip bg-color">硬件知识</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
+                                    <span class="chip bg-color">线程、进程</span>
+                                </a>
+                            
+                                <a href="/tags/VM/">
+                                    <span class="chip bg-color">VM</span>
                                 </a>
                             
                         </div>
@@ -1209,6 +904,67 @@ cpu cores   : 4
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/posts/58712/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="代理设置">
+                        
+                        <span class="card-title">代理设置</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    小知识
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/npm/">
+                        <span class="chip bg-color">npm</span>
+                    </a>
+                    
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
+                    </a>
+                    
+                    <a href="/tags/yarn/">
+                        <span class="chip bg-color">yarn</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A2%AF%E5%AD%90/">
+                        <span class="chip bg-color">梯子</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/posts/7ada0001/">
                     <div class="card-image">
                         
@@ -1225,9 +981,9 @@ cpu cores   : 4
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1249,75 +1005,6 @@ cpu cores   : 4
                     
                     <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
                         <span class="chip bg-color">线程、进程</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/54220/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Linux知识点+问题">
-                        
-                        <span class="card-title">Linux知识点+问题</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                        <span class="chip bg-color">运维</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">
-                        <span class="chip bg-color">持续集成</span>
-                    </a>
-                    
-                    <a href="/tags/gcc/">
-                        <span class="chip bg-color">gcc</span>
-                    </a>
-                    
-                    <a href="/tags/Linux%E6%9D%83%E9%99%90%E7%94%A8%E6%B3%95/">
-                        <span class="chip bg-color">Linux权限用法</span>
-                    </a>
-                    
-                    <a href="/tags/make-cmake/">
-                        <span class="chip bg-color">make&amp;cmake</span>
                     </a>
                     
                 </div>
@@ -1514,7 +1201,7 @@ cpu cores   : 4
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">204.2k</span>
+                        class="white-color">211.8k</span>
             
             
             

@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-03-28T12:27:38.039Z</updated>
+  <updated>2025-04-16T13:09:13.856Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>科研论文写作</title>
+    <link href="https://gaofeng-lin.github.io/posts/458b9071/"/>
+    <id>https://gaofeng-lin.github.io/posts/458b9071/</id>
+    <published>2025-04-15T16:00:00.000Z</published>
+    <updated>2025-04-16T13:09:13.856Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;科研论文写作&quot;&gt;&lt;a href=&quot;#科研论文写作&quot; class=&quot;headerlink&quot; title=&quot;科研论文写作&quot;&gt;&lt;/a&gt;科研论文写作&lt;/h2&gt;&lt;h3 id=&quot;小论文创新点思路&quot;&gt;&lt;a href=&quot;#小论文创新点思路&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="科研论文" scheme="https://gaofeng-lin.github.io/categories/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="科研论文写作" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>顶会论文经验分享</title>
+    <link href="https://gaofeng-lin.github.io/posts/69ee6241/"/>
+    <id>https://gaofeng-lin.github.io/posts/69ee6241/</id>
+    <published>2025-04-15T16:00:00.000Z</published>
+    <updated>2025-04-16T13:09:13.857Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;作者：liuzheli&lt;br&gt;链接：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="科研论文" scheme="https://gaofeng-lin.github.io/categories/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="科研论文写作" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>模型压缩</title>
@@ -87,13 +137,13 @@
     <category term="latex" scheme="https://gaofeng-lin.github.io/categories/latex/"/>
     
     
-    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
-    
     <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
-    <category term="latex" scheme="https://gaofeng-lin.github.io/tags/latex/"/>
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
     <category term="代码管理" scheme="https://gaofeng-lin.github.io/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/"/>
+    
+    <category term="latex" scheme="https://gaofeng-lin.github.io/tags/latex/"/>
     
   </entry>
   
@@ -477,56 +527,6 @@
     <category term="computer vision" scheme="https://gaofeng-lin.github.io/tags/computer-vision/"/>
     
     <category term="Spatiotemporal predictive learning" scheme="https://gaofeng-lin.github.io/tags/Spatiotemporal-predictive-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>rnn</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-12-21T16:00:00.000Z</published>
-    <updated>2023-12-22T08:35:20.010Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;rnn相关的内容&quot;&gt;&lt;a href=&quot;#rnn相关的内容&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="rnn" scheme="https://gaofeng-lin.github.io/categories/rnn/"/>
-    
-    
-    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ai</title>
-    <link href="https://gaofeng-lin.github.io/posts/53791/"/>
-    <id>https://gaofeng-lin.github.io/posts/53791/</id>
-    <published>2023-12-21T16:00:00.000Z</published>
-    <updated>2023-12-22T08:35:09.132Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;ai相关的内容&quot;&gt;&lt;a href=&quot;#ai相关的内容&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
     
   </entry>
   
