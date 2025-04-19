@@ -504,6 +504,7 @@
 <p>传输层：对应用层的数据进行封装，提供​​端到端通信​​（发送给哪个端口）。协议如TCP、UDP。</p>
 <p>网络层：对传输层进程封装，通过​​逻辑寻址（IP地址）​​和​​路由选择​​，实现跨网络的设备间通信。IP协议</p>
 <p>网络接口层：对网络层进行封装，找到传输的设备，嵌入MAC地址。同一局域网内​​通过物理地址（MAC地址）直接通信。</p>
+<p><strong>当设备A向设备B发送数据时，IP地址负责将数据包路由到目标网络，而MAC地址确保数据帧在目标网络内准确传递</strong></p>
 <h3 id="cookie和session"><a href="#cookie和session" class="headerlink" title="cookie和session"></a>cookie和session</h3><h4 id="cookie和seesion主要区别"><a href="#cookie和seesion主要区别" class="headerlink" title="cookie和seesion主要区别"></a>cookie和seesion主要区别</h4><p>星巴克开始优惠活动，每消费10杯咖啡，会免费赠送1杯。考虑到一个人一次性消费10杯咖啡几乎不可能，所以需要采取某种方式来记录顾客的消费数量。</p>
 <p>1)分给顾客一张卡片，每消费一次记录一次；</p>
 <p>2)发给顾客一张卡片，上面有卡号，顾客每消费一次，由店员在操作机上记录一次。</p>
@@ -1514,21 +1515,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
