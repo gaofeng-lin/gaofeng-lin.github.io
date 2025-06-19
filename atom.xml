@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-06-19T07:16:24.489Z</updated>
+  <updated>2025-06-19T07:17:00.944Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://gaofeng-lin.github.io/posts/81c4e30a/"/>
     <id>https://gaofeng-lin.github.io/posts/81c4e30a/</id>
     <published>2025-06-18T16:00:00.000Z</published>
-    <updated>2025-06-19T07:16:24.489Z</updated>
+    <updated>2025-06-19T07:17:00.944Z</updated>
     
     
       
@@ -187,13 +187,38 @@
     <category term="latex" scheme="https://gaofeng-lin.github.io/categories/latex/"/>
     
     
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
     <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
     
-    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    <category term="latex" scheme="https://gaofeng-lin.github.io/tags/latex/"/>
     
     <category term="代码管理" scheme="https://gaofeng-lin.github.io/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/"/>
     
-    <category term="latex" scheme="https://gaofeng-lin.github.io/tags/latex/"/>
+  </entry>
+  
+  <entry>
+    <title>异常检测</title>
+    <link href="https://gaofeng-lin.github.io/posts/2ede883b/"/>
+    <id>https://gaofeng-lin.github.io/posts/2ede883b/</id>
+    <published>2025-03-06T16:00:00.000Z</published>
+    <updated>2025-03-09T09:19:05.811Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;无监督训练流程&quot;&gt;&lt;a href=&quot;#无监督训练流程&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="DataMining" scheme="https://gaofeng-lin.github.io/categories/DataMining/"/>
+    
+    
+    <category term="异常检测" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
     
   </entry>
   
@@ -221,31 +246,6 @@
     <category term="异常解释" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E8%A7%A3%E9%87%8A/"/>
     
     <category term="深度学习" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>异常检测</title>
-    <link href="https://gaofeng-lin.github.io/posts/2ede883b/"/>
-    <id>https://gaofeng-lin.github.io/posts/2ede883b/</id>
-    <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-03-09T09:19:05.811Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;无监督训练流程&quot;&gt;&lt;a href=&quot;#无监督训练流程&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="DataMining" scheme="https://gaofeng-lin.github.io/categories/DataMining/"/>
-    
-    
-    <category term="异常检测" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
     
   </entry>
   
