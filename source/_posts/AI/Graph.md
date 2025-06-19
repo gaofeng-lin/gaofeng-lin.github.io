@@ -6,6 +6,7 @@ categories:
 tags:
   - 异构图
 mathjax: true
+abbrlink: 754829d2
 ---
 
 # 同构图和异构图
