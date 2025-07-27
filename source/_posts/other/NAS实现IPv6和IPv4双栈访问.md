@@ -4,8 +4,9 @@ date: 2025/07/04
 categories:
   - NAS
 tags:
-  - 
+  - null
 mathjax: true
+abbrlink: a409708a
 ---
 
 默认情况下IPv4是可以直接访问的，所以我们先打开IPv6的访问功能
