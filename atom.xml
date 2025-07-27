@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-07-04T05:22:27.261Z</updated>
+  <updated>2025-07-26T03:44:56.377Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -17,11 +17,53 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>HTTPS</title>
+    <link href="https://gaofeng-lin.github.io/posts/c9a2a716/"/>
+    <id>https://gaofeng-lin.github.io/posts/c9a2a716/</id>
+    <published>2025-07-25T16:00:00.000Z</published>
+    <updated>2025-07-26T03:44:56.377Z</updated>
+    
+    
+    
+    
+    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TCP-IP通信发展历史</title>
+    <link href="https://gaofeng-lin.github.io/posts/27ba7163/"/>
+    <id>https://gaofeng-lin.github.io/posts/27ba7163/</id>
+    <published>2025-07-25T16:00:00.000Z</published>
+    <updated>2025-07-27T09:47:33.738Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;现阶段通信模型&quot;&gt;&lt;a href=&quot;#现阶段通信模型&quot; class=&quot;headerlink&quot; title=&quot;现阶段通信模型&quot;&gt;&lt;/a&gt;现阶段通信模型&lt;/h1&gt;&lt;h2 id=&quot;数据封装过程&quot;&gt;&lt;a href=&quot;#数据封装过程&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>NAS实现IPv6和IPv4双栈访问.md</title>
     <link href="https://gaofeng-lin.github.io/posts/a409708a/"/>
     <id>https://gaofeng-lin.github.io/posts/a409708a/</id>
     <published>2025-07-03T16:00:00.000Z</published>
-    <updated>2025-07-04T05:22:27.261Z</updated>
+    <updated>2025-07-26T03:42:56.302Z</updated>
     
     
       
@@ -91,27 +133,27 @@
   </entry>
   
   <entry>
-    <title>科研论文写作</title>
-    <link href="https://gaofeng-lin.github.io/posts/458b9071/"/>
-    <id>https://gaofeng-lin.github.io/posts/458b9071/</id>
+    <title>计算机网络</title>
+    <link href="https://gaofeng-lin.github.io/posts/e255a10a/"/>
+    <id>https://gaofeng-lin.github.io/posts/e255a10a/</id>
     <published>2025-04-15T16:00:00.000Z</published>
-    <updated>2025-04-16T13:09:13.856Z</updated>
+    <updated>2025-07-26T08:15:25.081Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;科研论文写作&quot;&gt;&lt;a href=&quot;#科研论文写作&quot; class=&quot;headerlink&quot; title=&quot;科研论文写作&quot;&gt;&lt;/a&gt;科研论文写作&lt;/h2&gt;&lt;h3 id=&quot;小论文创新点思路&quot;&gt;&lt;a href=&quot;#小论文创新点思路&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;计算机网络&quot;&gt;&lt;a href=&quot;#计算机网络&quot; class=&quot;headerlink&quot; title=&quot;计算机网络&quot;&gt;&lt;/a&gt;计算机网络&lt;/h2&gt;&lt;h3 id=&quot;TCP-IP与OSI的主要区别&quot;&gt;&lt;a href=&quot;#TCP-IP与OSI的主要区别&quot;</summary>
         
       
     
     
     
-    <category term="科研论文" scheme="https://gaofeng-lin.github.io/categories/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87/"/>
+    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     
     
-    <category term="科研论文写作" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
+    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
@@ -128,6 +170,31 @@
         
         
     <summary type="html">&lt;p&gt;作者：liuzheli&lt;br&gt;链接：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="科研论文" scheme="https://gaofeng-lin.github.io/categories/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="科研论文写作" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>科研论文写作</title>
+    <link href="https://gaofeng-lin.github.io/posts/458b9071/"/>
+    <id>https://gaofeng-lin.github.io/posts/458b9071/</id>
+    <published>2025-04-15T16:00:00.000Z</published>
+    <updated>2025-04-16T13:09:13.856Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;科研论文写作&quot;&gt;&lt;a href=&quot;#科研论文写作&quot; class=&quot;headerlink&quot; title=&quot;科研论文写作&quot;&gt;&lt;/a&gt;科研论文写作&lt;/h2&gt;&lt;h3 id=&quot;小论文创新点思路&quot;&gt;&lt;a href=&quot;#小论文创新点思路&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -449,81 +516,6 @@
     
     
     <category term="temporal-extrapolation-interpolation" scheme="https://gaofeng-lin.github.io/tags/temporal-extrapolation-interpolation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>POD关注点</title>
-    <link href="https://gaofeng-lin.github.io/posts/e7a840c2/"/>
-    <id>https://gaofeng-lin.github.io/posts/e7a840c2/</id>
-    <published>2024-08-15T16:00:00.000Z</published>
-    <updated>2024-08-19T03:45:06.300Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;基于本征正交分解的流场快速预测方法研究&quot;&gt;&lt;a href=&quot;#基于本征正交分解的流场快速预测方法研究&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="CFD论文" scheme="https://gaofeng-lin.github.io/categories/CFD%E8%AE%BA%E6%96%87/"/>
-    
-    
-    <category term="POD" scheme="https://gaofeng-lin.github.io/tags/POD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pod相关论文</title>
-    <link href="https://gaofeng-lin.github.io/posts/30a636b/"/>
-    <id>https://gaofeng-lin.github.io/posts/30a636b/</id>
-    <published>2024-07-12T16:00:00.000Z</published>
-    <updated>2024-08-19T03:41:16.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;论文笔记框架&quot;&gt;&lt;a href=&quot;#论文笔记框架&quot; class=&quot;headerlink&quot; title=&quot;论文笔记框架&quot;&gt;&lt;/a&gt;论文笔记框架&lt;/h2&gt;&lt;h3 id=&quot;Summary&quot;&gt;&lt;a href=&quot;#Summary&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="pod" scheme="https://gaofeng-lin.github.io/categories/pod/"/>
-    
-    
-    <category term="pod" scheme="https://gaofeng-lin.github.io/tags/pod/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>运动康复</title>
-    <link href="https://gaofeng-lin.github.io/posts/949a09f6/"/>
-    <id>https://gaofeng-lin.github.io/posts/949a09f6/</id>
-    <published>2024-07-03T16:00:00.000Z</published>
-    <updated>2025-06-19T02:48:19.749Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;膝关节&quot;&gt;&lt;a href=&quot;#膝关节&quot; class=&quot;headerlink&quot; title=&quot;膝关节&quot;&gt;&lt;/a&gt;膝关节&lt;/h1&gt;&lt;h2 id=&quot;膝关节损伤自测&quot;&gt;&lt;a href=&quot;#膝关节损伤自测&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="运动康复" scheme="https://gaofeng-lin.github.io/categories/%E8%BF%90%E5%8A%A8%E5%BA%B7%E5%A4%8D/"/>
-    
-    
-    <category term="运动康复" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E5%8A%A8%E5%BA%B7%E5%A4%8D/"/>
     
   </entry>
   
