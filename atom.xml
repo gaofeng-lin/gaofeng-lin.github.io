@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-07-29T03:01:36.778Z</updated>
+  <updated>2025-07-27T09:48:44.008Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,23 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>HTTPS</title>
-    <link href="https://gaofeng-lin.github.io/posts/c9a2a716/"/>
-    <id>https://gaofeng-lin.github.io/posts/c9a2a716/</id>
-    <published>2025-07-25T16:00:00.000Z</published>
-    <updated>2025-07-29T03:01:36.778Z</updated>
-    
-    
-    
-    
-    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    
-    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
   
   <entry>
     <title>TCP-IP通信发展历史</title>
@@ -48,6 +31,23 @@
     <summary type="html">&lt;h1 id=&quot;现阶段通信模型&quot;&gt;&lt;a href=&quot;#现阶段通信模型&quot; class=&quot;headerlink&quot; title=&quot;现阶段通信模型&quot;&gt;&lt;/a&gt;现阶段通信模型&lt;/h1&gt;&lt;h2 id=&quot;数据封装过程&quot;&gt;&lt;a href=&quot;#数据封装过程&quot; class=&quot;headerlink&quot;</summary>
         
       
+    
+    
+    
+    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTTPS</title>
+    <link href="https://gaofeng-lin.github.io/posts/c9a2a716/"/>
+    <id>https://gaofeng-lin.github.io/posts/c9a2a716/</id>
+    <published>2025-07-25T16:00:00.000Z</published>
+    <updated>2025-07-29T03:01:36.778Z</updated>
+    
     
     
     
@@ -133,36 +133,11 @@
   </entry>
   
   <entry>
-    <title>计算机网络</title>
-    <link href="https://gaofeng-lin.github.io/posts/e255a10a/"/>
-    <id>https://gaofeng-lin.github.io/posts/e255a10a/</id>
-    <published>2025-04-15T16:00:00.000Z</published>
-    <updated>2025-07-26T08:15:25.081Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;计算机网络&quot;&gt;&lt;a href=&quot;#计算机网络&quot; class=&quot;headerlink&quot; title=&quot;计算机网络&quot;&gt;&lt;/a&gt;计算机网络&lt;/h2&gt;&lt;h3 id=&quot;TCP-IP与OSI的主要区别&quot;&gt;&lt;a href=&quot;#TCP-IP与OSI的主要区别&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    
-    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>科研论文写作</title>
+    <title>科研论文相关</title>
     <link href="https://gaofeng-lin.github.io/posts/458b9071/"/>
     <id>https://gaofeng-lin.github.io/posts/458b9071/</id>
     <published>2025-04-15T16:00:00.000Z</published>
-    <updated>2025-04-16T13:09:13.856Z</updated>
+    <updated>2025-08-18T22:51:33.257Z</updated>
     
     
       
@@ -179,6 +154,8 @@
     
     
     <category term="科研论文写作" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
+    
+    <category term="科研论文审稿" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%AE%A1%E7%A8%BF/"/>
     
   </entry>
   
@@ -204,6 +181,31 @@
     
     
     <category term="科研论文写作" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机网络</title>
+    <link href="https://gaofeng-lin.github.io/posts/e255a10a/"/>
+    <id>https://gaofeng-lin.github.io/posts/e255a10a/</id>
+    <published>2025-04-15T16:00:00.000Z</published>
+    <updated>2025-07-26T08:15:25.081Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;计算机网络&quot;&gt;&lt;a href=&quot;#计算机网络&quot; class=&quot;headerlink&quot; title=&quot;计算机网络&quot;&gt;&lt;/a&gt;计算机网络&lt;/h2&gt;&lt;h3 id=&quot;TCP-IP与OSI的主要区别&quot;&gt;&lt;a href=&quot;#TCP-IP与OSI的主要区别&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
@@ -289,6 +291,31 @@
   </entry>
   
   <entry>
+    <title>异常检测</title>
+    <link href="https://gaofeng-lin.github.io/posts/2ede883b/"/>
+    <id>https://gaofeng-lin.github.io/posts/2ede883b/</id>
+    <published>2025-03-06T16:00:00.000Z</published>
+    <updated>2025-03-09T09:19:05.811Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;无监督训练流程&quot;&gt;&lt;a href=&quot;#无监督训练流程&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="DataMining" scheme="https://gaofeng-lin.github.io/categories/DataMining/"/>
+    
+    
+    <category term="异常检测" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>异常解释</title>
     <link href="https://gaofeng-lin.github.io/posts/c2f86c81/"/>
     <id>https://gaofeng-lin.github.io/posts/c2f86c81/</id>
@@ -312,31 +339,6 @@
     <category term="异常解释" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E8%A7%A3%E9%87%8A/"/>
     
     <category term="深度学习" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>异常检测</title>
-    <link href="https://gaofeng-lin.github.io/posts/2ede883b/"/>
-    <id>https://gaofeng-lin.github.io/posts/2ede883b/</id>
-    <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-03-09T09:19:05.811Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;无监督训练流程&quot;&gt;&lt;a href=&quot;#无监督训练流程&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="DataMining" scheme="https://gaofeng-lin.github.io/categories/DataMining/"/>
-    
-    
-    <category term="异常检测" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
     
   </entry>
   
