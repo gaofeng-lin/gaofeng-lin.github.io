@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-07-27T09:48:44.008Z</updated>
+  <updated>2025-07-29T03:01:36.778Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTTPS</title>
+    <link href="https://gaofeng-lin.github.io/posts/c9a2a716/"/>
+    <id>https://gaofeng-lin.github.io/posts/c9a2a716/</id>
+    <published>2025-07-25T16:00:00.000Z</published>
+    <updated>2025-07-29T03:01:36.778Z</updated>
+    
+    
+    
+    
+    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>TCP-IP通信发展历史</title>
@@ -42,28 +59,11 @@
   </entry>
   
   <entry>
-    <title>HTTPS</title>
-    <link href="https://gaofeng-lin.github.io/posts/c9a2a716/"/>
-    <id>https://gaofeng-lin.github.io/posts/c9a2a716/</id>
-    <published>2025-07-25T16:00:00.000Z</published>
-    <updated>2025-07-29T03:01:36.778Z</updated>
-    
-    
-    
-    
-    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    
-    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
     <title>NAS实现IPv6和IPv4双栈访问.md</title>
     <link href="https://gaofeng-lin.github.io/posts/a409708a/"/>
     <id>https://gaofeng-lin.github.io/posts/a409708a/</id>
     <published>2025-07-03T16:00:00.000Z</published>
-    <updated>2025-08-04T05:24:33.475Z</updated>
+    <updated>2025-08-29T04:39:16.844Z</updated>
     
     
       
@@ -291,31 +291,6 @@
   </entry>
   
   <entry>
-    <title>异常检测</title>
-    <link href="https://gaofeng-lin.github.io/posts/2ede883b/"/>
-    <id>https://gaofeng-lin.github.io/posts/2ede883b/</id>
-    <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-03-09T09:19:05.811Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;无监督训练流程&quot;&gt;&lt;a href=&quot;#无监督训练流程&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="DataMining" scheme="https://gaofeng-lin.github.io/categories/DataMining/"/>
-    
-    
-    <category term="异常检测" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
-    
-  </entry>
-  
-  <entry>
     <title>异常解释</title>
     <link href="https://gaofeng-lin.github.io/posts/c2f86c81/"/>
     <id>https://gaofeng-lin.github.io/posts/c2f86c81/</id>
@@ -339,6 +314,31 @@
     <category term="异常解释" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E8%A7%A3%E9%87%8A/"/>
     
     <category term="深度学习" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>异常检测</title>
+    <link href="https://gaofeng-lin.github.io/posts/2ede883b/"/>
+    <id>https://gaofeng-lin.github.io/posts/2ede883b/</id>
+    <published>2025-03-06T16:00:00.000Z</published>
+    <updated>2025-03-09T09:19:05.811Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;无监督训练流程&quot;&gt;&lt;a href=&quot;#无监督训练流程&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="DataMining" scheme="https://gaofeng-lin.github.io/categories/DataMining/"/>
+    
+    
+    <category term="异常检测" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
     
   </entry>
   
