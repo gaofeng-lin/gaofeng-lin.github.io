@@ -140,20 +140,34 @@ ip6tables -I forwarding_rule -p tcp --dport 5678 -j ACCEPT
 
 **但以上命令会在重启后失效**
 
-方案二：
+方案二（**失败了**）：
 
 ```
+# 打开文件
 vi /etc/rc.local
-# Put your custom commands here that should be executed once
-# the system init finished. By default this file does nothing.
 
-ip6tables -I forwarding_rule -p tcp --dport 1234 -j ACCEPT
-ip6tables -I forwarding_rule -p tcp --dport 5678 -j ACCEPT
+# 添加以下内容（以开放 TCP/UDP 5000 端口为例）
+
+ip6tables -I INPUT -p tcp --dport 5666 -j ACCEPT
+ip6tables -I INPUT -p udp --dport 5666 -j ACCEPT
+
+ip6tables -I OUTPUT -p tcp --dport 5666 -j ACCEPT
+ip6tables -I OUTPUT -p udp --dport 5666 -j ACCEPT
+
+ip6tables -I FORWARD -p tcp --dport 5666 -j ACCEPT
+ip6tables -I FORWARD -p udp --dport 5666 -j ACCEPT
+
+
 
 exit 0
+
 ```
 
-完成后重启防火墙或者重启路由器，然后去飞牛的网络设置里面看下，这个时候应该就可以看到IPv6通了。并且在外面的时候（或者在家里面用流量）用使用飞牛app，可以看到连接方式是P2P，而不是中继模式，虽然有时候还是会变成中继模式。如果一直没有变为P2P，可以考虑用网线连接光猫，把光猫里面的防火墙关闭，然后重启光猫。
+完成后使用reboot重启防火墙或者重启路由器。**这个方法失败了，重启后无法通过流量访问。我执行了这个文件（/etc/rc.local）后，检查端口是能看到对应的端口开放，但还是不行。我后面把飞牛防火墙里面的端口也按照这样进行打开，任然不行。而方法一执行后里面就能用流量登录上。**
+
+
+
+然后去飞牛的网络设置里面看下，这个时候应该就可以看到IPv6通了。并且在外面的时候（或者在家里面用流量）用使用飞牛app，可以看到连接方式是P2P，而不是中继模式，虽然有时候还是会变成中继模式。如果一直没有变为P2P，可以考虑用网线连接光猫，把光猫里面的防火墙关闭，然后重启光猫。
 
 
 
