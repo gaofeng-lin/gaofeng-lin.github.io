@@ -49,9 +49,9 @@ abbrlink: 7d96b074
 
 定义了三个符号
 
--   $t$：电机实时温度测量值
--   $\overline{{{T}}}_{n+1}$：历史温度均值​​
--   $\sigma_{n+1}$：​​温度波动标准差​​
+$t$：电机实时温度测量值
+$\overline{{{T}}}_{n+1}$：历史温度均值​​
+$\sigma_{n+1}$：​​温度波动标准差​​
 
 
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-09-05_11-56-05.png)
