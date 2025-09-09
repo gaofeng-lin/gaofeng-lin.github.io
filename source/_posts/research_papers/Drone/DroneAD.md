@@ -43,32 +43,7 @@ abbrlink: 7d96b074
 
 
 
-### 基于强化学习的温度阈值更新
 
-算法根据速度变化调整温度上升率，得出抑制温度上升的最佳速度变化率。
-
-定义了三个符号
-
-$t$：电机实时温度测量值
-$\overline{{{T}}}_{n+1}$：历史温度均值​​
-$\sigma_{n+1}$：​​温度波动标准差​​
-
-
-![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-09-05_11-56-05.png)
-
-
-
-## Evaluation
-
-在这次模拟实验中，我们构建了一个系统，当电机温度超过一定值时，无人机就会着陆。
-
-### 减速率计算
-
-![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-09-05_11-13-23.png)
-
-0-50秒，速度和温度的变化
-
-1个count是2s。
 
 
 
