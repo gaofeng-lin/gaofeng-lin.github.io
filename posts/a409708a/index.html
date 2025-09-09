@@ -35,7 +35,10 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+<style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -147,10 +150,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style>
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-</head>
+</style></head>
 
 
 <body>
@@ -578,7 +578,7 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.8k
                 </div>
                 
 
@@ -680,16 +680,27 @@ ip6tables -P FORWARD ACCEPT<span aria-hidden="true" class="line-numbers-rows"><s
 <pre class="line-numbers language-none"><code class="language-none">ip6tables -I forwarding_rule -p tcp --dport 1234 -j ACCEPT
 ip6tables -I forwarding_rule -p tcp --dport 5678 -j ACCEPT<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><strong>但以上命令会在重启后失效</strong></p>
-<p>方案二：</p>
-<pre class="line-numbers language-none"><code class="language-none">vi /etc/rc.local
-# Put your custom commands here that should be executed once
-# the system init finished. By default this file does nothing.
+<p>方案二（<strong>失败了</strong>）：</p>
+<pre class="line-numbers language-none"><code class="language-none"># 打开文件
+vi /etc/rc.local
 
-ip6tables -I forwarding_rule -p tcp --dport 1234 -j ACCEPT
-ip6tables -I forwarding_rule -p tcp --dport 5678 -j ACCEPT
+# 添加以下内容（以开放 TCP/UDP 5000 端口为例）
 
-exit 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>完成后重启防火墙或者重启路由器，然后去飞牛的网络设置里面看下，这个时候应该就可以看到IPv6通了。并且在外面的时候（或者在家里面用流量）用使用飞牛app，可以看到连接方式是P2P，而不是中继模式，虽然有时候还是会变成中继模式。如果一直没有变为P2P，可以考虑用网线连接光猫，把光猫里面的防火墙关闭，然后重启光猫。</p>
+ip6tables -I INPUT -p tcp --dport 5666 -j ACCEPT
+ip6tables -I INPUT -p udp --dport 5666 -j ACCEPT
+
+ip6tables -I OUTPUT -p tcp --dport 5666 -j ACCEPT
+ip6tables -I OUTPUT -p udp --dport 5666 -j ACCEPT
+
+ip6tables -I FORWARD -p tcp --dport 5666 -j ACCEPT
+ip6tables -I FORWARD -p udp --dport 5666 -j ACCEPT
+
+
+
+exit 0
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>完成后使用reboot重启防火墙或者重启路由器。<strong>这个方法失败了，重启后无法通过流量访问。我执行了这个文件（/etc/rc.local）后，检查端口是能看到对应的端口开放，但还是不行。我后面把飞牛防火墙里面的端口也按照这样进行打开，任然不行。而方法一执行后里面就能用流量登录上。</strong></p>
+<p>然后去飞牛的网络设置里面看下，这个时候应该就可以看到IPv6通了。并且在外面的时候（或者在家里面用流量）用使用飞牛app，可以看到连接方式是P2P，而不是中继模式，虽然有时候还是会变成中继模式。如果一直没有变为P2P，可以考虑用网线连接光猫，把光猫里面的防火墙关闭，然后重启光猫。</p>
 
                 
             </div>
@@ -1217,7 +1228,7 @@ exit 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">219.8k</span>
+                        class="white-color">225.7k</span>
             
             
             

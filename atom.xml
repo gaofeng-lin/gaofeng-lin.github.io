@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-07-29T03:01:36.778Z</updated>
+  <updated>2025-09-09T13:58:58.408Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,111 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DroneReview</title>
+    <link href="https://gaofeng-lin.github.io/posts/afb234c9/"/>
+    <id>https://gaofeng-lin.github.io/posts/afb234c9/</id>
+    <published>2025-09-08T16:00:00.000Z</published>
+    <updated>2025-09-09T13:58:58.408Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;A-Review-on-UAV-Based-Applications-for-Precision-Agriculture&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
+    
+    
+    <category term="Precision Agriculture" scheme="https://gaofeng-lin.github.io/tags/Precision-Agriculture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DroneAD</title>
+    <link href="https://gaofeng-lin.github.io/posts/7d96b074/"/>
+    <id>https://gaofeng-lin.github.io/posts/7d96b074/</id>
+    <published>2025-09-04T16:00:00.000Z</published>
+    <updated>2025-09-09T14:08:41.179Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Motor-Anomaly-Detection-for-Unmanned-Aerial-Vehicles-Using-Reinforcement-Learning&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
+    
+    
+    <category term="Anomaly Detection" scheme="https://gaofeng-lin.github.io/tags/Anomaly-Detection/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DroneDataset</title>
+    <link href="https://gaofeng-lin.github.io/posts/27c9adf4/"/>
+    <id>https://gaofeng-lin.github.io/posts/27c9adf4/</id>
+    <published>2025-09-04T16:00:00.000Z</published>
+    <updated>2025-09-09T13:58:58.412Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Mid-Air-A-multi-modal-dataset-for-extremely-low-altitude-drone-flights&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
+    
+    
+    <category term="Dataset" scheme="https://gaofeng-lin.github.io/tags/Dataset/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>低空经济相关知识</title>
+    <link href="https://gaofeng-lin.github.io/posts/36fe4739/"/>
+    <id>https://gaofeng-lin.github.io/posts/36fe4739/</id>
+    <published>2025-08-31T16:00:00.000Z</published>
+    <updated>2025-09-09T13:58:58.412Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;入门概念&quot;&gt;&lt;a href=&quot;#入门概念&quot; class=&quot;headerlink&quot; title=&quot;入门概念&quot;&gt;&lt;/a&gt;入门概念&lt;/h1&gt;&lt;p&gt;低空经济是新质生产力中的一个概念，新质生产力又是在生产力之上衍生出来的。&lt;/p&gt;
+&lt;h2 id=&quot;生产力&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="低空经济" scheme="https://gaofeng-lin.github.io/categories/%E4%BD%8E%E7%A9%BA%E7%BB%8F%E6%B5%8E/"/>
+    
+    
+    <category term="新质生产力" scheme="https://gaofeng-lin.github.io/tags/%E6%96%B0%E8%B4%A8%E7%94%9F%E4%BA%A7%E5%8A%9B/"/>
+    
+    <category term="低空经济" scheme="https://gaofeng-lin.github.io/tags/%E4%BD%8E%E7%A9%BA%E7%BB%8F%E6%B5%8E/"/>
+    
+    <category term="无人机" scheme="https://gaofeng-lin.github.io/tags/%E6%97%A0%E4%BA%BA%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>HTTPS</title>
@@ -63,7 +168,7 @@
     <link href="https://gaofeng-lin.github.io/posts/a409708a/"/>
     <id>https://gaofeng-lin.github.io/posts/a409708a/</id>
     <published>2025-07-03T16:00:00.000Z</published>
-    <updated>2025-08-29T04:39:16.844Z</updated>
+    <updated>2025-08-31T04:53:06.670Z</updated>
     
     
       
@@ -133,6 +238,31 @@
   </entry>
   
   <entry>
+    <title>计算机网络</title>
+    <link href="https://gaofeng-lin.github.io/posts/e255a10a/"/>
+    <id>https://gaofeng-lin.github.io/posts/e255a10a/</id>
+    <published>2025-04-15T16:00:00.000Z</published>
+    <updated>2025-07-26T08:15:25.081Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;计算机网络&quot;&gt;&lt;a href=&quot;#计算机网络&quot; class=&quot;headerlink&quot; title=&quot;计算机网络&quot;&gt;&lt;/a&gt;计算机网络&lt;/h2&gt;&lt;h3 id=&quot;TCP-IP与OSI的主要区别&quot;&gt;&lt;a href=&quot;#TCP-IP与OSI的主要区别&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>科研论文相关</title>
     <link href="https://gaofeng-lin.github.io/posts/458b9071/"/>
     <id>https://gaofeng-lin.github.io/posts/458b9071/</id>
@@ -181,31 +311,6 @@
     
     
     <category term="科研论文写作" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算机网络</title>
-    <link href="https://gaofeng-lin.github.io/posts/e255a10a/"/>
-    <id>https://gaofeng-lin.github.io/posts/e255a10a/</id>
-    <published>2025-04-15T16:00:00.000Z</published>
-    <updated>2025-07-26T08:15:25.081Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;计算机网络&quot;&gt;&lt;a href=&quot;#计算机网络&quot; class=&quot;headerlink&quot; title=&quot;计算机网络&quot;&gt;&lt;/a&gt;计算机网络&lt;/h2&gt;&lt;h3 id=&quot;TCP-IP与OSI的主要区别&quot;&gt;&lt;a href=&quot;#TCP-IP与OSI的主要区别&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    
-    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
@@ -284,9 +389,34 @@
     
     <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
+    <category term="latex" scheme="https://gaofeng-lin.github.io/tags/latex/"/>
+    
     <category term="代码管理" scheme="https://gaofeng-lin.github.io/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/"/>
     
-    <category term="latex" scheme="https://gaofeng-lin.github.io/tags/latex/"/>
+  </entry>
+  
+  <entry>
+    <title>异常检测</title>
+    <link href="https://gaofeng-lin.github.io/posts/2ede883b/"/>
+    <id>https://gaofeng-lin.github.io/posts/2ede883b/</id>
+    <published>2025-03-06T16:00:00.000Z</published>
+    <updated>2025-03-09T09:19:05.811Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;无监督训练流程&quot;&gt;&lt;a href=&quot;#无监督训练流程&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="DataMining" scheme="https://gaofeng-lin.github.io/categories/DataMining/"/>
+    
+    
+    <category term="异常检测" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
     
   </entry>
   
@@ -314,31 +444,6 @@
     <category term="异常解释" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E8%A7%A3%E9%87%8A/"/>
     
     <category term="深度学习" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>异常检测</title>
-    <link href="https://gaofeng-lin.github.io/posts/2ede883b/"/>
-    <id>https://gaofeng-lin.github.io/posts/2ede883b/</id>
-    <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-03-09T09:19:05.811Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;无监督训练流程&quot;&gt;&lt;a href=&quot;#无监督训练流程&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="DataMining" scheme="https://gaofeng-lin.github.io/categories/DataMining/"/>
-    
-    
-    <category term="异常检测" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
     
   </entry>
   
@@ -416,108 +521,6 @@
     
     
     <category term="cpp" scheme="https://gaofeng-lin.github.io/tags/cpp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>异常检测论文</title>
-    <link href="https://gaofeng-lin.github.io/posts/14d68935/"/>
-    <id>https://gaofeng-lin.github.io/posts/14d68935/</id>
-    <published>2024-10-08T16:00:00.000Z</published>
-    <updated>2024-10-10T13:05:29.026Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;An-Efficient-Adaptive-Multi-Kernel-Learning-With-Safe-Screening-Rule-for-Outlier-Detection&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="异常检测" scheme="https://gaofeng-lin.github.io/categories/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
-    
-    
-    <category term="机器学习" scheme="https://gaofeng-lin.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>流场加速收敛</title>
-    <link href="https://gaofeng-lin.github.io/posts/e2cc1df4/"/>
-    <id>https://gaofeng-lin.github.io/posts/e2cc1df4/</id>
-    <published>2024-08-22T16:00:00.000Z</published>
-    <updated>2024-09-08T07:42:54.567Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;直接预测模态系数-对模态系数进行pca分解，选择全部模态然后对模态系数进行预测，然后再重构回来。&quot;&gt;&lt;a href=&quot;#直接预测模态系数-对模态系数进行pca分解，选择全部模态然后对模态系数进行预测，然后再重构回来。&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="CFD" scheme="https://gaofeng-lin.github.io/categories/CFD/"/>
-    
-    
-    <category term="加速收敛" scheme="https://gaofeng-lin.github.io/tags/%E5%8A%A0%E9%80%9F%E6%94%B6%E6%95%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>POD-DMD论文</title>
-    <link href="https://gaofeng-lin.github.io/posts/a7feeec9/"/>
-    <id>https://gaofeng-lin.github.io/posts/a7feeec9/</id>
-    <published>2024-08-18T16:00:00.000Z</published>
-    <updated>2024-08-19T03:45:06.297Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Enhancing-dynamic-mode-decomposition-workflow-with-in-situ-visualization-and-data-compression&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="CFD论文" scheme="https://gaofeng-lin.github.io/categories/CFD%E8%AE%BA%E6%96%87/"/>
-    
-    
-    <category term="POD" scheme="https://gaofeng-lin.github.io/tags/POD/"/>
-    
-    <category term="DMD" scheme="https://gaofeng-lin.github.io/tags/DMD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>流场时间维预测-插值论文</title>
-    <link href="https://gaofeng-lin.github.io/posts/5ecc6c1a/"/>
-    <id>https://gaofeng-lin.github.io/posts/5ecc6c1a/</id>
-    <published>2024-08-18T16:00:00.000Z</published>
-    <updated>2024-08-19T06:17:54.462Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Spatio-temporal-deep-learning-models-of-3D-turbulence-with-physics-informed-diagnostics&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="CFD论文" scheme="https://gaofeng-lin.github.io/categories/CFD%E8%AE%BA%E6%96%87/"/>
-    
-    
-    <category term="temporal-extrapolation-interpolation" scheme="https://gaofeng-lin.github.io/tags/temporal-extrapolation-interpolation/"/>
     
   </entry>
   
