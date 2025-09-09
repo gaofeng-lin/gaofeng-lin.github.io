@@ -6,6 +6,7 @@ categories:
 tags:
   - Anomaly Detection
 mathjax: true
+abbrlink: 7d96b074
 ---
 
 # Motor Anomaly Detection for Unmanned Aerial Vehicles Using Reinforcement Learning

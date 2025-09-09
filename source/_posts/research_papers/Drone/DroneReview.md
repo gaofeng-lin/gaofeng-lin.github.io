@@ -6,6 +6,7 @@ categories:
 tags:
   - Precision Agriculture
 mathjax: true
+abbrlink: afb234c9
 ---
 
 # A Review on UAV-Based Applications for Precision Agriculture
