@@ -579,7 +579,7 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    926
+                    962
                 </div>
                 
 
@@ -627,6 +627,8 @@ mjx-container[display="true"] + br {
 <li></li>
 </ul>
 <h2 id="Method-s"><a href="#Method-s" class="headerlink" title="Method(s)"></a>Method(s)</h2><h3 id="基于强化学习的温度阈值更新"><a href="#基于强化学习的温度阈值更新" class="headerlink" title="基于强化学习的温度阈值更新"></a>基于强化学习的温度阈值更新</h3><p>算法根据速度变化调整温度上升率，得出抑制温度上升的最佳速度变化率。</p>
+<p>定义了三个符号</p>
+<p>t: 电机实时温度测量值<br>line_T_{n+1}：历史温度均值<br>sigma_{n+1}: 温度波动标准差</p>
 <h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><p>在这次模拟实验中，我们构建了一个系统，当电机温度超过一定值时，无人机就会着陆。</p>
 <h3 id="减速率计算"><a href="#减速率计算" class="headerlink" title="减速率计算"></a>减速率计算</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-09-05_11-13-23.png" alt=""></p>
 <p>0-50秒，速度和温度的变化</p>
