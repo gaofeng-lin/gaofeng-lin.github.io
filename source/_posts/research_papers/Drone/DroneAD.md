@@ -68,12 +68,11 @@ $\sigma_{n+1}$：​​温度波动标准差​​
 
 
 
-
 ### 减速率计算
 
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-09-05_11-13-23.png)
 
-<center>0-50秒，速度和温度的变化</center>
+0-50秒，速度和温度的变化
 
 1个count是2s。
 
