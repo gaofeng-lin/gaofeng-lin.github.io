@@ -52,6 +52,9 @@ t: 电机实时温度测量值
 line_T_{n+1}：历史温度均值
 sigma_{n+1}: 温度波动标准差
 
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-09-05_11-56-05.png)
+
+
 ## Evaluation
 
 在这次模拟实验中，我们构建了一个系统，当电机温度超过一定值时，无人机就会着陆。
