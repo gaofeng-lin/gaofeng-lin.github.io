@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-09-09T13:58:58.408Z</updated>
+  <updated>2025-09-10T02:07:21.932Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://gaofeng-lin.github.io/posts/afb234c9/"/>
     <id>https://gaofeng-lin.github.io/posts/afb234c9/</id>
     <published>2025-09-08T16:00:00.000Z</published>
-    <updated>2025-09-09T13:58:58.408Z</updated>
+    <updated>2025-09-10T02:07:21.932Z</updated>
     
     
       
@@ -38,31 +38,6 @@
     
     
     <category term="Precision Agriculture" scheme="https://gaofeng-lin.github.io/tags/Precision-Agriculture/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DroneAD</title>
-    <link href="https://gaofeng-lin.github.io/posts/7d96b074/"/>
-    <id>https://gaofeng-lin.github.io/posts/7d96b074/</id>
-    <published>2025-09-04T16:00:00.000Z</published>
-    <updated>2025-09-09T14:11:39.939Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Motor-Anomaly-Detection-for-Unmanned-Aerial-Vehicles-Using-Reinforcement-Learning&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
-    
-    
-    <category term="Anomaly Detection" scheme="https://gaofeng-lin.github.io/tags/Anomaly-Detection/"/>
     
   </entry>
   
@@ -88,6 +63,31 @@
     
     
     <category term="Dataset" scheme="https://gaofeng-lin.github.io/tags/Dataset/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DroneAD</title>
+    <link href="https://gaofeng-lin.github.io/posts/7d96b074/"/>
+    <id>https://gaofeng-lin.github.io/posts/7d96b074/</id>
+    <published>2025-09-04T16:00:00.000Z</published>
+    <updated>2025-09-09T14:11:39.939Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Motor-Anomaly-Detection-for-Unmanned-Aerial-Vehicles-Using-Reinforcement-Learning&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
+    
+    
+    <category term="Anomaly Detection" scheme="https://gaofeng-lin.github.io/tags/Anomaly-Detection/"/>
     
   </entry>
   
@@ -389,9 +389,9 @@
     
     <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
-    <category term="latex" scheme="https://gaofeng-lin.github.io/tags/latex/"/>
-    
     <category term="代码管理" scheme="https://gaofeng-lin.github.io/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/"/>
+    
+    <category term="latex" scheme="https://gaofeng-lin.github.io/tags/latex/"/>
     
   </entry>
   
