@@ -588,14 +588,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    989
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -644,6 +644,33 @@ mjx-container[display="true"] + br {
 <li>安全性：（<a target="_blank" rel="noopener" href="https://www.caac.gov.cn/XXGK/XXGK/MHGZ/201707/t20170717_45368.html）">https://www.caac.gov.cn/XXGK/XXGK/MHGZ/201707/t20170717_45368.html）</a></li>
 </ul>
 <h2 id="无人机（低空经济的重点）"><a href="#无人机（低空经济的重点）" class="headerlink" title="无人机（低空经济的重点）"></a>无人机（低空经济的重点）</h2><p>物流配送、农业植保、电力巡检、测绘、应急救援等领域。</p>
+<h1 id="多光谱、高光谱"><a href="#多光谱、高光谱" class="headerlink" title="多光谱、高光谱"></a>多光谱、高光谱</h1><h2 id="光谱"><a href="#光谱" class="headerlink" title="光谱"></a>光谱</h2><p>光谱（spectrum），是复色光经过色散系统（如棱镜、光栅）分光后，被色散开的单色光按波长（或频率）大小而依次排列的图案，全称为光学频谱。</p>
+<h2 id="人眼可见光"><a href="#人眼可见光" class="headerlink" title="人眼可见光"></a>人眼可见光</h2><p>可见光的波长范围：大约在 400纳米（紫光）到700纳米（红光） 之间。人眼的视网膜上有三种视锥细胞，分别对红、绿、蓝光最敏感。通过这三种颜色的组合，我们能感知到数百万种颜色。</p>
+<h2 id="RGB传感器"><a href="#RGB传感器" class="headerlink" title="RGB传感器"></a>RGB传感器</h2><p>人类发明了RGB传感器，模拟人眼的三原色感知能力。RGB传感器由三个独立的光敏元件组成，分别对应红、绿、蓝波段。当光线照射到传感器上时，每个元件会根据接收到的光强度生成电信号。通过组合这三个信号，就能还原出图像的颜色</p>
+<p><strong>局限性</strong>：</p>
+<ul>
+<li>只能捕捉人眼可见的波段，无法感知红外线、紫外线等不可见光。</li>
+<li>对某些场景无能为力：比如，植物在健康状态下反射的近红外光比病害区域更强，但人眼和RGB传感器都无法直接观察到这一点。</li>
+</ul>
+<h2 id="多光谱传感器"><a href="#多光谱传感器" class="headerlink" title="多光谱传感器"></a>多光谱传感器</h2><p>多光谱传感器将光谱划分为几个离散的波段（如3-10个），每个波段覆盖较宽的波长范围（例如可见光中的红、绿、蓝波段，或近红外波段）。</p>
+<p>波段数量少，但覆盖范围广。数据处理简单，适合快速分类和识别。</p>
+<p>在农业中，多光谱传感器可以捕捉植物反射的近红外光（700-1300纳米）。通过分析这些数据，农民能判断作物是否缺水或感染病害，而无需肉眼观察。</p>
+<h2 id="高光谱传感器"><a href="#高光谱传感器" class="headerlink" title="高光谱传感器"></a>高光谱传感器</h2><p>将光谱划分为数百个连续的窄波段（每个波段宽度通常在几纳米以内），形成“光谱立方体”。<br>波段数量多，分辨率极高，能捕捉细微的光谱差异。数据量庞大，需要复杂的算法处理。</p>
+<h2 id="为什么需要“看不见”的光"><a href="#为什么需要“看不见”的光" class="headerlink" title="为什么需要“看不见”的光"></a>为什么需要“看不见”的光</h2><ul>
+<li>红外线（700纳米以上）<ul>
+<li>热成像：红外线传感器能捕捉物体的热量分布，广泛应用于夜视仪、火灾监测等。</li>
+<li>农业应用：通过监测植物的近红外反射率，判断其健康状况。</li>
+</ul>
+</li>
+<li>紫外线<ul>
+<li>医学诊断：皮肤癌筛查中，紫外线成像能发现早期病变。</li>
+</ul>
+</li>
+<li>其他不可见光<ul>
+<li>X射线：穿透性强，用于医学CT扫描和安检。</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -1183,7 +1210,7 @@ mjx-container[display="true"] + br {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">228.2k</span>
+                        class="white-color">229.5k</span>
             
             
             
@@ -1412,21 +1439,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
