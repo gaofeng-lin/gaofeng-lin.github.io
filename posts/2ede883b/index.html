@@ -33,7 +33,10 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+<style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -145,10 +148,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+</style></head>
 
 
 <body>
@@ -580,14 +580,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    7 分
                 </div>
                 
 
@@ -615,7 +615,13 @@ mjx-container[display="true"] + br {
 <p>模型的输出是重构后的时序数据，与原始的数据比较后，计算Loss，反向传播更新参数。设定阈值，假设超过阈值的就是异常，就判定哪个时刻，哪个传感器的值是异常的。</p>
 <h2 id="无监督和自监督的区别"><a href="#无监督和自监督的区别" class="headerlink" title="无监督和自监督的区别"></a>无监督和自监督的区别</h2><p>深度学习中，自监督(self-supervised)和无监督(unsupervised)有什么区别？ - Zarathustra的回答 - 知乎<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/329202439/answer/2786160932">https://www.zhihu.com/question/329202439/answer/2786160932</a></p>
 <p><strong>自监督学习与无监督学习，这二者就是一样的</strong></p>
-<h2 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h2><p>混淆矩阵是分类任务中评价指标很重要的概念。</p>
+<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><p><strong>（本部分出自西瓜书）</strong></p>
+<p>衡量模型泛化能力的评价标准，被称为性能度量（performance measure）。回归任务常用的性能度量均方误差，而分类任务中常用的是错误率和精度。</p>
+<h3 id="错误率和精度"><a href="#错误率和精度" class="headerlink" title="错误率和精度"></a>错误率和精度</h3><p>错误率是分类错误的样本占总样本的比例，精度是分类正确的占比。</p>
+<h3 id="查准率、查全率和F1"><a href="#查准率、查全率和F1" class="headerlink" title="查准率、查全率和F1"></a>查准率、查全率和F1</h3><p>错误率和精度虽常用，但并不能满足所有任务。以西瓜问题为例，假定瓜农拉来一车西瓜，用模型判别西瓜。错误率衡量了有多少比例的瓜被误判。但若我们关系的是“挑出的西瓜有多少比例是好瓜”，或者“所有好瓜中有多少比例被挑出来了”，那么错误率就不够用。</p>
+<p>类似的需求在信息检索、Web搜索等应用中，我们经常关心“检索出的信息中有多少比例是用户感兴趣的” “用户感兴趣的信息中有多少被检索出来了”。查准率（precision）与查全率（recall）是更适合此类需求的性能度量。</p>
+<p>查准率也被称为准确率，查全率也称为召回率。</p>
+<p>二分类问题，可将样例根据其真实类别与学习器预测类别的组合划分为四个结果，分类结果的混淆矩阵如下：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-4e0f7a071cd42e3a19e5fc594e35443b_1440w.jpg" alt=""></p>
 <p>Positive/Negative 表示的预测结果，前面的True/False表示预测的结果是否为真。</p>
 <ul>
@@ -624,7 +630,17 @@ mjx-container[display="true"] + br {
 <li>False Positive(假正, FP)：预测正样本错误</li>
 <li>False Negative(假负 , FN)：预测负样本错误</li>
 </ul>
-<h3 id="准确率"><a href="#准确率" class="headerlink" title="准确率"></a>准确率</h3><p>预测正确的结果占所有样本的比例</p>
+<p>查准率P定义：TP / (TP + FP)<br>查全率R定义：TP / (TP + FN)</p>
+<p>查全率和查准率是<strong>一对矛盾的度量</strong>。例如，若希望将好瓜尽可能选出来，可以通过增加选瓜的数量来实现。如果选上所有的瓜，所有的好瓜肯定都被选上，但是这样查准率会降低；如果希望选出的瓜中好瓜比例尽可能高，则可只挑选最有把握的瓜，但难免漏掉不少好瓜，查全率低。</p>
+<h3 id="P-R曲线"><a href="#P-R曲线" class="headerlink" title="P-R曲线"></a>P-R曲线</h3><p>在很多情形下，我们根据预测结果对样例进行排序，排在最前面的是学习器认为“最可能”是正例的样本，排在最后的则是学习器认为“最不可能”是正例的样本。按此顺序逐个把样本作为正例进行预测，则每次可以计算出当前的查准率、查全率。以查准率为纵轴，查全率为横轴，就能得到查准率-查全率曲线，简称P-R曲线。</p>
+<p>举个例子来计算P-R曲线：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/61a50346debb8b188611c562aec81ce6.png" alt=""></p>
+<p>如上图： 真实情况正例反例各有10个。 先用分数score=0.9作为阈值（大于等于0.9为正例，小于0.9为反例），此时TP=1，FP=0，FN=9，故根据Precision/Recall公式，P=1，R=0.1。 用0.8作为阈值，P=1，R=0.2。 用0.7作为阈值，P=0.67，R=0.2。 用0.6作为阈值，P=0.75，R=0.3。 以此类推。（下面的图是示意图，不对应上面数据）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-09-19_12-14-23.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-09-19_11-54-01.png" alt=""></p>
+<p><strong>P-R 曲线越靠近右上角性能越好</strong></p>
+<p>进行比较时，若一个学习器的P-R曲线被另一个全部包围，那么后者性能优于前者。例如上图中的A优于C。如果发生交叉，一般难以直接断言孰优孰劣。如果一定要比较，可以比较P-R曲线下的面积，但是这个值不太容易估算，因此有了综合考虑查准率和查全率的度量。</p>
+<h3 id="F1度量"><a href="#F1度量" class="headerlink" title="F1度量"></a>F1度量</h3><h3 id="准确率"><a href="#准确率" class="headerlink" title="准确率"></a>准确率</h3><p>预测正确的结果占所有样本的比例</p>
 <p>Accuracy = (TP + TN) / (TP + TN + FP +FN)</p>
 <h3 id="精确率"><a href="#精确率" class="headerlink" title="精确率"></a>精确率</h3><p>预测Positive的成功率占多少</p>
 <p>Precision = TP / (TP + FP)</p>
@@ -894,67 +910,6 @@ mjx-container[display="true"] + br {
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/47c30637/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="latex公式">
-                        
-                        <span class="card-title">latex公式</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-03-17
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/latex/" class="post-category">
-                                    latex
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                        <span class="chip bg-color">运维</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/">
-                        <span class="chip bg-color">代码管理</span>
-                    </a>
-                    
-                    <a href="/tags/latex/">
-                        <span class="chip bg-color">latex</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/posts/c2f86c81/">
                     <div class="card-image">
                         
@@ -971,9 +926,9 @@ mjx-container[display="true"] + br {
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-03-07
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -995,6 +950,55 @@ mjx-container[display="true"] + br {
                     
                     <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
                         <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/bc08a054/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="心灵鸡汤">
+                        
+                        <span class="card-title">心灵鸡汤</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%B8%A1%E6%B1%A4/" class="post-category">
+                                    鸡汤
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">深度学习代码问题</span>
                     </a>
                     
                 </div>
@@ -1198,7 +1202,7 @@ mjx-container[display="true"] + br {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">235.3k</span>
+                        class="white-color">236.2k</span>
             
             
             
