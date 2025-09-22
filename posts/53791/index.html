@@ -33,10 +33,7 @@ CUDA看作是一个工作台，上面配有很多工具，如锤子、螺丝刀�
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-<style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -148,7 +145,10 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head>
+</style>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -546,16 +546,16 @@ mjx-container[display="true"] + br {
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88RNN%EF%BC%89/">
-                                <span class="chip bg-color">循环神经网络（RNN）</span>
-                            </a>
-                        
                             <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/">
                                 <span class="chip bg-color">深度学习代码问题</span>
                             </a>
                         
                             <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/">
                                 <span class="chip bg-color">深度学习理论知识</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88RNN%EF%BC%89/">
+                                <span class="chip bg-color">循环神经网络（RNN）</span>
                             </a>
                         
                             <a href="/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88CNN%EF%BC%89/">
@@ -600,14 +600,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    23.1k
+                    23.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    86 分
+                    87 分
                 </div>
                 
 
@@ -1343,6 +1343,18 @@ class VideoFrameInterpolator(nn.Module):
 # 创建模型实例和测试数据
 # [剩余部分与之前代码相同]
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<h2 id="自监督学习-Self-supervised-Learning"><a href="#自监督学习-Self-supervised-Learning" class="headerlink" title="自监督学习(Self-supervised Learning)"></a>自监督学习(Self-supervised Learning)</h2><p>自监督学习主要是利用辅助任务（pretext）从大规模的无监督数据中挖掘自身的监督信息，通过这种构造的监督信息对网络进行训练，SSL是无监督训练的一类，或者也可以归为无监督训练。</p>
+<p>在ICLR2020的主题演讲中，Yann LeCun将SSL定义为：An analogous process to completing missing information(reconstruction)</p>
+<p>他提出了几个变体：</p>
+<ul>
+<li>从任何其他部分预测输入的任何部分；</li>
+<li>从过去预测未来；</li>
+<li>从可见预测不可见；</li>
+<li>从所有可用部分预测任何被遮挡、掩盖或损坏的部分。</li>
+</ul>
+<p>举个例子：随机的将图片中的一部分删掉，然后利用剩余的部分来预测扣掉的部分，只有模型真正读懂了这张图所代表的含义，才能有效的进行补全。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-dacff37588418b7d417c440537ad404b_r.jpg" alt=""></p>
+<p>详细的可以阅读：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/108906502">https://zhuanlan.zhihu.com/p/108906502</a><br>《A Survey on Self-supervised Learning: Algorithms, Applications, and Future Trends》</p>
 <h2 id="理论知识"><a href="#理论知识" class="headerlink" title="理论知识"></a>理论知识</h2><h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>regression:回归</p>
 <p>training data set = training set:训练数据集/训练集</p>
 <p>sample = data point = data instance:样本/数据点/数据样本</p>
@@ -1769,16 +1781,16 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88RNN%EF%BC%89/">
-                                    <span class="chip bg-color">循环神经网络（RNN）</span>
-                                </a>
-                            
                                 <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/">
                                     <span class="chip bg-color">深度学习代码问题</span>
                                 </a>
                             
                                 <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/">
                                     <span class="chip bg-color">深度学习理论知识</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88RNN%EF%BC%89/">
+                                    <span class="chip bg-color">循环神经网络（RNN）</span>
                                 </a>
                             
                                 <a href="/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88CNN%EF%BC%89/">
@@ -1972,9 +1984,9 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="ai">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="rnn">
                         
-                        <span class="card-title">ai</span>
+                        <span class="card-title">rnn</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1991,8 +2003,8 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/AI/" class="post-category">
-                                    AI
+                            <a href="/categories/rnn/" class="post-category">
+                                    rnn
                                 </a>
                             
                             
@@ -2256,7 +2268,7 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">236.2k</span>
+                        class="white-color">237.1k</span>
             
             
             
@@ -2485,21 +2497,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
