@@ -38,7 +38,119 @@ T">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style>
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
@@ -477,14 +589,14 @@ T">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -513,15 +625,30 @@ T">
 <p>IncepU：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-12-25_09-50-43.png" alt=""></p>
 <p>gSTA：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-12-25_09-50-50.png" alt=""></p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-12-25_09-50-56.png" alt=""></p>
-<h1 id="TIMER-XL-LONG-CONTEXT-TRANSFORMERS-FOR-UNIFIED-TIME-SERIES-FORECASTING"><a href="#TIMER-XL-LONG-CONTEXT-TRANSFORMERS-FOR-UNIFIED-TIME-SERIES-FORECASTING" class="headerlink" title="TIMER-XL: LONG-CONTEXT TRANSFORMERS FOR UNIFIED TIME SERIES FORECASTING"></a>TIMER-XL: LONG-CONTEXT TRANSFORMERS FOR UNIFIED TIME SERIES FORECASTING</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p><strong>（写完笔记之后最后填，概述文章的内容，以后查阅笔记的时候先看这一段。注：写文章summary切记需要通过自己的思考，用自己的语言描述。忌讳直接Ctrl + c原文。）</strong></p>
+<h1 id="Temporal-Attention-Unit-Towards-Efficient-Spatiotemporal-Predictive-Learning"><a href="#Temporal-Attention-Unit-Towards-Efficient-Spatiotemporal-Predictive-Learning" class="headerlink" title="Temporal Attention Unit: Towards Efficient Spatiotemporal Predictive Learning"></a>Temporal Attention Unit: Towards Efficient Spatiotemporal Predictive Learning</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p><strong>（写完笔记之后最后填，概述文章的内容，以后查阅笔记的时候先看这一段。注：写文章summary切记需要通过自己的思考，用自己的语言描述。忌讳直接Ctrl + c原文。）</strong></p>
+<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p><strong>（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）</strong></p>
+<ul>
+<li>准确的时空预测学习可以使气候变化[74, 77]、人类运动预测[91, 107]、交通流量预测[18, 97]和表征学习[39, 71]等领域的广泛实际应用受益。时空预测学习的意义主要在于其探索物理世界中空间相关性和时间演化的潜力。</li>
+<li>此外，时空预测学习的自监督性质非常符合人类的学习方式，无需大量标记数据。海量视频可提供丰富的视觉信息，使时空预测学习成为一种生成性预训练策略[35, 60]，用于特征表征学习，以完成各种下游视觉监督任务。</li>
+</ul>
+<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p><strong>（问题陈述：问题作者需要解决的问题是什么？）</strong></p>
+<ul>
+<li><h2 id="Method-s"><a href="#Method-s" class="headerlink" title="Method(s)"></a>Method(s)</h2><p><strong>（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）</strong></p>
+</li>
+</ul>
+<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><p><strong>（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）</strong></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
+<h2 id="Notes-optional"><a href="#Notes-optional" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h2><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
+<h2 id="References-optional"><a href="#References-optional" class="headerlink" title="References(optional)"></a>References(optional)</h2><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
+<h1 id="TIMER-XL-LONG-CONTEXT-TRANSFORMERS-FOR-UNIFIED-TIME-SERIES-FORECASTING"><a href="#TIMER-XL-LONG-CONTEXT-TRANSFORMERS-FOR-UNIFIED-TIME-SERIES-FORECASTING" class="headerlink" title="TIMER-XL: LONG-CONTEXT TRANSFORMERS FOR UNIFIED TIME SERIES FORECASTING"></a>TIMER-XL: LONG-CONTEXT TRANSFORMERS FOR UNIFIED TIME SERIES FORECASTING</h1><h2 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h2><p><strong>（写完笔记之后最后填，概述文章的内容，以后查阅笔记的时候先看这一段。注：写文章summary切记需要通过自己的思考，用自己的语言描述。忌讳直接Ctrl + c原文。）</strong></p>
 <ul>
 <li>这个工作是在“Timer: Generative Pre-trained Transformers Are Large Time Series Models”的工作基础上进行优化的，是同一批人做的。</li>
 <li>实验是在A100上面进行的。</li>
 </ul>
-<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p><strong>（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）</strong></p>
+<h2 id="Background-1"><a href="#Background-1" class="headerlink" title="Background"></a>Background</h2><p><strong>（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）</strong></p>
 <p>Transformer被广泛应用于时间序列预测，</p>
 <p>不论是</p>
-<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p><strong>（问题陈述：问题作者需要解决的问题是什么？）</strong></p>
+<h2 id="Problem-Statement-1"><a href="#Problem-Statement-1" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p><strong>（问题陈述：问题作者需要解决的问题是什么？）</strong></p>
 <ul>
 <li>现有的时序Transformer通常只能运行（输入/输出）百个量级的时序tokens，而自然语言和视觉的Transformer可以学习数千到数百万个tokens之间的依赖关系。</li>
 </ul>
@@ -536,7 +663,7 @@ T">
 </ul>
 </li>
 </ul>
-<h2 id="Method-s"><a href="#Method-s" class="headerlink" title="Method(s)"></a>Method(s)</h2><p><strong>（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）</strong></p>
+<h2 id="Method-s-1"><a href="#Method-s-1" class="headerlink" title="Method(s)"></a>Method(s)</h2><p><strong>（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）</strong></p>
 <ul>
 <li>提出了多变量下一个标记预测和统一的时间序列预测，通过扩大上下文来强化 Transformers，从而做出信息完整的预测。</li>
 <li>介绍了 TimeAttention，这是一种为多维时间序列量身定制的新型因果自关注，可通过位置感知促进序列内和序列间建模，并保持 Transformers 的因果性和可扩展性。</li>
@@ -544,18 +671,14 @@ T">
 <ul>
 <li>TimeAttention: 旨在捕获所有变量内部和变量之间的因果patches依赖关系</li>
 </ul>
-<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><p><strong>（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）</strong></p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
-<h2 id="Notes-optional"><a href="#Notes-optional" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h2><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
+<h2 id="Evaluation-1"><a href="#Evaluation-1" class="headerlink" title="Evaluation"></a>Evaluation</h2><p><strong>（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）</strong></p>
+<h2 id="Conclusion-1"><a href="#Conclusion-1" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
+<h2 id="Notes-optional-1"><a href="#Notes-optional-1" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h2><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
 <ul>
 <li>第一章第四段，Multivariate Next Token Prediction：指在时间序列预测任务中，同时建模多个变量之间的依赖关系，并基于当前和历史观测值，联合预测下一个时间步的多个变量值。</li>
 </ul>
-<h2 id="References-optional"><a href="#References-optional" class="headerlink" title="References(optional)"></a>References(optional)</h2><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
-<h1 id="互联网服务场景下基于机器学习的KPI异常检测综述"><a href="#互联网服务场景下基于机器学习的KPI异常检测综述" class="headerlink" title="互联网服务场景下基于机器学习的KPI异常检测综述"></a>互联网服务场景下基于机器学习的KPI异常检测综述</h1><p>KPI(Key performance indicator, 关键性能指标)。KPI数据是经过专家筛选的能够高度反映当前服务软硬件及业务状态的关键指标，其数据结构为数值型，具备丰富的时序 信息且易于存储。</p>
-<h2 id="KPI异常检测技术框架"><a href="#KPI异常检测技术框架" class="headerlink" title="KPI异常检测技术框架"></a>KPI异常检测技术框架</h2><h3 id="KPI监控与预处理"><a href="#KPI监控与预处理" class="headerlink" title="KPI监控与预处理"></a>KPI监控与预处理</h3><p>互联网服务KPI监控体系 主要概括为3个层次：<strong>基础资源</strong>、<strong>应用性能</strong>及<strong>用户体验</strong>，其中以<strong>基础资源监控（通常将其KPI定义为机器KPI）和应用性能监控（通常将其KPI定义为服务KPI） 在KPI监控中最为常见</strong>. 表4所示为各层次KPI监控 范围介绍及举例. 常用基础资源监控工具包括Zabbix 等，常用应用性能监控工具包括SkyWalking等。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-09-18_10-58-20.png" alt=""></p>
-<h3 id="异常检测模型构建与训练"><a href="#异常检测模型构建与训练" class="headerlink" title="异常检测模型构建与训练"></a>异常检测模型构建与训练</h3><p>异常检测模型构建一般又分为<strong>机器学习模型选择和机器学习模型优化设计</strong>2部分。模型的选择主要取决于KPI中的依赖模式. 不同服务存在不同的依赖模式。而模 型的优化设计则更多考虑影响检测技术性能（包括 准确性、鲁棒性、实时性、可解释性等）的多重因素， 如KPI噪声分布、模型计算复杂度等。</p>
-<h2 id="KPI异常检测技术的模型选择动机及分类"><a href="#KPI异常检测技术的模型选择动机及分类" class="headerlink" title="KPI异常检测技术的模型选择动机及分类"></a>KPI异常检测技术的模型选择动机及分类</h2>
+<h2 id="References-optional-1"><a href="#References-optional-1" class="headerlink" title="References(optional)"></a>References(optional)</h2><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
+
                 
             </div>
             <hr/>
@@ -1011,6 +1134,13 @@ T">
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
 
 
     <footer class="page-footer bg-color">
@@ -1083,7 +1213,7 @@ T">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">236.3k</span>
+                        class="white-color">237.8k</span>
             
             
             

@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-09-19T07:47:52.799Z</updated>
+  <updated>2025-09-25T07:08:40.120Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>KPI</title>
+    <link href="https://gaofeng-lin.github.io/posts/36351f53/"/>
+    <id>https://gaofeng-lin.github.io/posts/36351f53/</id>
+    <published>2025-09-24T16:00:00.000Z</published>
+    <updated>2025-09-25T07:08:40.120Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;KPI数据集&quot;&gt;&lt;a href=&quot;#KPI数据集&quot; class=&quot;headerlink&quot; title=&quot;KPI数据集&quot;&gt;&lt;/a&gt;KPI数据集&lt;/h1&gt;&lt;h1 id=&quot;互联网服务场景下基于机器学习的KPI异常检测综述&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="research_papers" scheme="https://gaofeng-lin.github.io/categories/research-papers/"/>
+    
+    
+    <category term="KPI" scheme="https://gaofeng-lin.github.io/tags/KPI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>生病感冒用药</title>
+    <link href="https://gaofeng-lin.github.io/posts/8abe2100/"/>
+    <id>https://gaofeng-lin.github.io/posts/8abe2100/</id>
+    <published>2025-09-21T16:00:00.000Z</published>
+    <updated>2025-09-24T01:31:46.093Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;感冒&quot;&gt;&lt;a href=&quot;#感冒&quot; class=&quot;headerlink&quot; title=&quot;感冒&quot;&gt;&lt;/a&gt;感冒&lt;/h1&gt;&lt;h2 id=&quot;情况1&quot;&gt;&lt;a href=&quot;#情况1&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://gaofeng-lin.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="生病" scheme="https://gaofeng-lin.github.io/tags/%E7%94%9F%E7%97%85/"/>
+    
+    <category term="感冒" scheme="https://gaofeng-lin.github.io/tags/%E6%84%9F%E5%86%92/"/>
+    
+  </entry>
   
   <entry>
     <title>数学知识</title>
@@ -92,31 +144,6 @@
   </entry>
   
   <entry>
-    <title>DroneAD</title>
-    <link href="https://gaofeng-lin.github.io/posts/7d96b074/"/>
-    <id>https://gaofeng-lin.github.io/posts/7d96b074/</id>
-    <published>2025-09-04T16:00:00.000Z</published>
-    <updated>2025-09-09T14:11:39.939Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Motor-Anomaly-Detection-for-Unmanned-Aerial-Vehicles-Using-Reinforcement-Learning&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
-    
-    
-    <category term="Anomaly Detection" scheme="https://gaofeng-lin.github.io/tags/Anomaly-Detection/"/>
-    
-  </entry>
-  
-  <entry>
     <title>DroneDataset</title>
     <link href="https://gaofeng-lin.github.io/posts/27c9adf4/"/>
     <id>https://gaofeng-lin.github.io/posts/27c9adf4/</id>
@@ -138,6 +165,31 @@
     
     
     <category term="Dataset" scheme="https://gaofeng-lin.github.io/tags/Dataset/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DroneAD</title>
+    <link href="https://gaofeng-lin.github.io/posts/7d96b074/"/>
+    <id>https://gaofeng-lin.github.io/posts/7d96b074/</id>
+    <published>2025-09-04T16:00:00.000Z</published>
+    <updated>2025-09-09T14:11:39.939Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Motor-Anomaly-Detection-for-Unmanned-Aerial-Vehicles-Using-Reinforcement-Learning&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
+    
+    
+    <category term="Anomaly Detection" scheme="https://gaofeng-lin.github.io/tags/Anomaly-Detection/"/>
     
   </entry>
   
@@ -435,9 +487,9 @@
     <category term="latex" scheme="https://gaofeng-lin.github.io/categories/latex/"/>
     
     
-    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
-    
     <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
+    
+    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
     <category term="代码管理" scheme="https://gaofeng-lin.github.io/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/"/>
     
@@ -450,7 +502,7 @@
     <link href="https://gaofeng-lin.github.io/posts/2ede883b/"/>
     <id>https://gaofeng-lin.github.io/posts/2ede883b/</id>
     <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-09-19T08:59:24.747Z</updated>
+    <updated>2025-09-24T01:31:46.092Z</updated>
     
     
       
@@ -467,58 +519,6 @@
     
     
     <category term="异常检测" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>异常解释</title>
-    <link href="https://gaofeng-lin.github.io/posts/c2f86c81/"/>
-    <id>https://gaofeng-lin.github.io/posts/c2f86c81/</id>
-    <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-03-22T02:03:47.324Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;常见的深度学习异常解释方法&quot;&gt;&lt;a href=&quot;#常见的深度学习异常解释方法&quot; class=&quot;headerlink&quot; title=&quot;常见的深度学习异常解释方法&quot;&gt;&lt;/a&gt;常见的深度学习异常解释方法&lt;/h1&gt;&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="DataMining" scheme="https://gaofeng-lin.github.io/categories/DataMining/"/>
-    
-    
-    <category term="异常解释" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E8%A7%A3%E9%87%8A/"/>
-    
-    <category term="深度学习" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>心灵鸡汤</title>
-    <link href="https://gaofeng-lin.github.io/posts/bc08a054/"/>
-    <id>https://gaofeng-lin.github.io/posts/bc08a054/</id>
-    <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-05-09T13:53:22.652Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;读博&quot;&gt;&lt;a href=&quot;#读博&quot; class=&quot;headerlink&quot; title=&quot;读博&quot;&gt;&lt;/a&gt;读博&lt;/h1&gt;&lt;h2 id=&quot;1&quot;&gt;&lt;a href=&quot;#1&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="鸡汤" scheme="https://gaofeng-lin.github.io/categories/%E9%B8%A1%E6%B1%A4/"/>
-    
-    
-    <category term="深度学习代码问题" scheme="https://gaofeng-lin.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/"/>
     
   </entry>
   
