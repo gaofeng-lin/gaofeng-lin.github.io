@@ -11,6 +11,12 @@ abbrlink: 6b912686
 
 **本文内容出自3Blue1Brown**
 
+# 视频对应文档资料
+
+https://www.3blue1brown.com/#lessons
+
+
+
 # 向量
 
 线代中最基础、最根源的组成部分就是向量。
