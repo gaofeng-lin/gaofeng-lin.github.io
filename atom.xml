@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-09-26T07:42:14.874Z</updated>
+  <updated>2025-09-27T08:49:27.661Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>维权投诉</title>
+    <link href="https://gaofeng-lin.github.io/posts/53e70c22/"/>
+    <id>https://gaofeng-lin.github.io/posts/53e70c22/</id>
+    <published>2025-09-26T16:00:00.000Z</published>
+    <updated>2025-09-27T08:49:27.661Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;警察&quot;&gt;&lt;a href=&quot;#警察&quot; class=&quot;headerlink&quot; title=&quot;警察&quot;&gt;&lt;/a&gt;警察&lt;/h1&gt;&lt;h2 id=&quot;警察最怕什么&quot;&gt;&lt;a href=&quot;#警察最怕什么&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="维权" scheme="https://gaofeng-lin.github.io/categories/%E7%BB%B4%E6%9D%83/"/>
+    
+    
+    <category term="维权" scheme="https://gaofeng-lin.github.io/tags/%E7%BB%B4%E6%9D%83/"/>
+    
+  </entry>
+  
+  <entry>
     <title>linear_algebra</title>
     <link href="https://gaofeng-lin.github.io/posts/6b912686/"/>
     <id>https://gaofeng-lin.github.io/posts/6b912686/</id>
     <published>2025-09-25T16:00:00.000Z</published>
-    <updated>2025-09-26T07:42:14.874Z</updated>
+    <updated>2025-09-27T08:51:03.252Z</updated>
     
     
       
@@ -29,7 +54,7 @@
         
         
     <summary type="html">&lt;p&gt;&lt;strong&gt;本文内容出自3Blue1Brown&lt;/strong&gt;&lt;/p&gt;
-&lt;h1 id=&quot;向量&quot;&gt;&lt;a href=&quot;#向量&quot; class=&quot;headerlink&quot;</summary>
+&lt;h1 id=&quot;视频对应文档资料&quot;&gt;&lt;a href=&quot;#视频对应文档资料&quot; class=&quot;headerlink&quot; title=&quot;视频对应文档资料&quot;&gt;&lt;/a&gt;视频对应文档资料&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
         
       
     
@@ -391,31 +416,6 @@
   </entry>
   
   <entry>
-    <title>顶会论文经验分享</title>
-    <link href="https://gaofeng-lin.github.io/posts/69ee6241/"/>
-    <id>https://gaofeng-lin.github.io/posts/69ee6241/</id>
-    <published>2025-04-15T16:00:00.000Z</published>
-    <updated>2025-04-16T13:09:13.857Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;作者：liuzheli&lt;br&gt;链接：&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="科研论文" scheme="https://gaofeng-lin.github.io/categories/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87/"/>
-    
-    
-    <category term="科研论文写作" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
-    
-  </entry>
-  
-  <entry>
     <title>科研论文相关</title>
     <link href="https://gaofeng-lin.github.io/posts/35314187/"/>
     <id>https://gaofeng-lin.github.io/posts/35314187/</id>
@@ -439,6 +439,31 @@
     <category term="科研论文写作" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
     
     <category term="科研论文审稿" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%AE%A1%E7%A8%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>顶会论文经验分享</title>
+    <link href="https://gaofeng-lin.github.io/posts/69ee6241/"/>
+    <id>https://gaofeng-lin.github.io/posts/69ee6241/</id>
+    <published>2025-04-15T16:00:00.000Z</published>
+    <updated>2025-04-16T13:09:13.857Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;作者：liuzheli&lt;br&gt;链接：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="科研论文" scheme="https://gaofeng-lin.github.io/categories/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="科研论文写作" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
     
   </entry>
   
@@ -489,37 +514,6 @@
     
     
     <category term="机器学习" scheme="https://gaofeng-lin.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>latex公式</title>
-    <link href="https://gaofeng-lin.github.io/posts/47c30637/"/>
-    <id>https://gaofeng-lin.github.io/posts/47c30637/</id>
-    <published>2025-03-16T16:00:00.000Z</published>
-    <updated>2025-04-09T13:15:10.364Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;&lt;mjx-container class=&quot;MathJax&quot; jax=&quot;SVG&quot;&gt;&lt;svg style=&quot;vertical-align:</summary>
-        
-      
-    
-    
-    
-    <category term="latex" scheme="https://gaofeng-lin.github.io/categories/latex/"/>
-    
-    
-    <category term="Linux" scheme="https://gaofeng-lin.github.io/tags/Linux/"/>
-    
-    <category term="运维" scheme="https://gaofeng-lin.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-    <category term="代码管理" scheme="https://gaofeng-lin.github.io/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/"/>
-    
-    <category term="latex" scheme="https://gaofeng-lin.github.io/tags/latex/"/>
     
   </entry>
   
