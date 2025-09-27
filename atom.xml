@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-09-25T07:08:40.120Z</updated>
+  <updated>2025-09-27T00:56:39.688Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>linear_algebra</title>
+    <link href="https://gaofeng-lin.github.io/posts/6b912686/"/>
+    <id>https://gaofeng-lin.github.io/posts/6b912686/</id>
+    <published>2025-09-25T16:00:00.000Z</published>
+    <updated>2025-09-27T00:56:39.688Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;本文内容出自3Blue1Brown&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&quot;向量&quot;&gt;&lt;a href=&quot;#向量&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://gaofeng-lin.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="线性代数" scheme="https://gaofeng-lin.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>KPI</title>
     <link href="https://gaofeng-lin.github.io/posts/36351f53/"/>
     <id>https://gaofeng-lin.github.io/posts/36351f53/</id>
     <published>2025-09-24T16:00:00.000Z</published>
-    <updated>2025-09-25T07:08:40.120Z</updated>
+    <updated>2025-09-25T08:43:50.944Z</updated>
     
     
       
@@ -144,31 +170,6 @@
   </entry>
   
   <entry>
-    <title>DroneDataset</title>
-    <link href="https://gaofeng-lin.github.io/posts/27c9adf4/"/>
-    <id>https://gaofeng-lin.github.io/posts/27c9adf4/</id>
-    <published>2025-09-04T16:00:00.000Z</published>
-    <updated>2025-09-09T13:58:58.412Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Mid-Air-A-multi-modal-dataset-for-extremely-low-altitude-drone-flights&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
-    
-    
-    <category term="Dataset" scheme="https://gaofeng-lin.github.io/tags/Dataset/"/>
-    
-  </entry>
-  
-  <entry>
     <title>DroneAD</title>
     <link href="https://gaofeng-lin.github.io/posts/7d96b074/"/>
     <id>https://gaofeng-lin.github.io/posts/7d96b074/</id>
@@ -190,6 +191,31 @@
     
     
     <category term="Anomaly Detection" scheme="https://gaofeng-lin.github.io/tags/Anomaly-Detection/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DroneDataset</title>
+    <link href="https://gaofeng-lin.github.io/posts/27c9adf4/"/>
+    <id>https://gaofeng-lin.github.io/posts/27c9adf4/</id>
+    <published>2025-09-04T16:00:00.000Z</published>
+    <updated>2025-09-09T13:58:58.412Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Mid-Air-A-multi-modal-dataset-for-extremely-low-altitude-drone-flights&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
+    
+    
+    <category term="Dataset" scheme="https://gaofeng-lin.github.io/tags/Dataset/"/>
     
   </entry>
   
@@ -494,31 +520,6 @@
     <category term="代码管理" scheme="https://gaofeng-lin.github.io/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/"/>
     
     <category term="latex" scheme="https://gaofeng-lin.github.io/tags/latex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>异常检测</title>
-    <link href="https://gaofeng-lin.github.io/posts/2ede883b/"/>
-    <id>https://gaofeng-lin.github.io/posts/2ede883b/</id>
-    <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-09-24T01:31:46.092Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;无监督训练流程&quot;&gt;&lt;a href=&quot;#无监督训练流程&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="DataMining" scheme="https://gaofeng-lin.github.io/categories/DataMining/"/>
-    
-    
-    <category term="异常检测" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
     
   </entry>
   
