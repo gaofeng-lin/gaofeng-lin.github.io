@@ -437,16 +437,16 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/JavaScript/">
+                                <span class="chip bg-color">JavaScript</span>
+                            </a>
+                        
                             <a href="/tags/Vue/">
                                 <span class="chip bg-color">Vue</span>
                             </a>
                         
                             <a href="/tags/React/">
                                 <span class="chip bg-color">React</span>
-                            </a>
-                        
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
                             </a>
                         
                             <a href="/tags/Json/">
@@ -1549,16 +1549,16 @@ shift<span class="token operator">+</span><span class="token constant">F11</span
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/JavaScript/">
+                                    <span class="chip bg-color">JavaScript</span>
+                                </a>
+                            
                                 <a href="/tags/Vue/">
                                     <span class="chip bg-color">Vue</span>
                                 </a>
                             
                                 <a href="/tags/React/">
                                     <span class="chip bg-color">React</span>
-                                </a>
-                            
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
                                 <a href="/tags/Json/">
@@ -2258,6 +2258,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
