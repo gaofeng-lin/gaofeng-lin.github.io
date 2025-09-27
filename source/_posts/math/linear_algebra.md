@@ -6,6 +6,7 @@ categories:
 tags:
   - 线性代数
 mathjax: true
+abbrlink: 6b912686
 ---
 
 **本文内容出自3Blue1Brown**
