@@ -6,6 +6,7 @@ categories:
 tags:
   - KPI
 mathjax: true
+abbrlink: 36351f53
 ---
 
 
