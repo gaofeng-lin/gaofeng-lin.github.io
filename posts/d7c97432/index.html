@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    7 分
                 </div>
                 
 
@@ -650,9 +650,9 @@ mjx-container[display="true"] + br {
 <p>不论是</p>
 <h2 id="Problem-Statement-1"><a href="#Problem-Statement-1" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p><strong>（问题陈述：问题作者需要解决的问题是什么？）</strong></p>
 <ul>
-<li>现有的时序Transformer通常只能运行（输入/输出）百个量级的时序tokens，而自然语言和视觉的Transformer可以学习数千到数百万个tokens之间的依赖关系。</li>
+<li>现有的<strong>时序</strong>Transformer通常只能运行（输入/输出）百个量级的时序tokens，而<strong>自然语言和视觉</strong>的Transformer可以学习数千到数百万个tokens之间的依赖关系。</li>
 </ul>
-<p>为什么现有的时序Transformer通常只能运行（输入/输出）百个量级的时序tokens？</p>
+<p>为什么现有的<strong>时序</strong>Transformer通常只能运行（输入/输出）百个量级的时序tokens？</p>
 <p>这篇论文在说明这一点的时候引用了一篇论文（A time series is worth 64 words: Long-term forecasting with transformers. arXiv preprint arXiv:2211.14730, 2022.）<br>在引文中的附录A.1.2中提到：“The default look-back windows for different baseline models could be different. For Transformerbased models, the default look-back window is L = 96; and for DLinear, the default look-back window is L = 336. The reason of this difference is that Transformer-based baselines are easy to overfit when look-back window is long while DLinear tend to underfit. ”</p>
 <p><strong>大概的意思就是窗口过大，基于Transformer的模型容易过拟合，而基于Dlinear的模型容易欠拟合。但是这篇引文没有分析为什么容易过拟合</strong></p>
 <ul>
@@ -672,7 +672,22 @@ mjx-container[display="true"] + br {
 <li>TimeAttention: 旨在捕获所有变量内部和变量之间的因果patches依赖关系</li>
 </ul>
 <h2 id="Evaluation-1"><a href="#Evaluation-1" class="headerlink" title="Evaluation"></a>Evaluation</h2><p><strong>（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）</strong></p>
-<h2 id="Conclusion-1"><a href="#Conclusion-1" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
+<p>从三个方面对Timer-XL进行评价：</p>
+<ul>
+<li>作为特定任务的预测器(Supervised training as a task-specific forecaster):<ul>
+<li>这个方面关注的是模型在​<strong>​有监督训练​</strong>​下，在​<strong>​各个独立、具体的预测任务</strong>​​上的性能。这正是通过第4.1、4.2、4.3节分别在​<strong>​单变量预测、多变量预测、协变量预测​</strong>​这三个经典且不同的任务场景上做实验来体现的。每一节都是在某个特定任务上“从头训练”一个模型，并证明Timer-XL在该任务上的优越性。</li>
+</ul>
+</li>
+<li>作为零样本预测器(Large-scale pre-training as a zero-shot forecaster)<ul>
+<li>这个方面关注模型的​<strong>​泛化能力和潜力</strong>​​。通过第4.4节的大规模​​预训练​​实验，作者展示了Timer-XL一旦经过海量数据预训练后，无需在下游任务上微调（即零样本），就能在未曾见过的数据集和任务上取得良好效果，这使其有成为“基础模型”的潜力。</li>
+</ul>
+</li>
+<li>评估TimeAttention的有效性和模型效率(Assessing the effectiveness and efficiency)<ul>
+<li>在第4.5节，作者专门分析了其核心创新<strong>​​TimeAttention机制的有效性</strong>​​（如可视化）和模型的<strong>​​计算效率</strong>​​。同时，在前三节的实验里，与其它模型的对比本身也包含了对TimeAttention有效性的评估（例如，对比通道独立与通道依赖的模型）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-1"><a href="#4-1" class="headerlink" title="4.1"></a>4.1</h3><h3 id="4-2"><a href="#4-2" class="headerlink" title="4.2"></a>4.2</h3><h3 id="评估核心组件与效率"><a href="#评估核心组件与效率" class="headerlink" title="评估核心组件与效率"></a>评估核心组件与效率</h3><h2 id="Conclusion-1"><a href="#Conclusion-1" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
 <h2 id="Notes-optional-1"><a href="#Notes-optional-1" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h2><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
 <ul>
 <li>第一章第四段，Multivariate Next Token Prediction：指在时间序列预测任务中，同时建模多个变量之间的依赖关系，并基于当前和历史观测值，联合预测下一个时间步的多个变量值。</li>
@@ -1213,7 +1228,7 @@ mjx-container[display="true"] + br {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">238k</span>
+                        class="white-color">240.5k</span>
             
             
             
