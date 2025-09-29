@@ -195,75 +195,238 @@ $\begin{aligned}
 
 ## Transformer 模型架构
 
-![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/transformer%E6%9E%B6%E6%9E%84-%E9%81%AE%E6%8E%A9.jpg)
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-e7daa13fb15fb21fb133c2099361ccc9_1440w.jpg)
 
-### 残差连接
+主要讲下数据从输入到encoder到decoder输出这个过程中的流程（以机器翻译为例子）：
+
+### Encoder
+
+对于机器翻译来说，一个样本是由原始句子和翻译后的句子组成的。比如原始句子是： “我爱机器学习”，那么翻译后是 ’i love machine learning‘。 则该一个样本就是由“我爱机器学习”和 "i love machine learning" 组成。
+
+这个样本的原始句子的单词长度是length=4,即‘我’ ‘爱’ ‘机器’ ‘学习’。经过embedding后每个词的embedding向量是512。那么“我爱机器学习”这个句子的embedding后的维度是[4，512 ] （若是批量输入，则embedding后的维度是[batch, 4, 512]）。
+
+#### Padding
+
+因为每个样本的原始句子的长度是不一样的，那么怎么能统一输入到encoder呢。此时padding操作登场了，假设样本中句子的最大长度是10，那么对于长度不足10的句子，需要补足到10个长度，shape就变为[10, 512], 补全的位置上的embedding数值自然就是0了
+
+对于输入序列一般我们都要进行padding补齐，也就是说设定一个统一长度N，在较短的序列后面填充0到长度为N。
+
+对于那些补零的数据来说，我们的attention机制不应该把注意力放在这些位置上，所以我们需要进行一些处理。具体的做法是，把这些位置的值加上一个非常大的负数(负无穷)，这样经过softmax后，这些位置的权重就会接近0。
+
+Transformer的padding mask实际上是一个张量，每个值都是一个Boolean，值为false的地方就是要进行处理的地方。
+
+#### Positional Embedding
+
+得到补全后的句子embedding向量后，直接输入encoder的话，那么是没有考虑到句子中的位置顺序关系的。无论是RNN还是CNN，都能自然地利用到序列的先后顺序这一信息。然而，Transformer的主干网络并不能利用到序列顺序信息，它本身不知道词的顺序。所以必须额外告诉模型每个词的位置，否则它会把“猫→垫子”和“垫子→猫”当成一样的情况（想象你在读一句话：“猫坐在垫子上”。如果把这句话的词打乱成“垫子坐在猫上”，意思就完全反了。）。因此，Transformer使用了一种叫做“位置编码”的机制，对编码器和解码器的嵌入输入做了一些修改，以向模型提供序列顺序信息。
+
+
+关于positional embedding ，文章提出两种方法：
+
+
+- **Learned Positional Embedding** ，这个是绝对位置编码，即直接对不同的位置随机初始化一个postion embedding，这个postion embedding作为参数进行训练。
+
+**如果使用1，2，3会导致长序列数值过大（如第1000个词的位置编码是1000），影响数值稳定性，从而影响模型训练。**
+
+- **Sinusoidal Position Embedding** ，相对位置编码，即三角函数编码。
+
+下面详细讲下Sinusoidal Position Embedding 三角函数编码。
+
+Positional Embedding和句子embedding是add操作，那么自然其shape是相同的也是[10, 512] 。
+
+Sinusoidal Positional Embedding具体怎么得来呢，我们可以先思考下，使用绝对位置编码，不同位置对应的positional embedding固然不同，**但是位置1和位置2的距离比位置3和位置10的距离更近，位置1和位置2与位置3和位置4都只相差1。**
+
+这些关于位置的**相对含义**，模型能够通过绝对位置编码参数学习到吗？此外使用Learned Positional Embedding编码，位置之间没有约束关系，我们只能期待它隐式地学到，是否有更合理的方法能够显示的让模型理解位置的相对关系呢？
+
+肯定是有的，首先由下述公式得到Embedding值:
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-5589e776fd8510eab7a3d87de01580d4_1440w.jpg)
+
+对于句子中的每一个字，其位置pos∈[0,1,2,…,9](假设每句话10个字), 每个字是N（512）维向量，维度 i （i∈[ 0,1,2,3,4,..N]）带入函数
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-d02e2346c76f5a829330d915cddd0403_1440w.jpg)
+
+**由于正弦函数能够表达相对位置信息**，那么对每个positional embedding进行 sin 或者cos激活，可能效果更好，那就再将偶数列上的embedding值用sin()函数激活，奇数列的embedding值用cos()函数激活得到的具体示意图如下:
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-afa76dbf4afe436c658fdae9e72eb320_1440w.jpg)
+
+这样使用三角函数设计的好处是位置 i 处的单词的psotional embedding可以被位置 i+k 处单词的psotional embedding线性表示，反应两处单词的其相对位置关系。此外位置i和i+k的psotional embedding内积会随着相对位置的递增而减小，从而表征位置的相对距离。
+
+但是不难发现，由于距离的对称性，Sinusoidal Position Encoding虽然能够反映相对位置的距离关系，但是无法区分i和i+j的方向。即pe(i)*pe(i+j) =pe(i)*pe(i-k) ([具体解释参见引用链接1](https://mp.weixin.qq.com/s/ENpXBYQ4hfdTLSXBIoF00Q))
+
+#### 残差连接
 
 Transformer使用了和ResNet类似的残差连接，即设模块本身的映射为$F(x)$，则模块输出为$Normalization(F(x)+x)$
 。和ResNet不同，Transformer使用的归一化方法是LayerNorm。
 另外要注意的是，残差连接有一个要求：输入x和输出F(x)+x的维度必须等长。在Transformer中，包括所有词嵌入在内的向量长度都是$d_{model}=512$。
 
-### 前馈网络
+#### Attention
+
+单头attention 的 Q/K/V 的shape和多头attention 的每个头的Qi/Ki/Vi的大小是不一样的，假如单头attention 的 Q/K/V的参数矩阵WQ/WK/WV的shape分别是[512, 512](此处假设encoder的输入和输出是一样的shape)，那么多头attention (假设8个头)的每个头的Qi/Ki/Vi的参数矩阵WQi/WKi/WVi大小是[512， 512/8].
+
+#### Fedd Forward
 
 
 架构图中的前馈网络（Feed Forward）其实就是一个全连接网络。具体来说，这个子网络由两个线性层组成，中间用ReLU作为激活函数。
 
 $F F N(x)=m a x(0,x W_{1}+b_{1})W_{2}+b_{2}$
 
-### 整体架构与掩码多头注意力
+#### add/Norm
 
-![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%8E%A9%E7%A0%81%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B.jpg)
+经过add/norm后的隐藏输出的shape也是[10,512]。（当然你也可以规定为[10, x]，那么Q/K/V的参数矩阵shape就需要变一下）
 
-#### Decoder部分的Outputs例子
+#### encoder输入输出总结
 
-Decoder部分还有个输入是Outputs，要分为训练和推理阶段来理解。
+让我们从输入开始，再从头理一遍单个encoder这个过程:
 
-**1. 训练阶段**
+- 输入x
+- x 做一个层归一化： x1 = norm(x)
+- 进入多头self-attention: x2 = self_attention(x1)
+- 残差加成：x3 = x + x2
+- 再做个层归一化：x4 = norm(x3)
+- 经过前馈网络: x5 = feed_forward(x4)
+- 残差加成: x6 = x3 + x5
+- 输出x6
 
-**任务目标**
-将“I love you” 翻译为中文 “我爱你”
+以上就是一个Encoder组件所做的全部工作了
 
-**输入与输出**
+### Decoder
 
-原始目标序列（Ground Truth）
+Decoder中主要除了交叉注意机制，还有一个掩码多头注意力机制。
 
-[<SOS>, 我, 爱, 你, <EOS>]
+#### Masked Multi-Head Attention
 
-Decoder输入（右移后）​：
+**掩码机制实现了两个关键目标：**
+1. 防止模型在训练时“偷看”未来答案​（避免信息泄漏）
+2. 允许整个序列的并行计算​（提升训练效率）
 
-[<SOS>, 我, 爱, 你]
+训练的时候，1.初始decoder的time step为1时(也就是第一次接收输入)，其输入为一个特殊的token，可能是目标序列开始的token(如<BOS>)，也可能是源序列结尾的token(如<EOS>)，也可能是其它视任务而定的输入等等，不同源码中可能有微小的差异，其目标则是预测翻译后的第1个单词(token)是什么；2.然后<BOS>和预测出来的第1个单词一起，再次作为decoder的输入，得到第2个预测单词；3后续依此类推；
 
-Decoder输出（预测目标）​：
+具体的例子如下：
 
-[我, 爱, 你, <EOS>]
+样本：“我/爱/机器/学习”和 "i/ love /machine/ learning"
 
-**处理过程**
+训练：
+1. 把“我/爱/机器/学习”embedding后输入到encoder里去，最后一层的encoder最终输出的outputs [10, 512]（假设我们采用的embedding长度为512，而且batch size = 1),此outputs 乘以新的参数矩阵，可以作为decoder里每一层用到的K和V；
 
-​输入右移：将目标序列的起始符 <SOS> 放在最前面，并移除最后一个词 <EOS>，得到右移后的输入 [<SOS>, 我, 爱, 你]。
+2. 将<bos>作为decoder的初始输入，将decoder的最大概率输出词 A1和‘i’做cross entropy计算error。
 
-​掩码机制：Decoder的自注意力层通过掩码矩阵（Mask）遮盖未来词，确保预测第 t 个词时只能看到前 t-1 个词。
+3. 将<bos>，"i" 作为decoder的输入，将decoder的最大概率输出词 A2 和‘love’做cross entropy计算error。
 
-​并行计算：所有位置的词同时处理，但掩码确保模型无法“偷看”未来的词。
+4. 将<bos>，"i"，"love" 作为decoder的输入，将decoder的最大概率输出词A3和'machine' 做cross entropy计算error。
 
-**意义**
+5. 将<bos>，"i"，"love "，"machine" 作为decoder的输入，将decoder最大概率输出词A4和‘learning’做cross entropy计算error。
 
-​对齐训练与推理：模拟推理时的逐步生成过程（如生成“爱”时只能看到“, 我”）。
+6. 将<bos>，"i"，"love "，"machine"，"learning" 作为decoder的输入，将decoder最大概率输出词A5和终止符</s>做cross entropy计算error。
 
-​防止信息泄漏：如果直接输入原始目标序列 [<SOS>, 我, 爱, 你, <EOS>]，模型可能直接复制未来词，而非学习生成逻辑。
+上述训练过程是挨个单词串行进行的，那么能不能并行进行呢，当然可以。可以看到上述单个句子训练时候，输入到 decoder的分别是
+
+<bos>
+
+<bos>，"i"
+
+<bos>，"i"，"love"
+
+<bos>，"i"，"love "，"machine"
+
+<bos>，"i"，"love "，"machine"，"learning"
+
+那么为何不将这些输入组成矩阵，进行输入呢？这些输入组成矩阵形式如下：
+
+【<bos>
+
+<bos>，"i"
+
+<bos>，"i"，"love"
+
+<bos>，"i"，"love "，"machine"
+
+<bos>，"i"，"love "，"machine"，"learning" 】
+
+怎么操作得到这个矩阵呢？
+
+将decoder在上述2-6步次的输入补全为一个完整的句子
+
+【<bos>，"i"，"love "，"machine"，"learning"
+<bos>，"i"，"love "，"machine"，"learning"
+<bos>，"i"，"love "，"machine"，"learning"
+<bos>，"i"，"love "，"machine"，"learning"
+<bos>，"i"，"love "，"machine"，"learning"】
+
+然后将上述矩阵矩阵乘以一个 mask矩阵
+
+【1 0 0 0 0
+
+1 1 0 0 0
+
+1 1 1 0 0
+
+1 1 1 1 0
+
+1 1 1 1 1 】
+
+这样是不是就得到了
+
+【<bos>
+
+<bos>，"i"
+
+<bos>，"i"，"love"
+
+<bos>，"i"，"love "，"machine"
+
+<bos>，"i"，"love "，"machine"，"learning" 】
+
+这样的矩阵了 。就是我们需要输入矩阵。这个mask矩阵就是 sequence mask，其实它和encoder中的padding mask 异曲同工。
+
+这样将这个矩阵输入到decoder（其实你可以想一下，此时这个矩阵是不是类似于批处理，矩阵的每行是一个样本，只是每行的样本长度不一样，每行输入后最终得到一个输出概率分布，作为矩阵输入的话一下可以得到5个输出概率分布）。
+
+这样我们就可以进行并行计算进行训练了。
+
+**掩码注意力机制的数学公式：（有可能是错的）**
+
+$\mathrm{Attention}(Q,K,V)=\mathrm{softmax}\left(\frac{Q K^{T}}{\sqrt{d_{k}}}+M\right)V$
 
 
-**2. 推理阶段**
 
-输入英文 ​​“I love you”​，逐步生成中文翻译。
+#### Cross-Attention
 
-| 步骤 | Decoder输入         | 预测输出  | 已生成序列            |
-|----|-------------------|-------|------------------|
-| 1  | [\<SOS>]           | 我     | [我]              |
-| 2  | 	[\<SOS>, 我]       | 爱     | [我, 爱]           |
-| 3  | [\<SOS>, 我, 爱]     | 你     | [我, 爱, 你]        |
-| 4  | 	[\<SOS>, 我, 爱, 你] | \<EOS> | [我, 爱, 你, \<EOS>] |
+之所以叫Cross-Attention，是因为这部分的输入即来自Encoder，也来自Decoder。
 
-#### 如果不右移会发生什么
+这个层比较特别，它的K，V来自$z$（Encoder部分的输出，K、V都是由这个输出来计算），Q来自上一层的输出（Decoder部分经过掩码多头注意力和Add &Norm得到的输出）。为什么会有这样的设计呢？这种设计来自于早期的注意力模型。如下图所示，在早期的注意力模型中，**每一个输出单词都会与每一个输入单词求一个注意力，以找到每一个输出单词最相关的某几个输入单词。用注意力公式来表达的话，Q就是输出单词，K, V就是输入单词。**
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/decoder%E6%B3%A8%E6%84%8F%E5%8A%9B.jpg)
+
+**K,V的值是让$z$和K,V各自的权重矩阵相乘后再使用，不是直接使用$z$**
+
+
+
+### 测试/推理
+
+训练好模型， 测试的时候，比如用 '机器学习很有趣'当作测试样本，得到其英语翻译。
+
+这一句经过encoder后得到输出tensor，送入到decoder(并不是当作decoder的直接输入)：
+
+1.然后用起始符<bos>当作decoder的 输入，得到输出 machine
+
+2. 用<bos> + machine 当作输入得到输出 learning
+
+3.用 <bos> + machine + learning 当作输入得到is
+
+4.用<bos> + machine + learning + is 当作输入得到interesting
+
+5.用<bos> + machine + learning + is + interesting 当作输入得到 结束符号<eos>
+
+我们就得到了完整的翻译 'machine learning is interesting'
+
+可以看到，在测试过程中，只能一个单词一个单词的进行输出，是**串行**进行的。
+
+
+
+
+### 相关问题
+
+#### 为什么Decoder部分的输入要用掩码
+
 
 **​训练阶段：**
 输入原始目标序列 [\<SOS>, 我, 爱, 你, \<EOS>]，模型在预测“爱”时能看到后面的“你”和 \<EOS>。
@@ -273,43 +436,8 @@ Decoder输出（预测目标）​：
 
 无影响，因为模型只能依赖已生成的词。
 
-#### 技术细节
 
-​起始符 \<SOS>：触发生成的信号，类似于“开始生成”的指令。
-​终止符 \<EOS>：标记序列结束，模型需学习何时停止生成。
-
-#### 掩码层
-
-掩码机制实现了两个关键目标：
-1. 防止模型在训练时“偷看”未来答案​（避免信息泄漏）
-2. 允许整个序列的并行计算​（提升训练效率）
-
-掩码注意力机制的数学公式：
-
-$\mathrm{Attention}(Q,K,V)=\mathrm{softmax}\left(\frac{Q K^{T}}{\sqrt{d_{k}}}+M\right)V$
-
-掩码矩阵示例（长度为4）：
-
-![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-02-26_21-19-12.png)
-
-未来位置设置为负无穷（softmax后权重为0），当前位置为0。
-
-这样通过矩阵运行一次性处理整个序列，提升训练效率。
-
-#### 执行流程
-
-输入序列$x$会经过$N=6$个结构相同的层。每层由多个子层组成。第一个子层是多头注意力层，准确来说，是多头自注意力。这一层可以为每一个输入单词提取出更有意义的表示。之后数据会经过前馈网络子层。最终，输出编码结果$z$。
-
-得到了$z$后，要用解码器输出结果了。解码器的输入是当前已经生成的序列，该序列会经过一个掩码（masked）多头自注意力子层。我们先不管这个掩码是什么意思，暂且把它当成普通的多头自注意力层。它的作用和编码器中的一样，用于提取出更有意义的表示。
-
-接下来，数据还会经过一个多头注意力层。这个层比较特别，它的K，V来自$z$，Q来自上一层的输出。为什么会有这样的设计呢？这种设计来自于早期的注意力模型。如下图所示，在早期的注意力模型中，**每一个输出单词都会与每一个输入单词求一个注意力，以找到每一个输出单词最相关的某几个输入单词。用注意力公式来表达的话，Q就是输出单词，K, V就是输入单词。**
-
-![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/decoder%E6%B3%A8%E6%84%8F%E5%8A%9B.jpg)
-
-**K,V的值是让$z$和K,V各自的权重矩阵相乘后再使用，不是直接使用$z$**
-
-
-### 嵌入层
+#### 嵌入层权重
 
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/transformer-%E5%B5%8C%E5%85%A5%E5%B1%82.jpg)
 
@@ -338,13 +466,34 @@ $\mathrm{Attention}(Q,K,V)=\mathrm{softmax}\left(\frac{Q K^{T}}{\sqrt{d_{k}}}+M\
 
 由于模型要预测一个单词，输出的线性层后面还有一个常规的softmax操作。
 
-### 位置编码
 
-现在，Transformer的结构图还剩一个模块没有读——位置编码。无论是RNN还是CNN，都能自然地利用到序列的先后顺序这一信息。然而，Transformer的主干网络并不能利用到序列顺序信息，它本身不知道词的顺序。所以必须额外告诉模型每个词的位置，否则它会把“猫→垫子”和“垫子→猫”当成一样的情况（想象你在读一句话：“猫坐在垫子上”。如果把这句话的词打乱成“垫子坐在猫上”，意思就完全反了。）。。因此，Transformer使用了一种叫做“位置编码”的机制，对编码器和解码器的嵌入输入做了一些修改，以向模型提供序列顺序信息。
+#### Decoder第一个输入是‘开始符’，如何保证正确的预测结果？
 
-具体的做法就是给每个词的位置添加一组数字，使用一组正弦和余弦函数来生成位置编码。通过正弦和余弦的交替，模型可以学习到“相对位置”关系。有的维度关注短距离位置（高频变化），有的维度关注长距离位置（低频变化）。
+**问题：**
 
-如果使用1，2，3会导致长序列数值过大（如第1000个词的位置编码是1000），影响数值稳定性，从而影响模型训练。
+所有句子都是以 <BOS> 开头的话，对于一句具体的句子，为什么可以期望给 decoder 输入 <BOS> 时，它可以预测 sentence 的第一个词？即对于「我爱机器学习」和「机器学习很有趣」两句，decoder 收到的第一个输入都是 <BOS>，为什么它能对第一个 <BOS> 预测「I」，而第二个是预测「machine」呢？
+
+
+回答：
+
+**因为还和encoder的输出做了attention。**
+
+仔细看transformer的结构图，decoder的初始输入虽然是<BOS>，但是decoder的后续层有混入encoder的输出，于是这个encoder的输出就和初始层的<BOS>输入一起进行接码得到第一个单词
+
+#### Decoder输出的是什么
+
+**概率分布。目前还没看明白，后面有空来补**
+
+参考链接：https://nlp.seas.harvard.edu/annotated-transformer/
+
+是通过截断最后一行的方式整合的。
+
+假设Tgt加入位置信息编码输入维度为(N,T,W),N为batch大小，T为句子长度，W为编码维度，忽略Batch只考虑单个句子，Decoder最后输出维度和Tgt输入维度一致为(T,W)，随后线性层将编码维度W投影到词表维度Vocab_size,得到了(T,Vocab_size)的输出，这时候取最后一行作为预测的下一个词的概率分布，即argmax(out[-1,:] )
+
+参考 nlp.seas.harvard.edu/an 这里面的forward函数。
+
+
+你说的对，CrossAttention输出文本长度其实只和tgt端 query有关，实际解码时tgt端的文本长度是不断增加的，由于CrossAttention前要对tgt query本身做self attention，为了方便单向解码训练就直接把tgt query直接用矩阵+掩码的形式建模了，所以才会有如此明显的浪费，但是也让优化变得更加简单。
 
 ## 为什么要用自注意力
 
