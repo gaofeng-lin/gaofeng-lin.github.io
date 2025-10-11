@@ -487,14 +487,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.9k
+                    4.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    15 分
                 </div>
                 
 
@@ -537,6 +537,13 @@ $ ls -a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 <p>使用usermod命令修改shell类型<br><code>root@iZ2zeijeb6un95h:~# usermod -s /bin/bash bbee</code></p>
 <p><strong>方法二（为尝试）</strong></p>
 <p>在新建用户的时候指定shell<br><code>useradd -d /home/cron/log -s /bin/bash -m bbee</code></p>
+<h3 id="github代码拉到windows，压缩后上传至linux服务器，执行脚本出错"><a href="#github代码拉到windows，压缩后上传至linux服务器，执行脚本出错" class="headerlink" title="github代码拉到windows，压缩后上传至linux服务器，执行脚本出错"></a>github代码拉到windows，压缩后上传至linux服务器，执行脚本出错</h3><p>报错信息如下：</p>
+<p>“)syntax error: invalid arithmetic operator (error token is “</p>
+<p>./scripts/supervised/forecast/time-llm_etth1.sh: line 6: $’\r’: command not found</p>
+<p>错误信息 ./scripts/supervised/forecast/time-llm_etth1.sh: line 6: $’\r’: command not found 表明脚本中存在 Windows 的回车符 \r，导致 shell 将 \r 视为命令执行</p>
+<p><strong>问题原因</strong>：<br>Windows 使用 CRLF（\r\n）作为换行符，而 Linux 使用 LF（\n）。当 Linux 尝试执行包含 \r 的脚本时，它会将 \r 视为命令的一部分，导致错误。</p>
+<p><strong>解决办法</strong>：</p>
+<p>下面以我当时遇到的脚本为例，后面再遇到这个问题，只需要把.sh文件替换为自己的即可。<br><code>sed -i 's/\r//g' ./scripts/supervised/forecast/time-llm_etth1.sh</code></p>
 <h2 id="Linux-权限"><a href="#Linux-权限" class="headerlink" title="Linux 权限"></a>Linux 权限</h2><h3 id="目录、文件夹的权限如何分配"><a href="#目录、文件夹的权限如何分配" class="headerlink" title="目录、文件夹的权限如何分配"></a>目录、文件夹的权限如何分配</h3><p>linux系统上面权限是一个很重要的问题，每一个目录(/opt,/home,/usr)权限到底该如何设置，什么时候使用sudo。</p>
 <p>以单个用户(以yskj为例)为例，每一个用户自能在指定的目录拥有读、写、执行权限，不能访问别人的目录。一般来说是在/home/yskj/</p>
 <p>/opt等目录拥有者和组几乎全是root。比如mpi在/opt，普通用户登录可以使用吗？答案是可以的。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/cfa86e15e98542dd9f83683b8ac5a85f.png" alt=""></p>
@@ -1274,7 +1281,7 @@ export PATH=$PATH:/usr/lib/java/bin <span aria-hidden="true" class="line-numbers
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">245.7k</span>
+                        class="white-color">247.7k</span>
             
             
             

@@ -40,6 +40,7 @@ T">
 
 <meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 <style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
@@ -152,8 +153,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-</head>
+</style></head>
 
 
 <body>
@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.1k
+                    8.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    25 分
+                    31 分
                 </div>
                 
 
@@ -699,20 +699,70 @@ mjx-container[display="true"] + br {
 </li>
 </ul>
 <hr>
-<p>因为需要复现实验，需要先统计下做了哪些实验，每个实验是如何设置的。</p>
+<h2 id="实验复现"><a href="#实验复现" class="headerlink" title="实验复现"></a>实验复现</h2><p>因为需要复现实验，需要先统计下做了哪些实验，每个实验是如何设置的。</p>
 <p>代码网址：<a target="_blank" rel="noopener" href="https://github.com/thuml/OpenLTM">https://github.com/thuml/OpenLTM</a><br>数据集描述：<a target="_blank" rel="noopener" href="https://github.com/thuml/OpenLTM/blob/main/figures/datasets.png">https://github.com/thuml/OpenLTM/blob/main/figures/datasets.png</a></p>
-<h3 id="单变量时序预测"><a href="#单变量时序预测" class="headerlink" title="单变量时序预测"></a>单变量时序预测</h3><ul>
-<li>图3实验：<ul>
-<li>预测的步长都是96。输入的数据长度不断增加，一共有5个不同的类型输入长度：1day(24步)、4day（96步）、1week（672步）、1month（2880步）、4month（8832步）。</li>
-<li><strong>不过这里有个问题，那就是论文在4.1中的Setups提到”Although these datasets are originally multivariate, they aim to be predicted in a univariate approach with the implementation of channel independence.”。这里我有些没看懂，因为图3的实验都是多变量数据集，但是实验却是单变量预测，那么选用哪个变量进行训练呢？论文没有说。但在附录B.3中提到“We adopt channel independence from Nie et al. (2022) in univariate time series forecasting.”。这个可能就是处理的方法，后面需要去看下这个论文是怎么做的。</strong></li>
+<p>论文中表11有给出实验配置</p>
+<h3 id="单变量时序预测"><a href="#单变量时序预测" class="headerlink" title="单变量时序预测"></a>单变量时序预测</h3><p>图3实验</p>
+<h4 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h4><ul>
+<li>预测的步长都是96。输入的数据长度不断增加，一共有5个不同的类型输入长度：1day(24步)、4day（96步）、1week（168步）、1month（672步）、4month（2880步）。我准备复制ETTh1这个数据集的结果。那么一共就是要进行5次实验，每次要修改输入的步长。每次的epoch为10次。<h4 id="单变量时序预测采用多变量时序数据集要怎么处理"><a href="#单变量时序预测采用多变量时序数据集要怎么处理" class="headerlink" title="单变量时序预测采用多变量时序数据集要怎么处理"></a>单变量时序预测采用多变量时序数据集要怎么处理</h4></li>
+<li><del>不过这里有个问题（已解决，在下一个点里面有提到），那就是论文在4.1中的Setups提到”Although these datasets are originally multivariate, they aim to be predicted in a univariate approach with the implementation of channel independence.”。这里我有些没看懂，因为图3的实验都是多变量数据集，但是实验却是单变量预测，那么选用哪个变量进行训练呢？论文没有说。但在附录B.3中提到“We adopt channel independence from Nie et al. (2022) in univariate time series forecasting.”。这个可能就是处理的方法，后面需要去看下这个论文是怎么做的。</del> 。关于上面的问题，有了回答。参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/602332939">https://zhuanlan.zhihu.com/p/602332939</a> 。 所谓的channel independence就是对多变量分别进行预测，再将预测的结果拼接起来，这就相当于每个维度是独立的。<h4 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h4></li>
+</ul>
+<p>代码里面连续三次验证集loss没有下降就早停。</p>
+<ul>
+<li><strong>输入步长24(1day)</strong>：<ul>
+<li>第一次实验：epoch 5早停；mse:0.4135052263736725, mae:0.4306889474391937</li>
+<li>第二次实验：epoch 5早停；mse:0.4135052263736725, mae:0.4306889474391937</li>
+<li>第三次实验：epoch 5早停；mse:0.4135052263736725, mae:0.4306889474391937</li>
 </ul>
 </li>
-<li>表2实验：<ul>
+</ul>
+<p><strong>平均效果：mse:0.4135052263736725, mae:0.4306889474391937</strong></p>
+<ul>
+<li><p>如果把data从MultivariateDatasetBenchmark换为UnivariateDatasetBenchmark，<strong>mse:0.37723585963249207, mae:0.3987869918346405</strong></p>
+</li>
+<li><p><strong>输入步长96(4day)</strong>：</p>
+<ul>
+<li>第一次实验：mse:0.3673262298107147, mae:0.3994017541408539</li>
+<li>第二次实验：mse:0.3673262298107147, mae:0.3994017541408539</li>
+<li>第三次实验：mse:0.3673262298107147, mae:0.3994017541408539</li>
+</ul>
+</li>
+</ul>
+<p><strong>平均效果：mse:0.3673262298107147, mae:0.3994017541408539</strong></p>
+<ul>
+<li><p>如果把data从MultivariateDatasetBenchmark换为UnivariateDatasetBenchmark，<strong>mse:0.3619115948677063, mae:0.3970280587673187</strong></p>
+</li>
+<li><p><strong>输入步长168(1week)</strong>：</p>
+<ul>
+<li>第一次实验：epoch 9早停；mse:0.3750412166118622, mae:0.40709444880485535</li>
+</ul>
+</li>
+</ul>
+<p>后面两次结果也一样。</p>
+<p><strong>平均效果：mse:0.3750412166118622, mae:0.40709444880485535</strong></p>
+<p>替换后<br>mse:0.36265239119529724, mae:0.40084296464920044</p>
+<ul>
+<li><strong>输入步长672(1month)</strong>：<ul>
+<li>第一次实验：epoch 6早停；mse:0.5115599036216736, mae:0.5127909183502197</li>
+<li>第二次实验：epoch 6早停；mse:0.5115599036216736, mae:0.5127909183502197</li>
+<li>第三次实验：epoch 6早停；mse:0.5115599036216736, mae:0.5127909183502197</li>
+</ul>
+</li>
+</ul>
+<p><strong>平均效果：mse:0.5115599036216736, mae:0.5127909183502197</strong></p>
+<ul>
+<li><p>patch_size参数的默认值是16，在论文里面，这个值的设置是96，替换为96后，结果是一摸一样。epoch6早停，mse,mae一样。</p>
+</li>
+<li><p>如果把data从MultivariateDatasetBenchmark换为UnivariateDatasetBenchmark，在epoch4早停，<strong>mse:0.42560669779777527, mae:0.4508516490459442</strong></p>
+</li>
+<li><p><strong>输入步长2880</strong>：</p>
+</li>
+</ul>
+<h3 id="多变量时序预测（表2实验）"><a href="#多变量时序预测（表2实验）" class="headerlink" title="多变量时序预测（表2实验）"></a>多变量时序预测（表2实验）</h3><ul>
 <li>输入3072步长，预测96。</li>
 <li>我们还根据具有挑战性的 40 年 ECMWF Reanalysis v5 数据集（Hersbach 等人，2020 年）建立了一个长上下文单变量基准，采用年上下文预测单个站点（ERA5-S）的陆面温度。</li>
 </ul>
-</li>
-</ul>
+<p><del>目前我自己写了一个脚本，运行timer-xl模型，数据集是etth1，但是没法运行。把模型换成moirai就可以运行。我看了下核心的问题，是在exp_forecast.py文件中的<code>outputs = self.model(batch_x, batch_x_mark, batch_y_mark)</code>这段代码，三个维度分别是：<br>batch_x shape: torch.Size([32, 672, 7])<br>batch_x_mark shape: torch.Size([32, 672, 1])<br>batch_y_mark shape: torch.Size([32, 672, 1])如果模型是timer-xl。输出outputs shape: torch.Size([32, 672, 7])如果是moirai。outputs shape: torch.Size([32, 96, 7])而在后面的<code>loss = criterion(outputs, batch_y)</code>就会报错。因为batch_y的维度是torch.Size([32, 96, 7])，而timer-xl输出的outputs结果是([32, 672, 7])</del>。<strong>这个问题已经解决</strong>。</p>
 <h2 id="References-optional-1"><a href="#References-optional-1" class="headerlink" title="References(optional)"></a>References(optional)</h2><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
 <h1 id="Are-Transformers-Effective-for-Time-Series-Forecasting"><a href="#Are-Transformers-Effective-for-Time-Series-Forecasting" class="headerlink" title="Are Transformers Effective for Time Series Forecasting?"></a>Are Transformers Effective for Time Series Forecasting?</h1><h2 id="Summary-2"><a href="#Summary-2" class="headerlink" title="Summary"></a>Summary</h2><ul>
 <li>LTSF（long-term time series forecasting）</li>
@@ -813,8 +863,12 @@ mjx-container[display="true"] + br {
 <p>从表8可以看出来，和经典Transformer相比，大多数Transformer的变体在推理时间和参数上都差不多，甚至变差了。因为后面的这些变体引入了更多的设计，使得实际成本变得更高。</p>
 <h2 id="Conclusion-2"><a href="#Conclusion-2" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
 <h2 id="Notes-optional-2"><a href="#Notes-optional-2" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h2><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
-<p>Are Transformers Effective for Time Series Forecasting? - 马东什么的文章 - 知乎<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/569194246">https://zhuanlan.zhihu.com/p/569194246</a></p>
-<p>知乎评论有人提到，这篇论文是由漏洞的，找的实验用的数据集基本看不出周期性，如果换成PEMS04这样的分布漂移不严重的数据，这些工作效果最好的就是Informer。</p>
+<ul>
+<li><p>知乎评论有人提到，这篇论文是由漏洞的，找的实验用的数据集基本看不出周期性，EXchang数据真就完全没有啥周期性。ETT有点，但是不多。如果换成PEMS04这样的分布漂移不严重的数据，这些工作效果最好的就是Informer。（Are Transformers Effective for Time Series Forecasting? - 马东什么的文章 - 知乎<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/569194246）">https://zhuanlan.zhihu.com/p/569194246）</a></p>
+</li>
+<li><p>有一篇论文对这篇文章的论点进行了回应，发现了在时间序列上高效使用transformer的方式，效果超越DLinear和其他formers。见知乎评论：Transformer是否适合用于做非NLP领域的时间序列预测问题？ - 科研汪老徐的回答 - 知乎<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/493821601/answer/2506641761">https://www.zhihu.com/question/493821601/answer/2506641761</a> 。 论文名称：A Time Series is Worth 64 Words: Long-term Forecasting with Transformers</p>
+</li>
+</ul>
 <p><strong>可以去验证下是不是这样</strong></p>
 <h2 id="References-optional-2"><a href="#References-optional-2" class="headerlink" title="References(optional)"></a>References(optional)</h2><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
 <ul>
@@ -864,10 +918,9 @@ mjx-container[display="true"] + br {
 <h2 id="Method-s-3"><a href="#Method-s-3" class="headerlink" title="Method(s)"></a>Method(s)</h2><p><strong>（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）</strong></p>
 <ul>
 <li>针对问题1：从一个新的渐进维度引入分解思想。我们的 Autoformer 将分解作为深度模型的内部模块，可以在整个预测过程中逐步分解隐藏序列，包括过去序列和预测的中间结果。</li>
-<li><p>针对问题2：Auto-Correlation：在序列层面发现依赖关系并进行信息聚合。根据序列的周期性发现子序列的相似性，并从基础周期中汇总相似的子序列。对于长度为 L 的序列，这种系列机制的复杂度为 O(L log L)，并通过将点表示聚合扩展到子序列级别。我们的机制超越了以往的自相关系列，可同时提高计算效率和信息利用率。</p>
-</li>
-<li><p><strong>Decomposition Architecture</strong>:</p>
-<ul>
+<li>针对问题2：Auto-Correlation：在序列层面发现依赖关系并进行信息聚合。根据序列的周期性发现子序列的相似性，并从基础周期中汇总相似的子序列。对于长度为 L 的序列，这种系列机制的复杂度为 O(L log L)，并通过将点表示聚合扩展到子序列级别。我们的机制超越了以往的自相关系列，可同时提高计算效率和信息利用率。</li>
+</ul>
+<h3 id="Decomposition-Architecture"><a href="#Decomposition-Architecture" class="headerlink" title="Decomposition Architecture:"></a>Decomposition Architecture:</h3><ul>
 <li>Series decomposition block:<ul>
 <li>这部分的操作主要是将原始的数据进行分解，得到趋势-周期和季节两部分数据。具体的操作见公式1，这个过程被概括为<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="25.522ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 11280.9 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="58" d="M324 614Q291 576 250 573Q231 573 231 584Q231 589 232 592Q235 601 244 614T271 643T324 671T400 683H403Q462 683 481 610Q485 594 490 545T498 454L501 413Q504 413 551 442T648 509T705 561Q707 565 707 578Q707 610 682 614Q667 614 667 626Q667 641 695 662T755 683Q765 683 775 680T796 662T807 623Q807 596 792 572T713 499T530 376L505 361V356Q508 346 511 278T524 148T557 75Q569 69 580 69Q585 69 593 77Q624 108 660 110Q667 110 670 110T676 106T678 94Q668 59 624 30T510 0Q487 0 471 9T445 32T430 71T422 117T417 173Q416 183 416 188Q413 214 411 244T407 286T405 299Q403 299 344 263T223 182T154 122Q152 118 152 105Q152 69 180 69Q183 69 187 66T191 60L192 58V56Q192 41 163 21T105 0Q94 0 84 3T63 21T52 60Q52 77 56 90T85 131T155 191Q197 223 259 263T362 327T402 352L391 489Q391 492 390 505T387 526T384 547T379 568T372 586T361 602T348 611Q346 612 341 613T333 614H324Z"></path></g></g><g data-mml-node="TeXAtom" transform="translate(746,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="73" d="M295 316Q295 356 268 385T190 414Q154 414 128 401Q98 382 98 349Q97 344 98 336T114 312T157 287Q175 282 201 278T245 269T277 256Q294 248 310 236T342 195T359 133Q359 71 321 31T198 -10H190Q138 -10 94 26L86 19L77 10Q71 4 65 -1L54 -11H46H42Q39 -11 33 -5V74V132Q33 153 35 157T45 162H54Q66 162 70 158T75 146T82 119T101 77Q136 26 198 26Q295 26 295 104Q295 133 277 151Q257 175 194 187T111 210Q75 227 54 256T33 318Q33 357 50 384T93 424T143 442T187 447H198Q238 447 268 432L283 424L292 431Q302 440 314 448H322H326Q329 448 335 442V310L329 304H301Q295 310 295 316Z"></path></g></g></g></g><g data-mml-node="mo" transform="translate(1074.6,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="msub" transform="translate(1519.3,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="58" d="M324 614Q291 576 250 573Q231 573 231 584Q231 589 232 592Q235 601 244 614T271 643T324 671T400 683H403Q462 683 481 610Q485 594 490 545T498 454L501 413Q504 413 551 442T648 509T705 561Q707 565 707 578Q707 610 682 614Q667 614 667 626Q667 641 695 662T755 683Q765 683 775 680T796 662T807 623Q807 596 792 572T713 499T530 376L505 361V356Q508 346 511 278T524 148T557 75Q569 69 580 69Q585 69 593 77Q624 108 660 110Q667 110 670 110T676 106T678 94Q668 59 624 30T510 0Q487 0 471 9T445 32T430 71T422 117T417 173Q416 183 416 188Q413 214 411 244T407 286T405 299Q403 299 344 263T223 182T154 122Q152 118 152 105Q152 69 180 69Q183 69 187 66T191 60L192 58V56Q192 41 163 21T105 0Q94 0 84 3T63 21T52 60Q52 77 56 90T85 131T155 191Q197 223 259 263T362 327T402 352L391 489Q391 492 390 505T387 526T384 547T379 568T372 586T361 602T348 611Q346 612 341 613T333 614H324Z"></path></g></g><g data-mml-node="TeXAtom" transform="translate(746,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="74" d="M27 422Q80 426 109 478T141 600V615H181V431H316V385H181V241Q182 116 182 100T189 68Q203 29 238 29Q282 29 292 100Q293 108 293 146V181H333V146V134Q333 57 291 17Q264 -10 221 -10Q187 -10 162 2T124 33T105 68T98 100Q97 107 97 248V385H18V422H27Z"></path></g></g></g></g><g data-mml-node="mo" transform="translate(2868.1,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(3923.9,0)"><g data-mml-node="mi"><path data-c="53" d="M55 507Q55 590 112 647T243 704H257Q342 704 405 641L426 672Q431 679 436 687T446 700L449 704Q450 704 453 704T459 705H463Q466 705 472 699V462L466 456H448Q437 456 435 459T430 479Q413 605 329 646Q292 662 254 662Q201 662 168 626T135 542Q135 508 152 480T200 435Q210 431 286 412T370 389Q427 367 463 314T500 191Q500 110 448 45T301 -21Q245 -21 201 -4T140 27L122 41Q118 36 107 21T87 -7T78 -21Q76 -22 68 -22H64Q61 -22 55 -16V101Q55 220 56 222Q58 227 76 227H89Q95 221 95 214Q95 182 105 151T139 90T205 42T305 24Q352 24 386 62T420 155Q420 198 398 233T340 281Q284 295 266 300Q261 301 239 306T206 314T174 325T141 343T112 367T85 402Q55 451 55 507Z"></path><path data-c="65" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z" transform="translate(556,0)"></path><path data-c="72" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z" transform="translate(1000,0)"></path><path data-c="69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z" transform="translate(1392,0)"></path><path data-c="63" d="M370 305T349 305T313 320T297 358Q297 381 312 396Q317 401 317 402T307 404Q281 408 258 408Q209 408 178 376Q131 329 131 219Q131 137 162 90Q203 29 272 29Q313 29 338 55T374 117Q376 125 379 127T395 129H409Q415 123 415 120Q415 116 411 104T395 71T366 33T318 2T249 -11Q163 -11 99 53T34 214Q34 318 99 383T250 448T370 421T404 357Q404 334 387 320Z" transform="translate(1670,0)"></path><path data-c="73" d="M295 316Q295 356 268 385T190 414Q154 414 128 401Q98 382 98 349Q97 344 98 336T114 312T157 287Q175 282 201 278T245 269T277 256Q294 248 310 236T342 195T359 133Q359 71 321 31T198 -10H190Q138 -10 94 26L86 19L77 10Q71 4 65 -1L54 -11H46H42Q39 -11 33 -5V74V132Q33 153 35 157T45 162H54Q66 162 70 158T75 146T82 119T101 77Q136 26 198 26Q295 26 295 104Q295 133 277 151Q257 175 194 187T111 210Q75 227 54 256T33 318Q33 357 50 384T93 424T143 442T187 447H198Q238 447 268 432L283 424L292 431Q302 440 314 448H322H326Q329 448 335 442V310L329 304H301Q295 310 295 316Z" transform="translate(2114,0)"></path></g></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(6431.9,0)"><g data-mml-node="mi"><path data-c="44" d="M130 622Q123 629 119 631T103 634T60 637H27V683H228Q399 682 419 682T461 676Q504 667 546 641T626 573T685 470T708 336Q708 210 634 116T442 3Q429 1 228 0H27V46H60Q102 47 111 49T130 61V622ZM593 338Q593 439 571 501T493 602Q439 637 355 637H322H294Q238 637 234 628Q231 624 231 344Q231 62 232 59Q233 49 248 48T339 46H350Q456 46 515 95Q561 133 577 191T593 338Z"></path><path data-c="65" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z" transform="translate(764,0)"></path><path data-c="63" d="M370 305T349 305T313 320T297 358Q297 381 312 396Q317 401 317 402T307 404Q281 408 258 408Q209 408 178 376Q131 329 131 219Q131 137 162 90Q203 29 272 29Q313 29 338 55T374 117Q376 125 379 127T395 129H409Q415 123 415 120Q415 116 411 104T395 71T366 33T318 2T249 -11Q163 -11 99 53T34 214Q34 318 99 383T250 448T370 421T404 357Q404 334 387 320Z" transform="translate(1208,0)"></path><path data-c="6F" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z" transform="translate(1652,0)"></path><path data-c="6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z" transform="translate(2152,0)"></path><path data-c="70" d="M36 -148H50Q89 -148 97 -134V-126Q97 -119 97 -107T97 -77T98 -38T98 6T98 55T98 106Q98 140 98 177T98 243T98 296T97 335T97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 61 434T98 436Q115 437 135 438T165 441T176 442H179V416L180 390L188 397Q247 441 326 441Q407 441 464 377T522 216Q522 115 457 52T310 -11Q242 -11 190 33L182 40V-45V-101Q182 -128 184 -134T195 -145Q216 -148 244 -148H260V-194H252L228 -193Q205 -192 178 -192T140 -191Q37 -191 28 -194H20V-148H36ZM424 218Q424 292 390 347T305 402Q234 402 182 337V98Q222 26 294 26Q345 26 384 80T424 218Z" transform="translate(2708,0)"></path></g></g><g data-mml-node="mo" transform="translate(9695.9,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(10084.9,0)"><g data-mml-node="mi"><path data-c="58" d="M324 614Q291 576 250 573Q231 573 231 584Q231 589 232 592Q235 601 244 614T271 643T324 671T400 683H403Q462 683 481 610Q485 594 490 545T498 454L501 413Q504 413 551 442T648 509T705 561Q707 565 707 578Q707 610 682 614Q667 614 667 626Q667 641 695 662T755 683Q765 683 775 680T796 662T807 623Q807 596 792 572T713 499T530 376L505 361V356Q508 346 511 278T524 148T557 75Q569 69 580 69Q585 69 593 77Q624 108 660 110Q667 110 670 110T676 106T678 94Q668 59 624 30T510 0Q487 0 471 9T445 32T430 71T422 117T417 173Q416 183 416 188Q413 214 411 244T407 286T405 299Q403 299 344 263T223 182T154 122Q152 118 152 105Q152 69 180 69Q183 69 187 66T191 60L192 58V56Q192 41 163 21T105 0Q94 0 84 3T63 21T52 60Q52 77 56 90T85 131T155 191Q197 223 259 263T362 327T402 352L391 489Q391 492 390 505T387 526T384 547T379 568T372 586T361 602T348 611Q346 612 341 613T333 614H324Z"></path></g></g><g data-mml-node="mo" transform="translate(10891.9,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container>。对应图1中的“Series Decomp”模块</li>
 </ul>
@@ -889,15 +942,43 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ul>
-</li>
-<li><p><strong>Auto-Correlation Mechanism</strong>:<br>提出了具有序列连接的自动相关机制，以扩大信息利用率。自动相关机制通过计算序列的自相关性来发现基于周期的依赖关系，并通过时延聚合来聚合相似的子序列。</p>
+<h3 id="Auto-Correlation-Mechanism"><a href="#Auto-Correlation-Mechanism" class="headerlink" title="Auto-Correlation Mechanism:"></a>Auto-Correlation Mechanism:</h3><ul>
+<li><p><strong>1. 设计动机</strong>：<br>传统Transformer模型采用​​点对点（Point-wise）​​ 的自注意力机制，这种方法在长序列预测中存在明显局限：</p>
 <ul>
-<li>基于周期的依赖关系：<ul>
-<li>这个感觉和自相关系数的计算有点像，相关的概念可以参考这两个网站：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/583185155、https://zhuanlan.zhihu.com/p/430503143">https://zhuanlan.zhihu.com/p/583185155、https://zhuanlan.zhihu.com/p/430503143</a></li>
+<li>计算效率低</li>
+<li>信息利用瓶颈：点对点的关联方式难以有效捕捉时间序列中固有的​​子序列级（Sub-series level）​​ 的周期性模式。</li>
+</ul>
+<p>Auto-Correlation机制的工作流程主要包括两个步骤：​<strong>​基于周期的依赖关系发现​​和​​时延聚合</strong>​​。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>2. 基于周期的依赖关系</strong>：<br>这一步的目标是自动找到时间序列中隐藏的周期长度。具体做法是计算序列的自相关函数（Autocorrelation）。</p>
+<ul>
+<li><strong>自相关函数</strong>：对于序列 {X_t}，其与自身滞后τ个时间步的序列 {X{t-τ}} 的相似性，通过自相关函数 R{XX}(τ) 来衡量。R_{XX}(τ) 的值越高，说明该滞后时间τ所代表的周期长度可能性越大。</li>
+<li><strong>快速计算</strong>：论文利用​​维纳-辛钦定理​​，通过快速傅里叶变换（FFT）来高效计算所有可能滞后（τ from 1 to L）的自相关值，将复杂度降至 O(L log L)。</li>
+<li><strong>选择关键周期</strong>：算法并非使用所有周期，而是选取自相关值最高的k个时延τ₁, τ₂, …, τₖ（其中 k = ⌊c × log L⌋，c为超参数）。这些τ值即为模型识别出的最主要周期长度，其对应的R(τ)值作为聚合时的权重（置信度）。</li>
+</ul>
+</li>
+<li><p><strong>3. 时延聚合</strong>：<br>这一步的目的是基于发现的周期，将不同周期中相似相位（即相同位置）的子序列信息进行聚合。</p>
+<ul>
+<li><strong>滚动操作（Roll）</strong>：对于每一个选定的关键时延τ_i，对值（Value）序列执行Roll(X, τ_i)操作。这个操作将序列整体向后滚动τ_i个时间步，使得当前时刻的相位与τ_i个时间步前的相位对齐。</li>
+<li><strong>加权聚合​​</strong>：最后，将所有经过滚动对齐的子序列，根据其自相关值R(τ_i)（经过Softmax归一化）进行加权求和，得到最终的聚合表示。</li>
+</ul>
+</li>
+<li><p><strong>4. 高效计算</strong>：<br>在效率上，得益于FFT和仅聚合O(log L)个子序列，整个Auto-Correlation机制的时间复杂度和空间复杂度均保持在 ​​O(L log L)​​，使其能够高效处理长序列。</p>
+</li>
+<li><p><strong>5. 与Self-Attention家族的对比</strong>：<br>Figure 3 清晰地展示了Auto-Correlation与各种自注意力机制的本质区别：</p>
+<ul>
+<li>​​（a）全注意力​​：所有点之间进行两两连接，计算开销大。</li>
+<li>​​（b）稀疏注意力​​（如Informer, Reformer）：基于某种度量选择部分关键点进行连接，仍是点对点。</li>
+<li>​​（c）Log稀疏注意力​​：按指数间隔选择点进行连接。</li>
+<li>​​（d）Auto-Correlation​​：<strong>​​根本性地将依赖发现和信息聚合从点级提升到了子序列级​</strong>​。它基于序列的周期性，建立的是​​序列与序列（Series-wise）​​ 之间的连接。</li>
 </ul>
 </li>
 </ul>
-</li>
+<p>这种根本性的改变，使得Auto-Correlation在长时序预测任务中，​​同时兼顾了计算效率和信息利用的有效性​​，突破了传统点对点自注意力的瓶颈。</p>
+<ul>
+<li><strong>6. 自相关计算参考资料</strong><br>相关的概念可以参考这两个网站：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/583185155、https://zhuanlan.zhihu.com/p/430503143">https://zhuanlan.zhihu.com/p/583185155、https://zhuanlan.zhihu.com/p/430503143</a></li>
 </ul>
 <h2 id="Evaluation-3"><a href="#Evaluation-3" class="headerlink" title="Evaluation"></a>Evaluation</h2><p><strong>（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）</strong></p>
 <h2 id="Conclusion-3"><a href="#Conclusion-3" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
@@ -1442,7 +1523,7 @@ mjx-container[display="true"] + br {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">245.7k</span>
+                        class="white-color">247.7k</span>
             
             
             
