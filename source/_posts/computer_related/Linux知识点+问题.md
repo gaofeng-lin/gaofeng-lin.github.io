@@ -66,6 +66,25 @@ $ ls -a
 在新建用户的时候指定shell
 ```useradd -d /home/cron/log -s /bin/bash -m bbee```
 
+### github代码拉到windows，压缩后上传至linux服务器，执行脚本出错
+
+报错信息如下：
+
+")syntax error: invalid arithmetic operator (error token is "
+
+./scripts/supervised/forecast/time-llm_etth1.sh: line 6: $'\r': command not found
+
+错误信息 ./scripts/supervised/forecast/time-llm_etth1.sh: line 6: $'\r': command not found 表明脚本中存在 Windows 的回车符 \r，导致 shell 将 \r 视为命令执行
+
+**问题原因**：
+Windows 使用 CRLF（\r\n）作为换行符，而 Linux 使用 LF（\n）。当 Linux 尝试执行包含 \r 的脚本时，它会将 \r 视为命令的一部分，导致错误。
+
+
+**解决办法**：
+
+下面以我当时遇到的脚本为例，后面再遇到这个问题，只需要把.sh文件替换为自己的即可。
+```sed -i 's/\r//g' ./scripts/supervised/forecast/time-llm_etth1.sh```
+
 
 
 ## Linux 权限
