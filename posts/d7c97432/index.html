@@ -40,7 +40,6 @@ T">
 
 <meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 <style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
@@ -153,7 +152,8 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head>
+</style><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -701,7 +701,8 @@ mjx-container[display="true"] + br {
 <hr>
 <h2 id="实验复现"><a href="#实验复现" class="headerlink" title="实验复现"></a>实验复现</h2><p>因为需要复现实验，需要先统计下做了哪些实验，每个实验是如何设置的。</p>
 <p>代码网址：<a target="_blank" rel="noopener" href="https://github.com/thuml/OpenLTM">https://github.com/thuml/OpenLTM</a><br>数据集描述：<a target="_blank" rel="noopener" href="https://github.com/thuml/OpenLTM/blob/main/figures/datasets.png">https://github.com/thuml/OpenLTM/blob/main/figures/datasets.png</a></p>
-<p>论文中表11有给出实验配置</p>
+<p><strong>数据集描述</strong>：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-10-12_09-00-18.png" alt=""></p>
+<p><strong>实验配置</strong>：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-10-12_09-01-31.png" alt=""></p>
 <h3 id="单变量时序预测"><a href="#单变量时序预测" class="headerlink" title="单变量时序预测"></a>单变量时序预测</h3><p>图3实验</p>
 <h4 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h4><ul>
 <li>预测的步长都是96。输入的数据长度不断增加，一共有5个不同的类型输入长度：1day(24步)、4day（96步）、1week（168步）、1month（672步）、4month（2880步）。我准备复制ETTh1这个数据集的结果。那么一共就是要进行5次实验，每次要修改输入的步长。每次的epoch为10次。<h4 id="单变量时序预测采用多变量时序数据集要怎么处理"><a href="#单变量时序预测采用多变量时序数据集要怎么处理" class="headerlink" title="单变量时序预测采用多变量时序数据集要怎么处理"></a>单变量时序预测采用多变量时序数据集要怎么处理</h4></li>
@@ -758,9 +759,11 @@ mjx-container[display="true"] + br {
 <li><p><strong>输入步长2880</strong>：</p>
 </li>
 </ul>
-<h3 id="多变量时序预测（表2实验）"><a href="#多变量时序预测（表2实验）" class="headerlink" title="多变量时序预测（表2实验）"></a>多变量时序预测（表2实验）</h3><ul>
-<li>输入3072步长，预测96。</li>
-<li>我们还根据具有挑战性的 40 年 ECMWF Reanalysis v5 数据集（Hersbach 等人，2020 年）建立了一个长上下文单变量基准，采用年上下文预测单个站点（ERA5-S）的陆面温度。</li>
+<h3 id="多变量时序预测—table4"><a href="#多变量时序预测—table4" class="headerlink" title="多变量时序预测—table4"></a>多变量时序预测—table4</h3><h4 id="输入672步长，预测96。数据集ETTh1"><a href="#输入672步长，预测96。数据集ETTh1" class="headerlink" title="- 输入672步长，预测96。数据集ETTh1"></a>- 输入672步长，预测96。数据集ETTh1</h4><ul>
+<li><p>论文结果：mse:0.409, mae:0.430</p>
+<p>第一次结果：mse:0.7172967791557312, mae:0.6388883590698242<br>第二次一样<br>第三次结果一样</p>
+<p>复现结果比较差，mse提高了75.3%；mae提高了48.6%</p>
+</li>
 </ul>
 <p><del>目前我自己写了一个脚本，运行timer-xl模型，数据集是etth1，但是没法运行。把模型换成moirai就可以运行。我看了下核心的问题，是在exp_forecast.py文件中的<code>outputs = self.model(batch_x, batch_x_mark, batch_y_mark)</code>这段代码，三个维度分别是：<br>batch_x shape: torch.Size([32, 672, 7])<br>batch_x_mark shape: torch.Size([32, 672, 1])<br>batch_y_mark shape: torch.Size([32, 672, 1])如果模型是timer-xl。输出outputs shape: torch.Size([32, 672, 7])如果是moirai。outputs shape: torch.Size([32, 96, 7])而在后面的<code>loss = criterion(outputs, batch_y)</code>就会报错。因为batch_y的维度是torch.Size([32, 96, 7])，而timer-xl输出的outputs结果是([32, 672, 7])</del>。<strong>这个问题已经解决</strong>。</p>
 <h2 id="References-optional-1"><a href="#References-optional-1" class="headerlink" title="References(optional)"></a>References(optional)</h2><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
