@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.6k
+                    9.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    31 分
+                    33 分
                 </div>
                 
 
@@ -759,14 +759,18 @@ mjx-container[display="true"] + br {
 <li><p><strong>输入步长2880</strong>：</p>
 </li>
 </ul>
-<h3 id="多变量时序预测—table4"><a href="#多变量时序预测—table4" class="headerlink" title="多变量时序预测—table4"></a>多变量时序预测—table4</h3><h4 id="输入672步长，预测96。数据集ETTh1"><a href="#输入672步长，预测96。数据集ETTh1" class="headerlink" title="- 输入672步长，预测96。数据集ETTh1"></a>- 输入672步长，预测96。数据集ETTh1</h4><ul>
-<li><p>论文结果：mse:0.409, mae:0.430</p>
-<p>第一次结果：mse:0.7172967791557312, mae:0.6388883590698242<br>第二次一样<br>第三次结果一样</p>
-<p>复现结果比较差，mse提高了75.3%；mae提高了48.6%</p>
-</li>
+<h3 id="多变量时序预测—table4"><a href="#多变量时序预测—table4" class="headerlink" title="多变量时序预测—table4"></a>多变量时序预测—table4</h3><h4 id="输入672步长，输出96。数据集ETTh1"><a href="#输入672步长，输出96。数据集ETTh1" class="headerlink" title="输入672步长，输出96。数据集ETTh1"></a>输入672步长，输出96。数据集ETTh1</h4><ul>
+<li>论文结果：mse:0.409, mae:0.430</li>
 </ul>
+<p>~~  第一次结果：mse:0.7172967791557312, mae:0.6388883590698242。第二次一样。第三次结果一样~~</p>
+<p>  <del>复现结果比较差，mse提高了75.3%；mae提高了48.6%</del></p>
+<p><strong>上面的结果有问题，因为是预测4个不同步长的结果，然后取平均，但是代码没有把4个结果取平均，而是单独输出，所以还需要自己计算下。计算后的结果：</strong></p>
+<p>mse:0.576475；mae:0.5523</p>
 <p><del>目前我自己写了一个脚本，运行timer-xl模型，数据集是etth1，但是没法运行。把模型换成moirai就可以运行。我看了下核心的问题，是在exp_forecast.py文件中的<code>outputs = self.model(batch_x, batch_x_mark, batch_y_mark)</code>这段代码，三个维度分别是：<br>batch_x shape: torch.Size([32, 672, 7])<br>batch_x_mark shape: torch.Size([32, 672, 1])<br>batch_y_mark shape: torch.Size([32, 672, 1])如果模型是timer-xl。输出outputs shape: torch.Size([32, 672, 7])如果是moirai。outputs shape: torch.Size([32, 96, 7])而在后面的<code>loss = criterion(outputs, batch_y)</code>就会报错。因为batch_y的维度是torch.Size([32, 96, 7])，而timer-xl输出的outputs结果是([32, 672, 7])</del>。<strong>这个问题已经解决</strong>。</p>
-<h2 id="References-optional-1"><a href="#References-optional-1" class="headerlink" title="References(optional)"></a>References(optional)</h2><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
+<h4 id="输入672步长，输出96。数据集ECL"><a href="#输入672步长，输出96。数据集ECL" class="headerlink" title="输入672步长，输出96。数据集ECL"></a>输入672步长，输出96。数据集ECL</h4><p>论文结果：mse:0.155, mae:0.246</p>
+<p><del>复现结果：mse:0.17138800024986267, mae:0.27118179202079773</del></p>
+<p>4个长度的预测结果<br>mse:0.14015242457389832, mae:0.24011272192001343<br>mse:0.1517903357744217, mae:0.2513769268989563<br>mse:0.15890070796012878, mae:0.2604312002658844<br>mse:0.17138800024986267, mae:0.27118179202079773</p>
+<h4 id="输入672步长，输出96。数据集Traffic"><a href="#输入672步长，输出96。数据集Traffic" class="headerlink" title="输入672步长，输出96。数据集Traffic"></a>输入672步长，输出96。数据集Traffic</h4><h4 id="输入672步长，输出96。数据集Weather"><a href="#输入672步长，输出96。数据集Weather" class="headerlink" title="输入672步长，输出96。数据集Weather"></a>输入672步长，输出96。数据集Weather</h4><h4 id="输入672步长，输出96。数据集Solar-Energy"><a href="#输入672步长，输出96。数据集Solar-Energy" class="headerlink" title="输入672步长，输出96。数据集Solar-Energy"></a>输入672步长，输出96。数据集Solar-Energy</h4><h2 id="References-optional-1"><a href="#References-optional-1" class="headerlink" title="References(optional)"></a>References(optional)</h2><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
 <h1 id="Are-Transformers-Effective-for-Time-Series-Forecasting"><a href="#Are-Transformers-Effective-for-Time-Series-Forecasting" class="headerlink" title="Are Transformers Effective for Time Series Forecasting?"></a>Are Transformers Effective for Time Series Forecasting?</h1><h2 id="Summary-2"><a href="#Summary-2" class="headerlink" title="Summary"></a>Summary</h2><ul>
 <li>LTSF（long-term time series forecasting）</li>
 <li>DMS（direct multi-step）</li>
@@ -984,11 +988,27 @@ mjx-container[display="true"] + br {
 <li><strong>6. 自相关计算参考资料</strong><br>相关的概念可以参考这两个网站：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/583185155、https://zhuanlan.zhihu.com/p/430503143">https://zhuanlan.zhihu.com/p/583185155、https://zhuanlan.zhihu.com/p/430503143</a></li>
 </ul>
 <h2 id="Evaluation-3"><a href="#Evaluation-3" class="headerlink" title="Evaluation"></a>Evaluation</h2><p><strong>（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）</strong></p>
+<h3 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h3><ul>
+<li><p><strong>Table3</strong></p>
+<ul>
+<li>目的：验证论文所提出架构的有效性</li>
+<li>操作：<strong>把论文提出的progressive architecture架构应用到其他模型，验证相比原模型是否有提高</strong>。这个就是表3中的Ours；在应用了架构后，分别训练两个模型，一个模型接收pre-decomposed seasonal的输入，并对其预测。另一个接收trend-cyclical components作为输出输出，最后将两个结果以某种方式合并。</li>
+</ul>
+</li>
+<li><p><strong>Table4</strong></p>
+<ul>
+<li>目的：验证论文所提出注意力机制的有效性</li>
+<li>操作：将Autoformer中的Auto-Correlation分别替换为其他注意力机制，例如：Full Attention、LogSparse Attention、LSH Att、ProbSparse Att。各种输入长度的效果都是最好的，并且部分方法还会内存溢出。</li>
+</ul>
+</li>
+</ul>
+<h3 id="模型分析"><a href="#模型分析" class="headerlink" title="模型分析"></a>模型分析</h3><p>这部分几乎没看懂，不知道它画的图到底想表达什么。等今天下午或明天再重新看下。</p>
 <h2 id="Conclusion-3"><a href="#Conclusion-3" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
 <h2 id="Notes-optional-3"><a href="#Notes-optional-3" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h2><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
 <ul>
 <li>文中的idea是基于Decomposition方法，后面可以去了解下，参考文献是[1, 27]</li>
 <li>第三章节中的Encoder部分，提到“the encoder focuses on the seasonal part modeling”。没有明白为什么重点是季节部分，而不是趋势-周期？</li>
+<li>4.3小节中的模型分析。我不太理解Seasonal Part和Trend-cyclical具体应该是什么样？比如说，一个时序数据被分解为seasonal和trend，那么应该是什么样，后面可以让ai给我写一个简单程序看一下。</li>
 </ul>
 <h2 id="References-optional-3"><a href="#References-optional-3" class="headerlink" title="References(optional)"></a>References(optional)</h2><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
 
@@ -1526,7 +1546,7 @@ mjx-container[display="true"] + br {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">247.7k</span>
+                        class="white-color">248.9k</span>
             
             
             

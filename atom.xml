@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-10-11T09:55:13.334Z</updated>
+  <updated>2025-10-13T02:28:08.090Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>论文撰写技巧</title>
+    <link href="https://gaofeng-lin.github.io/posts/f66362a8/"/>
+    <id>https://gaofeng-lin.github.io/posts/f66362a8/</id>
+    <published>2025-10-12T16:00:00.000Z</published>
+    <updated>2025-10-13T02:28:08.090Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;作者：deephub&lt;br&gt;链接：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="research_papers" scheme="https://gaofeng-lin.github.io/categories/research-papers/"/>
+    
+    
+    <category term="论文" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%BA%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
     <title>论文写作可用素材</title>
     <link href="https://gaofeng-lin.github.io/posts/163e0c8c/"/>
     <id>https://gaofeng-lin.github.io/posts/163e0c8c/</id>
     <published>2025-10-10T16:00:00.000Z</published>
-    <updated>2025-10-11T09:55:13.334Z</updated>
+    <updated>2025-10-13T02:28:08.088Z</updated>
     
     
       
@@ -246,31 +271,6 @@
   </entry>
   
   <entry>
-    <title>DroneDataset</title>
-    <link href="https://gaofeng-lin.github.io/posts/27c9adf4/"/>
-    <id>https://gaofeng-lin.github.io/posts/27c9adf4/</id>
-    <published>2025-09-04T16:00:00.000Z</published>
-    <updated>2025-09-09T13:58:58.412Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Mid-Air-A-multi-modal-dataset-for-extremely-low-altitude-drone-flights&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
-    
-    
-    <category term="Dataset" scheme="https://gaofeng-lin.github.io/tags/Dataset/"/>
-    
-  </entry>
-  
-  <entry>
     <title>DroneAD</title>
     <link href="https://gaofeng-lin.github.io/posts/7d96b074/"/>
     <id>https://gaofeng-lin.github.io/posts/7d96b074/</id>
@@ -292,6 +292,31 @@
     
     
     <category term="Anomaly Detection" scheme="https://gaofeng-lin.github.io/tags/Anomaly-Detection/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DroneDataset</title>
+    <link href="https://gaofeng-lin.github.io/posts/27c9adf4/"/>
+    <id>https://gaofeng-lin.github.io/posts/27c9adf4/</id>
+    <published>2025-09-04T16:00:00.000Z</published>
+    <updated>2025-09-09T13:58:58.412Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Mid-Air-A-multi-modal-dataset-for-extremely-low-altitude-drone-flights&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
+    
+    
+    <category term="Dataset" scheme="https://gaofeng-lin.github.io/tags/Dataset/"/>
     
   </entry>
   
@@ -490,31 +515,6 @@
     <category term="科研论文写作" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
     
     <category term="科研论文审稿" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%AE%A1%E7%A8%BF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>顶会论文经验分享</title>
-    <link href="https://gaofeng-lin.github.io/posts/69ee6241/"/>
-    <id>https://gaofeng-lin.github.io/posts/69ee6241/</id>
-    <published>2025-04-15T16:00:00.000Z</published>
-    <updated>2025-04-16T13:09:13.857Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;作者：liuzheli&lt;br&gt;链接：&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="科研论文" scheme="https://gaofeng-lin.github.io/categories/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87/"/>
-    
-    
-    <category term="科研论文写作" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
     
   </entry>
   
