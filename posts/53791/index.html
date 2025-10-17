@@ -600,14 +600,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    23.5k
+                    23.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    87 分
+                    88 分
                 </div>
                 
 
@@ -1355,7 +1355,12 @@ class VideoFrameInterpolator(nn.Module):
 <p>举个例子：随机的将图片中的一部分删掉，然后利用剩余的部分来预测扣掉的部分，只有模型真正读懂了这张图所代表的含义，才能有效的进行补全。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-dacff37588418b7d417c440537ad404b_r.jpg" alt=""></p>
 <p>详细的可以阅读：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/108906502">https://zhuanlan.zhihu.com/p/108906502</a><br>《A Survey on Self-supervised Learning: Algorithms, Applications, and Future Trends》</p>
-<h2 id="理论知识"><a href="#理论知识" class="headerlink" title="理论知识"></a>理论知识</h2><h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>regression:回归</p>
+<h2 id="概念知识"><a href="#概念知识" class="headerlink" title="概念知识"></a>概念知识</h2><h3 id="回归（regression）是什么"><a href="#回归（regression）是什么" class="headerlink" title="回归（regression）是什么"></a>回归（regression）是什么</h3><p>回归和分类都是<strong>对变量之间的关系进行建模的方法</strong></p>
+<p><strong>回归预测的变量是数值型变量</strong>。例如预测用户的收入（4千，2万，10万……），预测员工的通勤距离（500m，1km，2万里……），预测患肺癌的概率（1%，50%，99%……）</p>
+<p><strong>分类预测的变量是分类型变量</strong>。例如如预测用户的性别（男、女），预测月季花的颜色（红、白、黄……），预测是否患有肺癌（是、否）</p>
+<p><strong>但分类和回归可以相互转换</strong>。我们可以用回归模型先预测出患肺癌的概率，然后再给定一个阈值，例如50%，概率值在50%以下的人划为没有肺癌，50%以上则认为患有肺癌。</p>
+<p><strong>线性回归，就是假设自变量和因变量之间呈线性关系</strong>。</p>
+<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>regression:回归</p>
 <p>training data set = training set:训练数据集/训练集</p>
 <p>sample = data point = data instance:样本/数据点/数据样本</p>
 <p>label = target:标签/目标</p>
@@ -2275,7 +2280,7 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">251.6k</span>
+                        class="white-color">253.2k</span>
             
             
             
@@ -2504,6 +2509,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
