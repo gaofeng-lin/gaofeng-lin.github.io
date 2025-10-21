@@ -264,7 +264,7 @@ for epoch in iterator:
 如果想启动分布式训练，相比于单机单卡训练，主要有以下区别：
 
 - **分布式参数**：
-  - -nnodes：有多少台机器
+  - nnodes：有多少台机器
   - node_rank：当前是哪台机器
   - nproc_per_node：每台机器有多少个进程
   - address：通讯ip
