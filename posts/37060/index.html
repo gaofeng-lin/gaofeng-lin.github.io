@@ -623,14 +623,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.1k
+                    8.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    29 分
+                    31 分
                 </div>
                 
 
@@ -787,6 +787,22 @@ taskkill /f /t /im "进程id或者进程名称"    #通过命令杀掉进程，�
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/bb2a05fab013d5445d8b589e5840e5d1.png" alt=""></p>
 <p>先取消勾选“自动管理分页大小”。下面的“自定义大小”是根据自己的内存来设置，拿不准就网上搜索。或者不勾选“自定义大小”，直接勾选下方的“系统管理的大小”。<strong><em>我就是勾选的“系统管理的大小”</em></strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/605b767784a60442a98f735351ab2d2a.png" alt=""></p>
+<h3 id="由于此设备上的安全设置已更改，你的pin码不再可用"><a href="#由于此设备上的安全设置已更改，你的pin码不再可用" class="headerlink" title="由于此设备上的安全设置已更改，你的pin码不再可用"></a>由于此设备上的安全设置已更改，你的pin码不再可用</h3><p>这种情况一般发生在把硬盘拷贝后，或者直接把硬盘拿到新的设备上时发生。</p>
+<ol>
+<li>长按 Shift 键的同时点击重启</li>
+<li>重启后进入到高级启动界面，点击：疑难解答 - 高级选项 - 命令提示符</li>
+<li>用命令提示符将 utilman.exe 换为 cmd.exe<ol>
+<li>Utilman是Windows辅助工具管理器，在登陆界面是可以直接调用的。<code>move c:\windows\system32\utilman.exe c:\ &amp;&amp; copy c:\windows\system32\cmd.exe c:\windows\system32\utilman.exe</code>。这里面的windows有可能是Windows，不过可以用table来补齐，大小写不对没有关系，字母正确就可以。完成后重启。</li>
+</ol>
+</li>
+<li>修改注册表的值<ol>
+<li>点击右下角小人形状的按钮，即可弹出命令提示符界面。在命令提示符界面中输入 regedit 再回车，即可打开注册表编辑器。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-0d5fe0c0b7dc415c8e9f71490575a375_1440w.png" alt=""></li>
+<li>找到：\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device。将“DevicePasswordLessBuildVersion”的值修改为“0”（十六进制）</li>
+</ol>
+</li>
+<li>重启后。选择密码登录，即可成功登入系统。在设置中，<strong>先删除 PIN 的设置，注销系统后，再添加 PIN 的设置</strong>。打开注册表编辑器，再把 DevicePasswordLessBuildVersion”的值改回“2”。</li>
+<li>C盘根目录的utilman.exe剪切到c:\Windows\System32\下覆盖即可</li>
+</ol>
 <h2 id="mathtype"><a href="#mathtype" class="headerlink" title="mathtype"></a>mathtype</h2><h3 id="mathtype试用期到期-解决办法"><a href="#mathtype试用期到期-解决办法" class="headerlink" title="mathtype试用期到期 解决办法"></a>mathtype试用期到期 解决办法</h3><ol>
 <li>win + R 打开运行窗口，输入regedit</li>
 <li>找到注册表.计算机\HKEY_CURRENT_USER\SOFTWARE\Install Options</li>
@@ -1431,12 +1447,12 @@ mathjax: true<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">
-                        <span class="chip bg-color">持续集成</span>
-                    </a>
-                    
                     <a href="/tags/Jenkins/">
                         <span class="chip bg-color">Jenkins</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">
+                        <span class="chip bg-color">持续集成</span>
                     </a>
                     
                 </div>
@@ -1640,7 +1656,7 @@ mathjax: true<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">253.3k</span>
+                        class="white-color">258k</span>
             
             
             
@@ -1869,6 +1885,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

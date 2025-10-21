@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    13k
+                    14.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    47 分
+                    52 分
                 </div>
                 
 
@@ -671,6 +671,55 @@ mjx-container[display="true"] + br {
 <ul>
 <li>TimeAttention: 旨在捕获所有变量内部和变量之间的因果patches依赖关系</li>
 </ul>
+<h3 id="将一维序列扩展到二维时序"><a href="#将一维序列扩展到二维时序" class="headerlink" title="将一维序列扩展到二维时序"></a>将一维序列扩展到二维时序</h3><p>论文提出的机制关键在于：（1）彻底捕捉序列内和序列间的依赖关系；（2）在时间维度内保持因果关系。在不失一般性的前提下，我们以多元预测为例进行说明。</p>
+<blockquote>
+<p>多元next token prediction这种范式的好处是可以学习每个序列中的因果依赖关系，同时纳入来自其他序列的外生变量相关性，从而使其成为一种通用预测范式，其性能优于与渠道无关的模型（Nie 等人，2022 年）或以变量为中心的模型（Liu 等人，2023 年）。</p>
+</blockquote>
+<p><strong>上面这段话我不是很理解，没有解释为什么，公式也实在看不出他说的“学习因果依赖关系”和“纳入来自其他序列的外生变量相关性”。等看到后面的论文看能不能解决这个问题</strong>。</p>
+<p><strong>Position Embedding</strong>：使用了RoPE（Su 等人，2024 年），这是一种在时间维度上广泛使用的位置嵌入。在变量维度上，我们在每个头部使用两个可学习标量，以保持变量的排列等价性（Woo 等人，2024 年）。</p>
+<p><strong>TimeAttention</strong>：与按变量分类（Liu 等人，2023 年）和按非因果关系分类的补丁标记（Nie 等人，2022 年 就是patchTST）不同，我们的 TimeAttention（时间注意）旨在捕捉所有变量内部和变量之间的因果patch-wise依赖关系。</p>
+<p>具体来说以时间优先的方式将补丁标记的二维索引平铺为一维索引，从而对补丁标记进行排序。<strong>请注意，变量的顺序并不重要，因为等式 6 保证了它们的排列等价性</strong>。</p>
+<p>作者的方法是在transformer基础上进行优化，核心优化点有两个：Position Embedding和TimeAttention</p>
+<p>论文提出的注意力机制，主要是：（1）捕获序列内部和序列之间的依赖关系（对应下面的Position Embedding）；（2）在时间维度内保持因果关系(对应TimeAttention)。</p>
+<h3 id="Position-Embedding"><a href="#Position-Embedding" class="headerlink" title="Position Embedding"></a>Position Embedding</h3><p>为了避免自注意力中的置换不变性：</p>
+<ol>
+<li><strong>时间维度</strong>：反映token在时间维度上的顺序。</li>
+<li><strong>变量维度</strong>：对变量具有置换不变性。即打乱变量的输入顺序不应改变模型学到的内在规律。</li>
+</ol>
+<p>为此，Timer-XL采用了<strong>​​组合式位置编码​</strong>​:</p>
+<ul>
+<li><strong>对于时间维度​</strong>​： 采用了 ​​RoPE（Rotary Position Embedding。Roformer: Enhanced transformer with rotary position embedding）​​。RoPE不是简单地将位置编号加在令牌嵌入上，而是通过旋转矩阵的方式将相对位置信息注入到查询（Q）和键（K）向量中。</li>
+<li><strong>对于变量维度</strong>​​： 在每个头（这个头有可能是指多头注意力机制的头）中引入了​​可学习的标量​​ u和 v，以保持变量的置换不变性（这个也是引用了别人的方法，Unified training of universal time series forecasting transformers）。</li>
+</ul>
+<p><strong>其实就是简单的把两个方法拼接起来，说的是在E.3提供了详细的消融实验来证明有效性，但是内容很少，全是文字，没有实验</strong>。</p>
+<h3 id="TimeAttention"><a href="#TimeAttention" class="headerlink" title="TimeAttention"></a>TimeAttention</h3><p>旨在捕获变量内部和变量之间的causal patch-wise 依赖。以时间优先的方式将二维索引展平为一维索引，因为有前面的Position Embedding，所以变量顺序不重要。</p>
+<p>其原理可以通过以下步骤理解：</p>
+<ol>
+<li><strong>令牌排序与问题定义​</strong></li>
+</ol>
+<p>首先，模型将2D的 N（变量数） × T（时间patch数） 的令牌，按照 ​​“时间优先”​​ 的顺序拍平成一条长度为 N*T的1D序列。也就是说，排序是：[Var1-T1, Var1-T2, …, Var1-TT, Var2-T1, …, VarN-TT]。</p>
+<p>现在需要一个 (NT) × (NT)的注意力掩码矩阵，这个矩阵定义了在这 NT个令牌中，哪些令牌对之间有依赖关系。</p>
+<ol>
+<li><strong>依赖关系的解构与克罗内克积（Kronecker Product）​</strong></li>
+</ol>
+<p>论文发现，这个庞大的、看似复杂的注意力掩码矩阵 A，可以优雅地​​解构​​为两个更小矩阵的​​克罗内克积​​：</p>
+<p>A = C ⊗ T</p>
+<ul>
+<li><p><strong>C（变量依赖图）</strong>​​： 一个 N × N的矩阵，表示变量之间的依赖关系。C_{m,n} = 1表示变量 m和变量 n之间存在依赖关系。</p>
+</li>
+<li><p><strong>​​T（时序因果掩码）</strong>​​： 一个 T × T的下三角矩阵（可能包含对角线），用于保证时间上的因果性。T矩阵中的元素 T_{i,j} = 1（j &lt;= i）。<br>​​</p>
+</li>
+</ul>
+<ol>
+<li>TimeAttention的运作机制​</li>
+</ol>
+<p>克罗内克积 ⊗的效果是，用 C矩阵中的每一个元素 C_{m,n}去“放大”整个 T矩阵。</p>
+<ul>
+<li><p>如果 C_{m,n} = 1，那么在最终的注意力掩码 A中，变量 m的所有时间令牌与变量 n的所有时间令牌之间的依赖关系，就完全由 T矩阵定义（即保持因果性）。</p>
+</li>
+<li><p>如果 C_{m,n} = 0，那么变量 m和 n之间的所有令牌对都会被掩码掉（即不允许互相注意）。</p>
+</li>
+</ul>
 <h2 id="Evaluation-1"><a href="#Evaluation-1" class="headerlink" title="Evaluation"></a>Evaluation</h2><p><strong>（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）</strong></p>
 <p>从三个方面对Timer-XL进行评价：</p>
 <ul>
@@ -697,6 +746,9 @@ mjx-container[display="true"] + br {
 <li>序列长度=token数量*token长度。而P就是token长度。</li>
 </ul>
 </li>
+</ul>
+<ul>
+<li>不过这里我有个问题，就是在符号A（公式8）是不是和公式6里面提到的一样？如果是一样，干嘛非要拆成两个矩阵？直接计算不好吗，反正最后再外面要套一个Mask矩阵</li>
 </ul>
 <hr>
 <h2 id="实验复现"><a href="#实验复现" class="headerlink" title="实验复现"></a>实验复现</h2><p>因为需要复现实验，需要先统计下做了哪些实验，每个实验是如何设置的。</p>
@@ -1704,7 +1756,7 @@ mjx-container[display="true"] + br {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">253.3k</span>
+                        class="white-color">258k</span>
             
             
             
@@ -1933,6 +1985,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
