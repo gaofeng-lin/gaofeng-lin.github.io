@@ -9,12 +9,38 @@ mathjax: true
 abbrlink: 77ac27fb
 ---
 
+# 基础概念
 
-# DP和DDP的区别
+forward（前向传递）：输入数据，得到输出的过程。
+backward(后向传递)：根据输出结果，计算参数梯度的过程。
 
-https://docs.pytorch.org/tutorials/beginner/ddp_series_theory.html
 
-可以看一下官方的介绍，再好好总结下，也顺便学习下GIL这些知识，下午上课的时候可以学习下。
+
+
+# DP和DDP
+
+## DP训练原理
+
+网络在前向传播时会将 model 从主卡 (默认是逻辑 0 卡) broadcast 到所有 device 上，input data 会在 batch 这个维度被分组后 scatter 到不同的 device 上进行前向计算，计算完毕后网络的输出被 gather 到主卡上，loss 随后在主卡上被计算出来 (这也是为什么主卡负载更大的原因，loss 每次都会在主卡上计算，这就造成主卡负载远大于其他显卡)。在反向传播时，loss 会被 scatter 到每个 device 上，每个卡各自进行反向传播计算梯度，然后梯度会被 reduce 到主卡上 (i.e. 求得各个 device 的梯度之和，然后按照 batch_size 大小求得梯度均值)，再用反向传播在主卡上更新模型参数，最后将更新后的模型参数 broadcast 到其余 GPU 中进行下一轮的前向传播，以此来实现并行。
+
+
+## DP缺陷
+
+DataParallel 复制一个网络到多个 cuda 设备，然后再 split 一个 batch 的 data 到多个 cuda 设备，通过这种并行计算的方式解决了 batch 很大的问题，但也有自身的不足：
+
+- **单进程多线程带来的问题**：DataParallel 是单进程多线程的，无法在多个机器上工作 (不支持分布式)，而且不能使用 Apex 进行混合精度训练。同时它基于多线程的方式，确实方便了信息的交换，但受困于 GIL (Python 全局解释器锁)，会带来性能开销 (GIL 的存在使得一个 Python 进程只能利用一个 CPU 核心，不适合用于计算密集型的任务)
+- **存在效率问题**，主卡性能和通信开销容易成为瓶颈，GPU 利用率通常很低：数据集需要先拷贝到主进程，然后再 split 到每个设备上；权重参数只在主卡上更新，需要每次迭代前向所有设备做一次同步；每次迭代的网络输出需要 gather 到主卡上
+- **不支持 model parallel**
+
+
+## DDP
+
+DP 和 DDP 的主要差异可以总结为以下几点：
+
+- **DDP 是多进程**，每个 GPU 对应一个进程，适用于单机和多机情况，真正实现分布式训练，并且因为每个进程都是独立的 Python 解释器，DDP 避免了 GIL 带来的性能开销。
+- **DDP 的训练更高效**，不存在 DP 中负载不均衡的问题。DDP 中每个 GPU 直接处理 mini-batch 数据，不需要由主卡分发；每个 GPU 独立进行参数更新，不需要由主卡 broadcast 模型参数；每个 GPU 独立计算 loss，不需要汇聚到主卡计算。
+- **DDP 支持模型并行**
+
 
 # 入门
 
@@ -350,4 +376,100 @@ for epoch in iterator:
 
 ## DDP如何保证梯度同步
 
-假设我们采用分布式训练，每个进程
+DDP通过"All-Reduce"确保所有参与进程（GPU）都获得相同的结果。通常不需要手动编写All-Reduce代码。当你使DistributedDataParallel包装模型后，梯度同步是自动完成的。
+
+## DDP中，不同卡上验证集loss不同如何处理
+
+对于验证集，正确的做法是​**​计算整个验证集的总Loss或平均Loss**。使用all_reduce同步，在每个GPU计算完自己那部分数据的Loss之和后，使用 all_reduce将这些局部Loss求和值进行全局汇总，然后除以全局总样本数得到平均Loss。**如果不汇总处理，可能会出现某张卡loss升高（早停+1），某张卡loss下降的情况，甚至卡住。**
+
+要实现这一步，最关键的代码是```dist.all_reduce(total_loss, op=dist.ReduceOp.SUM) ```
+
+如果采用dist.reduce，则有可能出现卡住的情况。
+
+dist.reduce(total_loss, dst=0, op=dist.ReduceOp.SUM)意味着只有 ​​Rank 0​​ 这个进程会得到所有进程损失求和后的正确结果。而​​其他进程（例如 Rank 1, 2, 3）上的 total_loss变量在操作之后并没有被更新为全局求和的值​​，它们仍然保持着自己原始的、局部的损失值
+
+
+下面给一个验证集的代码供参考：
+
+```
+    def vali(self, vali_data, vali_loader, criterion, is_test=False):
+        total_loss = []
+        total_count = []
+        time_now = time.time()
+        test_steps = len(vali_loader)
+        iter_count = 0
+        
+        self.model.eval()    
+        with torch.no_grad():
+            for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in enumerate(vali_loader):
+                iter_count += 1
+                batch_x = batch_x.float().to(self.device)
+                batch_y = batch_y.float()
+                batch_x_mark = batch_x_mark.float().to(self.device)
+                batch_y_mark = batch_y_mark.float().to(self.device)
+                
+                # outputs = self.model(batch_x, batch_x_mark, batch_y_mark)
+                # 关键修改1：验证时使用 model.module，避免DDP内部通信
+                if self.args.ddp:
+                    outputs = self.model.module(batch_x, batch_x_mark, batch_y_mark)  # 使用 .module
+                else:
+                    outputs = self.model(batch_x, batch_x_mark, batch_y_mark)
+
+                if is_test or self.args.nonautoregressive:
+                        outputs = outputs[:, -self.args.output_token_len:, :]
+                        batch_y = batch_y[:, -self.args.output_token_len:, :].to(self.device)
+                else:
+                    outputs = outputs[:, :, :]
+                    batch_y = batch_y[:, :, :].to(self.device)
+                if self.args.covariate:
+                    if self.args.last_token:
+                        outputs = outputs[:, -self.args.output_token_len:, -1]
+                        batch_y = batch_y[:, -self.args.output_token_len:, -1]
+                    else:
+                        outputs = outputs[:, :, -1]
+                        batch_y = batch_y[:, :, -1]
+                       
+                
+                loss = criterion(outputs, batch_y)
+
+                loss = loss.detach().cpu()
+                total_loss.append(loss)
+                total_count.append(batch_x.shape[0])
+                if (i + 1) % 100 == 0:
+                    if (self.args.ddp and self.args.local_rank == 0) or not self.args.ddp:
+                        speed = (time.time() - time_now) / iter_count
+                        left_time = speed * (test_steps - i)
+                        print("\titers: {}, speed: {:.4f}s/iter, left time: {:.4f}s".format(i + 1, speed, left_time))
+                        iter_count = 0
+                        time_now = time.time()
+        if self.args.ddp:
+            total_loss = torch.tensor(np.average(total_loss, weights=total_count)).to(self.device)
+            dist.barrier()
+            # dist.reduce(total_loss, dst=0, op=dist.ReduceOp.SUM)
+            dist.all_reduce(total_loss, op=dist.ReduceOp.SUM)
+            total_loss = total_loss.item() / dist.get_world_size()
+        else:
+            total_loss = np.average(total_loss, weights=total_count)
+            
+        if self.args.model == 'gpt4ts':
+            # GPT4TS just requires to train partial layers
+            self.model.in_layer.train()
+            self.model.out_layer.train()
+        else: 
+            self.model.train()
+            
+        return total_loss
+```
+
+
+## 分布式训练技术
+
+- **Data Parallelism** (数据并行)
+  - Naive: 每个worker存储一份model和optimizer，每轮迭代时，将样本分为若干份分发给各个worker，实现并行计算.
+  - ZeRO: Zero Redundancy Optimizer，微软提出的数据并行内存优化技术，核心思想是保持Naive数据并行通信效率的同时，尽可能降低内存占用。
+- **Model/Pipeline Parallelism** (模型并行)
+  - GPipe：小批量流水线方式的纵向切割模型并行
+  - Megatron-LM：Tensor-slicing方式的模型并行加速
+- **Non-parallelism approach** (非并行技术)
+  - Gradient Accumulation: 通过梯度累加的方式解决显存不足的问题，常用于模型较大，单卡只能塞下很小的batch的并行训练中
+  - CPU Offload: 同时利用 CPU 和 GPU 内存来训练大型模型，即存在GPU-CPU-GPU的 transfers操作
