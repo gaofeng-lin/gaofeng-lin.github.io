@@ -9,6 +9,13 @@ mathjax: true
 abbrlink: 77ac27fb
 ---
 
+
+# DP和DDP的区别
+
+https://docs.pytorch.org/tutorials/beginner/ddp_series_theory.html
+
+可以看一下官方的介绍，再好好总结下，也顺便学习下GIL这些知识，下午上课的时候可以学习下。
+
 # 入门
 
 作者：小志哥
@@ -341,3 +348,6 @@ for epoch in iterator:
         torch.save(model.module.state_dict(), "%d.ckpt" % epoch)
 ```
 
+## DDP如何保证梯度同步
+
+假设我们采用分布式训练，每个进程
