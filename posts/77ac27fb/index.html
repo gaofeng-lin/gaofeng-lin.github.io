@@ -5,9 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="DDP, Home of Gaofeng">
-    <meta name="description" content="入门作者：小志哥链接：https://zhuanlan.zhihu.com/p/178402798来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-一个简单的DDP代码作者：小志哥
-链接：https://zhu">
+    <meta name="description" content="DP和DDP的区别https://docs.pytorch.org/tutorials/beginner/ddp_series_theory.html
+可以看一下官方的介绍，再好好总结下，也顺便学习下GIL这些知识，下午上课的时候可以学习下">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -34,7 +33,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -146,9 +147,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style>
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</style><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -581,14 +580,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    3.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    13 分
                 </div>
                 
 
@@ -611,7 +610,9 @@ mjx-container[display="true"] + br {
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><p>作者：小志哥<br>链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/178402798">https://zhuanlan.zhihu.com/p/178402798</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+                <h1 id="DP和DDP的区别"><a href="#DP和DDP的区别" class="headerlink" title="DP和DDP的区别"></a>DP和DDP的区别</h1><p><a target="_blank" rel="noopener" href="https://docs.pytorch.org/tutorials/beginner/ddp_series_theory.html">https://docs.pytorch.org/tutorials/beginner/ddp_series_theory.html</a></p>
+<p>可以看一下官方的介绍，再好好总结下，也顺便学习下GIL这些知识，下午上课的时候可以学习下。</p>
+<h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><p>作者：小志哥<br>链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/178402798">https://zhuanlan.zhihu.com/p/178402798</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <h2 id="一个简单的DDP代码"><a href="#一个简单的DDP代码" class="headerlink" title="一个简单的DDP代码"></a>一个简单的DDP代码</h2><pre class="line-numbers language-none"><code class="language-none">作者：小志哥
 链接：https://zhuanlan.zhihu.com/p/178402798
 来源：知乎
@@ -890,6 +891,7 @@ for epoch in iterator:
     # 2. 只需要在进程0上保存一次就行了，避免多次保存重复的东西。
     if dist.get_rank() == 0:
         torch.save(model.module.state_dict(), "%d.ckpt" % epoch)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<h2 id="DDP如何保证梯度同步"><a href="#DDP如何保证梯度同步" class="headerlink" title="DDP如何保证梯度同步"></a>DDP如何保证梯度同步</h2><p>假设我们采用分布式训练，每个进程</p>
 
                 
             </div>
@@ -1129,18 +1131,17 @@ for epoch in iterator:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/77ac27fb/">
+                <a href="/posts/e4b54c38/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="DDP">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Seed">
                         
-                        <span class="card-title">DDP</span>
+                        <span class="card-title">Seed</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1150,9 +1151,9 @@ for epoch in iterator:
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-10-21
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-10-22
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1165,12 +1166,11 @@ for epoch in iterator:
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/">
-                        <span class="chip bg-color">分布式训练</span>
+                    <a href="/tags/%E9%9A%8F%E6%9C%BA%E7%A7%8D%E5%AD%90/">
+                        <span class="chip bg-color">随机种子</span>
                     </a>
                     
                 </div>
@@ -1423,7 +1423,7 @@ for epoch in iterator:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">258k</span>
+                        class="white-color">258.8k</span>
             
             
             

@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-10-21T01:59:11.847Z</updated>
+  <updated>2025-10-22T01:41:01.557Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -17,18 +17,43 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Seed</title>
+    <link href="https://gaofeng-lin.github.io/posts/e4b54c38/"/>
+    <id>https://gaofeng-lin.github.io/posts/e4b54c38/</id>
+    <published>2025-10-21T16:00:00.000Z</published>
+    <updated>2025-10-22T01:41:01.557Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;随机种子概念&quot;&gt;&lt;a href=&quot;#随机种子概念&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="随机种子" scheme="https://gaofeng-lin.github.io/tags/%E9%9A%8F%E6%9C%BA%E7%A7%8D%E5%AD%90/"/>
+    
+  </entry>
+  
+  <entry>
     <title>DDP</title>
     <link href="https://gaofeng-lin.github.io/posts/77ac27fb/"/>
     <id>https://gaofeng-lin.github.io/posts/77ac27fb/</id>
     <published>2025-10-20T16:00:00.000Z</published>
-    <updated>2025-10-21T01:59:11.847Z</updated>
+    <updated>2025-10-22T03:32:39.590Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;入门&quot;&gt;&lt;a href=&quot;#入门&quot; class=&quot;headerlink&quot; title=&quot;入门&quot;&gt;&lt;/a&gt;入门&lt;/h1&gt;&lt;p&gt;作者：小志哥&lt;br&gt;链接：&lt;a</summary>
+    <summary type="html">&lt;h1 id=&quot;DP和DDP的区别&quot;&gt;&lt;a href=&quot;#DP和DDP的区别&quot; class=&quot;headerlink&quot; title=&quot;DP和DDP的区别&quot;&gt;&lt;/a&gt;DP和DDP的区别&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
         
       
     
@@ -488,33 +513,6 @@
     
     
     <category term="异构图" scheme="https://gaofeng-lin.github.io/tags/%E5%BC%82%E6%9E%84%E5%9B%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>科研论文相关</title>
-    <link href="https://gaofeng-lin.github.io/posts/35314187/"/>
-    <id>https://gaofeng-lin.github.io/posts/35314187/</id>
-    <published>2025-04-15T16:00:00.000Z</published>
-    <updated>2025-09-16T03:01:41.790Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;科研论文写作&quot;&gt;&lt;a href=&quot;#科研论文写作&quot; class=&quot;headerlink&quot; title=&quot;科研论文写作&quot;&gt;&lt;/a&gt;科研论文写作&lt;/h2&gt;&lt;h3 id=&quot;小论文创新点思路&quot;&gt;&lt;a href=&quot;#小论文创新点思路&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="科研论文" scheme="https://gaofeng-lin.github.io/categories/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87/"/>
-    
-    
-    <category term="科研论文写作" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
-    
-    <category term="科研论文审稿" scheme="https://gaofeng-lin.github.io/tags/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%AE%A1%E7%A8%BF/"/>
     
   </entry>
   
