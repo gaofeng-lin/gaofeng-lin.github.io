@@ -38,7 +38,8 @@ T">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <style>mjx-container[jax="SVG"] {
   direction: ltr;
@@ -152,8 +153,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-</head>
+</style></head>
 
 
 <body>
@@ -589,7 +589,7 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    14.3k
+                    14.1k
                 </div>
                 
 
@@ -816,10 +816,12 @@ mjx-container[display="true"] + br {
 <p>  <del>复现结果比较差，mse提高了75.3%；mae提高了48.6%</del></p>
 <p><strong>上面的结果有问题，因为是预测4个不同步长的结果，然后取平均，但是代码没有把4个结果取平均，而是单独输出，所以还需要自己计算下。计算后的结果：</strong></p>
 <p>mse:0.576475；mae:0.5523</p>
-<p><del>目前我自己写了一个脚本，运行timer-xl模型，数据集是etth1，但是没法运行。把模型换成moirai就可以运行。我看了下核心的问题，是在exp_forecast.py文件中的<code>outputs = self.model(batch_x, batch_x_mark, batch_y_mark)</code>这段代码，三个维度分别是：<br>batch_x shape: torch.Size([32, 672, 7])<br>batch_x_mark shape: torch.Size([32, 672, 1])<br>batch_y_mark shape: torch.Size([32, 672, 1])如果模型是timer-xl。输出outputs shape: torch.Size([32, 672, 7])如果是moirai。outputs shape: torch.Size([32, 96, 7])而在后面的<code>loss = criterion(outputs, batch_y)</code>就会报错。因为batch_y的维度是torch.Size([32, 96, 7])，而timer-xl输出的outputs结果是([32, 672, 7])</del>。<strong>这个问题已经解决</strong>。</p>
 <h4 id="输入672步长，输出96。数据集ECL"><a href="#输入672步长，输出96。数据集ECL" class="headerlink" title="输入672步长，输出96。数据集ECL"></a>输入672步长，输出96。数据集ECL</h4><p>论文结果：mse:0.155, mae:0.246</p>
 <p><del>复现结果：mse:0.17138800024986267, mae:0.27118179202079773</del></p>
-<p><strong>4个长度的预测结果</strong>：<br>mse:0.14015242457389832, mae:0.24011272192001343<br>mse:0.1517903357744217, mae:0.2513769268989563<br>mse:0.15890070796012878, mae:0.2604312002658844<br>mse:0.17138800024986267, mae:0.27118179202079773</p>
+<p><strong>4个长度的预测结果</strong>：<br>mse:0.14015242457389832, mae:0.24011272192001343</p>
+<p>mse:0.1517903357744217, mae:0.2513769268989563</p>
+<p>mse:0.15890070796012878, mae:0.2604312002658844</p>
+<p>mse:0.17138800024986267, mae:0.27118179202079773</p>
 <p><strong>平均结果</strong>：<br>mse:0.1555578671395778675<br>mae:0.255775660276412965</p>
 <h4 id="输入672步长，输出96。数据集Traffic"><a href="#输入672步长，输出96。数据集Traffic" class="headerlink" title="输入672步长，输出96。数据集Traffic"></a>输入672步长，输出96。数据集Traffic</h4><p><strong>4个长度的预测结果</strong>：<br>mse:1.4108110666275024, mae:0.7981050610542297<br>mse:1.4211959838867188, mae:0.800054669380188<br>mse:1.4341756105422974, mae:0.8021271824836731<br>mse:1.4508225917816162, mae:0.8043699860572815</p>
 <p><strong>平均结果</strong>：<br>mse:1.4292513132095337<br>mae:0.801164224743843075</p>
@@ -1756,7 +1758,7 @@ mjx-container[display="true"] + br {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">258.8k</span>
+                        class="white-color">260.2k</span>
             
             
             

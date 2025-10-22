@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="DDP, Home of Gaofeng">
-    <meta name="description" content="DP和DDP的区别https://docs.pytorch.org/tutorials/beginner/ddp_series_theory.html
-可以看一下官方的介绍，再好好总结下，也顺便学习下GIL这些知识，下午上课的时候可以学习下">
+    <meta name="description" content="基础概念forward（前向传递）：输入数据，得到输出的过程。backward(后向传递)：根据输出结果，计算参数梯度的过程。
+DP和DDPDP训练原理网络在前向传播时会将 model 从主卡 (默认是逻辑 0 卡) broadcast 到">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -33,7 +33,8 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <style>mjx-container[jax="SVG"] {
   direction: ltr;
@@ -147,8 +148,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-</head>
+</style></head>
 
 
 <body>
@@ -580,14 +580,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    4.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    19 分
                 </div>
                 
 
@@ -610,8 +610,20 @@ mjx-container[display="true"] + br {
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="DP和DDP的区别"><a href="#DP和DDP的区别" class="headerlink" title="DP和DDP的区别"></a>DP和DDP的区别</h1><p><a target="_blank" rel="noopener" href="https://docs.pytorch.org/tutorials/beginner/ddp_series_theory.html">https://docs.pytorch.org/tutorials/beginner/ddp_series_theory.html</a></p>
-<p>可以看一下官方的介绍，再好好总结下，也顺便学习下GIL这些知识，下午上课的时候可以学习下。</p>
+                <h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><p>forward（前向传递）：输入数据，得到输出的过程。<br>backward(后向传递)：根据输出结果，计算参数梯度的过程。</p>
+<h1 id="DP和DDP"><a href="#DP和DDP" class="headerlink" title="DP和DDP"></a>DP和DDP</h1><h2 id="DP训练原理"><a href="#DP训练原理" class="headerlink" title="DP训练原理"></a>DP训练原理</h2><p>网络在前向传播时会将 model 从主卡 (默认是逻辑 0 卡) broadcast 到所有 device 上，input data 会在 batch 这个维度被分组后 scatter 到不同的 device 上进行前向计算，计算完毕后网络的输出被 gather 到主卡上，loss 随后在主卡上被计算出来 (这也是为什么主卡负载更大的原因，loss 每次都会在主卡上计算，这就造成主卡负载远大于其他显卡)。在反向传播时，loss 会被 scatter 到每个 device 上，每个卡各自进行反向传播计算梯度，然后梯度会被 reduce 到主卡上 (i.e. 求得各个 device 的梯度之和，然后按照 batch_size 大小求得梯度均值)，再用反向传播在主卡上更新模型参数，最后将更新后的模型参数 broadcast 到其余 GPU 中进行下一轮的前向传播，以此来实现并行。</p>
+<h2 id="DP缺陷"><a href="#DP缺陷" class="headerlink" title="DP缺陷"></a>DP缺陷</h2><p>DataParallel 复制一个网络到多个 cuda 设备，然后再 split 一个 batch 的 data 到多个 cuda 设备，通过这种并行计算的方式解决了 batch 很大的问题，但也有自身的不足：</p>
+<ul>
+<li><strong>单进程多线程带来的问题</strong>：DataParallel 是单进程多线程的，无法在多个机器上工作 (不支持分布式)，而且不能使用 Apex 进行混合精度训练。同时它基于多线程的方式，确实方便了信息的交换，但受困于 GIL (Python 全局解释器锁)，会带来性能开销 (GIL 的存在使得一个 Python 进程只能利用一个 CPU 核心，不适合用于计算密集型的任务)</li>
+<li><strong>存在效率问题</strong>，主卡性能和通信开销容易成为瓶颈，GPU 利用率通常很低：数据集需要先拷贝到主进程，然后再 split 到每个设备上；权重参数只在主卡上更新，需要每次迭代前向所有设备做一次同步；每次迭代的网络输出需要 gather 到主卡上</li>
+<li><strong>不支持 model parallel</strong></li>
+</ul>
+<h2 id="DDP"><a href="#DDP" class="headerlink" title="DDP"></a>DDP</h2><p>DP 和 DDP 的主要差异可以总结为以下几点：</p>
+<ul>
+<li><strong>DDP 是多进程</strong>，每个 GPU 对应一个进程，适用于单机和多机情况，真正实现分布式训练，并且因为每个进程都是独立的 Python 解释器，DDP 避免了 GIL 带来的性能开销。</li>
+<li><strong>DDP 的训练更高效</strong>，不存在 DP 中负载不均衡的问题。DDP 中每个 GPU 直接处理 mini-batch 数据，不需要由主卡分发；每个 GPU 独立进行参数更新，不需要由主卡 broadcast 模型参数；每个 GPU 独立计算 loss，不需要汇聚到主卡计算。</li>
+<li><strong>DDP 支持模型并行</strong></li>
+</ul>
 <h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><p>作者：小志哥<br>链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/178402798">https://zhuanlan.zhihu.com/p/178402798</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <h2 id="一个简单的DDP代码"><a href="#一个简单的DDP代码" class="headerlink" title="一个简单的DDP代码"></a>一个简单的DDP代码</h2><pre class="line-numbers language-none"><code class="language-none">作者：小志哥
 链接：https://zhuanlan.zhihu.com/p/178402798
@@ -891,7 +903,96 @@ for epoch in iterator:
     # 2. 只需要在进程0上保存一次就行了，避免多次保存重复的东西。
     if dist.get_rank() == 0:
         torch.save(model.module.state_dict(), "%d.ckpt" % epoch)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<h2 id="DDP如何保证梯度同步"><a href="#DDP如何保证梯度同步" class="headerlink" title="DDP如何保证梯度同步"></a>DDP如何保证梯度同步</h2><p>假设我们采用分布式训练，每个进程</p>
+<h2 id="DDP如何保证梯度同步"><a href="#DDP如何保证梯度同步" class="headerlink" title="DDP如何保证梯度同步"></a>DDP如何保证梯度同步</h2><p>DDP通过”All-Reduce”确保所有参与进程（GPU）都获得相同的结果。通常不需要手动编写All-Reduce代码。当你使DistributedDataParallel包装模型后，梯度同步是自动完成的。</p>
+<h2 id="DDP中，不同卡上验证集loss不同如何处理"><a href="#DDP中，不同卡上验证集loss不同如何处理" class="headerlink" title="DDP中，不同卡上验证集loss不同如何处理"></a>DDP中，不同卡上验证集loss不同如何处理</h2><p>对于验证集，正确的做法是​<strong>​计算整个验证集的总Loss或平均Loss</strong>。使用all_reduce同步，在每个GPU计算完自己那部分数据的Loss之和后，使用 all_reduce将这些局部Loss求和值进行全局汇总，然后除以全局总样本数得到平均Loss。<strong>如果不汇总处理，可能会出现某张卡loss升高（早停+1），某张卡loss下降的情况，甚至卡住。</strong></p>
+<p>要实现这一步，最关键的代码是<code>dist.all_reduce(total_loss, op=dist.ReduceOp.SUM)</code></p>
+<p>如果采用dist.reduce，则有可能出现卡住的情况。</p>
+<p>dist.reduce(total_loss, dst=0, op=dist.ReduceOp.SUM)意味着只有 ​​Rank 0​​ 这个进程会得到所有进程损失求和后的正确结果。而​​其他进程（例如 Rank 1, 2, 3）上的 total_loss变量在操作之后并没有被更新为全局求和的值​​，它们仍然保持着自己原始的、局部的损失值</p>
+<p>下面给一个验证集的代码供参考：</p>
+<pre class="line-numbers language-none"><code class="language-none">def vali(self, vali_data, vali_loader, criterion, is_test=False):
+    total_loss = []
+    total_count = []
+    time_now = time.time()
+    test_steps = len(vali_loader)
+    iter_count = 0
+    
+    self.model.eval()    
+    with torch.no_grad():
+        for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in enumerate(vali_loader):
+            iter_count += 1
+            batch_x = batch_x.float().to(self.device)
+            batch_y = batch_y.float()
+            batch_x_mark = batch_x_mark.float().to(self.device)
+            batch_y_mark = batch_y_mark.float().to(self.device)
+            
+            # outputs = self.model(batch_x, batch_x_mark, batch_y_mark)
+            # 关键修改1：验证时使用 model.module，避免DDP内部通信
+            if self.args.ddp:
+                outputs = self.model.module(batch_x, batch_x_mark, batch_y_mark)  # 使用 .module
+            else:
+                outputs = self.model(batch_x, batch_x_mark, batch_y_mark)
+
+            if is_test or self.args.nonautoregressive:
+                    outputs = outputs[:, -self.args.output_token_len:, :]
+                    batch_y = batch_y[:, -self.args.output_token_len:, :].to(self.device)
+            else:
+                outputs = outputs[:, :, :]
+                batch_y = batch_y[:, :, :].to(self.device)
+            if self.args.covariate:
+                if self.args.last_token:
+                    outputs = outputs[:, -self.args.output_token_len:, -1]
+                    batch_y = batch_y[:, -self.args.output_token_len:, -1]
+                else:
+                    outputs = outputs[:, :, -1]
+                    batch_y = batch_y[:, :, -1]
+                   
+            
+            loss = criterion(outputs, batch_y)
+
+            loss = loss.detach().cpu()
+            total_loss.append(loss)
+            total_count.append(batch_x.shape[0])
+            if (i + 1) % 100 == 0:
+                if (self.args.ddp and self.args.local_rank == 0) or not self.args.ddp:
+                    speed = (time.time() - time_now) / iter_count
+                    left_time = speed * (test_steps - i)
+                    print("\titers: {}, speed: {:.4f}s/iter, left time: {:.4f}s".format(i + 1, speed, left_time))
+                    iter_count = 0
+                    time_now = time.time()
+    if self.args.ddp:
+        total_loss = torch.tensor(np.average(total_loss, weights=total_count)).to(self.device)
+        dist.barrier()
+        # dist.reduce(total_loss, dst=0, op=dist.ReduceOp.SUM)
+        dist.all_reduce(total_loss, op=dist.ReduceOp.SUM)
+        total_loss = total_loss.item() / dist.get_world_size()
+    else:
+        total_loss = np.average(total_loss, weights=total_count)
+        
+    if self.args.model == 'gpt4ts':
+        # GPT4TS just requires to train partial layers
+        self.model.in_layer.train()
+        self.model.out_layer.train()
+    else: 
+        self.model.train()
+        
+    return total_loss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="分布式训练技术"><a href="#分布式训练技术" class="headerlink" title="分布式训练技术"></a>分布式训练技术</h2><ul>
+<li><strong>Data Parallelism</strong> (数据并行)<ul>
+<li>Naive: 每个worker存储一份model和optimizer，每轮迭代时，将样本分为若干份分发给各个worker，实现并行计算.</li>
+<li>ZeRO: Zero Redundancy Optimizer，微软提出的数据并行内存优化技术，核心思想是保持Naive数据并行通信效率的同时，尽可能降低内存占用。</li>
+</ul>
+</li>
+<li><strong>Model/Pipeline Parallelism</strong> (模型并行)<ul>
+<li>GPipe：小批量流水线方式的纵向切割模型并行</li>
+<li>Megatron-LM：Tensor-slicing方式的模型并行加速</li>
+</ul>
+</li>
+<li><strong>Non-parallelism approach</strong> (非并行技术)<ul>
+<li>Gradient Accumulation: 通过梯度累加的方式解决显存不足的问题，常用于模型较大，单卡只能塞下很小的batch的并行训练中</li>
+<li>CPU Offload: 同时利用 CPU 和 GPU 内存来训练大型模型，即存在GPU-CPU-GPU的 transfers操作</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -1423,7 +1524,7 @@ for epoch in iterator:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">258.8k</span>
+                        class="white-color">260.2k</span>
             
             
             
