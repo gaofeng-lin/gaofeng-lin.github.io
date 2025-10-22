@@ -6,6 +6,7 @@ categories:
 tags:
   - 分布式训练
 mathjax: true
+abbrlink: 77ac27fb
 ---
 
 # 入门

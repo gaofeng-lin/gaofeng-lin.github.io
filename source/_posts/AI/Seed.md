@@ -6,6 +6,7 @@ categories:
 tags:
   - 随机种子
 mathjax: true
+abbrlink: e4b54c38
 ---
 
 # 随机种子概念
