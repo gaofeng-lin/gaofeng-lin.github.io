@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Seed, Home of Gaofeng">
-    <meta name="description" content="随机种子概念random.seed()函数使用给定值初始化随机数生成器。种子被赋予一个整数值，以确保伪随机生成的结果是可重现的。每次生成的随机数序列将是确定性的，这意味着可以在不同的运行中获得相同的随机数序列，从而使实验可复现。
-在Pyth">
+    <meta name="keywords" content="深度学习环境配置, Home of Gaofeng">
+    <meta name="description" content="CUDA、CUDNN相关的内容一般来说，如果要使用CUDA，一共需要安装3个东西Nvidia驱动、CUDA、CUDNN。
+CUDA看作是一个工作台，上面配有很多工具，如锤子、螺丝刀等。cuDNN是基于CUDA的深度学习GPU加速库，有了它才">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +20,7 @@
 
     
 
-    <title>Seed | Home of Gaofeng</title>
+    <title>深度学习环境配置 | Home of Gaofeng</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -425,12 +425,12 @@ mjx-container[display="true"] + br {
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Seed</h1>
+                    <h1 class="description center-align post-title">深度学习环境配置</h1>
                 </div>
             </div>
         </div>
@@ -546,8 +546,16 @@ mjx-container[display="true"] + br {
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%9A%8F%E6%9C%BA%E7%A7%8D%E5%AD%90/">
-                                <span class="chip bg-color">随机种子</span>
+                            <a href="/tags/CUDA/">
+                                <span class="chip bg-color">CUDA</span>
+                            </a>
+                        
+                            <a href="/tags/CUDNN/">
+                                <span class="chip bg-color">CUDNN</span>
+                            </a>
+                        
+                            <a href="/tags/Pytorch/">
+                                <span class="chip bg-color">Pytorch</span>
                             </a>
                         
                     </div>
@@ -571,7 +579,7 @@ mjx-container[display="true"] + br {
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-10-22
+                    2025-10-23
                 </div>
                 
 
@@ -580,14 +588,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    775
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -610,100 +618,69 @@ mjx-container[display="true"] + br {
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="随机种子概念"><a href="#随机种子概念" class="headerlink" title="随机种子概念"></a>随机种子概念</h1><p>random.seed()函数使用给定值初始化随机数生成器。<br>种子被赋予一个整数值，以确保伪随机生成的结果是可重现的。<br>每次生成的随机数序列将是确定性的，这意味着可以在不同的运行中获得相同的随机数序列，从而使实验可复现。</p>
-<p>在Python中，随机种子是通过random.seed()函数设置的，而在PyTorch中，可以通过设置torch.manual_seed()来实现，在TensorFlow中，使用tf.random.set_seed()设置。</p>
-<h1 id="随机种子与shuff的联系"><a href="#随机种子与shuff的联系" class="headerlink" title="随机种子与shuff的联系"></a>随机种子与shuff的联系</h1><p>当我们设置 DataLoader的 shuffle=True时，每个训练周期（epoch）开始前，数据加载器都会使用随机数来打乱数据的顺序。数据打乱并非直接在原始数据集上进行，而是​​生成一个随机的索引序列​​。DataLoader会根据这个新的索引顺序来提取数据，组装成批次。</p>
-<p><strong>​固定随机种子带来的效果是</strong>：</p>
-<ul>
-<li>多次实验间，每个epoch的数据顺序可重现​​：如果你设置了一个固定的随机种子（比如 42），那么每次你从头运行整个训练脚本时：<ul>
-<li>第1个epoch​​的数据打乱顺序将是完全相同的。</li>
-<li>第2个epoch​​的数据打乱顺序也将是完全相同的。</li>
-<li>以此类推，每个epoch的数据顺序在多次实验中都保持一致。</li>
-</ul>
-</li>
-</ul>
-<p>随机种子和shuff结合的示例代码：<br></p><pre class="line-numbers language-none"><code class="language-none">import torch
-import random
-import numpy as np
-from torch.utils.data import Dataset, DataLoader
+                <h2 id="CUDA、CUDNN相关的内容"><a href="#CUDA、CUDNN相关的内容" class="headerlink" title="CUDA、CUDNN相关的内容"></a>CUDA、CUDNN相关的内容</h2><p>一般来说，如果要使用CUDA，一共需要安装3个东西Nvidia驱动、CUDA、CUDNN。</p>
+<p>CUDA看作是一个工作台，上面配有很多工具，如锤子、螺丝刀等。cuDNN是基于CUDA的深度学习GPU加速库，有了它才能在GPU上完成深度学习的计算。它就相当于工作的工具，比如它就是个扳手。但是CUDA这个工作台买来的时候，并没有送扳手。想要在CUDA上运行深度神经网络，就要安装cuDNN，就像你想要拧个螺帽就要把扳手买回来。这样才能使GPU进行深度神经网络的工作，工作速度相较CPU快很多。</p>
+<p>但是我们经常只安装CUDA Driver，比如我们的笔记本电脑，安装个CUDA Driver就可正常看视频、办公和玩游戏了。</p>
+<h3 id="Nvidia驱动"><a href="#Nvidia驱动" class="headerlink" title="Nvidia驱动"></a>Nvidia驱动</h3><p>Nvidia驱动可以单独安装，也可以使用CUDA Toolkit Installer安装，CUDA Toolkit Installer通常会集成了GPU driver Installer和CUDA。<br>安装完成以后，使用<code>nvidia-smi</code>可以驱动是否安装成功。nvidia-smi 全称是 NVIDIA System Management Interface ，是一种命令行实用工具，旨在帮助管理和监控NVIDIA GPU设备。</p>
+<h3 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h3><p>可以使用命令行、官网下载脚本、CUDA Toolkit Installer。<br><strong>不过目前看下来，使用官网下载的.run脚本（这是cuda10.1的安装包cuda_10.1.105_418.39_linux.run）是最容易成功的，虽然比较费时间。这个脚本里面也包含了驱动安装，如果安装了驱动，就不要再安装了</strong></p>
+<p><strong>安装的时候我曾经遇到过gcc版本过高的问题，并且无法直接使用命令行来降低版本。只能通过网上下载低版本的包，然后再安装</strong><br>安装后使用<code>nvcc -v</code>来看是否安装成功</p>
+<h3 id="nvcc和nvidia-smi的关系"><a href="#nvcc和nvidia-smi的关系" class="headerlink" title="nvcc和nvidia-smi的关系"></a>nvcc和nvidia-smi的关系</h3><p>nvcc 属于CUDA的编译器，将程序编译成可执行的二进制文件，nvidia-smi 全称是 NVIDIA System Management Interface ，是一种命令行实用工具，旨在帮助管理和监控NVIDIA GPU设备。</p>
+<p>CUDA有 runtime api 和 driver api，两者都有对应的CUDA版本， nvcc —version 显示的就是前者对应的CUDA版本，而 nvidia-smi显示的是后者对应的CUDA版本。</p>
+<p><strong>如果使用了单独的GPU driver installer来安装GPU dirver，这样就会导致 nvidia-smi 和 nvcc —version 显示的版本不一致了。</strong></p>
+<p>通常，<strong>driver api的版本能向下兼容runtime api的版本，即 nvidia-smi 显示的版本大于nvcc —version 的版本通常不会出现大问题。</strong></p>
+<h3 id="如何选择与CUDA版本匹配的Pytorch"><a href="#如何选择与CUDA版本匹配的Pytorch" class="headerlink" title="如何选择与CUDA版本匹配的Pytorch"></a>如何选择与CUDA版本匹配的Pytorch</h3><p>如果nvcc和nvidia-smi的版本不一致，应该如何选择pytorch的版本？<br><strong>选择与nvcc -v 对应的CUDA版本</strong></p>
+<h2 id="pytorch安装"><a href="#pytorch安装" class="headerlink" title="pytorch安装"></a>pytorch安装</h2><h3 id="cuda安装"><a href="#cuda安装" class="headerlink" title="cuda安装"></a>cuda安装</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/94220564">原链接</a></p>
+<p>桌面右键打开英伟达控制面板，点击帮助-&gt;系统信息-&gt;组件</p>
+<p>可以看到支持的版本，安装的cuda版本必须小于等于该版本</p>
+<p>安装好cuda后，安装cuDNN。<br>版本要和cuda对应起来</p>
+<h3 id="miniconda和pytorch安装"><a href="#miniconda和pytorch安装" class="headerlink" title="miniconda和pytorch安装"></a>miniconda和pytorch安装</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/174738684">原链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/">miniconda的镜像</a></p>
+<p>要注意安装的是x86_64的版本，一开始装成的x86(32位，一直出问题)</p>
+<p>安装pytorch的时候要进入<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/previous-versions/">这里</a>。根据对应的cuda版本来下载，最然根据教程来验证是否安装成果。</p>
+<h3 id="安装jupyter-notebook"><a href="#安装jupyter-notebook" class="headerlink" title="安装jupyter notebook"></a>安装jupyter notebook</h3><p>安装jupyter notebook有三个办法：</p>
+<p><strong>方法1：</strong><br><strong>为每一个 conda 环境 都安装 jupyter</strong></p>
+<p>上面的安装好以后，使用<code>conda activate d2l</code>，激活d2l环境。<br>用<code>conda install jupyter</code>安装一直卡在那，换pip安装。但是还是因为网速原因没成功，可以使用临时换源的办法：</p>
+<pre class="line-numbers language-none"><code class="language-none">pip install jupyter -i https://pypi.tuna.tsinghua.edu.cn/simple<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>方法2：</strong></p>
+<p>在base环境安装好jupyter后</p>
+<pre class="line-numbers language-none"><code class="language-none">conda create -n my-conda-env                               # creates new virtual env
+conda activate my-conda-env                                # activate environment in terminal
+conda install ipykernel                                    # install Python kernel in new conda env
+ipython kernel install --user --name=my-conda-env-kernel   # configure Jupyter to use Python kernel<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后在base环境运行jupyter，下面两种方式都可以切换环境</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/微信图片_20230315114520.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/微信图片_20230315114528.png" alt=""></p>
+<p><strong>缺点是你新建一个环境，就要重复操作一次</strong></p>
+<p><strong>方法3：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">conda activate my-conda-env    # this is the environment for your project and code
+conda install ipykernel
+conda deactivate
 
-# 设置随机种子的函数，确保可复现性
-def set_seed(seed):
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed(seed)
-        torch.cuda.manual_seed_all(seed)  # 多GPU情况
-    torch.backends.cudnn.deterministic = True  # 禁用非确定性算法
-    torch.backends.cudnn.benchmark = False
+conda activate base      # could be also some other environment
+conda install nb_conda_kernels
+jupyter notebook<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意：这里的 <code>conda install nb_conda_kernels</code> 是在 base 环境下操作的。</p>
+<p>然后就可以进行conda环境求换，方式和法2相同。</p>
+<p>本人在使用方法3的时候遇到了问题，web端显示500，命令行显示的关键信息如下：</p>
+<p><strong>ImportError: cannot import name ‘contextfilter’ from ‘jinja2’</strong></p>
+<p>最后的解决方法：<br></p><pre class="line-numbers language-none"><code class="language-none">conda update nbconvert<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<h3 id="导入torchvision出现错误"><a href="#导入torchvision出现错误" class="headerlink" title="导入torchvision出现错误"></a>导入torchvision出现错误</h3><p>cuda和pythorch都安装成功的时候，且gpu也能正常使用。但是运行d2l里面的代码报错：<br></p><pre class="line-numbers language-none"><code class="language-none">import torch 成功
 
-# 设置全局随机种子（例如42）
-seed = 42
-set_seed(seed)
+import torchvision,报错
 
-# 设置随机种子
-torch.manual_seed(123)
+DLL:找不到模块<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<p>根据torch版本找到对应的torchvision，然后卸载torchvision再安装，显示没有这个版本。当时安装torch的时候，torchvision也安装了，且版本正确。</p>
+<p><strong>解决办法：</strong></p>
+<ol>
+<li>先查看一下Pillow的版本</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">pip show Pillow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果没有直接安装<br></p><pre class="line-numbers language-none"><code class="language-none">pip install Pillow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<p>如果有，先卸载<br></p><pre class="line-numbers language-none"><code class="language-none">pip uninstall Pillow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<p>再安装<br></p><pre class="line-numbers language-none"><code class="language-none">pip install Pillow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<p>然后检验torchvision是否正常<br></p><pre class="line-numbers language-none"><code class="language-none">import torchvision
+torchvision.__version__ #'0.8.2'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p></p>
 
-# 创建一个简单的自定义数据集
-class SimpleDataset(Dataset):
-    def __init__(self):
-        self.data = [i for i in range(10)]  # 数据：0到9的列表
-
-    def __len__(self):
-        return len(self.data)
-
-    def __getitem__(self, idx):
-        return self.data[idx]
-
-# 创建数据集实例
-dataset = SimpleDataset()
-
-# 创建DataLoader，设置shuffle=True
-# 注意：num_workers=0 避免多进程复杂性（如需多进程需额外设置worker_init_fn）
-dataloader = DataLoader(
-    dataset,
-    batch_size=2,       # 每个batch包含2个样本
-    shuffle=True,       # 关键：启用打乱
-    num_workers=0       # 单进程简化示例
-)
-
-# 运行3个epoch，打印每个epoch的batch数据
-num_epochs = 3
-for epoch in range(num_epochs):
-    print(f"--- Epoch {epoch+1} ---")
-    for batch_idx, batch_data in enumerate(dataloader):
-        print(f"Batch {batch_idx}: {batch_data}")
-    print()  # 空行分隔epoch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<p>是否使用shuff的示例代码：<br></p><pre class="line-numbers language-none"><code class="language-none">from torch.utils.data import DataLoader, Dataset
-
-# 一个简单的数据集，包含数字0到9
-class SimpleDataset(Dataset):
-    def __init__(self):
-        self.data = [i for i in range(10)]
-    def __len__(self):
-        return len(self.data)
-    def __getitem__(self, idx):
-        return self.data[idx]
-
-dataset = SimpleDataset()
-
-print("=== Shuffle=True ===")
-loader_shuffle = DataLoader(dataset, batch_size=2, shuffle=True)
-for epoch in range(2):  # 模拟2个epoch
-    print(f"Epoch {epoch+1}: ", end="")
-    for batch in loader_shuffle:
-        print(batch, end=" ")
-    print()  # 换行
-
-print("\n=== Shuffle=False ===")
-loader_no_shuffle = DataLoader(dataset, batch_size=2, shuffle=False)
-for epoch in range(2):
-    print(f"Epoch {epoch+1}: ", end="")
-    for batch in loader_no_shuffle:
-        print(batch, end=" ")
-    print()  # 换行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<h1 id="分布式环境中的随机种子和shuff"><a href="#分布式环境中的随机种子和shuff" class="headerlink" title="分布式环境中的随机种子和shuff"></a>分布式环境中的随机种子和shuff</h1>
                 
             </div>
             <hr/>
@@ -729,7 +706,7 @@ for epoch in range(2):
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://gaofeng-lin.github.io/posts/e4b54c38/">https://gaofeng-lin.github.io/posts/e4b54c38/</a>
+                    <a href="https://gaofeng-lin.github.io/posts/61e48afb/">https://gaofeng-lin.github.io/posts/61e48afb/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -767,8 +744,16 @@ for epoch in range(2):
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%9A%8F%E6%9C%BA%E7%A7%8D%E5%AD%90/">
-                                    <span class="chip bg-color">随机种子</span>
+                                <a href="/tags/CUDA/">
+                                    <span class="chip bg-color">CUDA</span>
+                                </a>
+                            
+                                <a href="/tags/CUDNN/">
+                                    <span class="chip bg-color">CUDNN</span>
+                                </a>
+                            
+                                <a href="/tags/Pytorch/">
+                                    <span class="chip bg-color">Pytorch</span>
                                 </a>
                             
                         </div>
@@ -942,18 +927,17 @@ for epoch in range(2):
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/e4b54c38/">
+                <a href="/posts/56f17847/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Seed">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="DataProcess">
                         
-                        <span class="card-title">Seed</span>
+                        <span class="card-title">DataProcess</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -963,9 +947,9 @@ for epoch in range(2):
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-10-22
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-10-23
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -978,12 +962,15 @@ for epoch in range(2):
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9A%8F%E6%9C%BA%E7%A7%8D%E5%AD%90/">
-                        <span class="chip bg-color">随机种子</span>
+                    <a href="/tags/DataLoader/">
+                        <span class="chip bg-color">DataLoader</span>
+                    </a>
+                    
+                    <a href="/tags/Random-Seed/">
+                        <span class="chip bg-color">Random Seed</span>
                     </a>
                     
                 </div>
@@ -1236,7 +1223,7 @@ for epoch in range(2):
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">258.7k</span>
+                        class="white-color">263.2k</span>
             
             
             
