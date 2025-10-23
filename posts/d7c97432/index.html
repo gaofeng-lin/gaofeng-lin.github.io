@@ -38,10 +38,7 @@ T">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -153,7 +150,10 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head>
+</style>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    14.1k
+                    16.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    52 分
+                    62 分
                 </div>
                 
 
@@ -814,8 +814,69 @@ mjx-container[display="true"] + br {
 <h3 id="多变量时序预测—table4"><a href="#多变量时序预测—table4" class="headerlink" title="多变量时序预测—table4"></a>多变量时序预测—table4</h3><h4 id="输入672步长，输出96。数据集ETTh1"><a href="#输入672步长，输出96。数据集ETTh1" class="headerlink" title="输入672步长，输出96。数据集ETTh1"></a>输入672步长，输出96。数据集ETTh1</h4><p>论文结果：mse:0.409, mae:0.430</p>
 <p>~~  第一次结果：mse:0.7172967791557312, mae:0.6388883590698242。第二次一样。第三次结果一样~~</p>
 <p>  <del>复现结果比较差，mse提高了75.3%；mae提高了48.6%</del></p>
-<p><strong>上面的结果有问题，因为是预测4个不同步长的结果，然后取平均，但是代码没有把4个结果取平均，而是单独输出，所以还需要自己计算下。计算后的结果：</strong></p>
-<p>mse:0.576475；mae:0.5523</p>
+<p><strong>上面的结果有问题，因为是预测4个不同步长的结果，然后取平均，但是代码没有把4个结果取平均，而是单独输出，所以还需要自己计算下。计算后的结果：</strong><br>mse:0.576475；mae:0.5523</p>
+<hr>
+<p>后面又重新测试了下，发现mse和mae都变小了，这个把代码给贴上来，防止后面出现变化。</p>
+<p>平均结果<br>mse: 0.5123112127184867825; mae: 0.5089017152786254875</p>
+<pre class="line-numbers language-none"><code class="language-none">export CUDA_VISIBLE_DEVICES=0
+model_name=timer
+token_num=7
+token_len=672
+# seq_len=$[$token_num*$token_len]
+seq_len=$((token_num * token_len))
+# training one model with a context length
+# python -u run.py \
+#   --task_name singlegpuforecast \
+#   --is_training 1 \
+#   --root_path ./dataset/ETT-small/ \
+#   --data_path ETTh1.csv \
+#   --model_id ETTh1 \
+#   --model $model_name \
+#   --data MultivariateDatasetBenchmark  \
+#   --seq_len $seq_len \
+#   --input_token_len $token_len \
+#   --output_token_len $token_len \
+#   --test_seq_len $seq_len \
+#   --test_pred_len 96 \
+#   --batch_size 32 \
+#   --learning_rate 0.0001 \
+#   --train_epochs 10 \
+#   --d_model 1024 \
+#   --d_ff 2048 \
+#   --gpu 0 \
+#   --lradj type1 \
+#   --use_norm \
+#   --e_layers 1 \
+#   --valid_last
+
+# testing the model on all forecast lengths
+for test_pred_len in 96 192 336 720
+do
+python -u run.py \
+  --task_name singlegpuforecast \
+  --is_training 0 \
+  --root_path ./dataset/ETT-small/ \
+  --data_path ETTh1.csv \
+  --model_id ETTh1 \
+  --model $model_name \
+  --data MultivariateDatasetBenchmark  \
+  --seq_len $seq_len \
+  --input_token_len $token_len \
+  --output_token_len $token_len \
+  --test_seq_len $seq_len \
+  --test_pred_len $test_pred_len \
+  --batch_size 32 \
+  --learning_rate 0.0001 \
+  --train_epochs 10 \
+  --d_model 1024 \
+  --d_ff 2048 \
+  --gpu 0 \
+  --lradj type1 \
+  --use_norm \
+  --e_layers 1 \
+  --valid_last \
+  --test_dir singlegpuforecast_ETTh1_timer_MultivariateDatasetBenchmark_sl4704_it672_ot672_lr0.0001_bt32_wd0_el1_dm1024_dff2048_nh8_cosFalse_test_0
+done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="输入672步长，输出96。数据集ECL"><a href="#输入672步长，输出96。数据集ECL" class="headerlink" title="输入672步长，输出96。数据集ECL"></a>输入672步长，输出96。数据集ECL</h4><p>论文结果：mse:0.155, mae:0.246</p>
 <p><del>复现结果：mse:0.17138800024986267, mae:0.27118179202079773</del></p>
 <p><strong>4个长度的预测结果</strong>：<br>mse:0.14015242457389832, mae:0.24011272192001343</p>
@@ -1223,6 +1284,30 @@ mjx-container[display="true"] + br {
 <h2 id="Conclusion-4"><a href="#Conclusion-4" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
 <h2 id="Notes-optional-4"><a href="#Notes-optional-4" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h2><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
 <h2 id="References-optional-4"><a href="#References-optional-4" class="headerlink" title="References(optional)"></a>References(optional)</h2><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
+<h1 id="待整理的问题（主要是关于时序异常检测相关的东西）"><a href="#待整理的问题（主要是关于时序异常检测相关的东西）" class="headerlink" title="待整理的问题（主要是关于时序异常检测相关的东西）"></a>待整理的问题（主要是关于时序异常检测相关的东西）</h1><p>时序内容总结：</p>
+<ol>
+<li>复现模型，效果很差。<br>原文：<br>作者：john<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/1302007972/answer/22655276244">https://www.zhihu.com/question/1302007972/answer/22655276244</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</li>
+</ol>
+<p>手头工作需要复现patchtst，所以对他的代码做了重建，结论是：这都什么鬼。。。如果说patchtst还算效果不错，那么其他xxformer简直就是xxx引子是一个本源的问题：transformer effective in TS？patchtst的作者给出答案是正面的，可是我想说，patchtst的模型设定，本质也就是个linear模型，transformer几乎没贡献。来看看patchtst的几个dataset，weather,traffic,illness,exchange_reate,electricity,ett-small。除了个别频率到了30分钟和15分钟，其他都是1hour。patch length是16（supervised，with stride=8） /12(self-supervised，with stride=12)，所以作者认为数据集里面日内的波动都不重要？不需要用transformer来model？CV里面有一开始就用整个图片一半大小的卷积核来提取特征的吗？还是nlp里直接将文章段落tokenize？OK你说重点是model日间的波动和趋势，那为什么要用小时频率的数据，而不是降频使用每日的数据？一旦用每日数据，look-back window在相同input length情况下岂不是可以更长？所以patchtst，以及其他ts领域xxformer关于缩短input 序列长度的努力可能都有问题。用高频数据但是很大的patch size和stride，等于将高频波动交给了linear（或者卷积），对于日期级别的数据而言input length可能又不够patchtst还有一个创新，channel independent，这个我觉得就是偷懒。以traffic数据集为例，北京东三环的交通流量，跟西北五环的交通流量，能有什么关联？各个路口之间其实更多是一种graph的关系，稍微用点图神经网络的先验知识也能得到更好的建模结果吧？总结：transformer在ts的研究还很粗糙，虽然有端到端的需求，但是任何先验知识都不利用的建模，很可能得到跟linear差不多的结果补充吐槽一句：xxformer 的作者们受国外zzzq那套东西影响，学术也这么搞，根本不管时序的固有特征，只是琢磨：transformer如何处理更长序列，transformer如何节约显存，如何减少训练时间。。。调个sota 发顶会，名利皆丰</p>
+<p>评论1：<br>这一系列最恶心的是，评价指标都是在标准化的结果上测的，都没有还原回来</p>
+<p>这一系列工作，最大的亮点就是归一化了评价指标，大家对比mse，mae就好了，要画图的话分分钟露馅</p>
+<p>原来你们早就发现了，实际业务落地，moving average is all you need</p>
+<p>预测跟ground truth对比环节，到了复杂时间序列的部分，画个图一看，xxxformer就是lag 1输出，大亮[捂脸] MSE MAE这些指标能不是最优的嘛 直接成朴素预测法了</p>
+<p>评论2：<br>patchtst效果好的原因是因为时间序列里每个点之间基本没啥关系，而且噪音很大，注意力机制很难提取到东西，或者说注意力的噪音比收益大。patchtst加上patch操作以后自注意力机制变成了1D卷积，所以效果好。事实证明时间序列数据太过简单，但根据点的值完全无法提取信息，有的注意力机制可以提取是因为他们是面向位置的注意力而不是面向变量值的注意力。</p>
+<ol>
+<li>时序任务的本质<br>“和图像、语言相比，时间序列不是一种数据类型，而是一种数据格式”</li>
+</ol>
+<p>意思是说不同领域的时序数据的特性可能完全不相同，只不过统一在时序这个格式下？</p>
+<p>而且因为时序数据的在不同领域的巨大鸿沟，导致不能形成有效的统一预测大模型，原始数据必须经过挖掘</p>
+<p>3.时序预测不要进入</p>
+<p>强烈不建议有志之士进入时序预测领域，几乎所有的时序预测方法和paper都是伪科学，已有方法work前提条件往往要求系统趋于稳态可控，但这往往与实际不符，反过来看，如果已知系统趋于稳态了，写规则或者任意xx网络 都可以work。[赞同]</p>
+<p>4.<br>LTSF的根本问题<br>有没有发现，所有LTSF文章，它的任务范围是超级通用的，气候、交通、能源、心电信号、汇率这些领域，都在暗示它有用。然而，这几个任务是不同的，气候和心电明显是确定性动力系统，而汇率是随机动力系统，甚至到了random walk的地步（知乎上有大佬介绍了Bergmeir的批评），这要求你的模型，既能搞确定性动力系统，又能搞随机动力系统，甚至还要对付non-stationarity，out-of-distribution。</p>
+<p>当然，在现实世界数据中，难以预测的数据经常三样都粘：比如陷入一个局部混沌的区域，一些随机的known unknowns，和一些直接改变分布的冲击（真正的unknown unknowns），可能都会发生。所以，这个超级通用的任务设定，我姑且认为勉强合理。</p>
+<p>但是！给这些LTSF模型的任务又是超级困难的。当我们用绩点，GPA来考核学生的时候，“绩点”这两个字就已经默认了这个学生是大学生；当你用MSE考核预测的时候，你默认的东西可太多了：</p>
+<p>默认1：每个点都是可预测的（真正的pointwise predictability）。很多人喜欢预测的股价，和Bergmeir大佬批评的exchange rate 这个数据集都很类似random walk。random walk你可以算期望，方差，但是下一个点你是预测不了的，唯一能做的就是用上一个点预测下一个点。我看有评论区说某某former都是用昨天的价格预测明天的价格，嗯，会不会是你喂了太随机的数据呢？很可能人家收敛到了最合理的策略，反而说明了这模型是真的有东西。另外，混沌系统是没法预测的，最著名的就是蝴蝶效应的Lorenz系统，他的每一步的轨迹永不相交也永不重复，不但长期预测是根本不可能，短期预测的话每一步数据提供给你的信息都不带重样的。那什么东西可以用MSE预测？最简单的，比如说统计/计量101教的回归：线性DGP(data generating process，数据生成机制）加上一个独立常方差高斯噪声（aka Homoscedasticity / 同方差性，逆天的幽默经济术语，说人话叫 Constant variance Gaussian noise）。这种情况下 MIN MSE = MAX MLE，用线性回归测的就是最优线性无偏估计量（Best Linear Unbiased Estimator）。<br>默认2：我只在乎每个点的表现。早一点，晚一点，都不行，错就是错。如果实际数据是[1,2,3,…10]，而我预测的是[2,3,4,5…11]，评委不会考虑我结构上的正确性，只是看到每个点你都错了。但其实，我们真的需要那么准确么？股票的话，我看个大概趋势不行么？我的趋势错开了一段时间，算是真的错了吗？但是用MSE/MAE就意味着，这些都不重要，就是那么自信。这是用MSE/MAE来评判（evaluate）的问题。用它来做训练目标（training objective)那问题就更多了，最基本的，用MSE 训练代表要匹配条件概率的期望(expectation of conditional probability)，意思是只要平均对了，剩下的无所谓。如果实际数据是[0,0,0]的话，预测[1,3,5]和[5,3,1]都是错，但是人类看来是有区别的吧？正负值很重要吧，尤其是炒股票的，[-1,3,-5]是不是又不一样了？<br>我们经常说能力越大，责任越大，拿transformer去测时序，它的灵活性和表现能力(expressiveness）比线性回归强多了。进去一团点云，因为模型的灵活性，出来也很可能是一团点云。如果数据是上上下下，很可能灵活的模型就会拙劣的模仿，（如果是train with MSE, eval with MSE的情况下），最后给你一团平均正确的点云就完事了。归根结底，这其实是模型能力和任务的不匹配，太灵活的模型碰上太随机的数据。</p>
+<p>一个感想：</p>
+<p>作为研究者，别去卷那几个benchmark。我个人建议，找一个简单的混沌系统去测验，为什么呢，因为（1）难度很大（真正长距离预测是不可能的，但是短期能测试模型性能）。（2）你知道每个数字的真正答案。统计学一个重要的法则，就是凡事先“play with toy set”，先在已知的数学结构上做实验，看看你这个模型能不能达标。记得别搞什么normalization。（3）所谓的“真实世界”数据集，很大程度上退化成了模拟器比赛，谁能模拟真实轨迹的平均数谁厉害，但是你并不知道“真实世界”的内在机制。只要模型在benchmark和PatchTST或者以上的模型打的有来有回，我觉得就不差了。很多人（比如曾经的我）怎么也跑不出来那种工整的sota，什么全数据，全长度，把baseline按在地上打，然后误以为自己的模型不行。另外，像weather这种数据集，偷偷藏了个-9999，不是知乎上有人提醒我都不知道，能跑的过DLinear才有鬼了。</p>
+<p>结论：时间序列预测的极限远未触及，但突破的关键可能在于我们先要打破自己设定的思维牢笼——那些看似通用实则矛盾的评估标准和验证方式。</p>
 
                 
             </div>
@@ -1523,9 +1608,9 @@ mjx-container[display="true"] + br {
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="ai">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="AI">
                         
-                        <span class="card-title">ai</span>
+                        <span class="card-title">AI</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1553,8 +1638,8 @@ mjx-container[display="true"] + br {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98/">
-                        <span class="chip bg-color">深度学习代码问题</span>
+                    <a href="/tags/SGD/">
+                        <span class="chip bg-color">SGD</span>
                     </a>
                     
                 </div>
@@ -1758,7 +1843,7 @@ mjx-container[display="true"] + br {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">260.2k</span>
+                        class="white-color">264.2k</span>
             
             
             

@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <meta name="keywords" content="DDP, Home of Gaofeng">
     <meta name="description" content="基础概念forward（前向传递）：输入数据，得到输出的过程。backward(后向传递)：根据输出结果，计算参数梯度的过程。
-DP和DDPDP训练原理网络在前向传播时会将 model 从主卡 (默认是逻辑 0 卡) broadcast 到">
+分布式训练技术
+Data Parallelism (数据并行)
+Naive: 每个worker存储一份model">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -33,10 +35,7 @@ DP和DDPDP训练原理网络在前向传播时会将 model 从主卡 (默认是�
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -148,7 +147,10 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head>
+</style>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -580,14 +582,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.6k
+                    5.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    21 分
                 </div>
                 
 
@@ -611,6 +613,23 @@ mjx-container[display="true"] + br {
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><p>forward（前向传递）：输入数据，得到输出的过程。<br>backward(后向传递)：根据输出结果，计算参数梯度的过程。</p>
+<h2 id="分布式训练技术"><a href="#分布式训练技术" class="headerlink" title="分布式训练技术"></a>分布式训练技术</h2><ul>
+<li><strong>Data Parallelism</strong> (数据并行)<ul>
+<li>Naive: 每个worker存储一份model和optimizer，每轮迭代时，将样本分为若干份分发给各个worker，实现并行计算.</li>
+<li>ZeRO: Zero Redundancy Optimizer，微软提出的数据并行内存优化技术，核心思想是保持Naive数据并行通信效率的同时，尽可能降低内存占用。</li>
+</ul>
+</li>
+<li><strong>Model/Pipeline Parallelism</strong> (模型并行)<ul>
+<li>GPipe：小批量流水线方式的纵向切割模型并行</li>
+<li>Megatron-LM：Tensor-slicing方式的模型并行加速</li>
+</ul>
+</li>
+<li><strong>Non-parallelism approach</strong> (非并行技术)<ul>
+<li>Gradient Accumulation: 通过梯度累加的方式解决显存不足的问题，常用于模型较大，单卡只能塞下很小的batch的并行训练中</li>
+<li>CPU Offload: 同时利用 CPU 和 GPU 内存来训练大型模型，即存在GPU-CPU-GPU的 transfers操作</li>
+</ul>
+</li>
+</ul>
 <h1 id="DP和DDP"><a href="#DP和DDP" class="headerlink" title="DP和DDP"></a>DP和DDP</h1><h2 id="DP训练原理"><a href="#DP训练原理" class="headerlink" title="DP训练原理"></a>DP训练原理</h2><p>网络在前向传播时会将 model 从主卡 (默认是逻辑 0 卡) broadcast 到所有 device 上，input data 会在 batch 这个维度被分组后 scatter 到不同的 device 上进行前向计算，计算完毕后网络的输出被 gather 到主卡上，loss 随后在主卡上被计算出来 (这也是为什么主卡负载更大的原因，loss 每次都会在主卡上计算，这就造成主卡负载远大于其他显卡)。在反向传播时，loss 会被 scatter 到每个 device 上，每个卡各自进行反向传播计算梯度，然后梯度会被 reduce 到主卡上 (i.e. 求得各个 device 的梯度之和，然后按照 batch_size 大小求得梯度均值)，再用反向传播在主卡上更新模型参数，最后将更新后的模型参数 broadcast 到其余 GPU 中进行下一轮的前向传播，以此来实现并行。</p>
 <h2 id="DP缺陷"><a href="#DP缺陷" class="headerlink" title="DP缺陷"></a>DP缺陷</h2><p>DataParallel 复制一个网络到多个 cuda 设备，然后再 split 一个 batch 的 data 到多个 cuda 设备，通过这种并行计算的方式解决了 batch 很大的问题，但也有自身的不足：</p>
 <ul>
@@ -624,7 +643,118 @@ mjx-container[display="true"] + br {
 <li><strong>DDP 的训练更高效</strong>，不存在 DP 中负载不均衡的问题。DDP 中每个 GPU 直接处理 mini-batch 数据，不需要由主卡分发；每个 GPU 独立进行参数更新，不需要由主卡 broadcast 模型参数；每个 GPU 独立计算 loss，不需要汇聚到主卡计算。</li>
 <li><strong>DDP 支持模型并行</strong></li>
 </ul>
-<h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><p>作者：小志哥<br>链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/178402798">https://zhuanlan.zhihu.com/p/178402798</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h2 id="DDP如何保证梯度同步"><a href="#DDP如何保证梯度同步" class="headerlink" title="DDP如何保证梯度同步"></a>DDP如何保证梯度同步</h2><p>DDP通过”All-Reduce”确保所有参与进程（GPU）都获得相同的结果。通常不需要手动编写All-Reduce代码。当你使DistributedDataParallel包装模型后，梯度同步是自动完成的。</p>
+<h2 id="DDP中，不同卡上验证集loss不同如何处理"><a href="#DDP中，不同卡上验证集loss不同如何处理" class="headerlink" title="DDP中，不同卡上验证集loss不同如何处理"></a>DDP中，不同卡上验证集loss不同如何处理</h2><p>对于验证集，正确的做法是​<strong>​计算整个验证集的总Loss或平均Loss</strong>。使用all_reduce同步，在每个GPU计算完自己那部分数据的Loss之和后，使用 all_reduce将这些局部Loss求和值进行全局汇总，然后除以全局总样本数得到平均Loss。<strong>如果不汇总处理，可能会出现某张卡loss升高（早停+1），某张卡loss下降的情况，甚至卡住。</strong></p>
+<p>要实现这一步，最关键的代码是<code>dist.all_reduce(total_loss, op=dist.ReduceOp.SUM)</code></p>
+<p>如果采用dist.reduce，则有可能出现卡住的情况。</p>
+<p>dist.reduce(total_loss, dst=0, op=dist.ReduceOp.SUM)意味着只有 ​​Rank 0​​ 这个进程会得到所有进程损失求和后的正确结果。而​​其他进程（例如 Rank 1, 2, 3）上的 total_loss变量在操作之后并没有被更新为全局求和的值​​，它们仍然保持着自己原始的、局部的损失值</p>
+<p>下面给一个验证集的代码供参考：</p>
+<pre class="line-numbers language-none"><code class="language-none">def vali(self, vali_data, vali_loader, criterion, is_test=False):
+    total_loss = []
+    total_count = []
+    time_now = time.time()
+    test_steps = len(vali_loader)
+    iter_count = 0
+    
+    self.model.eval()    
+    with torch.no_grad():
+        for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in enumerate(vali_loader):
+            iter_count += 1
+            batch_x = batch_x.float().to(self.device)
+            batch_y = batch_y.float()
+            batch_x_mark = batch_x_mark.float().to(self.device)
+            batch_y_mark = batch_y_mark.float().to(self.device)
+            
+            # outputs = self.model(batch_x, batch_x_mark, batch_y_mark)
+            # 关键修改1：验证时使用 model.module，避免DDP内部通信
+            if self.args.ddp:
+                outputs = self.model.module(batch_x, batch_x_mark, batch_y_mark)  # 使用 .module
+            else:
+                outputs = self.model(batch_x, batch_x_mark, batch_y_mark)
+
+            if is_test or self.args.nonautoregressive:
+                    outputs = outputs[:, -self.args.output_token_len:, :]
+                    batch_y = batch_y[:, -self.args.output_token_len:, :].to(self.device)
+            else:
+                outputs = outputs[:, :, :]
+                batch_y = batch_y[:, :, :].to(self.device)
+            if self.args.covariate:
+                if self.args.last_token:
+                    outputs = outputs[:, -self.args.output_token_len:, -1]
+                    batch_y = batch_y[:, -self.args.output_token_len:, -1]
+                else:
+                    outputs = outputs[:, :, -1]
+                    batch_y = batch_y[:, :, -1]
+                   
+            
+            loss = criterion(outputs, batch_y)
+
+            loss = loss.detach().cpu()
+            total_loss.append(loss)
+            total_count.append(batch_x.shape[0])
+            if (i + 1) % 100 == 0:
+                if (self.args.ddp and self.args.local_rank == 0) or not self.args.ddp:
+                    speed = (time.time() - time_now) / iter_count
+                    left_time = speed * (test_steps - i)
+                    print("\titers: {}, speed: {:.4f}s/iter, left time: {:.4f}s".format(i + 1, speed, left_time))
+                    iter_count = 0
+                    time_now = time.time()
+    if self.args.ddp:
+        total_loss = torch.tensor(np.average(total_loss, weights=total_count)).to(self.device)
+        dist.barrier()
+        # dist.reduce(total_loss, dst=0, op=dist.ReduceOp.SUM)
+        dist.all_reduce(total_loss, op=dist.ReduceOp.SUM)
+        total_loss = total_loss.item() / dist.get_world_size()
+    else:
+        total_loss = np.average(total_loss, weights=total_count)
+        
+    if self.args.model == 'gpt4ts':
+        # GPT4TS just requires to train partial layers
+        self.model.in_layer.train()
+        self.model.out_layer.train()
+    else: 
+        self.model.train()
+        
+    return total_loss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="DDP训练时间变慢、训练效果变差"><a href="#DDP训练时间变慢、训练效果变差" class="headerlink" title="DDP训练时间变慢、训练效果变差"></a>DDP训练时间变慢、训练效果变差</h1><p>这里的变慢和变差是针对单GPU训练来说。</p>
+<h2 id="训练时间变慢"><a href="#训练时间变慢" class="headerlink" title="训练时间变慢"></a>训练时间变慢</h2><p>原链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/710265518">https://zhuanlan.zhihu.com/p/710265518</a></p>
+<p>有两种可能。</p>
+<h3 id="某张-多张卡有程序占用"><a href="#某张-多张卡有程序占用" class="headerlink" title="某张/多张卡有程序占用"></a>某张/多张卡有程序占用</h3><p>因为ddp每个epoch都需要同步，如果有一张卡因为有别的程序占用跑得慢，那么别的卡也要等它，就导致整体变慢。解决办法就是找个没有程序占用的显卡。下面是我的一个实验记录。</p>
+<ul>
+<li>单一GPU：<ul>
+<li>Epoch: 1 cost time:       2.8094277381896973</li>
+<li>Epoch: 2 cost time: 1.6581542491912842</li>
+<li>Epoch: 3 cost time: 2.0224006175994873</li>
+<li>Epoch: 4 cost time: 1.5787155628204346</li>
+<li>平均用时：</li>
+</ul>
+</li>
+<li>两个节点有个节点有程序占用：<ul>
+<li>Epoch: 1 cost time: 16.403035879135132</li>
+<li>Epoch: 2 cost time: 13.876952886581421</li>
+<li>Epoch: 3 cost time: 13.925655841827393</li>
+<li>Epoch: 4 cost time: 14.027090549468994</li>
+<li>Epoch: 5 cost time: 14.02741527557373</li>
+</ul>
+</li>
+<li>两个节点均空闲：<ul>
+<li>Epoch: 1 cost time: 4.169334888458252</li>
+<li>Epoch: 2 cost time: 1.9797673225402832</li>
+<li>Epoch: 3 cost time: 1.9697625637054443</li>
+<li>Epoch: 4 cost time: 2.0179057121276855</li>
+<li>Epoch: 5 cost time: 1.9602136611938477</li>
+</ul>
+</li>
+</ul>
+<p>这里只有4或5个epoch，是因为早停。</p>
+<h3 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h3><p>跨组调用GPU可能会带来较大的延迟。一般来说并不是一个服务器上面卡的传输效率一样，实际上如果是一般的单CPU，4卡台式机，确实差别不会很明显。因为所有的显卡都在一个PCIe桥或者直连CPU。但是如果是八卡服务器，一般是带两个CPU的。八张卡会分为两组：0，1，2，3GPU在CPU0；4，5，6，7在CPU1。</p>
+<p>提高通信的方法可以使用NVLink，在显卡间搭建了直连通道，数据不需要走PCIe就能直接在卡间传输。并且带宽、延迟、速度都显著超过走PCIe。</p>
+<h2 id="训练效果变差"><a href="#训练效果变差" class="headerlink" title="训练效果变差"></a>训练效果变差</h2><p>从单gpu变为DDP训练，为了保证优化过程相同，batch_size或者学习率是需要进行调整的。</p>
+<p>先说batch_size</p>
+<h3 id="batch-size的调整"><a href="#batch-size的调整" class="headerlink" title="batch_size的调整"></a>batch_size的调整</h3><p>在单gpu上面，假设batch_size是8（假设为B）。现在使用DDP，假设有N张卡，那么每张卡上面的batch_size也是B，然后聚合梯度，并计算平均值，一共有N张卡，那么也就是B<em>N个，实际有效batch_size变为了B</em>N，扩大了N倍。如果要让DDP和单GPU一样，应该要减小batch_size，变为B/N。</p>
+<p><strong>但是GPU在处理大batch_size的时候效率会更高，为了以最佳的方式使用GPU，我们仍然希望GPU一次性处理B个batch_size。那么就进入第二个问题，学习率</strong>。</p>
+<h3 id="学习率的调整"><a href="#学习率的调整" class="headerlink" title="学习率的调整"></a>学习率的调整</h3><p>因为batch_size增大了N倍，权重更新减少了N倍。每步都是B*N。缩放方法可以参考论文《Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour》里面提到的线性缩放。<del>新的学习率=sqrt(N)/lr。还要注意，这种情况下，如果模型使用了batch norm，应该禁止batch norm。</del></p>
+<h2 id="训练效果变差-1"><a href="#训练效果变差-1" class="headerlink" title="训练效果变差"></a>训练效果变差</h2><h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><p>作者：小志哥<br>链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/178402798">https://zhuanlan.zhihu.com/p/178402798</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <h2 id="一个简单的DDP代码"><a href="#一个简单的DDP代码" class="headerlink" title="一个简单的DDP代码"></a>一个简单的DDP代码</h2><pre class="line-numbers language-none"><code class="language-none">作者：小志哥
 链接：https://zhuanlan.zhihu.com/p/178402798
 来源：知乎
@@ -903,96 +1033,6 @@ for epoch in iterator:
     # 2. 只需要在进程0上保存一次就行了，避免多次保存重复的东西。
     if dist.get_rank() == 0:
         torch.save(model.module.state_dict(), "%d.ckpt" % epoch)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<h2 id="DDP如何保证梯度同步"><a href="#DDP如何保证梯度同步" class="headerlink" title="DDP如何保证梯度同步"></a>DDP如何保证梯度同步</h2><p>DDP通过”All-Reduce”确保所有参与进程（GPU）都获得相同的结果。通常不需要手动编写All-Reduce代码。当你使DistributedDataParallel包装模型后，梯度同步是自动完成的。</p>
-<h2 id="DDP中，不同卡上验证集loss不同如何处理"><a href="#DDP中，不同卡上验证集loss不同如何处理" class="headerlink" title="DDP中，不同卡上验证集loss不同如何处理"></a>DDP中，不同卡上验证集loss不同如何处理</h2><p>对于验证集，正确的做法是​<strong>​计算整个验证集的总Loss或平均Loss</strong>。使用all_reduce同步，在每个GPU计算完自己那部分数据的Loss之和后，使用 all_reduce将这些局部Loss求和值进行全局汇总，然后除以全局总样本数得到平均Loss。<strong>如果不汇总处理，可能会出现某张卡loss升高（早停+1），某张卡loss下降的情况，甚至卡住。</strong></p>
-<p>要实现这一步，最关键的代码是<code>dist.all_reduce(total_loss, op=dist.ReduceOp.SUM)</code></p>
-<p>如果采用dist.reduce，则有可能出现卡住的情况。</p>
-<p>dist.reduce(total_loss, dst=0, op=dist.ReduceOp.SUM)意味着只有 ​​Rank 0​​ 这个进程会得到所有进程损失求和后的正确结果。而​​其他进程（例如 Rank 1, 2, 3）上的 total_loss变量在操作之后并没有被更新为全局求和的值​​，它们仍然保持着自己原始的、局部的损失值</p>
-<p>下面给一个验证集的代码供参考：</p>
-<pre class="line-numbers language-none"><code class="language-none">def vali(self, vali_data, vali_loader, criterion, is_test=False):
-    total_loss = []
-    total_count = []
-    time_now = time.time()
-    test_steps = len(vali_loader)
-    iter_count = 0
-    
-    self.model.eval()    
-    with torch.no_grad():
-        for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in enumerate(vali_loader):
-            iter_count += 1
-            batch_x = batch_x.float().to(self.device)
-            batch_y = batch_y.float()
-            batch_x_mark = batch_x_mark.float().to(self.device)
-            batch_y_mark = batch_y_mark.float().to(self.device)
-            
-            # outputs = self.model(batch_x, batch_x_mark, batch_y_mark)
-            # 关键修改1：验证时使用 model.module，避免DDP内部通信
-            if self.args.ddp:
-                outputs = self.model.module(batch_x, batch_x_mark, batch_y_mark)  # 使用 .module
-            else:
-                outputs = self.model(batch_x, batch_x_mark, batch_y_mark)
-
-            if is_test or self.args.nonautoregressive:
-                    outputs = outputs[:, -self.args.output_token_len:, :]
-                    batch_y = batch_y[:, -self.args.output_token_len:, :].to(self.device)
-            else:
-                outputs = outputs[:, :, :]
-                batch_y = batch_y[:, :, :].to(self.device)
-            if self.args.covariate:
-                if self.args.last_token:
-                    outputs = outputs[:, -self.args.output_token_len:, -1]
-                    batch_y = batch_y[:, -self.args.output_token_len:, -1]
-                else:
-                    outputs = outputs[:, :, -1]
-                    batch_y = batch_y[:, :, -1]
-                   
-            
-            loss = criterion(outputs, batch_y)
-
-            loss = loss.detach().cpu()
-            total_loss.append(loss)
-            total_count.append(batch_x.shape[0])
-            if (i + 1) % 100 == 0:
-                if (self.args.ddp and self.args.local_rank == 0) or not self.args.ddp:
-                    speed = (time.time() - time_now) / iter_count
-                    left_time = speed * (test_steps - i)
-                    print("\titers: {}, speed: {:.4f}s/iter, left time: {:.4f}s".format(i + 1, speed, left_time))
-                    iter_count = 0
-                    time_now = time.time()
-    if self.args.ddp:
-        total_loss = torch.tensor(np.average(total_loss, weights=total_count)).to(self.device)
-        dist.barrier()
-        # dist.reduce(total_loss, dst=0, op=dist.ReduceOp.SUM)
-        dist.all_reduce(total_loss, op=dist.ReduceOp.SUM)
-        total_loss = total_loss.item() / dist.get_world_size()
-    else:
-        total_loss = np.average(total_loss, weights=total_count)
-        
-    if self.args.model == 'gpt4ts':
-        # GPT4TS just requires to train partial layers
-        self.model.in_layer.train()
-        self.model.out_layer.train()
-    else: 
-        self.model.train()
-        
-    return total_loss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="分布式训练技术"><a href="#分布式训练技术" class="headerlink" title="分布式训练技术"></a>分布式训练技术</h2><ul>
-<li><strong>Data Parallelism</strong> (数据并行)<ul>
-<li>Naive: 每个worker存储一份model和optimizer，每轮迭代时，将样本分为若干份分发给各个worker，实现并行计算.</li>
-<li>ZeRO: Zero Redundancy Optimizer，微软提出的数据并行内存优化技术，核心思想是保持Naive数据并行通信效率的同时，尽可能降低内存占用。</li>
-</ul>
-</li>
-<li><strong>Model/Pipeline Parallelism</strong> (模型并行)<ul>
-<li>GPipe：小批量流水线方式的纵向切割模型并行</li>
-<li>Megatron-LM：Tensor-slicing方式的模型并行加速</li>
-</ul>
-</li>
-<li><strong>Non-parallelism approach</strong> (非并行技术)<ul>
-<li>Gradient Accumulation: 通过梯度累加的方式解决显存不足的问题，常用于模型较大，单卡只能塞下很小的batch的并行训练中</li>
-<li>CPU Offload: 同时利用 CPU 和 GPU 内存来训练大型模型，即存在GPU-CPU-GPU的 transfers操作</li>
-</ul>
-</li>
-</ul>
 
                 
             </div>
@@ -1236,13 +1276,13 @@ for epoch in iterator:
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/e4b54c38/">
+                <a href="/posts/61e48afb/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Seed">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="深度学习环境配置">
                         
-                        <span class="card-title">Seed</span>
+                        <span class="card-title">深度学习环境配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1253,7 +1293,7 @@ for epoch in iterator:
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-10-22
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-10-23
                         </span>
                         <span class="publish-author">
                             
@@ -1270,8 +1310,16 @@ for epoch in iterator:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9A%8F%E6%9C%BA%E7%A7%8D%E5%AD%90/">
-                        <span class="chip bg-color">随机种子</span>
+                    <a href="/tags/CUDA/">
+                        <span class="chip bg-color">CUDA</span>
+                    </a>
+                    
+                    <a href="/tags/CUDNN/">
+                        <span class="chip bg-color">CUDNN</span>
+                    </a>
+                    
+                    <a href="/tags/Pytorch/">
+                        <span class="chip bg-color">Pytorch</span>
                     </a>
                     
                 </div>
@@ -1524,7 +1572,7 @@ for epoch in iterator:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">260.2k</span>
+                        class="white-color">264.2k</span>
             
             
             

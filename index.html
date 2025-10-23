@@ -32,10 +32,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -147,7 +144,10 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head>
+</style>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -668,26 +668,26 @@ mjx-container[display="true"] + br {
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/posts/e4b54c38/">
+                    <a href="/posts/56f17847/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Seed">
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="DataProcess">
                             
-                            <span class="card-title">Seed</span>
+                            <span class="card-title">DataProcess</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                随机种子概念random.seed()函数使用给定值初始化随机数生成器。种子被赋予一个整数值，以确保伪随机生成的结果是可重现的。每次生成的随机数序列将是确定性的，这意味着可以在不同的运行中获得相同的随机数序列，从而使实验可复现。
-在Pyth
+                                dataloader解析简单例子总结：对于一般的数据来说，我们把数据量放在第0维，例如[300,3,32,32]。300张3通道，高宽为32的图片。如果batch_size为16，那么每次读取的数据为[300,3,32,32]
+假设我们有一
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-10-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-10-23
                             </span>
                             <span class="publish-author">
                                 
@@ -705,8 +705,70 @@ mjx-container[display="true"] + br {
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E9%9A%8F%E6%9C%BA%E7%A7%8D%E5%AD%90/">
-                            <span class="chip bg-color">随机种子</span>
+                        <a href="/tags/DataLoader/">
+                            <span class="chip bg-color">DataLoader</span>
+                        </a>
+                        
+                        <a href="/tags/Random-Seed/">
+                            <span class="chip bg-color">Random Seed</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/61e48afb/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="深度学习环境配置">
+                            
+                            <span class="card-title">深度学习环境配置</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                CUDA、CUDNN相关的内容一般来说，如果要使用CUDA，一共需要安装3个东西Nvidia驱动、CUDA、CUDNN。
+CUDA看作是一个工作台，上面配有很多工具，如锤子、螺丝刀等。cuDNN是基于CUDA的深度学习GPU加速库，有了它才
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-10-23
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/AI/" class="post-category">
+                                    AI
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/CUDA/">
+                            <span class="chip bg-color">CUDA</span>
+                        </a>
+                        
+                        <a href="/tags/CUDNN/">
+                            <span class="chip bg-color">CUDNN</span>
+                        </a>
+                        
+                        <a href="/tags/Pytorch/">
+                            <span class="chip bg-color">Pytorch</span>
                         </a>
                         
                     </div>
@@ -732,7 +794,9 @@ mjx-container[display="true"] + br {
                         <div class="summary block-with-text">
                             
                                 基础概念forward（前向传递）：输入数据，得到输出的过程。backward(后向传递)：根据输出结果，计算参数梯度的过程。
-DP和DDPDP训练原理网络在前向传播时会将 model 从主卡 (默认是逻辑 0 卡) broadcast 到
+分布式训练技术
+Data Parallelism (数据并行)
+Naive: 每个worker存储一份model
                             
                         </div>
                         <div class="publish-info">
@@ -1277,55 +1341,6 @@ KPI异常检测技术框架KP
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/posts/7d96b074/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="DroneAD">
-                            
-                            <span class="card-title">DroneAD</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Motor Anomaly Detection for Unmanned Aerial Vehicles Using Reinforcement LearningSummary（写完笔记之后最后填，概述文章的内容，以后查阅笔记的时候先看这一
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-09-05
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Drone/" class="post-category">
-                                    Drone
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Anomaly-Detection/">
-                            <span class="chip bg-color">Anomaly Detection</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
                     <a href="/posts/27c9adf4/">
                         <div class="card-image">
                             
@@ -1364,6 +1379,55 @@ KPI异常检测技术框架KP
                         
                         <a href="/tags/Dataset/">
                             <span class="chip bg-color">Dataset</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/7d96b074/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="DroneAD">
+                            
+                            <span class="card-title">DroneAD</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Motor Anomaly Detection for Unmanned Aerial Vehicles Using Reinforcement LearningSummary（写完笔记之后最后填，概述文章的内容，以后查阅笔记的时候先看这一
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-09-05
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Drone/" class="post-category">
+                                    Drone
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Anomaly-Detection/">
+                            <span class="chip bg-color">Anomaly Detection</span>
                         </a>
                         
                     </div>
@@ -1433,53 +1497,6 @@ KPI异常检测技术框架KP
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/posts/c9a2a716/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="HTTPS">
-                            
-                            <span class="card-title">HTTPS</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-07-26
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
-                                    计算机基础知识
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                            <span class="chip bg-color">计算机网络</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
                     <a href="/posts/27ba7163/">
                         <div class="card-image">
                             
@@ -1531,35 +1548,30 @@ KPI异常检测技术框架KP
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/posts/a409708a/">
+                    <a href="/posts/c9a2a716/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="NAS实现IPv6和IPv4双栈访问.md">
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="HTTPS">
                             
-                            <span class="card-title">NAS实现IPv6和IPv4双栈访问.md</span>
+                            <span class="card-title">HTTPS</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                默认情况下IPv4是可以直接访问的，所以我们先打开IPv6的访问功能
-打开IPv6访问功能光猫改桥接我是移动的光猫，移动的登录网址在光猫后面。
-
-但是修改网络设置，是需要超级管理员的账号和密码，光猫后面那个只是普通用户。网上有教程可以获取超
-                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-07-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-07-26
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/NAS/" class="post-category">
-                                    NAS
+                                <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    计算机基础知识
                                 </a>
                                 
                                 
@@ -1567,6 +1579,14 @@ KPI异常检测技术框架KP
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                            <span class="chip bg-color">计算机网络</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -1674,7 +1694,7 @@ KPI异常检测技术框架KP
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">260.2k</span>
+                        class="white-color">264.2k</span>
             
             
             
