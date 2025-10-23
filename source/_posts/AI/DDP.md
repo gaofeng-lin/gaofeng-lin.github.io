@@ -14,7 +14,17 @@ abbrlink: 77ac27fb
 forward（前向传递）：输入数据，得到输出的过程。
 backward(后向传递)：根据输出结果，计算参数梯度的过程。
 
+## 分布式训练技术
 
+- **Data Parallelism** (数据并行)
+  - Naive: 每个worker存储一份model和optimizer，每轮迭代时，将样本分为若干份分发给各个worker，实现并行计算.
+  - ZeRO: Zero Redundancy Optimizer，微软提出的数据并行内存优化技术，核心思想是保持Naive数据并行通信效率的同时，尽可能降低内存占用。
+- **Model/Pipeline Parallelism** (模型并行)
+  - GPipe：小批量流水线方式的纵向切割模型并行
+  - Megatron-LM：Tensor-slicing方式的模型并行加速
+- **Non-parallelism approach** (非并行技术)
+  - Gradient Accumulation: 通过梯度累加的方式解决显存不足的问题，常用于模型较大，单卡只能塞下很小的batch的并行训练中
+  - CPU Offload: 同时利用 CPU 和 GPU 内存来训练大型模型，即存在GPU-CPU-GPU的 transfers操作
 
 
 # DP和DDP
@@ -40,6 +50,155 @@ DP 和 DDP 的主要差异可以总结为以下几点：
 - **DDP 是多进程**，每个 GPU 对应一个进程，适用于单机和多机情况，真正实现分布式训练，并且因为每个进程都是独立的 Python 解释器，DDP 避免了 GIL 带来的性能开销。
 - **DDP 的训练更高效**，不存在 DP 中负载不均衡的问题。DDP 中每个 GPU 直接处理 mini-batch 数据，不需要由主卡分发；每个 GPU 独立进行参数更新，不需要由主卡 broadcast 模型参数；每个 GPU 独立计算 loss，不需要汇聚到主卡计算。
 - **DDP 支持模型并行**
+
+## DDP如何保证梯度同步
+
+DDP通过"All-Reduce"确保所有参与进程（GPU）都获得相同的结果。通常不需要手动编写All-Reduce代码。当你使DistributedDataParallel包装模型后，梯度同步是自动完成的。
+
+## DDP中，不同卡上验证集loss不同如何处理
+
+对于验证集，正确的做法是​**​计算整个验证集的总Loss或平均Loss**。使用all_reduce同步，在每个GPU计算完自己那部分数据的Loss之和后，使用 all_reduce将这些局部Loss求和值进行全局汇总，然后除以全局总样本数得到平均Loss。**如果不汇总处理，可能会出现某张卡loss升高（早停+1），某张卡loss下降的情况，甚至卡住。**
+
+要实现这一步，最关键的代码是```dist.all_reduce(total_loss, op=dist.ReduceOp.SUM) ```
+
+如果采用dist.reduce，则有可能出现卡住的情况。
+
+dist.reduce(total_loss, dst=0, op=dist.ReduceOp.SUM)意味着只有 ​​Rank 0​​ 这个进程会得到所有进程损失求和后的正确结果。而​​其他进程（例如 Rank 1, 2, 3）上的 total_loss变量在操作之后并没有被更新为全局求和的值​​，它们仍然保持着自己原始的、局部的损失值
+
+
+下面给一个验证集的代码供参考：
+
+```
+    def vali(self, vali_data, vali_loader, criterion, is_test=False):
+        total_loss = []
+        total_count = []
+        time_now = time.time()
+        test_steps = len(vali_loader)
+        iter_count = 0
+        
+        self.model.eval()    
+        with torch.no_grad():
+            for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in enumerate(vali_loader):
+                iter_count += 1
+                batch_x = batch_x.float().to(self.device)
+                batch_y = batch_y.float()
+                batch_x_mark = batch_x_mark.float().to(self.device)
+                batch_y_mark = batch_y_mark.float().to(self.device)
+                
+                # outputs = self.model(batch_x, batch_x_mark, batch_y_mark)
+                # 关键修改1：验证时使用 model.module，避免DDP内部通信
+                if self.args.ddp:
+                    outputs = self.model.module(batch_x, batch_x_mark, batch_y_mark)  # 使用 .module
+                else:
+                    outputs = self.model(batch_x, batch_x_mark, batch_y_mark)
+
+                if is_test or self.args.nonautoregressive:
+                        outputs = outputs[:, -self.args.output_token_len:, :]
+                        batch_y = batch_y[:, -self.args.output_token_len:, :].to(self.device)
+                else:
+                    outputs = outputs[:, :, :]
+                    batch_y = batch_y[:, :, :].to(self.device)
+                if self.args.covariate:
+                    if self.args.last_token:
+                        outputs = outputs[:, -self.args.output_token_len:, -1]
+                        batch_y = batch_y[:, -self.args.output_token_len:, -1]
+                    else:
+                        outputs = outputs[:, :, -1]
+                        batch_y = batch_y[:, :, -1]
+                       
+                
+                loss = criterion(outputs, batch_y)
+
+                loss = loss.detach().cpu()
+                total_loss.append(loss)
+                total_count.append(batch_x.shape[0])
+                if (i + 1) % 100 == 0:
+                    if (self.args.ddp and self.args.local_rank == 0) or not self.args.ddp:
+                        speed = (time.time() - time_now) / iter_count
+                        left_time = speed * (test_steps - i)
+                        print("\titers: {}, speed: {:.4f}s/iter, left time: {:.4f}s".format(i + 1, speed, left_time))
+                        iter_count = 0
+                        time_now = time.time()
+        if self.args.ddp:
+            total_loss = torch.tensor(np.average(total_loss, weights=total_count)).to(self.device)
+            dist.barrier()
+            # dist.reduce(total_loss, dst=0, op=dist.ReduceOp.SUM)
+            dist.all_reduce(total_loss, op=dist.ReduceOp.SUM)
+            total_loss = total_loss.item() / dist.get_world_size()
+        else:
+            total_loss = np.average(total_loss, weights=total_count)
+            
+        if self.args.model == 'gpt4ts':
+            # GPT4TS just requires to train partial layers
+            self.model.in_layer.train()
+            self.model.out_layer.train()
+        else: 
+            self.model.train()
+            
+        return total_loss
+```
+
+# DDP训练时间变慢、训练效果变差
+
+
+这里的变慢和变差是针对单GPU训练来说。
+
+## 训练时间变慢
+
+原链接：https://zhuanlan.zhihu.com/p/710265518
+
+有两种可能。
+
+### 某张/多张卡有程序占用
+
+因为ddp每个epoch都需要同步，如果有一张卡因为有别的程序占用跑得慢，那么别的卡也要等它，就导致整体变慢。解决办法就是找个没有程序占用的显卡。下面是我的一个实验记录。
+  - 单一GPU：
+    - Epoch: 1 cost time:       2.8094277381896973
+    - Epoch: 2 cost time: 1.6581542491912842
+    - Epoch: 3 cost time: 2.0224006175994873
+    - Epoch: 4 cost time: 1.5787155628204346
+    - 平均用时：
+  - 两个节点有个节点有程序占用：
+    - Epoch: 1 cost time: 16.403035879135132
+    - Epoch: 2 cost time: 13.876952886581421
+    - Epoch: 3 cost time: 13.925655841827393
+    - Epoch: 4 cost time: 14.027090549468994
+    - Epoch: 5 cost time: 14.02741527557373
+  - 两个节点均空闲：
+    - Epoch: 1 cost time: 4.169334888458252
+    - Epoch: 2 cost time: 1.9797673225402832
+    - Epoch: 3 cost time: 1.9697625637054443
+    - Epoch: 4 cost time: 2.0179057121276855
+    - Epoch: 5 cost time: 1.9602136611938477
+
+
+这里只有4或5个epoch，是因为早停。
+
+
+### 通信
+
+跨组调用GPU可能会带来较大的延迟。一般来说并不是一个服务器上面卡的传输效率一样，实际上如果是一般的单CPU，4卡台式机，确实差别不会很明显。因为所有的显卡都在一个PCIe桥或者直连CPU。但是如果是八卡服务器，一般是带两个CPU的。八张卡会分为两组：0，1，2，3GPU在CPU0；4，5，6，7在CPU1。
+
+提高通信的方法可以使用NVLink，在显卡间搭建了直连通道，数据不需要走PCIe就能直接在卡间传输。并且带宽、延迟、速度都显著超过走PCIe。
+
+## 训练效果变差
+
+从单gpu变为DDP训练，为了保证优化过程相同，batch_size或者学习率是需要进行调整的。
+
+先说batch_size
+
+### batch_size的调整
+
+在单gpu上面，假设batch_size是8（假设为B）。现在使用DDP，假设有N张卡，那么每张卡上面的batch_size也是B，然后聚合梯度，并计算平均值，一共有N张卡，那么也就是B*N个，实际有效batch_size变为了B*N，扩大了N倍。如果要让DDP和单GPU一样，应该要减小batch_size，变为B/N。
+
+**但是GPU在处理大batch_size的时候效率会更高，为了以最佳的方式使用GPU，我们仍然希望GPU一次性处理B个batch_size。那么就进入第二个问题，学习率**。
+
+### 学习率的调整
+
+因为batch_size增大了N倍，权重更新减少了N倍。每步都是B*N。缩放方法可以参考论文《Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour》里面提到的线性缩放。~~新的学习率=sqrt(N)/lr。还要注意，这种情况下，如果模型使用了batch norm，应该禁止batch norm。~~
+
+## 训练效果变差
+
 
 
 # 入门
@@ -374,102 +533,6 @@ for epoch in iterator:
         torch.save(model.module.state_dict(), "%d.ckpt" % epoch)
 ```
 
-## DDP如何保证梯度同步
-
-DDP通过"All-Reduce"确保所有参与进程（GPU）都获得相同的结果。通常不需要手动编写All-Reduce代码。当你使DistributedDataParallel包装模型后，梯度同步是自动完成的。
-
-## DDP中，不同卡上验证集loss不同如何处理
-
-对于验证集，正确的做法是​**​计算整个验证集的总Loss或平均Loss**。使用all_reduce同步，在每个GPU计算完自己那部分数据的Loss之和后，使用 all_reduce将这些局部Loss求和值进行全局汇总，然后除以全局总样本数得到平均Loss。**如果不汇总处理，可能会出现某张卡loss升高（早停+1），某张卡loss下降的情况，甚至卡住。**
-
-要实现这一步，最关键的代码是```dist.all_reduce(total_loss, op=dist.ReduceOp.SUM) ```
-
-如果采用dist.reduce，则有可能出现卡住的情况。
-
-dist.reduce(total_loss, dst=0, op=dist.ReduceOp.SUM)意味着只有 ​​Rank 0​​ 这个进程会得到所有进程损失求和后的正确结果。而​​其他进程（例如 Rank 1, 2, 3）上的 total_loss变量在操作之后并没有被更新为全局求和的值​​，它们仍然保持着自己原始的、局部的损失值
 
 
-下面给一个验证集的代码供参考：
 
-```
-    def vali(self, vali_data, vali_loader, criterion, is_test=False):
-        total_loss = []
-        total_count = []
-        time_now = time.time()
-        test_steps = len(vali_loader)
-        iter_count = 0
-        
-        self.model.eval()    
-        with torch.no_grad():
-            for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in enumerate(vali_loader):
-                iter_count += 1
-                batch_x = batch_x.float().to(self.device)
-                batch_y = batch_y.float()
-                batch_x_mark = batch_x_mark.float().to(self.device)
-                batch_y_mark = batch_y_mark.float().to(self.device)
-                
-                # outputs = self.model(batch_x, batch_x_mark, batch_y_mark)
-                # 关键修改1：验证时使用 model.module，避免DDP内部通信
-                if self.args.ddp:
-                    outputs = self.model.module(batch_x, batch_x_mark, batch_y_mark)  # 使用 .module
-                else:
-                    outputs = self.model(batch_x, batch_x_mark, batch_y_mark)
-
-                if is_test or self.args.nonautoregressive:
-                        outputs = outputs[:, -self.args.output_token_len:, :]
-                        batch_y = batch_y[:, -self.args.output_token_len:, :].to(self.device)
-                else:
-                    outputs = outputs[:, :, :]
-                    batch_y = batch_y[:, :, :].to(self.device)
-                if self.args.covariate:
-                    if self.args.last_token:
-                        outputs = outputs[:, -self.args.output_token_len:, -1]
-                        batch_y = batch_y[:, -self.args.output_token_len:, -1]
-                    else:
-                        outputs = outputs[:, :, -1]
-                        batch_y = batch_y[:, :, -1]
-                       
-                
-                loss = criterion(outputs, batch_y)
-
-                loss = loss.detach().cpu()
-                total_loss.append(loss)
-                total_count.append(batch_x.shape[0])
-                if (i + 1) % 100 == 0:
-                    if (self.args.ddp and self.args.local_rank == 0) or not self.args.ddp:
-                        speed = (time.time() - time_now) / iter_count
-                        left_time = speed * (test_steps - i)
-                        print("\titers: {}, speed: {:.4f}s/iter, left time: {:.4f}s".format(i + 1, speed, left_time))
-                        iter_count = 0
-                        time_now = time.time()
-        if self.args.ddp:
-            total_loss = torch.tensor(np.average(total_loss, weights=total_count)).to(self.device)
-            dist.barrier()
-            # dist.reduce(total_loss, dst=0, op=dist.ReduceOp.SUM)
-            dist.all_reduce(total_loss, op=dist.ReduceOp.SUM)
-            total_loss = total_loss.item() / dist.get_world_size()
-        else:
-            total_loss = np.average(total_loss, weights=total_count)
-            
-        if self.args.model == 'gpt4ts':
-            # GPT4TS just requires to train partial layers
-            self.model.in_layer.train()
-            self.model.out_layer.train()
-        else: 
-            self.model.train()
-            
-        return total_loss
-```
-
-
-## 分布式训练技术
-
-- **Data Parallelism** (数据并行)
-  - Naive: 每个worker存储一份model和optimizer，每轮迭代时，将样本分为若干份分发给各个worker，实现并行计算.
-  - ZeRO: Zero Redundancy Optimizer，微软提出的数据并行内存优化技术，核心思想是保持Naive数据并行通信效率的同时，尽可能降低内存占用。
-- **Model/Pipeline Parallelism** (模型并行)
-  - GPipe：小批量流水线方式的纵向切割模型并行
-  - Megatron-LM：Tensor-slicing方式的模型并行加速
-- **Non-parallelism approach** (非并行技术)
-  - Gradient Accumulation: 通过梯度累加的方式解决显存不足的问题，常用于模型较大，单卡只能塞下很小的batch的并行训练中
-  - CPU Offload: 同时利用 CPU 和 GPU 内存来训练大型模型，即存在GPU-CPU-GPU的 transfers操作
