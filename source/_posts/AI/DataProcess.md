@@ -7,6 +7,7 @@ tags:
   - DataLoader
   - Random Seed
 mathjax: true
+abbrlink: 56f17847
 ---
 
 
