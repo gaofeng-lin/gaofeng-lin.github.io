@@ -35,9 +35,7 @@ Naive: 每个worker存储一份model">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -149,7 +147,9 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</style>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -754,7 +754,7 @@ mjx-container[display="true"] + br {
 <h3 id="batch-size的调整"><a href="#batch-size的调整" class="headerlink" title="batch_size的调整"></a>batch_size的调整</h3><p>在单gpu上面，假设batch_size是8（假设为B）。现在使用DDP，假设有N张卡，那么每张卡上面的batch_size也是B，然后聚合梯度，并计算平均值，一共有N张卡，那么也就是B<em>N个，实际有效batch_size变为了B</em>N，扩大了N倍。如果要让DDP和单GPU一样，应该要减小batch_size，变为B/N。</p>
 <p><strong>但是GPU在处理大batch_size的时候效率会更高，为了以最佳的方式使用GPU，我们仍然希望GPU一次性处理B个batch_size。那么就进入第二个问题，学习率</strong>。</p>
 <h3 id="学习率的调整"><a href="#学习率的调整" class="headerlink" title="学习率的调整"></a>学习率的调整</h3><p>因为batch_size增大了N倍，权重更新减少了N倍。每步都是B*N。缩放方法可以参考论文《Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour》里面提到的线性缩放。<del>新的学习率=sqrt(N)/lr。还要注意，这种情况下，如果模型使用了batch norm，应该禁止batch norm。</del></p>
-<h2 id="训练效果变差-1"><a href="#训练效果变差-1" class="headerlink" title="训练效果变差"></a>训练效果变差</h2><h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><p>作者：小志哥<br>链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/178402798">https://zhuanlan.zhihu.com/p/178402798</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><p>作者：小志哥<br>链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/178402798">https://zhuanlan.zhihu.com/p/178402798</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <h2 id="一个简单的DDP代码"><a href="#一个简单的DDP代码" class="headerlink" title="一个简单的DDP代码"></a>一个简单的DDP代码</h2><pre class="line-numbers language-none"><code class="language-none">作者：小志哥
 链接：https://zhuanlan.zhihu.com/p/178402798
 来源：知乎
@@ -1572,7 +1572,7 @@ for epoch in iterator:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">264.2k</span>
+                        class="white-color">264.3k</span>
             
             
             
@@ -1801,6 +1801,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
