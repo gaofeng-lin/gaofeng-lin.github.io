@@ -197,7 +197,6 @@ dist.reduce(total_loss, dst=0, op=dist.ReduceOp.SUM)意味着只有 ​​Rank 0
 
 因为batch_size增大了N倍，权重更新减少了N倍。每步都是B*N。缩放方法可以参考论文《Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour》里面提到的线性缩放。~~新的学习率=sqrt(N)/lr。还要注意，这种情况下，如果模型使用了batch norm，应该禁止batch norm。~~
 
-## 训练效果变差
 
 
 
