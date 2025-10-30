@@ -698,7 +698,7 @@ git reset --hard回退之后，如果直接push会出错，因为我们本地库
 
 
 
-### 将现有代码保存带其它仓库
+### 将现有代码保存到其它仓库
 1. git remote add neworigin **"url"**
 2. git push -u neworigin **"分支名"**
 3. 如果第二条命令不行就：git push -u neworigin **"分支名"** : **"分支名"**
