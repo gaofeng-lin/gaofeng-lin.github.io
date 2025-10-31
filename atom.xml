@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-10-23T09:46:26.039Z</updated>
+  <updated>2025-10-31T01:59:56.394Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://gaofeng-lin.github.io/posts/56f17847/"/>
     <id>https://gaofeng-lin.github.io/posts/56f17847/</id>
     <published>2025-10-22T16:00:00.000Z</published>
-    <updated>2025-10-23T09:46:26.039Z</updated>
+    <updated>2025-10-31T01:59:56.394Z</updated>
     
     
       
@@ -432,23 +432,6 @@
   </entry>
   
   <entry>
-    <title>HTTPS</title>
-    <link href="https://gaofeng-lin.github.io/posts/c9a2a716/"/>
-    <id>https://gaofeng-lin.github.io/posts/c9a2a716/</id>
-    <published>2025-07-25T16:00:00.000Z</published>
-    <updated>2025-07-29T03:01:36.778Z</updated>
-    
-    
-    
-    
-    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    
-    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
     <title>TCP-IP通信发展历史</title>
     <link href="https://gaofeng-lin.github.io/posts/27ba7163/"/>
     <id>https://gaofeng-lin.github.io/posts/27ba7163/</id>
@@ -463,6 +446,23 @@
     <summary type="html">&lt;h1 id=&quot;现阶段通信模型&quot;&gt;&lt;a href=&quot;#现阶段通信模型&quot; class=&quot;headerlink&quot; title=&quot;现阶段通信模型&quot;&gt;&lt;/a&gt;现阶段通信模型&lt;/h1&gt;&lt;h2 id=&quot;数据封装过程&quot;&gt;&lt;a href=&quot;#数据封装过程&quot; class=&quot;headerlink&quot;</summary>
         
       
+    
+    
+    
+    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTTPS</title>
+    <link href="https://gaofeng-lin.github.io/posts/c9a2a716/"/>
+    <id>https://gaofeng-lin.github.io/posts/c9a2a716/</id>
+    <published>2025-07-25T16:00:00.000Z</published>
+    <updated>2025-07-29T03:01:36.778Z</updated>
+    
     
     
     

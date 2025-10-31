@@ -5,12 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="git操作, Home of Gaofeng">
-    <meta name="description" content="git 工作区
-工作区：我们直接编辑的地方，记事本打开的文本等，肉眼可见，直接操作。
-暂存区：数据暂时存放的区域，可在工作区和版本库之间进行数据的友好交流。
-本地仓库：存放已经提交的数据
-远程仓库：存放本地仓库push的数据
-撤回命令这里重">
+    <meta name="description" content="SSH配置一般可以通过https或ssh来访问github。如果从linux服务器访问，因为某些原因，无法直接通过https来访问github。所以可以采用ssh访问。
+要使用ssh访问，必须用本地计算机的私钥文件进行身份验证。也就是说，换">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -442,12 +438,12 @@
                                 <span class="chip bg-color">运维</span>
                             </a>
                         
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
-                            </a>
-                        
                             <a href="/tags/Linux/">
                                 <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/git/">
+                                <span class="chip bg-color">git</span>
                             </a>
                         
                             <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/">
@@ -484,14 +480,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.6k
+                    6.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    25 分
+                    26 分
                 </div>
                 
 
@@ -514,7 +510,14 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="git-工作区"><a href="#git-工作区" class="headerlink" title="git 工作区"></a>git 工作区</h2><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/git%E5%B7%A5%E4%BD%9C%E6%B5%81.drawio.png" alt=""></p>
+                <h2 id="SSH配置"><a href="#SSH配置" class="headerlink" title="SSH配置"></a>SSH配置</h2><p>一般可以通过https或ssh来访问github。如果从linux服务器访问，因为某些原因，无法直接通过https来访问github。所以可以采用ssh访问。</p>
+<p>要使用ssh访问，必须用<strong>本地计算机</strong>的私钥文件进行身份验证。也就是说，换一台设备，要使用ssh访问github，也要配置密钥对。</p>
+<h2 id="生成新的ssh密钥"><a href="#生成新的ssh密钥" class="headerlink" title="生成新的ssh密钥"></a>生成新的ssh密钥</h2><p>我们在重装系统后，如果要使用ssh来拉去代码，就需要生成密钥。<br><a target="_blank" rel="noopener" href="https://docs.github.com/zh/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">github官方文档</a><br><a target="_blank" rel="noopener" href="https://docs.github.com/zh/enterprise-server@3.7/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">原文链接</a></p>
+<p>1.打开git Bash。输入 <code>ssh-keygen -t ed25519 -C "your_email@example.com"</code>；email替换为github的email（其他eamil没有尝试过）<br>2.后面一直回车就好，详细的去看原链接。<strong>需要注意的是不要更改密钥文件名字，否则会出问题</strong>。因为更改后，执行完后面的操作一直出问题。使用<code>ssh -vT git@github.com</code>命令发现它一直在寻找带有id_rsa_字段的文件，擅自改了名字当然找不到，这个问题如何解决目前还没有找到方法。<br>3.<code>eval "$(ssh-agent -s)"</code>；在windows中，是用管理员权限打开PowserShell，输入<br></p><pre class="line-numbers language-none"><code class="language-none">Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+Start-Service ssh-agent<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p></p>
+<p>//确保 ssh-agent 正在运行<br>4.Linux:<code>ssh-add ~/.ssh/id_ed25519</code></p>
+<p>Windows:<code>ssh-add c:/Users/YOU/.ssh/id_ed25519</code><br>//将 SSH 私钥添加到 ssh-agent。<br>5.将后缀为.pub的文件（公钥）添加到 GitHub 上的帐户。</p>
+<h2 id="git-工作区"><a href="#git-工作区" class="headerlink" title="git 工作区"></a>git 工作区</h2><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/git%E5%B7%A5%E4%BD%9C%E6%B5%81.drawio.png" alt=""></p>
 <p><strong>工作区</strong>：我们直接编辑的地方，记事本打开的文本等，肉眼可见，直接操作。</p>
 <p><strong>暂存区</strong>：数据暂时存放的区域，可在工作区和版本库之间进行数据的友好交流。</p>
 <p><strong>本地仓库</strong>：存放已经提交的数据</p>
@@ -836,8 +839,6 @@ git push origin master  //push到origin的master主分支里面，成功后会�
 <li>git push -u neworigin <strong>“分支名”</strong></li>
 <li>如果第二条命令不行就：git push -u neworigin <strong>“分支名”</strong> : <strong>“分支名”</strong></li>
 </ol>
-<h3 id="生成新的ssh密钥"><a href="#生成新的ssh密钥" class="headerlink" title="生成新的ssh密钥"></a>生成新的ssh密钥</h3><p>我们在重装系统后，如果要使用ssh来拉去代码，就需要生成密钥。<br><a target="_blank" rel="noopener" href="https://docs.github.com/zh/enterprise-server@3.7/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">原文链接</a></p>
-<p>1.打开git Bash。输入 <code>ssh-keygen -t ed25519 -C "your_email@example.com"</code>；email替换为github的email（其他eamil没有尝试过）<br>2.后面一直回车就好，详细的去看原链接。<strong>需要注意的是不要更改密钥文件名字，否则会出问题</strong>。因为更改后，执行完后面的操作一直出问题。使用<code>ssh -vT git@github.com</code>命令发现它一直在寻找带有id_rsa_字段的文件，擅自改了名字当然找不到，这个问题如何解决目前还没有找到方法。<br>3.<code>eval "$(ssh-agent -s)"</code>//确保 ssh-agent 正在运行<br>4.<code>ssh-add ~/.ssh/id_ed25519</code>//将 SSH 私钥添加到 ssh-agent。<br>5.将后缀为.pub的文件（公钥）添加到 GitHub 上的帐户</p>
 <h3 id="git-push之前忘记了git-pull，但是已经commit"><a href="#git-push之前忘记了git-pull，但是已经commit" class="headerlink" title="git push之前忘记了git pull，但是已经commit"></a>git push之前忘记了git pull，但是已经commit</h3><p>背景：公司和家里面各有一台电脑。公司的电脑忘记了pull，对文件进行修改后，push无法成功。pull也被拒绝。如果直接回退，之前的记录就没了。而我想保留修改，因为也是有用的东西。</p>
 <p>解决办法：<br></p><pre class="line-numbers language-none"><code class="language-none">git stash 	//保存本地快照
 git reset --hard "hash_value"	//通过git log查看离的最近的没有发生冲突的提交记录，把哈希值找到，再回退
@@ -1003,12 +1004,12 @@ git pull origin hexo                    # 合并远程hexo分支到本地<span a
                                     <span class="chip bg-color">运维</span>
                                 </a>
                             
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
-                                </a>
-                            
                                 <a href="/tags/Linux/">
                                     <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/git/">
+                                    <span class="chip bg-color">git</span>
                                 </a>
                             
                                 <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/">
@@ -1251,13 +1252,13 @@ git pull origin hexo                    # 合并远程hexo分支到本地<span a
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/15854/">
+                <a href="/posts/51872/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="前端框架">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="python">
                         
-                        <span class="card-title">前端框架</span>
+                        <span class="card-title">python</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1274,8 +1275,8 @@ git pull origin hexo                    # 合并远程hexo分支到本地<span a
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-category">
-                                    前端开发
+                            <a href="/categories/programming-language/" class="post-category">
+                                    programming-language
                                 </a>
                             
                             
@@ -1285,20 +1286,8 @@ git pull origin hexo                    # 合并远程hexo分支到本地<span a
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
-                    </a>
-                    
-                    <a href="/tags/React/">
-                        <span class="chip bg-color">React</span>
-                    </a>
-                    
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
-                    </a>
-                    
-                    <a href="/tags/Json/">
-                        <span class="chip bg-color">Json</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -1495,7 +1484,7 @@ git pull origin hexo                    # 合并远程hexo分支到本地<span a
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">264.4k</span>
+                        class="white-color">264.9k</span>
             
             
             
