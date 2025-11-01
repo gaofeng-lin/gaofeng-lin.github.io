@@ -38,8 +38,7 @@ T">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 <style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
@@ -152,7 +151,8 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</style>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 
@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    17k
+                    17.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    62 分
+                    63 分
                 </div>
                 
 
@@ -895,6 +895,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <h2 id="实验复现v2"><a href="#实验复现v2" class="headerlink" title="实验复现v2"></a>实验复现v2</h2><h3 id="Figure3—Univariate-forecasting-pred-96-of-well-acknowledged-benchmarks-under-channel-independence-Nie-et-al-2022-We-increase-the-lookback-length-to-encompass-monthly-and-yearly-contexts"><a href="#Figure3—Univariate-forecasting-pred-96-of-well-acknowledged-benchmarks-under-channel-independence-Nie-et-al-2022-We-increase-the-lookback-length-to-encompass-monthly-and-yearly-contexts" class="headerlink" title="Figure3—Univariate forecasting (pred-96) of well-acknowledged benchmarks under channel independence (Nie et al., 2022). We increase the lookback length to encompass monthly and yearly contexts."></a>Figure3—Univariate forecasting (pred-96) of well-acknowledged benchmarks under channel independence (Nie et al., 2022). We increase the lookback length to encompass monthly and yearly contexts.</h3><ul>
 <li>实验描述：在4个不同数据集上面分别测试，单变量预测，预测长度是固定的，为96。输入长度不断增加。因为单变量数据集长度不够，我们采用了多变量数据集，通过通道独立实现单变量预测。</li>
 </ul>
+<p>但是这组实验其实还有个问题</p>
 <h3 id="Table3—Univariate-forecasting-input-3072-pred-96-of-ERA5-S-encompassing-117k-time-points-in-each-station-40-years"><a href="#Table3—Univariate-forecasting-input-3072-pred-96-of-ERA5-S-encompassing-117k-time-points-in-each-station-40-years" class="headerlink" title="Table3—Univariate forecasting (input-3072-pred-96) of ERA5-S, encompassing 117k time points in each station (40-years)."></a>Table3—Univariate forecasting (input-3072-pred-96) of ERA5-S, encompassing 117k time points in each station (40-years).</h3><ul>
 <li>实验描述：</li>
 </ul>
