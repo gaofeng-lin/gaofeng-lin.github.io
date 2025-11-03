@@ -895,8 +895,16 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <h2 id="实验复现v2"><a href="#实验复现v2" class="headerlink" title="实验复现v2"></a>实验复现v2</h2><h3 id="Figure3—Univariate-forecasting-pred-96-of-well-acknowledged-benchmarks-under-channel-independence-Nie-et-al-2022-We-increase-the-lookback-length-to-encompass-monthly-and-yearly-contexts"><a href="#Figure3—Univariate-forecasting-pred-96-of-well-acknowledged-benchmarks-under-channel-independence-Nie-et-al-2022-We-increase-the-lookback-length-to-encompass-monthly-and-yearly-contexts" class="headerlink" title="Figure3—Univariate forecasting (pred-96) of well-acknowledged benchmarks under channel independence (Nie et al., 2022). We increase the lookback length to encompass monthly and yearly contexts."></a>Figure3—Univariate forecasting (pred-96) of well-acknowledged benchmarks under channel independence (Nie et al., 2022). We increase the lookback length to encompass monthly and yearly contexts.</h3><ul>
 <li>实验描述：在4个不同数据集上面分别测试，单变量预测，预测长度是固定的，为96。输入长度不断增加。因为单变量数据集长度不够，我们采用了多变量数据集，通过通道独立实现单变量预测。</li>
 </ul>
-<p>但是这组实验其实还有个问题</p>
-<h3 id="Table3—Univariate-forecasting-input-3072-pred-96-of-ERA5-S-encompassing-117k-time-points-in-each-station-40-years"><a href="#Table3—Univariate-forecasting-input-3072-pred-96-of-ERA5-S-encompassing-117k-time-points-in-each-station-40-years" class="headerlink" title="Table3—Univariate forecasting (input-3072-pred-96) of ERA5-S, encompassing 117k time points in each station (40-years)."></a>Table3—Univariate forecasting (input-3072-pred-96) of ERA5-S, encompassing 117k time points in each station (40-years).</h3><ul>
+<h4 id="数据集：ETTh1"><a href="#数据集：ETTh1" class="headerlink" title="数据集：ETTh1"></a>数据集：ETTh1</h4><ul>
+<li>输入长度：24（1day），patch_size：3</li>
+</ul>
+<ul>
+<li>输入长度：96(4day)，patch_size：12</li>
+<li>输入长度：168(1week)，patch_size：24</li>
+<li>输入长度：672(1month)，patch_size：96</li>
+<li>输入长度：2880(4month)，patch_size：384</li>
+</ul>
+<h4 id="数据集：ECL"><a href="#数据集：ECL" class="headerlink" title="数据集：ECL"></a>数据集：ECL</h4><h4 id="数据集：Traffic"><a href="#数据集：Traffic" class="headerlink" title="数据集：Traffic"></a>数据集：Traffic</h4><h4 id="数据集：PEMS03"><a href="#数据集：PEMS03" class="headerlink" title="数据集：PEMS03"></a>数据集：PEMS03</h4><h3 id="Table3—Univariate-forecasting-input-3072-pred-96-of-ERA5-S-encompassing-117k-time-points-in-each-station-40-years"><a href="#Table3—Univariate-forecasting-input-3072-pred-96-of-ERA5-S-encompassing-117k-time-points-in-each-station-40-years" class="headerlink" title="Table3—Univariate forecasting (input-3072-pred-96) of ERA5-S, encompassing 117k time points in each station (40-years)."></a>Table3—Univariate forecasting (input-3072-pred-96) of ERA5-S, encompassing 117k time points in each station (40-years).</h3><ul>
 <li>实验描述：</li>
 </ul>
 <h1 id="Are-Transformers-Effective-for-Time-Series-Forecasting"><a href="#Are-Transformers-Effective-for-Time-Series-Forecasting" class="headerlink" title="Are Transformers Effective for Time Series Forecasting?"></a>Are Transformers Effective for Time Series Forecasting?</h1><ul>
@@ -2079,6 +2087,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
