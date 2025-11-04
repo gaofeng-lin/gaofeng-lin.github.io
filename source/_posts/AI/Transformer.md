@@ -382,11 +382,15 @@ Decoder中主要除了交叉注意机制，还有一个掩码多头注意力机�
 
 这样我们就可以进行并行计算进行训练了。
 
-**掩码注意力机制的数学公式：（有可能是错的）**
+**掩码注意力机制的数学公式：（~~有可能是错的~~）**
 
 $\mathrm{Attention}(Q,K,V)=\mathrm{softmax}\left(\frac{Q K^{T}}{\sqrt{d_{k}}}+M\right)V$
 
+**上面的公式没有问题，M表示mask矩阵，mask是要在softmax之前操作，所以要放在softmax里面。M矩阵对应位置取负无穷就可以做到了。参考下面的图：**
 
+
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-11-04_11-40-25.png)
 
 #### Cross-Attention
 
@@ -544,4 +548,78 @@ V:对Q-K相关性进行加权求和的矩阵
 #### 如果使用一个矩阵
 
 如果只使用一个矩阵，那么模型退化为普通的前馈网格，无法捕捉长距离依赖和上下文关系。
+
+
+
+## 注意力理解
+
+https://www.zhihu.com/tardis/zm/art/414084879?source_id=1003
+
+Transformer中最核心的是Attention机制，该机制最核心的公式为：
+
+**Self-Attention中的Q是对自身（self）输入的变换，而在传统的Attention中，Q来自于外部**。
+
+$A t t e n t i o n(Q,K,V)=S o f t m a x(\frac{Q K^{\top}}{\sqrt{d_{k}}})V$
+
+讲解这个公式，需要先从向量点乘说起。
+
+### 向量点乘
+
+从$S o f t m a x(\mathbf{X}\mathbf{X}^{\mathsf{T}})\mathbf{X}$
+
+$\mathbf{X}\mathbf{X}^{\mathsf{T}}$可表示为：
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-11-04_11-21-07.png)
+
+第一行第一列元素为例，其实是向量$\mathbf{x}_{0}$与$\mathbf{x}_{0}$自身做点乘，其实就是$\mathbf{x}_{0}$自身与自身的相似度，那第一行第二列元素就是$\mathbf{x}_{0}$与$\mathbf{x}_{1}$之间的相似度。
+
+下面以词向量矩阵为例，这个矩阵中，每行为一个词的词向量。矩阵与自身的转置相乘，生成了目标矩阵，目标矩阵其实就是一个词的词向量与各个词的词向量的相似度。
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-11-04_11-24-29.png)
+
+加上Softmax，$S o f t m a x(\mathbf{X}\mathbf{X}^{\mathsf{T}})$
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-11-04_11-24-37.png)
+
+Softmax的作用是对向量做归一化，那么就是对相似度的归一化，得到了一个归一化之后的权重矩阵，矩阵中，某个值的权重越大，表示相似度越高。
+
+在这个基础上，再进一步：$S o f t m a x(\mathbf{X}\mathbf{X}^{\mathsf{T}})\mathbf{X}$
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-11-04_11-24-45.png)
+
+将得到的归一化的权重矩阵与词向量矩阵相乘。权重矩阵中某一行分别与词向量的一列相乘，词向量矩阵的一列其实代表着不同词的某一维度。经过这样一个矩阵相乘，相当于一个加权求和的过程，得到结果词向量是经过加权求和之后的新表示，而权重矩阵是经过相似度和归一化计算得到的。
+
+### Q、K、V
+
+https://blog.csdn.net/qq_41915623/article/details/125161008
+
+https://blog.csdn.net/m0_64148253/article/details/140424469
+
+当查询、键和值来自同一组输入时，每个查询会关注所有的键值对并生成一个注意力输出，由于查询、键值对来自同一组输入，因此被称为自注意力。
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/ec098bba39981a860c1bda763a5868e9.png)
+
+自注意力机制计算过程：
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/86e992ddc9aa426cab226972c0d88b6f.png)
+
+- 注意力权重图中，第1行的4个值分别代表了句子中的’我’字与’我‘，’爱‘，’吃‘，’梨‘这4个字的关联程度，其与自身的关联程度最大（标注红色），其他几行同理。
+- 权重图与V相乘得到最终结果。其第一行的每一个元素都是由其他位置的词向量的对应维度进行加权和得到的。（换句话说，每一行的值是由所有行按照注意力权重加权得到的，即每一行都或多或少的包含了其他行的信息。）
+
+补充一个更细致的图：
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/3769fab8180cd28c932d109e31ccbce2.png)
+
+
+### 掩码理解
+
+Transformer中的mask有两种，一种是填充mask，还有一种是因果mask。**mask是需要在softmax之前进行操作的，也就是在公式softmax()内部使用**。
+
+**填充mask**:为了处理不同长度的输入，对其进行填充。但是这部分不该参与计算。填充负无穷或者0。填充mask在正常的注意力机制中使用
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-11-04_11-40-13.png)
+
+**因果mask**:不让模型知道未来时间步的信息，在解码器中的掩码注意力机制中使用。
+
+![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-11-04_11-40-25.png)
+
 
