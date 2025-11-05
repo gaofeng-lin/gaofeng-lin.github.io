@@ -579,6 +579,8 @@ $\mathbf{X}\mathbf{X}^{\mathsf{T}}$可表示为：
 
 加上Softmax，$S o f t m a x(\mathbf{X}\mathbf{X}^{\mathsf{T}})$
 
+**注意，这里的Softmax是对每一行操作，并不是矩阵全体进行softmax**。
+
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-11-04_11-24-37.png)
 
 Softmax的作用是对向量做归一化，那么就是对相似度的归一化，得到了一个归一化之后的权重矩阵，矩阵中，某个值的权重越大，表示相似度越高。
