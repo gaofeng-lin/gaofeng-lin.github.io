@@ -601,6 +601,13 @@ https://blog.csdn.net/m0_64148253/article/details/140424469
 
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/ec098bba39981a860c1bda763a5868e9.png)
 
+有的地方对Q、K、V的计算为：
+
+
+$Q=XW_Q, K=XW_k, V=XW_V$
+
+当然，对于Q矩阵来说，我们习惯用“行”表示每个token，类似于下图的表示：
+
 自注意力机制计算过程：
 
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/86e992ddc9aa426cab226972c0d88b6f.png)
