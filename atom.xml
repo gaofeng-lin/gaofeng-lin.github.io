@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-10-31T01:59:56.394Z</updated>
+  <updated>2025-11-11T04:07:05.352Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>位置编码</title>
+    <link href="https://gaofeng-lin.github.io/posts/6dda7187/"/>
+    <id>https://gaofeng-lin.github.io/posts/6dda7187/</id>
+    <published>2025-11-10T16:00:00.000Z</published>
+    <updated>2025-11-11T04:07:05.352Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;位置编码主要是解决注意力机制中的permutation</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="Transformer" scheme="https://gaofeng-lin.github.io/tags/Transformer/"/>
+    
+    <category term="循环神经网络位置编码" scheme="https://gaofeng-lin.github.io/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>DataProcess</title>
@@ -494,31 +521,6 @@
     
     <category term="NAS" scheme="https://gaofeng-lin.github.io/categories/NAS/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>英语语法</title>
-    <link href="https://gaofeng-lin.github.io/posts/81c4e30a/"/>
-    <id>https://gaofeng-lin.github.io/posts/81c4e30a/</id>
-    <published>2025-06-18T16:00:00.000Z</published>
-    <updated>2025-06-19T07:17:00.944Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;时态&quot;&gt;&lt;a href=&quot;#时态&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="英语" scheme="https://gaofeng-lin.github.io/categories/%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-    <category term="语法" scheme="https://gaofeng-lin.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
