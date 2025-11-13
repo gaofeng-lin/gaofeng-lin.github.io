@@ -114,11 +114,51 @@ for epoch in range(self.argtrain_epochs):
 
 ```
 
+## 为什么采用每个Batch更新的策略，而不是对所有样本的结果取平均Loss再更新
+
+首先回答为什么要使用Batch。原因很简单，因为显存有限，无法一次性处理所有样本。
+
+通过固定seed，我们可以保证每次跑时每个 epoch 内的 batch 顺序一致，保证了实验的可重复性。
+
+如果要对所有样本的结果取平均Loss再更新，会出现显存溢出的问题。
+只有输出结果是不够的，反向传播需要每一层的中间激活 / 计算图；没有这些，中间梯度没法算。
+
+loss.backward() 只是计算梯度，而optimizer.step() 才是更新参数。
+
 ## 梯度累计
 
 当我们的硬件（如GPU显存）无法容纳大batch size时，我们可以**使用梯度累积来模拟大batch的效果**。
 
 连续处理多个小batch，但​​**不立即更新模型参数**​​（即不调用 optimizer.step()），并且​​**不清空梯度​**​（即不调用 optimizer.zero_grad()）。这样，梯度会在连续的小batch间进行累加。在处理完N个小batch后，我们再调用一次 optimizer.step()来更新参数，此时优化器使用的是N个小batch累加后的平均梯度效果。
+
+```
+accum_steps = 4
+optimizer.zero_grad()
+
+for step, (inputs, targets) in enumerate(dataloader):
+    outputs = model(inputs)
+    loss = criterion(outputs, targets)
+    (loss / accum_steps).backward()
+
+    if (step + 1) % accum_steps == 0:
+        optimizer.step()
+        optimizer.zero_grad()
+
+```
+
+
+**解释一下每个batch的loss要除以 accum_steps，再 backward。**
+
+我们的目标：因为显存不够，没法一次性容纳所有样本，所以选择了batch。但是现在为了模拟一次性使用所有样本来更新梯度，那我们得到每个batch的梯度后，就不能着急更新。需要累加所有batch的梯度，然后再去平均，最后更新。这个思路和在每个batch里面对其中的样本Loss取平均再计算梯度并更新是一个道理。
+
+假设有4个batch，使用所有样本的平均梯度为：
+$g_{big}= \frac{1}{4} (g_1+g_2+g_3+g_4)$
+
+梯度更新公式：
+$\theta_{\mathrm{new}}=\theta_{\mathrm{old}}-\eta\cdot g_{\mathrm{big}}=\theta_{\mathrm{old}}-\eta\cdot\frac{1}{4}(g_{1}+g_{2}+g_{3}+g_{4})$
+
+但是每个batch目前的梯度是$g_1$这种，要想达成上门的公式，要么loss除以4，这样每个batch的梯度就变为了原来的$\frac{1}{4}$；要么loss不变，学习率除以4。
+
 
 
 # 数据相关操作
