@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-10-23T03:20:51.609Z</updated>
+  <updated>2025-11-15T08:24:40.325Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>位置编码</title>
+    <link href="https://gaofeng-lin.github.io/posts/6dda7187/"/>
+    <id>https://gaofeng-lin.github.io/posts/6dda7187/</id>
+    <published>2025-11-10T16:00:00.000Z</published>
+    <updated>2025-11-15T08:24:40.325Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;位置编码主要是解决注意力机制中的permutation</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="循环神经网络位置编码" scheme="https://gaofeng-lin.github.io/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/"/>
+    
+    <category term="Transformer" scheme="https://gaofeng-lin.github.io/tags/Transformer/"/>
+    
+  </entry>
+  
+  <entry>
     <title>DataProcess</title>
     <link href="https://gaofeng-lin.github.io/posts/56f17847/"/>
     <id>https://gaofeng-lin.github.io/posts/56f17847/</id>
     <published>2025-10-22T16:00:00.000Z</published>
-    <updated>2025-10-23T03:20:51.609Z</updated>
+    <updated>2025-11-15T07:50:50.281Z</updated>
     
     
       
@@ -48,7 +75,7 @@
     <link href="https://gaofeng-lin.github.io/posts/61e48afb/"/>
     <id>https://gaofeng-lin.github.io/posts/61e48afb/</id>
     <published>2025-10-22T16:00:00.000Z</published>
-    <updated>2025-10-23T03:09:34.646Z</updated>
+    <updated>2025-10-23T03:53:37.872Z</updated>
     
     
       
@@ -77,7 +104,7 @@
     <link href="https://gaofeng-lin.github.io/posts/77ac27fb/"/>
     <id>https://gaofeng-lin.github.io/posts/77ac27fb/</id>
     <published>2025-10-20T16:00:00.000Z</published>
-    <updated>2025-10-22T11:57:40.404Z</updated>
+    <updated>2025-10-26T00:08:21.017Z</updated>
     
     
       
@@ -352,31 +379,6 @@
   </entry>
   
   <entry>
-    <title>DroneAD</title>
-    <link href="https://gaofeng-lin.github.io/posts/7d96b074/"/>
-    <id>https://gaofeng-lin.github.io/posts/7d96b074/</id>
-    <published>2025-09-04T16:00:00.000Z</published>
-    <updated>2025-09-09T14:11:39.939Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Motor-Anomaly-Detection-for-Unmanned-Aerial-Vehicles-Using-Reinforcement-Learning&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
-    
-    
-    <category term="Anomaly Detection" scheme="https://gaofeng-lin.github.io/tags/Anomaly-Detection/"/>
-    
-  </entry>
-  
-  <entry>
     <title>DroneDataset</title>
     <link href="https://gaofeng-lin.github.io/posts/27c9adf4/"/>
     <id>https://gaofeng-lin.github.io/posts/27c9adf4/</id>
@@ -398,6 +400,31 @@
     
     
     <category term="Dataset" scheme="https://gaofeng-lin.github.io/tags/Dataset/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DroneAD</title>
+    <link href="https://gaofeng-lin.github.io/posts/7d96b074/"/>
+    <id>https://gaofeng-lin.github.io/posts/7d96b074/</id>
+    <published>2025-09-04T16:00:00.000Z</published>
+    <updated>2025-09-09T14:11:39.939Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Motor-Anomaly-Detection-for-Unmanned-Aerial-Vehicles-Using-Reinforcement-Learning&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
+    
+    
+    <category term="Anomaly Detection" scheme="https://gaofeng-lin.github.io/tags/Anomaly-Detection/"/>
     
   </entry>
   
@@ -494,31 +521,6 @@
     
     <category term="NAS" scheme="https://gaofeng-lin.github.io/categories/NAS/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>英语语法</title>
-    <link href="https://gaofeng-lin.github.io/posts/81c4e30a/"/>
-    <id>https://gaofeng-lin.github.io/posts/81c4e30a/</id>
-    <published>2025-06-18T16:00:00.000Z</published>
-    <updated>2025-06-19T07:17:00.944Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;时态&quot;&gt;&lt;a href=&quot;#时态&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="英语" scheme="https://gaofeng-lin.github.io/categories/%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-    <category term="语法" scheme="https://gaofeng-lin.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
