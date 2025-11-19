@@ -682,14 +682,14 @@ mjx-container[display="true"] + br {
 <p>pos=8 -&gt; [1, 0, 0, 0]</p>
 <p>模型会看到：PE(6) 和 PE(7) 非常相似（只差1位，距离很近）。但 PE(7) 和 PE(8) 极其不相似（差了4位，距离很远）。模型会认为PE(6) -&gt; PE(7) 是一种变换，而 PE(7) -&gt; PE(8) 是另一种完全不同的变换，无法学习”相邻“这个概念。而在NLP中，“相邻”比“不相邻”理论是具有更高的注意力分数，所以这种“不连续性”对建模是不利的。</p>
 <p>所以，我们希望位置编码是具有“连续性”的，</p>
-<h2 id="基于三角函数-sin-的位置编码"><a href="#基于三角函数-sin-的位置编码" class="headerlink" title="基于三角函数(sin)的位置编码"></a>基于三角函数(sin)的位置编码</h2><p>目前位置，位置编码需要具备：</p>
+<h2 id="基于三角函数-sin-的位置编码"><a href="#基于三角函数-sin-的位置编码" class="headerlink" title="基于三角函数(sin)的位置编码"></a>基于三角函数(sin)的位置编码</h2><p>目前为止，位置编码需要具备：</p>
 <ul>
 <li>唯一性：每一个位置（时间步）都必须有一个独一无二的位置编码，不能重复。</li>
 <li>确定性：PE的值应该只取决于位置本身，而不是句子的长度。如果采用[0,1]</li>
 <li>连续性</li>
 <li>易于外推</li>
 </ul>
-<p>比较容易想到的就是三角函数。不过单独的三角函数虽然具备以上性质，但是却无法满足另一个重要特点：易学习的相对位置。在NLP中，相对位置比绝对位置要更加重要。比如，“猫坐在垫子上，很可爱啊” 和 “很可爱啊，猫坐在垫子上”。词的绝对位置不同，但是语义上没有差别，不会对建模有影响。但是相对位置如果变化，可能会导致语义混乱。例如，垫子坐在猫上。而单独的sin函数无法完全表达。</p>
+<p>比较容易想到的就是三角函数。不过单独的三角函数虽然具备以上性质，但是却无法满足另一个重要特点：易学习的相对位置。在NLP中，相对位置比绝对位置要更加重要。比如，“猫坐在垫子上，很可爱啊” 和 “很可爱啊，猫坐在垫子上”。词的绝对位置不同，但是语义上没有差别，不会对建模有根本影响。但是相对位置如果变化，可能会导致语义混乱。例如，垫子坐在猫上。而单独的sin函数无法完全表达。</p>
 <p>以下通过公式来证明：</p>
 <h2 id="单独三角函数的缺陷"><a href="#单独三角函数的缺陷" class="headerlink" title="单独三角函数的缺陷"></a>单独三角函数的缺陷</h2><p>相对位置不容易学习到。</p>
 <p>在NLP中，相对位置比绝对位置要更加重要。比如，“猫坐在垫子上，很可爱啊” 和 “很可爱啊，猫坐在垫子上”。词的绝对位置不同，但是语义上没有差别，不会对建模有影响。但是相对位置如果变化，可能会导致语义混乱。例如，垫子坐在猫上。所以单独的sin函数无法完全表达</p>
@@ -700,8 +700,7 @@ mjx-container[display="true"] + br {
 <li>易于学习相对位置</li>
 <li>易于外推</li>
 </ul>
-<h2 id="为什么单独使用sin不行"><a href="#为什么单独使用sin不行" class="headerlink" title="为什么单独使用sin不行"></a>为什么单独使用sin不行</h2><p>之所以要学习</p>
-<p>我们首先要明确目标：我们希望找到一个函数 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="1.244ex" height="2.059ex" role="img" focusable="false" viewBox="0 -705 550 910"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g></g></g></svg></mjx-container>，使得：$$PE(\text{pos} + k) = f(PE(\text{pos}), k)</p>
+<h2 id="为什么单独使用sin不行"><a href="#为什么单独使用sin不行" class="headerlink" title="为什么单独使用sin不行"></a>为什么单独使用sin不行</h2><p>我们首先要明确目标：我们希望找到一个函数 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="1.244ex" height="2.059ex" role="img" focusable="false" viewBox="0 -705 550 910"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g></g></g></svg></mjx-container>，使得：$$PE(\text{pos} + k) = f(PE(\text{pos}), k)</p>
 <script type="math/tex; mode=display">并且我们要求 $f$ 必须是**线性**的，即：
 
 $$PE(\text{pos} + k) = \mathbf{M}\_k \cdot PE(\text{pos})
@@ -784,6 +783,7 @@ $$**完美实现！**
 <p>这类方法不再是 X_i = E_i + P_i。</p>
 <p>直接修改（hack）注意力机制。当计算 score(i, j) 时，它们会额外注入一个专门表示 i 和 j 之间<strong>相对距离（i - j）</strong>的向量。</p>
 <p>代表模型： Transformer-XL, T5, DeBERTa。</p>
+<h3 id="Trans中位置编码存在的局限"><a href="#Trans中位置编码存在的局限" class="headerlink" title="Trans中位置编码存在的局限"></a>Trans中位置编码存在的局限</h3><p>不够存粹，存在一些偏置项。</p>
 <h3 id="旋转位置编码"><a href="#旋转位置编码" class="headerlink" title="旋转位置编码"></a>旋转位置编码</h3>
                 
             </div>
@@ -1086,13 +1086,13 @@ $$**完美实现！**
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/56f17847/">
+                <a href="/posts/61e48afb/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="DataProcess">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="深度学习环境配置">
                         
-                        <span class="card-title">DataProcess</span>
+                        <span class="card-title">深度学习环境配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1120,12 +1120,16 @@ $$**完美实现！**
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/DataLoader/">
-                        <span class="chip bg-color">DataLoader</span>
+                    <a href="/tags/CUDA/">
+                        <span class="chip bg-color">CUDA</span>
                     </a>
                     
-                    <a href="/tags/Random-Seed/">
-                        <span class="chip bg-color">Random Seed</span>
+                    <a href="/tags/CUDNN/">
+                        <span class="chip bg-color">CUDNN</span>
+                    </a>
+                    
+                    <a href="/tags/Pytorch/">
+                        <span class="chip bg-color">Pytorch</span>
                     </a>
                     
                 </div>
@@ -1558,6 +1562,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
