@@ -5,13 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="python, Home of Gaofeng">
-    <meta name="description" content="所遇问题输出格式有问题背景：python2.7，IDE：VSCode源码：
-two.txt:
-输出：预期应该为商品，单价，数量。
-修改最后一行的print
-打包pip install 包相似的回答
-
-背景：内网需要安装python和一些包，">
+    <meta name="description" content="所遇问题Matplotlib 中文乱码https://zhuanlan.zhihu.com/p/30790786209
+对于大多数情况生效的最快的解决方法，将下面这一段加入到代码的头部。
+# 设置全局字体为 SimHei (黑体) 或其他中">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -473,14 +469,14 @@ two.txt:
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10.9k
+                    11.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    48 分
+                    50 分
                 </div>
                 
 
@@ -503,7 +499,49 @@ two.txt:
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="所遇问题"><a href="#所遇问题" class="headerlink" title="所遇问题"></a>所遇问题</h2><h3 id="输出格式有问题"><a href="#输出格式有问题" class="headerlink" title="输出格式有问题"></a>输出格式有问题</h3><p>背景：python2.7，IDE：VSCode<br>源码：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/aad38ed43cf14169a81178f15d5cab6b.png" alt=""></p>
+                <h2 id="所遇问题"><a href="#所遇问题" class="headerlink" title="所遇问题"></a>所遇问题</h2><h3 id="Matplotlib-中文乱码"><a href="#Matplotlib-中文乱码" class="headerlink" title="Matplotlib 中文乱码"></a>Matplotlib 中文乱码</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30790786209">https://zhuanlan.zhihu.com/p/30790786209</a></p>
+<p><strong>对于大多数情况生效的最快的解决方法，将下面这一段加入到代码的头部。</strong></p>
+<pre class="line-numbers language-none"><code class="language-none"># 设置全局字体为 SimHei (黑体) 或其他中文字体
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 或 ['Microsoft YaHei'] 微软雅黑 等
+plt.rcParams['axes.unicode_minus'] = False   # 解决负号 '-' 显示为方块的问题<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>为什么会出现中文乱码？</p>
+<p>Matplotlib 默认使用的字体是英文字体，字库中不包含中文字符，因此在绘制包含中文的图表元素（如标题、坐标轴标签、图例等）时，就会出现乱码。</p>
+<p>解决方案总览</p>
+<p>我们将介绍以下几种解决方案，建议按顺序尝试，选择最适合你的方法：</p>
+<ol>
+<li><p>方法一：代码中临时指定字体（最常用、推荐） - 简单快捷，适用于大多数情况。</p>
+</li>
+<li><p>方法二：手动指定字体路径（灵活控制） - 适用于需要自定义字体或跨平台部署的情况。</p>
+</li>
+</ol>
+<p>如果你想使用特定的字体文件（例如，从网上下载的字体），或者需要更精细地控制字体设置，可以使用 FontProperties 手动指定字体路径。</p>
+<pre class="line-numbers language-none"><code class="language-none">import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
+
+# 1. 下载字体文件 (例如 SimHei.ttf) 并放置在你的项目目录下或系统字体目录
+
+# 2. 创建 FontProperties 对象，指定字体文件路径和大小
+font_path = 'SimHei.ttf' # 替换为你的字体文件路径 (可以是相对路径或绝对路径)
+font = FontProperties(fname=font_path, size=14)
+
+# 示例代码
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 1, 3, 5]
+
+plt.plot(x, y)
+plt.title('折线图示例 - 中文标题', fontproperties=font) # 应用于标题
+plt.xlabel('X 轴 - 横轴', fontproperties=font)       # 应用于 X 轴标签
+plt.ylabel('Y 轴 - 纵轴', fontproperties=font)       # 应用于 Y 轴标签
+plt.legend(['数据系列 - 中文图例'], prop=font)      # 应用于图例 (使用 prop 参数)
+plt.show()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>方法三：修改 Matplotlib 配置文件（永久生效） - 一劳永逸，但需谨慎操作。</li>
+</ol>
+<p>如果你希望一劳永逸地解决所有 Matplotlib 图表的中文乱码问题，可以修改 Matplotlib 的配置文件 matplotlibrc。请谨慎操作，修改配置文件可能影响所有使用 Matplotlib 的项目。</p>
+<ol>
+<li>操作系统特殊处理 - 针对 Windows、Mac/Linux 和 Google Colab/Jupyter 环境的特殊字体设置。</li>
+</ol>
+<h3 id="输出格式有问题"><a href="#输出格式有问题" class="headerlink" title="输出格式有问题"></a>输出格式有问题</h3><p>背景：python2.7，IDE：VSCode<br>源码：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/aad38ed43cf14169a81178f15d5cab6b.png" alt=""></p>
 <p>two.txt:<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/30f55f74a6f04008af34c386d4ac4631.png" alt=""></p>
 <p>输出：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/006fd38c10064562b5261b067cd0d0e8.png" alt=""><br>预期应该为商品，单价，数量。</p>
 <p>修改最后一行的print<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/be1c33ec8b6e4593806ab989758d5641.png" alt=""></p>
@@ -1608,12 +1646,12 @@ from Module import * # 引入模块中的所有‘公开’成员<span aria-hidd
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
                     <a href="/tags/%E8%BF%90%E7%BB%B4/">
                         <span class="chip bg-color">运维</span>
+                    </a>
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                     <a href="/tags/git/">
@@ -1879,7 +1917,7 @@ from Module import * # 引入模块中的所有‘公开’成员<span aria-hidd
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">271.8k</span>
+                        class="white-color">271.7k</span>
             
             
             
