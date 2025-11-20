@@ -13,6 +13,61 @@ abbrlink: 51872
 
 
 ##  所遇问题 
+
+### Matplotlib 中文乱码
+
+https://zhuanlan.zhihu.com/p/30790786209
+
+**对于大多数情况生效的最快的解决方法，将下面这一段加入到代码的头部。**
+
+```
+# 设置全局字体为 SimHei (黑体) 或其他中文字体
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 或 ['Microsoft YaHei'] 微软雅黑 等
+plt.rcParams['axes.unicode_minus'] = False   # 解决负号 '-' 显示为方块的问题
+```
+
+为什么会出现中文乱码？
+
+Matplotlib 默认使用的字体是英文字体，字库中不包含中文字符，因此在绘制包含中文的图表元素（如标题、坐标轴标签、图例等）时，就会出现乱码。
+
+解决方案总览
+
+我们将介绍以下几种解决方案，建议按顺序尝试，选择最适合你的方法：
+
+1. 方法一：代码中临时指定字体（最常用、推荐） - 简单快捷，适用于大多数情况。
+
+2. 方法二：手动指定字体路径（灵活控制） - 适用于需要自定义字体或跨平台部署的情况。
+
+如果你想使用特定的字体文件（例如，从网上下载的字体），或者需要更精细地控制字体设置，可以使用 FontProperties 手动指定字体路径。
+
+```
+import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
+
+# 1. 下载字体文件 (例如 SimHei.ttf) 并放置在你的项目目录下或系统字体目录
+
+# 2. 创建 FontProperties 对象，指定字体文件路径和大小
+font_path = 'SimHei.ttf' # 替换为你的字体文件路径 (可以是相对路径或绝对路径)
+font = FontProperties(fname=font_path, size=14)
+
+# 示例代码
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 1, 3, 5]
+
+plt.plot(x, y)
+plt.title('折线图示例 - 中文标题', fontproperties=font) # 应用于标题
+plt.xlabel('X 轴 - 横轴', fontproperties=font)       # 应用于 X 轴标签
+plt.ylabel('Y 轴 - 纵轴', fontproperties=font)       # 应用于 Y 轴标签
+plt.legend(['数据系列 - 中文图例'], prop=font)      # 应用于图例 (使用 prop 参数)
+plt.show()
+```
+
+3. 方法三：修改 Matplotlib 配置文件（永久生效） - 一劳永逸，但需谨慎操作。
+
+如果你希望一劳永逸地解决所有 Matplotlib 图表的中文乱码问题，可以修改 Matplotlib 的配置文件 matplotlibrc。请谨慎操作，修改配置文件可能影响所有使用 Matplotlib 的项目。
+
+4. 操作系统特殊处理 - 针对 Windows、Mac/Linux 和 Google Colab/Jupyter 环境的特殊字体设置。
+
 ###  输出格式有问题 
 背景：python2.7，IDE：VSCode
 源码：
