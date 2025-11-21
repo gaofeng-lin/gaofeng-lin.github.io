@@ -4,8 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="异常检测论文, Home of Gaofeng">
-    <meta name="description" content="An Efficient Adaptive Multi-Kernel Learning With Safe Screening Rule for Outlier DetectionSummary写完笔记之后最后填，概述文章的内容，以后查阅笔">
+    <meta name="keywords" content="ROPE, Home of Gaofeng">
+    <meta name="description" content="基础知识三角函数旋转矩阵https://zhuanlan.zhihu.com/p/183973440
+XY坐标系中，向量OP旋转β角度到了OP’的位置：
+
+根据三角函数关系，可以列出向量OP与OP’的坐标表示形式：
+对比上面个两个式子，将第">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +23,7 @@
 
     
 
-    <title>异常检测论文 | Home of Gaofeng</title>
+    <title>ROPE | Home of Gaofeng</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -424,12 +428,12 @@ mjx-container[display="true"] + br {
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">异常检测论文</h1>
+                    <h1 class="description center-align post-title">ROPE</h1>
                 </div>
             </div>
         </div>
@@ -545,8 +549,8 @@ mjx-container[display="true"] + br {
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">机器学习</span>
+                            <a href="/tags/ROPE/">
+                                <span class="chip bg-color">ROPE</span>
                             </a>
                         
                     </div>
@@ -557,8 +561,8 @@ mjx-container[display="true"] + br {
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" class="post-category">
-                                异常检测
+                            <a href="/categories/AI/" class="post-category">
+                                AI
                             </a>
                         
                     </div>
@@ -570,7 +574,7 @@ mjx-container[display="true"] + br {
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-10-09
+                    2025-11-21
                 </div>
                 
 
@@ -579,14 +583,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    835
+                    129
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -609,44 +613,14 @@ mjx-container[display="true"] + br {
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="An-Efficient-Adaptive-Multi-Kernel-Learning-With-Safe-Screening-Rule-for-Outlier-Detection"><a href="#An-Efficient-Adaptive-Multi-Kernel-Learning-With-Safe-Screening-Rule-for-Outlier-Detection" class="headerlink" title="An Efficient Adaptive Multi-Kernel Learning With Safe Screening Rule for Outlier Detection"></a>An Efficient Adaptive Multi-Kernel Learning With Safe Screening Rule for Outlier Detection</h2><h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>写完笔记之后最后填，概述文章的内容，以后查阅笔记的时候先看这一段。注：写文章summary切记需要通过自己的思考，用自己的语言描述。忌讳直接Ctrl + c原文。</p>
-<h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p><strong>（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）</strong></p>
-<ul>
-<li>异常检测已经应用在许多领域。其中基于模型的方法因为充分学习数学信息的优势脱颖而出</li>
-<li>核技术帮助基于模型的方法实现更高的检测精度</li>
-</ul>
-<h3 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h3><p><strong>（问题陈述：问题作者需要解决的问题是什么？）</strong></p>
-<ul>
-<li>如何找到各个核函数之间的最佳权重组合</li>
-<li>如何高效训练异常检测器</li>
-</ul>
-<h3 id="Method-s"><a href="#Method-s" class="headerlink" title="Method(s)"></a>Method(s)</h3><p><strong>（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）</strong></p>
-<ul>
-<li>安全规则的作用主要是筛选数据，减小训练量，以此提高训练效率</li>
-</ul>
-<h3 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h3><p><strong>（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）</strong></p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
-<h3 id="Notes-optional"><a href="#Notes-optional" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h3><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
-<h3 id="References-optional"><a href="#References-optional" class="headerlink" title="References(optional)"></a>References(optional)</h3><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
-<h2 id="Robust-Multi-Kernel-Nearest-Neighborhood-for-Outlier-Detection"><a href="#Robust-Multi-Kernel-Nearest-Neighborhood-for-Outlier-Detection" class="headerlink" title="Robust Multi-Kernel Nearest Neighborhood for Outlier Detection"></a>Robust Multi-Kernel Nearest Neighborhood for Outlier Detection</h2><p>写完笔记之后最后填，概述文章的内容，以后查阅笔记的时候先看这一段。注：写文章summary切记需要通过自己的思考，用自己的语言描述。忌讳直接Ctrl + c原文。</p>
-<h3 id="Background-1"><a href="#Background-1" class="headerlink" title="Background"></a>Background</h3><p><strong>（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）</strong></p>
-<ul>
-<li>异常检测已经应用在许多领域。其中基于模型的方法因为充分学习数学信息的优势脱颖而出</li>
-<li>核技术帮助基于模型的方法实现更高的检测精度</li>
-</ul>
-<h3 id="Problem-Statement-1"><a href="#Problem-Statement-1" class="headerlink" title="Problem Statement"></a>Problem Statement</h3><p><strong>（问题陈述：问题作者需要解决的问题是什么？）</strong></p>
-<ul>
-<li>如何找到各个核函数之间的最佳权重组合</li>
-<li>如何高效训练异常检测器</li>
-</ul>
-<h3 id="Method-s-1"><a href="#Method-s-1" class="headerlink" title="Method(s)"></a>Method(s)</h3><p><strong>（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）</strong></p>
-<ul>
-<li>安全规则的作用主要是筛选数据，减小训练量，以此提高训练效率</li>
-</ul>
-<h3 id="Evaluation-1"><a href="#Evaluation-1" class="headerlink" title="Evaluation"></a>Evaluation</h3><p><strong>（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）</strong></p>
-<h3 id="Conclusion-1"><a href="#Conclusion-1" class="headerlink" title="Conclusion"></a>Conclusion</h3><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
-<h3 id="Notes-optional-1"><a href="#Notes-optional-1" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h3><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
-<h3 id="References-optional-1"><a href="#References-optional-1" class="headerlink" title="References(optional)"></a>References(optional)</h3><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
+                <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h2><h2 id="旋转矩阵"><a href="#旋转矩阵" class="headerlink" title="旋转矩阵"></a>旋转矩阵</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/183973440">https://zhuanlan.zhihu.com/p/183973440</a></p>
+<p>XY坐标系中，向量OP旋转β角度到了OP’的位置：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-11-21_11-08-17.png" alt=""></p>
+<p>根据三角函数关系，可以列出向量OP与OP’的坐标表示形式：</p>
+<p>对比上面个两个式子，将第2个式子展开：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-cdf8b5fa36af46cdd4986cdbc3ec8d2a_r.png" alt=""></p>
+<p>用矩阵形式重新表示为：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-8803684cd287390b2b689c128d76563b_1440w.jpg" alt=""></p>
+<p>中间的矩阵即二维旋转的旋转矩阵，坐标中的某一向量左乘该矩阵后，即得到这个向量旋转β角后的坐标。</p>
 
                 
             </div>
@@ -673,7 +647,7 @@ mjx-container[display="true"] + br {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://gaofeng-lin.github.io/posts/14d68935/">https://gaofeng-lin.github.io/posts/14d68935/</a>
+                    <a href="https://gaofeng-lin.github.io/posts/878b3a83/">https://gaofeng-lin.github.io/posts/878b3a83/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -711,8 +685,8 @@ mjx-container[display="true"] + br {
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">机器学习</span>
+                                <a href="/tags/ROPE/">
+                                    <span class="chip bg-color">ROPE</span>
                                 </a>
                             
                         </div>
@@ -886,17 +860,18 @@ mjx-container[display="true"] + br {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/55264222/">
+                <a href="/posts/878b3a83/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="C++命令">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="ROPE">
                         
-                        <span class="card-title">C++命令</span>
+                        <span class="card-title">ROPE</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -906,26 +881,27 @@ mjx-container[display="true"] + br {
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-12-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-11-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/programming-language/" class="post-category">
-                                    programming-language
+                            <a href="/categories/AI/" class="post-category">
+                                    AI
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/cpp/">
-                        <span class="chip bg-color">cpp</span>
+                    <a href="/tags/ROPE/">
+                        <span class="chip bg-color">ROPE</span>
                     </a>
                     
                 </div>
@@ -939,13 +915,13 @@ mjx-container[display="true"] + br {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/e2cc1df4/">
+                <a href="/posts/6dda7187/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="流场加速收敛">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="位置编码">
                         
-                        <span class="card-title">流场加速收敛</span>
+                        <span class="card-title">位置编码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -956,14 +932,14 @@ mjx-container[display="true"] + br {
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-08-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-11-11
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CFD/" class="post-category">
-                                    CFD
+                            <a href="/categories/AI/" class="post-category">
+                                    AI
                                 </a>
                             
                             
@@ -973,8 +949,12 @@ mjx-container[display="true"] + br {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8A%A0%E9%80%9F%E6%94%B6%E6%95%9B/">
-                        <span class="chip bg-color">加速收敛</span>
+                    <a href="/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/">
+                        <span class="chip bg-color">循环神经网络位置编码</span>
+                    </a>
+                    
+                    <a href="/tags/Transformer/">
+                        <span class="chip bg-color">Transformer</span>
                     </a>
                     
                 </div>
