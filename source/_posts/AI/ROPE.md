@@ -6,6 +6,7 @@ categories:
 tags:
   - ROPE
 mathjax: true
+abbrlink: 878b3a83
 ---
 
 # 基础知识
