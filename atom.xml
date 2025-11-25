@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-11-25T02:37:33.415Z</updated>
+  <updated>2025-11-25T04:02:49.431Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://gaofeng-lin.github.io/posts/7e71de3/"/>
     <id>https://gaofeng-lin.github.io/posts/7e71de3/</id>
     <published>2025-11-24T16:00:00.000Z</published>
-    <updated>2025-11-25T02:37:33.415Z</updated>
+    <updated>2025-11-25T04:02:49.431Z</updated>
     
     
       
@@ -46,7 +46,7 @@
     <link href="https://gaofeng-lin.github.io/posts/878b3a83/"/>
     <id>https://gaofeng-lin.github.io/posts/878b3a83/</id>
     <published>2025-11-20T16:00:00.000Z</published>
-    <updated>2025-11-25T04:02:20.849Z</updated>
+    <updated>2025-11-25T08:38:15.078Z</updated>
     
     
       
@@ -429,31 +429,6 @@
   </entry>
   
   <entry>
-    <title>DroneDataset</title>
-    <link href="https://gaofeng-lin.github.io/posts/27c9adf4/"/>
-    <id>https://gaofeng-lin.github.io/posts/27c9adf4/</id>
-    <published>2025-09-04T16:00:00.000Z</published>
-    <updated>2025-09-09T13:58:58.412Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Mid-Air-A-multi-modal-dataset-for-extremely-low-altitude-drone-flights&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
-    
-    
-    <category term="Dataset" scheme="https://gaofeng-lin.github.io/tags/Dataset/"/>
-    
-  </entry>
-  
-  <entry>
     <title>DroneAD</title>
     <link href="https://gaofeng-lin.github.io/posts/7d96b074/"/>
     <id>https://gaofeng-lin.github.io/posts/7d96b074/</id>
@@ -475,6 +450,31 @@
     
     
     <category term="Anomaly Detection" scheme="https://gaofeng-lin.github.io/tags/Anomaly-Detection/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DroneDataset</title>
+    <link href="https://gaofeng-lin.github.io/posts/27c9adf4/"/>
+    <id>https://gaofeng-lin.github.io/posts/27c9adf4/</id>
+    <published>2025-09-04T16:00:00.000Z</published>
+    <updated>2025-09-09T13:58:58.412Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Mid-Air-A-multi-modal-dataset-for-extremely-low-altitude-drone-flights&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
+    
+    
+    <category term="Dataset" scheme="https://gaofeng-lin.github.io/tags/Dataset/"/>
     
   </entry>
   
@@ -509,12 +509,20 @@
   </entry>
   
   <entry>
-    <title>HTTPS</title>
-    <link href="https://gaofeng-lin.github.io/posts/c9a2a716/"/>
-    <id>https://gaofeng-lin.github.io/posts/c9a2a716/</id>
+    <title>TCP-IP通信发展历史</title>
+    <link href="https://gaofeng-lin.github.io/posts/27ba7163/"/>
+    <id>https://gaofeng-lin.github.io/posts/27ba7163/</id>
     <published>2025-07-25T16:00:00.000Z</published>
-    <updated>2025-07-29T03:01:36.778Z</updated>
+    <updated>2025-07-27T09:48:44.008Z</updated>
     
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;现阶段通信模型&quot;&gt;&lt;a href=&quot;#现阶段通信模型&quot; class=&quot;headerlink&quot; title=&quot;现阶段通信模型&quot;&gt;&lt;/a&gt;现阶段通信模型&lt;/h1&gt;&lt;h2 id=&quot;数据封装过程&quot;&gt;&lt;a href=&quot;#数据封装过程&quot; class=&quot;headerlink&quot;</summary>
+        
+      
     
     
     
