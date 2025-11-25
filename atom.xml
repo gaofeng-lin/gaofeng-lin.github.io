@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-11-21T10:04:51.152Z</updated>
+  <updated>2025-11-25T02:37:33.415Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>复数</title>
+    <link href="https://gaofeng-lin.github.io/posts/7e71de3/"/>
+    <id>https://gaofeng-lin.github.io/posts/7e71de3/</id>
+    <published>2025-11-24T16:00:00.000Z</published>
+    <updated>2025-11-25T02:37:33.415Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://gaofeng-lin.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="复数" scheme="https://gaofeng-lin.github.io/tags/%E5%A4%8D%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ROPE</title>
     <link href="https://gaofeng-lin.github.io/posts/878b3a83/"/>
     <id>https://gaofeng-lin.github.io/posts/878b3a83/</id>
     <published>2025-11-20T16:00:00.000Z</published>
-    <updated>2025-11-21T10:04:51.152Z</updated>
+    <updated>2025-11-25T04:02:20.849Z</updated>
     
     
       
@@ -62,9 +87,9 @@
     <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
     
     
-    <category term="循环神经网络位置编码" scheme="https://gaofeng-lin.github.io/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/"/>
-    
     <category term="Transformer" scheme="https://gaofeng-lin.github.io/tags/Transformer/"/>
+    
+    <category term="循环神经网络位置编码" scheme="https://gaofeng-lin.github.io/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/"/>
     
   </entry>
   
@@ -490,31 +515,6 @@
     <published>2025-07-25T16:00:00.000Z</published>
     <updated>2025-07-29T03:01:36.778Z</updated>
     
-    
-    
-    
-    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    
-    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TCP-IP通信发展历史</title>
-    <link href="https://gaofeng-lin.github.io/posts/27ba7163/"/>
-    <id>https://gaofeng-lin.github.io/posts/27ba7163/</id>
-    <published>2025-07-25T16:00:00.000Z</published>
-    <updated>2025-07-27T09:48:44.008Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;现阶段通信模型&quot;&gt;&lt;a href=&quot;#现阶段通信模型&quot; class=&quot;headerlink&quot; title=&quot;现阶段通信模型&quot;&gt;&lt;/a&gt;现阶段通信模型&lt;/h1&gt;&lt;h2 id=&quot;数据封装过程&quot;&gt;&lt;a href=&quot;#数据封装过程&quot; class=&quot;headerlink&quot;</summary>
-        
-      
     
     
     
