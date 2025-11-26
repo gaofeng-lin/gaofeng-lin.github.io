@@ -274,3 +274,33 @@ $\text{Angle}_k = \theta_k + n\theta + \gamma$
 
 这两个部分对于公式16中的m和n，相减会直接把$\gamma$ 抵消。
 
+## 3.2.1小节解读
+
+公式4没什么好说的。需要注意的就是复数做内积，后面那个复数需要取共轭。
+
+公式5：$f_{\{q,k\}}(x_m, m)$是数学公式中的一种“省流写法”，表示**适用于 $f_q$，也适用于 $f_k$**，这里的下标 $\{q,k\}$ 是一个集合记号，意思是你可以从 $\{q, k\}$ 中任选一个代入。
+
+明白了这个，我们来解释下公式5。首先我们要明白，公式5表达的是对输入$x_m$赋予位置编码，论文的位置编码是通过旋转得到的，所以公式里面会出现旋转矩阵。
+
+$$f_{\{q,k\}}(x_m, m) = \underbrace{\begin{pmatrix} \cos m\theta & -\sin m\theta \\ \sin m\theta & \cos m\theta \end{pmatrix}}_{\text{第一部分 (矩阵 A)}} \cdot \underbrace{\begin{pmatrix} W^{(11)} & W^{(12)} \\ W^{(21)} & W^{(22)} \end{pmatrix}}_{\text{第二部分 (矩阵 B)}} \cdot \underbrace{\begin{pmatrix} x^{(1)} \\ x^{(2)} \end{pmatrix}}_{\text{第三部分 (向量 C)}}$$
+
+因为输入的是$x_m$这个token，位置是m，而且是二维向量。所以在最右边是两个分量，列排列。
+
+中间是参数矩阵，一般来说维度是 $d*d$ ，那么对应到这里是 $2*2 $，也没有问题。
+
+最左边是旋转矩阵。根据3.4小节的推导，从最后的公式25可以看出，加位置编码就是乘以 $e^{im\theta}$
+
+设$q_{raw} = u + iv$（对应向量 $\begin{pmatrix} u \\ v \end{pmatrix}$）。
+乘以 $e^{im\theta} = \cos(m\theta) + i\sin(m\theta)$：
+
+$$(u + iv)(\cos(m\theta) + i\sin(m\theta))$$
+
+展开：
+新实部 (Real)：$u\cos(m\theta) - v\sin(m\theta)$
+
+新虚部 (Imag)：$u\sin(m\theta) + v\cos(m\theta)$
+
+写回矩阵形式 把上面的计算过程写成矩阵形式：
+
+$$\begin{pmatrix} \text{New Real} \\ \text{New Imag} \end{pmatrix} = \begin{pmatrix} \cos m\theta & -\sin m\theta \\ \sin m\theta & \cos m\theta \end{pmatrix} \begin{pmatrix} u \\ v \end{pmatrix}$$
+
