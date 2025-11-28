@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-11-25T04:02:49.431Z</updated>
+  <updated>2025-11-28T01:45:14.582Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数学思维导图</title>
+    <link href="https://gaofeng-lin.github.io/posts/b6816771/"/>
+    <id>https://gaofeng-lin.github.io/posts/b6816771/</id>
+    <published>2025-11-27T16:00:00.000Z</published>
+    <updated>2025-11-28T01:45:14.582Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;从现代数学的视角，我们可以把通过“处理对象”的不同，粗略分为五大板块：&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://gaofeng-lin.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="数学" scheme="https://gaofeng-lin.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>高等数学</title>
+    <link href="https://gaofeng-lin.github.io/posts/93e4730e/"/>
+    <id>https://gaofeng-lin.github.io/posts/93e4730e/</id>
+    <published>2025-11-27T16:00:00.000Z</published>
+    <updated>2025-11-28T03:35:34.497Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;积分&quot;&gt;&lt;a href=&quot;#积分&quot; class=&quot;headerlink&quot; title=&quot;积分&quot;&gt;&lt;/a&gt;积分&lt;/h1&gt;&lt;h2 id=&quot;微积分&quot;&gt;&lt;a href=&quot;#微积分&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://gaofeng-lin.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="高等数学" scheme="https://gaofeng-lin.github.io/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>复数</title>
@@ -46,7 +97,7 @@
     <link href="https://gaofeng-lin.github.io/posts/878b3a83/"/>
     <id>https://gaofeng-lin.github.io/posts/878b3a83/</id>
     <published>2025-11-20T16:00:00.000Z</published>
-    <updated>2025-11-26T08:42:28.851Z</updated>
+    <updated>2025-11-28T09:28:21.251Z</updated>
     
     
       
@@ -87,9 +138,9 @@
     <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
     
     
-    <category term="Transformer" scheme="https://gaofeng-lin.github.io/tags/Transformer/"/>
-    
     <category term="循环神经网络位置编码" scheme="https://gaofeng-lin.github.io/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/"/>
+    
+    <category term="Transformer" scheme="https://gaofeng-lin.github.io/tags/Transformer/"/>
     
   </entry>
   
@@ -475,53 +526,6 @@
     
     
     <category term="Dataset" scheme="https://gaofeng-lin.github.io/tags/Dataset/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>低空经济相关知识</title>
-    <link href="https://gaofeng-lin.github.io/posts/36fe4739/"/>
-    <id>https://gaofeng-lin.github.io/posts/36fe4739/</id>
-    <published>2025-08-31T16:00:00.000Z</published>
-    <updated>2025-09-10T23:39:47.587Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;入门概念&quot;&gt;&lt;a href=&quot;#入门概念&quot; class=&quot;headerlink&quot; title=&quot;入门概念&quot;&gt;&lt;/a&gt;入门概念&lt;/h1&gt;&lt;p&gt;低空经济是新质生产力中的一个概念，新质生产力又是在生产力之上衍生出来的。&lt;/p&gt;
-&lt;h2 id=&quot;生产力&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="低空经济" scheme="https://gaofeng-lin.github.io/categories/%E4%BD%8E%E7%A9%BA%E7%BB%8F%E6%B5%8E/"/>
-    
-    
-    <category term="新质生产力" scheme="https://gaofeng-lin.github.io/tags/%E6%96%B0%E8%B4%A8%E7%94%9F%E4%BA%A7%E5%8A%9B/"/>
-    
-    <category term="低空经济" scheme="https://gaofeng-lin.github.io/tags/%E4%BD%8E%E7%A9%BA%E7%BB%8F%E6%B5%8E/"/>
-    
-    <category term="无人机" scheme="https://gaofeng-lin.github.io/tags/%E6%97%A0%E4%BA%BA%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTTPS</title>
-    <link href="https://gaofeng-lin.github.io/posts/c9a2a716/"/>
-    <id>https://gaofeng-lin.github.io/posts/c9a2a716/</id>
-    <published>2025-07-25T16:00:00.000Z</published>
-    <updated>2025-07-29T03:01:36.778Z</updated>
-    
-    
-    
-    
-    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    
-    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
