@@ -14,6 +14,23 @@ abbrlink: 54220
 ---
 
 ## 问题汇总
+
+### linux运行时报字符错（windows复制代码到linux时出错）
+
+报错信息如下：
+")syntax error: invalid arithmetic operator (error token is "
+./scripts/supervised/forecast/time-llm_etth1.sh: line 6: $'\r': command not found
+
+这个错误是一个典型的 Windows 文件格式问题，不是算术表达式语法错误。错误信息 ./scripts/supervised/forecast/time-llm_etth1.sh: line 6: $'\r': command not found 表明脚本中存在 Windows 的回车符 \r，导致 shell 将 \r 视为命令执行。
+
+从 Windows 系统复制到 Linux 系统的，Windows 使用 CRLF（\r\n）作为换行符，而 Linux 使用 LF（\n）。当 Linux 尝试执行包含 \r 的脚本时，它会将 \r 视为命令的一部分，导致错误。
+
+解决方法：
+
+```
+sed -i 's/\r//g' ./scripts/supervised/forecast/time-llm_etth1.sh
+```
+
 ### error while loading shared libraries错误解决办法
 **背景：求解器执行的适合报找不到libmpiexec.so.12这个东西，但是在/opt/mpich/lib下面有这个东西。路径什么的也都加入到了 环境变量里面 （~/.bash_profile或~/.bashrc）。还是无法解决问题**
 [原文链接](https://blog.csdn.net/dumeifang/article/details/2963223?spm=1001.2101.3001.6650.1&depth_1-utm_relevant_index=2)
@@ -85,21 +102,7 @@ Windows 使用 CRLF（\r\n）作为换行符，而 Linux 使用 LF（\n）。当
 下面以我当时遇到的脚本为例，后面再遇到这个问题，只需要把.sh文件替换为自己的即可。
 ```sed -i 's/\r//g' ./scripts/supervised/forecast/time-llm_etth1.sh```
 
-### linux运行时报字符错（windows复制代码到linux时出错）
 
-报错信息如下：
-")syntax error: invalid arithmetic operator (error token is "
-./scripts/supervised/forecast/time-llm_etth1.sh: line 6: $'\r': command not found
-
-这个错误是一个典型的 Windows 文件格式问题，不是算术表达式语法错误。错误信息 ./scripts/supervised/forecast/time-llm_etth1.sh: line 6: $'\r': command not found 表明脚本中存在 Windows 的回车符 \r，导致 shell 将 \r 视为命令执行。
-
-从 Windows 系统复制到 Linux 系统的，Windows 使用 CRLF（\r\n）作为换行符，而 Linux 使用 LF（\n）。当 Linux 尝试执行包含 \r 的脚本时，它会将 \r 视为命令的一部分，导致错误。
-
-解决方法：
-
-```
-sed -i 's/\r//g' ./scripts/supervised/forecast/time-llm_etth1.sh
-```
 
 ## Linux 权限
 
