@@ -11,6 +11,18 @@ abbrlink: 20005
 ---
 
 
+## 实用/高效命令
+
+守护进程命令：
+
+nohup bash /root/CycleNet/scripts/rolling1.sh > app.log 2>&1 &
+
+批量修改某个目录下面的文件名：
+
+我想复制这个目录下所有的文件，并给新生成的文件按照统一规则命名文件名。比如给新生成的文件文件名后面加上"_fftv5.sh"
+
+for file in *.sh; do cp "$file" "${file%.sh}_fftv5.sh"; done
+
 
 ## 基本知识/命令
 ### 变量赋值语句不能有空格
