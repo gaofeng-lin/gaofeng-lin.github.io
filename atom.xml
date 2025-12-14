@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2025-11-19T00:57:54.203Z</updated>
+  <updated>2025-12-07T05:45:41.467Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -17,11 +17,137 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>傅里叶变换</title>
+    <link href="https://gaofeng-lin.github.io/posts/ef248034/"/>
+    <id>https://gaofeng-lin.github.io/posts/ef248034/</id>
+    <published>2025-11-30T16:00:00.000Z</published>
+    <updated>2025-12-07T05:45:41.467Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://gaofeng-lin.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="傅里叶" scheme="https://gaofeng-lin.github.io/tags/%E5%82%85%E9%87%8C%E5%8F%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数学思维导图</title>
+    <link href="https://gaofeng-lin.github.io/posts/b6816771/"/>
+    <id>https://gaofeng-lin.github.io/posts/b6816771/</id>
+    <published>2025-11-27T16:00:00.000Z</published>
+    <updated>2025-11-29T08:20:15.148Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;从现代数学的视角，我们可以把通过“处理对象”的不同，粗略分为五大板块：&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://gaofeng-lin.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="数学" scheme="https://gaofeng-lin.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>高等数学</title>
+    <link href="https://gaofeng-lin.github.io/posts/93e4730e/"/>
+    <id>https://gaofeng-lin.github.io/posts/93e4730e/</id>
+    <published>2025-11-27T16:00:00.000Z</published>
+    <updated>2025-11-29T08:20:15.148Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;积分&quot;&gt;&lt;a href=&quot;#积分&quot; class=&quot;headerlink&quot; title=&quot;积分&quot;&gt;&lt;/a&gt;积分&lt;/h1&gt;&lt;h2 id=&quot;微积分&quot;&gt;&lt;a href=&quot;#微积分&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://gaofeng-lin.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="高等数学" scheme="https://gaofeng-lin.github.io/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>复数</title>
+    <link href="https://gaofeng-lin.github.io/posts/7e71de3/"/>
+    <id>https://gaofeng-lin.github.io/posts/7e71de3/</id>
+    <published>2025-11-24T16:00:00.000Z</published>
+    <updated>2025-11-29T08:20:15.148Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://gaofeng-lin.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="复数" scheme="https://gaofeng-lin.github.io/tags/%E5%A4%8D%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ROPE</title>
+    <link href="https://gaofeng-lin.github.io/posts/878b3a83/"/>
+    <id>https://gaofeng-lin.github.io/posts/878b3a83/</id>
+    <published>2025-11-20T16:00:00.000Z</published>
+    <updated>2025-11-29T08:20:15.145Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h1&gt;&lt;h2 id=&quot;三角函数&quot;&gt;&lt;a href=&quot;#三角函数&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="ROPE" scheme="https://gaofeng-lin.github.io/tags/ROPE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>位置编码</title>
     <link href="https://gaofeng-lin.github.io/posts/6dda7187/"/>
     <id>https://gaofeng-lin.github.io/posts/6dda7187/</id>
     <published>2025-11-10T16:00:00.000Z</published>
-    <updated>2025-11-19T00:57:54.203Z</updated>
+    <updated>2025-11-22T05:55:56.635Z</updated>
     
     
       
@@ -40,6 +166,33 @@
     <category term="循环神经网络位置编码" scheme="https://gaofeng-lin.github.io/tags/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/"/>
     
     <category term="Transformer" scheme="https://gaofeng-lin.github.io/tags/Transformer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DataProcess</title>
+    <link href="https://gaofeng-lin.github.io/posts/56f17847/"/>
+    <id>https://gaofeng-lin.github.io/posts/56f17847/</id>
+    <published>2025-10-22T16:00:00.000Z</published>
+    <updated>2025-11-15T07:50:50.281Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;dataloader解析&quot;&gt;&lt;a href=&quot;#dataloader解析&quot; class=&quot;headerlink&quot; title=&quot;dataloader解析&quot;&gt;&lt;/a&gt;dataloader解析&lt;/h1&gt;&lt;h2 id=&quot;简单例子&quot;&gt;&lt;a href=&quot;#简单例子&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="DataLoader" scheme="https://gaofeng-lin.github.io/tags/DataLoader/"/>
+    
+    <category term="Random Seed" scheme="https://gaofeng-lin.github.io/tags/Random-Seed/"/>
     
   </entry>
   
@@ -69,33 +222,6 @@
     <category term="CUDNN" scheme="https://gaofeng-lin.github.io/tags/CUDNN/"/>
     
     <category term="Pytorch" scheme="https://gaofeng-lin.github.io/tags/Pytorch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DataProcess</title>
-    <link href="https://gaofeng-lin.github.io/posts/56f17847/"/>
-    <id>https://gaofeng-lin.github.io/posts/56f17847/</id>
-    <published>2025-10-22T16:00:00.000Z</published>
-    <updated>2025-11-15T07:50:50.281Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;dataloader解析&quot;&gt;&lt;a href=&quot;#dataloader解析&quot; class=&quot;headerlink&quot; title=&quot;dataloader解析&quot;&gt;&lt;/a&gt;dataloader解析&lt;/h1&gt;&lt;h2 id=&quot;简单例子&quot;&gt;&lt;a href=&quot;#简单例子&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="DataLoader" scheme="https://gaofeng-lin.github.io/tags/DataLoader/"/>
-    
-    <category term="Random Seed" scheme="https://gaofeng-lin.github.io/tags/Random-Seed/"/>
     
   </entry>
   
@@ -230,7 +356,7 @@
     <link href="https://gaofeng-lin.github.io/posts/6b912686/"/>
     <id>https://gaofeng-lin.github.io/posts/6b912686/</id>
     <published>2025-09-25T16:00:00.000Z</published>
-    <updated>2025-09-27T08:51:03.252Z</updated>
+    <updated>2025-11-29T08:20:15.146Z</updated>
     
     
       
@@ -400,127 +526,6 @@
     
     
     <category term="Dataset" scheme="https://gaofeng-lin.github.io/tags/Dataset/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DroneAD</title>
-    <link href="https://gaofeng-lin.github.io/posts/7d96b074/"/>
-    <id>https://gaofeng-lin.github.io/posts/7d96b074/</id>
-    <published>2025-09-04T16:00:00.000Z</published>
-    <updated>2025-09-09T14:11:39.939Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Motor-Anomaly-Detection-for-Unmanned-Aerial-Vehicles-Using-Reinforcement-Learning&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
-    
-    
-    <category term="Anomaly Detection" scheme="https://gaofeng-lin.github.io/tags/Anomaly-Detection/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>低空经济相关知识</title>
-    <link href="https://gaofeng-lin.github.io/posts/36fe4739/"/>
-    <id>https://gaofeng-lin.github.io/posts/36fe4739/</id>
-    <published>2025-08-31T16:00:00.000Z</published>
-    <updated>2025-09-10T23:39:47.587Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;入门概念&quot;&gt;&lt;a href=&quot;#入门概念&quot; class=&quot;headerlink&quot; title=&quot;入门概念&quot;&gt;&lt;/a&gt;入门概念&lt;/h1&gt;&lt;p&gt;低空经济是新质生产力中的一个概念，新质生产力又是在生产力之上衍生出来的。&lt;/p&gt;
-&lt;h2 id=&quot;生产力&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="低空经济" scheme="https://gaofeng-lin.github.io/categories/%E4%BD%8E%E7%A9%BA%E7%BB%8F%E6%B5%8E/"/>
-    
-    
-    <category term="新质生产力" scheme="https://gaofeng-lin.github.io/tags/%E6%96%B0%E8%B4%A8%E7%94%9F%E4%BA%A7%E5%8A%9B/"/>
-    
-    <category term="低空经济" scheme="https://gaofeng-lin.github.io/tags/%E4%BD%8E%E7%A9%BA%E7%BB%8F%E6%B5%8E/"/>
-    
-    <category term="无人机" scheme="https://gaofeng-lin.github.io/tags/%E6%97%A0%E4%BA%BA%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTTPS</title>
-    <link href="https://gaofeng-lin.github.io/posts/c9a2a716/"/>
-    <id>https://gaofeng-lin.github.io/posts/c9a2a716/</id>
-    <published>2025-07-25T16:00:00.000Z</published>
-    <updated>2025-07-29T03:01:36.778Z</updated>
-    
-    
-    
-    
-    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    
-    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TCP-IP通信发展历史</title>
-    <link href="https://gaofeng-lin.github.io/posts/27ba7163/"/>
-    <id>https://gaofeng-lin.github.io/posts/27ba7163/</id>
-    <published>2025-07-25T16:00:00.000Z</published>
-    <updated>2025-07-27T09:48:44.008Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;现阶段通信模型&quot;&gt;&lt;a href=&quot;#现阶段通信模型&quot; class=&quot;headerlink&quot; title=&quot;现阶段通信模型&quot;&gt;&lt;/a&gt;现阶段通信模型&lt;/h1&gt;&lt;h2 id=&quot;数据封装过程&quot;&gt;&lt;a href=&quot;#数据封装过程&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="计算机基础知识" scheme="https://gaofeng-lin.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    
-    <category term="计算机网络" scheme="https://gaofeng-lin.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NAS实现IPv6和IPv4双栈访问.md</title>
-    <link href="https://gaofeng-lin.github.io/posts/a409708a/"/>
-    <id>https://gaofeng-lin.github.io/posts/a409708a/</id>
-    <published>2025-07-03T16:00:00.000Z</published>
-    <updated>2025-08-31T04:53:06.670Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;默认情况下IPv4是可以直接访问的，所以我们先打开IPv6的访问功能&lt;/p&gt;
-&lt;h1 id=&quot;打开IPv6访问功能&quot;&gt;&lt;a href=&quot;#打开IPv6访问功能&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="NAS" scheme="https://gaofeng-lin.github.io/categories/NAS/"/>
-    
     
   </entry>
   

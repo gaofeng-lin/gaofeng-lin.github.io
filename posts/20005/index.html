@@ -5,7 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Shell 命令, Home of Gaofeng">
-    <meta name="description" content="基本知识/命令变量赋值语句不能有空格1、shell脚本变量名和等号及等号和值之间不能有空格，这可能和我们熟悉的所有编程语言都不一样，变量命名须遵循如下规则：•首个字符必须为字母（a-z，A-Z）。•中间不能有空格，可以使用下划线（_）。•不">
+    <meta name="description" content="实用/高效命令守护进程命令：
+nohup bash /root/CycleNet/scripts/rolling1.sh &amp;gt; app.log 2&amp;gt;&amp;amp;1 &amp;amp;
+批量修改某个目录下面的文件名：
+我想复制这个目录下所有的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -475,14 +478,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.2k
+                    6.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    25 分
+                    26 分
                 </div>
                 
 
@@ -505,7 +508,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="基本知识-命令"><a href="#基本知识-命令" class="headerlink" title="基本知识/命令"></a>基本知识/命令</h2><h3 id="变量赋值语句不能有空格"><a href="#变量赋值语句不能有空格" class="headerlink" title="变量赋值语句不能有空格"></a>变量赋值语句不能有空格</h3><p><strong>1、shell脚本变量名和等号及等号和值之间不能有空格，这可能和我们熟悉的所有编程语言都不一样，变量命名须遵循如下规则：</strong><br>•首个字符必须为字母（a-z，A-Z）。<br>•中间不能有空格，可以使用下划线（_）。<br>•不能使用标点符号。<br>•不能使用bash里的关键字（可用help命令查看保留关键字）。</p>
+                <h2 id="实用-高效命令"><a href="#实用-高效命令" class="headerlink" title="实用/高效命令"></a>实用/高效命令</h2><p>守护进程命令：</p>
+<p>nohup bash /root/CycleNet/scripts/rolling1.sh &gt; app.log 2&gt;&amp;1 &amp;</p>
+<p>批量修改某个目录下面的文件名：</p>
+<p>我想复制这个目录下所有的文件，并给新生成的文件按照统一规则命名文件名。比如给新生成的文件文件名后面加上”_fftv5.sh”</p>
+<p>for file in *.sh; do cp “$file” “${file%.sh}_fftv5.sh”; done</p>
+<h2 id="基本知识-命令"><a href="#基本知识-命令" class="headerlink" title="基本知识/命令"></a>基本知识/命令</h2><h3 id="变量赋值语句不能有空格"><a href="#变量赋值语句不能有空格" class="headerlink" title="变量赋值语句不能有空格"></a>变量赋值语句不能有空格</h3><p><strong>1、shell脚本变量名和等号及等号和值之间不能有空格，这可能和我们熟悉的所有编程语言都不一样，变量命名须遵循如下规则：</strong><br>•首个字符必须为字母（a-z，A-Z）。<br>•中间不能有空格，可以使用下划线（_）。<br>•不能使用标点符号。<br>•不能使用bash里的关键字（可用help命令查看保留关键字）。</p>
 <p>赋值语句等号两边不能有空格，中间有空格时，shell是把变量当一个命令执行的，如：</p>
 <p>PROV = anhui</p>
 <p>执行时会提示：./tt.sh: line 14: PROV: command not found</p>
@@ -1723,7 +1731,7 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">271.2k</span>
+                        class="white-color">280.8k</span>
             
             
             
