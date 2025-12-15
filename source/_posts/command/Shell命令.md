@@ -13,15 +13,33 @@ abbrlink: 20005
 
 ## 实用/高效命令
 
-守护进程命令：
+### 守护进程命令：
 
-nohup bash /root/CycleNet/scripts/rolling1.sh > app.log 2>&1 &
+```nohup bash /root/CycleNet/scripts/rolling1.sh > app.log 2>&1 &```
 
-批量修改某个目录下面的文件名：
+### 批量修改某个目录下面的文件名：
 
 我想复制这个目录下所有的文件，并给新生成的文件按照统一规则命名文件名。比如给新生成的文件文件名后面加上"_fftv5.sh"
 
-for file in *.sh; do cp "$file" "${file%.sh}_fftv5.sh"; done
+```for file in *.sh; do cp "$file" "${file%.sh}_fftv5.sh"; done```
+
+### 深度学习显卡相关命令：
+
+有时候关闭某些程序，但会发现显存任然被占用，可以手动清理这些僵尸进程：
+
+查看当前占用GPU资源的进程:
+```
+fuser -v /dev/nvidia*
+```
+
+如果没有fuser这个命令，需要安装psmisc
+
+以ubuntu为例：
+
+```
+apt install psmisc
+```
+然后可以看到进程号，直接```kill -9 进程号```
 
 
 ## 基本知识/命令
