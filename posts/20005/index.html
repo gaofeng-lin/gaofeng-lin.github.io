@@ -476,14 +476,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.4k
+                    6.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    26 分
+                    30 分
                 </div>
                 
 
@@ -515,6 +515,161 @@
 <p>以ubuntu为例：</p>
 <pre class="line-numbers language-none"><code class="language-none">apt install psmisc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后可以看到进程号，直接<code>kill -9 进程号</code></p>
+<h3 id="huggingface模型下载"><a href="#huggingface模型下载" class="headerlink" title="huggingface模型下载"></a>huggingface模型下载</h3><p>提供一个下载脚本如下：</p>
+<p>从HuggingFace上获取到所需模型名，例如 lmsys/vicuna-7b-v1.5：</p>
+<pre class="line-numbers language-none"><code class="language-none">python hf_download.py --model lmsys/vicuna-7b-v1.5 --save_dir ./hf_hub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果下载需要授权的模型，例如 meta-llama 系列，则需要指定 —token 参数为你的 Huggingface Access Token。</p>
+<pre class="line-numbers language-none"><code class="language-none">"""
+@File         :hf_download.py
+@Description  :Download huggingface models and datasets from mirror site.
+@Author       :Xiaojian Yuan
+"""
+
+
+import argparse
+import os
+import sys
+
+# Check if huggingface_hub is installed, if not, install it
+try:
+    import huggingface_hub
+except ImportError:
+    print("Install huggingface_hub.")
+    os.system("pip install -U huggingface_hub")
+
+
+parser = argparse.ArgumentParser(description="HuggingFace Download Accelerator Script.")
+parser.add_argument(
+    "--model",
+    "-M",
+    default=None,
+    type=str,
+    help="model name in huggingface, e.g., baichuan-inc/Baichuan2-7B-Chat",
+)
+parser.add_argument(
+    "--token",
+    "-T",
+    default=None,
+    type=str,
+    help="hugging face access token for download meta-llama/Llama-2-7b-hf, e.g., hf_***** ",
+)
+parser.add_argument(
+    "--include",
+    default=None,
+    type=str,
+    help="Specify the file to be downloaded",
+)
+parser.add_argument(
+    "--exclude",
+    default=None,
+    type=str,
+    help="Files you don't want to download",
+)
+parser.add_argument(
+    "--dataset",
+    "-D",
+    default=None,
+    type=str,
+    help="dataset name in huggingface, e.g., zh-plus/tiny-imagenet",
+)
+parser.add_argument(
+    "--save_dir",
+    "-S",
+    default=None,
+    type=str,
+    help="path to be saved after downloading.",
+)
+parser.add_argument(
+    "--use_hf_transfer", default=True, type=eval, help="Use hf-transfer, default: True"
+)
+parser.add_argument(
+    "--use_mirror", default=True, type=eval, help="Download from mirror, default: True"
+)
+
+args = parser.parse_args()
+
+if args.use_hf_transfer:
+    # Check if hf_transfer is installed, if not, install it
+    try:
+        import hf_transfer
+    except ImportError:
+        print("Install hf_transfer.")
+        os.system("pip install -U hf-transfer -i https://pypi.org/simple")
+    # Enable hf-transfer if specified
+    os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
+    print("export HF_HUB_ENABLE_HF_TRANSFER=", os.getenv("HF_HUB_ENABLE_HF_TRANSFER"))
+
+
+if args.model is None and args.dataset is None:
+    print(
+        "Specify the name of the model or dataset, e.g., --model baichuan-inc/Baichuan2-7B-Chat"
+    )
+    sys.exit()
+elif args.model is not None and args.dataset is not None:
+    print("Only one model or dataset can be downloaded at a time.")
+    sys.exit()
+
+if args.use_mirror:
+    # Set default endpoint to mirror site if specified
+    os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
+    print("export HF_ENDPOINT=", os.getenv("HF_ENDPOINT"))  # https://hf-mirror.com
+
+
+if args.token is not None:
+    token_option = "--token %s" % args.token
+else:
+    token_option = ""
+
+if args.include is not None:
+    include_option = "--include %s" % args.include
+else:
+    include_option =  ""
+    
+if args.exclude is not None:
+    exclude_option = "--exclude %s" % args.exclude
+else:
+    exclude_option = ""
+    
+    
+if args.model is not None:
+    model_name = args.model.split("/")
+    save_dir_option = ""
+    if args.save_dir is not None:
+        if len(model_name) &gt; 1:
+            save_path = os.path.join(
+                args.save_dir, "models--%s--%s" % (model_name[0], model_name[1])
+            )
+        else:
+            save_path = os.path.join(
+                args.save_dir, "models--%s" % (model_name[0])
+            )
+        save_dir_option = "--local-dir %s" % save_path
+
+    download_shell = (
+        "huggingface-cli download %s %s %s --local-dir-use-symlinks False --resume-download %s %s"
+        % (token_option, include_option, exclude_option, args.model, save_dir_option)
+    )
+    os.system(download_shell)
+
+elif args.dataset is not None:
+    dataset_name = args.dataset.split("/")
+    save_dir_option = ""
+    if args.save_dir is not None:
+        if len(dataset_name) &gt; 1:
+            save_path = os.path.join(
+                args.save_dir, "datasets--%s--%s" % (dataset_name[0], dataset_name[1])
+            )
+        else:
+            save_path = os.path.join(
+                args.save_dir, "datasets--%s" % (dataset_name[0])
+            )
+        save_dir_option = "--local-dir %s" % save_path
+
+    download_shell = (
+        "huggingface-cli download %s %s %s --local-dir-use-symlinks False --resume-download  --repo-type dataset %s %s"
+        % (token_option, include_option, exclude_option, args.dataset, save_dir_option)
+    )
+    os.system(download_shell)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="基本知识-命令"><a href="#基本知识-命令" class="headerlink" title="基本知识/命令"></a>基本知识/命令</h2><h3 id="变量赋值语句不能有空格"><a href="#变量赋值语句不能有空格" class="headerlink" title="变量赋值语句不能有空格"></a>变量赋值语句不能有空格</h3><p><strong>1、shell脚本变量名和等号及等号和值之间不能有空格，这可能和我们熟悉的所有编程语言都不一样，变量命名须遵循如下规则：</strong><br>•首个字符必须为字母（a-z，A-Z）。<br>•中间不能有空格，可以使用下划线（_）。<br>•不能使用标点符号。<br>•不能使用bash里的关键字（可用help命令查看保留关键字）。</p>
 <p>赋值语句等号两边不能有空格，中间有空格时，shell是把变量当一个命令执行的，如：</p>
 <p>PROV = anhui</p>
@@ -1440,13 +1595,13 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/43473/">
+                <a href="/posts/7ada0001/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="牛客网">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="计组+操作系统">
                         
-                        <span class="card-title">牛客网</span>
+                        <span class="card-title">计组+操作系统</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1457,14 +1612,14 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-22
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    编程语言
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    计算机基础知识
                                 </a>
                             
                             
@@ -1474,8 +1629,12 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/">
-                        <span class="chip bg-color">牛客网</span>
+                    <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/">
+                        <span class="chip bg-color">硬件知识</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B/">
+                        <span class="chip bg-color">线程、进程</span>
                     </a>
                     
                 </div>
@@ -1725,7 +1884,7 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">280.9k</span>
+                        class="white-color">281.5k</span>
             
             
             
@@ -1954,6 +2113,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
