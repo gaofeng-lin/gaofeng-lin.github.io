@@ -38,7 +38,9 @@ T">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -151,8 +153,6 @@ mjx-container[display="true"] + br {
   display: none;
 }
 </style><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 
@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    18.1k
+                    18.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    66 分
+                    68 分
                 </div>
                 
 
@@ -1044,7 +1044,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <ul>
 <li>AutoFormer、Informer、FEDformer、Pyraformer。这篇论文提到，Informer输入一系列时间戳来嵌入时间信息，在没有固定位置嵌入的情况下，效果也不错；AutoFormer提出了频率增强模块来引入时间归纳偏差，因此它在移除任何位置/时间戳嵌入后受到的影响较小。</li>
 </ul>
-<h1 id="Autoformer-Decomposition-Transformers-with-Auto-Correlation-for-Long-Term-Series-Forecasting"><a href="#Autoformer-Decomposition-Transformers-with-Auto-Correlation-for-Long-Term-Series-Forecasting" class="headerlink" title="Autoformer: Decomposition Transformers with Auto-Correlation for Long-Term Series Forecasting"></a>Autoformer: Decomposition Transformers with Auto-Correlation for Long-Term Series Forecasting</h1><p>2021-NeurIPS</p>
+<h1 id="Autoformer-Decomposition-Transformers-with-Auto-Correlation-for-Long-Term-Series-Forecasting"><a href="#Autoformer-Decomposition-Transformers-with-Auto-Correlation-for-Long-Term-Series-Forecasting" class="headerlink" title="Autoformer: Decomposition Transformers with Auto-Correlation for Long-Term Series Forecasting"></a>Autoformer: Decomposition Transformers with Auto-Correlation for Long-Term Series Forecasting</h1><p>[2021-NeurIPS]</p>
 <p>下面这个图我基本是看懂了，包括Decoder部分的两个输入，Seasonal Init后面的Zero，就是表示拼接0，对应论文里面的公式2；而Trend-cyclical Init后面的Input DataMean也对应公式2。不过唯独Encoder Input那张图里面的“To Predict”我不知道是什么意思。我理解的是模型的预测结果拼接过来，那么这样不就变成了rolling吗，但是实验部分也没有强调这个。<br>我又看了下，这个“To Predict”应该表示的是预测长度，在论文第三章开头也有一个，“To Predict”表示的是一个变量，表示预测步长。但是每个步长应该要单独训练。</p>
 <h2 id="Summary-3"><a href="#Summary-3" class="headerlink" title="Summary"></a>Summary</h2><p>作者研究长时间时序预测问题。现有的研究局限主要有两点：（1）直接从长时间序列中挖掘时序依赖关系是很难的。传统的时序分析方法Decomposition只关注历史序列，忽略了未来序列和历史序列之间存在的依赖关系；（2）Transformer-based方法计算复杂度高。之前有人将使用稀疏注意力，但是point-wise这种方式只能捕获单个时间点之间的关系，无法捕捉序列之间的关系。<br>为了解决上述问题，作者提出了Autoformer，核心点为：<br>（1）<strong>Series decomposition block</strong>:为了学习长时间预测中的复杂时间模式，将时序数据分解为<strong>trend-cyclincal</strong>和<strong>seasonal</strong>两部分，反映了序列的长期变化特点和季节性变化特点。<br>（2）<strong>Auto-Correlation</strong>:挖掘序列中子序列之间的关联性。</p>
 <p><strong>模型架构</strong>：</p>
@@ -1326,6 +1326,33 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <h2 id="Conclusion-4"><a href="#Conclusion-4" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
 <h2 id="Notes-optional-4"><a href="#Notes-optional-4" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h2><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
 <h2 id="References-optional-4"><a href="#References-optional-4" class="headerlink" title="References(optional)"></a>References(optional)</h2><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
+<hr>
+<p>title: 论文笔记框架<br>date: 2024/07/13<br>categories:</p>
+<ul>
+<li>论文笔记框架<br>tags:</li>
+<li>论文<br>mathjax: true<br>abbrlink: 30a636b</li>
+</ul>
+<hr>
+<h1 id="Revitalizing-Multivariate-Time-Series-Forecasting-Learnable-Decomposition-with-Inter-Series-Dependencies-and-Intra-Series-Variations-Modeling"><a href="#Revitalizing-Multivariate-Time-Series-Forecasting-Learnable-Decomposition-with-Inter-Series-Dependencies-and-Intra-Series-Variations-Modeling" class="headerlink" title="Revitalizing Multivariate Time Series Forecasting: Learnable Decomposition with Inter-Series Dependencies and Intra-Series Variations Modeling"></a>Revitalizing Multivariate Time Series Forecasting: Learnable Decomposition with Inter-Series Dependencies and Intra-Series Variations Modeling</h1><p>2024[ICML]</p>
+<h2 id="Summary-5"><a href="#Summary-5" class="headerlink" title="Summary"></a>Summary</h2><h2 id="Background-5"><a href="#Background-5" class="headerlink" title="Background"></a>Background</h2><p><strong>（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）</strong></p>
+<ul>
+<li><p><strong>研究的动机和必要性</strong>：</p>
+</li>
+<li><p><strong>现有研究局限</strong>：</p>
+</li>
+<li><p><strong>解决这些局限的研究挑战</strong>：</p>
+</li>
+<li><p><strong>论文方法的出发点和解决思路</strong>：</p>
+</li>
+<li><p><strong>论文方法的主要技术方案</strong>：</p>
+</li>
+</ul>
+<h2 id="Problem-Statement-5"><a href="#Problem-Statement-5" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p><strong>（问题陈述：问题作者需要解决的问题是什么？这部分可以从Introduction最后一段的contributions中去找，贡献对应的就是解决了什么问题）</strong></p>
+<h2 id="Method-s-5"><a href="#Method-s-5" class="headerlink" title="Method(s)"></a>Method(s)</h2><p><strong>（作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？）</strong></p>
+<h2 id="Evaluation-5"><a href="#Evaluation-5" class="headerlink" title="Evaluation"></a>Evaluation</h2><p><strong>（作者如何评估自己的方法？实验的setup是什么样的？感兴趣实验数据和结果有哪些？有没有问题或者可以借鉴的地方？）</strong></p>
+<h2 id="Conclusion-5"><a href="#Conclusion-5" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><strong>（作者给出了哪些结论？哪些是strong conclusions, 哪些又是weak的conclusions。即作者并没有通过实验提供evidence，只在discussion中提到；或实验的数据并没有给出充分的evidence?）</strong></p>
+<h2 id="Notes-optional-5"><a href="#Notes-optional-5" class="headerlink" title="Notes(optional)"></a>Notes(optional)</h2><p><strong>（不在以上列表中，但需要特别记录的笔记。）</strong></p>
+<h2 id="References-optional-5"><a href="#References-optional-5" class="headerlink" title="References(optional)"></a>References(optional)</h2><p><strong>（列出相关性高的文献，以便之后可以继续track下去。）</strong></p>
 <h1 id="待整理的问题（主要是关于时序异常检测相关的东西）"><a href="#待整理的问题（主要是关于时序异常检测相关的东西）" class="headerlink" title="待整理的问题（主要是关于时序异常检测相关的东西）"></a>待整理的问题（主要是关于时序异常检测相关的东西）</h1><p>时序内容总结：</p>
 <ol>
 <li>复现模型，效果很差。<br>原文：<br>作者：john<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/1302007972/answer/22655276244">https://www.zhihu.com/question/1302007972/answer/22655276244</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</li>
@@ -1877,7 +1904,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2025</span>
+                <span id="year">2019-2026</span>
             
             <a href="/about" target="_blank">Jason Lin</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
@@ -1885,7 +1912,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">281.5k</span>
+                        class="white-color">281.8k</span>
             
             
             
