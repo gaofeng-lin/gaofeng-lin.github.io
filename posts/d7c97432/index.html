@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    19.2k
+                    19.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    70 分
+                    73 分
                 </div>
                 
 
@@ -1209,6 +1209,21 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 </ul>
 </li>
 </ul>
+<ul>
+<li>这篇论文和Autoformer都是没有使用归一化的，而归一化的那篇论文叫《REVERSIBLE INSTANCE NORMALIZATION FOR ACCURATE TIME-SERIES FORECASTING AGAINST DISTRIBUTION SHIFT》，可以去看看</li>
+</ul>
+<ul>
+<li>这篇论文的核心模块是Frequency Enchanced Block（FEB）和 Frequency Enhanced Attention（FEA）具有相同的流程：频域投影 -&gt; 采样 -&gt; 学习 -&gt; 频域补全 -&gt; 投影回时域：</li>
+</ul>
+<ol>
+<li>首先将原始时域上的输入序列投影到频域。</li>
+<li>再在频域上进行随机采样。这样做的好处在于极大地降低了输入向量的长度进而降低了计算复杂度，然而这种采样对输入的信息一定是有损的。但实验证明，这种损失对最终的精度影响不大。因为一般信号在频域上相对时域更加“稀疏”。且在高频部分的大量信息是所谓“噪音”，这些“噪音”在时间序列预测问题上往往是可以舍弃的，因为“噪音”往往代表随机产生的部分因而无法预测。相比之下，在图像领域，高频部分的“噪音”可能代表的是图片细节反而不能忽略。</li>
+<li>在学习阶段，FEB 采用一个全联接层 R 作为可学习的参数。而 FEA 则将来自编码器和解码器的信号进行cross-attention操作，以达到将两部分信号的内在关系进行学习的目的。</li>
+<li>频域补全过程与第2步频域采样相对，为了使得信号能够还原回原始的长度，需要对第2步采样未被采到的频率点补零。</li>
+<li>投影回时域，因为第4步的补全操作，投影回频域的信号和之前的输入信号维度完全一致。</li>
+</ol>
+<p>这里面有个地方要说明下，那就是第3不中提到的”用一个全联接层 R 作为可学习的参数“，从图上看，这个参数R和<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="1.79ex" height="2.729ex" role="img" focusable="false" viewBox="0 -1012 791 1206"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><path data-c="1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path></g><g data-mml-node="mo" transform="translate(478.8,594) translate(-250 0)"><path data-c="7E" d="M179 251Q164 251 151 245T131 234T111 215L97 227L83 238Q83 239 95 253T121 283T142 304Q165 318 187 318T253 300T320 282Q335 282 348 288T368 299T388 318L402 306L416 295Q375 236 344 222Q330 215 313 215Q292 215 248 233T179 251Z"></path></g></g></g></g></g></svg></mjx-container>会进行乘法，但是R是三维的，</p>
+<p>低秩近似（low-rank approximation）：</p>
 <h2 id="Background-4"><a href="#Background-4" class="headerlink" title="Background"></a>Background</h2><p><strong>（研究的背景，帮助你理解研究的动机和必要性，包括行业现状和之前研究的局限性。）</strong></p>
 <ul>
 <li><p><strong>研究的动机和必要性</strong>：</p>
@@ -1411,6 +1426,9 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>一个感想：</p>
 <p>作为研究者，别去卷那几个benchmark。我个人建议，找一个简单的混沌系统去测验，为什么呢，因为（1）难度很大（真正长距离预测是不可能的，但是短期能测试模型性能）。（2）你知道每个数字的真正答案。统计学一个重要的法则，就是凡事先“play with toy set”，先在已知的数学结构上做实验，看看你这个模型能不能达标。记得别搞什么normalization。（3）所谓的“真实世界”数据集，很大程度上退化成了模拟器比赛，谁能模拟真实轨迹的平均数谁厉害，但是你并不知道“真实世界”的内在机制。只要模型在benchmark和PatchTST或者以上的模型打的有来有回，我觉得就不差了。很多人（比如曾经的我）怎么也跑不出来那种工整的sota，什么全数据，全长度，把baseline按在地上打，然后误以为自己的模型不行。另外，像weather这种数据集，偷偷藏了个-9999，不是知乎上有人提醒我都不知道，能跑的过DLinear才有鬼了。</p>
 <p>结论：时间序列预测的极限远未触及，但突破的关键可能在于我们先要打破自己设定的思维牢笼——那些看似通用实则矛盾的评估标准和验证方式。</p>
+<h1 id="细节知识"><a href="#细节知识" class="headerlink" title="细节知识"></a>细节知识</h1><h2 id="rfft"><a href="#rfft" class="headerlink" title="rfft"></a>rfft</h2><p>时序预测中，傅里叶变化是使用比较多的，对应到代码里面来说，就是rfft。rfft 指的是 “实数快速傅里叶变换（Real FFT），输出的结果是复数（包含振幅和相位信息）</p>
+<p>为什么叫”r”fft？因为实数信号的频谱具有“共轭对称性”（Hermitian symmetry），即正频率和负频率的信息是冗余的。rfft 专门利用这一点，只计算并返回一半的频率分量以节省计算量，但返回的每一个点依然是标准的复数（包含实部和虚部）。</p>
+<p>所以如果输入的序列长度是720，那么使用rfft得到的数据量只有361。</p>
 
                 
             </div>
@@ -1946,7 +1964,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">282.6k</span>
+                        class="white-color">283.3k</span>
             
             
             
