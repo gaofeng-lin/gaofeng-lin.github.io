@@ -210,7 +210,20 @@ elif args.dataset is not None:
     os.system(download_shell)
 ```
 
+### 复制部分文件夹内容
 
+推荐使用rsync命令
+
+先安装：
+
+```
+sudo apt update && sudo apt install -y rsync
+```
+
+假设要排除文件夹（如dataset和checkpoints）：
+```
+rsync -av --exclude='dataset' --exclude='checkpoints' /source_folder/ /destination_folder/
+```
 
 ## 基本知识/命令
 ### 变量赋值语句不能有空格
