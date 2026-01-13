@@ -5,7 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="傅里叶变换, Home of Gaofeng">
-    <meta name="description" content="https://www.bilibili.com/video/BV1eUHjzgEAd/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=d9f39df9d8d274edb85">
+    <meta name="description" content="快速总结基础傅里叶变换是把时域数据分解为频域数据的，假设输入是周期函数，具体来说如下图所示：
+
+左边的是时域图，右边的是频域图。
+频域图横轴是频率（1秒内周期重复的次数。如果重复两次就是2HZ，重复一次就是1HZ），纵轴是振幅。我们对振幅不">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -32,7 +35,10 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+<style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -144,10 +150,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style>
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
-</head>
+</style></head>
 
 
 <body>
@@ -579,14 +582,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    6 分
                 </div>
                 
 
@@ -609,7 +612,22 @@ mjx-container[display="true"] + br {
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eUHjzgEAd/?spm_id_from=333.337.search-card.all.click&amp;vd_source=d9f39df9d8d274edb857b2cb1c934f00">https://www.bilibili.com/video/BV1eUHjzgEAd/?spm_id_from=333.337.search-card.all.click&amp;vd_source=d9f39df9d8d274edb857b2cb1c934f00</a><br>建系（建立坐标系），有了坐标系，点的位置变成了数字，曲线变成了方程，交点变成了解方程，按部就班就能解决几何问题。</p>
+                <h1 id="快速总结"><a href="#快速总结" class="headerlink" title="快速总结"></a>快速总结</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>傅里叶变换是把时域数据分解为频域数据的，假设输入是周期函数，具体来说如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/1_U_6R4Zub5C_NTPKSnt4w2Q.webp" alt=""></p>
+<p>左边的是时域图，右边的是频域图。</p>
+<p>频域图横轴是频率（1秒内周期重复的次数。如果重复两次就是2HZ，重复一次就是1HZ），纵轴是振幅。我们对振幅不为0的频率使用反向傅里叶变化，就可以得到sin/cos图像：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/1_bOLwVYKbJfM18cWwYI9aFA.webp" alt=""></p>
+<p>也就是说，<strong>原始时域数据，可以被分解为多个sin/cos图像的叠加</strong>。</p>
+<p>而还原得到的sin/cos图像的振幅和频率，也和频率图对应的结果一样。</p>
+<p><strong>HZ越高就是高频，HZ越低就是低频，这里不要和振幅混淆。也就是说，坐标轴左边的是低频，右边的是高频</strong>。我们经常说高频是噪声，就是因为它的波动无序，很混乱，周期短。</p>
+<p>虽然上面的图只显示了正频率和0频率，但傅里叶变化计算出来的其实是具有负频率的，只不过正频率和对应负频率的幅值是相同的，只是画了正频率的一部分。但是在实际反向傅里叶变换的使用，也是会运用到负频率的结果。也就是说，还原的时候，所有的频率都会使用到，包括0频率。</p>
+<p>对与0频率来说，是非常重要的。0Hz 代表的是直流分量（DC Component），也就是整段数据的平均值。但是如果使用了RevIN归一化（时序预测通常这么做），那么0Hz 的振幅理论上应该接近于 0。如果不归一化，0Hz 的振幅通常是最大的。</p>
+<p>如果输入是离散的数据，比如说是8个值，那么傅里叶变化会得到8个复数，这8个复数的模长就是对应频率的振幅。</p>
+<p>关于正负对称可以多说两句。</p>
+<p>如果输入是偶数，假设为8，出去0HZ，还剩下7个。<br>Index 1, 2, 3: 正频率部分<br>Index 5, 6, 7: 负频率部分（对应 -3, -2, -1）<br>Index 4 (Nyquist Frequency): 是一半采样率的位置 (<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.271ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1888 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(888,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mn" transform="translate(1388,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></svg></mjx-container>)。它也没有对称的。<br>也就是说，如果输入时偶数，那么打印出来的频率图是[N/2+1]。</p>
+<p>如果输入是奇数，假设为9，那么除去0HZ，剩下的就是对称的。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>python中我们一般使用rfft来进行傅里叶变化，准确的是快速傅里叶变化。rfft得到的是复数，只有正频率部分的结果。</p>
+<h1 id="网上视频"><a href="#网上视频" class="headerlink" title="网上视频"></a>网上视频</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eUHjzgEAd/?spm_id_from=333.337.search-card.all.click&amp;vd_source=d9f39df9d8d274edb857b2cb1c934f00">https://www.bilibili.com/video/BV1eUHjzgEAd/?spm_id_from=333.337.search-card.all.click&amp;vd_source=d9f39df9d8d274edb857b2cb1c934f00</a><br>建系（建立坐标系），有了坐标系，点的位置变成了数字，曲线变成了方程，交点变成了解方程，按部就班就能解决几何问题。</p>
 <p>坐标系的本质是用坐标轴分解位置，坐标轴的本质是基底向量。笛卡尔坐标系中的基底向量就是u=(1 0), v=(0 1)，如下图所示：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-12-01_17-23-45.png" alt=""></p>
 <p>一旦明确了基底向量，就拥有一套双向翻译体系。</p>
 <p>用数字线性组合基底，得到这个坐标所对应的抽象的几何空间位置；</p>
@@ -1185,7 +1203,7 @@ mjx-container[display="true"] + br {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">284.2k</span>
+                        class="white-color">284.9k</span>
             
             
             
@@ -1414,21 +1432,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
