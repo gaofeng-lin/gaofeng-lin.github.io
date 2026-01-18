@@ -5,10 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Shell 命令, Home of Gaofeng">
-    <meta name="description" content="实用/高效命令守护进程命令：
-nohup bash /root/CycleNet/scripts/rolling1.sh &amp;gt; app.log 2&amp;gt;&amp;amp;1 &amp;amp;
-批量修改某个目录下面的文件名：
-我想复制这个目录下所有的">
+    <meta name="description" content="实用/高效命令守护进程命令：nohup bash /root/CycleNet/scripts/rolling1.sh &amp;gt; app.log 2&amp;gt;&amp;amp;1 &amp;amp;
+批量修改某个目录下面的文件名：我想复制这个目录下所有的文件">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -35,9 +33,9 @@ nohup bash /root/CycleNet/scripts/rolling1.sh &amp;gt; app.log 2&amp;gt;&amp;amp
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -478,14 +476,14 @@ nohup bash /root/CycleNet/scripts/rolling1.sh &amp;gt; app.log 2&amp;gt;&amp;amp
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.3k
+                    7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    26 分
+                    30 分
                 </div>
                 
 
@@ -508,11 +506,174 @@ nohup bash /root/CycleNet/scripts/rolling1.sh &amp;gt; app.log 2&amp;gt;&amp;amp
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="实用-高效命令"><a href="#实用-高效命令" class="headerlink" title="实用/高效命令"></a>实用/高效命令</h2><p>守护进程命令：</p>
-<p>nohup bash /root/CycleNet/scripts/rolling1.sh &gt; app.log 2&gt;&amp;1 &amp;</p>
-<p>批量修改某个目录下面的文件名：</p>
-<p>我想复制这个目录下所有的文件，并给新生成的文件按照统一规则命名文件名。比如给新生成的文件文件名后面加上”_fftv5.sh”</p>
-<p>for file in *.sh; do cp “$file” “${file%.sh}_fftv5.sh”; done</p>
+                <h2 id="实用-高效命令"><a href="#实用-高效命令" class="headerlink" title="实用/高效命令"></a>实用/高效命令</h2><h3 id="守护进程命令："><a href="#守护进程命令：" class="headerlink" title="守护进程命令："></a>守护进程命令：</h3><p><code>nohup bash /root/CycleNet/scripts/rolling1.sh &gt; app.log 2&gt;&amp;1 &amp;</code></p>
+<h3 id="批量修改某个目录下面的文件名："><a href="#批量修改某个目录下面的文件名：" class="headerlink" title="批量修改某个目录下面的文件名："></a>批量修改某个目录下面的文件名：</h3><p>我想复制这个目录下所有的文件，并给新生成的文件按照统一规则命名文件名。比如给新生成的文件文件名后面加上”_fftv5.sh”</p>
+<p><code>for file in *.sh; do cp "$file" "${file%.sh}_fftv5.sh"; done</code></p>
+<h3 id="深度学习显卡相关命令："><a href="#深度学习显卡相关命令：" class="headerlink" title="深度学习显卡相关命令："></a>深度学习显卡相关命令：</h3><p>有时候关闭某些程序，但会发现显存任然被占用，可以手动清理这些僵尸进程：</p>
+<p>查看当前占用GPU资源的进程:<br></p><pre class="line-numbers language-none"><code class="language-none">fuser -v /dev/nvidia*<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<p>如果没有fuser这个命令，需要安装psmisc</p>
+<p>以ubuntu为例：</p>
+<pre class="line-numbers language-none"><code class="language-none">apt install psmisc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然后可以看到进程号，直接<code>kill -9 进程号</code></p>
+<h3 id="huggingface模型下载"><a href="#huggingface模型下载" class="headerlink" title="huggingface模型下载"></a>huggingface模型下载</h3><p>提供一个下载脚本如下：</p>
+<p>从HuggingFace上获取到所需模型名，例如 lmsys/vicuna-7b-v1.5：</p>
+<pre class="line-numbers language-none"><code class="language-none">python hf_download.py --model lmsys/vicuna-7b-v1.5 --save_dir ./hf_hub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果下载需要授权的模型，例如 meta-llama 系列，则需要指定 —token 参数为你的 Huggingface Access Token。</p>
+<pre class="line-numbers language-none"><code class="language-none">"""
+@File         :hf_download.py
+@Description  :Download huggingface models and datasets from mirror site.
+@Author       :Xiaojian Yuan
+"""
+
+
+import argparse
+import os
+import sys
+
+# Check if huggingface_hub is installed, if not, install it
+try:
+    import huggingface_hub
+except ImportError:
+    print("Install huggingface_hub.")
+    os.system("pip install -U huggingface_hub")
+
+
+parser = argparse.ArgumentParser(description="HuggingFace Download Accelerator Script.")
+parser.add_argument(
+    "--model",
+    "-M",
+    default=None,
+    type=str,
+    help="model name in huggingface, e.g., baichuan-inc/Baichuan2-7B-Chat",
+)
+parser.add_argument(
+    "--token",
+    "-T",
+    default=None,
+    type=str,
+    help="hugging face access token for download meta-llama/Llama-2-7b-hf, e.g., hf_***** ",
+)
+parser.add_argument(
+    "--include",
+    default=None,
+    type=str,
+    help="Specify the file to be downloaded",
+)
+parser.add_argument(
+    "--exclude",
+    default=None,
+    type=str,
+    help="Files you don't want to download",
+)
+parser.add_argument(
+    "--dataset",
+    "-D",
+    default=None,
+    type=str,
+    help="dataset name in huggingface, e.g., zh-plus/tiny-imagenet",
+)
+parser.add_argument(
+    "--save_dir",
+    "-S",
+    default=None,
+    type=str,
+    help="path to be saved after downloading.",
+)
+parser.add_argument(
+    "--use_hf_transfer", default=True, type=eval, help="Use hf-transfer, default: True"
+)
+parser.add_argument(
+    "--use_mirror", default=True, type=eval, help="Download from mirror, default: True"
+)
+
+args = parser.parse_args()
+
+if args.use_hf_transfer:
+    # Check if hf_transfer is installed, if not, install it
+    try:
+        import hf_transfer
+    except ImportError:
+        print("Install hf_transfer.")
+        os.system("pip install -U hf-transfer -i https://pypi.org/simple")
+    # Enable hf-transfer if specified
+    os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
+    print("export HF_HUB_ENABLE_HF_TRANSFER=", os.getenv("HF_HUB_ENABLE_HF_TRANSFER"))
+
+
+if args.model is None and args.dataset is None:
+    print(
+        "Specify the name of the model or dataset, e.g., --model baichuan-inc/Baichuan2-7B-Chat"
+    )
+    sys.exit()
+elif args.model is not None and args.dataset is not None:
+    print("Only one model or dataset can be downloaded at a time.")
+    sys.exit()
+
+if args.use_mirror:
+    # Set default endpoint to mirror site if specified
+    os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
+    print("export HF_ENDPOINT=", os.getenv("HF_ENDPOINT"))  # https://hf-mirror.com
+
+
+if args.token is not None:
+    token_option = "--token %s" % args.token
+else:
+    token_option = ""
+
+if args.include is not None:
+    include_option = "--include %s" % args.include
+else:
+    include_option =  ""
+    
+if args.exclude is not None:
+    exclude_option = "--exclude %s" % args.exclude
+else:
+    exclude_option = ""
+    
+    
+if args.model is not None:
+    model_name = args.model.split("/")
+    save_dir_option = ""
+    if args.save_dir is not None:
+        if len(model_name) &gt; 1:
+            save_path = os.path.join(
+                args.save_dir, "models--%s--%s" % (model_name[0], model_name[1])
+            )
+        else:
+            save_path = os.path.join(
+                args.save_dir, "models--%s" % (model_name[0])
+            )
+        save_dir_option = "--local-dir %s" % save_path
+
+    download_shell = (
+        "huggingface-cli download %s %s %s --local-dir-use-symlinks False --resume-download %s %s"
+        % (token_option, include_option, exclude_option, args.model, save_dir_option)
+    )
+    os.system(download_shell)
+
+elif args.dataset is not None:
+    dataset_name = args.dataset.split("/")
+    save_dir_option = ""
+    if args.save_dir is not None:
+        if len(dataset_name) &gt; 1:
+            save_path = os.path.join(
+                args.save_dir, "datasets--%s--%s" % (dataset_name[0], dataset_name[1])
+            )
+        else:
+            save_path = os.path.join(
+                args.save_dir, "datasets--%s" % (dataset_name[0])
+            )
+        save_dir_option = "--local-dir %s" % save_path
+
+    download_shell = (
+        "huggingface-cli download %s %s %s --local-dir-use-symlinks False --resume-download  --repo-type dataset %s %s"
+        % (token_option, include_option, exclude_option, args.dataset, save_dir_option)
+    )
+    os.system(download_shell)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="复制部分文件夹内容"><a href="#复制部分文件夹内容" class="headerlink" title="复制部分文件夹内容"></a>复制部分文件夹内容</h3><p>推荐使用rsync命令</p>
+<p>先安装：</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo apt update &amp;&amp; sudo apt install -y rsync<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>假设要排除文件夹（如dataset和checkpoints）：<br></p><pre class="line-numbers language-none"><code class="language-none">rsync -av --exclude='dataset' --exclude='checkpoints' /source_folder/ /destination_folder/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
 <h2 id="基本知识-命令"><a href="#基本知识-命令" class="headerlink" title="基本知识/命令"></a>基本知识/命令</h2><h3 id="变量赋值语句不能有空格"><a href="#变量赋值语句不能有空格" class="headerlink" title="变量赋值语句不能有空格"></a>变量赋值语句不能有空格</h3><p><strong>1、shell脚本变量名和等号及等号和值之间不能有空格，这可能和我们熟悉的所有编程语言都不一样，变量命名须遵循如下规则：</strong><br>•首个字符必须为字母（a-z，A-Z）。<br>•中间不能有空格，可以使用下划线（_）。<br>•不能使用标点符号。<br>•不能使用bash里的关键字（可用help命令查看保留关键字）。</p>
 <p>赋值语句等号两边不能有空格，中间有空格时，shell是把变量当一个命令执行的，如：</p>
 <p>PROV = anhui</p>
@@ -1476,12 +1637,12 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
                         <span class="chip bg-color">运维</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
-                    </a>
-                    
                     <a href="/tags/Linux/">
                         <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                     <a href="/tags/MySQL/">
@@ -1723,7 +1884,7 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2025</span>
+                <span id="year">2019-2026</span>
             
             <a href="/about" target="_blank">Jason Lin</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
@@ -1731,7 +1892,7 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">280.8k</span>
+                        class="white-color">285.3k</span>
             
             
             
