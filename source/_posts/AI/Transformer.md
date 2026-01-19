@@ -632,3 +632,49 @@ Transformer中的mask有两种，一种是填充mask，还有一种是因果mask
 ![](https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-11-04_11-40-25.png)
 
 
+
+## 复杂度理解
+
+原链接：降低Transformer复杂度O(N^2)的方法汇总（一） - Civ的文章 - 知乎
+https://zhuanlan.zhihu.com/p/634406691
+
+
+我们一般默认Trans的计算复杂度是O(N^2)，N表示输入序列的长度，但是有点太草率了。为什么之和N有关，和其他的没关吗？下面来详细解释下：
+
+假设Attention的输入$x$的维度为$x \in R^{N*F}$，其中N表示输入长度，F表示维度。这个维度一般是在embedding层后定下来的。
+
+Attention首先使用线性变换将输入 
+ 变换为Query、Key和Value：
+
+（1）$Q=xW_Q$，$W_Q \in R^{F*D}$
+（2）$K=xW_K$，$W_K \in R^{F*D}$
+（3）$V=xW_V$，$W_V \in R^{F*M}$
+
+由此可以得到Q,K,V的维度：
+（4）$Q \in R^{N*D}$
+（5）$K \in R^{N*D}$
+（6）$V \in R^{N*M}$
+
+在常见的Transformer中，通常F=D=M。为了简化符号，后面统一用D来表示。
+
+首先回顾下矩阵乘法的计算复杂度，因为attention的计算复杂度也是矩阵乘法。
+
+对于矩阵$A \in R^{N,M}$和$B \in R^{M,L}$。矩阵乘法一共需要N*M*L次。
+
+可以理解为：为了计算这两个矩阵的乘积，需要拿矩阵$A$的每一行去与矩阵$B$的每一列做点积。因此总共需要N*L次点积。每次点积包含M次乘法和M-1次加法。考虑到加法复杂度远小于乘法，所以总的计算复杂度就是$O(NLM)$。
+
+回到Trans上，乘法一共有两个。$Q K^T$、softmax和$V$的乘积
+
+第一次矩阵乘法。结合前面的矩阵乘法复杂度，$Q K^T$的复杂度为$O(N^2D)$。
+
+第二次矩阵乘法。softmax和$V$的乘积。softmax输出的矩阵维度是N*N，所以复杂度为$O(N^2D)$。
+
+因为这两次矩阵乘法是顺序执行的，所以总的复杂度为它们各自复杂度之和。因为这两个复杂度相等，相加只是引入了一个常数项，所以可以忽略，因此Softmax Attention总的复杂度就为$O(N^2D)$。
+
+当我们只关心复杂度与序列长度N之间的关系时，可以忽略D并将其写为$O(N^2)$。
+
+
+ 
+
+
+
