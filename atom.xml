@@ -6,7 +6,7 @@
   <link href="https://gaofeng-lin.github.io/atom.xml" rel="self"/>
   
   <link href="https://gaofeng-lin.github.io/"/>
-  <updated>2026-01-13T09:51:02.831Z</updated>
+  <updated>2026-02-03T02:00:07.851Z</updated>
   <id>https://gaofeng-lin.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CNN</title>
+    <link href="https://gaofeng-lin.github.io/posts/7203e497/"/>
+    <id>https://gaofeng-lin.github.io/posts/7203e497/</id>
+    <published>2026-01-21T16:00:00.000Z</published>
+    <updated>2026-02-03T02:00:07.851Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;卷积神经网络（CNN）&quot;&gt;&lt;a href=&quot;#卷积神经网络（CNN）&quot; class=&quot;headerlink&quot; title=&quot;卷积神经网络（CNN）&quot;&gt;&lt;/a&gt;卷积神经网络（CNN）&lt;/h2&gt;&lt;h3 id=&quot;传统神经网络&quot;&gt;&lt;a href=&quot;#传统神经网络&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="CNN" scheme="https://gaofeng-lin.github.io/tags/CNN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>卷积</title>
+    <link href="https://gaofeng-lin.github.io/posts/351a7be0/"/>
+    <id>https://gaofeng-lin.github.io/posts/351a7be0/</id>
+    <published>2026-01-21T16:00:00.000Z</published>
+    <updated>2026-02-03T02:00:07.855Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;什么是卷积&quot;&gt;&lt;a href=&quot;#什么是卷积&quot; class=&quot;headerlink&quot; title=&quot;什么是卷积&quot;&gt;&lt;/a&gt;什么是卷积&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="卷积" scheme="https://gaofeng-lin.github.io/tags/%E5%8D%B7%E7%A7%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>傅里叶变换</title>
@@ -476,56 +526,6 @@
     
     
     <category term="K-means" scheme="https://gaofeng-lin.github.io/tags/K-means/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DroneReview</title>
-    <link href="https://gaofeng-lin.github.io/posts/afb234c9/"/>
-    <id>https://gaofeng-lin.github.io/posts/afb234c9/</id>
-    <published>2025-09-08T16:00:00.000Z</published>
-    <updated>2025-09-12T06:02:53.944Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;A-Review-on-UAV-Based-Applications-for-Precision-Agriculture&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
-    
-    
-    <category term="Precision Agriculture" scheme="https://gaofeng-lin.github.io/tags/Precision-Agriculture/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DroneAD</title>
-    <link href="https://gaofeng-lin.github.io/posts/7d96b074/"/>
-    <id>https://gaofeng-lin.github.io/posts/7d96b074/</id>
-    <published>2025-09-04T16:00:00.000Z</published>
-    <updated>2025-09-09T14:11:39.939Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Motor-Anomaly-Detection-for-Unmanned-Aerial-Vehicles-Using-Reinforcement-Learning&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Drone" scheme="https://gaofeng-lin.github.io/categories/Drone/"/>
-    
-    
-    <category term="Anomaly Detection" scheme="https://gaofeng-lin.github.io/tags/Anomaly-Detection/"/>
     
   </entry>
   

@@ -35,9 +35,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 <style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
@@ -150,7 +148,9 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head>
+</style>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -602,14 +602,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    18.9k
+                    16.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    67 分
+                    58 分
                 </div>
                 
 
@@ -676,113 +676,6 @@ OutputPadding 是添加到输出尺寸的额外元素数量。一般在进行转
 OutputSize = (16 - 1) * 2 - 2 * 1 + 4 + 0 = 32
 
 因此，你的输出特征图的尺寸就为32x32。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="卷积神经网络（CNN）"><a href="#卷积神经网络（CNN）" class="headerlink" title="卷积神经网络（CNN）"></a>卷积神经网络（CNN）</h2><h3 id="传统神经网络"><a href="#传统神经网络" class="headerlink" title="传统神经网络"></a>传统神经网络</h3><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2017/07/neural-network.html">原文链接</a></p>
-<p>神经网络搭建需要满足三个条件：</p>
-<ol>
-<li>输入和输出</li>
-<li>权重（w）和阈值（b）</li>
-<li>多层感知器的结构</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/bg2017071205.png" alt=""></p>
-<p>其中，最困难的部分就是确定权重（w）和阈值（b）。目前为止，这两个值都是主观给出的，但现实中很难估计它们的值，必需有一种方法，可以找出答案。</p>
-<p>这种方法就是试错法。其他参数都不变，w（或b）的微小变动，记作Δw（或Δb），然后观察输出有什么变化。不断重复这个过程，直至得到对应最精确输出的那组w和b，就是我们要的值。这个过程称为模型的训练。</p>
-<p>因此，神经网络的运作过程如下：</p>
-<ol>
-<li>确定输入和输出</li>
-<li>找到一种或多种算法（数学公式），可以从输入得到输出</li>
-<li>找到一组已知答案的数据集，用来训练模型，估算w和b</li>
-<li>一旦新的数据产生，输入模型，就可以得到结果，同时对w和b进行校正</li>
-</ol>
-<h3 id="传统神经网络数学公式推导（全连接）"><a href="#传统神经网络数学公式推导（全连接）" class="headerlink" title="传统神经网络数学公式推导（全连接）"></a>传统神经网络数学公式推导（全连接）</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/273595649">原文链接</a></p>
-<h3 id="传统神经网络的问题"><a href="#传统神经网络的问题" class="headerlink" title="传统神经网络的问题"></a>传统神经网络的问题</h3><ol>
-<li>图像需要处理的数据量太大，导致成本很高，效率很低</li>
-</ol>
-<p>现在随随便便一张图片都是 1000×1000 像素以上的， 每个像素都有RGB 3个参数来表示颜色信息。</p>
-<p>假如我们处理一张 1000×1000 像素的图片，我们就需要处理3百万个参数！</p>
-<p>1000×1000×3=3,000,000</p>
-<p><strong>卷积神经网络 – CNN 解决的第一个问题就是「将复杂问题简化」，把大量参数降维成少量参数，再做处理。</strong></p>
-<ol>
-<li>图像在数字化的过程中很难保留原有的特征，导致图像处理的准确率不高<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/98412-2019-06-12-tuxiangtx.png.webp" alt=""></li>
-</ol>
-<p>假如有圆形是1，没有圆形是0，那么圆形的位置不同就会产生完全不同的数据表达。但是从视觉的角度来看，图像的内容（本质）并没有发生变化，只是位置发生了变化。</p>
-<p>所以当我们移动图像中的物体，用传统的方式的得出来的参数会差异很大！这是不符合图像处理的要求的。</p>
-<p><strong>CNN 解决了这个问题，他用类似视觉的方式保留了图像的特征，当图像做翻转，旋转或者变换位置时，它也能有效的识别出来是类似的图像。</strong></p>
-<p>具体表现为：</p>
-<p><strong>CNN（卷积神经网络）相对于传统的全连接神经网络（FNN），可以通过卷积层（权值共享、局部连接）和池化层（空间维度的降采样）的设计来实现参数降维，从而减少模型中的参数数量。</strong></p>
-<h3 id="CNN的基本步骤"><a href="#CNN的基本步骤" class="headerlink" title="CNN的基本步骤"></a>CNN的基本步骤</h3><p>卷积神经网络（Convolutional Neural Network，CNN）是一种在计算机视觉和图像处理任务中广泛应用的深度学习模型。CNN通过模拟生物视觉系统中神经元的工作原理，能够自动学习图像和视频等数据的特征表示。</p>
-<p>CNN的基本概念包括以下几个要素：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/51812459">相关链接，写的不错</a></p>
-<ol>
-<li><p>卷积层（Convolutional Layer）：卷积层是CNN的核心组成部分。它通过使用一系列可学习的滤波器（也称为卷积核）对输入图像进行卷积操作，从而提取图像中的局部特征。卷积层的输出被称为特征图（Feature Map）。</p>
-</li>
-<li><p>池化层（Pooling Layer）：池化层用于减少特征图的空间维度，同时保留主要的特征信息。池化层也称为下采样。常用的池化操作包括最大池化（Max Pooling）和平均池化（Average Pooling）。池化层可以帮助减少计算量，提取图像的不变性，并且能够控制模型的过拟合。</p>
-</li>
-<li><p>激活函数（Activation Function）：激活函数引入非线性性质，使得CNN能够学习复杂的非线性特征。常用的激活函数包括ReLU（Rectified Linear Unit）、Sigmoid和Tanh等。</p>
-</li>
-<li><p>全连接层（Fully Connected Layer）：全连接层将前面的卷积层和池化层的输出连接到输出层，进行最终的分类或回归任务。</p>
-</li>
-<li><p>反向传播（Backpropagation）：CNN利用反向传播算法进行训练。反向传播通过计算损失函数关于模型参数的梯度，以更新模型参数来最小化损失函数。</p>
-</li>
-</ol>
-<p>下面是一个简单的CNN示例，以图像分类为任务：</p>
-<p>输入：一张32x32像素的彩色图像</p>
-<ol>
-<li>卷积层：使用一组3x3大小的卷积核，对输入图像进行卷积操作，得到特征图。</li>
-<li>激活函数：对特征图的每个元素应用ReLU激活函数，增加非线性性质。</li>
-<li>池化层：使用2x2大小的最大池化，将特征图的尺寸减半。</li>
-<li>卷积层：再次使用一组3x3大小的卷积核，对池化后的特征图进行卷积操作，得到新的特征图。</li>
-<li>激活函数：对新的特征图的每个元素应用ReLU激活函数。</li>
-<li>池化层：再次使用2x2大小的最</li>
-</ol>
-<p>大池化，将特征图的尺寸减半。</p>
-<ol>
-<li>展平层（Flatten）：将池化层的输出展平为一维向量。</li>
-<li>全连接层：将展平的向量连接到全连接层，并应用激活函数。</li>
-<li>输出层：使用适当的激活函数（如Softmax）进行多类别分类。</li>
-</ol>
-<p>这个例子只是一个简化的CNN结构，实际中可能会有更多的卷积层、池化层和全连接层，以及一些正则化和优化技巧，来提高模型的性能和稳定性。</p>
-<p>请注意，具体的CNN结构和参数设置会根据不同的任务和数据集而有所不同，需要根据实际情况进行调整和优化。</p>
-<h3 id="CNN数学公式推导"><a href="#CNN数学公式推导" class="headerlink" title="CNN数学公式推导"></a>CNN数学公式推导</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weipf8/article/details/103917202">链接1</a></p>
-<p><a target="_blank" rel="noopener" href="https://tech.youmi.net/2016/07/163347168.html">链接2</a></p>
-<p>二维卷积公式：<br></p><pre class="line-numbers language-none"><code class="language-none">torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros', device=None, dtype=None)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
-<p>输出图像的高、宽计算公式:<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-01-10_10-44-21.png" alt=""></p>
-<p>卷积的过程：</p>
-<!-- <img src="gif/convProcess.gif" width = "" height = ""> -->
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/convProcess.gif" alt=""></p>
-<p>卷积神经网络是权值共享，非全连接的神经网络。以2个卷积层和2个池化层的卷积神经网络为例，其结构图如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/a7b9429e-436f-11e6-85c5-ceab16a79342.jpg" alt=""></p>
-<p>从这个图可以看出几个关键的地方：</p>
-<ol>
-<li>卷积层和池化（采样）层结束的时候都需要一个激活函数，就是f(.)。</li>
-<li>卷积核可以不止有一个，可以采用多个卷积核分别进行卷积, 这样便可以得到多个特征图。有时, 对于一张三通道彩色图片, 或者如第三层特征图所示, 输入的是一组矩阵, 这时卷积核也不再是一层的, 而要变成相应的深度.</li>
-</ol>
-<!-- <img src="gif/Three-channelFeature.gif" width = "" height = ""> -->
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Three-channelFeature.gif" alt=""></p>
-<p>上图中是经过一次卷积后的结果，得到了3个特征图。再次卷积时，输入的是一组矩阵, 这时卷积核也不再是一层的, 而要变成相应的深度。, 最左边是输入的特征图矩阵, 深度为 3, 补零(Zero Padding)层数为 1, 每次滑动的步幅为 2. 中间两列粉色的矩阵分别是两组卷积核, 一组有三个, 三个矩阵分别对应着卷积左侧三个输入矩阵, 每一次滑动卷积会得到三个数, 这三个数的和作为卷积的输出. 最右侧两个绿色的矩阵分别是两组卷积核得到的特征图。</p>
-<h3 id="如何理解多尺度CNN中的尺度"><a href="#如何理解多尺度CNN中的尺度" class="headerlink" title="如何理解多尺度CNN中的尺度"></a>如何理解多尺度CNN中的尺度</h3><p>在多尺度CNN中，”多尺度”指的是对输入数据进行不同尺度的处理和分析。这种处理方式可以帮助网络更好地捕捉到输入数据中的多尺度特征，从而提高模型的性能和泛化能力。</p>
-<p>通常，多尺度CNN会通过以下几种方式来实现多尺度处理：</p>
-<ol>
-<li><p>多尺度输入：将输入数据在不同尺度下进行变换，例如通过缩放、裁剪或填充等操作，以获取不同尺度的图像输入。这样，网络可以同时关注不同尺度下的特征信息。</p>
-</li>
-<li><p>多尺度卷积：在网络的某些层中使用不同大小的卷积核或不同步长的卷积操作，以捕捉不同尺度的特征。这样，网络可以通过不同尺度的卷积感受野来分析输入数据。</p>
-</li>
-<li><p>多尺度池化：在池化层中使用不同大小的池化窗口或不同步长的池化操作，以对特征图进行降采样。这样可以保留不同尺度下的特征信息。</p>
-</li>
-<li><p>多尺度特征融合：将来自不同尺度的特征进行融合，以综合利用不同尺度的信息。这可以通过特征图的级联、加权求和、并行分支等方式来实现。</p>
-</li>
-</ol>
-<p>通过多尺度处理，多尺度CNN能够更好地适应不同尺度的目标或特征，并更全面地理解输入数据。这对于许多计算机视觉任务如目标检测、语义分割和图像分类等是非常有益的。</p>
-<h3 id="什么是CNN的尺度-scale"><a href="#什么是CNN的尺度-scale" class="headerlink" title="什么是CNN的尺度(scale)"></a>什么是CNN的尺度(scale)</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xjp_xujiping/article/details/110324506">原文链接</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_47891203/article/details/124202487">相关链接</a></p>
-<p>卷积神经网络里涉及到三种尺度：深度、宽度、分辨率。</p>
-<ul>
-<li>深度指的是网络有多深，或者说有多少层。</li>
-<li>宽度指的是网络有多宽，比如卷积层的通道数。</li>
-<li>分辨率指的是输入卷积层的图像、特征图的空间分辨率。</li>
-</ul>
-<p>也可以简单的理解为不同尺寸的图片，或者不同分辨率的图片。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/7df63c0c5b279fc8251f0075c04f2a9f.png" alt=""></p>
-<p>模型尺度。(a) 是一个基本的网络模型；(b)-(d) 分别单独在宽度、深度、分辨率的维度上增加尺度；(e) 是论文提出的混合尺度变换，用统一固定的比例放缩三个不同维度的尺度。</p>
-<h3 id="感受野"><a href="#感受野" class="headerlink" title="感受野"></a>感受野</h3><p>若感受野太小，表明网络只能观察到图像的局部特征；若感受野太大，虽然对全局信息理解更强，但通常也包含了许多无效信息。为了提高有效感受野从而避免冗余信息，捕获多尺度特征是当前研究者们常采用的方法。比如拿望远镜看远方为小视野，直接光看为大视野。</p>
 <h2 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h2><p>总结：</p>
 <ol>
 <li>RNN这个R(循环)，可以被看做是同一神经网络的多次复制，每个神经网络模块会把消息传递给下一个。</li>
@@ -1929,7 +1822,7 @@ output_data = my_layer(input_data)<span aria-hidden="true" class="line-numbers-r
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">284.9k</span>
+                        class="white-color">289.3k</span>
             
             
             
@@ -2158,6 +2051,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
