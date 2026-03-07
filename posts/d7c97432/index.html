@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    23.5k
+                    24.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    86 分
+                    88 分
                 </div>
                 
 
@@ -1523,6 +1523,32 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>结论：时间序列预测的极限远未触及，但突破的关键可能在于我们先要打破自己设定的思维牢笼——那些看似通用实则矛盾的评估标准和验证方式。</p>
 <h1 id="VarDrop-Enhancing-Training-Efficiency-by-Reducing-Variate-Redundancy-in-Periodic-Time-Series-Forecasting"><a href="#VarDrop-Enhancing-Training-Efficiency-by-Reducing-Variate-Redundancy-in-Periodic-Time-Series-Forecasting" class="headerlink" title="VarDrop: Enhancing Training Efficiency by Reducing Variate Redundancy in Periodic Time Series Forecasting"></a>VarDrop: Enhancing Training Efficiency by Reducing Variate Redundancy in Periodic Time Series Forecasting</h1><h2 id="核心内容"><a href="#核心内容" class="headerlink" title="核心内容"></a>核心内容</h2><p>与传统时序预测以时间点作为token不同，VarDrop是以变量作为token，那么注意力复杂度就是<strong>变量数长度的平方成正比</strong></p>
 <p>在训练阶段，计算注意力的时候对部分变量不进行注意力计算，以此达到节省开销的目的。并不是丢弃这个变量，而是在计算注意力机制的时候不计算这个变量的相关性，但是在推理阶段并不会这样做，所以并没有修改模型的输入 / 嵌入 / 输出层的维度，模型自始至终适配原始的 N 个变量。</p>
+<h1 id="Frequency-domain-MLPs-are-More-Effective-Learners-in-Time-Series-Forecasting"><a href="#Frequency-domain-MLPs-are-More-Effective-Learners-in-Time-Series-Forecasting" class="headerlink" title="Frequency-domain MLPs are More Effective Learners in Time Series Forecasting"></a>Frequency-domain MLPs are More Effective Learners in Time Series Forecasting</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>传统深度学习方法痛点：</p>
+<ul>
+<li>模型复杂、计算开销大</li>
+<li>鲁棒性受大量参数影响</li>
+</ul>
+<p>基于MLP的方法结构简单，复杂度低，预测性能优越，例如N-BEATS [19]，LightTS [20]，DLinear 。</p>
+<p>然而，这些基于MLP的方法有缺陷：</p>
+<ul>
+<li>依赖于逐点映射来捕获时间映射，无法处理时间序列的全局依赖性。</li>
+<li>受到时间序列不稳定和冗余局部动量的信息瓶颈的影响。</li>
+</ul>
+<p>在频域里面克服这个问题，频域里面用MLP有两个优势：<br>（1）全局视图：对从级数变换获得的频谱分量进行操作，频域 MLP 可以捕获更完整的信号视图，从而更容易学习全局空间/时间依赖性。<br>（2）能量压缩：频域MLP集中于信号能量紧凑的频率分量的较小关键部分，因此可以在滤除噪声影响的同时保留更清晰的模式。</p>
+<h2 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h2><h1 id="ITRANSFORMER-INVERTED-TRANSFORMERS-ARE-EFFECTIVE-FOR-TIME-SERIES-FORECASTING"><a href="#ITRANSFORMER-INVERTED-TRANSFORMERS-ARE-EFFECTIVE-FOR-TIME-SERIES-FORECASTING" class="headerlink" title="ITRANSFORMER: INVERTED TRANSFORMERS ARE EFFECTIVE FOR TIME SERIES FORECASTING"></a>ITRANSFORMER: INVERTED TRANSFORMERS ARE EFFECTIVE FOR TIME SERIES FORECASTING</h1><p>单个时间点之间语义信息少，简单的线性模型效果都能超过transformer（Dlinear观点）</p>
+<p>目前的观点是：保证变量独立、显示建模多变量之间的相关性（crossformer）。感觉这句话有些矛盾，都保证变量独立了，怎么显示建模多变量之间的相关性？</p>
+<p>transformer-based方法之所以打不过linear系列方法，主要是以下原因：</p>
+<ul>
+<li><h1 id="CROSSFORMER-TRANSFORMER-UTILIZING-CROSSDIMENSION-DEPENDENCY-FOR-MULTIVARIATE-TIME-SERIES-FORECASTING"><a href="#CROSSFORMER-TRANSFORMER-UTILIZING-CROSSDIMENSION-DEPENDENCY-FOR-MULTIVARIATE-TIME-SERIES-FORECASTING" class="headerlink" title="CROSSFORMER: TRANSFORMER UTILIZING CROSSDIMENSION DEPENDENCY FOR MULTIVARIATE TIME SERIES FORECASTING"></a>CROSSFORMER: TRANSFORMER UTILIZING CROSSDIMENSION DEPENDENCY FOR MULTIVARIATE TIME SERIES FORECASTING</h1></li>
+</ul>
+<p>论文里面提到的multiple dimensions，其实就是指多变量。</p>
+<p>除了跨时间依赖性之外，跨维度依赖性对于 MTS 预测也至关重要，即对于特定维度，来自其他维度的关联序列的信息可能会改善预测。例如，在预测未来温度时，不仅需要历史温度，还需要历史风速来帮助预测。</p>
+<p>传统trans的建模如下图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2026-03-06_11-18-15.png" alt=""></p>
+<p>这样token和token之间就是跨时间点的，<strong>但不能很好地捕获跨维度依赖性，这可能会限制它们的预测能力。</strong></p>
+<h1 id="TSMixer"><a href="#TSMixer" class="headerlink" title="TSMixer"></a>TSMixer</h1><p>KDD[2023]</p>
+<p>单个时序数据缺乏语义，很容易根据相邻数据推断出来，大量的建模能力被浪费在了逐点学习上面。patchtst通过把一段连续的时序数据作为patch来解决这个问题。然后patchtst是通道独立的，patchtst证明通道独立要更好些。但是简单的通道concate，可能会在trans的初始层中产生噪声交互，从而使得在输出端解开他们变的困难。CrossFormer也利用了patch，而且改进了<strong>通道混合</strong>技术，但是也面临这个问题。</p>
+<p>patchtst弥补了</p>
 <h1 id="细节知识"><a href="#细节知识" class="headerlink" title="细节知识"></a>细节知识</h1><h2 id="rfft"><a href="#rfft" class="headerlink" title="rfft"></a>rfft</h2><p>时序预测中，傅里叶变化是使用比较多的，对应到代码里面来说，就是rfft。rfft 指的是 “实数快速傅里叶变换（Real FFT），输出的结果是复数（包含振幅和相位信息）</p>
 <p>为什么叫”r”fft？因为实数信号的频谱具有“共轭对称性”（Hermitian symmetry），即正频率和负频率的信息是冗余的。rfft 专门利用这一点，只计算并返回一半的频率分量以节省计算量，但返回的每一个点依然是标准的复数（包含实部和虚部）。</p>
 <p>所以如果输入的序列长度是720，那么使用rfft得到的数据量只有361。</p>
@@ -2061,7 +2087,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">289.4k</span>
+                        class="white-color">290.7k</span>
             
             
             
