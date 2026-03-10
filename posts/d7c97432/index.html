@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    24.2k
+                    24.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    88 分
+                    90 分
                 </div>
                 
 
@@ -1549,6 +1549,24 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <h1 id="TSMixer"><a href="#TSMixer" class="headerlink" title="TSMixer"></a>TSMixer</h1><p>KDD[2023]</p>
 <p>单个时序数据缺乏语义，很容易根据相邻数据推断出来，大量的建模能力被浪费在了逐点学习上面。patchtst通过把一段连续的时序数据作为patch来解决这个问题。然后patchtst是通道独立的，patchtst证明通道独立要更好些。但是简单的通道concate，可能会在trans的初始层中产生噪声交互，从而使得在输出端解开他们变的困难。CrossFormer也利用了patch，而且改进了<strong>通道混合</strong>技术，但是也面临这个问题。</p>
 <p>patchtst弥补了</p>
+<h1 id="DUET-Dual-Clustering-Enhanced-Multivariate-Time-Series-Forecasting"><a href="#DUET-Dual-Clustering-Enhanced-Multivariate-Time-Series-Forecasting" class="headerlink" title="DUET: Dual Clustering Enhanced Multivariate Time Series Forecasting"></a>DUET: Dual Clustering Enhanced Multivariate Time Series Forecasting</h1><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>方法太复杂了，东拼西凑。</p>
+<p>2025-kDD</p>
+<h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p>过去的方法通常对时间维和通道维进行建模。但是时间维随分布变化，通道之间关联复杂。开发一个同时兼顾时间和通道的方法很重要，主要的挑战有两个：</p>
+<ul>
+<li>时间分布漂移：最近的研究主要以<strong>隐式方式</strong>（什么是隐式？SparseTSF: Modeling Long-term Time Series Forecasting with 1k Parameters，itransformer，timeMixer，FITS: Modeling Time Series with 10k Parameters）解决异构时间模式，损害了预测准确性</li>
+<li>复杂的通道关系：通常可以利用其他通道的信息来提升特定通道的预测结果。例如，在天气预报中，可以通过结合湿度、风速和压力数据来改进温度预测，因为这些因素是相互关联的，可以提供更全面的天气状况视图。有多种通道处理策略：<ul>
+<li>通道独立：完全没考虑通道之间的关联</li>
+<li>通道相关：可能会引入噪声</li>
+<li>通道分组：仅考虑同一个组里面的关系，限制了灵活性</li>
+</ul>
+</li>
+</ul>
+<h2 id="实验细节"><a href="#实验细节" class="headerlink" title="实验细节"></a>实验细节</h2><p>输入长度在96，336，512里面选择最好的。</p>
+<h1 id="FREDF-LEARNING-TO-FORECAST-IN-THE-FREQUENCY-DOMAIN"><a href="#FREDF-LEARNING-TO-FORECAST-IN-THE-FREQUENCY-DOMAIN" class="headerlink" title="FREDF: LEARNING TO FORECAST IN THE FREQUENCY DOMAIN"></a>FREDF: LEARNING TO FORECAST IN THE FREQUENCY DOMAIN</h1><p>2025-ICLR</p>
+<h2 id="背景-2"><a href="#背景-2" class="headerlink" title="背景"></a>背景</h2><p>时间序列建模与典型回归任务的区别在于，时序建模的关键挑战是自相关性，指的是：输入序列和label的时间步长之间的依赖性。</p>
+<p>通过在频域中表示输入序列，可以有效地适应输入自相关性，过去已有工作做到过。</p>
+<p>过去的方法都是直接预测，这种前提是标签中的每个时间步是独立的。这样做忽略了时间序列预测任务中固有的标签自相关性（每个未来时间步都依赖前一个时间步）。</p>
+<p>为了解决这个问题，我们引入了频率增强直接预测（FreDF），这是对 DF 范式的简单而有效的改进。中心思想是在频域中对齐预测和标签序列，其中标签相关性被发现有效地减少。</p>
 <h1 id="细节知识"><a href="#细节知识" class="headerlink" title="细节知识"></a>细节知识</h1><h2 id="rfft"><a href="#rfft" class="headerlink" title="rfft"></a>rfft</h2><p>时序预测中，傅里叶变化是使用比较多的，对应到代码里面来说，就是rfft。rfft 指的是 “实数快速傅里叶变换（Real FFT），输出的结果是复数（包含振幅和相位信息）</p>
 <p>为什么叫”r”fft？因为实数信号的频谱具有“共轭对称性”（Hermitian symmetry），即正频率和负频率的信息是冗余的。rfft 专门利用这一点，只计算并返回一半的频率分量以节省计算量，但返回的每一个点依然是标准的复数（包含实部和虚部）。</p>
 <p>所以如果输入的序列长度是720，那么使用rfft得到的数据量只有361。</p>
@@ -2087,7 +2105,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">290.7k</span>
+                        class="white-color">291.2k</span>
             
             
             
