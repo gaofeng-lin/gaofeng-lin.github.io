@@ -38,9 +38,7 @@ T">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -152,7 +150,9 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</style>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 </head>
 
 
@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    25.3k
+                    25.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    92 分
+                    93 分
                 </div>
                 
 
@@ -1568,12 +1568,16 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>过去的方法都是直接预测，这种前提是标签中的每个时间步是独立的。这样做忽略了时间序列预测任务中固有的标签自相关性（每个未来时间步都依赖前一个时间步）。</p>
 <p>为了解决这个问题，我们引入了频率增强直接预测（FreDF），这是对 DF 范式的简单而有效的改进。中心思想是在频域中对齐预测和标签序列，其中标签相关性被发现有效地减少。</p>
 <h2 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h2><p>通过公式证明，对与序列来说，只要长度足够长，那么在频率空间中，不同频率的分量是渐进不相关的。既然如此，那么在频域里面使用”直接预测“，就是无偏的，偏差就会消除。具体来说：让预测值的频域分量 去逼近真实值的频域分量（相同频率点对齐），而不需要考虑不同频率点之间的关系（因为它们本来就不相关）。</p>
-<h2 id="可以借鉴的内容："><a href="#可以借鉴的内容：" class="headerlink" title="可以借鉴的内容："></a>可以借鉴的内容：</h2><h3 id="多元时序的-FFT-处理"><a href="#多元时序的-FFT-处理" class="headerlink" title="多元时序的 FFT 处理"></a>多元时序的 FFT 处理</h3><p>论文提供了三种实现方案：<br>FreDF-T：沿时间维度做 FFT，每个变量单独变换，处理时间步间的自相关，是基础版，效果最优；<br>FreDF-D：沿变量维度做 FFT，处理不同变量间的互相关，效果略逊于 FreDF-T；<br>FreDF-2：对时间 × 变量的二维矩阵做二维 FFT，同时处理时间步间自相关和变量间互相关，综合性能最佳。</p>
+<h2 id="可以借鉴的内容："><a href="#可以借鉴的内容：" class="headerlink" title="可以借鉴的内容："></a>可以借鉴的内容：</h2><h3 id="多元时序的-FFT-处理"><a href="#多元时序的-FFT-处理" class="headerlink" title="多元时序的 FFT 处理"></a>多元时序的 FFT 处理</h3><p>论文提供了三种实现方案：<br>FreDF-T：沿时间维度做 FFT，每个变量单独变换，处理时间步间的自相关；<br>FreDF-D：沿变量维度做 FFT，处理不同变量间的互相关，效果略逊于 FreDF-T；<br>FreDF-2：对时间 × 变量的二维矩阵做二维 FFT，同时处理时间步间自相关和变量间互相关，综合性能最佳。</p>
 <h3 id="零推理开销"><a href="#零推理开销" class="headerlink" title="零推理开销"></a>零推理开销</h3><p>频域损失仅在训练阶段使用，推理阶段和传统 DF 范式完全一致：输入历史序列，模型直接输出<br>T<br>步预测结果，不需要做任何 FFT 变换，无任何额外推理延迟和计算成本。</p>
 <h3 id="总损失函数"><a href="#总损失函数" class="headerlink" title="总损失函数"></a>总损失函数</h3><p>当<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.448ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 640 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D6FC" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path></g></g></g></svg></mjx-container>=1，论文消融实验显示，<strong>仅用频域损失已经能大幅超越传统 DF</strong></p>
 <p>最优<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.448ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 640 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D6FC" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path></g></g></g></svg></mjx-container>通常在 0.8~1 之间，论文超参数敏感性分析显示，<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.448ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 640 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D6FC" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path></g></g></g></svg></mjx-container>在 0.2~1 的宽范围内都能稳定提升模型性能，鲁棒性极强。</p>
 <p>为什么保留时域损失？</p>
 <p>目标互补：频域损失拟合序列的整体频率特征（趋势、周期、波动模式），时域损失保证每个时间点的数值精度，两者结合能同时优化 “序列整体形态” 和 “单点数值准确”；<br>泛化兜底：对于短序列、非平稳序列，FFT 的渐近去相关效果会打折扣，保留时域损失能保证模型的基础效果，提升跨场景泛化性；<br>性能增益：论文消融实验（Table2）显示，时域 + 频域的双损失结构，比单独使用任意一个损失都有小幅性能提升。</p>
+<h1 id="xPatch-Dual-Stream-Time-Series-Forecasting-with-Exponential-Seasonal-Trend-Decomposition"><a href="#xPatch-Dual-Stream-Time-Series-Forecasting-with-Exponential-Seasonal-Trend-Decomposition" class="headerlink" title="xPatch: Dual-Stream Time Series Forecasting with Exponential Seasonal-Trend Decomposition"></a>xPatch: Dual-Stream Time Series Forecasting with Exponential Seasonal-Trend Decomposition</h1><h2 id="背景-3"><a href="#背景-3" class="headerlink" title="背景"></a>背景</h2><p>针对传统的trend-seasonal分解，提出了一种利用指数移动平均线 (EMA) 进行季节性趋势分解的新方法。</p>
+<p>开发了强大的反正切损失和新颖的 sigmoid 学习率调整方案，并通过预热来实现更平滑的训练。</p>
+<h1 id="CARD-CHANNEL-ALIGNED-ROBUST-BLEND-TRANSFORMER-FOR-TIME-SERIES-FORECASTING"><a href="#CARD-CHANNEL-ALIGNED-ROBUST-BLEND-TRANSFORMER-FOR-TIME-SERIES-FORECASTING" class="headerlink" title="CARD: CHANNEL ALIGNED ROBUST BLEND TRANSFORMER FOR TIME SERIES FORECASTING"></a>CARD: CHANNEL ALIGNED ROBUST BLEND TRANSFORMER FOR TIME SERIES FORECASTING</h1><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>为了减轻过度拟合噪声的问题，引入了鲁棒损失函数，在有限范围内进行预测的情况下，根据每个预测的不确定性对每个预测进行加权。</p>
+<p><strong>损失函数的设计思路：不同时间步长的误差具有相同的权重。</strong></p>
 <h1 id="细节知识"><a href="#细节知识" class="headerlink" title="细节知识"></a>细节知识</h1><h2 id="rfft"><a href="#rfft" class="headerlink" title="rfft"></a>rfft</h2><p>时序预测中，傅里叶变化是使用比较多的，对应到代码里面来说，就是rfft。rfft 指的是 “实数快速傅里叶变换（Real FFT），输出的结果是复数（包含振幅和相位信息）</p>
 <p>为什么叫”r”fft？因为实数信号的频谱具有“共轭对称性”（Hermitian symmetry），即正频率和负频率的信息是冗余的。rfft 专门利用这一点，只计算并返回一半的频率分量以节省计算量，但返回的每一个点依然是标准的复数（包含实部和虚部）。</p>
 <p>所以如果输入的序列长度是720，那么使用rfft得到的数据量只有361。</p>
@@ -2112,7 +2116,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">291.8k</span>
+                        class="white-color">292k</span>
             
             
             
@@ -2341,21 +2345,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
