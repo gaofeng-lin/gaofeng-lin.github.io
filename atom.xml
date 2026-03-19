@@ -245,33 +245,6 @@
   </entry>
   
   <entry>
-    <title>DataProcess</title>
-    <link href="https://gaofeng-lin.github.io/posts/56f17847/"/>
-    <id>https://gaofeng-lin.github.io/posts/56f17847/</id>
-    <published>2025-10-22T16:00:00.000Z</published>
-    <updated>2025-11-13T08:58:26.238Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;dataloader解析&quot;&gt;&lt;a href=&quot;#dataloader解析&quot; class=&quot;headerlink&quot; title=&quot;dataloader解析&quot;&gt;&lt;/a&gt;dataloader解析&lt;/h1&gt;&lt;h2 id=&quot;简单例子&quot;&gt;&lt;a href=&quot;#简单例子&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
-    
-    
-    <category term="DataLoader" scheme="https://gaofeng-lin.github.io/tags/DataLoader/"/>
-    
-    <category term="Random Seed" scheme="https://gaofeng-lin.github.io/tags/Random-Seed/"/>
-    
-  </entry>
-  
-  <entry>
     <title>深度学习环境配置</title>
     <link href="https://gaofeng-lin.github.io/posts/61e48afb/"/>
     <id>https://gaofeng-lin.github.io/posts/61e48afb/</id>
@@ -297,6 +270,33 @@
     <category term="CUDNN" scheme="https://gaofeng-lin.github.io/tags/CUDNN/"/>
     
     <category term="Pytorch" scheme="https://gaofeng-lin.github.io/tags/Pytorch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DataProcess</title>
+    <link href="https://gaofeng-lin.github.io/posts/56f17847/"/>
+    <id>https://gaofeng-lin.github.io/posts/56f17847/</id>
+    <published>2025-10-22T16:00:00.000Z</published>
+    <updated>2025-11-13T08:58:26.238Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;dataloader解析&quot;&gt;&lt;a href=&quot;#dataloader解析&quot; class=&quot;headerlink&quot; title=&quot;dataloader解析&quot;&gt;&lt;/a&gt;dataloader解析&lt;/h1&gt;&lt;h2 id=&quot;简单例子&quot;&gt;&lt;a href=&quot;#简单例子&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://gaofeng-lin.github.io/categories/AI/"/>
+    
+    
+    <category term="DataLoader" scheme="https://gaofeng-lin.github.io/tags/DataLoader/"/>
+    
+    <category term="Random Seed" scheme="https://gaofeng-lin.github.io/tags/Random-Seed/"/>
     
   </entry>
   

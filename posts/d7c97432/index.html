@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    26.4k
+                    27.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    96 分
+                    99 分
                 </div>
                 
 
@@ -1494,8 +1494,23 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <li>特征聚合 (Aggregation)： 将原始频域嵌入、动态滤波结果和静态滤波结果进行加权融合。</li>
 <li>频域到时域的投影 ： 将融合后的复数频域特征，分别处理实部和虚部，最终映射回时域输出预测结果 。</li>
 </ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>过滤器过略频率。</p>
+<h1 id="TIMESNET-TEMPORAL-2D-VARIATION-MODELING-FOR-GENERAL-TIME-SERIES-ANALYSIS"><a href="#TIMESNET-TEMPORAL-2D-VARIATION-MODELING-FOR-GENERAL-TIME-SERIES-ANALYSIS" class="headerlink" title="TIMESNET: TEMPORAL 2D-VARIATION MODELING FOR GENERAL TIME SERIES ANALYSIS"></a>TIMESNET: TEMPORAL 2D-VARIATION MODELING FOR GENERAL TIME SERIES ANALYSIS</h1><h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p>时序预测（天气预测、缺失数据插补、工业维护的数据异常检测）很有价值</p>
+<p>然而，现实世界时间序列的变化总是涉及复杂的时间模式，其中多种变化（例如上升、下降、波动等）相互混合和重叠，使得时间变化建模极具挑战性。</p>
+<p>过往的方法往往无法准确建模：<br>RNN类：无法捕捉长距离依赖<br>TCN类：只能捕捉相邻时间点依赖、无法建模长期依赖<br>Trans类：注意力机制很难直接从分散的时间点找出可靠的依赖关系，因为时间依赖关系可能会在复杂的时间模式中被深深地掩盖（Autoformer）。</p>
+<p>首先，我们观察到现实世界的时间序列通常呈现出多周期性（日周期、天周期），这些多个时期相互重叠和相互作用，使得变异建模变得棘手。其次，周期内的时间点也会相互影响。</p>
+<p>一维数据比较很难同时明确地呈现两种不同类型的变化。论文将一维时间序列重塑为二维张量，其中每一列包含一个周期内的时间点，每一行包含不同周期之间同一阶段的时间点。</p>
+<p>只选择了top-k个幅值的频率。</p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>效果其实并不好，只是应用范围很广（长/短预测、插值、分类、异常检测）。</p>
+<h1 id="CFPT-Empowering-Time-Series-Forecasting-through-Cross-Frequency-Interaction-and-Periodic-Aware-Timestamp-Modeling"><a href="#CFPT-Empowering-Time-Series-Forecasting-through-Cross-Frequency-Interaction-and-Periodic-Aware-Timestamp-Modeling" class="headerlink" title="CFPT: Empowering Time Series Forecasting through Cross-Frequency Interaction and Periodic-Aware Timestamp Modeling"></a>CFPT: Empowering Time Series Forecasting through Cross-Frequency Interaction and Periodic-Aware Timestamp Modeling</h1><p>AAAI[2025]</p>
+<h2 id="背景-2"><a href="#背景-2" class="headerlink" title="背景"></a>背景</h2><p>根据度频率信息的利用，现有方法可分为四类：<br>（1）纯时域运行很难有效地处理整个频谱上的信号（Yi 等人，2024a）<br>（2）统一频率方法。处理频率分量，但统一对待它们，而不区分它们的重要性；<br>（3）专门利用低频分量，同时滤除高频分量；<br>（4）加权频率方法（Zhou et al., 2022b；Zhang et al., 2024；Yi et al., 2024a），通过简单的加权求和将高频和低频结合起来。</p>
+<p>长序列预测有两个重要方向尚未得到充分探索：</p>
+<p>（1）最近的实证研究（Ye et al., 2024；Zhang et al., 2024）表明，不同频率分量的重要性在不同场景中有所不同，每个分量对预测性能可能有利或有害，具体取决于具体的上下文，这表明<strong>简单地丢弃某些频率分量或独立处理它们可能不是最优的</strong>。<strong>然而，尽管最近的研究引入了频域处理，但它们主要侧重于独立处理不同的频率分量，而没有探索跨频率相互作用的建模</strong>。<br>（2）<strong>尽管在时间戳建模方面进行了这些尝试，但时间戳固有的周期性特征仍未得到充分探索</strong>。为了充分利用时间戳的潜力来增强性能，探索它们的周期性模式成为一个有前途的方向。</p>
+<p>两个专门分支增强长期时间序列预测的新颖框架。</p>
+<p>首先，我们提出了跨频率交互（CFI）分支，它能够对不同频率分量进行单独建模，同时通过精心设计的特征融合机制捕获它们的交互。因此，它保留了长期演化模式和短期动态特征，并提供跨时间尺度的全面表示。</p>
+<p>其次，我们设计了周期感知时间戳建模（PTM）分支。它根据固定周期长度将一维时间戳序列转换为二维张量。通过2D卷积运算，它捕获了周期内依赖性和周期间相关性，增强了预测的时间上下文并改善了预测结果。</p>
 <h1 id="FITS-MODELING-TIME-SERIES-WITH-10k-PARAMETERS"><a href="#FITS-MODELING-TIME-SERIES-WITH-10k-PARAMETERS" class="headerlink" title="FITS: MODELING TIME SERIES WITH 10k PARAMETERS"></a>FITS: MODELING TIME SERIES WITH 10k PARAMETERS</h1><p>ICLR[2024]</p>
-<h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p>时序分析在医疗、智能工场等领域有重要作用。但是资源有限，最近的时序预测提出的模型比较复杂。</p>
+<h2 id="背景-3"><a href="#背景-3" class="headerlink" title="背景"></a>背景</h2><p>时序分析在医疗、智能工场等领域有重要作用。但是资源有限，最近的时序预测提出的模型比较复杂。</p>
 <p>时序中的频域表示可以更紧凑，已有工作利用频域进行时序分析，但频域紧凑性的综合利用在很大程度上仍未得到探索。具体来说，没有利用频域使用复数来捕获幅度和相位信息的能力，导致持续依赖计算密集型模型来提取时间特征。</p>
 <h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2026-02-03_15-38-16.png" alt=""></p>
 <p>核心流程：</p>
@@ -1520,7 +1535,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 </li>
 </ul>
 <p>（表4）COF数值的设置，对效果的影响非常非常小，即便增加截至频率，也不一定会增加效果，甚至会变差，而且戒指频率变高，意味着你要处理的输入变长，计算资源需要的更高。增加输入长度倒是能明显提升效果。<strong>但说实话，它并没有验证，截断相比不截断是否有提升</strong>。</p>
-<h1 id="TIMESNET-TEMPORAL-2D-VARIATION-MODELING-FOR-GENERAL-TIME-SERIES-ANALYSIS"><a href="#TIMESNET-TEMPORAL-2D-VARIATION-MODELING-FOR-GENERAL-TIME-SERIES-ANALYSIS" class="headerlink" title="TIMESNET: TEMPORAL 2D-VARIATION MODELING FOR GENERAL TIME SERIES ANALYSIS"></a>TIMESNET: TEMPORAL 2D-VARIATION MODELING FOR GENERAL TIME SERIES ANALYSIS</h1><p>ICLR[2023]</p>
+<h1 id="TIMESNET-TEMPORAL-2D-VARIATION-MODELING-FOR-GENERAL-TIME-SERIES-ANALYSIS-1"><a href="#TIMESNET-TEMPORAL-2D-VARIATION-MODELING-FOR-GENERAL-TIME-SERIES-ANALYSIS-1" class="headerlink" title="TIMESNET: TEMPORAL 2D-VARIATION MODELING FOR GENERAL TIME SERIES ANALYSIS"></a>TIMESNET: TEMPORAL 2D-VARIATION MODELING FOR GENERAL TIME SERIES ANALYSIS</h1><p>ICLR[2023]</p>
 <h2 id="summary-1"><a href="#summary-1" class="headerlink" title="summary"></a>summary</h2><p>从多周期性维度分析时间序列，因为时序是包含多种周期（日周期，周周期等）。论文发现：每个时间点的变化不仅和相邻区域的时间点有关，而且还受到相邻周期的影响较大。前者表示短期时间模式，后者表示长期时间模式。分别称为intraperiod-variaion 和 interperiod-variation。<br>如果是没有周期的数据，那么变化由intraperiod-variaion主导，相当于周期是无限长的。</p>
 <h1 id="待整理的问题（主要是关于时序异常检测相关的东西）"><a href="#待整理的问题（主要是关于时序异常检测相关的东西）" class="headerlink" title="待整理的问题（主要是关于时序异常检测相关的东西）"></a>待整理的问题（主要是关于时序异常检测相关的东西）</h1><p>时序内容总结：</p>
 <ol>
@@ -1548,7 +1563,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>结论：时间序列预测的极限远未触及，但突破的关键可能在于我们先要打破自己设定的思维牢笼——那些看似通用实则矛盾的评估标准和验证方式。</p>
 <h1 id="VarDrop-Enhancing-Training-Efficiency-by-Reducing-Variate-Redundancy-in-Periodic-Time-Series-Forecasting"><a href="#VarDrop-Enhancing-Training-Efficiency-by-Reducing-Variate-Redundancy-in-Periodic-Time-Series-Forecasting" class="headerlink" title="VarDrop: Enhancing Training Efficiency by Reducing Variate Redundancy in Periodic Time Series Forecasting"></a>VarDrop: Enhancing Training Efficiency by Reducing Variate Redundancy in Periodic Time Series Forecasting</h1><h2 id="核心内容"><a href="#核心内容" class="headerlink" title="核心内容"></a>核心内容</h2><p>与传统时序预测以时间点作为token不同，VarDrop是以变量作为token，那么注意力复杂度就是<strong>变量数长度的平方成正比</strong></p>
 <p>在训练阶段，计算注意力的时候对部分变量不进行注意力计算，以此达到节省开销的目的。并不是丢弃这个变量，而是在计算注意力机制的时候不计算这个变量的相关性，但是在推理阶段并不会这样做，所以并没有修改模型的输入 / 嵌入 / 输出层的维度，模型自始至终适配原始的 N 个变量。</p>
-<h1 id="Frequency-domain-MLPs-are-More-Effective-Learners-in-Time-Series-Forecasting"><a href="#Frequency-domain-MLPs-are-More-Effective-Learners-in-Time-Series-Forecasting" class="headerlink" title="Frequency-domain MLPs are More Effective Learners in Time Series Forecasting"></a>Frequency-domain MLPs are More Effective Learners in Time Series Forecasting</h1><h2 id="背景-2"><a href="#背景-2" class="headerlink" title="背景"></a>背景</h2><p>传统深度学习方法痛点：</p>
+<h1 id="Frequency-domain-MLPs-are-More-Effective-Learners-in-Time-Series-Forecasting"><a href="#Frequency-domain-MLPs-are-More-Effective-Learners-in-Time-Series-Forecasting" class="headerlink" title="Frequency-domain MLPs are More Effective Learners in Time Series Forecasting"></a>Frequency-domain MLPs are More Effective Learners in Time Series Forecasting</h1><h2 id="背景-4"><a href="#背景-4" class="headerlink" title="背景"></a>背景</h2><p>传统深度学习方法痛点：</p>
 <ul>
 <li>模型复杂、计算开销大</li>
 <li>鲁棒性受大量参数影响</li>
@@ -1574,9 +1589,9 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <h1 id="TSMixer"><a href="#TSMixer" class="headerlink" title="TSMixer"></a>TSMixer</h1><p>KDD[2023]</p>
 <p>单个时序数据缺乏语义，很容易根据相邻数据推断出来，大量的建模能力被浪费在了逐点学习上面。patchtst通过把一段连续的时序数据作为patch来解决这个问题。然后patchtst是通道独立的，patchtst证明通道独立要更好些。但是简单的通道concate，可能会在trans的初始层中产生噪声交互，从而使得在输出端解开他们变的困难。CrossFormer也利用了patch，而且改进了<strong>通道混合</strong>技术，但是也面临这个问题。</p>
 <p>patchtst弥补了</p>
-<h1 id="DUET-Dual-Clustering-Enhanced-Multivariate-Time-Series-Forecasting"><a href="#DUET-Dual-Clustering-Enhanced-Multivariate-Time-Series-Forecasting" class="headerlink" title="DUET: Dual Clustering Enhanced Multivariate Time Series Forecasting"></a>DUET: Dual Clustering Enhanced Multivariate Time Series Forecasting</h1><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>方法太复杂了，东拼西凑。</p>
+<h1 id="DUET-Dual-Clustering-Enhanced-Multivariate-Time-Series-Forecasting"><a href="#DUET-Dual-Clustering-Enhanced-Multivariate-Time-Series-Forecasting" class="headerlink" title="DUET: Dual Clustering Enhanced Multivariate Time Series Forecasting"></a>DUET: Dual Clustering Enhanced Multivariate Time Series Forecasting</h1><h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><p>方法太复杂了，东拼西凑。</p>
 <p>2025-kDD</p>
-<h2 id="背景-3"><a href="#背景-3" class="headerlink" title="背景"></a>背景</h2><p>过去的方法通常对时间维和通道维进行建模。但是时间维随分布变化，通道之间关联复杂。开发一个同时兼顾时间和通道的方法很重要，主要的挑战有两个：</p>
+<h2 id="背景-5"><a href="#背景-5" class="headerlink" title="背景"></a>背景</h2><p>过去的方法通常对时间维和通道维进行建模。但是时间维随分布变化，通道之间关联复杂。开发一个同时兼顾时间和通道的方法很重要，主要的挑战有两个：</p>
 <ul>
 <li>时间分布漂移：最近的研究主要以<strong>隐式方式</strong>（什么是隐式？SparseTSF: Modeling Long-term Time Series Forecasting with 1k Parameters，itransformer，timeMixer，FITS: Modeling Time Series with 10k Parameters）解决异构时间模式，损害了预测准确性</li>
 <li>复杂的通道关系：通常可以利用其他通道的信息来提升特定通道的预测结果。例如，在天气预报中，可以通过结合湿度、风速和压力数据来改进温度预测，因为这些因素是相互关联的，可以提供更全面的天气状况视图。有多种通道处理策略：<ul>
@@ -1588,7 +1603,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 </ul>
 <h2 id="实验细节"><a href="#实验细节" class="headerlink" title="实验细节"></a>实验细节</h2><p>输入长度在96，336，512里面选择最好的。</p>
 <h1 id="FREDF-LEARNING-TO-FORECAST-IN-THE-FREQUENCY-DOMAIN"><a href="#FREDF-LEARNING-TO-FORECAST-IN-THE-FREQUENCY-DOMAIN" class="headerlink" title="FREDF: LEARNING TO FORECAST IN THE FREQUENCY DOMAIN"></a>FREDF: LEARNING TO FORECAST IN THE FREQUENCY DOMAIN</h1><p>2025-ICLR</p>
-<h2 id="背景-4"><a href="#背景-4" class="headerlink" title="背景"></a>背景</h2><p>时间序列建模与典型回归任务的区别在于，时序建模的关键挑战是自相关性，指的是：输入序列和label的时间步长之间的依赖性。</p>
+<h2 id="背景-6"><a href="#背景-6" class="headerlink" title="背景"></a>背景</h2><p>时间序列建模与典型回归任务的区别在于，时序建模的关键挑战是自相关性，指的是：输入序列和label的时间步长之间的依赖性。</p>
 <p>通过在频域中表示输入序列，可以有效地适应输入自相关性，过去已有工作做到过。</p>
 <p>过去的方法都是直接预测，这种前提是标签中的每个时间步是独立的。这样做忽略了时间序列预测任务中固有的标签自相关性（每个未来时间步都依赖前一个时间步）。</p>
 <p>为了解决这个问题，我们引入了频率增强直接预测（FreDF），这是对 DF 范式的简单而有效的改进。中心思想是在频域中对齐预测和标签序列，其中标签相关性被发现有效地减少。</p>
@@ -1599,7 +1614,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>最优<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.448ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 640 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D6FC" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path></g></g></g></svg></mjx-container>通常在 0.8~1 之间，论文超参数敏感性分析显示，<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.448ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 640 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D6FC" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path></g></g></g></svg></mjx-container>在 0.2~1 的宽范围内都能稳定提升模型性能，鲁棒性极强。</p>
 <p>为什么保留时域损失？</p>
 <p>目标互补：频域损失拟合序列的整体频率特征（趋势、周期、波动模式），时域损失保证每个时间点的数值精度，两者结合能同时优化 “序列整体形态” 和 “单点数值准确”；<br>泛化兜底：对于短序列、非平稳序列，FFT 的渐近去相关效果会打折扣，保留时域损失能保证模型的基础效果，提升跨场景泛化性；<br>性能增益：论文消融实验（Table2）显示，时域 + 频域的双损失结构，比单独使用任意一个损失都有小幅性能提升。</p>
-<h1 id="xPatch-Dual-Stream-Time-Series-Forecasting-with-Exponential-Seasonal-Trend-Decomposition"><a href="#xPatch-Dual-Stream-Time-Series-Forecasting-with-Exponential-Seasonal-Trend-Decomposition" class="headerlink" title="xPatch: Dual-Stream Time Series Forecasting with Exponential Seasonal-Trend Decomposition"></a>xPatch: Dual-Stream Time Series Forecasting with Exponential Seasonal-Trend Decomposition</h1><h2 id="背景-5"><a href="#背景-5" class="headerlink" title="背景"></a>背景</h2><p>针对传统的trend-seasonal分解，提出了一种利用指数移动平均线 (EMA) 进行季节性趋势分解的新方法。</p>
+<h1 id="xPatch-Dual-Stream-Time-Series-Forecasting-with-Exponential-Seasonal-Trend-Decomposition"><a href="#xPatch-Dual-Stream-Time-Series-Forecasting-with-Exponential-Seasonal-Trend-Decomposition" class="headerlink" title="xPatch: Dual-Stream Time Series Forecasting with Exponential Seasonal-Trend Decomposition"></a>xPatch: Dual-Stream Time Series Forecasting with Exponential Seasonal-Trend Decomposition</h1><h2 id="背景-7"><a href="#背景-7" class="headerlink" title="背景"></a>背景</h2><p>针对传统的trend-seasonal分解，提出了一种利用指数移动平均线 (EMA) 进行季节性趋势分解的新方法。</p>
 <p>开发了强大的反正切损失和新颖的 sigmoid 学习率调整方案，并通过预热来实现更平滑的训练。</p>
 <h1 id="CARD-CHANNEL-ALIGNED-ROBUST-BLEND-TRANSFORMER-FOR-TIME-SERIES-FORECASTING"><a href="#CARD-CHANNEL-ALIGNED-ROBUST-BLEND-TRANSFORMER-FOR-TIME-SERIES-FORECASTING" class="headerlink" title="CARD: CHANNEL ALIGNED ROBUST BLEND TRANSFORMER FOR TIME SERIES FORECASTING"></a>CARD: CHANNEL ALIGNED ROBUST BLEND TRANSFORMER FOR TIME SERIES FORECASTING</h1><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>为了减轻过度拟合噪声的问题，引入了鲁棒损失函数，在有限范围内进行预测的情况下，根据每个预测的不确定性对每个预测进行加权。</p>
 <p><strong>损失函数的设计思路：不同时间步长的误差具有相同的权重。</strong></p>
@@ -2141,7 +2156,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">292.9k</span>
+                        class="white-color">293.9k</span>
             
             
             
