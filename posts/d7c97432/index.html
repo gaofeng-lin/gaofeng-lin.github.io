@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    27.4k
+                    29.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    99 分
+                    108 分
                 </div>
                 
 
@@ -1473,7 +1473,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>而batchnorm，是针对每个变量处理，也就是同一个变量，要处理样本<em>时间点（32</em>96）个数据点，进行归一化。</p>
 <h1 id="FilterTS-Comprehensive-Frequency-Filtering-for-Multivariate-Time-Series-Forecasting"><a href="#FilterTS-Comprehensive-Frequency-Filtering-for-Multivariate-Time-Series-Forecasting" class="headerlink" title="FilterTS: Comprehensive Frequency Filtering for Multivariate Time Series Forecasting"></a>FilterTS: Comprehensive Frequency Filtering for Multivariate Time Series Forecasting</h1><p>AAAI[2025]</p>
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>多变量时序数据表现出复杂的时间特征，例如周期变化和趋势。</p>
-<p>传统的时序分析方法主要集中在时域，但往往不能捕获周期信息。最近越来越多的方法开始将频域应用到时间序列。虽然有进步，但是这些方法有时<strong>不能有效区分各种频率的重要性，平等地对待所有成分，忽略重要的先验周期西悉尼和变量之间的依赖可能导致过拟合</strong>。</p>
+<p>传统的时序分析方法主要集中在时域，但往往不能捕获周期信息。最近越来越多的方法开始将频域应用到时间序列。虽然有进步，但是这些方法有时<strong>不能有效区分各种频率的重要性，平等地对待所有成分，忽略重要的先验周期信息和变量之间的依赖可能导致过拟合</strong>。</p>
 <p>解决办法是提取和强调最具有预测能力的频率成分。我们将时间序列中的特征根据其在频域中的行为分为( a )稳定的频率成分和( b )可变的频率成分。稳定的成分，如自然周期(每日、每周、每月)和与特定业务流程相关的频率，通常作为序列中的主导频率出现。根据实验观察，我们假设，这些可变频率成分不仅存在于单个变量中，而且可能在多变量时间序列(赵和沈2024)中的不同变量之间共享。具体来说，这些变量之间可能存在频率和强度变化的同步性，如图1b所示，这揭示了变量之间的潜在联系对于增强多元预测模型至关重要。</p>
 <p>通过精心设计的滤波模块来增强和精确地提取频率成分。该模型在频域进行运算，将时域卷积转换为频域相乘，提高计算效率。使用了两组滤波模块：</p>
 <p>（1）静态全局过滤模块：对整个训练集进行频率分析，在幅值相对较高的分量对应的频率处构建带通滤波器，从而捕获主导的稳定频率分量。<br>（2）动态变量交叉过滤模块：将每个变量视为其他变量的过滤器，在每个回溯窗口内动态地提取跨变量的共享频率成分。这种方法增强了对可变频率成分的捕获。然后将这些滤波器的输出序列通过一个复数矩阵进行合并。</p>
@@ -1495,20 +1495,21 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <li>频域到时域的投影 ： 将融合后的复数频域特征，分别处理实部和虚部，最终映射回时域输出预测结果 。</li>
 </ol>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>过滤器过略频率。</p>
-<h1 id="TIMESNET-TEMPORAL-2D-VARIATION-MODELING-FOR-GENERAL-TIME-SERIES-ANALYSIS"><a href="#TIMESNET-TEMPORAL-2D-VARIATION-MODELING-FOR-GENERAL-TIME-SERIES-ANALYSIS" class="headerlink" title="TIMESNET: TEMPORAL 2D-VARIATION MODELING FOR GENERAL TIME SERIES ANALYSIS"></a>TIMESNET: TEMPORAL 2D-VARIATION MODELING FOR GENERAL TIME SERIES ANALYSIS</h1><h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p>时序预测（天气预测、缺失数据插补、工业维护的数据异常检测）很有价值</p>
-<p>然而，现实世界时间序列的变化总是涉及复杂的时间模式，其中多种变化（例如上升、下降、波动等）相互混合和重叠，使得时间变化建模极具挑战性。</p>
-<p>过往的方法往往无法准确建模：<br>RNN类：无法捕捉长距离依赖<br>TCN类：只能捕捉相邻时间点依赖、无法建模长期依赖<br>Trans类：注意力机制很难直接从分散的时间点找出可靠的依赖关系，因为时间依赖关系可能会在复杂的时间模式中被深深地掩盖（Autoformer）。</p>
-<p>首先，我们观察到现实世界的时间序列通常呈现出多周期性（日周期、天周期），这些多个时期相互重叠和相互作用，使得变异建模变得棘手。其次，周期内的时间点也会相互影响。</p>
-<p>一维数据比较很难同时明确地呈现两种不同类型的变化。论文将一维时间序列重塑为二维张量，其中每一列包含一个周期内的时间点，每一行包含不同周期之间同一阶段的时间点。</p>
-<p>只选择了top-k个幅值的频率。</p>
-<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>效果其实并不好，只是应用范围很广（长/短预测、插值、分类、异常检测）。</p>
 <h1 id="CFPT-Empowering-Time-Series-Forecasting-through-Cross-Frequency-Interaction-and-Periodic-Aware-Timestamp-Modeling"><a href="#CFPT-Empowering-Time-Series-Forecasting-through-Cross-Frequency-Interaction-and-Periodic-Aware-Timestamp-Modeling" class="headerlink" title="CFPT: Empowering Time Series Forecasting through Cross-Frequency Interaction and Periodic-Aware Timestamp Modeling"></a>CFPT: Empowering Time Series Forecasting through Cross-Frequency Interaction and Periodic-Aware Timestamp Modeling</h1><p>AAAI[2025]</p>
-<h2 id="背景-2"><a href="#背景-2" class="headerlink" title="背景"></a>背景</h2><p>根据度频率信息的利用，现有方法可分为四类：<br>（1）纯时域运行很难有效地处理整个频谱上的信号（Yi 等人，2024a）<br>（2）统一频率方法。处理频率分量，但统一对待它们，而不区分它们的重要性；<br>（3）专门利用低频分量，同时滤除高频分量；<br>（4）加权频率方法（Zhou et al., 2022b；Zhang et al., 2024；Yi et al., 2024a），通过简单的加权求和将高频和低频结合起来。</p>
+<h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p>根据对频率信息的利用，现有方法可分为四类：<br>（1）纯时域运行很难有效地处理整个频谱上的信号（Yi 等人，2024a）<br>（2）统一频率方法。处理频率分量，但统一对待它们，而不区分它们的重要性；<br>（3）专门利用低频分量，同时滤除高频分量；<br>（4）加权频率方法（Zhou et al., 2022b；Zhang et al., 2024；Yi et al., 2024a），通过简单的加权求和将高频和低频结合起来。</p>
 <p>长序列预测有两个重要方向尚未得到充分探索：</p>
 <p>（1）最近的实证研究（Ye et al., 2024；Zhang et al., 2024）表明，不同频率分量的重要性在不同场景中有所不同，每个分量对预测性能可能有利或有害，具体取决于具体的上下文，这表明<strong>简单地丢弃某些频率分量或独立处理它们可能不是最优的</strong>。<strong>然而，尽管最近的研究引入了频域处理，但它们主要侧重于独立处理不同的频率分量，而没有探索跨频率相互作用的建模</strong>。<br>（2）<strong>尽管在时间戳建模方面进行了这些尝试，但时间戳固有的周期性特征仍未得到充分探索</strong>。为了充分利用时间戳的潜力来增强性能，探索它们的周期性模式成为一个有前途的方向。</p>
 <p>两个专门分支增强长期时间序列预测的新颖框架。</p>
-<p>首先，我们提出了跨频率交互（CFI）分支，它能够对不同频率分量进行单独建模，同时通过精心设计的特征融合机制捕获它们的交互。因此，它保留了长期演化模式和短期动态特征，并提供跨时间尺度的全面表示。</p>
-<p>其次，我们设计了周期感知时间戳建模（PTM）分支。它根据固定周期长度将一维时间戳序列转换为二维张量。通过2D卷积运算，它捕获了周期内依赖性和周期间相关性，增强了预测的时间上下文并改善了预测结果。</p>
+<p>首先，我们提出了<strong>跨频率交互</strong>（CFI）分支，它能够对不同频率分量进行单独建模，同时通过精心设计的特征融合机制捕获它们的交互。因此，它保留了长期演化模式和短期动态特征，并提供跨时间尺度的全面表示。</p>
+<p>其次，我们<strong>设计了周期感知时间戳建模</strong>（PTM）分支。它根据固定周期长度将一维时间戳序列转换为二维张量。通过2D卷积运算，它捕获了周期内依赖性和周期间相关性，增强了预测的时间上下文并改善了预测结果。</p>
+<h2 id="相关工作-1"><a href="#相关工作-1" class="headerlink" title="相关工作"></a>相关工作</h2><ul>
+<li>时序预测中的频域建模</li>
+<li>时序预测中的时间戳建模</li>
+</ul>
+<h2 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h2><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2026-03-22_14-24-02.png" alt=""></p>
+<h3 id="CFI"><a href="#CFI" class="headerlink" title="CFI"></a>CFI</h3><p><strong>动机</strong>： 现有方法要么忽略频域信息，要么独立处理不同频率成分，但没有建模频率之间的交互关系。</p>
+<p>对归一化后的数据，进行下面的处理：<br>| 步骤 | 操作 | 目的 |<br>|———|———|———|<br>| 频率划分 | 以中位频率为阈值，分离为低频 FL 和高频 FH | 低频携带基础模式和趋势，高频反映短期动态 |<br>| 特征提取 | 提取实部和虚部，拼接后通过线性层 | 分别处理对称和不对称模式 |<br>| 耦合交互 | L 层耦合网络，使用公式(14)(15) | 核心创新：建模高低频之间的相互影响 |<br>| 频率重组 | 拆分实虚部，重建复数，IDFT 逆变换 | 回到时域得到预测 |</p>
+<h1 id="Affirm-Interactive-Mamba-with-Adaptive-Fourier-Filters-for-Long-term-Time-Series-Forecasting"><a href="#Affirm-Interactive-Mamba-with-Adaptive-Fourier-Filters-for-Long-term-Time-Series-Forecasting" class="headerlink" title="Affirm: Interactive Mamba with Adaptive Fourier Filters for Long-term Time Series Forecasting"></a>Affirm: Interactive Mamba with Adaptive Fourier Filters for Long-term Time Series Forecasting</h1><h2 id="背景-2"><a href="#背景-2" class="headerlink" title="背景"></a>背景</h2><h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>输入336：ett系列<br>输入96：exchange, ecl<br>输入512：traffic, weather</p>
 <h1 id="FITS-MODELING-TIME-SERIES-WITH-10k-PARAMETERS"><a href="#FITS-MODELING-TIME-SERIES-WITH-10k-PARAMETERS" class="headerlink" title="FITS: MODELING TIME SERIES WITH 10k PARAMETERS"></a>FITS: MODELING TIME SERIES WITH 10k PARAMETERS</h1><p>ICLR[2024]</p>
 <h2 id="背景-3"><a href="#背景-3" class="headerlink" title="背景"></a>背景</h2><p>时序分析在医疗、智能工场等领域有重要作用。但是资源有限，最近的时序预测提出的模型比较复杂。</p>
 <p>时序中的频域表示可以更紧凑，已有工作利用频域进行时序分析，但频域紧凑性的综合利用在很大程度上仍未得到探索。具体来说，没有利用频域使用复数来捕获幅度和相位信息的能力，导致持续依赖计算密集型模型来提取时间特征。</p>
@@ -1534,9 +1535,15 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 </ul>
 </li>
 </ul>
-<p>（表4）COF数值的设置，对效果的影响非常非常小，即便增加截至频率，也不一定会增加效果，甚至会变差，而且戒指频率变高，意味着你要处理的输入变长，计算资源需要的更高。增加输入长度倒是能明显提升效果。<strong>但说实话，它并没有验证，截断相比不截断是否有提升</strong>。</p>
-<h1 id="TIMESNET-TEMPORAL-2D-VARIATION-MODELING-FOR-GENERAL-TIME-SERIES-ANALYSIS-1"><a href="#TIMESNET-TEMPORAL-2D-VARIATION-MODELING-FOR-GENERAL-TIME-SERIES-ANALYSIS-1" class="headerlink" title="TIMESNET: TEMPORAL 2D-VARIATION MODELING FOR GENERAL TIME SERIES ANALYSIS"></a>TIMESNET: TEMPORAL 2D-VARIATION MODELING FOR GENERAL TIME SERIES ANALYSIS</h1><p>ICLR[2023]</p>
-<h2 id="summary-1"><a href="#summary-1" class="headerlink" title="summary"></a>summary</h2><p>从多周期性维度分析时间序列，因为时序是包含多种周期（日周期，周周期等）。论文发现：每个时间点的变化不仅和相邻区域的时间点有关，而且还受到相邻周期的影响较大。前者表示短期时间模式，后者表示长期时间模式。分别称为intraperiod-variaion 和 interperiod-variation。<br>如果是没有周期的数据，那么变化由intraperiod-variaion主导，相当于周期是无限长的。</p>
+<p>（表4）COF数值的设置，对效果的影响非常非常小，即便增加截至频率，也不一定会增加效果，甚至会变差，而且截至频率变高，意味着你要处理的输入变长，计算资源需要的更高。增加输入长度倒是能明显提升效果。<strong>但说实话，它并没有验证，截断相比不截断是否有提升</strong>。</p>
+<h1 id="TIMESNET-TEMPORAL-2D-VARIATION-MODELING-FOR-GENERAL-TIME-SERIES-ANALYSIS"><a href="#TIMESNET-TEMPORAL-2D-VARIATION-MODELING-FOR-GENERAL-TIME-SERIES-ANALYSIS" class="headerlink" title="TIMESNET: TEMPORAL 2D-VARIATION MODELING FOR GENERAL TIME SERIES ANALYSIS"></a>TIMESNET: TEMPORAL 2D-VARIATION MODELING FOR GENERAL TIME SERIES ANALYSIS</h1><p>ICLR[2023]</p>
+<h2 id="背景-4"><a href="#背景-4" class="headerlink" title="背景"></a>背景</h2><p>时序预测（天气预测、缺失数据插补、工业维护的数据异常检测）很有价值</p>
+<p>然而，现实世界时间序列的变化总是涉及复杂的时间模式，其中多种变化（例如上升、下降、波动等）相互混合和重叠，使得时间变化建模极具挑战性。</p>
+<p>过往的方法往往无法准确建模：<br>RNN类：无法捕捉长距离依赖<br>TCN类：只能捕捉相邻时间点依赖、无法建模长期依赖<br>Trans类：注意力机制很难直接从分散的时间点找出可靠的依赖关系，因为时间依赖关系可能会在复杂的时间模式中被深深地掩盖（Autoformer）。</p>
+<p>首先，我们观察到现实世界的时间序列通常呈现出多周期性（日周期、天周期），这些多个时期相互重叠和相互作用，使得变异建模变得棘手。其次，周期内的时间点也会相互影响。</p>
+<p>一维数据比较很难同时明确地呈现两种不同类型的变化。论文将一维时间序列重塑为二维张量，其中每一列包含一个周期内的时间点，每一行包含不同周期之间同一阶段的时间点。</p>
+<p>只选择了top-k个幅值的频率。</p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>效果其实并不好，只是应用范围很广（长/短预测、插值、分类、异常检测）。</p>
 <h1 id="待整理的问题（主要是关于时序异常检测相关的东西）"><a href="#待整理的问题（主要是关于时序异常检测相关的东西）" class="headerlink" title="待整理的问题（主要是关于时序异常检测相关的东西）"></a>待整理的问题（主要是关于时序异常检测相关的东西）</h1><p>时序内容总结：</p>
 <ol>
 <li>复现模型，效果很差。<br>原文：<br>作者：john<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/1302007972/answer/22655276244">https://www.zhihu.com/question/1302007972/answer/22655276244</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</li>
@@ -1563,7 +1570,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>结论：时间序列预测的极限远未触及，但突破的关键可能在于我们先要打破自己设定的思维牢笼——那些看似通用实则矛盾的评估标准和验证方式。</p>
 <h1 id="VarDrop-Enhancing-Training-Efficiency-by-Reducing-Variate-Redundancy-in-Periodic-Time-Series-Forecasting"><a href="#VarDrop-Enhancing-Training-Efficiency-by-Reducing-Variate-Redundancy-in-Periodic-Time-Series-Forecasting" class="headerlink" title="VarDrop: Enhancing Training Efficiency by Reducing Variate Redundancy in Periodic Time Series Forecasting"></a>VarDrop: Enhancing Training Efficiency by Reducing Variate Redundancy in Periodic Time Series Forecasting</h1><h2 id="核心内容"><a href="#核心内容" class="headerlink" title="核心内容"></a>核心内容</h2><p>与传统时序预测以时间点作为token不同，VarDrop是以变量作为token，那么注意力复杂度就是<strong>变量数长度的平方成正比</strong></p>
 <p>在训练阶段，计算注意力的时候对部分变量不进行注意力计算，以此达到节省开销的目的。并不是丢弃这个变量，而是在计算注意力机制的时候不计算这个变量的相关性，但是在推理阶段并不会这样做，所以并没有修改模型的输入 / 嵌入 / 输出层的维度，模型自始至终适配原始的 N 个变量。</p>
-<h1 id="Frequency-domain-MLPs-are-More-Effective-Learners-in-Time-Series-Forecasting"><a href="#Frequency-domain-MLPs-are-More-Effective-Learners-in-Time-Series-Forecasting" class="headerlink" title="Frequency-domain MLPs are More Effective Learners in Time Series Forecasting"></a>Frequency-domain MLPs are More Effective Learners in Time Series Forecasting</h1><h2 id="背景-4"><a href="#背景-4" class="headerlink" title="背景"></a>背景</h2><p>传统深度学习方法痛点：</p>
+<h1 id="Frequency-domain-MLPs-are-More-Effective-Learners-in-Time-Series-Forecasting"><a href="#Frequency-domain-MLPs-are-More-Effective-Learners-in-Time-Series-Forecasting" class="headerlink" title="Frequency-domain MLPs are More Effective Learners in Time Series Forecasting"></a>Frequency-domain MLPs are More Effective Learners in Time Series Forecasting</h1><h2 id="背景-5"><a href="#背景-5" class="headerlink" title="背景"></a>背景</h2><p>传统深度学习方法痛点：</p>
 <ul>
 <li>模型复杂、计算开销大</li>
 <li>鲁棒性受大量参数影响</li>
@@ -1575,7 +1582,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <li>受到时间序列不稳定和冗余局部动量的信息瓶颈的影响。</li>
 </ul>
 <p>在频域里面克服这个问题，频域里面用MLP有两个优势：<br>（1）全局视图：对从级数变换获得的频谱分量进行操作，频域 MLP 可以捕获更完整的信号视图，从而更容易学习全局空间/时间依赖性。<br>（2）能量压缩：频域MLP集中于信号能量紧凑的频率分量的较小关键部分，因此可以在滤除噪声影响的同时保留更清晰的模式。</p>
-<h2 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h2><h1 id="ITRANSFORMER-INVERTED-TRANSFORMERS-ARE-EFFECTIVE-FOR-TIME-SERIES-FORECASTING"><a href="#ITRANSFORMER-INVERTED-TRANSFORMERS-ARE-EFFECTIVE-FOR-TIME-SERIES-FORECASTING" class="headerlink" title="ITRANSFORMER: INVERTED TRANSFORMERS ARE EFFECTIVE FOR TIME SERIES FORECASTING"></a>ITRANSFORMER: INVERTED TRANSFORMERS ARE EFFECTIVE FOR TIME SERIES FORECASTING</h1><p>单个时间点之间语义信息少，简单的线性模型效果都能超过transformer（Dlinear观点）</p>
+<h2 id="方法-3"><a href="#方法-3" class="headerlink" title="方法"></a>方法</h2><h1 id="ITRANSFORMER-INVERTED-TRANSFORMERS-ARE-EFFECTIVE-FOR-TIME-SERIES-FORECASTING"><a href="#ITRANSFORMER-INVERTED-TRANSFORMERS-ARE-EFFECTIVE-FOR-TIME-SERIES-FORECASTING" class="headerlink" title="ITRANSFORMER: INVERTED TRANSFORMERS ARE EFFECTIVE FOR TIME SERIES FORECASTING"></a>ITRANSFORMER: INVERTED TRANSFORMERS ARE EFFECTIVE FOR TIME SERIES FORECASTING</h1><p>单个时间点之间语义信息少，简单的线性模型效果都能超过transformer（Dlinear观点）</p>
 <p>目前的观点是：保证变量独立、显示建模多变量之间的相关性（crossformer）。感觉这句话有些矛盾，都保证变量独立了，怎么显示建模多变量之间的相关性？</p>
 <p>transformer-based方法之所以打不过linear系列方法，主要是以下原因：</p>
 <ul>
@@ -1591,7 +1598,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>patchtst弥补了</p>
 <h1 id="DUET-Dual-Clustering-Enhanced-Multivariate-Time-Series-Forecasting"><a href="#DUET-Dual-Clustering-Enhanced-Multivariate-Time-Series-Forecasting" class="headerlink" title="DUET: Dual Clustering Enhanced Multivariate Time Series Forecasting"></a>DUET: Dual Clustering Enhanced Multivariate Time Series Forecasting</h1><h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><p>方法太复杂了，东拼西凑。</p>
 <p>2025-kDD</p>
-<h2 id="背景-5"><a href="#背景-5" class="headerlink" title="背景"></a>背景</h2><p>过去的方法通常对时间维和通道维进行建模。但是时间维随分布变化，通道之间关联复杂。开发一个同时兼顾时间和通道的方法很重要，主要的挑战有两个：</p>
+<h2 id="背景-6"><a href="#背景-6" class="headerlink" title="背景"></a>背景</h2><p>过去的方法通常对时间维和通道维进行建模。但是时间维随分布变化，通道之间关联复杂。开发一个同时兼顾时间和通道的方法很重要，主要的挑战有两个：</p>
 <ul>
 <li>时间分布漂移：最近的研究主要以<strong>隐式方式</strong>（什么是隐式？SparseTSF: Modeling Long-term Time Series Forecasting with 1k Parameters，itransformer，timeMixer，FITS: Modeling Time Series with 10k Parameters）解决异构时间模式，损害了预测准确性</li>
 <li>复杂的通道关系：通常可以利用其他通道的信息来提升特定通道的预测结果。例如，在天气预报中，可以通过结合湿度、风速和压力数据来改进温度预测，因为这些因素是相互关联的，可以提供更全面的天气状况视图。有多种通道处理策略：<ul>
@@ -1603,21 +1610,114 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 </ul>
 <h2 id="实验细节"><a href="#实验细节" class="headerlink" title="实验细节"></a>实验细节</h2><p>输入长度在96，336，512里面选择最好的。</p>
 <h1 id="FREDF-LEARNING-TO-FORECAST-IN-THE-FREQUENCY-DOMAIN"><a href="#FREDF-LEARNING-TO-FORECAST-IN-THE-FREQUENCY-DOMAIN" class="headerlink" title="FREDF: LEARNING TO FORECAST IN THE FREQUENCY DOMAIN"></a>FREDF: LEARNING TO FORECAST IN THE FREQUENCY DOMAIN</h1><p>2025-ICLR</p>
-<h2 id="背景-6"><a href="#背景-6" class="headerlink" title="背景"></a>背景</h2><p>时间序列建模与典型回归任务的区别在于，时序建模的关键挑战是自相关性，指的是：输入序列和label的时间步长之间的依赖性。</p>
+<h2 id="背景-7"><a href="#背景-7" class="headerlink" title="背景"></a>背景</h2><p>时间序列建模与典型回归任务的区别在于，时序建模的关键挑战是自相关性，指的是：输入序列和label的时间步长之间的依赖性。</p>
 <p>通过在频域中表示输入序列，可以有效地适应输入自相关性，过去已有工作做到过。</p>
 <p>过去的方法都是直接预测，这种前提是标签中的每个时间步是独立的。这样做忽略了时间序列预测任务中固有的标签自相关性（每个未来时间步都依赖前一个时间步）。</p>
 <p>为了解决这个问题，我们引入了频率增强直接预测（FreDF），这是对 DF 范式的简单而有效的改进。中心思想是在频域中对齐预测和标签序列，其中标签相关性被发现有效地减少。</p>
-<h2 id="方法-3"><a href="#方法-3" class="headerlink" title="方法"></a>方法</h2><p>通过公式证明，对与序列来说，只要长度足够长，那么在频率空间中，不同频率的分量是渐进不相关的。既然如此，那么在频域里面使用”直接预测“，就是无偏的，偏差就会消除。具体来说：让预测值的频域分量 去逼近真实值的频域分量（相同频率点对齐），而不需要考虑不同频率点之间的关系（因为它们本来就不相关）。</p>
+<h2 id="方法-4"><a href="#方法-4" class="headerlink" title="方法"></a>方法</h2><p>通过公式证明，对与序列来说，只要长度足够长，那么在频率空间中，不同频率的分量是渐进不相关的。既然如此，那么在频域里面使用”直接预测“，就是无偏的，偏差就会消除。具体来说：让预测值的频域分量 去逼近真实值的频域分量（相同频率点对齐），而不需要考虑不同频率点之间的关系（因为它们本来就不相关）。</p>
 <h2 id="可以借鉴的内容："><a href="#可以借鉴的内容：" class="headerlink" title="可以借鉴的内容："></a>可以借鉴的内容：</h2><h3 id="多元时序的-FFT-处理"><a href="#多元时序的-FFT-处理" class="headerlink" title="多元时序的 FFT 处理"></a>多元时序的 FFT 处理</h3><p>论文提供了三种实现方案：<br>FreDF-T：沿时间维度做 FFT，每个变量单独变换，处理时间步间的自相关；<br>FreDF-D：沿变量维度做 FFT，处理不同变量间的互相关，效果略逊于 FreDF-T；<br>FreDF-2：对时间 × 变量的二维矩阵做二维 FFT，同时处理时间步间自相关和变量间互相关，综合性能最佳。</p>
 <h3 id="零推理开销"><a href="#零推理开销" class="headerlink" title="零推理开销"></a>零推理开销</h3><p>频域损失仅在训练阶段使用，推理阶段和传统 DF 范式完全一致：输入历史序列，模型直接输出<br>T<br>步预测结果，不需要做任何 FFT 变换，无任何额外推理延迟和计算成本。</p>
 <h3 id="总损失函数"><a href="#总损失函数" class="headerlink" title="总损失函数"></a>总损失函数</h3><p>当<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.448ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 640 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D6FC" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path></g></g></g></svg></mjx-container>=1，论文消融实验显示，<strong>仅用频域损失已经能大幅超越传统 DF</strong></p>
 <p>最优<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.448ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 640 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D6FC" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path></g></g></g></svg></mjx-container>通常在 0.8~1 之间，论文超参数敏感性分析显示，<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.448ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 640 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D6FC" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path></g></g></g></svg></mjx-container>在 0.2~1 的宽范围内都能稳定提升模型性能，鲁棒性极强。</p>
 <p>为什么保留时域损失？</p>
 <p>目标互补：频域损失拟合序列的整体频率特征（趋势、周期、波动模式），时域损失保证每个时间点的数值精度，两者结合能同时优化 “序列整体形态” 和 “单点数值准确”；<br>泛化兜底：对于短序列、非平稳序列，FFT 的渐近去相关效果会打折扣，保留时域损失能保证模型的基础效果，提升跨场景泛化性；<br>性能增益：论文消融实验（Table2）显示，时域 + 频域的双损失结构，比单独使用任意一个损失都有小幅性能提升。</p>
-<h1 id="xPatch-Dual-Stream-Time-Series-Forecasting-with-Exponential-Seasonal-Trend-Decomposition"><a href="#xPatch-Dual-Stream-Time-Series-Forecasting-with-Exponential-Seasonal-Trend-Decomposition" class="headerlink" title="xPatch: Dual-Stream Time Series Forecasting with Exponential Seasonal-Trend Decomposition"></a>xPatch: Dual-Stream Time Series Forecasting with Exponential Seasonal-Trend Decomposition</h1><h2 id="背景-7"><a href="#背景-7" class="headerlink" title="背景"></a>背景</h2><p>针对传统的trend-seasonal分解，提出了一种利用指数移动平均线 (EMA) 进行季节性趋势分解的新方法。</p>
+<h1 id="xPatch-Dual-Stream-Time-Series-Forecasting-with-Exponential-Seasonal-Trend-Decomposition"><a href="#xPatch-Dual-Stream-Time-Series-Forecasting-with-Exponential-Seasonal-Trend-Decomposition" class="headerlink" title="xPatch: Dual-Stream Time Series Forecasting with Exponential Seasonal-Trend Decomposition"></a>xPatch: Dual-Stream Time Series Forecasting with Exponential Seasonal-Trend Decomposition</h1><h2 id="背景-8"><a href="#背景-8" class="headerlink" title="背景"></a>背景</h2><p>针对传统的trend-seasonal分解，提出了一种利用指数移动平均线 (EMA) 进行季节性趋势分解的新方法。</p>
 <p>开发了强大的反正切损失和新颖的 sigmoid 学习率调整方案，并通过预热来实现更平滑的训练。</p>
 <h1 id="CARD-CHANNEL-ALIGNED-ROBUST-BLEND-TRANSFORMER-FOR-TIME-SERIES-FORECASTING"><a href="#CARD-CHANNEL-ALIGNED-ROBUST-BLEND-TRANSFORMER-FOR-TIME-SERIES-FORECASTING" class="headerlink" title="CARD: CHANNEL ALIGNED ROBUST BLEND TRANSFORMER FOR TIME SERIES FORECASTING"></a>CARD: CHANNEL ALIGNED ROBUST BLEND TRANSFORMER FOR TIME SERIES FORECASTING</h1><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>为了减轻过度拟合噪声的问题，引入了鲁棒损失函数，在有限范围内进行预测的情况下，根据每个预测的不确定性对每个预测进行加权。</p>
 <p><strong>损失函数的设计思路：不同时间步长的误差具有相同的权重。</strong></p>
+<h1 id="FourierGNN-Rethinking-Multivariate-Time-Series-Forecasting-from-a-Pure-Graph-Perspective"><a href="#FourierGNN-Rethinking-Multivariate-Time-Series-Forecasting-from-a-Pure-Graph-Perspective" class="headerlink" title="FourierGNN: Rethinking Multivariate Time Series Forecasting from a Pure Graph Perspective"></a>FourierGNN: Rethinking Multivariate Time Series Forecasting from a Pure Graph Perspective</h1><h2 id="背景-9"><a href="#背景-9" class="headerlink" title="背景"></a>背景</h2><p>MTS在许多场景都有应用。MTS核心挑战是对变量内建模的同时也要捕获变量之间的相关性。目前大部分的方法主要集中在捕获变量内（时间建模）。此外，MTS 预测方法的另一个分支已被开发出来，不仅可以对时间依赖性进行建模，而且还强调空间相关性。最具代表性的方法是新兴的基于图神经网络（GNN）的方法[10,2,11]，它们在 MTS 预测任务中取得了最先进的性能。</p>
+<h1 id="SparseTSF-Modeling-Long-term-Time-Series-Forecasting-with-1k-Parameters"><a href="#SparseTSF-Modeling-Long-term-Time-Series-Forecasting-with-1k-Parameters" class="headerlink" title="SparseTSF: Modeling Long-term Time Series Forecasting with 1k Parameters"></a>SparseTSF: Modeling Long-term Time Series Forecasting with 1k Parameters</h1><h2 id="背景-10"><a href="#背景-10" class="headerlink" title="背景"></a>背景</h2><p>时间序列预测在诸如交通流量、产品销售和能源消耗等领域具有重要价值，因为准确的预测可以使决策者积极主动地进行计划。</p>
+<p>为了捕捉这些长期的时间依赖关系，建模变得更加复杂。例如，基于Transformer的模型往往拥有数百万甚至上千万的参数，限制了其实际可用性，尤其是在计算资源受限的场景。</p>
+<p>准确的长期时间序列预测的基础在于数据内在的周期性和趋势性。例如，由于此类数据具有明确的日和周模式，因此对家庭电力消费的长期预测是可行的。特别是对于日模式，如果我们将一天中某一时刻的用电量重采样为日序列，则每个子序列表现出相似或一致的趋势。在这种情况下，对原始序列的周期性和趋势性进行分解和变换。也就是说，周期模式被转化为子序列间的动态，而趋势模式被重新解释为子序列内的特征。（idea来源）</p>
+<p>核心洞察是：<strong>时间序列的长期预测基础在于数据固有的周期性和趋势</strong>。</p>
+<p>原始序列 = 周期成分 P(t) + 趋势成分 T(t)</p>
+<h2 id="相关工作-2"><a href="#相关工作-2" class="headerlink" title="相关工作"></a>相关工作</h2><ul>
+<li>长时间时序预测的发展</li>
+<li>轻量级预测模型的进展</li>
+</ul>
+<h2 id="实验-1"><a href="#实验-1" class="headerlink" title="实验"></a>实验</h2><p>主实验：多变量预测<br>效果优势：参数量、MACs（乘累加运算）、最大内存、epoch Time。<br>消融实验和分析：</p>
+<ul>
+<li>稀疏技术的有效性（将稀疏技术和transformer，GRU， Linear等模型结果，提升其效果）、</li>
+<li>稀疏技术的表示学习（和线性模型对比，通过可视化权重，说明sparse有更强的周期特征提取能力）</li>
+<li>超参数w的影响：w是先验周期（和CycleNet相似），给出表格说明设为多少时最佳。这部分说明了，大多数数据集都是有周期性的，给这些数据集设定合适的w是可行的。但是部分数据集没有周期，sparsetst可能不是<strong>首选</strong>，在5.1小节讨论。<strong>但是论文在5.1小节没有讨论这个问题，说的局限是超长周期和多周期，说明sparse在没有周期的数据集上面表现是很差的</strong>。</li>
+</ul>
+<h1 id="SparseTSF-Lightweight-and-Robust-Time-Series-Forecasting-via-Sparse-Modeling"><a href="#SparseTSF-Lightweight-and-Robust-Time-Series-Forecasting-via-Sparse-Modeling" class="headerlink" title="SparseTSF: Lightweight and Robust Time Series Forecasting via Sparse Modeling"></a>SparseTSF: Lightweight and Robust Time Series Forecasting via Sparse Modeling</h1><h2 id="背景-11"><a href="#背景-11" class="headerlink" title="背景"></a>背景</h2><p>时序列预测在诸如交通流量、产品销售和能源消耗等领域具有重要价值，因为准确的预测可以使决策者主动地计划[ 1 ]，[ 2 ]，[ 3 ]，[ 4 ]。近年来，人们对长期时间序列预测( Long-term Time Series Forecasting，LTSF )越来越感兴趣，它要求模型为高级规划提供扩展的预测视图[ 20 ]，[ 21 ]，[ 22 ]，[ 23 ]，[ 24 ]。</p>
+<p>（<strong>指出现有研究的不足，并引出轻量建模</strong>）虽然更长的预测范围提供了便利，但也引入了更大的不确定性[ 25 ]。这就要求模型能够从更长的历史窗口中提取更广泛的时间依赖关系。因此，为了捕捉这些长期的时间依赖关系，建模变得更加复杂。</p>
+<p>（<strong>论文的idea来源，通过可视化</strong>）事实上，准确的长期时间序列预测的基础在于数据内在的周期性和趋势性[ 28 ]，[ 29 ]，[ 30 ]，[ 31 ]，[ 32 ]。例如，由于此类数据具有明确的日和周模式，因此对家庭电力消费的长期预测是可行的。特别是对于日模式，将每天特定时间的用电量重采样到日序列中，得到的子序列显示出相似或一致的趋势，如图1所示。在这种情况下，对原始序列的周期性和趋势性进行分解和变换。也就是说，日周期模式被转化为子序列间动态，而趋势模式被重新解释为子序列内特征。这种分解为设计轻量级LTSF模型提供了一个新的视角。</p>
+<h2 id="和SparseTSF的区别联系"><a href="#和SparseTSF的区别联系" class="headerlink" title="和SparseTSF的区别联系"></a>和SparseTSF的区别联系</h2><p>TPAMI等顶刊允许会议论文扩展，但必须满足：<br>✅ 至少30-50%的新内容<br>✅ 实质性的理论/方法/实验扩展</p>
+<p>论文扩展程度：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>扩展类型</th>
+<th>具体内容</th>
+<th>是否实质性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>方法扩展</td>
+<td>新增MLP变体，解决高维多变量场景</td>
+<td>✅ 是</td>
+</tr>
+<tr>
+<td>理论扩展</td>
+<td>隐式正则化证明（全新定理）</td>
+<td>✅ 是（核心贡献）</td>
+</tr>
+<tr>
+<td>实验扩展</td>
+<td>2个新数据集+单变量+泛化+消融</td>
+<td>✅ 是</td>
+</tr>
+<tr>
+<td>分析深度</td>
+<td>CI/CD策略讨论、超参数分析</td>
+<td>✅ 是</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>这篇期刊版的核心新贡献不是”Linear变MLP”，而是：</p>
+<ol>
+<li><p>理论贡献：首次证明Sparse技术是结构化隐式正则化</p>
+<ul>
+<li>这解释了模型为什么鲁棒</li>
+<li>为后续研究提供理论基础</li>
+</ul>
+</li>
+<li><p>方法贡献：MLP变体解决了原方法的关键局限性</p>
+<ul>
+<li>会议版在高维多变量场景表现受限</li>
+<li>期刊版通过非线性扩展解决了这个问题</li>
+</ul>
+</li>
+<li>实证贡献：全面的泛化能力分析<ul>
+<li>4种跨域迁移场景验证</li>
+<li>证明模型在小样本、低质量数据场景的适用性</li>
+</ul>
+</li>
+</ol>
+<p>简单说：会议版是”提出想法并初步验证”，期刊版是”深入理论分析并完善方法”。两者是递进关系，而非简单重复。</p>
+<h1 id="TimeBase-The-Power-of-Minimalism-in-Efficient-Long-term-Time-Series-Forecasting"><a href="#TimeBase-The-Power-of-Minimalism-in-Efficient-Long-term-Time-Series-Forecasting" class="headerlink" title="TimeBase: The Power of Minimalism in Efficient Long-term Time Series Forecasting"></a>TimeBase: The Power of Minimalism in Efficient Long-term Time Series Forecasting</h1><h2 id="背景-12"><a href="#背景-12" class="headerlink" title="背景"></a>背景</h2><p>长期时间序列预测( LTSF )在能源管理、交通事故预防、极端灾害预警等领域得到了广泛的研究。随着深度学习的快速推进，越来越多的模型被提出（相关工作）。它们都使用了数千到数百万个参数来捕获长期依赖关系和预测未来结果。</p>
+<p>（<strong>指出现有研究工作的不足</strong>）通常，较高的参数数量会增加模型容量，这可以导致更好的预测性能( Zhou et al . , 2023c ; Zhao et al , 2024)。在计算机视觉( CV )和自然语言处理( NLP )领域，大型模型取得了显著的成功( He et al . , 2016 ; Liu et al . , 2023)。例如，视觉转换器（vit）。然而，尽管这些模型在特定的预测任务上表现出令人印象深刻的性能，但它们面临着高昂的计算成本和资源密集型要求。</p>
+<p>（<strong>承接上文，铺垫下文</strong>）虽然图像和文本作为高维数据依赖各种复杂关系和复杂的底层物理规律，但是如图，一维时间序列表现出明显的时间模式，而且，在长时间序列数据中，这种规律性甚至可以表现为低秩特征( Liu et al . , 2012)，通过奇异值分解可以体现出来，如图1 ( b )所示，这表明存在相当数量的冗余信息( Jones和Brelsford , 1967 ;霍赫赖特和施米德胡贝, 1997)。这就提出了一个重要的问题：<strong>是否真的有必要使用如此大量的参数来学习这些有规律的时间序列模式</strong>？</p>
+<p>参数量比SparseTSF还要小几倍，效果要比它更好。</p>
+<h2 id="实验-2"><a href="#实验-2" class="headerlink" title="实验"></a>实验</h2><ol>
+<li>长时间步预测（选取的是sparseTSF的linear版本）</li>
+<li>性能分析<ul>
+<li>主要效率比较：可训练参数、MACs、最大内存、epoch time、推理时间（和sparseTSF相比，基本上都下降了）</li>
+<li>在超长输入条件下的效率</li>
+<li>在超大规模数据集上的效果</li>
+</ul>
+</li>
+<li>在patchtst上即插即用，减少复杂度</li>
+<li>Timebase积分的量化分析（个人方法的分析）</li>
+<li>超参数分析</li>
+</ol>
+<h1 id="Rethinking-Fourier-Transform-from-A-Basis-Functions-Perspective-for-Long-term-Time-Series-Forecasting"><a href="#Rethinking-Fourier-Transform-from-A-Basis-Functions-Perspective-for-Long-term-Time-Series-Forecasting" class="headerlink" title="Rethinking Fourier Transform from A Basis Functions Perspective for Long-term Time Series Forecasting"></a>Rethinking Fourier Transform from A Basis Functions Perspective for Long-term Time Series Forecasting</h1><p>[NeurIPS+2024]</p>
+<h2 id="背景-13"><a href="#背景-13" class="headerlink" title="背景"></a>背景</h2><p>长期时间序列预测 (LTSF) 对于具有长期序列的应用至关重要，这带来了重大挑战，包括长期时间依赖性和面向频率的全局动态。根据 CrossGNN [35] 的说法，像 Transformer 这样基于 DNN 的方法会受到噪声信号的影响，并对意外噪声产生较高的注意力分数。</p>
 <h1 id="细节知识"><a href="#细节知识" class="headerlink" title="细节知识"></a>细节知识</h1><h2 id="rfft"><a href="#rfft" class="headerlink" title="rfft"></a>rfft</h2><p>时序预测中，傅里叶变化是使用比较多的，对应到代码里面来说，就是rfft。rfft 指的是 “实数快速傅里叶变换（Real FFT），输出的结果是复数（包含振幅和相位信息）</p>
 <p>为什么叫”r”fft？因为实数信号的频谱具有“共轭对称性”（Hermitian symmetry），即正频率和负频率的信息是冗余的。rfft 专门利用这一点，只计算并返回一半的频率分量以节省计算量，但返回的每一个点依然是标准的复数（包含实部和虚部）。</p>
 <p>所以如果输入的序列长度是720，那么使用rfft得到的数据量只有361。</p>
@@ -2156,7 +2256,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">293.9k</span>
+                        class="white-color">296.6k</span>
             
             
             

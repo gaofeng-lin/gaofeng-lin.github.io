@@ -245,18 +245,18 @@
   </entry>
   
   <entry>
-    <title>深度学习环境配置</title>
+    <title>深度学习相关问题及环境配置</title>
     <link href="https://gaofeng-lin.github.io/posts/61e48afb/"/>
     <id>https://gaofeng-lin.github.io/posts/61e48afb/</id>
     <published>2025-10-22T16:00:00.000Z</published>
-    <updated>2025-10-23T09:46:26.044Z</updated>
+    <updated>2026-04-02T09:06:00.055Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;CUDA、CUDNN相关的内容&quot;&gt;&lt;a href=&quot;#CUDA、CUDNN相关的内容&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;常见问题&quot;&gt;&lt;a href=&quot;#常见问题&quot; class=&quot;headerlink&quot; title=&quot;常见问题&quot;&gt;&lt;/a&gt;常见问题&lt;/h1&gt;&lt;h2 id=&quot;运行深度学习代码，使用gpu1报错，使用gpu0正常运行&quot;&gt;&lt;a</summary>
         
       
     
