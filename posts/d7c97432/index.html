@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    29.7k
+                    30.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    108 分
+                    109 分
                 </div>
                 
 
@@ -1718,6 +1718,9 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 </ol>
 <h1 id="Rethinking-Fourier-Transform-from-A-Basis-Functions-Perspective-for-Long-term-Time-Series-Forecasting"><a href="#Rethinking-Fourier-Transform-from-A-Basis-Functions-Perspective-for-Long-term-Time-Series-Forecasting" class="headerlink" title="Rethinking Fourier Transform from A Basis Functions Perspective for Long-term Time Series Forecasting"></a>Rethinking Fourier Transform from A Basis Functions Perspective for Long-term Time Series Forecasting</h1><p>[NeurIPS+2024]</p>
 <h2 id="背景-13"><a href="#背景-13" class="headerlink" title="背景"></a>背景</h2><p>长期时间序列预测 (LTSF) 对于具有长期序列的应用至关重要，这带来了重大挑战，包括长期时间依赖性和面向频率的全局动态。根据 CrossGNN [35] 的说法，像 Transformer 这样基于 DNN 的方法会受到噪声信号的影响，并对意外噪声产生较高的注意力分数。</p>
+<h1 id="FRNet-Frequency-based-Rotation-Network-for-Long-term-Time-Series-Forecasting"><a href="#FRNet-Frequency-based-Rotation-Network-for-Long-term-Time-Series-Forecasting" class="headerlink" title="FRNet: Frequency-based Rotation Network for Long-term Time Series Forecasting"></a>FRNet: Frequency-based Rotation Network for Long-term Time Series Forecasting</h1><h2 id="背景-14"><a href="#背景-14" class="headerlink" title="背景"></a>背景</h2><p>长期时间序列预测( LTSF )是根据过去的观测值估计未来一段时间内的数据点。它在交通预测[ 7 ]，电力负荷预测[ 53 ]，能源管理[ 13 ]和金融[ 49 ]等各个领域都有广泛的应用。</p>
+<p>研究[DLinear, 42]表明，时间序列的周期性是LTSF的主导因素，仅通过学习主导周期就可以获得很好的性能。</p>
+<p><strong>现有研究虽然取得了较好的成果，但在对动态复杂周期进行建模方面仍存在不足</strong>。一方面，它们大多只考虑了固定时间步长的静态周期的情况，不具有实用性。随着时间的推移，时间序列的周期并不是严格静态的。实时序列可能存在多个周期[ 3、39]，更重要的是，每个周期成分随时间动态演化。例如，我们从Traffic数据集[ 16 ]中分析了一些案例，并在图1中进行了说明。上图显示了连续三天的交通占有率的下降，这表明连续期间的振幅模式可能会出现波动。下图显示了周期相位的偏移，其中峰值时间较早地出现在第二天，从而表明在这些周期内存在频率偏移。这种动态演化周期的情况广泛存在于各种时间序列数据中[ 3 ]。</p>
 <h1 id="细节知识"><a href="#细节知识" class="headerlink" title="细节知识"></a>细节知识</h1><h2 id="rfft"><a href="#rfft" class="headerlink" title="rfft"></a>rfft</h2><p>时序预测中，傅里叶变化是使用比较多的，对应到代码里面来说，就是rfft。rfft 指的是 “实数快速傅里叶变换（Real FFT），输出的结果是复数（包含振幅和相位信息）</p>
 <p>为什么叫”r”fft？因为实数信号的频谱具有“共轭对称性”（Hermitian symmetry），即正频率和负频率的信息是冗余的。rfft 专门利用这一点，只计算并返回一半的频率分量以节省计算量，但返回的每一个点依然是标准的复数（包含实部和虚部）。</p>
 <p>所以如果输入的序列长度是720，那么使用rfft得到的数据量只有361。</p>
@@ -2256,7 +2259,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">296.6k</span>
+                        class="white-color">297k</span>
             
             
             
