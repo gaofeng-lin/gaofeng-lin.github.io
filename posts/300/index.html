@@ -493,14 +493,14 @@ latex、mathtype公式结合有的期刊的公式无法用word自带的编辑，
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.5k
+                    5.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    18 分
                 </div>
                 
 
@@ -584,6 +584,21 @@ magick mogrify -format eps *.tiff<span aria-hidden="true" class="line-numbers-ro
 <ol>
 <li>其他设备使用，进入zotero后，点击右边的绿色同步按钮，等待即可<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-06-03_11-46-13.png" alt=""></li>
 </ol>
+<h3 id="zotero-抓取参考文献"><a href="#zotero-抓取参考文献" class="headerlink" title="zotero 抓取参考文献"></a>zotero 抓取参考文献</h3><p>我自己目前大概总结出来了一套方法，以后如果要把论文导入进去，要确保参考文献不出错的情况下，那么首先要保证这个论文的<strong>条目信息</strong>没有错误，右键-》生成条目报告，就能看到相关信息，就能知道这个这个论文却不缺少内容。</p>
+<p>然后，因为只传入pdf，然后自动抓取，一般会缺少很多信息。所以，最好的方法是使用bibtex，次选方法是doi。因为有的论文还没有doi。</p>
+<p>关于bibtex，可以不用去官网看，因为有可能会比较慢。如果要批量导入，那么直接浏览器搜索：bibtex 论文名称。 这个时候ai可能会为你查找到bibtex，不过有的可能用的是arxiv的，这个时候可能需要自己去官网下载。然后把多篇论文的bibtex复制到一个bib文件，然后直接导入。这个时候批量生成了条目，然后全选+右键，查找全文，就能获取pdf。但是这个时候，有的可能没找到pdf，原因大概率是bibtex有问题，缺少了url链接。或者这个论文是IEEE等网站，没法直接下载。如果是缺少了链接，那么就去官网找bibtex就好了；如果是IEEE，那需要单独下载pdf，手动添加。</p>
+<h3 id="ZoteroV9需要配置的插件"><a href="#ZoteroV9需要配置的插件" class="headerlink" title="ZoteroV9需要配置的插件"></a>ZoteroV9需要配置的插件</h3><p>直接从官网下载就好，一共有三个需要下载：</p>
+<ul>
+<li>Better Bibtex: 9.0.23</li>
+<li>Translate for Zotero: 2.4.4</li>
+<li>Zotero Attanger: 1.4.1</li>
+</ul>
+<p>Zotero Attanger类似之前的ZotoFile。主要是解决Zotero存储空间不够的问题，因为ZotoFile在高版本的Zotero中不支持，所以重新弄了一个新插件，但是本质是一样的。需要注意的地方如下图所示：两个目录还是和之前一样，Onedrive下的ZoteroPage</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2026-05-13_18-18-52.png" alt=""></p>
+<p>另一个需要配置的地方是：常规-》文件重命名-》文件名模板</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2026-05-13_18-22-08.png" alt=""></p>
+<p>填写的模板如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">{{ if itemType == "book" }}{{ itemType localize="true"  suffix="_" }}{{ else }}{{ year suffix="_" }}{{ endif }}{{ title truncate="50" suffix="_" }}{{ if language =="zh" }}{{ authors name="family-given" name-part-separator="" join=" " max="2" }}{{ elseif language =="zh-CN" }}{{ authors name="family-given" name-part-separator="" join=" " max="2" }}{{ elseif language =="zh_CN" }}{{ authors name="family-given" name-part-separator="" join=" " max="2" }}{{ else }}{{ authors name="given-family" initialize="given" join=" and " max="2" }}{{ endif }}{{ if itemType != "journalArticle" }}{{ if itemType == "book" }}{{ year prefix="_" }}{{ else }}{{ itemType localize="true"  prefix="_" }}{{ endif }}{{ endif }}<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="常用软件或IDE"><a href="#常用软件或IDE" class="headerlink" title="常用软件或IDE"></a>常用软件或IDE</h2><h3 id="MobaXterm"><a href="#MobaXterm" class="headerlink" title="MobaXterm"></a>MobaXterm</h3><h4 id="密钥登录保持长时间连接"><a href="#密钥登录保持长时间连接" class="headerlink" title="密钥登录保持长时间连接"></a>密钥登录保持长时间连接</h4><p>Settings-&gt;Configuration</p>
 <p><img src="https://s2.loli.net/2022/10/28/kc6YuxZpJ1tL3HB.png" alt=""></p>
 <h3 id="postman"><a href="#postman" class="headerlink" title="postman"></a>postman</h3><h4 id="模拟后端数据"><a href="#模拟后端数据" class="headerlink" title="模拟后端数据"></a>模拟后端数据</h4><ol>
@@ -1334,7 +1349,7 @@ magick mogrify -format eps *.tiff<span aria-hidden="true" class="line-numbers-ro
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">297k</span>
+                        class="white-color">297.8k</span>
             
             
             
@@ -1563,21 +1578,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
