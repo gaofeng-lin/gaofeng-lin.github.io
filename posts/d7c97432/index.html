@@ -38,8 +38,7 @@ T">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
 <style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
@@ -152,7 +151,8 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="alternate" href="/atom.xml" title="Home of Gaofeng" type="application/atom+xml">
+</style>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 
@@ -589,14 +589,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    30.3k
+                    30.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    110 分
+                    111 分
                 </div>
                 
 
@@ -1471,6 +1471,9 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <h2 id="Summary-6"><a href="#Summary-6" class="headerlink" title="Summary"></a>Summary</h2><p>假设我们的输入是（32，7，96）。表示每个batch_size是32，变量数是7，输入长度是96。</p>
 <p>RevIN是很对每个样本里面的每个变量进行处理。也就是说，同一个样本里面的同一个变量一共有96个时间点，对这96个时间点计算均值方差，然后归一化。</p>
 <p>而batchnorm，是针对每个变量处理，也就是同一个变量，要处理样本<em>时间点（32</em>96）个数据点，进行归一化。</p>
+<h1 id="FilterNet-Harnessing-Frequency-Filters-for-Time-Series-Forecasting"><a href="#FilterNet-Harnessing-Frequency-Filters-for-Time-Series-Forecasting" class="headerlink" title="FilterNet: Harnessing Frequency Filters for  Time Series Forecasting"></a>FilterNet: Harnessing Frequency Filters for  Time Series Forecasting</h1><p>NeurIPS[2024]</p>
+<p>Tranformer-based对高频信号很脆弱，计算效率不行，全频谱利用不行。</p>
+<p>idea：三个不同频率组成的纯净信号下，itransformer效果很差，无法利用全频谱信息。 相比之下，在信号处理领域，频率滤波器具有频率选择性、信号调理、多速率处理等诸多优良特性。</p>
 <h1 id="FilterTS-Comprehensive-Frequency-Filtering-for-Multivariate-Time-Series-Forecasting"><a href="#FilterTS-Comprehensive-Frequency-Filtering-for-Multivariate-Time-Series-Forecasting" class="headerlink" title="FilterTS: Comprehensive Frequency Filtering for Multivariate Time Series Forecasting"></a>FilterTS: Comprehensive Frequency Filtering for Multivariate Time Series Forecasting</h1><p>AAAI[2025]</p>
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>多变量时序数据表现出复杂的时间特征，例如周期变化和趋势。</p>
 <p>传统的时序分析方法主要集中在时域，但往往不能捕获周期信息。最近越来越多的方法开始将频域应用到时间序列。虽然有进步，但是这些方法有时<strong>不能有效区分各种频率的重要性，平等地对待所有成分，忽略重要的先验周期信息和变量之间的依赖可能导致过拟合</strong>。</p>
@@ -1718,6 +1721,8 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 </ol>
 <h1 id="Rethinking-Fourier-Transform-from-A-Basis-Functions-Perspective-for-Long-term-Time-Series-Forecasting"><a href="#Rethinking-Fourier-Transform-from-A-Basis-Functions-Perspective-for-Long-term-Time-Series-Forecasting" class="headerlink" title="Rethinking Fourier Transform from A Basis Functions Perspective for Long-term Time Series Forecasting"></a>Rethinking Fourier Transform from A Basis Functions Perspective for Long-term Time Series Forecasting</h1><p>[NeurIPS+2024]</p>
 <h2 id="背景-13"><a href="#背景-13" class="headerlink" title="背景"></a>背景</h2><p>长期时间序列预测 (LTSF) 对于具有长期序列的应用至关重要，这带来了重大挑战，包括长期时间依赖性和面向频率的全局动态。根据 CrossGNN [35] 的说法，像 Transformer 这样基于 DNN 的方法会受到噪声信号的影响，并对意外噪声产生较高的注意力分数。</p>
+<p>基于傅里叶的时间序列建模作为一种新的范式，通过在不同频率层次上分层考虑不同的影响来去除噪声信号。如果从基函数的角度重新思考傅里叶变换，实部和虚部可以分别解释为余弦基函数和正弦基函数在分层频率下的系数。</p>
+<p>然而，现有的基于傅里叶的方法没有涉及基函数，因此不能准确地解释频率系数，也没有充分考虑时频关系</p>
 <h1 id="FRNet-Frequency-based-Rotation-Network-for-Long-term-Time-Series-Forecasting"><a href="#FRNet-Frequency-based-Rotation-Network-for-Long-term-Time-Series-Forecasting" class="headerlink" title="FRNet: Frequency-based Rotation Network for Long-term Time Series Forecasting"></a>FRNet: Frequency-based Rotation Network for Long-term Time Series Forecasting</h1><h2 id="背景-14"><a href="#背景-14" class="headerlink" title="背景"></a>背景</h2><p>长期时间序列预测( LTSF )是根据过去的观测值估计未来一段时间内的数据点。它在交通预测[ 7 ]，电力负荷预测[ 53 ]，能源管理[ 13 ]和金融[ 49 ]等各个领域都有广泛的应用。</p>
 <p>研究[DLinear, 42]表明，时间序列的周期性是LTSF的主导因素，仅通过学习主导周期就可以获得很好的性能。</p>
 <p><strong>现有研究虽然取得了较好的成果，但在对动态复杂周期进行建模方面仍存在不足</strong>。一方面，它们大多只考虑了固定时间步长的静态周期的情况，不具有实用性。随着时间的推移，时间序列的周期并不是严格静态的。实时序列可能存在多个周期[ 3、39]，更重要的是，每个周期成分随时间动态演化。例如，我们从Traffic数据集[ 16 ]中分析了一些案例，并在图1中进行了说明。上图显示了连续三天的交通占有率的下降，这表明连续期间的振幅模式可能会出现波动。下图显示了周期相位的偏移，其中峰值时间较早地出现在第二天，从而表明在这些周期内存在频率偏移。这种动态演化周期的情况广泛存在于各种时间序列数据中[ 3 ]。</p>
@@ -2261,7 +2266,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">297.8k</span>
+                        class="white-color">299.4k</span>
             
             
             
