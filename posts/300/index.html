@@ -5,9 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="工具使用技巧集合, Home of Gaofeng">
-    <meta name="description" content="科研工具使用latexlatex安装原文链接
-latex、mathtype公式结合有的期刊的公式无法用word自带的编辑，只能用mathtype。安装好mathtype后，就可以在word里面使用公式，一般来说有两种方式
-一种是mathty">
+    <meta name="description" content="大模型和Agent大模型和Agent区别
+常规 LLM（如网页版 ChatGPT）： 是一问一答的无状态（Stateless）函数。它是被动的，你输入一段 Prompt，它输出一段文本，交互到此结束。
+
+Agent： 是一个有状态（Stat">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -493,14 +494,14 @@ latex、mathtype公式结合有的期刊的公式无法用word自带的编辑，
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6k
+                    8.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    22 分
+                    33 分
                 </div>
                 
 
@@ -523,18 +524,110 @@ latex、mathtype公式结合有的期刊的公式无法用word自带的编辑，
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="科研工具使用"><a href="#科研工具使用" class="headerlink" title="科研工具使用"></a>科研工具使用</h2><h3 id="latex"><a href="#latex" class="headerlink" title="latex"></a>latex</h3><h4 id="latex安装"><a href="#latex安装" class="headerlink" title="latex安装"></a>latex安装</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/166523064">原文链接</a></p>
-<h4 id="latex、mathtype公式结合"><a href="#latex、mathtype公式结合" class="headerlink" title="latex、mathtype公式结合"></a>latex、mathtype公式结合</h4><p>有的期刊的公式无法用word自带的编辑，只能用mathtype。<br>安装好mathtype后，就可以在word里面使用公式，一般来说有两种方式</p>
+                <h1 id="大模型和Agent"><a href="#大模型和Agent" class="headerlink" title="大模型和Agent"></a>大模型和Agent</h1><h2 id="大模型和Agent区别"><a href="#大模型和Agent区别" class="headerlink" title="大模型和Agent区别"></a>大模型和Agent区别</h2><ul>
+<li><p>常规 LLM（如网页版 ChatGPT）： 是一问一答的无状态（Stateless）函数。它是被动的，你输入一段 Prompt，它输出一段文本，交互到此结束。</p>
+</li>
+<li><p>Agent： 是一个有状态（Stateful）的闭环系统。它具备三个核心组件：记忆（Memory）、工具（Tools/APIs）和规划能力（Planning）。你只需给 Agent 设定一个“宏大目标”，它会自动将任务拆解，自主调用工具执行，观察结果。如果出错，它会利用大模型的能力分析报错并自我纠错，直到完成目标。</p>
+</li>
+</ul>
+<h2 id="为什么常规-LLM-搞不定多文件重构？Code-Agent-怎么解决？"><a href="#为什么常规-LLM-搞不定多文件重构？Code-Agent-怎么解决？" class="headerlink" title="为什么常规 LLM 搞不定多文件重构？Code Agent 怎么解决？"></a>为什么常规 LLM 搞不定多文件重构？Code Agent 怎么解决？</h2><p>原因在于上下文物理限制和文件拓扑结构的缺失。让大模型一次性吞下多个文件，不仅容易超出 Token 限制，还会导致模型产生“注意力遗忘”（Lost in the Middle）。</p>
+<p>最近很火的 Code Agent（例如 Claude Code、Cursor、Cline、Aider 等）正是为了解决这个痛点而生，它们的使用方式与常规 LLM 有天壤之别：</p>
+<ul>
+<li><p>主动的环境感知 (Workspace Awareness)：<br>你不再需要手动复制粘贴代码。Code Agent 直接集成在终端（CLI）或 IDE（如 VS Code）中。当你让它“重构数据加载模块”时，Agent 会自己执行 grep 搜索、读取目录树、寻找依赖项，主动把需要的文件拉入上下文。</p>
+</li>
+<li><p>读写执行一体化 (Action Execution)：<br>常规 LLM 只能生成代码文本让你去复制；Code Agent 可以直接通过文件系统 API 修改、保存文件。</p>
+</li>
+<li><p>自主纠错循环 (Self-Correction Loop)：<br>这是 Agent 最核心的优势。如果你让 Agent 重构一个类，重构后运行报错了，Agent 会自动捕获 Terminal 里的 Traceback，把错误信息发回给大模型分析，重新生成补丁，再次运行，循环往复，直到代码能成功跑通。你在这个过程中不需要说话，只需看着它干活。</p>
+</li>
+</ul>
+<h2 id="常规大模型做不好、必须要-Agent-上的-3-个科研场景"><a href="#常规大模型做不好、必须要-Agent-上的-3-个科研场景" class="headerlink" title="常规大模型做不好、必须要 Agent 上的 3 个科研场景"></a>常规大模型做不好、必须要 Agent 上的 3 个科研场景</h2><p>常规大模型最怕“长程链路”和“需要实时验证”的任务。以下三个场景是 Agent 的绝对主场：</p>
+<ol>
+<li>深度追踪与复现最新的 Baseline (Paper &amp; Code Exploration)</li>
+</ol>
+<ul>
+<li><p>大模型的劣势： 你把 2026 年最新时序顶会论文的 PDF 或 GitHub 链接丢给大模型，让它解释某个核心公式的工程实现。它只能“盲猜”，因为看不到代码全貌，更无法运行。</p>
+</li>
+<li><p>Agent 的优势： 像 Claude Code 或 Cline 这样的开发 Agent，你可以直接给它一个 GitHub 存储库的 URL。它会自主下载代码、阅读目录树、使用 grep 查找关键的模块（比如查找哪些文件实现了频率域的 Mask 操作），甚至可以尝试在你的服务器环境中运行 pip install 搭建环境，编译报错了它自己去改 setup.py。</p>
+</li>
+<li><p>价值： 帮你用最短的时间把别人的 Baseline 在你的服务器上跑通。</p>
+</li>
+</ul>
+<ol>
+<li>多文件联动下的复杂模型架构调整 (Cross-File Code Refactoring)</li>
+</ol>
+<ul>
+<li><p>大模型的劣势： 正如你之前所说，你只敢传单个 model.py。如果你想把 RouteTS 的核心机制从“通道独立（Channel-Independent）”改成“通道混叠（Channel-Mixing）”，这不仅要改模型层，还要改 data_provider.py 的数据对齐、exp_basic.py 的训练流程。单文件传给大模型，它改完必报维度错误（Shape Mismatch）。</p>
+</li>
+<li><p>Agent 的优势： 给 Workspace Agent 权限，它会通盘阅读这 3 个相关文件。它在修改 model.py 时，会同步自动修改 data_provider.py 的维度，甚至在终端自动运行一下 python main.py —dry_run=True 来验证张量在 Forward 过程中会不会挂掉。</p>
+</li>
+<li><p>价值： 它拥有“全局观”和“动态调试能力”，这是单文件复制粘贴绝对做不到的。</p>
+</li>
+</ul>
+<ol>
+<li>文献网络深度调研 (Autonomous Literature Review)</li>
+</ol>
+<ul>
+<li><p>大模型的劣势： 只能基于它已有的知识，或者你喂给它的单篇 PDF 进行解答，无法顺藤摸瓜。</p>
+</li>
+<li><p>Agent 的优势： 比如科研专用 Agent（如 Perplexity Pro 的深度搜索模式，或开源的 Auto-Research Agent）。你输入：“追踪 2025-2026 年间，所有将 Transformer 的 Attention 机制应用在三维时序预测上的 CCF-A 级论文”。Agent 会在后台自动去 arXiv、Semantic Scholar 上检索，下载前 5 篇，阅读其 Related Work，顺着引用文献（Citation Tree）再下载 10 篇，最后给你整理出一份包含方法对比、Baseline 使用情况的深度报告。</p>
+</li>
+<li><p>价值： 代替你做连续几小时的“找文献-下文献-看摘要”的机械劳动。</p>
+</li>
+</ul>
+<h2 id="推荐的Agent"><a href="#推荐的Agent" class="headerlink" title="推荐的Agent"></a>推荐的Agent</h2><p>考虑到你使用 VS Code Remote SSH 访问远程服务器的习惯，你的 Agent 部署策略应该因地制宜：</p>
+<ol>
+<li>代码开发类：推荐“本地操作、远程生效”的混合模式<br>你不需要在服务器上装复杂的图形化 Agent。</li>
+</ol>
+<ul>
+<li><p>首选方案：Cursor 或 VS Code + Cline 插件（本地部署，API 远程连接）</p>
+<ul>
+<li><p>怎么用： 它们装在你的本地电脑（Mac/Windows）上，但因为你的 VS Code 已经通过 SSH 连接了服务器，这些 Agent 插件可以直接感知并操作你远程服务器上的工作区文件。</p>
+</li>
+<li><p>模型选择： 强烈建议接入 Claude 3.5 Sonnet (API)。在逻辑推理、复杂代码编写和多文件重构上，它是目前学术界和工业界公认断层第一的模型。</p>
+</li>
+<li><p>特点： 这属于 Local-Agent (Controlled Actions)。它每次改你服务器上的代码、或者想在服务器终端运行命令时，都会在本地弹窗询问你：“我是否可以修改 exp_model.py？”、“我是否可以运行 python main.py？”。对博士生来说非常安全，完全在你的掌控之中。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>文献调研与 Idea 验证类：推荐“云端/远程 Agent”</li>
+</ol>
+<ul>
+<li><p>首选方案：Perplexity (Pro 模式) 或 Consensus</p>
+</li>
+<li><p>怎么用： 直接在网页端使用。不需要本地任何环境，直接利用它们后台庞大的网络爬虫和学术数据库检索能力。</p>
+</li>
+<li><p>特点： 适合在你每天早上开启科研工作前，或者和导师 regular meeting 前，用来快速摸清某个细分 idea 是否已经被别人做过。</p>
+</li>
+</ul>
+<h1 id="正则化技巧"><a href="#正则化技巧" class="headerlink" title="正则化技巧"></a>正则化技巧</h1><p>有时候在markdown里面，会把一级标题被我设置为了##, 二级标题被我设置为了###，最高到####。</p>
+<p>现在希望让所有的标题都缩减一级，也就是##变为#。可以直接用正则表达式一步到位。</p>
+<ol>
+<li>打开替换面板：按 Ctrl+H（Windows/Linux）或 Cmd+Option+F（Mac）</li>
+<li>开启正则模式：点击替换面板右上角的 .* 按钮（或按快捷键 Alt+R）</li>
+<li>查找框输入：<pre class="line-numbers language-none"><code class="language-none">^(#+)# (.*)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>替换框输入：<pre class="line-numbers language-none"><code class="language-none">$1 $2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+原理说明：</li>
+</ol>
+<ul>
+<li>^：匹配每一行的开头，确保只处理行首的标题，不会误改正文里的#号</li>
+<li>(#+)#：先捕获连续的 N 个#到分组$1，再匹配第 N+1 个#；整体只匹配「至少 2 个 #」的标题，替换后自然减少一个#</li>
+<li>(.*)：匹配标题后的空格和全部标题内容，$2 对应原标题文字</li>
+<li>最终替换为 $1 $2，就是「N 个# + 空格 + 原标题内容」，正好降级一级</li>
+</ul>
+<h1 id="科研工具使用"><a href="#科研工具使用" class="headerlink" title="科研工具使用"></a>科研工具使用</h1><h2 id="latex"><a href="#latex" class="headerlink" title="latex"></a>latex</h2><h3 id="latex安装"><a href="#latex安装" class="headerlink" title="latex安装"></a>latex安装</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/166523064">原文链接</a></p>
+<h3 id="latex、mathtype公式结合"><a href="#latex、mathtype公式结合" class="headerlink" title="latex、mathtype公式结合"></a>latex、mathtype公式结合</h3><p>有的期刊的公式无法用word自带的编辑，只能用mathtype。<br>安装好mathtype后，就可以在word里面使用公式，一般来说有两种方式</p>
 <p>一种是mathtype里面的显示，直接写就好<br>第二种是在页面中，用latex形式。$a_i$，然后点击mathtype切换到latex就可转换为公式。</p>
-<h4 id="数学公式图片转latex"><a href="#数学公式图片转latex" class="headerlink" title="数学公式图片转latex"></a>数学公式图片转latex</h4><p>网站：<a target="_blank" rel="noopener" href="http://img2latex.com/ocr">http://img2latex.com/ocr</a></p>
-<h4 id="png、tiff格式转eps格式"><a href="#png、tiff格式转eps格式" class="headerlink" title="png、tiff格式转eps格式"></a>png、tiff格式转eps格式</h4><p><strong>png转eps</strong><br>bmeps是下载latex后就可以在cmd里直接使用的<br></p><pre class="line-numbers language-none"><code class="language-none">bmeps -c figure.png figure.eps<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<h3 id="数学公式图片转latex"><a href="#数学公式图片转latex" class="headerlink" title="数学公式图片转latex"></a>数学公式图片转latex</h3><p>网站：<a target="_blank" rel="noopener" href="http://img2latex.com/ocr">http://img2latex.com/ocr</a></p>
+<h3 id="png、tiff格式转eps格式"><a href="#png、tiff格式转eps格式" class="headerlink" title="png、tiff格式转eps格式"></a>png、tiff格式转eps格式</h3><p><strong>png转eps</strong><br>bmeps是下载latex后就可以在cmd里直接使用的<br></p><pre class="line-numbers language-none"><code class="language-none">bmeps -c figure.png figure.eps<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
 <p><strong>tiff转pes</strong><br>需要下载ImageMagick</p>
 <pre class="line-numbers language-none"><code class="language-none"># 单一图像转换
 magick mogrify -format eps conv_t60_cropped_cropped.tiff
 
 # 目录下批量转换
 magick mogrify -format eps *.tiff<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="matplotlib绘图以适应latex排版"><a href="#matplotlib绘图以适应latex排版" class="headerlink" title="matplotlib绘图以适应latex排版"></a>matplotlib绘图以适应latex排版</h3><p>学术投稿一般都是latex，但是有些图是需要用matplotlib绘图，但是过往绘制出来的图，放到latex里面，会出现图片过大或过小的问题，之前我都是使用<code>width=0.85\textwidth</code>进行缩放，但是这就其实不好，会导致<strong>图片中的所有元素（线条、颜色、文字）都被一起缩放</strong>，在生成的pdf里面看起来就很奇怪。所以解决办法是：<strong>永远在绘图时就确定最终物理尺寸</strong>。</p>
+<h2 id="matplotlib绘图以适应latex排版"><a href="#matplotlib绘图以适应latex排版" class="headerlink" title="matplotlib绘图以适应latex排版"></a>matplotlib绘图以适应latex排版</h2><p>学术投稿一般都是latex，但是有些图是需要用matplotlib绘图，但是过往绘制出来的图，放到latex里面，会出现图片过大或过小的问题，之前我都是使用<code>width=0.85\textwidth</code>进行缩放，但是这就其实不好，会导致<strong>图片中的所有元素（线条、颜色、文字）都被一起缩放</strong>，在生成的pdf里面看起来就很奇怪。所以解决办法是：<strong>永远在绘图时就确定最终物理尺寸</strong>。</p>
 <p>一旦确定了画布宽度，就永远不要在 LaTeX 中对图片进行任何缩放。</p>
 <p>为了解决这个问题，可以依靠tueplots来帮助我们解决这个问题，针对ICLR排版（其他顶会也有），自动调整图片的宽度/字体大小等。</p>
 <p>所以后续的做图方法，可以先把图的大致布局、配色等弄好。然后使用下面这个py文件，可以发给大模型处理。<strong>只需要思考 “我要展示什么数据” 和 “怎么展示最清楚”，而所有技术细节都由大模型来处理。</strong>。如果还是有些不符合要求，手动调整下即可</p>
@@ -542,91 +635,126 @@ magick mogrify -format eps *.tiff<span aria-hidden="true" class="line-numbers-ro
 <hr>
 <p>你是一个精通学术论文数据可视化的 Python 代码整合助手。</p>
 <p>我已经提供了一个自定义的样式模块 iclr_style.py，其中包含：</p>
-<p>apply_iclr_global_style(nrows, ncols, rel_width)</p>
-<p>format_academic_axes(axes)</p>
-<p>hide_empty_subplots(axes, n_active)</p>
-<p>setup_academic_legend(ax, **kwargs)</p>
+<ul>
+<li><code>apply_iclr_global_style(nrows, ncols, rel_width)</code></li>
+<li><code>format_academic_axes(axes)</code></li>
+<li><code>hide_empty_subplots(axes, n_active)</code></li>
+<li><code>setup_academic_legend(ax, **kwargs)</code></li>
+<li><code>setup_global_academic_legend(fig, axes, **kwargs)</code></li>
+</ul>
 <p>请根据我提供的【基础绘图代码】，为我生成最终的 .py 绘图脚本。生成代码时，必须严格遵守以下红线规则：</p>
-<p>第一原则：绝对尊重我的基础代码（极其重要）</p>
-<p>禁止修改颜色与样式： 必须 100% 使用我草稿代码中定义的线条颜色（color）、透明度（alpha）、线型（linestyle）和线宽（linewidth）。绝不允许你擅自调整或增加对比度。</p>
-<p>精准提取布局参数： 请直接阅读我的草稿代码（例如 fig, axes = plt.subplots(…)），从中精确提取行数（nrows）和列数（ncols）。</p>
-<p>精准提取子图数量： 统计我实际绘制了几个子图（N）。</p>
-<p>第二原则：正确应用 tueplots 样式工具</p>
-<p>必须在代码最开头调用 apply_iclr_global_style(nrows=nrows, ncols=ncols, rel_width=1.0)，参数使用上一原则中提取的数值。</p>
-<p>绝对禁止在 plt.subplots() 中传入 figsize 参数。</p>
-<p>如果 nrows * ncols &gt; N，必须调用 hide_empty_subplots(axes, N) 隐藏多余边框。</p>
-<p>绝对禁止在 plt.savefig() 中使用 bbox_inches=’tight’。</p>
-<p>第三原则：学术细节美化</p>
-<p>数据绘制完成后，必须调用 format_academic_axes(axes) 统一美化所有子图。</p>
-<p>坐标轴标签（xlabel, ylabel）必须使用 fontweight=’bold’。</p>
-<p>使用 setup_academic_legend 配置图例，确保其不遮挡数据走势。</p>
+<ol>
+<li>第一原则：绝对尊重我的基础代码（极其重要）</li>
+</ol>
+<ul>
+<li><strong>禁止修改颜色与样式：</strong> 必须 100% 使用我草稿代码中定义的线条颜色（<code>color</code>）、透明度（<code>alpha</code>）、线型（<code>linestyle</code>）和线宽（<code>linewidth</code>）。绝不允许擅自调整或增加对比度。</li>
+<li><strong>精准提取布局参数：</strong> 直接阅读我的草稿代码（例如 <code>fig, axes = plt.subplots(...)</code>），从中精确提取行数（<code>nrows</code>）和列数（<code>ncols</code>）。</li>
+<li><strong>精准提取子图数量：</strong> 统计我实际绘制了几个子图（<code>N</code>）。</li>
+</ul>
+<ol>
+<li>第二原则：正确应用 tueplots 样式工具</li>
+</ol>
+<ul>
+<li>必须在代码最开头调用 <code>apply_iclr_global_style(nrows=nrows, ncols=ncols, rel_width=1.0)</code>，参数使用上一原则中提取的数值。</li>
+<li><strong>绝对禁止</strong>在 <code>plt.subplots()</code> 中传入 <code>figsize</code> 参数。</li>
+<li>如果 <code>nrows * ncols &gt; N</code>，必须调用 <code>hide_empty_subplots(axes, N)</code> 隐藏多余边框。</li>
+<li><strong>绝对禁止</strong>在 <code>plt.savefig()</code> 中使用 <code>bbox_inches='tight'</code>。</li>
+</ul>
+<ol>
+<li>第三原则：学术细节美化</li>
+</ol>
+<ul>
+<li>数据绘制完成后，必须调用 <code>format_academic_axes(axes)</code> 统一美化所有子图。</li>
+<li>坐标轴标签（<code>xlabel</code>, <code>ylabel</code>）必须使用 <code>fontweight='bold'</code>。</li>
+<li><strong>图例规范配置：</strong></li>
+<li>若为单个子图图例，请使用 <code>setup_academic_legend(ax, **kwargs)</code> 进行配置。</li>
+<li>若为多子图合并的全局图例，请直接调用封装好的 <code>setup_global_academic_legend(fig, axes)</code> 自动提取标签并渲染，确保其不遮挡数据走势。</li>
+</ul>
 <p>我的基础代码如下：</p>
-<h2 id="填入代码"><a href="#填入代码" class="headerlink" title="填入代码"></a><code>填入代码</code></h2><p>iclr_style.py如下：</p>
-<pre class="line-numbers language-none"><code class="language-none">import matplotlib.pyplot as plt
-import numpy as np
-from tueplots import bundles
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 填入你的基础代码</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<hr>
+<p><code>iclr_style.py</code> 参考实现：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">from</span> tueplots <span class="token keyword">import</span> bundles
 
-def apply_iclr_global_style(nrows, ncols, rel_width=1.0):
-    """
-    应用 ICLR 样式标准，物理尺寸由传入的 nrows 和 ncols 决定。
-    """
-    plt.rcParams.update(bundles.iclr2024(rel_width=rel_width, nrows=nrows, ncols=ncols))
-    plt.rcParams['pdf.fonttype'] = 42
-    plt.rcParams['ps.fonttype'] = 42
+<span class="token keyword">def</span> <span class="token function">apply_iclr_global_style</span><span class="token punctuation">(</span>nrows<span class="token punctuation">,</span> ncols<span class="token punctuation">,</span> rel_width<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    plt<span class="token punctuation">.</span>rcParams<span class="token punctuation">.</span>update<span class="token punctuation">(</span>bundles<span class="token punctuation">.</span>iclr2024<span class="token punctuation">(</span>rel_width<span class="token operator">=</span>rel_width<span class="token punctuation">,</span> nrows<span class="token operator">=</span>nrows<span class="token punctuation">,</span> ncols<span class="token operator">=</span>ncols<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'pdf.fonttype'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">42</span>
+    plt<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'ps.fonttype'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">42</span>
 
-def format_academic_axes(axes):
-    """
-    统一格式化坐标轴的边框、网格与刻度字体。
-    """
-    if not isinstance(axes, (list, np.ndarray)):
-        axes_list = [axes]
-    else:
-        axes_list = np.array(axes).flatten()
+<span class="token keyword">def</span> <span class="token function">format_academic_axes</span><span class="token punctuation">(</span>axes<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>axes<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>ndarray<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        axes_list <span class="token operator">=</span> <span class="token punctuation">[</span>axes<span class="token punctuation">]</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        axes_list <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>axes<span class="token punctuation">)</span><span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    for ax in axes_list:
-        if not ax.get_visible():
-            continue
+    <span class="token keyword">for</span> ax <span class="token keyword">in</span> axes_list<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> ax<span class="token punctuation">.</span>get_visible<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">continue</span>
             
-        ax.spines['top'].set_visible(True)
-        ax.spines['right'].set_visible(True)
-        ax.spines['left'].set_linewidth(1.2)
-        ax.spines['right'].set_linewidth(1.2)
-        ax.spines['top'].set_linewidth(1.2)
-        ax.spines['bottom'].set_linewidth(1.2)
+        ax<span class="token punctuation">.</span>spines<span class="token punctuation">[</span><span class="token string">'top'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_visible<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        ax<span class="token punctuation">.</span>spines<span class="token punctuation">[</span><span class="token string">'right'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_visible<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        ax<span class="token punctuation">.</span>spines<span class="token punctuation">[</span><span class="token string">'left'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_linewidth<span class="token punctuation">(</span><span class="token number">1.2</span><span class="token punctuation">)</span>
+        ax<span class="token punctuation">.</span>spines<span class="token punctuation">[</span><span class="token string">'right'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_linewidth<span class="token punctuation">(</span><span class="token number">1.2</span><span class="token punctuation">)</span>
+        ax<span class="token punctuation">.</span>spines<span class="token punctuation">[</span><span class="token string">'top'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_linewidth<span class="token punctuation">(</span><span class="token number">1.2</span><span class="token punctuation">)</span>
+        ax<span class="token punctuation">.</span>spines<span class="token punctuation">[</span><span class="token string">'bottom'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_linewidth<span class="token punctuation">(</span><span class="token number">1.2</span><span class="token punctuation">)</span>
 
-        ax.tick_params(axis='both', which='major', direction='out')
-        ax.grid(True, linestyle=':', alpha=0.5)
+        ax<span class="token punctuation">.</span>tick_params<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token string">'both'</span><span class="token punctuation">,</span> which<span class="token operator">=</span><span class="token string">'major'</span><span class="token punctuation">,</span> direction<span class="token operator">=</span><span class="token string">'out'</span><span class="token punctuation">)</span>
+        ax<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">,</span> linestyle<span class="token operator">=</span><span class="token string">':'</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">)</span>
 
-        for label in ax.get_xticklabels() + ax.get_yticklabels():
-            label.set_fontweight('bold')
+        <span class="token keyword">for</span> label <span class="token keyword">in</span> ax<span class="token punctuation">.</span>get_xticklabels<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> ax<span class="token punctuation">.</span>get_yticklabels<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            label<span class="token punctuation">.</span>set_fontweight<span class="token punctuation">(</span><span class="token string">'bold'</span><span class="token punctuation">)</span>
 
-def hide_empty_subplots(axes, n_active):
-    """
-    隐藏网格中未使用的空白子图。
-    """
-    if isinstance(axes, (list, np.ndarray)):
-        axes_flat = np.array(axes).flatten()
-        for i in range(n_active, len(axes_flat)):
-            axes_flat[i].set_visible(False)
+<span class="token keyword">def</span> <span class="token function">hide_empty_subplots</span><span class="token punctuation">(</span>axes<span class="token punctuation">,</span> n_active<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>axes<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>ndarray<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        axes_flat <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>axes<span class="token punctuation">)</span><span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n_active<span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>axes_flat<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            axes_flat<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>set_visible<span class="token punctuation">(</span><span class="token boolean">False</span><span class="token punctuation">)</span>
 
-def setup_academic_legend(ax, **kwargs):
-    """
-    配置学术图例的标准外观。
-    """
-    default_kwargs = {
-        'loc': 'lower center',
-        'bbox_to_anchor': (0.5, 1.02),
-        'frameon': True,
-        'facecolor': 'white',
-        'edgecolor': 'lightgray'
-    }
-    default_kwargs.update(kwargs)
-    ax.legend(**default_kwargs)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="zotero"><a href="#zotero" class="headerlink" title="zotero"></a>zotero</h3><h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p>插件一般从github上面下载，直接搜就好。实在不知道就百度，下载的格式一般是xpi。</p>
+<span class="token keyword">def</span> <span class="token function">setup_academic_legend</span><span class="token punctuation">(</span>ax<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    default_kwargs <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'loc'</span><span class="token punctuation">:</span> <span class="token string">'lower center'</span><span class="token punctuation">,</span>
+        <span class="token string">'bbox_to_anchor'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">1.02</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">'frameon'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+        <span class="token string">'facecolor'</span><span class="token punctuation">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
+        <span class="token string">'edgecolor'</span><span class="token punctuation">:</span> <span class="token string">'lightgray'</span>
+    <span class="token punctuation">}</span>
+    default_kwargs<span class="token punctuation">.</span>update<span class="token punctuation">(</span>kwargs<span class="token punctuation">)</span>
+    ax<span class="token punctuation">.</span>legend<span class="token punctuation">(</span><span class="token operator">**</span>default_kwargs<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">setup_global_academic_legend</span><span class="token punctuation">(</span>fig<span class="token punctuation">,</span> axes<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    axes_flat <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>axes<span class="token punctuation">)</span><span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    handles<span class="token punctuation">,</span> labels <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> ax <span class="token keyword">in</span> axes_flat<span class="token punctuation">:</span>
+        h<span class="token punctuation">,</span> l <span class="token operator">=</span> ax<span class="token punctuation">.</span>get_legend_handles_labels<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> hi<span class="token punctuation">,</span> li <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>h<span class="token punctuation">,</span> l<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> li <span class="token keyword">not</span> <span class="token keyword">in</span> labels<span class="token punctuation">:</span>
+                handles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>hi<span class="token punctuation">)</span>
+                labels<span class="token punctuation">.</span>append<span class="token punctuation">(</span>li<span class="token punctuation">)</span>
+                
+    default_kwargs <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'loc'</span><span class="token punctuation">:</span> <span class="token string">'upper center'</span><span class="token punctuation">,</span>
+        <span class="token string">'bbox_to_anchor'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">1.1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">'ncol'</span><span class="token punctuation">:</span> <span class="token builtin">min</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>labels<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">'frameon'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+        <span class="token string">'facecolor'</span><span class="token punctuation">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
+        <span class="token string">'edgecolor'</span><span class="token punctuation">:</span> <span class="token string">'lightgray'</span>
+    <span class="token punctuation">}</span>
+    default_kwargs<span class="token punctuation">.</span>update<span class="token punctuation">(</span>kwargs<span class="token punctuation">)</span>
+    fig<span class="token punctuation">.</span>legend<span class="token punctuation">(</span>handles<span class="token punctuation">,</span> labels<span class="token punctuation">,</span> <span class="token operator">**</span>default_kwargs<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="用PPT画图的一些技巧"><a href="#用PPT画图的一些技巧" class="headerlink" title="用PPT画图的一些技巧"></a>用PPT画图的一些技巧</h2><ul>
+<li>需要先把画布的宽度确定好，对应会议/期刊，问大模型，提前确定好。</li>
+<li>视图-》网格线；确保线是直的<br>    lguanaTex，类似latex文档的方式插入公式，和论文模板里面渲染出来的一样，这一点是draw.io没法比的。</li>
+<li>把某一页导出为pdf：另存为-》保存类型选择PDF，点击下方的选项，在弹出的对话框中，把范围选为 当前幻灯片</li>
+<li>关于输入和输出，其实可以让程序给画出来，用实际的数据集就好。比手画稍微快些。至于怎么把程序里面的东西导入，可以问下大模型。</li>
+</ul>
+<h2 id="zotero"><a href="#zotero" class="headerlink" title="zotero"></a>zotero</h2><h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>插件一般从github上面下载，直接搜就好。实在不知道就百度，下载的格式一般是xpi。</p>
 <p>然后进入到zotero。工具-》附加组件-》“右上角齿轮”-》Install Add-on From File</p>
 <p><strong>注意：安装的版本不要pre-release，否则部分功能是没有的。要在latest或者之前的</strong></p>
-<h4 id="zotero记笔记"><a href="#zotero记笔记" class="headerlink" title="zotero记笔记"></a>zotero记笔记</h4><p><strong>需要提前安装好zotero better notes插件</strong></p>
+<h3 id="zotero记笔记"><a href="#zotero记笔记" class="headerlink" title="zotero记笔记"></a>zotero记笔记</h3><p><strong>需要提前安装好zotero better notes插件</strong></p>
 <p>安装好以后左侧会出现工作区<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/Snipaste_2023-04-16_12-32-28.png" alt=""></p>
 <p>Better Notes引入工作区的概念,工作区是一个单独的Zotero标签页或单独窗口，分为三栏，从左到右依次为：大纲区，主笔记区，预览笔记区<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/cbb52913-237e-4c1b-b59b-3a013bd1c3b9.png" alt=""></p>
 <ol>
@@ -637,7 +765,7 @@ def setup_academic_legend(ax, **kwargs):
 </ol>
 <p>添加条目笔记：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/Snipaste_2023-04-16_12-45-34.png" alt=""></p>
 <p>链接到指定主笔记位置，主笔记里面还可以设置二三级标题，将条目笔记连接到此<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img/Snipaste_2023-04-16_12-49-07.png" alt=""></p>
-<h4 id="zotero抓取pdf元数据失败"><a href="#zotero抓取pdf元数据失败" class="headerlink" title="zotero抓取pdf元数据失败"></a>zotero抓取pdf元数据失败</h4><p>背景：将下载好的pdf导入zotero中，知网抓取元数据失败</p>
+<h3 id="zotero抓取pdf元数据失败"><a href="#zotero抓取pdf元数据失败" class="headerlink" title="zotero抓取pdf元数据失败"></a>zotero抓取pdf元数据失败</h3><p>背景：将下载好的pdf导入zotero中，知网抓取元数据失败</p>
 <p>方法：</p>
 <ol>
 <li><p>手动创建条目<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-606c04d45d62dba1235687131ca178fc_r.jpg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-26e50c913eb9ce6bffcef709128a5858_r.jpg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-0a378dedf6f34f9e8d850270a79d028c_r.jpg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/v2-dac636138a29ee80124777e7a59459c1_r.jpg" alt=""></p>
@@ -645,14 +773,14 @@ def setup_academic_legend(ax, **kwargs):
 <li><p>把PDF拖到该条目下</p>
 </li>
 </ol>
-<h3 id="zotero同步"><a href="#zotero同步" class="headerlink" title="zotero同步"></a>zotero同步</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43012930/article/details/114137259">原文链接</a></p>
+<h2 id="zotero同步"><a href="#zotero同步" class="headerlink" title="zotero同步"></a>zotero同步</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43012930/article/details/114137259">原文链接</a></p>
 <p>zotero同步分为两种：<br>数据同步和文件同步<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-06-03_11-39-19.png" alt=""></p>
 <p>数据同步：数据同步内容可以包含<strong>文献库的条目、笔记、链接、标签</strong>等等。在Zotero中，可以使用Zotero提供的同步服务同步除了附件之外的所有内容，以便在不同的支持Zotero的设备上使用Zotero。英文版内容为：[library items, notes, links, tags, etc.—everything except attachment files]。此外，还可以登录 Zotero.org 在线查看文献库。<strong>数据同步是免费和无限的，无需文件同步即可使用。</strong></p>
 <p>文件同步：数据同步将同步库项目，但不同步附件（PDF，音频和视频文件，图像等）。<strong>官方提供的网盘只有300M，PDF多了后肯定不够用</strong></p>
-<h4 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h4><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oD4y1h7rJ/?share_source=copy_web&amp;vd_source=0aac08942099868c6eaf781c9de8ebb1">原链接</a></p>
+<h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oD4y1h7rJ/?share_source=copy_web&amp;vd_source=0aac08942099868c6eaf781c9de8ebb1">原链接</a></p>
 <p>核心思路：把题录数据和附件分开存储</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-06-03_11-36-49.png" alt=""></p>
-<h4 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h4><p>在不同的电脑做好以下操作：</p>
+<h3 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h3><p>在不同的电脑做好以下操作：</p>
 <ol>
 <li>安装zotero软件、zotfile插件、茉莉花插件</li>
 <li><p>zotero账号注册，同步设置。看下图，有一个框不要勾选<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-06-03_11-21-58.png" alt=""></p>
@@ -673,10 +801,10 @@ def setup_academic_legend(ax, **kwargs):
 <ol>
 <li>其他设备使用，进入zotero后，点击右边的绿色同步按钮，等待即可<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-06-03_11-46-13.png" alt=""></li>
 </ol>
-<h3 id="zotero-抓取参考文献"><a href="#zotero-抓取参考文献" class="headerlink" title="zotero 抓取参考文献"></a>zotero 抓取参考文献</h3><p>我自己目前大概总结出来了一套方法，以后如果要把论文导入进去，要确保参考文献不出错的情况下，那么首先要保证这个论文的<strong>条目信息</strong>没有错误，右键-》生成条目报告，就能看到相关信息，就能知道这个这个论文却不缺少内容。</p>
+<h2 id="zotero-抓取参考文献"><a href="#zotero-抓取参考文献" class="headerlink" title="zotero 抓取参考文献"></a>zotero 抓取参考文献</h2><p>我自己目前大概总结出来了一套方法，以后如果要把论文导入进去，要确保参考文献不出错的情况下，那么首先要保证这个论文的<strong>条目信息</strong>没有错误，右键-》生成条目报告，就能看到相关信息，就能知道这个这个论文却不缺少内容。</p>
 <p>然后，因为只传入pdf，然后自动抓取，一般会缺少很多信息。所以，最好的方法是使用bibtex，次选方法是doi。因为有的论文还没有doi。</p>
 <p>关于bibtex，可以不用去官网看，因为有可能会比较慢。如果要批量导入，那么直接浏览器搜索：bibtex 论文名称。 这个时候ai可能会为你查找到bibtex，不过有的可能用的是arxiv的，这个时候可能需要自己去官网下载。然后把多篇论文的bibtex复制到一个bib文件，然后直接导入。这个时候批量生成了条目，然后全选+右键，查找全文，就能获取pdf。但是这个时候，有的可能没找到pdf，原因大概率是bibtex有问题，缺少了url链接。或者这个论文是IEEE等网站，没法直接下载。如果是缺少了链接，那么就去官网找bibtex就好了；如果是IEEE，那需要单独下载pdf，手动添加。</p>
-<h3 id="ZoteroV9需要配置的插件"><a href="#ZoteroV9需要配置的插件" class="headerlink" title="ZoteroV9需要配置的插件"></a>ZoteroV9需要配置的插件</h3><p>直接从官网下载就好，一共有三个需要下载：</p>
+<h2 id="ZoteroV9需要配置的插件"><a href="#ZoteroV9需要配置的插件" class="headerlink" title="ZoteroV9需要配置的插件"></a>ZoteroV9需要配置的插件</h2><p>直接从官网下载就好，一共有三个需要下载：</p>
 <ul>
 <li>Better Bibtex: 9.0.23</li>
 <li>Translate for Zotero: 2.4.4</li>
@@ -688,9 +816,80 @@ def setup_academic_legend(ax, **kwargs):
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2026-05-13_18-22-08.png" alt=""></p>
 <p>填写的模板如下：</p>
 <pre class="line-numbers language-none"><code class="language-none">{{ if itemType == "book" }}{{ itemType localize="true"  suffix="_" }}{{ else }}{{ year suffix="_" }}{{ endif }}{{ title truncate="50" suffix="_" }}{{ if language =="zh" }}{{ authors name="family-given" name-part-separator="" join=" " max="2" }}{{ elseif language =="zh-CN" }}{{ authors name="family-given" name-part-separator="" join=" " max="2" }}{{ elseif language =="zh_CN" }}{{ authors name="family-given" name-part-separator="" join=" " max="2" }}{{ else }}{{ authors name="given-family" initialize="given" join=" and " max="2" }}{{ endif }}{{ if itemType != "journalArticle" }}{{ if itemType == "book" }}{{ year prefix="_" }}{{ else }}{{ itemType localize="true"  prefix="_" }}{{ endif }}{{ endif }}<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="常用软件或IDE"><a href="#常用软件或IDE" class="headerlink" title="常用软件或IDE"></a>常用软件或IDE</h2><h3 id="MobaXterm"><a href="#MobaXterm" class="headerlink" title="MobaXterm"></a>MobaXterm</h3><h4 id="密钥登录保持长时间连接"><a href="#密钥登录保持长时间连接" class="headerlink" title="密钥登录保持长时间连接"></a>密钥登录保持长时间连接</h4><p>Settings-&gt;Configuration</p>
+<h2 id="远程服务器实验记录方案"><a href="#远程服务器实验记录方案" class="headerlink" title="远程服务器实验记录方案"></a>远程服务器实验记录方案</h2><p>一般实验是在远程服务器上面进行，所有的数据一般也是在服务器上面被记录。但是为了更好的进行对比，需要将其整理到excel里面。之前的做好是手动在本地构建excel表格，然后把服务器上面的数据复制过来，但是效率非常低。</p>
+<p>后面思考了下，可以这样去做，来提高效率：</p>
+<h3 id="核心方案在远程服务器上维护一个-experiment-log-csv"><a href="#核心方案在远程服务器上维护一个-experiment-log-csv" class="headerlink" title="核心方案在远程服务器上维护一个 experiment_log.csv"></a>核心方案在远程服务器上维护一个 experiment_log.csv</h3><p>设计格式可以参考：</p>
+<pre class="line-numbers language-none"><code class="language-none">timestamp,dataset,model,pred_len,lr,mse,mae,notes,log_path
+2026-07-11 10:00,ETTh1,LSTM,12,0.001,0.452,0.318,baseline,logs/exp_001.log
+2026-07-11 10:30,ETTh1,MyModel,12,0.001,0.381,0.285,加了注意力,logs/exp_002.log
+2026-07-11 11:00,ETTh1,MyModel,24,0.001,0.402,0.298,调大dropout,logs/exp_003.log<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我个人觉得，这个excel表格可以多设计几个，以免弄混淆。例如，Baseline、论文方法多版本对比、各类消融实验</p>
+<h3 id="记录方法"><a href="#记录方法" class="headerlink" title="记录方法"></a>记录方法</h3><ul>
+<li><p>模式 A：手动记录</p>
+<ul>
+<li>跑完实验后，如果你觉得结果值得记录，在终端执行：<code>python log_exp.py --dataset ETTh1 --model MyModel --pred_len 24 --mse 0.402 --mae 0.298 --notes "dropout=0.3"</code>。这个log.py可以让大模型为我写，可以参考下面这个：<pre class="line-numbers language-none"><code class="language-none">import csv, datetime, argparse, os
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dataset', required=True)
+    parser.add_argument('--model', required=True)
+    parser.add_argument('--pred_len', type=int, required=True)
+    parser.add_argument('--mse', type=float, required=True)
+    parser.add_argument('--mae', type=float, required=True)
+    parser.add_argument('--notes', default='')
+    parser.add_argument('--log_path', default='')
+    args = parser.parse_args()
+    
+    file_exists = os.path.exists('experiment_log.csv')
+    with open('experiment_log.csv', 'a', newline='') as f:
+        writer = csv.writer(f)
+        if not file_exists:
+            writer.writerow(['timestamp','dataset','model','pred_len','lr','mse','mae','notes','log_path'])
+        writer.writerow([
+            datetime.datetime.now().strftime('%Y-%m-%d %H:%M'),
+            args.dataset, args.model, args.pred_len, 
+            '0.001',  # 你可以再加参数，或者从config读取
+            args.mse, args.mae, args.notes, args.log_path
+        ])
+    print("已记录到 experiment_log.csv")
+
+if __name__ == '__main__':
+    main()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><p>模式 B：半自动记录<br>在代码里面加一个标志位，也就是通过参数来控制。</p>
+</li>
+<li><p>模式 C：自动记录最优结果</p>
+</li>
+</ul>
+<p>在训练代码里加逻辑：只有当前结果比历史最优好时，才自动追加记录。</p>
+<p><strong>当然，这个逻辑也可以改变。</strong></p>
+<h3 id="远程服务器上直接「像-Excel-一样查看」"><a href="#远程服务器上直接「像-Excel-一样查看」" class="headerlink" title="远程服务器上直接「像 Excel 一样查看」"></a>远程服务器上直接「像 Excel 一样查看」</h3><ul>
+<li>方法1：直接打开</li>
+<li>如果你临时想做个漂亮的对比表，在远程服务器上跑：</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">import pandas as pd
+
+df = pd.read_csv('experiment_log.csv')
+
+# 生成 pivot 表：行=数据集+预测长度，列=模型，值=MSE
+pivot = df.pivot_table(
+    index=['dataset', 'pred_len'], 
+    columns='model', 
+    values='mse',
+    aggfunc='min'  # 如果同一配置跑多次，取最优
+)
+
+print(pivot)
+# 保存为 HTML，在浏览器打开就是表格
+pivot.to_html('comparison_table.html')
+print("已生成 comparison_table.html，请在浏览器打开")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>python -m http.server 8000  # 或者直接用 VS Code 打开 HTML 文件</p>
+<p>你在本地浏览器访问 <a target="_blank" rel="noopener" href="http://服务器IP:8000/comparison_table.html，就是一个可排序、可搜索的对比表格，完全不需要">http://服务器IP:8000/comparison_table.html，就是一个可排序、可搜索的对比表格，完全不需要</a> Excel。</p>
+<h1 id="常用软件或IDE"><a href="#常用软件或IDE" class="headerlink" title="常用软件或IDE"></a>常用软件或IDE</h1><h2 id="MobaXterm"><a href="#MobaXterm" class="headerlink" title="MobaXterm"></a>MobaXterm</h2><h3 id="密钥登录保持长时间连接"><a href="#密钥登录保持长时间连接" class="headerlink" title="密钥登录保持长时间连接"></a>密钥登录保持长时间连接</h3><p>Settings-&gt;Configuration</p>
 <p><img src="https://s2.loli.net/2022/10/28/kc6YuxZpJ1tL3HB.png" alt=""></p>
-<h3 id="postman"><a href="#postman" class="headerlink" title="postman"></a>postman</h3><h4 id="模拟后端数据"><a href="#模拟后端数据" class="headerlink" title="模拟后端数据"></a>模拟后端数据</h4><ol>
+<h2 id="postman"><a href="#postman" class="headerlink" title="postman"></a>postman</h2><h3 id="模拟后端数据"><a href="#模拟后端数据" class="headerlink" title="模拟后端数据"></a>模拟后端数据</h3><ol>
 <li><p>选择 Mock Servers。 创建一个mock。记下这个url<br><img src="https://s2.loli.net/2022/05/22/tLCDn7hRwHeFuMo.png" alt="1.png"></p>
 </li>
 <li><p>在集合里面新建request，<br><img src="https://s2.loli.net/2022/05/22/ZoxS7czAkjv6XFq.png" alt="2.png"></p>
@@ -698,12 +897,12 @@ def setup_academic_legend(ax, **kwargs):
 <li>再add example<br><img src="https://s2.loli.net/2022/05/22/FgH7stpNEn5zfWI.png" alt="3.png"></li>
 <li>将之前赋值的url，放上去，可以加一个/test 这个符号。下面可以放数据。浏览器访问这个网址就返回这个数据<br><img src="https://s2.loli.net/2022/05/22/GpIWSXxhPBoydw7.png" alt="4.png"></li>
 </ol>
-<h3 id="jupyter"><a href="#jupyter" class="headerlink" title="jupyter"></a>jupyter</h3><h4 id="Cell中-Code-和-Markdown的切换"><a href="#Cell中-Code-和-Markdown的切换" class="headerlink" title="Cell中 Code 和 Markdown的切换"></a>Cell中 Code 和 Markdown的切换</h4><blockquote>
+<h2 id="jupyter"><a href="#jupyter" class="headerlink" title="jupyter"></a>jupyter</h2><h3 id="Cell中-Code-和-Markdown的切换"><a href="#Cell中-Code-和-Markdown的切换" class="headerlink" title="Cell中 Code 和 Markdown的切换"></a>Cell中 Code 和 Markdown的切换</h3><blockquote>
 <p>在一个cell中（在command模式下） 按下 y, 进入Code 按下m, 进入Markdown</p>
 </blockquote>
-<h3 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h3><h4 id="快速重启"><a href="#快速重启" class="headerlink" title="快速重启"></a>快速重启</h4><p>打开命令面板：<br></p><pre class="line-numbers language-none"><code class="language-none">Ctrl+shift+p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>输入：<p></p>
+<h2 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h2><h3 id="快速重启"><a href="#快速重启" class="headerlink" title="快速重启"></a>快速重启</h3><p>打开命令面板：<br></p><pre class="line-numbers language-none"><code class="language-none">Ctrl+shift+p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>输入：<p></p>
 <pre class="line-numbers language-none"><code class="language-none">Reload Window<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><ol>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><ol>
 <li>寻找文件夹中的文本内容 <br></li>
 </ol>
 <blockquote>
@@ -715,12 +914,12 @@ def setup_academic_legend(ax, **kwargs):
 <blockquote>
 <p>ctrl+p</p>
 </blockquote>
-<h4 id="列选择快捷键"><a href="#列选择快捷键" class="headerlink" title="列选择快捷键"></a>列选择快捷键</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/99fdf312492c4b4db617bfc61546bffc.png" alt=""></p>
-<h4 id="保证打开新文件不覆盖旧文件"><a href="#保证打开新文件不覆盖旧文件" class="headerlink" title="保证打开新文件不覆盖旧文件"></a>保证打开新文件不覆盖旧文件</h4><p>首先进行搜索，快捷键ctrl+shift+p，在搜索框里输入settings进行搜索，看到User Setting选项，点击打开<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/cc15f737ae23cae6be0cf2e8d521beea.png" alt=""></p>
+<h3 id="列选择快捷键"><a href="#列选择快捷键" class="headerlink" title="列选择快捷键"></a>列选择快捷键</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/99fdf312492c4b4db617bfc61546bffc.png" alt=""></p>
+<h3 id="保证打开新文件不覆盖旧文件"><a href="#保证打开新文件不覆盖旧文件" class="headerlink" title="保证打开新文件不覆盖旧文件"></a>保证打开新文件不覆盖旧文件</h3><p>首先进行搜索，快捷键ctrl+shift+p，在搜索框里输入settings进行搜索，看到User Setting选项，点击打开<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/cc15f737ae23cae6be0cf2e8d521beea.png" alt=""></p>
 <p>打开以后看到如下界面，输入enablePreview(选项在Workbench工作台中)搜索，然后将箭头指示的地方的对勾取消即可，再次打开文件就不会覆盖原窗口文件了<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/bad54313e45d6dcd629fe32ca1d217be.png" alt=""></p>
-<h4 id="remote-ssh无法连接"><a href="#remote-ssh无法连接" class="headerlink" title="remote ssh无法连接"></a>remote ssh无法连接</h4><p>有时候使用插件remote ssh连接失败，会出现”lockfile” 这个词，解决办法就是在vscode的设置里面搜索”remote ssh:lockfile”，然后勾选。</p>
+<h3 id="remote-ssh无法连接"><a href="#remote-ssh无法连接" class="headerlink" title="remote ssh无法连接"></a>remote ssh无法连接</h3><p>有时候使用插件remote ssh连接失败，会出现”lockfile” 这个词，解决办法就是在vscode的设置里面搜索”remote ssh:lockfile”，然后勾选。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2023-09-04_13-57-34.png" alt=""></p>
-<h4 id="内网使用VSCode和Remote-SSH"><a href="#内网使用VSCode和Remote-SSH" class="headerlink" title="内网使用VSCode和Remote SSH"></a>内网使用VSCode和Remote SSH</h4><p><strong>步骤1：下载对应版本的VSCode和插件</strong></p>
+<h3 id="内网使用VSCode和Remote-SSH"><a href="#内网使用VSCode和Remote-SSH" class="headerlink" title="内网使用VSCode和Remote SSH"></a>内网使用VSCode和Remote SSH</h3><p><strong>步骤1：下载对应版本的VSCode和插件</strong></p>
 <p>假设内网是win7，查询后，<strong>因为vscode从1.71版开始不在支持Windows 7了，只要下载支持Windows 7的老版本的vscode就可以了</strong><br>下面这个链接是下载v1.60版本<br><a target="_blank" rel="noopener" href="https://code.visualstudio.com/updates/v1_60">https://code.visualstudio.com/updates/v1_60</a></p>
 <p>找到这个版本的发行时间，查看vscode版本号<br>方法为：点击help—about， 即可查看版本号和发布时间</p>
 <p><strong>找一个发布时间和要安装remote-ssh插件的vscode版本的发布时间差不多的版本。</strong></p>
@@ -742,54 +941,54 @@ def setup_academic_legend(ax, **kwargs):
 <p>外网下载</p>
 <p><a target="_blank" rel="noopener" href="https://update.code.visualstudio.com/commit:2aeda6b18e13c4f4f9edf6667158a6b8d408874b/server-linux-x64/stable">https://update.code.visualstudio.com/commit:2aeda6b18e13c4f4f9edf6667158a6b8d408874b/server-linux-x64/stable</a></p>
 <p>下载完毕后，将下载的文件upload到Remote Server的~/.vscode-server/bin/xxx文件夹下，同时删除其他文件，最后再使用tar -xvf vscode-server-linux-x64.tar.gz —strip-components 1解压文件</p>
-<h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><h3 id="添加编号，生成目录"><a href="#添加编号，生成目录" class="headerlink" title="添加编号，生成目录"></a>添加编号，生成目录</h3><p>Markdown默认是没有编号，生成的pdf也没有目录。为了美观，可以添加上。</p>
+<h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><h2 id="添加编号，生成目录"><a href="#添加编号，生成目录" class="headerlink" title="添加编号，生成目录"></a>添加编号，生成目录</h2><p>Markdown默认是没有编号，生成的pdf也没有目录。为了美观，可以添加上。</p>
 <p>Vscode插件：Markdown All in One</p>
 <p>使用方法：</p>
 <p>Ctrl+Shift+P 或者 View-&gt;Command Palette。</p>
 <p>然后选择下面这两个进行编号生成和目录生成：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-11-03_15-52-12.png" alt=""></p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2025-11-03_15-52-34.png" alt=""></p>
-<h3 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h3><h4 id="springboot中的pom-xml没有变蓝色"><a href="#springboot中的pom-xml没有变蓝色" class="headerlink" title="springboot中的pom.xml没有变蓝色"></a>springboot中的pom.xml没有变蓝色</h4><p>新建一个springboot项目，pom.xml没有变蓝色，前面没有蓝色的m。也不能run和debug。<br>解决办法：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20201102125508404.png" alt=""></p>
-<h4 id="intellij-idea折叠文件夹展开"><a href="#intellij-idea折叠文件夹展开" class="headerlink" title="intellij idea折叠文件夹展开"></a>intellij idea折叠文件夹展开</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2020091812214994.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20200918122331608.png" alt=""></p>
-<h4 id="intellij-idea快速生成main方法、for循环、out输出"><a href="#intellij-idea快速生成main方法、for循环、out输出" class="headerlink" title="intellij idea快速生成main方法、for循环、out输出"></a>intellij idea快速生成main方法、for循环、out输出</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/ff17e40bd4ea43169a3ef746cbb36550.png" alt=""></p>
+<h2 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h2><h3 id="springboot中的pom-xml没有变蓝色"><a href="#springboot中的pom-xml没有变蓝色" class="headerlink" title="springboot中的pom.xml没有变蓝色"></a>springboot中的pom.xml没有变蓝色</h3><p>新建一个springboot项目，pom.xml没有变蓝色，前面没有蓝色的m。也不能run和debug。<br>解决办法：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20201102125508404.png" alt=""></p>
+<h3 id="intellij-idea折叠文件夹展开"><a href="#intellij-idea折叠文件夹展开" class="headerlink" title="intellij idea折叠文件夹展开"></a>intellij idea折叠文件夹展开</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2020091812214994.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/20200918122331608.png" alt=""></p>
+<h3 id="intellij-idea快速生成main方法、for循环、out输出"><a href="#intellij-idea快速生成main方法、for循环、out输出" class="headerlink" title="intellij idea快速生成main方法、for循环、out输出"></a>intellij idea快速生成main方法、for循环、out输出</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/ff17e40bd4ea43169a3ef746cbb36550.png" alt=""></p>
 <pre class="line-numbers language-none"><code class="language-none">Ctrl+d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="替换指定内容"><a href="#替换指定内容" class="headerlink" title="替换指定内容"></a>替换指定内容</h4><pre class="line-numbers language-none"><code class="language-none">idea替换快捷键有两种：1、“ctrl+r”快捷键，用于当前文件内容替换，指的是在当前打开的文件中替换匹配的字符，只操作一个文件；2、“ctrl+shift+r”快捷键，用于在路径中替换。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="快速添加-getter、setter-方法"><a href="#快速添加-getter、setter-方法" class="headerlink" title="快速添加 getter、setter 方法"></a>快速添加 getter、setter 方法</h4><pre class="line-numbers language-none"><code class="language-none">Alt+Insert<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="代码对比工具"><a href="#代码对比工具" class="headerlink" title="代码对比工具"></a>代码对比工具</h3><h4 id="sublime"><a href="#sublime" class="headerlink" title="sublime"></a>sublime</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/3d989651b0d14c65a56aea98f857013d.png" alt=""></p>
-<h3 id="SSH客户端"><a href="#SSH客户端" class="headerlink" title="SSH客户端"></a>SSH客户端</h3><h4 id="MobaXterm-1"><a href="#MobaXterm-1" class="headerlink" title="MobaXterm"></a>MobaXterm</h4><p>选择它的原因是因为可以直接将windonws下的文件拖拽过来，不用通过专门的传输软件（xftp），且不用命令可以看到目录结构<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/e86c8f5d1e0f4262a73dc4dc958a4cd8.png" alt=""></p>
-<h5 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h5><p>不用设置，MobaXTerm 里面选取内容就已经复制了，如图，白色的内容就已经成功复制了哈哈哈哈，真方便。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/ff09c618917940a79a19b1da827f9b59.png" alt=""><br>如果不行，看看是否是这里没有勾上（在 setting 里的 Configuration里面）：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2cbe8be79b734c069e1f1920e9080f12.png" alt=""></p>
-<h5 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h5><p>MobaXterm默认的复制键不是 ctrl+v，当初复制服务器密码的时候老出错，一度怀疑密码错了。<br>这个快捷键可以设置</p>
+<h3 id="替换指定内容"><a href="#替换指定内容" class="headerlink" title="替换指定内容"></a>替换指定内容</h3><pre class="line-numbers language-none"><code class="language-none">idea替换快捷键有两种：1、“ctrl+r”快捷键，用于当前文件内容替换，指的是在当前打开的文件中替换匹配的字符，只操作一个文件；2、“ctrl+shift+r”快捷键，用于在路径中替换。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="快速添加-getter、setter-方法"><a href="#快速添加-getter、setter-方法" class="headerlink" title="快速添加 getter、setter 方法"></a>快速添加 getter、setter 方法</h3><pre class="line-numbers language-none"><code class="language-none">Alt+Insert<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="代码对比工具"><a href="#代码对比工具" class="headerlink" title="代码对比工具"></a>代码对比工具</h2><h3 id="sublime"><a href="#sublime" class="headerlink" title="sublime"></a>sublime</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/3d989651b0d14c65a56aea98f857013d.png" alt=""></p>
+<h2 id="SSH客户端"><a href="#SSH客户端" class="headerlink" title="SSH客户端"></a>SSH客户端</h2><h3 id="MobaXterm-1"><a href="#MobaXterm-1" class="headerlink" title="MobaXterm"></a>MobaXterm</h3><p>选择它的原因是因为可以直接将windonws下的文件拖拽过来，不用通过专门的传输软件（xftp），且不用命令可以看到目录结构<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/e86c8f5d1e0f4262a73dc4dc958a4cd8.png" alt=""></p>
+<h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><p>不用设置，MobaXTerm 里面选取内容就已经复制了，如图，白色的内容就已经成功复制了哈哈哈哈，真方便。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/ff09c618917940a79a19b1da827f9b59.png" alt=""><br>如果不行，看看是否是这里没有勾上（在 setting 里的 Configuration里面）：<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/2cbe8be79b734c069e1f1920e9080f12.png" alt=""></p>
+<h4 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h4><p>MobaXterm默认的复制键不是 ctrl+v，当初复制服务器密码的时候老出错，一度怀疑密码错了。<br>这个快捷键可以设置</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/cc6fb7c9545f447b902bc8af4ea94ba3.png" alt=""></p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/fa9344127b15405cbc97e18c8cb92998.png" alt=""></p>
 <p>好了，现在 复制-粘贴 就是：选中，Ctrl + V</p>
-<h5 id="下载文件到本地"><a href="#下载文件到本地" class="headerlink" title="下载文件到本地"></a>下载文件到本地</h5><p>选中目标文件，右击 ，Download。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/95fc0ebdbabd46918713cb124e31ace9.png" alt=""></p>
-<h5 id="修改字体"><a href="#修改字体" class="headerlink" title="修改字体"></a>修改字体</h5><p>修改完成后要重新新建会话才会生效。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/217b607feab24741a1d55f3abd15c627.png" alt=""></p>
-<h3 id="Everything"><a href="#Everything" class="headerlink" title="Everything"></a>Everything</h3><h4 id="很多文件搜索不到"><a href="#很多文件搜索不到" class="headerlink" title="很多文件搜索不到"></a>很多文件搜索不到</h4><p>工具-&gt;选项-&gt;左侧找”索引”-&gt;点击里面的”强制重建”</p>
+<h4 id="下载文件到本地"><a href="#下载文件到本地" class="headerlink" title="下载文件到本地"></a>下载文件到本地</h4><p>选中目标文件，右击 ，Download。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/95fc0ebdbabd46918713cb124e31ace9.png" alt=""></p>
+<h4 id="修改字体"><a href="#修改字体" class="headerlink" title="修改字体"></a>修改字体</h4><p>修改完成后要重新新建会话才会生效。<br><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/217b607feab24741a1d55f3abd15c627.png" alt=""></p>
+<h2 id="Everything"><a href="#Everything" class="headerlink" title="Everything"></a>Everything</h2><h3 id="很多文件搜索不到"><a href="#很多文件搜索不到" class="headerlink" title="很多文件搜索不到"></a>很多文件搜索不到</h3><p>工具-&gt;选项-&gt;左侧找”索引”-&gt;点击里面的”强制重建”</p>
 <p>可解决这个问题，以避免卸载重装</p>
-<h3 id="浏览器搜索技巧"><a href="#浏览器搜索技巧" class="headerlink" title="浏览器搜索技巧"></a>浏览器搜索技巧</h3><h4 id="使用引号精确搜索（“”）"><a href="#使用引号精确搜索（“”）" class="headerlink" title="使用引号精确搜索（“”）"></a>使用引号精确搜索（“”）</h4><p>当我们搜索特定内容时，可以是用双引号包裹索引内容，以减少Google搜搜的猜测。</p>
+<h2 id="浏览器搜索技巧"><a href="#浏览器搜索技巧" class="headerlink" title="浏览器搜索技巧"></a>浏览器搜索技巧</h2><h3 id="使用引号精确搜索（“”）"><a href="#使用引号精确搜索（“”）" class="headerlink" title="使用引号精确搜索（“”）"></a>使用引号精确搜索（“”）</h3><p>当我们搜索特定内容时，可以是用双引号包裹索引内容，以减少Google搜搜的猜测。</p>
 <p>“learn JavaScript array”</p>
-<h4 id="使用连字符排除内容（-）"><a href="#使用连字符排除内容（-）" class="headerlink" title="使用连字符排除内容（-）"></a>使用连字符排除内容（-）</h4><p>有时候，我们搜索的内容可能有多层含义，或者不想看到和某个信息相关的搜索，就可以使用连字符进行排除。​</p>
+<h3 id="使用连字符排除内容（-）"><a href="#使用连字符排除内容（-）" class="headerlink" title="使用连字符排除内容（-）"></a>使用连字符排除内容（-）</h3><p>有时候，我们搜索的内容可能有多层含义，或者不想看到和某个信息相关的搜索，就可以使用连字符进行排除。​</p>
 <p>JavaScript -wikipedia</p>
-<h4 id="使用星号填充内容（-）"><a href="#使用星号填充内容（-）" class="headerlink" title="使用星号填充内容（*）"></a>使用星号填充内容（*）</h4><p>比如在搜索时，只记得其中一部分内容，另一部分忘记了，就可以这样用。</p>
+<h3 id="使用星号填充内容（-）"><a href="#使用星号填充内容（-）" class="headerlink" title="使用星号填充内容（*）"></a>使用星号填充内容（*）</h3><p>比如在搜索时，只记得其中一部分内容，另一部分忘记了，就可以这样用。</p>
 <p>我们忘记了Git中撤销commit命令的第二个单词，可以这样搜索：</p>
 <p>git * —soft HEAD^</p>
-<h4 id="搜索指定范围（…）"><a href="#搜索指定范围（…）" class="headerlink" title="搜索指定范围（…）"></a>搜索指定范围（…）</h4><p>可以使用…来搜索指定数字范围的内容，这些数字可以是年份、版本等。​</p>
+<h3 id="搜索指定范围（…）"><a href="#搜索指定范围（…）" class="headerlink" title="搜索指定范围（…）"></a>搜索指定范围（…）</h3><p>可以使用…来搜索指定数字范围的内容，这些数字可以是年份、版本等。​</p>
 <p>JavaScript in 2021….2022</p>
-<h4 id="搜索指定站点内容（search-）"><a href="#搜索指定站点内容（search-）" class="headerlink" title="搜索指定站点内容（search:）"></a>搜索指定站点内容（search:）</h4><p>可以使用 <strong>search：网站域名 搜索内容 </strong>的形式来在指定网站内搜索内容。​</p>
+<h3 id="搜索指定站点内容（search-）"><a href="#搜索指定站点内容（search-）" class="headerlink" title="搜索指定站点内容（search:）"></a>搜索指定站点内容（search:）</h3><p>可以使用 <strong>search：网站域名 搜索内容 </strong>的形式来在指定网站内搜索内容。​</p>
 <p>在W3C中搜索：search: w3schools.com javascript Array</p>
-<h4 id="搜索指定文件类型内容（filetype）"><a href="#搜索指定文件类型内容（filetype）" class="headerlink" title="搜索指定文件类型内容（filetype）"></a>搜索指定文件类型内容（filetype）</h4><p>React ebook filetype:pdf</p>
-<h4 id="查找多个关键字（AND）"><a href="#查找多个关键字（AND）" class="headerlink" title="查找多个关键字（AND）"></a>查找多个关键字（AND）</h4><p>React AND CSS</p>
-<h4 id="查找其中一个关键字（OR）"><a href="#查找其中一个关键字（OR）" class="headerlink" title="查找其中一个关键字（OR）"></a>查找其中一个关键字（OR）</h4><p>React OR Vue</p>
-<h4 id="查询关键字的定义（Define）"><a href="#查询关键字的定义（Define）" class="headerlink" title="查询关键字的定义（Define）"></a>查询关键字的定义（Define）</h4><p>Define: JavaScript</p>
-<h4 id="搜索相关内容（-）"><a href="#搜索相关内容（-）" class="headerlink" title="搜索相关内容（+）"></a>搜索相关内容（+）</h4><p>CSS style+React</p>
-<h4 id="查找相似网站（related）"><a href="#查找相似网站（related）" class="headerlink" title="查找相似网站（related）"></a>查找相似网站（related）</h4><p>related: w3schools.com</p>
-<h4 id="搜索指定站点内容（site）"><a href="#搜索指定站点内容（site）" class="headerlink" title="搜索指定站点内容（site）"></a>搜索指定站点内容（site）</h4><p>可以使用site关键字来搜索指定站点中的内容。​<br>site: github.com React</p>
-<h4 id="搜索指定时间范围（before、after）"><a href="#搜索指定时间范围（before、after）" class="headerlink" title="搜索指定时间范围（before、after）"></a>搜索指定时间范围（before、after）</h4><p>搜索：after: 2021 learn react</p>
-<h2 id="Microsoft"><a href="#Microsoft" class="headerlink" title="Microsoft"></a>Microsoft</h2><h3 id="visio"><a href="#visio" class="headerlink" title="visio"></a>visio</h3><h4 id="快捷键集合"><a href="#快捷键集合" class="headerlink" title="快捷键集合"></a>快捷键集合</h4><p>箭头反转</p>
+<h3 id="搜索指定文件类型内容（filetype）"><a href="#搜索指定文件类型内容（filetype）" class="headerlink" title="搜索指定文件类型内容（filetype）"></a>搜索指定文件类型内容（filetype）</h3><p>React ebook filetype:pdf</p>
+<h3 id="查找多个关键字（AND）"><a href="#查找多个关键字（AND）" class="headerlink" title="查找多个关键字（AND）"></a>查找多个关键字（AND）</h3><p>React AND CSS</p>
+<h3 id="查找其中一个关键字（OR）"><a href="#查找其中一个关键字（OR）" class="headerlink" title="查找其中一个关键字（OR）"></a>查找其中一个关键字（OR）</h3><p>React OR Vue</p>
+<h3 id="查询关键字的定义（Define）"><a href="#查询关键字的定义（Define）" class="headerlink" title="查询关键字的定义（Define）"></a>查询关键字的定义（Define）</h3><p>Define: JavaScript</p>
+<h3 id="搜索相关内容（-）"><a href="#搜索相关内容（-）" class="headerlink" title="搜索相关内容（+）"></a>搜索相关内容（+）</h3><p>CSS style+React</p>
+<h3 id="查找相似网站（related）"><a href="#查找相似网站（related）" class="headerlink" title="查找相似网站（related）"></a>查找相似网站（related）</h3><p>related: w3schools.com</p>
+<h3 id="搜索指定站点内容（site）"><a href="#搜索指定站点内容（site）" class="headerlink" title="搜索指定站点内容（site）"></a>搜索指定站点内容（site）</h3><p>可以使用site关键字来搜索指定站点中的内容。​<br>site: github.com React</p>
+<h3 id="搜索指定时间范围（before、after）"><a href="#搜索指定时间范围（before、after）" class="headerlink" title="搜索指定时间范围（before、after）"></a>搜索指定时间范围（before、after）</h3><p>搜索：after: 2021 learn react</p>
+<h1 id="Microsoft"><a href="#Microsoft" class="headerlink" title="Microsoft"></a>Microsoft</h1><h2 id="visio"><a href="#visio" class="headerlink" title="visio"></a>visio</h2><h3 id="快捷键集合"><a href="#快捷键集合" class="headerlink" title="快捷键集合"></a>快捷键集合</h3><p>箭头反转</p>
 <pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript">点箭头，然后Ctrl<span class="token operator">+</span>h即可<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="Word"><a href="#Word" class="headerlink" title="Word"></a>Word</h3><h4 id="项目封面问题"><a href="#项目封面问题" class="headerlink" title="项目封面问题"></a>项目封面问题</h4><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/66dad9a8d7944bb98f925bcff19989fe.png" alt=""><br>封面经常会对不齐，可以新建一个<strong>3列表格</strong>。在表格里面调整对齐。</p>
-<h4 id="显示word文档所有格式"><a href="#显示word文档所有格式" class="headerlink" title="显示word文档所有格式"></a>显示word文档所有格式</h4><p>在模板处直接改动，会出现格式突然不一样，即使<strong>只粘贴文字</strong>也不行；如果自己制作格式，有可能不知不觉会影响其它部分的格式。</p>
-<h4 id="公式添加编号并右对齐"><a href="#公式添加编号并右对齐" class="headerlink" title="公式添加编号并右对齐"></a>公式添加编号并右对齐</h4><p><img src="https://pic1.zhimg.com/80/v2-2e7e2220c80699bc8f1f5c3d21a46c24_720w.webp" alt=""></p>
+<h2 id="Word"><a href="#Word" class="headerlink" title="Word"></a>Word</h2><h3 id="项目封面问题"><a href="#项目封面问题" class="headerlink" title="项目封面问题"></a>项目封面问题</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/66dad9a8d7944bb98f925bcff19989fe.png" alt=""><br>封面经常会对不齐，可以新建一个<strong>3列表格</strong>。在表格里面调整对齐。</p>
+<h3 id="显示word文档所有格式"><a href="#显示word文档所有格式" class="headerlink" title="显示word文档所有格式"></a>显示word文档所有格式</h3><p>在模板处直接改动，会出现格式突然不一样，即使<strong>只粘贴文字</strong>也不行；如果自己制作格式，有可能不知不觉会影响其它部分的格式。</p>
+<h3 id="公式添加编号并右对齐"><a href="#公式添加编号并右对齐" class="headerlink" title="公式添加编号并右对齐"></a>公式添加编号并右对齐</h3><p><img src="https://pic1.zhimg.com/80/v2-2e7e2220c80699bc8f1f5c3d21a46c24_720w.webp" alt=""></p>
 <p>在公式内部的末尾添加：#(1)</p>
 <p><strong>还是按照模板的要求制作格式，最后两个相互对比</strong></p>
 <p>先看下效果图<br><img src="https://s2.loli.net/2022/06/10/E2rJMdF9tZhDUQO.png" alt="Snipaste_2022-06-10_09-32-53.png"></p>
@@ -803,14 +1002,14 @@ def setup_academic_legend(ax, **kwargs):
 <li>再点击新建组，输入名字“显示格式”，然后点击添加，将显示格式添加进去，然后确定。</li>
 <li>接着我们就可以在视图中找“显示格式”，点击起用显示格，在右边就可以看到显示格式的属性。</li>
 </ol>
-<h4 id="Word中插入公式后行距变大的解决办法"><a href="#Word中插入公式后行距变大的解决办法" class="headerlink" title="Word中插入公式后行距变大的解决办法"></a>Word中插入公式后行距变大的解决办法</h4><p>撰写论文时，在word中插入公式后，行间距变大，与纯文字的行间距不一致，解决办法如下：</p>
+<h3 id="Word中插入公式后行距变大的解决办法"><a href="#Word中插入公式后行距变大的解决办法" class="headerlink" title="Word中插入公式后行距变大的解决办法"></a>Word中插入公式后行距变大的解决办法</h3><p>撰写论文时，在word中插入公式后，行间距变大，与纯文字的行间距不一致，解决办法如下：</p>
 <p>光标定位到出现异常的段落，右键选择“段落”→“缩进和间距”，找到间距下面的“如果定义了文档网格，则对齐到网格”，取消勾选即可。</p>
-<h4 id="如何插入多行公式"><a href="#如何插入多行公式" class="headerlink" title="如何插入多行公式"></a>如何插入多行公式</h4><p>输入第一行公式，第一行公式尾部输入#，按回车。如果不行的话就按 shift+回车</p>
+<h3 id="如何插入多行公式"><a href="#如何插入多行公式" class="headerlink" title="如何插入多行公式"></a>如何插入多行公式</h3><p>输入第一行公式，第一行公式尾部输入#，按回车。如果不行的话就按 shift+回车</p>
 <p>如果公式没法居中，鼠标放置在公式任意位置，右键，取消勾选扩展到页/列宽度；</p>
 <p>鼠标放置在整个公式的尾端（非单行的尾端），输入 #(1) ，并回车，1为公式编号；</p>
 <p>在每行等号后输入 &amp; ，进行对齐，或鼠标放置等号后右键，点击在此字符处对齐。</p>
-<h4 id="插入多行公式，第二行的公式只显示一部分"><a href="#插入多行公式，第二行的公式只显示一部分" class="headerlink" title="插入多行公式，第二行的公式只显示一部分"></a>插入多行公式，第二行的公式只显示一部分</h4><p>解决办法是把行距改为<strong>单倍行距</strong></p>
-<h3 id="PPT"><a href="#PPT" class="headerlink" title="PPT"></a>PPT</h3><h3 id="Excel"><a href="#Excel" class="headerlink" title="Excel"></a>Excel</h3><h3 id="visio-1"><a href="#visio-1" class="headerlink" title="visio"></a>visio</h3><h4 id="添加连接点，并且与另一个连接点对齐"><a href="#添加连接点，并且与另一个连接点对齐" class="headerlink" title="添加连接点，并且与另一个连接点对齐"></a>添加连接点，并且与另一个连接点对齐</h4><p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/5d368d1e9c893d3f60c05722.html">原链接</a></p>
+<h3 id="插入多行公式，第二行的公式只显示一部分"><a href="#插入多行公式，第二行的公式只显示一部分" class="headerlink" title="插入多行公式，第二行的公式只显示一部分"></a>插入多行公式，第二行的公式只显示一部分</h3><p>解决办法是把行距改为<strong>单倍行距</strong></p>
+<h2 id="PPT"><a href="#PPT" class="headerlink" title="PPT"></a>PPT</h2><h2 id="Excel"><a href="#Excel" class="headerlink" title="Excel"></a>Excel</h2><h2 id="visio-1"><a href="#visio-1" class="headerlink" title="visio"></a>visio</h2><h3 id="添加连接点，并且与另一个连接点对齐"><a href="#添加连接点，并且与另一个连接点对齐" class="headerlink" title="添加连接点，并且与另一个连接点对齐"></a>添加连接点，并且与另一个连接点对齐</h3><p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/5d368d1e9c893d3f60c05722.html">原链接</a></p>
 <ol>
 <li>点击工具上的这个 X 形工具。可以看到，最左边的矩形只有一个连接点，为了画出需要的框图，需要手动添加四个连接点。</li>
 </ol>
@@ -833,8 +1032,8 @@ def setup_academic_legend(ax, **kwargs):
 </ol>
 <p><strong>这一步很关键，如果连接点添加到了参考线，那么是无法连接的，要确保连接点添加在形状上，可以通过放大，找打参考线和形状的交接点，然后多点几次鼠标找一找</strong></p>
 <p><img src="https://exp-picture.cdn.bcebos.com/9bc92713e8e5ecee9345e29acc704618deda7a52.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_500%2Climit_1%2Fformat%2Cf_auto%2Fquality%2Cq_80" alt=""></p>
-<h4 id="输出矢量图"><a href="#输出矢量图" class="headerlink" title="输出矢量图"></a>输出矢量图</h4><p>首先“ctrl+A”，然后选择“另存为”，保存类型选择“Tag图像文件格式”，接着在输出里面设置，压缩格式选为“LZW”，接着是“256色”，然后选择“打印机”，下面是“源”，然后点击确定就可以了。这样绝对是满足投稿要求的，分辨率为300dpi。</p>
-<h4 id="插入公式"><a href="#插入公式" class="headerlink" title="插入公式"></a>插入公式</h4><ol>
+<h3 id="输出矢量图"><a href="#输出矢量图" class="headerlink" title="输出矢量图"></a>输出矢量图</h3><p>首先“ctrl+A”，然后选择“另存为”，保存类型选择“Tag图像文件格式”，接着在输出里面设置，压缩格式选为“LZW”，接着是“256色”，然后选择“打印机”，下面是“源”，然后点击确定就可以了。这样绝对是满足投稿要求的，分辨率为300dpi。</p>
+<h3 id="插入公式"><a href="#插入公式" class="headerlink" title="插入公式"></a>插入公式</h3><ol>
 <li>使用wps自带的公式编辑器</li>
 </ol>
 <p>首先打开Visio，任意新建一个Visio绘图。点击插入——对象——WPS公式3.0，最后点击确定，会弹出WPS的公式编辑器。<br>在公式编辑器中，输入自己想要的公式后，点击关闭窗口，即可成功插入公式。</p>
@@ -842,22 +1041,22 @@ def setup_academic_legend(ax, **kwargs):
 <li>使用mathtype（推荐） </li>
 </ol>
 <p>打开Visio，任意新建一个Visio绘图。点击插入——对象——MathType 6.0 Equation，点击确定，会弹出MathType公式编辑器。</p>
-<h2 id="不小心关闭了某个页面"><a href="#不小心关闭了某个页面" class="headerlink" title="不小心关闭了某个页面"></a>不小心关闭了某个页面</h2><p>恢复： </p>
+<h1 id="不小心关闭了某个页面"><a href="#不小心关闭了某个页面" class="headerlink" title="不小心关闭了某个页面"></a>不小心关闭了某个页面</h1><p>恢复： </p>
 <blockquote>
 <p>ctrl+shift+t</p>
 </blockquote>
-<h2 id="快速开启powershell"><a href="#快速开启powershell" class="headerlink" title="快速开启powershell"></a>快速开启powershell</h2><p>在需要启动powershell的文件里面</p>
+<h1 id="快速开启powershell"><a href="#快速开启powershell" class="headerlink" title="快速开启powershell"></a>快速开启powershell</h1><p>在需要启动powershell的文件里面</p>
 <pre class="line-numbers language-none"><code class="language-none">shift+右键<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/a3d91843cc7245db81df0ba36eeadc29.png" alt=""></p>
-<h2 id="相机"><a href="#相机" class="headerlink" title="相机"></a>相机</h2><h3 id="相机参数设置"><a href="#相机参数设置" class="headerlink" title="相机参数设置"></a>相机参数设置</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/%E7%9B%B8%E6%9C%BA%E5%8F%82%E6%95%B0v2.png" alt=""></p>
-<h3 id="拍照注意事项"><a href="#拍照注意事项" class="headerlink" title="拍照注意事项"></a>拍照注意事项</h3><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/%E5%A4%A7%E5%85%89%E6%AF%94%E5%9C%BA%E6%99%AF%E6%8B%8D%E7%85%A7%20%EF%BC%88%E5%A4%A7%E6%99%B4%E5%A4%A9%EF%BC%8C%E6%9C%89%E5%A4%AA%E9%98%B3%EF%BC%89.png" alt=""></p>
+<h1 id="相机"><a href="#相机" class="headerlink" title="相机"></a>相机</h1><h2 id="相机参数设置"><a href="#相机参数设置" class="headerlink" title="相机参数设置"></a>相机参数设置</h2><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/%E7%9B%B8%E6%9C%BA%E5%8F%82%E6%95%B0v2.png" alt=""></p>
+<h2 id="拍照注意事项"><a href="#拍照注意事项" class="headerlink" title="拍照注意事项"></a>拍照注意事项</h2><p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/%E5%A4%A7%E5%85%89%E6%AF%94%E5%9C%BA%E6%99%AF%E6%8B%8D%E7%85%A7%20%EF%BC%88%E5%A4%A7%E6%99%B4%E5%A4%A9%EF%BC%8C%E6%9C%89%E5%A4%AA%E9%98%B3%EF%BC%89.png" alt=""></p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/%E9%80%86%E5%85%89%E6%8B%8D%E6%91%84%E4%BA%BA%E5%83%8F.png" alt=""></p>
-<h3 id="色温和白平衡"><a href="#色温和白平衡" class="headerlink" title="色温和白平衡"></a>色温和白平衡</h3><p>【终于有人把色温和白平衡说清楚了，摄影入门必看！】 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oU421Z7vF/?share_source=copy_web&amp;vd_source=0aac08942099868c6eaf781c9de8ebb1">https://www.bilibili.com/video/BV1oU421Z7vF/?share_source=copy_web&amp;vd_source=0aac08942099868c6eaf781c9de8ebb1</a></p>
-<h4 id="色温"><a href="#色温" class="headerlink" title="色温"></a>色温</h4><p>色温：环境中客观存在的光源颜色（温度的颜色）</p>
+<h2 id="色温和白平衡"><a href="#色温和白平衡" class="headerlink" title="色温和白平衡"></a>色温和白平衡</h2><p>【终于有人把色温和白平衡说清楚了，摄影入门必看！】 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oU421Z7vF/?share_source=copy_web&amp;vd_source=0aac08942099868c6eaf781c9de8ebb1">https://www.bilibili.com/video/BV1oU421Z7vF/?share_source=copy_web&amp;vd_source=0aac08942099868c6eaf781c9de8ebb1</a></p>
+<h3 id="色温"><a href="#色温" class="headerlink" title="色温"></a>色温</h3><p>色温：环境中客观存在的光源颜色（温度的颜色）</p>
 <p>物体在不同温度下有不同的颜色，比如加热一个物体，会从红到黄到白到蓝。物体在不同温度产生的颜色成为色温，单位:K</p>
 <p>K值越低，色温越暖（红色就是低色温，蓝色是高色温）。简单的口诀是：炉火纯青</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-11-06_09-25-16.png" alt=""></p>
-<h4 id="白平衡"><a href="#白平衡" class="headerlink" title="白平衡"></a>白平衡</h4><p>白平衡：人为控制的相机设置。根据环境的色温来校准相机的颜色，还原物体现实中的颜色。</p>
+<h3 id="白平衡"><a href="#白平衡" class="headerlink" title="白平衡"></a>白平衡</h3><p>白平衡：人为控制的相机设置。根据环境的色温来校准相机的颜色，还原物体现实中的颜色。</p>
 <p>因为白平衡的k值和色温是相反的，除非物体是白色，两者数值是相同的。否则应该是相反的，一个高，另一个低。</p>
 <p>白平衡一般只能在冷暖色调上偏移，如果画面偏绿，就要用到色彩偏移，色彩偏移能够调整出不同风格的照片。（蓝绿色调小清新风格—左上、红绿色调港风—右上、蓝粉色调法式—左下、红粉色调—复古）</p>
 <center>
@@ -870,7 +1069,7 @@ def setup_academic_legend(ax, **kwargs):
 
 
 
-<h3 id="透视感"><a href="#透视感" class="headerlink" title="透视感"></a>透视感</h3><p>透视感：画面出现近大远小的现象</p>
+<h2 id="透视感"><a href="#透视感" class="headerlink" title="透视感"></a>透视感</h2><p>透视感：画面出现近大远小的现象</p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-11-12_00-11-13.png" alt=""></p>
 <p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/Snipaste_2024-11-12_00-11-29.png" alt=""></p>
 <p><strong>如果拍出比较强的透视感，广角镜头靠近拍，长焦镜头离远拍。</strong></p>
@@ -1141,13 +1340,13 @@ def setup_academic_legend(ax, **kwargs):
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/56435/">
+                <a href="/posts/43473/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Golang">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="牛客网">
                         
-                        <span class="card-title">Golang</span>
+                        <span class="card-title">牛客网</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1158,7 +1357,7 @@ def setup_academic_legend(ax, **kwargs):
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-22
                         </span>
                         <span class="publish-author">
                             
@@ -1175,8 +1374,8 @@ def setup_academic_legend(ax, **kwargs):
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Golang/">
-                        <span class="chip bg-color">Golang</span>
+                    <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/">
+                        <span class="chip bg-color">牛客网</span>
                     </a>
                     
                 </div>
@@ -1190,13 +1389,13 @@ def setup_academic_legend(ax, **kwargs):
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/53165/">
+                <a href="/posts/40991/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Java知识">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Docker">
                         
-                        <span class="card-title">Java知识</span>
+                        <span class="card-title">Docker</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1207,14 +1406,14 @@ def setup_academic_legend(ax, **kwargs):
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    编程语言
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                    运维
                                 </a>
                             
                             
@@ -1224,20 +1423,12 @@ def setup_academic_legend(ax, **kwargs):
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                        <span class="chip bg-color">动态规划</span>
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/SpringBoot/">
-                        <span class="chip bg-color">SpringBoot</span>
+                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                        <span class="chip bg-color">运维</span>
                     </a>
                     
                 </div>
@@ -1434,7 +1625,7 @@ def setup_academic_legend(ax, **kwargs):
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">299k</span>
+                        class="white-color">301.8k</span>
             
             
             
