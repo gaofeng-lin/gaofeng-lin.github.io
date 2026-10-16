@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="时序预测基础知识, Home of Gaofeng">
-    <meta name="description" content="channel independence这个概念在时序预测中的论文被多次提到，通道独立可以立即为变量独立，每个通道其实就是一个变量。说直接一点，就是模型不捕捉通道与通道之间的关联，往往只捕捉同一个变量下不同时间点之间的关联或者说模型在预测某">
+    <meta name="description" content="channel independence这个概念在时序预测中的论文被多次提到，通道独立可以理解为变量独立，每个通道其实就是一个变量。说直接一点，就是模型不捕捉通道与通道之间的关联，往往只捕捉同一个变量下不同时间点之间的关联或者说模型在预测某">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -579,14 +579,14 @@ mjx-container[display="true"] + br {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    463
+                    625
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -609,7 +609,7 @@ mjx-container[display="true"] + br {
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="channel-independence"><a href="#channel-independence" class="headerlink" title="channel independence"></a>channel independence</h1><p>这个概念在时序预测中的论文被多次提到，通道独立可以立即为变量独立，每个通道其实就是一个变量。说直接一点，就是<strong>模型不捕捉通道与通道之间的关联，往往只捕捉同一个变量下不同时间点之间的关联</strong>或者说<strong>模型在预测某一个变量（Channel）时，只使用该变量自身的历史数据，而不使用（或不依赖）其他变量的数据。</strong>。之所以这样做，是因为很多论文（patchtst,Dlinear）认为捕捉变量之间的关系容易过拟合或者效果不好。</p>
+                <h1 id="channel-independence"><a href="#channel-independence" class="headerlink" title="channel independence"></a>channel independence</h1><p>这个概念在时序预测中的论文被多次提到，通道独立可以理解为变量独立，每个通道其实就是一个变量。说直接一点，就是<strong>模型不捕捉通道与通道之间的关联，往往只捕捉同一个变量下不同时间点之间的关联</strong>或者说<strong>模型在预测某一个变量（Channel）时，只使用该变量自身的历史数据，而不使用（或不依赖）其他变量的数据。</strong>。之所以这样做，是因为很多论文（patchtst,Dlinear）认为捕捉变量之间的关系容易过拟合或者效果不好。</p>
 <p>DLinear就是采用通道独立的，核心的操作是moving average和lineaer预测，对应的具体代码如下：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">moving_avg</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token triple-quoted-string string">"""
@@ -629,6 +629,9 @@ mjx-container[display="true"] + br {
         x <span class="token operator">=</span> x<span class="token punctuation">.</span>permute<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
         <span class="token keyword">return</span> x<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到，不论是moving average还是线性模型预测，都只对最后一个维度进行处理，而输入的张量，最后一个维度是Input length，和channel无关，所以就起到了channel independence的作用。</p>
+<p><strong>这里再详细说下，为什么对Input length进行操作，起到了channel independence的作用</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gaofeng-lin/picture_bed/img1/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261012091941_80_20.jpg" alt=""></p>
+<p>假设维度是（b,c,t）。b是batch_size，表示样本数，可以不用管。里面的不论是c在前还是t在前，都是二维数组，可以用二维坐标来表示。我觉得对t这个维度进行处理，有些让人误解，会以为是一根根竖线。但我觉得更准确的说法是：<strong>沿着t这个维度做操作</strong>。这样的话，那就是以每个变量为单位进行操作，变量之间是互不干扰的，也就起到了channel independence的作用。</p>
 <p><strong>那么patchtst这样的，涉及transformer的如何保证通道独立性？</strong></p>
 <p>patchtst会把channel和batch_size维度给合并，这样看起来就是有channel*batch_size个变量。</p>
 <p>而DLinear中的individual要稍微特别点，和常用的shared模式有两点不同：</p>
@@ -1169,7 +1172,7 @@ mjx-container[display="true"] + br {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">301.8k</span>
+                        class="white-color">302.7k</span>
             
             
             
